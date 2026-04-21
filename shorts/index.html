@@ -19,4 +19,67 @@
     </div>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>SST Shorts</title>
+    <style>
+        body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background: #000; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        
+        /* स्वाइप कंटेनर */
+        .shorts-wrapper { height: 100vh; overflow-y: scroll; scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        
+        .short-card { 
+            height: 100vh; width: 100%; 
+            scroll-snap-align: start; 
+            position: relative; 
+            display: flex; align-items: center; justify-content: center;
+            background: #000;
+        }
+
+        iframe { width: 100%; height: 80%; border: none; border-radius: 15px; box-shadow: 0 0 20px rgba(255,255,255,0.1); }
+
+        /* वीडियो के ऊपर टाइटल */
+        .info-overlay { 
+            position: absolute; bottom: 50px; left: 15px; right: 15px;
+            color: white; z-index: 10; pointer-events: none;
+        }
+        .info-overlay h3 { margin: 0; font-size: 18px; text-shadow: 2px 2px 4px rgba(0,0,0,0.7); }
+
+        /* वापस जाने का बटन */
+        .back-home { 
+            position: fixed; top: 20px; left: 15px; z-index: 100;
+            background: rgba(255,255,255,0.2); color: white; 
+            width: 40px; height: 40px; border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center;
+            text-decoration: none; font-size: 20px; backdrop-filter: blur(5px);
+        }
+    </style>
+</head>
+<body>
+
+    <a href="../index.html" class="back-home">❮</a>
+
+    <div class="shorts-wrapper">
+        
+        <div class="short-card">
+            <iframe src="https://www.youtube.com/embed/7X8m-Q6C36M?autoplay=0&rel=0&showinfo=0" allowfullscreen></iframe>
+            <div class="info-overlay">
+                <h3>📖 राजस्थान सामान्य ज्ञान - भाग 1</h3>
+            </div>
+        </div>
+
+        <div class="short-card">
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&rel=0&showinfo=0" allowfullscreen></iframe>
+            <div class="info-overlay">
+                <h3>📍 कालीबंगा सभ्यता के प्रमुख केंद्र</h3>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
 
