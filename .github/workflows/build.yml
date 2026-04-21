@@ -1,0 +1,37 @@
+name: Build My Private APK
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install Cordova & Build
+        run: |
+          npm install -g cordova
+          # प्रोजेक्ट बनाना
+          cordova create myApp com.sst.pro "SST_Pro"
+          cd myApp
+          # अपनी index.html को कॉपी करना
+          cp ../index.html www/index.html
+          # एंड्रॉइड प्लेटफार्म जोड़ना
+          cordova platform add android@10.1.2
+          # पुराने Gradle का इस्तेमाल करने के लिए मजबू़र करना
+          printf "org.gradle.jvmargs=-Xmx2048m\nandroid.useAndroidX=true\nandroid.enableJetifier=true" > platforms/android/gradle.properties
+          # बिल्ड कमांड
+          cordova build android --no-telemetry --device
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: SST-Pro-App
+          path: myApp/platforms/android/app/build/outputs/apk/debug/app-debug.apk
