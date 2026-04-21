@@ -1,0 +1,44 @@
+name: Manual Gradle Fix Build
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Java 11
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '16'
+
+      - name: Force Install Older Gradle and Build
+        run: |
+          # 1. Cordova इंस्टॉल करें
+          npm install -g cordova@11.0.0
+          
+          # 2. प्रोजेक्ट बनाएँ
+          cordova create myApp com.sst.pro "SST_Pro"
+          cd myApp
+          cp ../index.html www/index.html
+          
+          # 3. प्लेटफार्म जोड़ें
+          cordova platform add android@10.1.2
+          
+          # --- यहाँ है असली समाधान ---
+          # हम GitHub को मजबूर करेंगे कि वो Gradle 7.1.1 डाउनलोड करे
+          echo "distributionUrl=https\://services.gradle.org/distributions/gradle-7.1.1-all.zip" > platforms/android/gradle/wrapper/gradle-wrapper.properties
+          
+          # 4. बिल्ड शुरू करें
+          cordova build android --no-telemetry --device
+
+      - name: Save APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: Professional-NoWatermark-APK
+          path: myApp/platforms/android/app/build/outputs/apk/debug/app-debug.apk
