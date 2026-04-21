@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SST Pro - Sanjay Dhakar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* बैकग्राउंड को थोड़ा सजाया गया है */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        
+        body { 
+            background-color: #f0f4f8; 
+            background-image: radial-gradient(#cbd5e0 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+            color: #2d3436; 
+        }
+
+        /* प्रीमियम हेडर डिजाइन */
+        .header {
+            background: linear-gradient(135deg, #0f172a, #1e293b, #334155);
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .header h1 { 
+            font-size: 28px; 
+            font-weight: 800; 
+            letter-spacing: 1.5px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+        }
+
+        .user-tag {
+            display: inline-block;
+            margin-top: 12px;
+            background: #f39c12;
+            color: #000;
+            padding: 4px 18px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(243, 156, 18, 0.3);
+        }
+
+        /* महात्मा गांधी जी का कोट बॉक्स */
+        .gandhi-box {
+            margin: -25px 20px 20px 20px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+            border-top: 5px solid #f39c12;
+            position: relative;
+        }
+
+        .gandhi-box p {
+            font-size: 14px;
+            font-weight: 600;
+            color: #4a5568;
+            line-height: 1.5;
+        }
+
+        .section-label {
+            padding: 20px 25px 5px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #718096;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* कार्ड्स ग्रिड */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            padding: 15px 20px;
+        }
+
+        .card {
+            background: #ffffff;
+            padding: 25px 12px;
+            border-radius: 22px;
+            text-align: center;
+            text-decoration: none;
+            color: #1a202c;
+            border: 1px solid rgba(0,0,0,0.02);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.03);
+            transition: 0.3s ease;
+            border-bottom: 4px solid #3182ce;
+        }
+
+        .card:active { transform: scale(0.92); background: #edf2f7; }
+
+        .card i { font-size: 32px; display: block; margin-bottom: 10px; }
+        .card span { font-size: 14px; font-weight: 700; display: block; }
+
+        /* स्पेशल सेक्शन कलर्स */
+        .study-grid .card { border-bottom-color: #e53e3e; }
+        .extra-grid .card { border-bottom-color: #38a169; }
+
+        footer {
+            padding: 40px 20px;
+            text-align: center;
+            color: #a0aec0;
+            font-size: 11px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>SOCIAL STUDIES<br>CLASSES</h1>
+        <div class="user-tag">By Sanjay Dhakar</div>
+    </div>
+
+    <div class="gandhi-box">
+        <p>"ऐसे जिएं कि जैसे आपको कल मरना है, सीखें ऐसे कि जैसे आपको हमेशा जीना है।"</p>
+        <div style="font-size: 12px; color: #f39c12; margin-top: 5px; font-weight: 800;">— महात्मा गांधी</div>
+    </div>
+
+    <div class="section-label">मुख्य विषय (Core)</div>
+    <div class="grid study-grid">
+        <a href="history.html" class="card"><i>📜</i><span>इतिहास</span></a>
+        <a href="geography.html" class="card"><i>🌍</i><span>भूगोल</span></a>
+        <a href="polity.html" class="card"><i>⚖️</i><span>राजनीति</span></a>
+        <a href="economics.html" class="card"><i>💰</i><span>अर्थशास्त्र</span></a>
+        <a href="psychology.html" class="card"><i>🧠</i><span>मनोविज्ञान</span></a>
+        <a href="philosophy.html" class="card"><i>🧘</i><span>दर्शनशास्त्र</span></a>
+        <a href="sociology.html" class="card"><i>👥</i><span>समाजशास्त्र</span></a>
+        <a href="teaching.html" class="card"><i>👨‍🏫</i><span>शिक्षण विधियाँ</span></a>
+    </div>
+
+    <div class="section-label">राजस्थान स्पेशल</div>
+    <div class="grid">
+        <a href="raj-history.html" class="card"><i>🏰</i><span>राज. इतिहास</span></a>
+        <a href="raj-art.html" class="card"><i>🎨</i><span>कला-संस्कृति</span></a>
+        <a href="raj-geo.html" class="card"><i>🏜️</i><span>राज. भूगोल</span></a>
+        <a href="raj-exam.html" class="card"><i>🚩</i><span>राज. भर्ती</span></a>
+    </div>
+
+    <div class="section-label">तैयारी और अभ्यास</div>
+    <div class="grid extra-grid">
+        <a href="current.html" class="card"><i>🔥</i><span>Current Affairs</span></a>
+        <a href="test.html" class="card"><i>📝</i><span>Test Series</span></a>
+        <a href="papers.html" class="card"><i>📚</i><span>Old Papers</span></a>
+        <a href="syllabus.html" class="card"><i>📋</i><span>Syllabus</span></a>
+    </div>
+
+    <footer>
+        &copy; 2026 Social Studies Classes<br>
+        All Rights Reserved | By Sanjay Dhakar
+    </footer>
+
+</body>
+</html>
