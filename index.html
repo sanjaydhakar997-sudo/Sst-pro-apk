@@ -6,6 +6,7 @@
     <title>SST Pro - Sanjay Dhakar</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
+        /* कमी 4: Global align fixed */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         
         body { 
@@ -13,36 +14,38 @@
             background-image: radial-gradient(#cbd5e0 0.5px, transparent 0.5px);
             background-size: 24px 24px;
             color: #2d3436; 
+            padding-bottom: 80px; /* Share button ke liye space */
         }
 
         /* प्रीमियम हेडर */
         .header {
             background: linear-gradient(135deg, #0f172a, #1e293b, #334155);
             color: white;
-            padding: 50px 20px;
+            padding: 50px 20px 40px 20px; /* niche thodi space badhayi */
             text-align: center;
             border-bottom-left-radius: 40px;
             border-bottom-right-radius: 40px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            position: relative; /* niche wale user-tag ke liye */
         }
 
-        .header h1 { font-size: 28px; font-weight: 800; letter-spacing: 1.5px; text-shadow: 2px 2px 0px rgba(0,0,0,0.4); }
+        .header h1 { font-size: 28px; font-weight: 800; letter-spacing: 1.5px; text-shadow: 2px 2px 0px rgba(0,0,0,0.4); text-transform: uppercase; }
 
         .user-tag {
             display: inline-block;
-            margin-top: 12px;
+            margin-top: 15px; /* कमी 1: Gap fixed */
             background: #f39c12;
             color: #000;
-            padding: 4px 18px;
+            padding: 5px 20px;
             border-radius: 50px;
             font-size: 13px;
             font-weight: 700;
-            box-shadow: 0 4px 12px rgba(243, 156, 18, 0.3);
+            box-shadow: 0 4px 12px rgba(243, 156, 18, 0.4);
         }
 
         /* गांधी जी का सुविचार */
         .gandhi-box {
-            margin: -25px 20px 20px 20px;
+            margin: -20px 20px 20px 20px; /* kami 1: user-tag se thoda niche fixed */
             background: #ffffff;
             padding: 20px;
             border-radius: 18px;
@@ -53,30 +56,26 @@
             z-index: 2;
         }
 
-        .gandhi-box p { font-size: 14px; font-weight: 600; color: #4a5568; line-height: 1.6; }
-<div style="margin: 10px 15px; padding: 10px; background: #fff3cd; border: 1px solid #ffeeba; border-radius: 10px; text-align: center;">
-    <span style="display: block; font-size: 12px; font-weight: bold; color: #856404; text-transform: uppercase; margin-bottom: 5px; letter-spacing: 1px;">🎯 इन परीक्षाओं के लिए विशेष उपयोगी:</span>
-    <div style="font-weight: 800; color: #2c3e50; font-size: 13px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;">
-        <span>RAS</span> • <span>RPSC</span> • <span>UPSC</span> • <span>2nd GRADE</span> • <span>REET</span> • <span>CET</span>
-    </div>
-</div>
+        /* कमी 2: Text size fixed to 16px */
+        .gandhi-box p.quote { font-size: 16px; font-weight: 600; color: #4a5568; line-height: 1.7; font-style: italic; }
+        .gandhi-box p.author { text-align: right; color: #f39c12; font-weight: bold; margin-top: 8px; font-size: 14px; }
 
         /* वेलकम मैसेज कार्ड */
         .welcome-card {
             background: #fff; 
-            margin: 15px; 
+            margin: 0 15px 20px 15px; 
             padding: 15px; 
             border-radius: 15px; 
             border-left: 5px solid #27ae60; 
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
-        /* ग्रिड सिस्टम (विषयों के लिए) */
+        /* ग्रिड सिस्टम */
         .grid-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
-            padding: 15px;
+            padding: 0 15px 20px 15px;
         }
 
         .subject-card {
@@ -89,6 +88,31 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             border-bottom: 4px solid #e74c3c;
             transition: 0.3s;
+            display: flex; /* alignment fixed */
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* कमी 3: Rajasthan Section Icons fixed (larger) */
+        .rajasthan-card .icon { font-size: 38px; }
+        .subject-card .icon { font-size: 30px; }
+        
+        .subject-card .label { font-weight: bold; margin-top: 10px; font-size: 14px; }
+
+        /* कमी 4: Shorts/Blog Button alignment fixed */
+        .action-button {
+            text-decoration: none;
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 10px;
+            padding: 15px; 
+            border-radius: 15px; 
+            color: white; 
+            font-weight: bold; 
+            margin-bottom: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
     </style>
 </head>
@@ -100,83 +124,73 @@
     </div>
 
     <div class="gandhi-box">
-        <p>"ऐसे जिएं कि जैसे आपको कल मरना है, सीखें ऐसे कि जैसे आपको हमेशा जीना है।"</p>
-        <p style="text-align: right; color: #f39c12; font-weight: bold; margin-top: 5px;">— महात्मा गांधी</p>
+        <p class="quote">"ऐसे जिएं कि जैसे आपको कल मरना है, सीखें ऐसे कि जैसे आपको हमेशा जीना है।"</p>
+        <p class="author">— महात्मा गांधी</p>
     </div>
 
     <div class="welcome-card">
-        <h3 style="margin: 0; color: #2c3e50;">नमस्ते, भावी टॉपर! 👋</h3>
-        <p style="margin: 5px 0 0; color: #7f8c8d; font-size: 14px;">आज आप क्या पढ़ना चाहेंगे? नीचे से चुनें।</p>
+        <h3 style="margin: 0; color: #2c3e50; font-size: 16px;">नमस्ते, भावी टॉपर! 👋</h3>
+        <p style="margin: 5px 0 0; color: #7f8c8d; font-size: 13px;">आज आप क्या पढ़ना चाहेंगे? नीचे से चुनें।</p>
     </div>
 
-    <h2 style="margin: 10px 20px; font-size: 18px; color: #636e72;">मुख्य विषय (CORE)</h2>
+    <h2 style="margin: 0 20px 10px 20px; font-size: 17px; color: #636e72;">मुख्य विषय (CORE)</h2>
 
     <div class="grid-container">
         <a href="#" class="subject-card">
-            <div style="font-size: 30px;">📜</div>
-            <div style="font-weight: bold; margin-top: 10px;">इतिहास</div>
+            <div class="icon">📜</div>
+            <div class="label">इतिहास</div>
         </a>
         <a href="#" class="subject-card" style="border-bottom-color: #3498db;">
-            <div style="font-size: 30px;">🌍</div>
-            <div style="font-weight: bold; margin-top: 10px;">भूगोल</div>
+            <div class="icon">🌍</div>
+            <div class="label">भूगोल</div>
         </a>
         <a href="#" class="subject-card" style="border-bottom-color: #2ecc71;">
-            <div style="font-size: 30px;">⚖️</div>
-            <div style="font-weight: bold; margin-top: 10px;">राजनीति</div>
+            <div class="icon">⚖️</div>
+            <div class="label">राजनीति</div>
         </a>
         <a href="#" class="subject-card" style="border-bottom-color: #f1c40f;">
-            <div style="font-size: 30px;">💰</div>
-            <div style="font-weight: bold; margin-top: 10px;">अर्थशास्त्र</div>
+            <div class="icon">💰</div>
+            <div class="label">अर्थशास्त्र</div>
         </a>
     </div>
-<h2 style="margin: 20px 20px 10px 20px; font-size: 18px; color: #636e72;">राजस्थान विशेष (RAJASTHAN GK)</h2>
 
-<div class="grid-container">
-    <a href="#" class="subject-card" style="border-bottom-color: #e67e22;">
-        <div style="font-size: 30px;">🏰</div>
-        <div style="font-weight: bold; margin-top: 10px;">राज. इतिहास</div>
-    </a>
-    
-    <a href="#" class="subject-card" style="border-bottom-color: #27ae60;">
-        <div style="font-size: 30px;">🏜️</div>
-        <div style="font-weight: bold; margin-top: 10px;">राज. भूगोल</div>
-    </a>
-    
-    <a href="#" class="subject-card" style="border-bottom-color: #8e44ad;">
-        <div style="font-size: 30px;">🎨</div>
-        <div style="font-weight: bold; margin-top: 10px;">कला एवं संस्कृति</div>
-    </a>
-    
-    <a href="#" class="subject-card" style="border-bottom-color: #2980b9;">
-        <div style="font-size: 30px;">🏛️</div>
-        <div style="font-weight: bold; margin-top: 10px;">राज. व्यवस्था</div>
-    </a>
-</div>
+    <h2 style="margin: 0 20px 10px 20px; font-size: 17px; color: #636e72;">राजस्थान विशेष (RAJASTHAN GK)</h2>
 
-    <div style="padding: 0 15px 30px 15px;">
-        <a href="shorts/index.html" style="text-decoration: none;">
-            <div style="background: linear-gradient(45deg, #f09433, #dc2743); padding: 15px; border-radius: 15px; text-align: center; color: white; font-weight: bold; margin-bottom: 10px;">
-                🎬 SST SHORTS (Reels)
-            </div>
+    <div class="grid-container">
+        <a href="#" class="subject-card rajasthan-card" style="border-bottom-color: #e67e22;">
+            <div class="icon">🏰</div>
+            <div class="label">राज. इतिहास</div>
         </a>
-        <a href="blog.html" style="text-decoration: none;">
-            <div style="background: #27ae60; padding: 15px; border-radius: 15px; text-align: center; color: white; font-weight: bold;">
-                📝 ताज़ा नोट्स और ब्लॉग
-            </div>
+        <a href="#" class="subject-card rajasthan-card" style="border-bottom-color: #27ae60;">
+            <div class="icon">🏜️</div>
+            <div class="label">राज. भूगोल</div>
+        </a>
+        <a href="#" class="subject-card rajasthan-card" style="border-bottom-color: #8e44ad;">
+            <div class="icon">🎨</div>
+            <div class="label">कला एवं संस्कृति</div>
+        </a>
+        <a href="#" class="subject-card rajasthan-card" style="border-bottom-color: #2980b9;">
+            <div class="icon">🏛️</div>
+            <div class="label">राज. व्यवस्था</div>
         </a>
     </div>
-    <div style="padding: 10px 15px 10px 15px;">
-        <a href="YAHAN_APNE_APK_FILE_KA_LINK_DALO" style="text-decoration: none;">
-            <div style="background: #2c3e50; padding: 15px; border-radius: 15px; text-align: center; color: white; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
-                <span>📥</span> Download App (APK)
-            </div>
+
+    <div style="padding: 0 15px;">
+        <a href="shorts/index.html" class="action-button" style="background: linear-gradient(45deg, #f09433, #dc2743);">
+            <span>🎬</span> SST SHORTS (Reels)
+        </a>
+        <a href="blog.html" class="action-button" style="background: #27ae60;">
+            <span>📝</span> ताज़ा नोट्स और ब्लॉग
+        </a>
+        <a href="#" class="action-button" style="background: #2c3e50; margin-top: 10px;">
+            <span>📥</span> Download App (APK)
         </a>
     </div>
 
     <div style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
         <a href="whatsapp://send?text=Bhai, ye dekh SST ki jabardast app! Rajasthan GK, Shorts aur Notes sab ek hi jagah hai. Abhi check kar: https://sanjaydhakar997-sudo.github.io/Sst-pro-apk/" 
-           style="background-color: #25D366; color: white; border-radius: 50px; padding: 12px 20px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 8px;">
-            <span>📲 Share</span>
+           style="background-color: #25D366; color: white; border-radius: 50px; padding: 12px 20px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 8px; font-size: 15px;">
+            <span>📲 दोस्तों को भेजें</span>
         </a>
     </div>
 
