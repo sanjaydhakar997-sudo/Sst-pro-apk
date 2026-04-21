@@ -6,7 +6,6 @@
     <title>SST Pro - Sanjay Dhakar</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        /* बैकग्राउंड को थोड़ा सजाया गया है */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         
         body { 
@@ -15,15 +14,8 @@
             background-size: 24px 24px;
             color: #2d3436; 
         }
-<div style="background: #fff; margin: 15px; padding: 15px; border-radius: 15px; border-left: 5px solid #27ae60; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-    <h3 style="margin: 0; color: #2c3e50;">नमस्ते, भावी टॉपर! 👋</h3>
-    <p style="margin: 5px 0 0; color: #7f8c8d; font-size: 14px;">आज आप क्या पढ़ना चाहेंगे? नीचे दिए गए विकल्पों में से चुनें।</p>
-</div>
 
-     /* प्रीमियम हेडर डिजाइन */
-
-
-        
+        /* प्रीमियम हेडर */
         .header {
             background: linear-gradient(135deg, #0f172a, #1e293b, #334155);
             color: white;
@@ -34,12 +26,7 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
 
-        .header h1 { 
-            font-size: 28px; 
-            font-weight: 800; 
-            letter-spacing: 1.5px;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
-        }
+        .header h1 { font-size: 28px; font-weight: 800; letter-spacing: 1.5px; text-shadow: 2px 2px 0px rgba(0,0,0,0.4); }
 
         .user-tag {
             display: inline-block;
@@ -53,7 +40,7 @@
             box-shadow: 0 4px 12px rgba(243, 156, 18, 0.3);
         }
 
-        /* महात्मा गांधी जी का कोट बॉक्स */
+        /* गांधी जी का सुविचार */
         .gandhi-box {
             margin: -25px 20px 20px 20px;
             background: #ffffff;
@@ -63,151 +50,92 @@
             box-shadow: 0 12px 24px rgba(0,0,0,0.08);
             border-top: 5px solid #f39c12;
             position: relative;
-        }
-<a href="shorts/index.html" class="card">
-   <i class="fas fa-play-circle"></i>
-   <span>Shorts</span>
-</a>
-
-        .gandhi-box p {
-            font-size: 14px;
-            font-weight: 600;
-            color: #4a5568;
-            line-height: 1.5;
+            z-index: 2;
         }
 
-        .section-label {
-            padding: 20px 25px 5px;
-            font-size: 14px;
-            font-weight: 700;
-            color: #718096;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .gandhi-box p { font-size: 14px; font-weight: 600; color: #4a5568; line-height: 1.6; }
+
+        /* वेलकम मैसेज कार्ड */
+        .welcome-card {
+            background: #fff; 
+            margin: 15px; 
+            padding: 15px; 
+            border-radius: 15px; 
+            border-left: 5px solid #27ae60; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
-        /* कार्ड्स ग्रिड */
-        .grid {
+        /* ग्रिड सिस्टम (विषयों के लिए) */
+        .grid-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
-            padding: 15px 20px;
+            padding: 15px;
         }
 
-        .card {
-            background: #ffffff;
-            padding: 25px 12px;
-            border-radius: 22px;
+        .subject-card {
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
             text-align: center;
             text-decoration: none;
-            color: #1a202c;
-            border: 1px solid rgba(0,0,0,0.02);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.03);
-            transition: 0.3s ease;
-            border-bottom: 4px solid #3182ce;
-        }
-
-        .card:active { transform: scale(0.92); background: #edf2f7; }
-
-        .card i { font-size: 32px; display: block; margin-bottom: 10px; }
-        .card span { font-size: 14px; font-weight: 700; display: block; }
-
-        /* स्पेशल सेक्शन कलर्स */
-        .study-grid .card { border-bottom-color: #e53e3e; }
-        .extra-grid .card { border-bottom-color: #38a169; }
-
-        footer {
-            padding: 40px 20px;
-            text-align: center;
-            color: #a0aec0;
-            font-size: 11px;
+            color: #2d3436;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-bottom: 4px solid #e74c3c;
+            transition: 0.3s;
         }
     </style>
 </head>
 <body>
 
     <div class="header">
-        <h1>SOCIAL STUDIES<br>CLASSES</h1>
-        <div class="user-tag">By Sanjay Dhakar</div>
+        <h1>SOCIAL STUDIES CLASSES</h1>
+        <div class="user-tag">Sanjay Dhakar</div>
     </div>
 
     <div class="gandhi-box">
         <p>"ऐसे जिएं कि जैसे आपको कल मरना है, सीखें ऐसे कि जैसे आपको हमेशा जीना है।"</p>
-        <div style="font-size: 12px; color: #f39c12; margin-top: 5px; font-weight: 800;">— महात्मा गांधी</div>
+        <p style="text-align: right; color: #f39c12; font-weight: bold; margin-top: 5px;">— महात्मा गांधी</p>
     </div>
 
-    <div class="section-label">मुख्य विषय (Core)</div>
-    <div class="grid study-grid">
-        <a href="history.html" class="card"><i>📜</i><span>इतिहास</span></a>
-        <a href="geography.html" class="card"><i>🌍</i><span>भूगोल</span></a>
-        <a href="polity.html" class="card"><i>⚖️</i><span>राजनीति</span></a>
-        <a href="economics.html" class="card"><i>💰</i><span>अर्थशास्त्र</span></a>
-        <a href="psychology.html" class="card"><i>🧠</i><span>मनोविज्ञान</span></a>
-        <a href="philosophy.html" class="card"><i>🧘</i><span>दर्शनशास्त्र</span></a>
-        <a href="sociology.html" class="card"><i>👥</i><span>समाजशास्त्र</span></a>
-        <a href="teaching.html" class="card"><i>👨‍🏫</i><span>शिक्षण विधियाँ</span></a>
-    </div>
-<a href="shorts/index.html" style="text-decoration: none;">
-    <div style="background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); 
-                padding: 15px; border-radius: 12px; margin: 10px; text-align: center; color: white; font-weight: bold;">
-        🎬 SST SHORTS (Reels)
-    </div>
-</a>
-<a href="blog.html" style="text-decoration: none;">
-    <div style="background: #27ae60; padding: 15px; border-radius: 12px; margin: 10px; text-align: center; color: white; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-        📝 ताज़ा नोट्स और ब्लॉग पढ़ें
-    </div>
-</a>
-
-    <div class="section-label">राजस्थान स्पेशल</div>
-    <div class="grid">
-        <a href="raj-history.html" class="card"><i>🏰</i><span>राज. इतिहास</span></a>
-        <a href="raj-art.html" class="card"><i>🎨</i><span>कला-संस्कृति</span></a>
-        <a href="raj-geo.html" class="card"><i>🏜️</i><span>राज. भूगोल</span></a>
-        <a href="raj-exam.html" class="card"><i>🚩</i><span>राज. भर्ती</span></a>
+    <div class="welcome-card">
+        <h3 style="margin: 0; color: #2c3e50;">नमस्ते, भावी टॉपर! 👋</h3>
+        <p style="margin: 5px 0 0; color: #7f8c8d; font-size: 14px;">आज आप क्या पढ़ना चाहेंगे? नीचे से चुनें।</p>
     </div>
 
-    <div class="section-label">तैयारी और अभ्यास</div>
-    <div class="grid extra-grid">
-        <a href="current.html" class="card"><i>🔥</i><span>Current Affairs</span></a>
-        <a href="test.html" class="card"><i>📝</i><span>Test Series</span></a>
-        <a href="papers.html" class="card"><i>📚</i><span>Old Papers</span></a>
-        <a href="syllabus.html" class="card"><i>📋</i><span>Syllabus</span></a>
-    </div>
+    <h2 style="margin: 10px 20px; font-size: 18px; color: #636e72;">मुख्य विषय (CORE)</h2>
 
-    <footer>
-        &copy; 2026 Social Studies Classes<br>
-        All Rights Reserved | By Sanjay Dhakar
-    </footer>
-
-        
-    </div>
-    <div style="margin: 20px; padding: 25px; background: linear-gradient(135deg, #1e3c72, #2a5298); border-radius: 20px; text-align: center; color: white; clear: both; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
-        <h3 style="margin: 0 0 10px 0;">📲 ऑफिशियल ऐप डाउनलोड करें</h3>
-        <p style="font-size: 13px; opacity: 0.8; margin-bottom: 15px;">बेहतर अनुभव के लिए अभी APK इंस्टॉल करें।</p>
-        
-        <a href="https://drive.google.com/uc?export=download&id=1O9Qg5AEV-3g5SVlVFuqa1O0KhFSZzze1" 
-           target="_blank"
-           style="display: inline-block; background: #27ae60; color: white; text-decoration: none; padding: 12px 30px; border-radius: 50px; font-weight: bold; font-size: 15px; box-shadow: 0 4px 15px rgba(39,174,96,0.3);">
-           📥 DOWNLOAD NOW
+    <div class="grid-container">
+        <a href="#" class="subject-card">
+            <div style="font-size: 30px;">📜</div>
+            <div style="font-weight: bold; margin-top: 10px;">इतिहास</div>
+        </a>
+        <a href="#" class="subject-card" style="border-bottom-color: #3498db;">
+            <div style="font-size: 30px;">🌍</div>
+            <div style="font-weight: bold; margin-top: 10px;">भूगोल</div>
+        </a>
+        <a href="#" class="subject-card" style="border-bottom-color: #2ecc71;">
+            <div style="font-size: 30px;">⚖️</div>
+            <div style="font-weight: bold; margin-top: 10px;">राजनीति</div>
+        </a>
+        <a href="#" class="subject-card" style="border-bottom-color: #f1c40f;">
+            <div style="font-size: 30px;">💰</div>
+            <div style="font-weight: bold; margin-top: 10px;">अर्थशास्त्र</div>
         </a>
     </div>
 
-    <script>
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./sw.js')
-          .then(() => console.log("Service Worker Registered"))
-          .catch(err => console.log("Service Worker Failed", err));
-      }
-    </script>
-    <div style="position: fixed; bottom: 20px; left: 20px; z-index: 1000;">
-    <a href="whatsapp://send?text=भाई, ये देख SST की जबरदस्त ऐप! यहाँ नोट्स, वीडियो और ब्लॉग सब कुछ है। अभी डाउनलोड कर: https://your-app-link.com" 
-       style="background-color: #25D366; color: white; border-radius: 50px; padding: 10px 20px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 12px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 8px;">
-        <span>📲 दोस्तों को भेजें</span>
-    </a>
-</div>
-
-    </a>
-</div>
+    <div style="padding: 0 15px 30px 15px;">
+        <a href="shorts/index.html" style="text-decoration: none;">
+            <div style="background: linear-gradient(45deg, #f09433, #dc2743); padding: 15px; border-radius: 15px; text-align: center; color: white; font-weight: bold; margin-bottom: 10px;">
+                🎬 SST SHORTS (Reels)
+            </div>
+        </a>
+        <a href="blog.html" style="text-decoration: none;">
+            <div style="background: #27ae60; padding: 15px; border-radius: 15px; text-align: center; color: white; font-weight: bold;">
+                📝 ताज़ा नोट्स और ब्लॉग
+            </div>
+        </a>
+    </div>
 
 </body>
 </html>
