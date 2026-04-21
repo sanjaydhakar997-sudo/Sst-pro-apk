@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geography - Social Studies Classes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background-color: #f0f7ff; color: #2d3436; }
+
+        /* नीला ग्रेडिएंट हेडर */
+        .header {
+            background: linear-gradient(135deg, #0984e3, #2980b9);
+            color: white; padding: 30px 20px; text-align: center;
+            border-bottom-left-radius: 30px; border-bottom-right-radius: 30px;
+            position: relative; box-shadow: 0 4px 15px rgba(9, 132, 227, 0.3);
+        }
+        .back-btn {
+            position: absolute; left: 20px; top: 35px;
+            color: white; text-decoration: none; font-size: 20px;
+        }
+
+        .container { padding: 20px; }
+
+        /* टॉपिक्स के लिए कार्ड स्टाइल */
+        .topic-link {
+            background: white; margin-bottom: 15px; padding: 18px;
+            border-radius: 15px; display: flex; align-items: center;
+            text-decoration: none; color: #2d3436;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border-left: 6px solid #0984e3;
+            transition: 0.3s;
+        }
+        .topic-link:active { transform: scale(0.95); background: #f1f2f6; }
+        .topic-link i { font-size: 22px; margin-right: 15px; }
+        .topic-link span { font-weight: 600; }
+
+        .footer-note { text-align: center; color: #b2bec3; font-size: 12px; margin-top: 30px; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <a href="index.html" class="back-btn">⬅</a>
+        <h2>भूगोल (Geography)</h2>
+        <p style="font-size: 12px; opacity: 0.9;">नक्शों की ज़ुबानी, दुनिया की कहानी</p>
+    </div>
+
+    <div class="container">
+        <a href="#" class="topic-link"><i>🌍</i><span>सौर मंडल (Solar System)</span></a>
+        <a href="#" class="topic-link"><i>🏔️</i><span>भारत का भौतिक स्वरूप</span></a>
+        <a href="#" class="topic-link"><i>🌊</i><span>नदियाँ और झीलें</span></a>
+        <a href="#" class="topic-link"><i>☁️</i><span>जलवायु (Climate)</span></a>
+        <a href="#" class="topic-link"><i>🌲</i><span>प्राकृतिक वनस्पति</span></a>
+        <a href="#" class="topic-link"><i>🗺️</i><span>विश्व का भूगोल</span></a>
+        
+        <div class="footer-note">नये अध्याय जल्दी ही जुड़ेंगे...</div>
+    </div>
+
+</body>
+</html>

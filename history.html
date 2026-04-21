@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History - Social Studies Classes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background-color: #f8f9fd; color: #2d3436; }
+
+        /* टॉप हेडर जहाँ से वापस जा सकें */
+        .header {
+            background: linear-gradient(135deg, #e17055, #d35400);
+            color: white; padding: 30px 20px; text-align: center;
+            border-bottom-left-radius: 30px; border-bottom-right-radius: 30px;
+            position: relative;
+        }
+        .back-btn {
+            position: absolute; left: 20px; top: 35px;
+            color: white; text-decoration: none; font-size: 20px; font-weight: bold;
+        }
+
+        .container { padding: 20px; }
+
+        /* टॉपिक के बटन्स */
+        .topic-link {
+            background: white; margin-bottom: 15px; padding: 18px;
+            border-radius: 15px; display: flex; align-items: center;
+            text-decoration: none; color: #2d3436;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border-left: 6px solid #e17055;
+            transition: 0.3s;
+        }
+        .topic-link:active { transform: scale(0.95); }
+        .topic-link i { font-size: 22px; margin-right: 15px; }
+        .topic-link span { font-weight: 600; font-size: 15px; }
+
+        .footer-note { text-align: center; color: #b2bec3; font-size: 12px; margin-top: 30px; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <a href="index.html" class="back-btn">⬅</a>
+        <h2>इतिहास (History)</h2>
+        <p style="font-size: 12px; opacity: 0.9;">सफलता का कोई शॉर्टकट नहीं होता</p>
+    </div>
+
+    <div class="container">
+        <a href="itihas-topic1.html" class="topic-link"><i>📜</i><span>सिंधु घाटी सभ्यता</span></a>
+        <a href="itihas-topic2.html" class="topic-link"><i>⚔️</i><span>मौर्य काल</span></a>
+        <a href="itihas-topic3.html" class="topic-link"><i>🏰</i><span>मुगल साम्राज्य</span></a>
+        <a href="itihas-topic4.html" class="topic-link"><i>🇮🇳</i><span>1857 की क्रांति</span></a>
+        <a href="itihas-topic5.html" class="topic-link"><i>🚩</i><span>भारतीय राष्ट्रीय आंदोलन</span></a>
+        
+        <div class="footer-note">नए टॉपिक्स जल्द ही जोड़े जाएंगे...</div>
+    </div>
+
+</body>
+</html>
