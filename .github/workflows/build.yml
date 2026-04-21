@@ -1,0 +1,46 @@
+name: Build Android APK
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Build App
+        run: |
+          # 1. Cordova इंस्टॉल करें
+          npm install -g cordova
+          
+          # 2. प्रोजेक्ट बनाएँ
+          cordova create myApp com.sst.pro "SSTPro"
+          cd myApp
+          
+          # 3. अपनी index.html डालना
+          rm www/index.html
+          cp ../index.html www/
+          
+          # 4. Android का सबसे स्थिर (Stable) वर्जन जोड़ना
+          cordova platform add android@10.1.2
+          
+          # 5. Gradle Error को बायपास करने के लिए ये कमांड्स
+          export CHOKIDAR_USEPOLLING=true
+          
+          # 6. फाइनल बिल्ड (बिना किसी Gradle कन्फ्यूजन के)
+          cordova build android --no-telemetry --device -- --gradleArg=-Pandroid.useAndroidX=true --gradleArg=-Pandroid.enableJetifier=true
+          
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: sst-pro-app-apk
+          path: myApp/platforms/android/app/build/outputs/apk/debug/app-debug.apk
