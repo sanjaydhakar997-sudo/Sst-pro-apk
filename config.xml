@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.sstclasses.pro" version="1.0.0" xmlns="http://www.w3.org/ns/widgets">
+    <name>SST Classes Pro</name>
+    <description>Geography Animation App</description>
+    <author email="contact@sstclasses.com">Sanjay Dhakar</author>
+    <content src="index.html" />
+    <preference name="Orientation" value="portrait" />
+    <preference name="FullScreen" value="true" />
+</widget>
