@@ -4,6 +4,7 @@
     <description>Geography Animation App</description>
     <author email="contact@sstclasses.com">Sanjay Dhakar</author>
     <content src="index.html" />
+    <access origin="*" />
     <preference name="Orientation" value="portrait" />
     <preference name="FullScreen" value="true" />
 </widget>
