@@ -60,13 +60,13 @@
         /* कमी 2: Text size fixed to 16px */
         .gandhi-box p.quote { font-size: 16px; font-weight: 600; color: #4a5568; line-height: 1.7; font-style: italic; }
         .gandhi-box p.author { text-align: right; color: #f39c12; font-weight: bold; margin-top: 8px; font-size: 14px; }
+
+</div>
 <div style="margin: 10px 15px; padding: 12px; background: #fff3cd; border: 1px solid #ffeeba; border-radius: 12px; text-align: center;">
     <span style="font-size: 11px; font-weight: bold; color: #856404; text-transform: uppercase;">🎯 मुख्य लक्ष्य:</span>
     <div style="font-weight: 800; color: #2c3e50; font-size: 13px; margin-top: 5px;">
         RAS • RPSC • UPSC • 2nd GRADE • REET • CET
     </div>
-</div>
-
         /* वेलकम मैसेज कार्ड */
         .welcome-card {
             background: #fff; 
@@ -82,7 +82,16 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
-            padding: 0 15px 20px 15px;
+            /* लाइन 81 से 86 तक को इससे बदल दें */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 12px;
+    padding: 15px; /* यहाँ 0 हटाकर सिर्फ 15px कर दिया */
+    width: 100%;
+    box-sizing: border-box;
+}
+
         }
 
         .subject-card {
