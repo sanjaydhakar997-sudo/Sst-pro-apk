@@ -12,7 +12,7 @@
             margin: 0; padding: 0; overflow-x: hidden;
         }
 
-        /* 2. हेडर एनीमेशन */
+        /* 2. हेडर एनीमेशन - शानदार "किताब कोना" */
         @keyframes textFlow {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -40,37 +40,36 @@
             animation: textFlow 3s linear infinite;
             text-transform: uppercase;
             letter-spacing: -1px;
+            filter: drop-shadow(0 5px 15px rgba(255,215,0,0.2));
         }
 
-        /* 3. सफ़रनामा पट्टी (VVIP Style) */
+        /* 3. पट्टियों का कॉमन स्टाइल (VVIP Style) */
         .vvip-strip {
             text-decoration: none;
             display: block;
-            margin: 35px 15px;
+            margin: 25px 15px;
             transition: transform 0.2s ease;
         }
         .vvip-strip:active { transform: scale(0.96); }
 
         .gold-box {
-            background: linear-gradient(135deg, #FFD700 0%, #FDB931 100%);
-            padding: 25px;
+            padding: 28px;
             border-radius: 35px;
             display: flex;
             align-items: center;
             gap: 15px;
             border: 4px solid #ffffff;
-            box-shadow: 0 15px 35px rgba(253, 185, 49, 0.4);
             position: relative;
             overflow: hidden;
         }
 
-        /* चमकता हुआ एनीमेशन */
+        /* चमकता हुआ एनीमेशन (Shine Effect) */
         .gold-box::after {
             content: '';
             position: absolute;
             top: -50%; left: -100%;
             width: 200%; height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.25), transparent);
             transform: rotate(45deg);
             animation: shine 4s infinite;
         }
@@ -81,19 +80,21 @@
 
         .icon-square {
             background: #ffffff;
-            width: 65px; height: 65px;
+            width: 70px; height: 70px;
             border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 35px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
             z-index: 2;
+            flex-shrink: 0;
         }
 
-        .text-content { flex-grow: 1; z-index: 2; }
-        .text-content h2 { margin: 0; font-size: 28px; font-weight: 900; color: #1a1a2e; }
-        .text-content p { margin: 0; font-size: 13px; font-weight: 800; color: #1a1a2e; opacity: 0.7; }
+        .text-content { flex-grow: 1; z-index: 2; padding-left: 5px; }
+        .text-content h2 { margin: 0; font-size: 26px; font-weight: 950; letter-spacing: -0.5px; }
+        .text-content p { margin: 5px 0 0 0; font-size: 13px; font-weight: 800; }
+        
+        .arrow-icon { font-size: 25px; font-weight: 900; z-index: 2; }
     </style>
 </head>
 <body>
@@ -115,92 +116,39 @@
     </div>
 
     <a href="passport_details.html" class="vvip-strip">
-        <div class="gold-box">
-            <div class="icon-square">📓</div>
+        <div class="gold-box" style="background: linear-gradient(135deg, #FFD700 0%, #FDB931 100%); box-shadow: 0 15px 35px rgba(253, 185, 49, 0.4);">
+            <div class="icon-square" style="font-size: 40px;">📓</div>
             <div class="text-content">
-                <h2>सफ़रनामा</h2>
-                <p>विरासत और समीक्षा की कहानी</p>
+                <h2 style="color: #1a1a2e;">सफ़रनामा</h2>
+                <p style="color: #1a1a2e; opacity: 0.7;">विरासत और समीक्षा की कहानी</p>
             </div>
-            <div style="font-size: 25px; font-weight: 900; color: #1a1a2e; z-index: 2;">❯</div>
+            <div class="arrow-icon" style="color: #1a1a2e;">❯</div>
         </div>
     </a>
 
+    <a href="donor_details.html" class="vvip-strip">
+        <div class="gold-box" style="background: linear-gradient(135deg, #000000 0%, #1a1a2e 100%); border-color: #ffd700; box-shadow: 0 20px 45px rgba(0,0,0,0.5);">
+            <div class="icon-square" style="background: linear-gradient(135deg, #ffd700, #d4ac0d); font-size: 45px;">👑</div>
+            <div class="text-content">
+                <h2 style="color: #ffd700; text-transform: uppercase;">Legacy Builder</h2>
+                <p style="color: #ffffff; opacity: 0.9;">JOIN THE HALL OF FAME 🚩</p>
+            </div>
+            <div class="arrow-icon" style="color: #ffd700;">❯</div>
+        </div>
+    </a>
+
+    <a href="library_details.html" class="vvip-strip">
+        <div class="gold-box" style="background: linear-gradient(135deg, #002366 0%, #000080 50%, #002366 100%); border-color: #ffd700; box-shadow: 0 22px 48px rgba(0,0,128,0.4);">
+            <div class="icon-square" style="background: linear-gradient(135deg, #ffd700, #d4ac0d); font-size: 45px;">📚</div>
+            <div class="text-content">
+                <h2 style="color: #ffd700; text-transform: uppercase;">The Royal Library</h2>
+                <p style="color: #ffffff; opacity: 0.9;">ज्ञान के अंतहीन खजाने में प्रवेश करें 🚩</p>
+            </div>
+            <div class="arrow-icon" style="color: #ffd700;">❯</div>
+        </div>
+    </a>
+
+    <div style="height: 40px;"></div>
+
 </body>
 </html>
-<a href="donor_details.html" class="vvip-strip" style="margin: 20px 15px;">
-    <div class="gold-box" style="
-        background: linear-gradient(135deg, #000000 0%, #1a1a2e 100%); /* एकदम रॉयल ब्लैक */
-        border: 4px solid #ffd700;
-        box-shadow: 0 20px 45px rgba(0,0,0,0.5);
-        padding: 32px;
-        position: relative;
-    ">
-        <div class="icon-square" style="
-            background: linear-gradient(135deg, #ffd700, #d4ac0d); 
-            width: 80px; 
-            height: 80px; 
-            box-shadow: 0 0 30px rgba(255,215,0,0.6);
-            border: 3px solid #ffffff;
-        ">
-            <span style="font-size: 45px;">👑</span> </div>
-        
-        <div class="text-content" style="padding-left: 10px;">
-            <h2 style="
-                color: #ffd700; 
-                font-size: 28px; 
-                font-weight: 950; 
-                text-transform: uppercase;
-                letter-spacing: 1px;
-                margin: 0;
-            ">LEGACY BUILDER</h2>
-            <p style="
-                color: #ffffff; 
-                opacity: 0.9; 
-                font-size: 13px; 
-                font-weight: 800;
-                margin-top: 5px;
-                text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-            ">JOIN THE HALL OF FAME 🚩</p>
-        </div>
-
-        <div style="font-size: 30px; color: #ffd700; font-weight: 900;">❯</div>
-    </div>
-</a>
-<a href="library_details.html" class="vvip-strip" style="margin: 20px 15px;">
-    <div class="gold-box" style="
-        background: linear-gradient(135deg, #002366 0%, #000080 50%, #002366 100%); /* शाही गहरा नीला (Royal Blue) */
-        border: 4px solid #ffd700;
-        box-shadow: 0 22px 48px rgba(0,0,128,0.4);
-        padding: 32px;
-    ">
-        <div class="icon-square" style="
-            background: linear-gradient(135deg, #ffd700, #d4ac0d); 
-            width: 80px; 
-            height: 80px; 
-            box-shadow: 0 0 30px rgba(255,215,0,0.5);
-            border: 3px solid #ffffff;
-        ">
-            <span style="font-size: 45px;">📚</span> 
-        </div>
-        
-        <div class="text-content" style="padding-left: 10px;">
-            <h2 style="
-                color: #ffd700; 
-                font-size: 26px; 
-                font-weight: 950; 
-                text-transform: uppercase;
-                letter-spacing: 1px;
-                margin: 0;
-            ">The Royal Library</h2>
-            <p style="
-                color: #ffffff; 
-                opacity: 0.9; 
-                font-size: 13px; 
-                font-weight: 800;
-                margin-top: 5px;
-            ">ज्ञान के अंतहीन खजाने में प्रवेश करें 🚩</p>
-        </div>
-
-        <div style="font-size: 30px; color: #ffd700; font-weight: 900;">❯</div>
-    </div>
-</a>
