@@ -8,97 +8,68 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         body { background-color: #f1f2f6; color: #2d3436; padding-bottom: 30px; }
-
-        /* छोटा हेडर */
-        .header {
-            background: linear-gradient(135deg, #0984e3, #74b9ff);
-            color: white; padding: 30px 20px; text-align: center;
-            border-bottom-left-radius: 30px; border-bottom-right-radius: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
+        .header { background: linear-gradient(135deg, #0984e3, #74b9ff); color: white; padding: 30px 20px; text-align: center; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; position: relative; }
+        .back-btn { position: absolute; top: 25px; left: 15px; color: white; text-decoration: none; font-size: 20px; }
         .header h1 { font-size: 22px; font-weight: 800; }
-        
-        /* बैक बटन */
-        .back-btn {
-            position: absolute; top: 20px; left: 15px;
-            color: white; text-decoration: none; font-size: 18px; font-weight: bold;
-        }
-
-        /* टॉपिक लिस्ट */
-        .topic-container { padding: 20px 15px; }
-        
-        .topic-card {
-            background: white; margin-bottom: 15px; padding: 18px;
-            border-radius: 15px; display: flex; align-items: center;
-            text-decoration: none; color: #2d3436;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            border-left: 5px solid #0984e3;
-            transition: 0.2s;
-        }
-        .topic-card:active { transform: scale(0.98); background: #f9f9f9; }
-
+        .section-title { margin: 20px 15px 10px 15px; font-size: 16px; font-weight: 800; color: #0984e3; display: flex; align-items: center; }
+        .section-title::before { content: ""; width: 4px; height: 16px; background: #0984e3; margin-right: 8px; border-radius: 10px; }
+        .topic-container { padding: 0 15px; }
+        .topic-card { background: white; margin-bottom: 12px; padding: 18px; border-radius: 18px; display: flex; align-items: center; text-decoration: none; color: #2d3436; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: 0.2s; border: 1px solid #eee; }
+        .topic-card:active { transform: scale(0.97); }
         .topic-icon { font-size: 24px; margin-right: 15px; }
         .topic-info { flex: 1; }
-        .topic-title { font-weight: 700; font-size: 15px; margin-bottom: 2px; }
-        .topic-desc { font-size: 11px; color: #b2bec3; }
-        .arrow { font-size: 18px; color: #dfe6e9; }
+        .topic-title { font-weight: 700; font-size: 14px; }
+        .topic-desc { font-size: 10px; color: #95a5a6; }
+        .badge { background: #e1f5fe; color: #0288d1; padding: 4px 10px; border-radius: 50px; font-size: 10px; font-weight: 800; margin-left: 10px; }
     </style>
 </head>
 <body>
 
     <div class="header">
         <a href="index.html" class="back-btn">⬅️</a>
-        <h1>विश्व एवं भारत का भूगोल</h1>
+        <h1>भूगोल (Geography)</h1>
     </div>
 
+    <h2 class="section-title">स्टडी मटेरियल</h2>
     <div class="topic-container">
-        
+        <a href="#" class="topic-card" style="background: linear-gradient(to right, #fff, #e3f2fd);">
+            <div class="topic-icon">📚</div>
+            <div class="topic-info">
+                <div class="topic-title">भूगोल की बेस्ट बुक्स</div>
+                <div class="topic-desc">NCERT एवं अन्य महत्वपूर्ण पुस्तकें</div>
+            </div>
+            <span class="badge">BOOKS</span>
+        </a>
+        <a href="#" class="topic-card" style="background: linear-gradient(to right, #fff, #e8f5e9);">
+            <div class="topic-icon">📝</div>
+            <div class="topic-info">
+                <div class="topic-title">कम्प्लीट हस्तलिखित नोट्स</div>
+                <div class="topic-desc">सभी टॉपिक्स के PDF नोट्स यहाँ हैं</div>
+            </div>
+            <span class="badge" style="background:#e8f5e9; color:#2e7d32;">NOTES</span>
+        </a>
+    </div>
+
+    <h2 class="section-title">महत्वपूर्ण टॉपिक्स</h2>
+    <div class="topic-container">
         <a href="#" class="topic-card">
             <div class="topic-icon">🪐</div>
             <div class="topic-info">
-                <div class="topic-title">सौरमंडल और पृथ्वी</div>
-                <div class="topic-desc">ब्रह्मांड, ग्रह और पृथ्वी की गतियाँ</div>
+                <div class="topic-title">सौरमंडल और ब्रह्मांड</div>
+                <div class="topic-desc">पृथ्वी की स्थिति और ग्रह</div>
             </div>
-            <div class="arrow">❯</div>
+            <div style="color:#ccc">❯</div>
         </a>
-
-        <a href="#" class="topic-card">
-            <div class="topic-icon">🏔️</div>
-            <div class="topic-info">
-                <div class="topic-title">भारत का भौतिक स्वरूप</div>
-                <div class="topic-desc">हिमालय, मैदान और पठारी प्रदेश</div>
-            </div>
-            <div class="arrow">❯</div>
-        </a>
-
         <a href="#" class="topic-card">
             <div class="topic-icon">🌊</div>
             <div class="topic-info">
-                <div class="topic-title">अपवाह तंत्र (नदियाँ)</div>
-                <div class="topic-desc">प्रमुख नदियाँ, झीलें और बांध</div>
+                <div class="topic-title">नदियाँ और झीलें</div>
+                <div class="topic-desc">भारत का अपवाह तंत्र</div>
             </div>
-            <div class="arrow">❯</div>
+            <div style="color:#ccc">❯</div>
         </a>
-
-        <a href="#" class="topic-card">
-            <div class="topic-icon">☀️</div>
-            <div class="topic-info">
-                <div class="topic-title">जलवायु और मानसून</div>
-                <div class="topic-desc">ऋतुएँ, वर्षा और भारतीय मानसून</div>
-            </div>
-            <div class="arrow">❯</div>
-        </a>
-
-        <a href="#" class="topic-card">
-            <div class="topic-icon">🌲</div>
-            <div class="topic-info">
-                <div class="topic-title">वनस्पति और मृदा</div>
-                <div class="topic-desc">जंगलों के प्रकार और मिट्टी की जानकारी</div>
-            </div>
-            <div class="arrow">❯</div>
-        </a>
-
-    </div>
+        </div>
 
 </body>
+</html>
 </html>
