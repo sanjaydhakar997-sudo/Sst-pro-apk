@@ -1,162 +1,105 @@
-<div style="
-    background: white; 
-    border-radius: 25px; 
-    padding: 20px; 
-    margin-bottom: 20px; 
-    box-shadow: 0 4px 12px rgba(0,0,0,0.04); 
-    border-left: 6px solid #f1c40f; /* गहरा पीला बॉर्डर */
-    border-bottom: 4px solid #eee;
-">
-    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
-        <span style="font-size: 28px;">📓</span>
-        <div>
-            <div style="font-size: 18px; font-weight: 800; color: #2d3436;">द बुक पासपोर्ट</div>
-            <div style="font-size: 10px; color: #e67e22; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">किताब का सफ़रनामा</div>
-        </div>
-    </div>
-    
-    <p style="font-size: 13px; color: #57606f; line-height: 1.6; margin: 0;">
-        "यह किताब सिर्फ एक वस्तु नहीं, एक छात्र के **सपनों का गवाह** है। हर दान की गई किताब में एक पासपोर्ट स्टीकर होगा, जहाँ हर पढ़ने वाला अपना नाम और अपना 'सपना' दर्ज करेगा। जब यह किताब आपके पास पहुँचेगी, तो आप उन सभी के संघर्ष को महसूस कर पाएंगे।"
-    </p>
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>किताब कोना - SST Pro</title>
+    <style>
+        /* मुख्य थीम (SST Pro Style) */
+        body { 
+            background-color: #fdfae5; 
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            margin: 0; padding: 10px; 
+        }
+        .container { max-width: 500px; margin: auto; }
 
-    <a href="#" style="
-        display: inline-block; 
-        margin-top: 15px; 
-        background: #fdfae5; 
-        color: #d4ac0d; 
-        padding: 8px 15px; 
-        border-radius: 12px; 
-        text-decoration: none; 
-        font-size: 11px; 
-        font-weight: 800;
-        border: 1px dashed #d4ac0d;
-    ">
-        📥 पासपोर्ट स्टीकर (PDF) डाउनलोड करें
-    </a>
-</div>
-<div style="
-    background: white; 
-    border-radius: 25px; 
-    padding: 20px; 
-    margin-bottom: 20px; 
-    box-shadow: 0 4px 12px rgba(0,0,0,0.04); 
-    border-left: 6px solid #3498db; /* नीला बॉर्डर - भरोसे का प्रतीक */
-    border-bottom: 4px solid #eee;
-">
-    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
-        <span style="font-size: 28px;">✅</span>
-        <div>
-            <div style="font-size: 18px; font-weight: 800; color: #2d3436;">Verified Donor सम्मान</div>
-            <div style="font-size: 10px; color: #2980b9; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">पहचान जो आपको अलग बनाएगी</div>
-        </div>
-    </div>
-    
-    <p style="font-size: 12px; color: #57606f; line-height: 1.6; margin-bottom: 15px;">
-        "किताबें दान करना सिर्फ मदद नहीं, एक जिम्मेदारी है। कम से कम **3 किताबें** दान करने पर आपको ऐप में **Silver Verified** और **10 किताबें** करने पर **Golden Verified** सम्मान मिलेगा।"
-    </p>
+        /* हेडर कार्ड */
+        .header-card {
+            background: linear-gradient(135deg, #0f0c29, #302b63);
+            color: #ffd700; border-radius: 30px; padding: 35px 20px;
+            text-align: center; margin-bottom: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
 
-    <div style="display: flex; justify-content: space-around; background: #f8f9fa; padding: 10px; border-radius: 15px; border: 1px solid #eee;">
-        <div style="text-align: center;">
-            <div style="font-size: 18px;">🥈</div>
-            <div style="font-size: 9px; font-weight: 800; color: #7f8c8d;">SILVER</div>
-        </div>
-        <div style="text-align: center;">
-            <div style="font-size: 18px;">🥇</div>
-            <div style="font-size: 9px; font-weight: 800; color: #d4af37;">GOLDEN</div>
-        </div>
-        <div style="text-align: center;">
-            <div style="font-size: 18px;">🔹</div>
-            <div style="font-size: 9px; font-weight: 800; color: #3498db;">PRIORITY</div>
-        </div>
+        /* जनरल कार्ड स्टाइल */
+        .card {
+            background: white; border-radius: 20px; padding: 20px;
+            margin-bottom: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 1px solid #eee; border-bottom: 4px solid #eee;
+        }
+
+        .card-title { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+        .card-title h3 { margin: 0; font-size: 17px; font-weight: 800; color: #2d3436; }
+        .card-desc { font-size: 12px; color: #57606f; line-height: 1.6; margin: 0; }
+
+        /* बैज स्टाइल */
+        .badge-box { 
+            display: flex; justify-content: space-around; background: #f8f9fa; 
+            padding: 12px; border-radius: 15px; margin-top: 15px; border: 1px solid #f0f0f0;
+        }
+
+        /* बटन्स (Main Action) */
+        .btn-black { 
+            background: #2d3436; color: white; padding: 18px; border-radius: 15px; 
+            text-align: center; text-decoration: none; font-weight: 800; display: block; margin-bottom: 12px;
+        }
+        .btn-gold { 
+            background: #ffd700; color: #000; padding: 18px; border-radius: 15px; 
+            text-align: center; text-decoration: none; font-weight: 800; display: block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header-card">
+        <h1 style="margin:0; font-size: 26px;">किताब कोना</h1>
+        <div style="margin-top:5px; font-size:12px; opacity:0.8;">THE LEGACY (विरासत) 🚩</div>
     </div>
 
-    <div style="margin-top: 15px; font-size: 11px; color: #2ecc71; font-weight: 700; text-align: center;">
-        ✨ फायदा: 'Help Desk' पर आपको मिलेगी सबसे पहली प्राथमिकता!
-    </div>
-</div>
-<div style="
-    background: white; 
-    border-radius: 25px; 
-    padding: 20px; 
-    margin-bottom: 20px; 
-    box-shadow: 0 4px 12px rgba(0,0,0,0.04); 
-    border-left: 6px solid #27ae60; /* हरा बॉर्डर - विकास और जुड़ाव का प्रतीक */
-    border-bottom: 4px solid #eee;
-">
-    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
-        <span style="font-size: 28px;">🤝</span>
-        <div>
-            <div style="font-size: 18px; font-weight: 800; color: #2d3436;">Subject Expert कम्युनिटी</div>
-            <div style="font-size: 10px; color: #27ae60; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">किताब के साथ मार्गदर्शन भी</div>
+    <div class="card" style="border-left: 5px solid #f1c40f;">
+        <div class="card-title">
+            <span style="font-size: 24px;">📓</span>
+            <h3>द बुक पासपोर्ट (सफरनामा)</h3>
+        </div>
+        <p class="card-desc">
+            यह किताब अब एक "विरासत" है। जो भी छात्र इसे पढ़ेगा, वह अपना नाम और जिला इसमें दर्ज करेगा। आप अपनी किताब का सफरनामा यहाँ ट्रैक कर सकते हैं।
+        </p>
+        <div style="margin-top: 12px; background: #fff9db; color: #9c8900; padding: 6px 12px; border-radius: 10px; font-size: 11px; font-weight: 700; display: inline-block;">
+            📍 वर्तमान: चित्तौड़गढ़ (REET Mains)
         </div>
     </div>
-    
-    <p style="font-size: 12px; color: #57606f; line-height: 1.6; margin-bottom: 15px;">
-        "जिस छात्र ने किताब दान की है, वह उस किताब को लेने वाले का **Mentor** बन सकता है। किताब के ज़रूरी चैप्टर्स और पढ़ने का सही तरीका समझने के लिए सीधा अपने मार्गदर्शक से जुड़ें।"
-    </p>
 
-    <ul style="margin: 0; padding: 0; list-style: none; font-size: 11px; color: #2c3e50;">
-        <li style="margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
-            <span style="color: #27ae60;">✔</span> व्हाट्सएप पर 10 मिनट की एक्सपर्ट गाइडेंस
-        </li>
-        <li style="margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
-            <span style="color: #27ae60;">✔</span> परीक्षा के लिए सबसे ज़रूरी चैप्टर्स की पहचान
-        </li>
-        <li style="margin-bottom: 0; display: flex; align-items: center; gap: 8px;">
-            <span style="color: #27ae60;">✔</span> एक छात्र से दूसरे छात्र तक सफलता का सफर
-        </li>
-    </ul>
+    <div class="card" style="border-left: 5px solid #3498db;">
+        <div class="card-title">
+            <span style="font-size: 24px;">✅</span>
+            <h3>Verified Donor सम्मान</h3>
+        </div>
+        <p class="card-desc">3+ किताबें दान करने पर सिल्वर और 10+ पर गोल्डन बैज सम्मान।</p>
+        <div class="badge-box">
+            <div style="text-align: center;"><div style="font-size: 20px;">🥈</div><div style="font-size: 9px; font-weight: 800;">SILVER</div></div>
+            <div style="text-align: center;"><div style="font-size: 20px;">🥇</div><div style="font-size: 9px; font-weight: 800; color:#d4af37;">GOLDEN</div></div>
+            <div style="text-align: center;"><div style="font-size: 20px;">🔹</div><div style="font-size: 9px; font-weight: 800; color:#3498db;">PRIORITY</div></div>
+        </div>
+    </div>
+
+    <div class="card" style="border-left: 5px solid #27ae60;">
+        <div class="card-title">
+            <span style="font-size: 24px;">🤝</span>
+            <h3>Subject Expert कम्युनिटी</h3>
+        </div>
+        <p class="card-desc">किताब दान करने वाले छात्र अब आपके मेंटर (मार्गदर्शक) भी बनेंगे।</p>
+    </div>
+
+    <div style="margin: 20px 0;">
+        <div style="text-align: center; font-weight: 800; margin-bottom: 15px; color: #2d3436;">📍 बुक बैंक सेवा केंद्र</div>
+        <a href="https://wa.me/919529812784?text=नमस्ते%20मैं%20दान%20करना%20चाहता%20हूँ" class="btn-black">🎁 अपनी विरासत दान करें</a>
+        <a href="https://wa.me/919529812784?text=नमस्ते%20मुझे%20सहायता%20चाहिए" class="btn-gold">🤝 मदद की गुहार लगाएं</a>
+    </div>
+
+    <div style="text-align: center; margin-top: 30px;">
+        <a href="index.html" style="color: #95a5a6; text-decoration: none; font-size: 13px; font-weight: 700;">← वापस होम पर जाएं</a>
+    </div>
 </div>
 
-<a href="
-<div style="
-    background: white; 
-    border-radius: 25px; 
-    padding: 25px; 
-    margin-top: 20px; 
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    border: 1px solid #eee;
-">
-    <h3 style="margin: 0 0 20px 0; font-size: 18px; font-weight: 800; color: #333; text-align: center;">
-        📌 बुक बैंक सेवा केंद्र
-    </h3>
-    
-    <a href="https://wa.me/919529812784?text=नमस्ते%20SST%20Pro,%20मैं%20अपनी%20किताब/PDF%20दान%20करके%20VVIP%20क्लब%20का%20हिस्सा%20बनना%20चाहता%20हूँ" 
-       style="
-        display: flex; 
-        align-items: center; 
-        justify-content: center; 
-        gap: 10px;
-        background: #212529; 
-        color: white; 
-        padding: 18px; 
-        border-radius: 15px; 
-        text-decoration: none; 
-        font-weight: 800; 
-        margin-bottom: 12px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    ">
-        <span>🎁</span> अपनी विरासत दान करें
-    </a>
-
-    <a href="https://wa.me/919529812784?text=नमस्ते%20SST%20Pro,%20मुझे%20पढ़ने%20के%20लिए%20किताबों%20की%20सहायता%20चाहिए" 
-       style="
-        display: flex; 
-        align-items: center; 
-        justify-content: center; 
-        gap: 10px;
-        background: #ffd700; 
-        color: #000; 
-        padding: 18px; 
-        border-radius: 15px; 
-        text-decoration: none; 
-        font-weight: 800;
-        box-shadow: 0 4px 12px rgba(255,215,0,0.2);
-    ">
-        <span>🤝</span> मदद की गुहार लगाएं
-    </a>
-
-    <p style="text-align: center; font-size: 10px; color: #95a5a6; margin-top: 15px; font-weight: 600;">
-        "आपका एक छोटा सा कदम, किसी के भविष्य की बड़ी जीत बन सकता है।"
-    </p>
-</div>
+</body>
+</html>
