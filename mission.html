@@ -1,86 +1,129 @@
-<style>
-    /* 1. एनिमेशन और फॉन्ट का प्रीमियम तालमेल */
-    @keyframes textFlow {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SST Pro - किताब कोना</title>
+    <style>
+        /* 1. बेस सेटअप */
+        body { 
+            background-color: #fdfae5; 
+            font-family: 'Segoe UI', Roboto, sans-serif; 
+            margin: 0; padding: 0; overflow-x: hidden;
+        }
 
-    /* 2. मुख्य हेडर - SST Pro Style */
-    .sst-main-header {
-        background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
-        padding: 75px 20px 65px 20px;
-        text-align: center;
-        border-radius: 0 0 65px 65px;
-        border-bottom: 8px solid #ffd700;
-        box-shadow: 0 25px 50px rgba(0,0,0,0.3);
-        position: relative;
-    }
+        /* 2. हेडर एनीमेशन */
+        @keyframes textFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
-    .shandar-heading {
-        font-size: 62px; /* और भी विशाल अक्षर */
-        font-weight: 900;
-        margin: 0;
-        background: linear-gradient(to right, #ffd700, #ffffff, #ffd700);
-        background-size: 200% auto;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: textFlow 3s linear infinite;
-        text-transform: uppercase;
-        letter-spacing: -2px;
-        filter: drop-shadow(0 5px 15px rgba(255,215,0,0.3));
-    }
+        .sst-main-header {
+            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+            padding: 75px 20px 65px 20px;
+            text-align: center;
+            border-radius: 0 0 65px 65px;
+            border-bottom: 8px solid #ffd700;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            position: relative;
+        }
 
-    /* 3. VVIP स्टाइल पट्टी - सफ़रनामा */
-    .vvip-strip {
-        text-decoration: none;
-        display: block;
-        margin: 35px 15px;
-        transition: transform 0.2s ease;
-    }
+        .shandar-heading {
+            font-size: 50px; 
+            font-weight: 950;
+            margin: 0;
+            background: linear-gradient(to right, #ffd700, #ffffff, #ffd700);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textFlow 3s linear infinite;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
 
-    .vvip-strip:active { transform: scale(0.95); }
+        /* 3. सफ़रनामा पट्टी (VVIP Style) */
+        .vvip-strip {
+            text-decoration: none;
+            display: block;
+            margin: 35px 15px;
+            transition: transform 0.2s ease;
+        }
+        .vvip-strip:active { transform: scale(0.96); }
 
-    .gold-box {
-        background: linear-gradient(135deg, #FFD700 0%, #FDB931 100%);
-        padding: 28px; /* थोड़ी और चौड़ी पट्टी */
-        border-radius: 35px;
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        border: 4px solid #ffffff;
-        box-shadow: 0 18px 40px rgba(253, 185, 49, 0.4);
-        position: relative;
-        overflow: hidden;
-    }
+        .gold-box {
+            background: linear-gradient(135deg, #FFD700 0%, #FDB931 100%);
+            padding: 25px;
+            border-radius: 35px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 4px solid #ffffff;
+            box-shadow: 0 15px 35px rgba(253, 185, 49, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
 
-    /* पट्टी पर शीशे जैसी चमक */
-    .gold-box::after {
-        content: '';
-        position: absolute;
-        top: -50%; left: -50%;
-        width: 200%; height: 200%;
-        background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
-        transform: rotate(45deg);
-        animation: shine 4s infinite;
-    }
+        /* चमकता हुआ एनीमेशन */
+        .gold-box::after {
+            content: '';
+            position: absolute;
+            top: -50%; left: -100%;
+            width: 200%; height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: rotate(45deg);
+            animation: shine 4s infinite;
+        }
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
 
-    @keyframes shine {
-        0% { left: -100%; }
-        100% { left: 100%; }
-    }
+        .icon-square {
+            background: #ffffff;
+            width: 65px; height: 65px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            z-index: 2;
+        }
 
-    .icon-square {
-        background: #ffffff;
-        width: 75px; height: 75px;
-        border-radius: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 45px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.12);
-        position: relative; z-index: 2;
-    }
+        .text-content { flex-grow: 1; z-index: 2; }
+        .text-content h2 { margin: 0; font-size: 28px; font-weight: 900; color: #1a1a2e; }
+        .text-content p { margin: 0; font-size: 13px; font-weight: 800; color: #1a1a2e; opacity: 0.7; }
+    </style>
+</head>
+<body>
 
-    .text-content { flex-grow: 1; position: relative; z-index: 2; }
-    .text-content h2 { margin: 0; font-size: 30px; font-weight
+    <div class="sst-main-header">
+        <h1 class="shandar-heading">किताब कोना</h1>
+        <div style="margin-top: 15px;">
+            <span style="
+                color: #ffd700; 
+                border: 2px solid #ffd700; 
+                padding: 6px 20px; 
+                border-radius: 50px; 
+                font-size: 13px; 
+                font-weight: 900; 
+                letter-spacing: 2px;
+                background: rgba(255, 215, 0, 0.1);
+            ">THE LEGACY 🚩</span>
+        </div>
+    </div>
+
+    <a href="passport_details.html" class="vvip-strip">
+        <div class="gold-box">
+            <div class="icon-square">📓</div>
+            <div class="text-content">
+                <h2>सफ़रनामा</h2>
+                <p>विरासत और समीक्षा की कहानी</p>
+            </div>
+            <div style="font-size: 25px; font-weight: 900; color: #1a1a2e; z-index: 2;">❯</div>
+        </div>
+    </a>
+
+</body>
+</html>
