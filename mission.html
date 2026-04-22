@@ -1,96 +1,29 @@
-<!DOCTYPE html>
-<html lang="hi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SST Pro - किताब कोना</title>
-    <style>
-        /* 1. प्रीमियम बैकग्राउंड और फॉन्ट */
-        body { 
-            background-color: #fdfae5; /* वही पीला शेड जो आपकी ऐप में है */
-            font-family: 'Segoe UI', Roboto, sans-serif; 
-            margin: 0; padding: 0; color: #2d3436; 
-        }
-        .container { max-width: 500px; margin: auto; padding: 15px; }
-
-        /* 2. रॉयल डार्क हेडर */
-        .royal-header {
-            background: linear-gradient(145deg, #1a1a2e, #16213e);
-            color: #ffd700; border-radius: 35px; padding: 45px 25px;
-            text-align: center; margin-bottom: 25px; 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-            border-bottom: 5px solid #ffd700;
-        }
-
-        /* 3. प्रीमियम कार्ड स्टाइल */
-        .premium-card {
-            background: #ffffff;
-            border-radius: 30px;
-            padding: 25px;
-            margin-bottom: 20px;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.06);
-            border: 1px solid rgba(0,0,0,0.03);
-            position: relative;
-        }
-
-        .card-header { display: flex; align-items: center; gap: 15px; margin-bottom: 18px; }
-        .card-title { margin: 0; font-size: 20px; font-weight: 900; color: #1a1a1a; }
-        .card-subtitle { font-size: 10px; color: #e67e22; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
-        
-        .card-desc { font-size: 14px; color: #444; line-height: 1.8; font-weight: 500; margin-bottom: 20px; }
-
-        /* टॉपिक बॉक्स */
-        .topic-box {
-            background: #f8f9fa; border-radius: 20px; padding: 15px;
-            border: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;
-        }
-        
-        .btn-mini {
-            background: #2d3436; color: white; padding: 8px 15px;
-            border-radius: 12px; text-decoration: none; font-size: 12px; font-weight: 700;
-        }
-
-        .btn-sticker {
-            display: flex; align-items: center; justify-content: center; gap: 8px;
-            margin-top: 20px; background: #fdfae5; color: #d4ac0d;
-            padding: 15px; border-radius: 18px; text-decoration: none;
-            font-size: 13px; font-weight: 800; border: 1px dashed #d4ac0d;
-        }
-    </style>
-</head>
-<body>
-
-<div class="container">
-    <div class="royal-header">
-        <h1 style="margin:0; font-size: 30px;">किताब कोना</h1>
-        <div style="display:inline-block; margin-top:10px; padding:3px 15px; border:1px solid #ffd700; border-radius:50px; font-size:11px; font-weight:700;">THE LEGACY</div>
-    </div>
-
-    <div class="premium-card">
-        <div class="card-header">
-            <div style="background: #fdfae5; padding: 10px; border-radius: 15px; font-size: 25px;">📓</div>
-            <div>
-                <h3 class="card-title">द बुक पासपोर्ट</h3>
-                <div class="card-subtitle">शिक्षा का अटूट सफ़र</div>
-            </div>
+<div class="premium-card">
+    <div class="card-header">
+        <div style="background: #fdfae5; padding: 10px; border-radius: 15px; font-size: 25px;">📓</div>
+        <div>
+            <h3 class="card-title">द बुक पासपोर्ट</h3>
+            <div class="card-subtitle">आपका अनुभव, आपकी विरासत</div>
         </div>
-        
-        <p class="card-desc">
-            "यह किताब सिर्फ पन्ने नहीं, एक छात्र के सपनों का गवाह है। हर किताब में एक पासपोर्ट स्टीकर होगा, जहाँ हर पढ़ने वाला अपना नाम और सपना दर्ज करेगा।"
-        </p>
+    </div>
+    
+    <p class="card-desc">
+        "यह किताब सिर्फ एक साधन नहीं, बल्कि सफलता की एक **साझा कहानी** है। हर पाठक इस पासपोर्ट में अपनी तैयारी का अनुभव और इस किताब के प्रति अपनी समीक्षा (Review) दर्ज करेगा, ताकि आने वाले छात्रों को आपकी जीत की राह मिल सके।"
+    </p>
 
-        <div class="topic-box">
-            <div style="display: flex; align-items: center; gap: 10px;">
-                <span style="font-size: 18px;">📋</span>
-                <span style="font-size: 13px; font-weight: 800;">किताब मिलने के बाद क्या करें?</span>
-            </div>
-            <a href="process.html" class="btn-mini">पढ़ें →</a>
+    <div class="topic-box" style="background: #fffcf0; border: 1px solid #ffeaa7; margin-bottom: 15px;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 18px;">✍️</span>
+            <span style="font-size: 13px; font-weight: 800; color: #d35400;">किताब मिलने के बाद: अपना रिव्यू दर्ज करें</span>
         </div>
-
-        <a href="#" class="btn-sticker">📥 पासपोर्ट स्टीकर (PDF) डाउनलोड करें</a>
+        <a href="review.html" class="btn-mini" style="background: #d35400;">लिखें →</a>
     </div>
 
+    <a href="#" class="btn-sticker">
+        📥 पासपोर्ट स्टीकर (PDF) डाउनलोड करें
+    </a>
+    
+    <div style="text-align: center; margin-top: 12px; font-size: 10px; color: #95a5a6; font-weight: 600;">
+        ✨ आपके शब्द किसी और की सफलता का आधार बनेंगे!
     </div>
-
-</body>
-</html>
+</div>
