@@ -3,59 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Geography - Social Studies Classes</title>
+    <title>भूगोल - SST Pro</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background-color: #f0f7ff; color: #2d3436; }
+        body { background-color: #f1f2f6; color: #2d3436; padding-bottom: 30px; }
 
-        /* नीला ग्रेडिएंट हेडर */
+        /* छोटा हेडर */
         .header {
-            background: linear-gradient(135deg, #0984e3, #2980b9);
+            background: linear-gradient(135deg, #0984e3, #74b9ff);
             color: white; padding: 30px 20px; text-align: center;
             border-bottom-left-radius: 30px; border-bottom-right-radius: 30px;
-            position: relative; box-shadow: 0 4px 15px rgba(9, 132, 227, 0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
+        .header h1 { font-size: 22px; font-weight: 800; }
+        
+        /* बैक बटन */
         .back-btn {
-            position: absolute; left: 20px; top: 35px;
-            color: white; text-decoration: none; font-size: 20px;
+            position: absolute; top: 20px; left: 15px;
+            color: white; text-decoration: none; font-size: 18px; font-weight: bold;
         }
 
-        .container { padding: 20px; }
-
-        /* टॉपिक्स के लिए कार्ड स्टाइल */
-        .topic-link {
+        /* टॉपिक लिस्ट */
+        .topic-container { padding: 20px 15px; }
+        
+        .topic-card {
             background: white; margin-bottom: 15px; padding: 18px;
             border-radius: 15px; display: flex; align-items: center;
             text-decoration: none; color: #2d3436;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            border-left: 6px solid #0984e3;
-            transition: 0.3s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-left: 5px solid #0984e3;
+            transition: 0.2s;
         }
-        .topic-link:active { transform: scale(0.95); background: #f1f2f6; }
-        .topic-link i { font-size: 22px; margin-right: 15px; }
-        .topic-link span { font-weight: 600; }
+        .topic-card:active { transform: scale(0.98); background: #f9f9f9; }
 
-        .footer-note { text-align: center; color: #b2bec3; font-size: 12px; margin-top: 30px; }
+        .topic-icon { font-size: 24px; margin-right: 15px; }
+        .topic-info { flex: 1; }
+        .topic-title { font-weight: 700; font-size: 15px; margin-bottom: 2px; }
+        .topic-desc { font-size: 11px; color: #b2bec3; }
+        .arrow { font-size: 18px; color: #dfe6e9; }
     </style>
 </head>
 <body>
 
     <div class="header">
-        <a href="index.html" class="back-btn">⬅</a>
-        <h2>भूगोल (Geography)</h2>
-        <p style="font-size: 12px; opacity: 0.9;">नक्शों की ज़ुबानी, दुनिया की कहानी</p>
+        <a href="index.html" class="back-btn">⬅️</a>
+        <h1>विश्व एवं भारत का भूगोल</h1>
     </div>
 
-    <div class="container">
-        <a href="#" class="topic-link"><i>🌍</i><span>सौर मंडल (Solar System)</span></a>
-        <a href="#" class="topic-link"><i>🏔️</i><span>भारत का भौतिक स्वरूप</span></a>
-        <a href="#" class="topic-link"><i>🌊</i><span>नदियाँ और झीलें</span></a>
-        <a href="#" class="topic-link"><i>☁️</i><span>जलवायु (Climate)</span></a>
-        <a href="#" class="topic-link"><i>🌲</i><span>प्राकृतिक वनस्पति</span></a>
-        <a href="#" class="topic-link"><i>🗺️</i><span>विश्व का भूगोल</span></a>
+    <div class="topic-container">
         
-        <div class="footer-note">नये अध्याय जल्दी ही जुड़ेंगे...</div>
+        <a href="#" class="topic-card">
+            <div class="topic-icon">🪐</div>
+            <div class="topic-info">
+                <div class="topic-title">सौरमंडल और पृथ्वी</div>
+                <div class="topic-desc">ब्रह्मांड, ग्रह और पृथ्वी की गतियाँ</div>
+            </div>
+            <div class="arrow">❯</div>
+        </a>
+
+        <a href="#" class="topic-card">
+            <div class="topic-icon">🏔️</div>
+            <div class="topic-info">
+                <div class="topic-title">भारत का भौतिक स्वरूप</div>
+                <div class="topic-desc">हिमालय, मैदान और पठारी प्रदेश</div>
+            </div>
+            <div class="arrow">❯</div>
+        </a>
+
+        <a href="#" class="topic-card">
+            <div class="topic-icon">🌊</div>
+            <div class="topic-info">
+                <div class="topic-title">अपवाह तंत्र (नदियाँ)</div>
+                <div class="topic-desc">प्रमुख नदियाँ, झीलें और बांध</div>
+            </div>
+            <div class="arrow">❯</div>
+        </a>
+
+        <a href="#" class="topic-card">
+            <div class="topic-icon">☀️</div>
+            <div class="topic-info">
+                <div class="topic-title">जलवायु और मानसून</div>
+                <div class="topic-desc">ऋतुएँ, वर्षा और भारतीय मानसून</div>
+            </div>
+            <div class="arrow">❯</div>
+        </a>
+
+        <a href="#" class="topic-card">
+            <div class="topic-icon">🌲</div>
+            <div class="topic-info">
+                <div class="topic-title">वनस्पति और मृदा</div>
+                <div class="topic-desc">जंगलों के प्रकार और मिट्टी की जानकारी</div>
+            </div>
+            <div class="arrow">❯</div>
+        </a>
+
     </div>
 
 </body>
