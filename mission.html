@@ -3,104 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>किताब कोना (The Legacy) - SST Pro</title>
+    <title>किताब कोना (The Legacy) - VVIP Club</title>
     <style>
-        :root { --primary: #0f0c29; --secondary: #302b63; --gold: #ffd700; --text: #2c3e50; }
-        body { font-family: 'Segoe UI', sans-serif; background-color: #f4f7f6; margin: 0; padding: 0; color: var(--text); line-height: 1.6; }
+        :root { --premium-dark: #0f0c29; --gold: #ffd700; --silver: #bdc3c7; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f8f9fa; margin: 0; padding: 0; color: #2c3e50; }
         .container { max-width: 500px; margin: auto; padding: 15px; }
 
-        /* Header Section */
-        .mission-header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; padding: 35px 20px; border-radius: 0 0 50px 50px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        /* VVIP Header */
+        .mission-header { 
+            background: linear-gradient(135deg, var(--premium-dark), #302b63); 
+            color: white; padding: 40px 20px; border-radius: 0 0 50px 50px; text-align: center;
+            position: relative; overflow: hidden;
+        }
+        .vvip-badge {
+            background: var(--gold); color: black; padding: 5px 15px; border-radius: 50px;
+            font-size: 10px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase;
+        }
+
+        /* Impact Dashboard */
+        .impact-card { 
+            background: white; border-radius: 30px; padding: 25px; margin-top: -40px; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1); text-align: center;
+        }
         
-        /* Dashboard Card */
-        .dashboard { background: white; border-radius: 30px; padding: 25px; margin-top: -40px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); border: 1px solid rgba(255,255,255,0.8); }
-        .weekly-tag { background: #3498db; color: white; padding: 4px 10px; border-radius: 50px; font-size: 10px; font-weight: 800; letter-spacing: 1px; }
+        /* Verified Donor Section */
+        .badge-box { 
+            display: flex; justify-content: space-around; margin: 25px 0; 
+            background: #fff; padding: 15px; border-radius: 20px; border: 1px solid #eee;
+        }
+        .badge-item { text-align: center; }
+        .badge-icon { font-size: 24px; display: block; margin-bottom: 5px; }
 
-        /* Legacy Cards */
-        .card { background: white; border-radius: 25px; padding: 20px; margin: 20px 0; box-shadow: 0 8px 20px rgba(0,0,0,0.04); border: 1px solid #eee; position: relative; overflow: hidden; }
-        .card::before { content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 6px; background: var(--gold); }
+        /* Legacy Passport (The Soul) */
+        .passport-section {
+            background: #fff; border-radius: 25px; padding: 20px; margin: 20px 0;
+            border: 2px solid var(--gold); position: relative;
+        }
+        .passport-tag {
+            position: absolute; top: -12px; right: 20px; background: var(--gold);
+            padding: 4px 12px; border-radius: 10px; font-size: 10px; font-weight: 800;
+        }
 
-        /* Market Place Item */
-        .book-item { display: flex; gap: 15px; background: #fff; border-radius: 20px; padding: 15px; border: 1px solid #f1f1f1; margin-bottom: 15px; }
-        .book-img { width: 85px; height: 110px; background: #f9f9f9; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #95a5a6; border: 1px solid #eee; overflow: hidden; }
+        /* Mentor Section */
+        .mentor-box {
+            background: #e3f2fd; padding: 15px; border-radius: 20px; margin: 20px 0;
+            border-left: 5px solid #2196f3;
+        }
 
-        /* Action Buttons */
-        .btn { display: block; text-align: center; padding: 18px; border-radius: 22px; text-decoration: none; font-weight: 800; font-size: 15px; transition: 0.3s; margin-bottom: 12px; }
-        .btn-dark { background: #2f3542; color: white; border-bottom: 5px solid #000; }
-        .btn-gold { background: var(--gold); color: #000; border-bottom: 5px solid #b8860b; }
-        
-        .back-link { display: block; text-align: center; margin: 20px 0; color: #7f8c8d; text-decoration: none; font-weight: 700; font-size: 13px; }
+        /* Buttons */
+        .btn { display: block; text-align: center; padding: 20px; border-radius: 25px; text-decoration: none; font-weight: 800; margin-bottom: 12px; transition: 0.3s; }
+        .btn-black { background: #1c1e21; color: white; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+        .btn-gold { background: var(--gold); color: black; box-shadow: 0 10px 20px rgba(255, 215, 0, 0.2); }
+
+        .footer-brand { text-align: center; margin-top: 40px; border-top: 1px solid #eee; padding-top: 20px; font-size: 9px; color: #bdc3c7; }
     </style>
 </head>
 <body>
 
     <div class="mission-header">
-        <h2 style="margin: 0; font-size: 26px; letter-spacing: 1px;">किताब कोना <span style="color: var(--gold);">(The Legacy)</span></h2>
-        <p style="font-size: 12px; opacity: 0.8; margin-top: 8px; font-weight: 500;">Social Studies Classes द्वारा एक क्रांतिकारी पहल 🚩</p>
+        <span class="vvip-badge">VVIP Exclusive Club</span>
+        <h2 style="margin: 15px 0 5px 0; font-size: 26px;">किताब कोना (The Legacy)</h2>
+        <p style="font-size: 11px; opacity: 0.8;">Social Studies Classes - एक छात्र की आवाज़</p>
     </div>
 
     <div class="container">
         
-        <div class="dashboard">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                <span style="font-size: 14px; font-weight: 800; color: #2c3e50;">📊 स्टॉक डैशबोर्ड</span>
-                <span class="weekly-tag">WEEKLY UPDATE</span>
-            </div>
-            
-            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; text-align: center;">
-                <div style="background: #eef2f3; padding: 15px; border-radius: 20px;">
-                    <div style="font-size: 22px; font-weight: 900; color: #27ae60;">120+</div>
-                    <div style="font-size: 9px; color: #7f8c8d; font-weight: 700;">प्राप्त (IN)</div>
-                </div>
-                <div style="background: #eef2f3; padding: 15px; border-radius: 20px;">
-                    <div style="font-size: 22px; font-weight: 900; color: #2980b9;">85</div>
-                    <div style="font-size: 9px; color: #7f8c8d; font-weight: 700;">वितरित (OUT)</div>
-                </div>
-                <div style="background: #fff9db; padding: 15px; border-radius: 20px;">
-                    <div style="font-size: 22px; font-weight: 900; color: #f39c12;">17</div>
-                    <div style="font-size: 9px; color: #7f8c8d; font-weight: 700;">स्टॉक में</div>
-                </div>
+        <div class="impact-card">
+            <div style="display: flex; justify-content: space-around;">
+                <div><div style="font-size: 24px; font-weight: 900; color: #27ae60;">120+</div><div style="font-size: 10px; color: #7f8c8d;">किताबें दान</div></div>
+                <div style="width: 1px; background: #eee;"></div>
+                <div><div style="font-size: 24px; font-weight: 900; color: #2980b9;">85</div><div style="font-size: 10px; color: #7f8c8d;">सफल छात्र</div></div>
+                <div style="width: 1px; background: #eee;"></div>
+                <div><div style="font-size: 24px; font-weight: 900; color: #f39c12;">0₹</div><div style="font-size: 10px; color: #7f8c8d;">कमीशन</div></div>
             </div>
         </div>
 
-        <div class="card">
-            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
-                <span style="font-size: 24px;">📖</span>
-                <span style="font-weight: 800; font-size: 17px; color: var(--primary);">द बुक पासपोर्ट (सफ़रनामा)</span>
+        <h3 style="font-size: 15px; margin: 25px 0 10px 5px;">🎖️ SST Verified Donors</h3>
+        <div class="badge-box">
+            <div class="badge-item">
+                <span class="badge-icon">🥈</span>
+                <span style="font-size: 9px; font-weight: 800; color: #7f8c8d;">SILVER (3+ Books)</span>
             </div>
-            <p style="font-size: 12px; color: #57606f; line-height: 1.6; margin: 0;">
-                यह किताब सिर्फ पन्ने नहीं, एक "विरासत" है। जो भी छात्र इसे पढ़ेगा, वह अपना नाम और जिला इसमें दर्ज करेगा। आप अपनी किताब का सफ़रनामा यहाँ ट्रैक कर सकते हैं।
+            <div class="badge-item">
+                <span class="badge-icon">🥇</span>
+                <span style="font-size: 9px; font-weight: 800; color: #d4af37;">GOLD (10+ Books)</span>
+            </div>
+            <div class="badge-item">
+                <span class="badge-icon">👑</span>
+                <span style="font-size: 9px; font-weight: 800; color: #e74c3c;">LEGEND (Mentor)</span>
+            </div>
+        </div>
+
+        <div class="passport-section">
+            <span class="passport-tag">EMOTIONAL CONNECT</span>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="font-size: 30px;">📓</span>
+                <span style="font-weight: 900; font-size: 18px;">द बुक पासपोर्ट</span>
+            </div>
+            <p style="font-size: 12px; line-height: 1.6; color: #34495e; margin-top: 10px;">
+                हर दान की गई किताब एक "सफ़रनामा" है। अपना नाम और सपना इसमें दर्ज करें। जब यह किताब सफल छात्रों के हाथों से होती हुई आप तक पहुँचेगी, तो आपको खुद पर गर्व होगा।
             </p>
-            <div style="margin-top: 15px; font-size: 10px; color: #2980b9; font-weight: 800; background: #e3f2fd; padding: 8px 12px; border-radius: 10px; display: inline-block;">
-                📍 वर्तमान लोकेशन: चित्तौड़गढ़ (REET Mains)
-            </div>
+        </div>
+
+        <div class="mentor-box">
+            <div style="font-weight: 800; font-size: 14px; color: #0d47a1;">🤝 सिर्फ किताब नहीं, मार्गदर्शन भी</div>
+            <p style="font-size: 11px; color: #1565c0; margin-top: 5px;">किताब दान करने वाले छात्र से 10 मिनट की 'Expert Advice' पाएँ।</p>
         </div>
 
         <div style="margin-top: 30px;">
-            <h3 style="font-size: 18px; margin-bottom: 15px; padding-left: 5px; font-weight: 800;">🛍️ किताब मंडी (Student to Student)</h3>
-            
-            <div class="book-item">
-                <div class="book-img">
-                    <img src="YOUR_IMAGE_LINK" alt="Sample" style="width:100%; height:100%; object-fit:cover;">
-                </div>
-                <div style="flex: 1;">
-                    <div style="font-weight: 800; font-size: 15px;">Rajasthan GK (New 50 Districts)</div>
-                    <p style="font-size: 11px; color: #7f8c8d; margin: 5px 0; font-style: italic;">"मेरी मेहनत के निशान अब आपकी सफलता का रास्ता बनेंगे।"</p>
-                    <div style="display: flex; align-items: center; gap: 10px; margin-top: 8px;">
-                        <span style="font-size: 18px; font-weight: 900; color: #e74c3c;">₹99</span>
-                        <span style="font-size: 10px; text-decoration: line-through; color: #bdc3c7;">MRP: 250</span>
-                        <a href="https://wa.me/919529812784?text=नमस्ते%20SST%20Pro,%20मुझे%20इस%20किताब%20का%20सैंपल%20देखना%20है" style="margin-left: auto; font-size: 11px; color: #3498db; font-weight: 700; text-decoration: none;">सैंपल देखें →</a>
-                    </div>
-                </div>
-            </div>
-
-            <div style="background: #fffbe6; border: 1px dashed #f1c40f; padding: 15px; border-radius: 15px; text-align: center; margin-top: 10px;">
-                <p style="font-size: 12px; color: #7f8c8d; margin: 0;">"बेचने वाला भी छात्र है, खरीदने वाला भी। हम मुनाफा नहीं, मदद कमाते हैं।"</p>
-            </div>
+            <a href="https://wa.me/919529812784?text=नमस्ते,%20मैं%20VVIP%20क्लब%20में%20किताब%20दान%20करना%20चाहता/चाहती%20हूँ" class="btn btn-black">किताब दान करें (Get Verified) 🏅</a>
+            <a href="https://wa.me/919529812784?text=नमस्ते,%20मुझे%20पढ़ने%20के%20लिए%20VVIP%20क्लब%20की%20सहायता%20चाहिए" class="btn btn-gold">किताब की सहायता मांगें 🤝</a>
         </div>
 
-        <div style="margin-top: 30px;">
-            <h3 style="font-size: 17px; margin-bottom: 12px; padding-left: 5px; font-weight: 800;">🎥 छात्रों के अनुभव (Track Video)</h3>
+        <a href="index.html" style="display: block; text-align: center; margin-top: 20px; color: #bdc3c7; text-decoration: none; font-size: 12px; font-weight: 700;">← वापस होम पर जाएं</a>
+
+        <div class="footer-brand">
+            &copy; 2026 Social Studies Classes | Concept by SST Pro Team<br>
+            "छात्रों का, छात्रों के लिए, छात्रों द्वारा"
+        </div>
+
+    </div>
+</body>
+</html>
             <div style="background: #000; border-radius: 25px; width: 100%; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; position: relative; box-shadow: 0 10px 20px rgba(0,0,0,0.2);">
                 <div style="color: white; text-align: center;">
                     <div style="font-size: 40px; cursor: pointer;">▶️</div>
