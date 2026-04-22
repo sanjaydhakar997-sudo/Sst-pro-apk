@@ -1,141 +1,85 @@
-<div style="
-    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e); 
-    padding: 50px 20px; 
-    text-align: center; 
-    border-radius: 0 0 50px 50px; 
-    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-    position: relative;
-    overflow: hidden;
-    border-bottom: 4px solid #ffd700;
-">
-    <div style="position: absolute; top: -20%; left: -10%; width: 50%; height: 50%; background: radial-gradient(circle, rgba(255,215,0,0.1) 0%, transparent 70%);"></div>
-
-    <h1 style="
-        margin: 0; 
-        font-size: 32px; 
-        color: #ffd700; 
-        text-transform: uppercase; 
-        letter-spacing: 2px;
-        text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
-        font-family: 'Georgia', serif;
-    ">
-        किताब कोना
-    </h1>
-
-    <div style="
-        display: inline-block;
-        margin-top: 10px;
-        padding: 5px 20px;
-        background: rgba(255, 215, 0, 0.15);
-        border: 1px solid #ffd700;
-        border-radius: 50px;
-        color: #ffd700;
-        font-size: 14px;
-        font-weight: 700;
-        letter-spacing: 3px;
-    ">
-        THE LEGACY
-    </div>
-
-    <p style="
-        color: #ffffff; 
-        font-size: 13px; 
-        margin-top: 20px; 
-        opacity: 0.9;
-        font-weight: 400;
-        line-height: 1.6;
-    ">
-        <span style="border-top: 1px solid rgba(255,255,255,0.3); padding-top: 5px;">
-            Social Studies Classes द्वारा एक क्रांतिकारी पहल 🚩
-        </span>
-    </p>
-
- <div style="
-    margin: 20px 15px; 
-    background: white; 
-    border-radius: 20px; 
-    padding: 20px; 
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-    border: 1px solid #eee;
-">
-    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
-        <span style="font-size: 24px;">📖</span>
-        <h3 style="margin: 0; font-size: 18px; color: #1a1a1a; font-weight: 800;">द बुक पासपोर्ट (सफ़रनामा)</h3>
-    </div>
-    
-    <p style="font-size: 13px; color: #444; line-height: 1.6; margin: 0;">
-        "यह किताब अब एक विरासत है। जो भी छात्र इसे पढ़ेगा, वह अपना नाम और जिला इसमें दर्ज करेगा। आप अपनी किताब का सफ़रनामा यहाँ ट्रैक कर सकते हैं।"
-    </p>
-
-    <div style="
-        margin-top: 15px; 
-        background: #f0f7ff; 
-        color: #007bff; 
-        padding: 8px 15px; 
-        border-radius: 12px; 
-        font-size: 11px; 
-        font-weight: 700; 
-        display: inline-block;
-    ">
-        📍 वर्तमान में: चित्तौड़गढ़ (REET Mains)
-    </div>
-</div>
-
-<div style="
-    margin: 20px 15px; 
-    background: #ffffff; 
-    border-radius: 20px; 
-    padding: 25px; 
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-    border: 1px solid #eee;
-">
-    <h3 style="margin: 0 0 20px 0; font-size: 17px; font-weight: 800; color: #333; text-align: center;">
-        🎁 अपनी विरासत दान करें
-    </h3>
-    
-    <div style="display: flex; flex-direction: column; gap: 15px;">
-        <input type="text" id="donorName" placeholder="आपका शुभ नाम" style="width: 100%; padding: 16px; border-radius: 12px; border: 1px solid #ddd; font-size: 14px; background: #fdfdfd; box-sizing: border-box;">
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SST Pro - किताब कोना</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f4f7f6; margin: 0; padding: 0; color: #2c3e50; }
+        .container { max-width: 500px; margin: auto; padding-bottom: 50px; }
         
-        <input type="text" id="bookName" placeholder="किताब/PDF का नाम" style="width: 100%; padding: 16px; border-radius: 12px; border: 1px solid #ddd; font-size: 14px; background: #fdfdfd; box-sizing: border-box;">
+        /* रॉयल हेडर */
+        .royal-header { 
+            background: linear-gradient(135deg, #0f0c29, #302b63); 
+            color: #ffd700; padding: 50px 20px; border-radius: 0 0 40px 40px; text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2); border-bottom: 4px solid #ffd700;
+        }
 
-        <div onclick="window.location.href='https://wa.me/919529812784?text=नमस्ते%20SST%20Pro,%20मैं%20अपनी%20किताब/PDF%20की%20फोटो%20भेजना%20चाहता/चाहती%20हूँ'" 
-             style="background: #f8f9fa; border: 1px dashed #007bff; padding: 15px; border-radius: 12px; text-align: center; cursor: pointer;">
-            <span style="font-size: 12px; color: #007bff; font-weight: 700;">📸 इमेज/PDF यहाँ व्हाट्सएप पर भेजें</span>
+        /* साफ बॉक्स डिजाइन */
+        .content-box {
+            background: white; border-radius: 20px; padding: 20px; margin: 20px 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05); border: 1px solid #eee;
+        }
+
+        .tag-blue { background: #f0f7ff; color: #007bff; padding: 6px 12px; border-radius: 10px; font-size: 11px; font-weight: 700; display: inline-block; margin-top: 10px; }
+        
+        /* इनपुट और बटन्स */
+        .input-field { width: 100%; padding: 15px; border-radius: 12px; border: 1px solid #ddd; font-size: 14px; margin-bottom: 15px; box-sizing: border-box; background: #fafafa; }
+        
+        .btn-wa { background: #f8f9fa; border: 1px dashed #007bff; padding: 12px; border-radius: 12px; text-align: center; cursor: pointer; color: #007bff; font-size: 12px; font-weight: 700; margin-bottom: 15px; }
+        
+        .btn-main { background: #212529; color: white; border: none; padding: 18px; border-radius: 15px; font-weight: 800; font-size: 15px; width: 100%; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+
+        .back-link { display: block; text-align: center; margin-top: 30px; color: #95a5a6; text-decoration: none; font-size: 12px; font-weight: 700; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="royal-header">
+            <h1 style="margin:0; font-size: 28px; letter-spacing: 1px;">किताब कोना</h1>
+            <div style="display:inline-block; margin-top:10px; padding:4px 15px; border:1px solid #ffd700; border-radius:50px; font-size:12px; font-weight:700;">THE LEGACY</div>
+            <p style="color:#fff; font-size:11px; margin-top:15px; opacity:0.8;">Social Studies Classes द्वारा एक क्रांतिकारी पहल 🚩</p>
         </div>
 
-        <button onclick="sendDonateRequest()" style="
-            background: #212529; 
-            color: white; 
-            border: none; 
-            padding: 18px; 
-            border-radius: 15px; 
-            font-weight: 800; 
-            font-size: 15px; 
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        ">
-            विरासत का हिस्सा बनें 🚩
-        </button>
-    </div>
-</div>
-
-        <div onclick="window.location.href='https://wa.me/919529812784?text=नमस्ते%20SST%20Pro,%20मैं%20अपनी%20किताब/PDF%20की%20फोटो%20भेजना%20चाहता/चाहती%20हूँ'" 
-             style="background: #f8f9fa; border: 1px dashed #007bff; padding: 15px; border-radius: 12px; text-align: center; cursor: pointer;">
-            <span style="font-size: 12px; color: #007bff; font-weight: 700;">📸 इमेज/PDF यहाँ व्हाट्सएप पर भेजें</span>
+        <div class="content-box">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                <span style="font-size: 24px;">📖</span>
+                <h3 style="margin: 0; font-size: 17px; font-weight: 800;">द बुक पासपोर्ट (सफरनामा)</h3>
+            </div>
+            <p style="font-size: 13px; color: #444; line-height: 1.6; margin: 0;">
+                "यह किताब अब एक विरासत है। जो भी छात्र इसे पढ़ेगा, वह अपना नाम और जिला इसमें दर्ज करेगा।"
+            </p>
+            <div class="tag-blue">📍 वर्तमान: चित्तौड़गढ़ (REET Mains)</div>
         </div>
 
-        <button onclick="sendDonateRequest()" style="
-            background: #212529; 
-            color: white; 
-            border: none; 
-            padding: 18px; 
-            border-radius: 15px; 
-            font-weight: 800; 
-            font-size: 15px; 
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        ">
-            विरासत का हिस्सा बनें 🚩
-        </button>
+        <div class="content-box">
+            <h3 style="margin: 0 0 20px 0; font-size: 17px; font-weight: 800; text-align: center;">🎁 अपनी विरासत दान करें</h3>
+            
+            <input type="text" id="donorName" class="input-field" placeholder="आपका शुभ नाम">
+            <input type="text" id="bookName" class="input-field" placeholder="किताब/PDF का नाम">
+
+            <div onclick="window.location.href='https://wa.me/919529812784?text=नमस्ते%20SST%20Pro,%20मैं%20फोटो%20भेजना%20चाहता%20हूँ'" class="btn-wa">
+                📸 इमेज/PDF व्हाट्सएप पर भेजें
+            </div>
+
+            <button onclick="sendDonateRequest()" class="btn-main">विरासत का हिस्सा बनें 🚩</button>
+        </div>
+
+        <a href="index.html" class="back-link">← वापस होम पेज पर जाएं</a>
     </div>
-</div>
+
+    <script>
+        function sendDonateRequest() {
+            let name = document.getElementById('donorName').value;
+            let book = document.getElementById('bookName').value;
+            if(name && book) {
+                let msg = `नमस्ते SST Pro, मैं ${name} अपनी किताब "${book}" दान करना चाहता हूँ।`;
+                window.location.href = `https://wa.me/919529812784?text=${encodeURIComponent(msg)}`;
+            } else {
+                alert("कृपया नाम और किताब भरें!");
+            }
+        }
+    </script>
+</body>
+</html>
