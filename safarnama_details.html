@@ -3,130 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SST Pro - सफ़रनामा VVIP</title>
+    <title>SST Pro - सफ़रनामा</title>
     <style>
         :root { --gold: #ffd700; --dark: #1a1a2e; --green: #25D366; }
         body { background-color: #fdfae5; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; color: var(--dark); scroll-behavior: smooth; }
         
-        /* 🚩 VVIP हेडर */
+        /* 🚩 रॉयल हेडर */
         .header {
             background: linear-gradient(180deg, var(--dark) 0%, #000 100%);
-            padding: 70px 20px; text-align: center; border-radius: 0 0 60px 60px;
-            border-bottom: 10px solid var(--gold); color: var(--gold);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+            padding: 60px 20px; text-align: center; border-radius: 0 0 50px 50px;
+            border-bottom: 8px solid var(--gold); color: var(--gold);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
         }
 
-        .container { padding: 25px; max-width: 650px; margin: auto; }
+        .container { padding: 20px; max-width: 600px; margin: auto; }
 
-        /* 💎 VVIP कार्ड्स */
+        /* 💎 मज़बूत कार्ड्स */
         .step-card {
-            background: #ffffff; border-radius: 40px; padding: 35px;
-            margin-bottom: 40px; border: 2px solid rgba(0,0,0,0.05);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.08); position: relative;
-            overflow: hidden;
+            background: #ffffff; border-radius: 35px; padding: 30px;
+            margin-bottom: 35px; border-left: 12px solid var(--gold);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            position: relative;
         }
 
         .step-num {
-            background: var(--gold); color: var(--dark); width: 50px; height: 50px;
-            border-radius: 15px; display: flex; align-items: center; justify-content: center;
-            font-weight: 950; font-size: 24px; margin-bottom: 20px; box-shadow: 0 10px 20px rgba(255,215,0,0.3);
+            position: absolute; top: -15px; left: -15px;
+            background: var(--gold); color: var(--dark);
+            width: 45px; height: 45px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 950; font-size: 22px; border: 4px solid #ffffff;
         }
 
-        .step-title { font-size: 30px; font-weight: 950; margin-bottom: 10px; text-transform: uppercase; letter-spacing: -1px; }
+        .step-title { font-size: 24px; font-weight: 950; margin-bottom: 5px; color: var(--dark); }
+        .step-desc { font-size: 14px; font-weight: 700; color: #666; margin-bottom: 20px; }
 
-        /* 📸 VVIP इमेज अपलोड */
+        /* 📸 फोटो अपलोड एरिया */
         .upload-area {
-            border: 4px dashed var(--gold); border-radius: 25px; padding: 40px;
-            text-align: center; background: #fffdf0; cursor: pointer; transition: 0.3s;
+            border: 3px dashed var(--gold); border-radius: 20px; padding: 25px;
+            text-align: center; background: #fffdf0; transition: 0.3s;
         }
-        .upload-area:hover { background: #fff9d6; transform: scale(1.02); }
+        .upload-btn { 
+            background: var(--dark); color: var(--gold); padding: 15px 25px; 
+            border-radius: 15px; font-weight: 800; cursor: pointer; 
+            display: inline-block; margin-top: 10px; text-transform: uppercase;
+        }
 
-        /* 📚 ऑटो लाइब्रेरी प्रीव्यू */
+        /* 📸 फोटो गैलरी */
         #preview-gallery {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            gap: 15px; margin-top: 25px; padding: 15px; background: #f8f9fa; border-radius: 20px;
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 10px; margin-bottom: 15px;
         }
-        .preview-img { width: 100%; height: 120px; object-fit: cover; border-radius: 15px; border: 3px solid var(--gold); animation: pop 0.4s ease-out; }
-        @keyframes pop { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .preview-img { width: 100%; height: 80px; object-fit: cover; border-radius: 10px; border: 2px solid var(--gold); }
 
-        /* 📦 इनपुट डिजाइन */
-        .input-vip {
-            width: 100%; padding: 20px; margin-bottom: 20px; border-radius: 20px;
-            border: 3px solid #eee; font-weight: 800; font-size: 18px; box-sizing: border-box;
-            transition: 0.3s;
+        /* 📦 इनपुट और बटन */
+        .input-box { 
+            width: 100%; padding: 18px; margin-bottom: 15px; 
+            border-radius: 15px; border: 2px solid #eee; 
+            font-weight: 700; font-size: 16px; box-sizing: border-box;
         }
-        .input-vip:focus { border-color: var(--gold); outline: none; background: #fffdf0; }
-
-        .whatsapp-vip {
+        .input-box:focus { border-color: var(--gold); outline: none; background: #fffdf0; }
+        
+        .whatsapp-action {
             background: linear-gradient(135deg, var(--green) 0%, #128C7E 100%);
-            color: white; width: 100%; padding: 28px; border: none; border-radius: 25px;
-            font-weight: 950; font-size: 24px; cursor: pointer; 
-            display: flex; align-items: center; justify-content: center; gap: 15px;
-            box-shadow: 0 15px 35px rgba(37, 211, 102, 0.4); text-transform: uppercase;
+            color: white; width: 100%; padding: 25px; border: none; border-radius: 25px;
+            font-weight: 950; font-size: 20px; cursor: pointer; 
+            display: flex; align-items: center; justify-content: center; gap: 12px;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4); text-transform: uppercase;
         }
 
-        /* 🎁 VVIP रिवॉर्ड बॉक्स */
-        .reward-box {
-            display: none; background: var(--dark); color: var(--gold); padding: 45px 30px;
-            border-radius: 50px; text-align: center; border: 5px solid var(--gold);
-            margin-top: 30px; box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+        /* 🎁 रिवॉर्ड और एड्रेस */
+        .success-box {
+            display: none; background: var(--dark); color: var(--gold); padding: 35px;
+            border-radius: 40px; text-align: center; border: 4px solid var(--gold);
+            margin-top: 20px; animation: fadeInUp 0.6s ease-out;
         }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
         .promo-code { 
-            font-size: 40px; font-weight: 950; color: #fff; margin: 25px 0; 
-            display: block; border: 4px dashed var(--gold); padding: 20px;
-            background: rgba(255,255,255,0.05); text-shadow: 0 0 10px rgba(255,215,0,0.5);
+            font-size: 32px; font-weight: 950; color: #ffffff; 
+            margin: 20px 0; display: block; border: 3px dashed var(--gold); padding: 15px;
+        }
+
+        .address-card {
+            background: #ffffff; color: var(--dark); padding: 20px; 
+            border-radius: 20px; margin-top: 25px; text-align: left;
+            font-weight: 800; border-left: 8px solid var(--green);
         }
     </style>
 </head>
 <body>
 
     <div class="header">
-        <h1 style="margin: 0; font-size: 50px; font-weight: 950; letter-spacing: -2px;">सफ़रनामा</h1>
-        <p style="font-weight: 800; color: #fff; opacity: 0.8; font-size: 20px; margin-top: 10px;">THE ROYAL LEGACY MISSION 🚩</p>
+        <h1 style="margin: 0; font-size: 45px; font-weight: 950;">सफ़रनामा</h1>
+        <p style="font-weight: 800; color: #ffffff; font-size: 18px; margin-top: 5px;">शिक्षा की विरासत 🚩</p>
     </div>
 
     <div class="container">
 
         <div class="step-card">
             <div class="step-num">1</div>
-            <div class="step-title">विरासत की झलक</div>
-            <p style="font-weight: 700; color: #666; margin-bottom: 20px;">किताब की 3-5 फोटो अपलोड करें। यह ऑटोमैटिक हमारी लाइब्रेरी में जुड़ेंगी।</p>
+            <h2 class="step-title">किताब का सैंपल</h2>
+            <p class="step-desc">लाइब्रेरी में जोड़ने के लिए 3 से 5 फोटो चुनें।</p>
             
-            <input type="file" id="bookPics" multiple accept="image/*" style="display: none;">
-            <label for="bookPics" class="upload-area" style="display: block;">
-                <span style="font-size: 60px;">📸</span><br>
-                <span style="font-weight: 900; color: var(--dark); font-size: 18px;">फोटो चुनें (3-5 Photos)</span>
-            </label>
-
-            <div id="preview-gallery">
+            <div class="upload-area">
+                <input type="file" id="bookPics" multiple accept="image/*" style="display: none;">
+                
+                <div id="before-upload">
+                    <span style="font-size: 40px;">📚</span><br>
+                    <label for="bookPics" class="upload-btn">फोटो अपलोड करें</label>
                 </div>
+
+                <div id="after-upload" style="display: none;">
+                    <div id="preview-gallery"></div>
+                    <label for="bookPics" style="color: #e67e22; font-weight: 800; cursor: pointer; text-decoration: underline; font-size: 14px;">फोटो बदलें (Change)</label>
+                </div>
+            </div>
         </div>
 
         <div class="step-card">
             <div class="step-num">2</div>
-            <div class="step-title">मिशन एक्टिवेट करें</div>
-            <input type="text" id="bName" class="input-vip" placeholder="किताब का नाम लिखें">
-            <input type="text" id="cityName" class="input-vip" placeholder="अपने शहर का नाम">
-            <input type="number" id="pCode" class="input-vip" placeholder="पिन कोड (6 अंक)">
+            <h2 class="step-title">डोनेट करें</h2>
+            <p class="step-desc">विवरण भरें और सीधे व्हाट्सएप पर एड्रेस पाएं।</p>
+            <input type="text" id="bName" class="input-box" placeholder="किताब का नाम">
+            <input type="text" id="cityName" class="input-box" placeholder="शहर का नाम">
+            <input type="number" id="pCode" class="input-box" placeholder="पिन कोड (6 अंक)">
             
-            <button onclick="activateMission()" class="whatsapp-vip">
-                व्हाट्सएप पर जुड़ें ❯
+            <button onclick="startMission()" class="whatsapp-action">
+                व्हाट्सएप पर भेजें ❯
             </button>
         </div>
 
-        <div id="rewardBox" class="reward-box">
-            <h2 style="font-size: 35px; margin: 0;">शानदार, वारियर! 🚩</h2>
-            <p style="color: #fff; margin-top: 15px; font-weight: 700;">आपकी किताब का 'लाइब्रेरी कोड' तैयार है:</p>
+        <div id="finalStep" class="success-box">
+            <h2 style="margin: 0; font-size: 28px;">धन्यवाद, वारियर! ❤️</h2>
+            <p style="color: #ffffff; margin-top: 10px; font-weight: 600;">आपका डिस्काउंट कोड तैयार है:</p>
+            <span class="promo-code">SSTPRO2026</span>
             
-            <span class="promo-code">SST-LIB-2026</span>
-            
-            <div style="background: #fff; color: var(--dark); padding: 30px; border-radius: 30px; text-align: left; margin-top: 30px;">
-                <h4 style="margin: 0 0 10px 0; color: #e67e22; font-size: 20px;">📦 शिपिंग एड्रेस (Head Office):</h4>
-                <p style="margin: 0; font-weight: 800; line-height: 1.7; font-size: 16px;">
-                    SST Pro HQ,<br>
-                    [आपका पूरा पता यहाँ डालें],<br>
+            <div class="address-card">
+                <h4 style="margin: 0 0 10px 0; color: #e67e22;">📍 इस पते पर कोरियर करें:</h4>
+                <p style="margin: 0; line-height: 1.6;">
+                    SST Pro हेड ऑफिस,<br>
+                    [यहाँ अपना पूरा पता लिखें],<br>
                     पिन कोड - [000000]<br>
-                    मोबाइल: +91 [आपका नंबर]
+                    संपर्क: +91 [आपका नंबर]
                 </p>
             </div>
         </div>
@@ -134,47 +152,58 @@
     </div>
 
     <script>
-        // 📸 ऑटो लाइब्रेरी प्रीव्यू फंक्शन
+        // फोटो सिलेक्शन और चेंज सिस्टम
         document.getElementById('bookPics').onchange = function(e) {
-            const gallery = document.getElementById('preview-gallery');
-            gallery.innerHTML = "";
             const files = e.target.files;
+            const before = document.getElementById('before-upload');
+            const after = document.getElementById('after-upload');
+            const gallery = document.getElementById('preview-gallery');
 
-            if(files.length < 3 || files.length > 5) {
-                alert("VVIP अलर्ट: कृपया 3 से 5 फोटो के बीच ही चुनें!");
-                this.value = ""; return;
+            if (files.length >= 3 && files.length <= 5) {
+                before.style.display = "none";
+                after.style.display = "block";
+                gallery.innerHTML = "";
+
+                Array.from(files).forEach(file => {
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        const img = document.createElement('img');
+                        img.src = event.target.result;
+                        img.className = 'preview-img';
+                        gallery.appendChild(img);
+                    };
+                    reader.readAsDataURL(file);
+                });
+            } else {
+                alert("भाई, कम से कम 3 और ज्यादा से ज्यादा 5 फोटो चुनें!");
+                this.value = "";
+                before.style.display = "block";
+                after.style.display = "none";
             }
-
-            Array.from(files).forEach(file => {
-                const reader = new FileReader();
-                reader.onload = (event) => {
-                    const img = document.createElement('img');
-                    img.src = event.target.result;
-                    img.className = 'preview-img';
-                    gallery.appendChild(img);
-                };
-                reader.readAsDataURL(file);
-            });
         };
 
-        function activateMission() {
-            const bName = document.getElementById('bName').value;
-            const city = document.getElementById('cityName').value;
-            const pin = document.getElementById('pCode').value;
-            const files = document.getElementById('bookPics').files;
+        function startMission() {
+            var name = document.getElementById('bName').value;
+            var city = document.getElementById('cityName').value;
+            var pin = document.getElementById('pCode').value;
+            var files = document.getElementById('bookPics').files;
 
-            if(!bName || !city || !pin || files.length < 3) {
-                alert("कृपया सभी स्टेप्स पूरे करें!"); return;
+            if(name == "" || city == "" || pin == "" || files.length < 3) {
+                alert("कृपया सारी जानकारी भरें और फोटो अपलोड करें!");
+                return;
             }
 
-            document.getElementById('rewardBox').style.display = "block";
+            document.getElementById('finalStep').style.display = "block";
             window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 
-            const myNum = "91XXXXXXXXXX"; // अपना नंबर बदलें
-            const msg = `नमस्ते SST Pro!🚩%0Aमैं अपनी किताब *सफ़रनामा* मिशन के लिए भेज रहा हूँ।%0A%0A*किताब:* ${bName}%0A*शहर:* ${city}%0A*पिन कोड:* ${pin}%0A%0Aमैने एड्रेस नोट कर लिया है।`;
+            var myNum = "91XXXXXXXXXX"; // अपना नंबर बदलें
+            var msg = "नमस्ते SST Pro!🚩%0Aमैं अपनी किताब *सफ़रनामा* के लिए भेज रहा हूँ।%0A%0A*किताब:* " + name + "%0A*शहर:* " + city + "%0A*पिन:* " + pin + "%0A%0Aमैंने एड्रेस देख लिया है।";
             
-            setTimeout(() => { window.open(`https://wa.me/${myNum}?text=${msg}`, "_blank"); }, 1500);
+            setTimeout(function() {
+                window.open("https://wa.me/" + myNum + "?text=" + msg, "_blank");
+            }, 1500);
         }
     </script>
+
 </body>
 </html>
