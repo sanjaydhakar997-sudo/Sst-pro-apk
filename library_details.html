@@ -3,160 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SST Pro - The Royal Library</title>
+    <title>The Royal Library - SST Pro</title>
     <style>
-        :root { --gold: #ffd700; --dark-blue: #001f3f; --royal: #1a1a2e; --white: #ffffff; }
-        body { background: radial-gradient(circle, #1a1a2e 0%, #000000 100%); font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; color: #fff; }
+        :root { --gold: #ffd700; --dark-bg: #0c0c14; --card-bg: #1a1a2e; }
+        body { background: var(--dark-bg); font-family: 'Segoe UI', sans-serif; color: #fff; margin: 0; padding: 10px; }
         
-        /* 🚩 प्रीमियम रॉयल हेडर */
-        .lib-header {
-            padding: 60px 20px; text-align: center; border-bottom: 5px solid var(--gold);
-            background: rgba(0,0,0,0.5); backdrop-filter: blur(10px);
-        }
-        .lib-header h1 { font-size: 40px; font-weight: 950; margin: 0; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; }
-        .lib-header p { font-weight: 700; color: #eee; margin-top: 10px; font-size: 14px; }
+        h1 { text-align: center; color: var(--gold); font-size: 24px; margin: 15px 0; font-weight: 950; text-transform: uppercase; letter-spacing: 2px; }
 
-        .container { padding: 20px; max-width: 1000px; margin: auto; }
-
-        /* 🔍 मज़बूत सर्च सिस्टम (No AI, Pure Speed) */
-        .search-container { margin: -35px auto 30px; max-width: 500px; position: relative; z-index: 10; }
-        .search-bar {
-            width: 100%; padding: 18px 25px; border-radius: 50px; border: 3px solid var(--gold);
-            background: var(--white); color: #000; font-size: 16px; font-weight: 800;
-            box-shadow: 0 15px 35px rgba(255, 215, 0, 0.2); outline: none; box-sizing: border-box;
-        }
-
-        /* 📚 ग्रांड बुक शेल्फ */
-        .shelf-grid {
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
-            gap: 25px; margin-top: 40px;
-        }
-
-        .book-item {
-            perspective: 1000px; transition: 0.4s;
+        /* मुख्य ग्रिड: एक लाइन में 2 किताबें (मोबाइल पर), ताकि 6 किताबें आराम से दिखें */
+        .library-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* एक लाइन में 2 डब्बे */
+            gap: 12px;
+            padding: 10px;
         }
 
         .book-card {
-            background: linear-gradient(145deg, #222, #000); border-radius: 15px;
-            border: 1px solid rgba(255, 215, 0, 0.3); overflow: hidden;
-            position: relative; box-shadow: 0 15px 25px rgba(0,0,0,0.5);
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .book-card:hover { transform: rotateY(-10deg) translateY(-10px); border-color: var(--gold); box-shadow: 0 20px 40px rgba(255, 215, 0, 0.3); }
-
-        .book-cover { width: 100%; height: 230px; object-fit: cover; border-bottom: 3px solid var(--gold); }
-        
-        /* 🏷️ उपलब्धता बैज */
-        .badge {
-            position: absolute; top: 10px; left: 10px; padding: 5px 12px;
-            border-radius: 5px; font-size: 10px; font-weight: 900; background: var(--gold); color: #000;
+            background: var(--card-bg);
+            border: 1.5px solid var(--gold);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            /* 9:16 का अनुपात बनाने के लिए */
+            aspect-ratio: 9 / 16; 
+            display: flex;
+            flex-direction: column;
         }
 
-        .book-details { padding: 12px; text-align: center; }
-        .book-name { font-size: 15px; font-weight: 900; margin-bottom: 5px; color: var(--gold); height: 40px; display: flex; align-items: center; justify-content: center; }
-        .book-id { font-size: 11px; font-weight: 700; color: #aaa; }
-
-        /* ⚡ प्रीमियम बटन्स */
-        .btn-box { display: flex; flex-direction: column; gap: 8px; padding: 12px; }
-        .btn-action {
-            padding: 10px; border-radius: 8px; text-decoration: none; font-size: 12px;
-            font-weight: 900; text-align: center; transition: 0.3s;
+        .book-img {
+            width: 100%;
+            height: 80%; /* फोटो को ज्यादा जगह दी गई है */
+            object-fit: cover;
+            border-bottom: 1px solid var(--gold);
         }
-        .btn-read { background: var(--gold); color: #000; }
-        .btn-order { background: transparent; color: var(--gold); border: 2px solid var(--gold); }
-        .btn-read:active, .btn-order:active { transform: scale(0.95); }
 
-        /* 📱 रीडर स्क्रीन */
-        #reader {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: #000; z-index: 9999;
+        .book-info {
+            padding: 8px;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
-        .reader-nav { background: var(--royal); padding: 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--gold); }
-        iframe { width: 100%; height: calc(100% - 60px); border: none; }
+
+        .book-title {
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--gold);
+            margin: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis; /* नाम बड़ा हो तो ... आ जाएगा */
+        }
+
+        .donor-name {
+            font-size: 10px;
+            color: #ddd;
+            margin-top: 4px;
+        }
+
+        .book-code {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            background: rgba(0,0,0,0.7);
+            color: var(--gold);
+            font-size: 9px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
 
-    <div class="lib-header">
-        <h1>THE ROYAL LIBRARY</h1>
-        <p>SST PRO: ज्ञान की वह विरासत जो आप तक पहुँचेगी 🚩</p>
-    </div>
+    <h1>The Royal Library 🚩</h1>
 
-    <div class="container">
-        <div class="search-container">
-            <input type="text" id="mainSearch" class="search-bar" placeholder="अपनी किताब का नाम लिखें...">
+    <div class="library-grid" id="libraryGrid">
         </div>
-
-        <div class="shelf-grid" id="bookShelf">
-            
-            <div class="book-item">
-                <div class="book-card">
-                    <span class="badge">AVAILABLE</span>
-                    <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=400" class="book-cover">
-                    <div class="book-details">
-                        <div class="book-name">राजस्थान का भूगोल</div>
-                        <div class="book-id">Code: #GEO-101</div>
-                    </div>
-                    <div class="btn-box">
-                        <button onclick="viewBook('PDF_LINK')" class="btn-action btn-read">📖 यहीं पढ़ें</button>
-                        <a href="donor_details.html?book=GEO-101" class="btn-action btn-order">📦 डाक से मंगवाएं</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="book-item">
-                <div class="book-card">
-                    <span class="badge">VVIP NOTES</span>
-                    <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=400" class="book-cover">
-                    <div class="book-details">
-                        <div class="book-name">REET साइकोलॉजी नोट्स</div>
-                        <div class="book-id">Code: #PSY-202</div>
-                    </div>
-                    <div class="btn-box">
-                        <button onclick="viewBook('PDF_LINK')" class="btn-action btn-read">📖 यहीं पढ़ें</button>
-                        <a href="donor_details.html?book=PSY-202" class="btn-action btn-order">📦 डाक से मंगवाएं</a>
-                    </div>
-                </div>
-            </div>
-
-            </div>
-    </div>
-
-    <div id="reader">
-        <div class="reader-nav">
-            <span style="color: var(--gold); font-weight: 950;">SST PRO DIGITAL</span>
-            <button onclick="closeReader()" style="background:var(--gold); border:none; padding:8px 15px; border-radius:5px; font-weight:900;">CLOSE X</button>
-        </div>
-        <iframe id="bookFrame" src=""></iframe>
-    </div>
 
     <script>
-        // 🔍 सर्च स्क्रिप्ट (Super Fast)
-        document.getElementById('mainSearch').addEventListener('keyup', function() {
-            let value = this.value.toUpperCase();
-            let items = document.getElementsByClassName('book-item');
-            for (let i = 0; i < items.length; i++) {
-                let name = items[i].querySelector('.book-name').innerText;
-                if (name.toUpperCase().indexOf(value) > -1) {
-                    items[i].style.display = "";
-                } else {
-                    items[i].style.display = "none";
-                }
-            }
+        // डेटाबेस: जब भी नई किताब आए, बस इस लिस्ट में बढ़ा देना
+        const libraryData = [
+            { title: "Rajasthan History", donor: "Sanjay Dhakar", img: "https://via.placeholder.com/900x1600", code: "SST-001" },
+            { title: "Psychology", donor: "Rahul S.", img: "https://via.placeholder.com/900x1600", code: "SST-002" },
+            { title: "Geography", donor: "Anil Kumar", img: "https://via.placeholder.com/900x1600", code: "SST-003" },
+            { title: "Hindi Sahitya", donor: "Priya Singh", img: "https://via.placeholder.com/900x1600", code: "SST-004" },
+            { title: "Polity", donor: "Vikram", img: "https://via.placeholder.com/900x1600", code: "SST-005" },
+            { title: "Economics", donor: "Suresh", img: "https://via.placeholder.com/900x1600", code: "SST-006" }
+        ];
+
+        const grid = document.getElementById('libraryGrid');
+
+        // लिस्ट को डिस्प्ले करने का फंक्शन
+        libraryData.forEach(book => {
+            grid.innerHTML += `
+                <div class="book-card">
+                    <div class="book-code">${book.code}</div>
+                    <img src="${book.img}" class="book-img" alt="${book.title}">
+                    <div class="book-info">
+                        <p class="book-title">${book.title}</p>
+                        <p class="donor-name">By: ${book.donor}</p>
+                    </div>
+                </div>
+            `;
         });
-
-        // 📖 रीडर फंक्शन्स
-        function viewBook(url) {
-            document.getElementById('bookFrame').src = url;
-            document.getElementById('reader').style.display = "block";
-            document.body.style.overflow = "hidden"; // बैकग्राउंड स्क्रोल बंद
-        }
-
-        function closeReader() {
-            document.getElementById('reader').style.display = "none";
-            document.getElementById('bookFrame').src = "";
-            document.body.style.overflow = "auto";
-        }
     </script>
+
 </body>
 </html>
