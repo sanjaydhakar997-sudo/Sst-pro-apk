@@ -3,80 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SST Pro - Admin Upload</title>
+    <title>SST Pro Admin</title>
     <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-storage-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore-compat.js"></script>
     <style>
-        body { background: #05050a; color: white; font-family: sans-serif; text-align: center; padding: 20px; }
-        .box { background: #121225; padding: 20px; border-radius: 15px; border: 1px solid #ffd700; margin-top: 20px; }
-        input, select { width: 90%; padding: 10px; margin: 10px 0; border-radius: 5px; }
-        button { background: #ffd700; color: black; border: none; padding: 15px 30px; font-weight: bold; border-radius: 5px; cursor: pointer; }
-        #status { margin-top: 20px; color: #ffd700; }
+        body { background-color: #0f0f1a; color: white; font-family: sans-serif; display: flex; justify-content: center; padding: 20px; }
+        .card { background: #1a1a2e; padding: 25px; border-radius: 15px; border: 1px solid #ffd700; width: 100%; max-width: 400px; text-align: center; }
+        input, select, button { width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: none; }
+        input, select { background: #252545; color: white; }
+        button { background: #ffd700; color: black; font-weight: bold; cursor: pointer; }
+        #status { margin-top: 15px; font-size: 14px; color: #ffd700; }
+        .progress-container { background: #252545; border-radius: 10px; height: 10px; width: 100%; display: none; }
+        #progressBar { background: #00ff00; height: 100%; width: 0%; border-radius: 10px; transition: 0.3s; }
     </style>
 </head>
 <body>
 
-    <h2>🚩 SST Pro - Upload Panel</h2>
+<div class="card">
+    <h2>🚩 SST Pro - Admin</h2>
+    <input type="text" id="bookTitle" placeholder="किताब या फाइल का नाम">
+    <select id="category">
+        <option value="The Royal Library">The Royal Library</option>
+        <option value="Safarnama">Safarnama</option>
+    </select>
+    <input type="file" id="photoFile" accept="image/*">
     
-    <div class="box">
-        <input type="text" id="bookTitle" placeholder="किताब या सफरनामा का नाम">
-        <input type="text" id="donorName" placeholder="आपका नाम (By: Admin)">
-        <select id="category">
-            <option value="library">The Royal Library</option>
-            <option value="safarnama">सफरनामा (Safarnama)</option>
-        </select>
-        <p>गैलरी से फोटो चुनें:</p>
-        <input type="file" id="photoFile" accept="image/*">
-        <br><br>
-        <button onclick="uploadEverything()">UPLOAD TO APP</button>
-        <p id="status"></p>
+    <div class="progress-container" id="pContainer">
+        <div id="progressBar"></div>
     </div>
+    
+    <button onclick="uploadProcess()">UPLOAD TO APP</button>
+    <p id="status">तैयार हैं? फोटो चुनें।</p>
+</div>
 
-    <script>
-        // आपका Magic Code यहाँ सेट कर दिया है
-        const firebaseConfig = {
-            apiKey: "AIzaSyASJxjxshpwJZMPtGFKryIo8DNcr8qHTi0",
-            authDomain: "sst-pro-library.firebaseapp.com",
-            projectId: "sst-pro-library",
-            storageBucket: "sst-pro-library.firebasestorage.app",
-            messagingSenderId: "768642848018",
-            appId: "1:768642848018:web:eed62246b7c1c107d14fcb",
-            measurementId: "G-Y67ZP4W52Z"
-        };
+<script>
+    // --- यहाँ अपनी Firebase Details डालें ---
+    const firebaseConfig = {
+        apiKey: "YOUR_API_KEY",
+        authDomain: "sst-pro-library.firebaseapp.com",
+        projectId: "sst-pro-library",
+        storageBucket: "sst-pro-library.firebasestorage.app",
+        messagingSenderId: "YOUR_SENDER_ID",
+        appId: "YOUR_APP_ID"
+    };
 
-        firebase.initializeApp(firebaseConfig);
-        const storage = firebase.storage();
-        const db = firebase.firestore();
+    firebase.initializeApp(firebaseConfig);
+    const storage = firebase.storage();
+    const db = firebase.firestore();
 
-        async function uploadEverything() {
-            const title = document.getElementById('bookTitle').value;
-            const donor = document.getElementById('donorName').value;
-            const category = document.getElementById('category').value;
-            const file = document.getElementById('photoFile').files[0];
-            const status = document.getElementById('status');
+    async function uploadProcess() {
+        const title = document.getElementById('bookTitle').value;
+        const category = document.getElementById('category').value;
+        const file = document.getElementById('photoFile').files[0];
+        const status = document.getElementById('status');
+        const pBar = document.getElementById('progressBar');
+        const pContainer = document.getElementById('pContainer');
 
-            if(!title || !file) { alert("कृपया नाम और फोटो भरें!"); return; }
+        if(!title || !file) { alert("नाम और फोटो दोनों ज़रूरी हैं!"); return; }
 
-            status.innerText = "अपलोड हो रहा है... कृपया रुकें ⏳";
+        const fileName = Date.now() + "_" + file.name;
+        const storageRef = storage.ref('uploads/' + fileName);
+        const uploadTask = storageRef.put(file);
 
-            // 1. Storage में फोटो भेजना
-            const storageRef = storage.ref('uploads/' + file.name);
-            await storageRef.put(file);
-            const downloadURL = await storageRef.getDownloadURL();
+        pContainer.style.display = 'block';
 
-            // 2. Firestore में डेटा सेव करना
-            await db.collection(category).add({
-                title: title,
-                donor: donor,
-                img: downloadURL,
-                time: firebase.firestore.FieldValue.serverTimestamp()
-            });
+        uploadTask.on('state_changed', 
+            (snapshot) => {
+                const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                pBar.style.width = progress + "%";
+                status.innerText = "अपलोड हो रहा है: " + Math.round(progress) + "%";
+            }, 
+            (error) => {
+                status.innerText = "Error: " + error.message;
+                console.error(error);
+            }, 
+            async () => {
+                const downloadURL = await uploadTask.snapshot.ref.getDownloadURL();
+                await db.collection(category).add({
+                    title: title,
+                    img: downloadURL,
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                });
+                status.innerText = "बधाई हो! फोटो लाइव हो गई ✅";
+                pContainer.style.display = 'none';
+            }
+        );
+    }
+</script>
 
-            status.innerText = "बधाई हो! फोटो ऐप में लाइव हो गई है ✅";
-            document.getElementById('bookTitle').value = "";
-        }
-    </script>
 </body>
 </html>
-
