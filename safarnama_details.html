@@ -1,82 +1,139 @@
-<div id="direct-send" class="send-box" style="
-    background: #1a1a2e; 
-    padding: 40px 25px; 
-    border-radius: 45px; 
-    border: 3px solid #ffd700; 
-    color: white; 
-    text-align: center;
-    margin-top: 20px;
-">
-    <h2 style="color: #ffd700; font-size: 30px; margin-bottom: 10px;">DIRECT DISPATCH</h2>
-    <p style="opacity: 0.8; margin-bottom: 30px; font-weight: 600;">एक क्लिक में एड्रेस पाएं और हमसे जुड़ें</p>
-    
-    <div id="address-box" style="
-        display: none; 
-        background: #ffffff; 
-        color: #1a1a2e; 
-        padding: 25px; 
-        border-radius: 25px; 
-        margin-bottom: 25px; 
-        text-align: left; 
-        border: 4px solid #ffd700;
-        box-shadow: 0 10px 30px rgba(255,215,0,0.2);
-    ">
-        <h4 style="margin: 0 0 10px 0; color: #e67e22; font-size: 18px;">🚩 इस पते पर किताब भेजें:</h4>
-        <p style="margin: 0; font-weight: 800; line-height: 1.6; font-size: 15px;">
-            <span style="color: #1a1a2e;">SST PRO HEAD OFFICE</span><br>
-            [आपका पूरा नाम/ऑफिस नाम]<br>
-            [गली/मोहल्ला/मकान नंबर]<br>
-            [शहर, राज्य, पिन कोड]<br>
-            संपर्क: +91 [आपका नंबर]
-        </p>
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SST Pro - सफ़रनामा</title>
+    <style>
+        body { background-color: #fdfae5; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; color: #1a1a2e; }
+        
+        /* 🚩 हेडर */
+        .header {
+            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+            padding: 50px 20px; text-align: center; border-radius: 0 0 50px 50px;
+            border-bottom: 8px solid #ffd700; color: #ffd700;
+        }
+
+        .step-container { padding: 20px; }
+
+        /* 💎 बड़े टेक्स्ट वाला डिजाइन कार्ड */
+        .step-card {
+            background: #ffffff; border-radius: 35px; padding: 30px;
+            margin-bottom: 30px; border-left: 12px solid #ffd700;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .step-title { font-size: 28px; font-weight: 950; margin-bottom: 15px; text-transform: uppercase; }
+        .step-desc { font-size: 15px; font-weight: 700; color: #555; margin-bottom: 20px; }
+
+        /* 📸 स्टेप 1: इमेज अपलोड */
+        .image-upload-box {
+            border: 3px dashed #ffd700; border-radius: 20px; padding: 20px;
+            text-align: center; background: #fffdf0;
+        }
+        .upload-btn { background: #1a1a2e; color: #ffd700; padding: 12px 20px; border-radius: 10px; font-weight: 800; cursor: pointer; display: inline-block; margin-top: 10px; }
+
+        /* 📦 स्टेप 2: व्हाट्सएप फॉर्म */
+        .input-field { width: 90%; padding: 15px; margin-bottom: 15px; border-radius: 12px; border: 2px solid #ddd; font-weight: 700; }
+        
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white; width: 100%; padding: 22px; border: none; border-radius: 20px;
+            font-weight: 950; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+        }
+
+        /* 🎁 स्टेप 3: रिवॉर्ड सेक्शन */
+        .reward-box {
+            display: none; background: #1a1a2e; color: #ffd700; padding: 30px;
+            border-radius: 30px; text-align: center; border: 3px solid #ffd700;
+            animation: slideUp 0.5s ease-out;
+        }
+        @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+        .code-text { font-size: 35px; font-weight: 950; letter-spacing: 5px; color: #ffffff; margin: 15px 0; display: block; border: 2px dashed #ffd700; padding: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1 style="margin: 0; font-size: 42px; font-weight: 950;">सफ़रनामा</h1>
+        <p style="font-weight: 800; color: #ffffff;">शिक्षा की विरासत, हाथ से हाथ 🚩</p>
     </div>
 
-    <input type="text" id="book_info" style="width: 85%; padding: 18px; margin-bottom: 15px; border-radius: 15px; border: none; font-weight: 800;" placeholder="किताब का नाम (उदा: Class 10 History)">
-    
-    <input type="text" id="sst_user_id" style="width: 85%; padding: 18px; margin-bottom: 25px; border-radius: 15px; border: none; font-weight: 800;" placeholder="अपनी SST ID लिखें">
+    <div class="step-container">
 
-    <button onclick="connectNow()" style="
-        background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-        color: white; 
-        width: 100%; 
-        padding: 22px; 
-        border: none; 
-        border-radius: 20px; 
-        font-weight: 950; 
-        font-size: 20px; 
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 12px;
-        box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
-    ">
-        WHATSAPP पर एड्रेस प्राप्त करें 💬
-    </button>
-</div>
+        <div class="step-card">
+            <div class="step-title" style="color: #1a1a2e;">Step 1: किताब की झलक</div>
+            <p class="step-desc">अपनी किताब की 3 से 5 साफ़ फोटो अपलोड करें (Front, Back, and Content Pages)।</p>
+            <div class="image-upload-box">
+                <span style="font-size: 40px;">📸</span><br>
+                <input type="file" id="bookImages" multiple accept="image/*" style="display: none;">
+                <label for="bookImages" class="upload-btn">फोटो चुनें (3-5 Photos)</label>
+                <div id="file-count" style="margin-top: 10px; font-weight: 800; color: #1a1a2e;"></div>
+            </div>
+        </div>
 
-<script>
-function connectNow() {
-    var book = document.getElementById('book_info').value;
-    var id = document.getElementById('sst_user_id').value;
+        <div class="step-card">
+            <div class="step-title" style="color: #25D366;">Step 2: डोनेट करें</div>
+            <p class="step-desc">विवरण भरें और सीधे हमारे WhatsApp पर एड्रेस प्राप्त करें।</p>
+            <input type="text" id="bookName" class="input-field" placeholder="किताब का नाम (उदा: Class 10 Civics)">
+            <input type="text" id="sstID" class="input-field" placeholder="अपनी SST ID लिखें">
+            
+            <button onclick="handleDonation()" class="whatsapp-btn">
+                WHATSAPP पर भेजें ❯
+            </button>
+        </div>
 
-    if(book == "" || id == "") {
-        alert("भाई, पहले किताब का नाम और अपनी ID तो भर दो!");
-        return;
-    }
+        <div id="rewardSection" class="reward-box">
+            <h2 style="margin: 0;">धन्यवाद, SST Warrior! ❤️</h2>
+            <p style="color: #ffffff; opacity: 0.8; margin-top: 10px;">आपकी विरासत एक छात्र का भविष्य बदलेगी।</p>
+            <p style="margin-top: 20px; font-weight: 800;">Social Studies Classes स्पेशल डिस्काउंट कोड:</p>
+            <span class="code-text">SSTPRO2026</span>
+            <p style="font-size: 12px;">(इस कोड का स्क्रीनशॉट ले लें)</p>
+        </div>
 
-    // 1. स्क्रीन पर एड्रेस दिखाओ
-    document.getElementById('address-box').style.display = "block";
-    
-    // 2. व्हाट्सएप मैसेज लिंक बनाओ
-    var myNumber = "91XXXXXXXXXX"; // 🚩 यहाँ अपना मोबाइल नंबर डालें (91 के साथ)
-    var text = "नमस्ते SST Pro टीम!🚩%0A%0A" +
-               "मैं *सफ़रनामा* मिशन के तहत अपनी किताब भेजना चाहता हूँ।%0A%0A" +
-               "*किताब:* " + book + "%0A" +
-               "*SST ID:* " + id + "%0A%0A" +
-               "मैंने स्क्रीन पर एड्रेस देख लिया है, कृपया मुझे आगे की प्रक्रिया बताएं।";
+    </div>
 
-    // 3. व्हाट्सएप खोलो
-    window.open("https://wa.me/" + myNumber + "?text=" + text, "_blank");
-}
-</script>
+    <script>
+        // फोटो काउंट दिखाने के लिए
+        document.getElementById('bookImages').onchange = function() {
+            var files = this.files;
+            if(files.length < 3 || files.length > 5) {
+                alert("भाई, कम से कम 3 और ज़्यादा से ज्यादा 5 फोटो चुनें!");
+                this.value = "";
+            } else {
+                document.getElementById('file-count').innerHTML = files.length + " फोटो चुनी गईं ✅";
+            }
+        };
+
+        function handleDonation() {
+            var name = document.getElementById('bookName').value;
+            var id = document.getElementById('sstID').value;
+            var files = document.getElementById('bookImages').files;
+
+            if(name == "" || id == "" || files.length < 3) {
+                alert("कृपया सारी जानकारी भरें और फोटो अपलोड करें!");
+                return;
+            }
+
+            // स्टेप 3 को दिखाओ
+            document.getElementById('rewardSection').style.display = "block";
+            window.scrollTo(0, document.body.scrollHeight);
+
+            // व्हाट्सएप पर भेजें
+            var myNumber = "91XXXXXXXXXX"; // अपना नंबर यहाँ डालें
+            var text = "नमस्ते SST Pro!🚩%0A%0A" +
+                       "मैं अपनी किताब *सफ़रनामा* मिशन के लिए दान कर रहा हूँ।%0A" +
+                       "*किताब:* " + name + "%0A" +
+                       "*ID:* " + id + "%0A%0A" +
+                       "मैंने फोटो अपलोड कर दी हैं। कृपया एड्रेस दें।";
+            
+            setTimeout(function() {
+                window.open("https://wa.me/" + myNumber + "?text=" + text, "_blank");
+            }, 2000);
+        }
+    </script>
+
+</body>
+</html>
