@@ -107,12 +107,10 @@
             
             <div class="upload-area">
                 <input type="file" id="bookPics" multiple accept="image/*" style="display: none;">
-                
                 <div id="before-upload">
                     <span style="font-size: 40px;">📚</span><br>
                     <label for="bookPics" class="upload-btn">फोटो अपलोड करें</label>
                 </div>
-
                 <div id="after-upload" style="display: none;">
                     <div id="preview-gallery"></div>
                     <label for="bookPics" style="color: #e67e22; font-weight: 800; cursor: pointer; text-decoration: underline; font-size: 14px;">फोटो बदलें (Change)</label>
@@ -142,17 +140,15 @@
                 <h4 style="margin: 0 0 10px 0; color: #e67e22;">📍 इस पते पर कोरियर करें:</h4>
                 <p style="margin: 0; line-height: 1.6;">
                     SST Pro हेड ऑफिस,<br>
-                    [यहाँ अपना पूरा पता लिखें],<br>
-                    पिन कोड - [000000]<br>
-                    संपर्क: +91 [आपका नंबर]
+                    सेंथी, चित्तौड़गढ़,<br>
+                    राजस्थान - 312001<br>
+                    संपर्क: +91 9529812784
                 </p>
             </div>
         </div>
-
     </div>
 
     <script>
-        // फोटो सिलेक्शन और चेंज सिस्टम
         document.getElementById('bookPics').onchange = function(e) {
             const files = e.target.files;
             const before = document.getElementById('before-upload');
@@ -163,7 +159,6 @@
                 before.style.display = "none";
                 after.style.display = "block";
                 gallery.innerHTML = "";
-
                 Array.from(files).forEach(file => {
                     const reader = new FileReader();
                     reader.onload = (event) => {
@@ -196,14 +191,13 @@
             document.getElementById('finalStep').style.display = "block";
             window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 
-            var myNum = "91XXXXXXXXXX"; // अपना नंबर बदलें
-            var msg = "नमस्ते SST Pro!🚩%0Aमैं अपनी किताब *सफ़रनामा* के लिए भेज रहा हूँ।%0A%0A*किताब:* " + name + "%0A*शहर:* " + city + "%0A*पिन:* " + pin + "%0A%0Aमैंने एड्रेस देख लिया है।";
+            var myNum = "919529812784";
+            var msg = "नमस्ते SST Pro!🚩%0Aमैं अपनी किताब *सफ़रनामा* मिशन के लिए भेज रहा हूँ।%0A%0A*किताब:* " + name + "%0A*शहर:* " + city + "%0A*पिन:* " + pin + "%0A%0Aमैंने एड्रेस (सेंथी, चित्तौड़गढ़) देख लिया है।";
             
             setTimeout(function() {
                 window.open("https://wa.me/" + myNum + "?text=" + msg, "_blank");
             }, 1500);
         }
     </script>
-
 </body>
 </html>
