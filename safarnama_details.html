@@ -1,165 +1,82 @@
-<!DOCTYPE html>
-<html lang="hi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SST Pro - सफ़रनामा</title>
-    <style>
-        body { 
-            background-color: #fdfae5; 
-            font-family: 'Segoe UI', sans-serif; 
-            margin: 0; padding: 0; color: #1a1a2e;
-            scroll-behavior: smooth;
-        }
-
-        /* 🚩 रॉयल हेडर */
-        .safarnama-header {
-            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
-            padding: 60px 20px;
-            text-align: center;
-            border-radius: 0 0 60px 60px;
-            border-bottom: 8px solid #ffd700;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-
-        /* 💎 विशाल डोनेट बटन (The Big Action) */
-        .massive-donate-btn {
-            display: block;
-            background: linear-gradient(135deg, #ffd700 0%, #ffcc00 50%, #d4ac0d 100%);
-            color: #1a1a2e;
-            text-align: center;
-            padding: 30px 20px; /* एक्स्ट्रा बड़ा और मोटा */
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 950;
-            font-size: 24px; /* भारी फ़ॉन्ट */
-            margin: -45px 15px 35px 15px;
-            box-shadow: 0 15px 40px rgba(253, 185, 49, 0.6);
-            border: 5px solid #ffffff;
-            position: relative;
-            z-index: 100;
-            text-transform: uppercase;
-            animation: pulse 2s infinite; /* ध्यान खींचने के लिए */
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.03); }
-            100% { transform: scale(1); }
-        }
-
-        .content-area { padding: 0 20px 40px 20px; }
-
-        /* 📋 मज़बूत निर्देश कार्ड */
-        .instruction-card {
-            background: #ffffff;
-            border-radius: 35px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
-            border-left: 12px solid #ffd700;
-        }
-
-        .step-row {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin-bottom: 25px;
-        }
-
-        .step-circle {
-            background: #1a1a2e;
-            color: #ffd700;
-            min-width: 45px; height: 45px;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 950;
-            font-size: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        .step-text h3 { margin: 0; font-size: 19px; color: #1a1a2e; font-weight: 900; }
-        .step-text p { margin: 5px 0 0 0; font-size: 14px; color: #555; font-weight: 600; line-height: 1.4; }
-
-        /* 🏛️ सुरक्षित सेंड सेक्शन */
-        .send-box {
-            background: linear-gradient(135deg, #1a1a2e 0%, #000000 100%);
-            padding: 40px 25px;
-            border-radius: 45px;
-            border: 3px solid #ffd700;
-            color: white;
-            text-align: center;
-        }
-
-        .form-input {
-            width: 90%; padding: 18px; margin-bottom: 20px;
-            border-radius: 15px; border: none; font-size: 16px; font-weight: 800;
-        }
-
-        .final-btn {
-            background: #ffd700; color: #1a1a2e; width: 100%;
-            padding: 20px; border: none; border-radius: 20px;
-            font-weight: 950; font-size: 20px; cursor: pointer;
-            text-transform: uppercase;
-        }
-    </style>
-</head>
-<body>
-
-    <div class="safarnama-header">
-        <h1 style="margin: 0; font-size: 40px; font-weight: 950; color: #ffd700; text-transform: uppercase;">सफ़रनामा</h1>
-        <p style="margin: 5px 0 0 0; color: #ffffff; font-weight: 800;">विरासत आपकी, ज़िम्मेदारी हमारी 🚩</p>
-    </div>
-
-    <a href="#direct-send" class="massive-donate-btn">किताब यहाँ से भेजें ❯</a>
-
-    <div class="content-area">
-
-        <div class="instruction-card">
-            <h2 style="font-size: 26px; margin-top: 0; margin-bottom: 30px; text-align: center;">सिर्फ 3 आसान निर्देश</h2>
-            
-            <div class="step-row">
-                <div class="step-circle">1</div>
-                <div class="step-text">
-                    <h3>विवरण भरें</h3>
-                    <p>नीचे दिए गए बॉक्स में किताब का नाम और अपनी SST ID भरें।</p>
-                </div>
-            </div>
-
-            <div class="step-row">
-                <div class="step-circle">2</div>
-                <div class="step-text">
-                    <h3>एड्रेस प्राप्त करें</h3>
-                    <p>सबमिट करते ही आपको हमारा हेड ऑफिस एड्रेस मिल जाएगा।</p>
-                </div>
-            </div>
-
-            <div class="step-row">
-                <div class="step-circle">3</div>
-                <div class="step-text">
-                    <h3>किताब कोरियर करें</h3>
-                    <p>किताब हमें भेजें, हम उस पर सफ़रनामा मुहर लगाकर उसे आगे बढ़ाएंगे।</p>
-                </div>
-            </div>
-        </div>
-
-        <div id="direct-send" class="send-box">
-            <h2 style="color: #ffd700; font-size: 30px; margin-bottom: 10px;">Direct Dispatch</h2>
-            <p style="opacity: 0.8; margin-bottom: 30px; font-weight: 600;">आपकी पहचान पूरी तरह गुप्त रहेगी</p>
-            
-            <input type="text" class="form-input" placeholder="किताब का नाम (उदा: NCERT SST)">
-            <input type="text" class="form-input" placeholder="SST ID दर्ज करें">
-            
-            <button class="final-btn">एड्रेस और कूपन अनलॉक करें 🛡️</button>
-        </div>
-
-        <p style="text-align: center; color: #1a1a2e; font-weight: 900; margin-top: 30px; font-size: 12px; letter-spacing: 1px;">
-            SST PRO OFFICIAL VVIP SYSTEM
+<div id="direct-send" class="send-box" style="
+    background: #1a1a2e; 
+    padding: 40px 25px; 
+    border-radius: 45px; 
+    border: 3px solid #ffd700; 
+    color: white; 
+    text-align: center;
+    margin-top: 20px;
+">
+    <h2 style="color: #ffd700; font-size: 30px; margin-bottom: 10px;">DIRECT DISPATCH</h2>
+    <p style="opacity: 0.8; margin-bottom: 30px; font-weight: 600;">एक क्लिक में एड्रेस पाएं और हमसे जुड़ें</p>
+    
+    <div id="address-box" style="
+        display: none; 
+        background: #ffffff; 
+        color: #1a1a2e; 
+        padding: 25px; 
+        border-radius: 25px; 
+        margin-bottom: 25px; 
+        text-align: left; 
+        border: 4px solid #ffd700;
+        box-shadow: 0 10px 30px rgba(255,215,0,0.2);
+    ">
+        <h4 style="margin: 0 0 10px 0; color: #e67e22; font-size: 18px;">🚩 इस पते पर किताब भेजें:</h4>
+        <p style="margin: 0; font-weight: 800; line-height: 1.6; font-size: 15px;">
+            <span style="color: #1a1a2e;">SST PRO HEAD OFFICE</span><br>
+            [आपका पूरा नाम/ऑफिस नाम]<br>
+            [गली/मोहल्ला/मकान नंबर]<br>
+            [शहर, राज्य, पिन कोड]<br>
+            संपर्क: +91 [आपका नंबर]
         </p>
-
     </div>
 
-</body>
-</html>
+    <input type="text" id="book_info" style="width: 85%; padding: 18px; margin-bottom: 15px; border-radius: 15px; border: none; font-weight: 800;" placeholder="किताब का नाम (उदा: Class 10 History)">
+    
+    <input type="text" id="sst_user_id" style="width: 85%; padding: 18px; margin-bottom: 25px; border-radius: 15px; border: none; font-weight: 800;" placeholder="अपनी SST ID लिखें">
+
+    <button onclick="connectNow()" style="
+        background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+        color: white; 
+        width: 100%; 
+        padding: 22px; 
+        border: none; 
+        border-radius: 20px; 
+        font-weight: 950; 
+        font-size: 20px; 
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+    ">
+        WHATSAPP पर एड्रेस प्राप्त करें 💬
+    </button>
+</div>
+
+<script>
+function connectNow() {
+    var book = document.getElementById('book_info').value;
+    var id = document.getElementById('sst_user_id').value;
+
+    if(book == "" || id == "") {
+        alert("भाई, पहले किताब का नाम और अपनी ID तो भर दो!");
+        return;
+    }
+
+    // 1. स्क्रीन पर एड्रेस दिखाओ
+    document.getElementById('address-box').style.display = "block";
+    
+    // 2. व्हाट्सएप मैसेज लिंक बनाओ
+    var myNumber = "91XXXXXXXXXX"; // 🚩 यहाँ अपना मोबाइल नंबर डालें (91 के साथ)
+    var text = "नमस्ते SST Pro टीम!🚩%0A%0A" +
+               "मैं *सफ़रनामा* मिशन के तहत अपनी किताब भेजना चाहता हूँ।%0A%0A" +
+               "*किताब:* " + book + "%0A" +
+               "*SST ID:* " + id + "%0A%0A" +
+               "मैंने स्क्रीन पर एड्रेस देख लिया है, कृपया मुझे आगे की प्रक्रिया बताएं।";
+
+    // 3. व्हाट्सएप खोलो
+    window.open("https://wa.me/" + myNumber + "?text=" + text, "_blank");
+}
+</script>
