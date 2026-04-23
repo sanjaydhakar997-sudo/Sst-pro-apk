@@ -5,107 +5,131 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Royal Library - SST Pro</title>
     <style>
-        :root { --gold: #ffd700; --dark-bg: #05050a; --royal-blue: #1a1a2e; }
-        body { background: var(--dark-bg); font-family: 'Poppins', sans-serif; color: #fff; margin: 0; padding: 0; overflow-x: hidden; }
+        :root { --gold: #ffd700; --dark-bg: #05050a; --royal-blue: #121225; }
+        body { background: var(--dark-bg); font-family: 'Poppins', sans-serif; color: #fff; margin: 0; padding: 0; }
 
-        /* टॉप सुंदर लाइन */
-        .top-line {
+        /* हेडर और ऊपर की शानदार लाइन */
+        .header-section { text-align: center; padding: 20px 10px; }
+        .royal-line { 
+            height: 2px; width: 60%; margin: auto;
             background: linear-gradient(90deg, transparent, var(--gold), transparent);
-            height: 2px; width: 100%; margin-top: 20px;
+            position: relative;
         }
-        .header-text {
-            text-align: center; color: var(--gold); font-size: 28px; font-weight: 900;
-            text-transform: uppercase; letter-spacing: 3px; margin: 10px 0;
-            text-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+        .royal-line::after {
+            content: '🚩'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); font-size: 14px;
         }
+        h1 { color: var(--gold); font-size: 22px; text-transform: uppercase; letter-spacing: 2px; margin: 15px 0 5px; font-weight: 900; }
 
-        /* किताबों का ग्रिड */
+        /* ग्रिड और छोटे बॉक्स */
         .library-grid {
             display: grid; grid-template-columns: repeat(2, 1fr);
-            gap: 15px; padding: 15px;
+            gap: 10px; padding: 10px;
         }
 
-        /* किताब का कार्ड */
+        /* छोटे स्लीक कार्ड */
         .book-card {
-            background: var(--royal-blue); border: 1px solid rgba(255, 215, 0, 0.3);
-            border-radius: 15px; overflow: hidden; aspect-ratio: 9/16;
-            position: relative; transition: all 0.4s ease;
-            animation: fadeIn 0.8s ease forwards; opacity: 0;
+            background: var(--royal-blue); border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 10px; overflow: hidden; aspect-ratio: 9/16;
+            position: relative; transition: 0.4s;
+            opacity: 0; transform: scale(0.9);
+            animation: popIn 0.6s cubic-bezier(0.17, 0.67, 0.83, 0.67) forwards;
         }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        .book-card:hover { transform: translateY(-10px); border-color: var(--gold); box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2); }
+        @keyframes popIn {
+            to { opacity: 1; transform: scale(1); }
+        }
 
-        .book-img { width: 100%; height: 75%; object-fit: cover; border-bottom: 1px solid var(--gold); }
+        .book-card:hover { border-color: var(--gold); transform: translateY(-5px); box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3); }
+
+        .book-img { width: 100%; height: 72%; object-fit: cover; }
         
-        .book-info { padding: 10px; text-align: center; }
-        .book-title { font-size: 14px; font-weight: 700; color: var(--gold); margin: 0; }
-        .book-donor { font-size: 10px; color: #aaa; margin-top: 5px; }
+        .book-info { padding: 6px; text-align: center; }
+        .book-title { font-size: 11px; font-weight: 700; color: var(--gold); margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .book-donor { font-size: 8px; color: #aaa; margin: 2px 0; }
+
+        /* बीच का प्रीमियम डिवाइडर (Design) */
+        .divider {
+            display: flex; align-items: center; justify-content: center; margin: 20px 0;
+        }
+        .divider-line { height: 1px; width: 30%; background: rgba(255, 215, 0, 0.3); }
+        .divider-icon { color: var(--gold); margin: 0 10px; font-size: 18px; animation: pulse 2s infinite; }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.6; }
+        }
 
         /* मोटिवेशन पट्टी */
         .motivation-strip {
-            background: linear-gradient(45deg, #b8860b, #ffd700);
-            color: #000; padding: 15px; margin: 25px 0;
-            font-weight: 900; font-style: italic; font-size: 16px;
-            text-align: center; box-shadow: 0 5px 20px rgba(255, 215, 0, 0.3);
-            transform: skewY(-1deg);
+            background: linear-gradient(135deg, #b8860b, #ffd700);
+            color: #000; padding: 12px; margin: 15px 0;
+            font-weight: 900; font-size: 13px; text-align: center;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+            border-left: 5px solid #000; border-right: 5px solid #000;
         }
 
         .read-btn {
-            position: absolute; bottom: 10px; right: 10px;
-            background: var(--gold); color: #000; font-size: 10px;
-            padding: 5px 10px; border-radius: 5px; font-weight: 800;
-            text-decoration: none;
+            background: var(--gold); color: #000; font-size: 9px;
+            padding: 4px 8px; border-radius: 3px; font-weight: 800;
+            text-decoration: none; display: inline-block; margin-top: 2px;
         }
     </style>
 </head>
 <body>
 
-    <div class="top-line"></div>
-    <h1 class="header-text">The Royal Library 🚩</h1>
-    <p style="text-align: center; font-size: 12px; opacity: 0.7; margin-top: -10px;">ज्ञान की अनमोल विरासत</p>
-
-    <div class="library-grid" id="grid1">
-        </div>
-
-    <div class="motivation-strip">
-        "कलम की ताकत दुनिया की हर ताकत से बड़ी है।"
+    <div class="header-section">
+        <div class="royal-line"></div>
+        <h1>The Royal Library</h1>
+        <div class="royal-line"></div>
     </div>
 
-    <div class="library-grid" id="grid2">
-        </div>
+    <div class="library-grid" id="grid1"></div>
+
+    <div class="divider">
+        <div class="divider-line"></div>
+        <div class="divider-icon">✦</div>
+        <div class="divider-line"></div>
+    </div>
+
+    <div class="motivation-strip">
+        "विरासत वही है जो किसी के काम आए।"
+    </div>
+
+    <div class="library-grid" id="grid2"></div>
 
     <script>
-        const booksBatch1 = [
-            { title: "Dummy Book 1", donor: "SST Pro", img: "https://via.placeholder.com/900x1600/1a1a2e/ffd700?text=Book+1", pdf: "#" },
-            { title: "Dummy Book 2", donor: "SST Pro", img: "https://via.placeholder.com/900x1600/1a1a2e/ffd700?text=Book+2", pdf: "#" },
-            { title: "Dummy Book 3", donor: "SST Pro", img: "https://via.placeholder.com/900x1600/1a1a2e/ffd700?text=Book+3", pdf: "#" },
-            { title: "Dummy Book 4", donor: "SST Pro", img: "https://via.placeholder.com/900x1600/1a1a2e/ffd700?text=Book+4", pdf: "#" }
+        // डमी डेटा (इसे आप अपनी असली किताबों से बदल सकते हैं)
+        const books1 = [
+            { title: "Book Alpha", donor: "Admin", img: "https://via.placeholder.com/200x350/111/ffd700?text=SST+Pro", pdf: "#" },
+            { title: "Book Beta", donor: "Admin", img: "https://via.placeholder.com/200x350/111/ffd700?text=SST+Pro", pdf: "#" },
+            { title: "Book Gamma", donor: "Admin", img: "https://via.placeholder.com/200x350/111/ffd700?text=SST+Pro", pdf: "#" },
+            { title: "Book Delta", donor: "Admin", img: "https://via.placeholder.com/200x350/111/ffd700?text=SST+Pro", pdf: "#" }
         ];
 
-        const booksBatch2 = [
-            { title: "Dummy Book 5", donor: "SST Pro", img: "https://via.placeholder.com/900x1600/1a1a2e/ffd700?text=Book+5", pdf: "#" },
-            { title: "Dummy Book 6", donor: "SST Pro", img: "https://via.placeholder.com/900x1600/1a1a2e/ffd700?text=Book+6", pdf: "#" }
+        const books2 = [
+            { title: "Book Epsilon", donor: "Admin", img: "https://via.placeholder.com/200x350/111/ffd700?text=SST+Pro", pdf: "#" },
+            { title: "Book Zeta", donor: "Admin", img: "https://via.placeholder.com/200x350/111/ffd700?text=SST+Pro", pdf: "#" }
         ];
 
-        function displayBooks(books, gridId) {
+        function loadBooks(data, gridId) {
             const grid = document.getElementById(gridId);
-            books.forEach((book, index) => {
+            data.forEach((book, i) => {
                 grid.innerHTML += `
-                    <div class="book-card" style="animation-delay: ${index * 0.1}s">
+                    <div class="book-card" style="animation-delay: ${i * 0.15}s">
                         <img src="${book.img}" class="book-img">
                         <div class="book-info">
                             <p class="book-title">${book.title}</p>
                             <p class="book-donor">By: ${book.donor}</p>
-                            <a href="${book.pdf}" class="read-btn">READ</a>
+                            <a href="${book.pdf}" class="read-btn">VIEW PDF</a>
                         </div>
                     </div>
                 `;
             });
         }
 
-        displayBooks(booksBatch1, 'grid1');
-        displayBooks(booksBatch2, 'grid2');
+        loadBooks(books1, 'grid1');
+        loadBooks(books2, 'grid2');
     </script>
 
 </body>
