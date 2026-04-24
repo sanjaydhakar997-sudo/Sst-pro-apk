@@ -6,61 +6,80 @@
     <title>The Royal Library - SST Pro</title>
     <style>
         :root { --gold: #ffd700; --royal: #1a1a2e; --dark: #0c0c14; }
-        body { background: var(--dark); font-family: 'Poppins', sans-serif; color: #fff; margin: 0; padding: 20px; }
+        body { background: var(--dark); font-family: 'Poppins', sans-serif; color: #fff; margin: 0; padding: 10px; }
         
-        header { text-align: center; padding: 20px 0; border-bottom: 1px solid rgba(255,215,0,0.2); margin-bottom: 30px; }
-        h1 { color: var(--gold); text-transform: uppercase; letter-spacing: 4px; margin: 0; font-size: 24px; }
-        .sub-h { font-size: 12px; opacity: 0.6; }
+        header { text-align: center; padding: 15px 0; border-bottom: 1px solid rgba(255,215,0,0.1); margin-bottom: 20px; }
+        h1 { color: var(--gold); font-size: 22px; text-transform: uppercase; letter-spacing: 2px; margin: 0; }
 
-        .library-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(165px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
+        /* छोटा ग्रिड ताकि ज्यादा बुक्स दिखें */
+        .library-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(145px, 1fr)); 
+            gap: 12px; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
 
-        /* प्रीमियम बुक कार्ड */
-        .book-card { background: var(--royal); border-radius: 20px; border: 1px solid rgba(255,215,0,0.2); overflow: hidden; position: relative; cursor: pointer; transition: 0.4s; }
-        .book-card:hover { transform: translateY(-8px); border-color: var(--gold); box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+        .book-card { 
+            background: var(--royal); 
+            border-radius: 15px; 
+            border: 1px solid rgba(255,215,0,0.15); 
+            overflow: hidden; 
+            position: relative; 
+            cursor: pointer; 
+            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .book-card:hover { transform: translateY(-5px); border-color: var(--gold); }
         
-        .book-img { width: 100%; height: 210px; object-fit: cover; }
+        .book-img { width: 100%; height: 180px; object-fit: cover; }
         
-        /* टैग्स स्टाइल */
-        .photo-badge { position: absolute; top: 12px; left: 12px; background: rgba(0,0,0,0.8); color: var(--gold); padding: 4px 10px; border-radius: 8px; font-size: 10px; font-weight: bold; border: 1px solid var(--gold); }
-        .price-badge { position: absolute; top: 12px; right: 12px; padding: 4px 10px; border-radius: 8px; font-size: 10px; font-weight: 900; }
+        .photo-badge { position: absolute; top: 8px; left: 8px; background: rgba(0,0,0,0.8); color: var(--gold); padding: 3px 7px; border-radius: 6px; font-size: 9px; font-weight: bold; border: 1px solid var(--gold); }
+        .price-badge { position: absolute; top: 8px; right: 8px; padding: 3px 7px; border-radius: 6px; font-size: 9px; font-weight: 900; }
         .is-free { background: #28a745; color: #fff; }
         .is-paid { background: var(--gold); color: #000; }
 
-        .info-box { padding: 15px; }
-        .title { font-size: 15px; font-weight: bold; color: var(--gold); margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .meta { font-size: 11px; color: #aaa; margin-top: 6px; line-height: 1.4; }
-        .subject-tag { background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px; display: inline-block; margin-top: 5px; color: #fff; font-size: 9px; }
+        .info-box { padding: 10px; text-align: left; }
+        .title { font-size: 13px; font-weight: bold; color: var(--gold); margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .meta { font-size: 10px; color: #bbb; margin-top: 5px; }
 
         /* स्लाइडर मोडल */
-        #sliderModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); z-index: 9999; flex-direction: column; align-items: center; justify-content: center; }
-        .modal-content { position: relative; width: 95%; max-width: 450px; text-align: center; }
-        .slide-img { width: 100%; max-height: 75vh; object-fit: contain; border-radius: 15px; }
+        #sliderModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.97); z-index: 9999; flex-direction: column; align-items: center; justify-content: center; }
+        .modal-content { width: 92%; max-width: 420px; text-align: center; position: relative; }
+        .slide-img { width: 100%; max-height: 65vh; border-radius: 15px; object-fit: contain; box-shadow: 0 0 30px rgba(255,215,0,0.15); }
         
-        .nav { position: absolute; top: 50%; transform: translateY(-50%); background: var(--gold); color: #000; border: none; width: 45px; height: 45px; border-radius: 50%; font-size: 24px; cursor: pointer; font-weight: bold; }
-        .prev { left: -15px; }
-        .next { right: -15px; }
+        .nav { position: absolute; top: 40%; background: var(--gold); border: none; width: 40px; height: 40px; border-radius: 50%; font-size: 20px; cursor: pointer; font-weight: bold; }
+        .prev { left: -15px; } .next { right: -15px; }
         
-        .close { position: absolute; top: -60px; right: 0; color: #fff; font-size: 40px; cursor: pointer; }
-        .contact-wa { background: #25D366; color: white; text-decoration: none; padding: 15px 40px; border-radius: 50px; margin-top: 25px; font-weight: bold; display: inline-block; font-size: 16px; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3); }
+        .close-x { position: absolute; top: -50px; right: 0; color: #fff; font-size: 35px; cursor: pointer; }
+        
+        /* परचेज बटन जो दूसरे फॉर्म पर ले जाएगा */
+        .purchase-btn { 
+            background: var(--gold); color: #000; text-decoration: none; 
+            padding: 15px 30px; border-radius: 50px; margin-top: 25px; 
+            font-weight: 900; display: inline-block; width: 85%; font-size: 16px;
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.2);
+        }
     </style>
 </head>
 <body>
 
     <header>
         <h1>THE ROYAL LIBRARY 🚩</h1>
-        <p class="sub-h">SST Pro - शिक्षा की नई विरासत</p>
     </header>
 
     <div class="library-grid" id="mainGrid"></div>
 
     <div id="sliderModal">
         <div class="modal-content">
-            <span class="close" onclick="closeSlider()">&times;</span>
+            <span class="close-x" onclick="closeSlider()">&times;</span>
             <button class="nav prev" onclick="moveSlide(-1)">❮</button>
             <img id="activeImg" class="slide-img">
             <button class="nav next" onclick="moveSlide(1)">❯</button>
-            <h3 id="activeTitle" style="color:var(--gold); margin-top:20px;"></h3>
-            <a id="waLink" href="#" class="contact-wa">अभी प्राप्त करें (WhatsApp)</a>
+            
+            <h3 id="activeTitle" style="color:var(--gold); margin: 20px 0 5px 0; font-size: 20px;"></h3>
+            <p id="activeDonor" style="font-size:13px; color:#ccc; margin-bottom: 20px;"></p>
+            
+            <a id="purchaseLink" href="#" class="purchase-btn">अभी प्राप्त करें ❯</a>
         </div>
     </div>
 
@@ -74,28 +93,20 @@
         try {
             const response = await fetch(`https://res.cloudinary.com/${cloudName}/image/list/${tag}.json?cb=${Date.now()}`);
             const data = await response.json();
-            
             const grouped = {}; 
 
             data.resources.forEach(img => {
                 const ctx = img.context ? img.context.custom : {};
-                // setid के आधार पर ग्रुपिंग, अगर नहीं है तो इमेज की ID ही ग्रुप होगी
                 const sid = ctx.setid || img.public_id; 
-                
                 if (!grouped[sid]) {
                     grouped[sid] = {
                         title: ctx.title || "Untitled Book",
-                        donor: ctx.donor || "Anonymous",
+                        donor: ctx.donor || "SST Member",
                         price: ctx.price || 0,
-                        phone: ctx.phone || "",
-                        type: ctx.type || "Book",
-                        subject: ctx.subject || "General",
-                        class: ctx.class || "All",
                         images: []
                     };
                 }
-                const url = `https://res.cloudinary.com/${cloudName}/image/upload/${img.public_id}.${img.format}`;
-                grouped[sid].images.push(url);
+                grouped[sid].images.push(`https://res.cloudinary.com/${cloudName}/image/upload/${img.public_id}.${img.format}`);
             });
 
             const grid = document.getElementById('mainGrid');
@@ -104,38 +115,36 @@
             Object.values(grouped).forEach(book => {
                 const card = document.createElement('div');
                 card.className = 'book-card';
-                card.onclick = () => openSlider(book.images, book.title, book.phone);
-
+                card.onclick = () => openSlider(book.images, book.title, book.donor);
                 card.innerHTML = `
-                    <div class="photo-badge">📸 ${book.images.length} पन्ने</div>
+                    <div class="photo-badge">📸 ${book.images.length}</div>
                     <div class="price-badge ${book.price == 0 ? 'is-free' : 'is-paid'}">
                         ${book.price == 0 ? 'FREE' : '₹' + book.price}
                     </div>
                     <img src="${book.images[0]}" class="book-img">
                     <div class="info-box">
                         <p class="title">${book.title}</p>
-                        <div class="meta">
-                            दाता: ${book.donor}<br>
-                            कक्षा: ${book.class}<br>
-                            <span class="subject-tag">${book.subject} | ${book.type}</span>
-                        </div>
+                        <p class="meta">दाता (Donor): ${book.donor}</p>
                     </div>
                 `;
                 grid.appendChild(card);
             });
-        } catch (e) {
-            console.error("Library load error:", e);
-        }
+        } catch (e) { console.error("Loading Error", e); }
     }
 
-    function openSlider(imgs, title, phone) {
+    function openSlider(imgs, title, donor) {
         albumImages = imgs;
         albumIndex = 0;
         document.getElementById('activeImg').src = albumImages[0];
         document.getElementById('activeTitle').innerText = title;
-        document.getElementById('waLink').href = `https://wa.me/91${phone}?text=Hi, मुझे लाइब्रेरी से आपकी किताब '${title}' चाहिए।`;
+        document.getElementById('activeDonor').innerText = "दाता (Donor): " + donor;
+        
+        // 🚩 अपने दूसरे फॉर्म (Legacy Builder Request) का नाम यहाँ लिखें
+        const nextFormFile = "legacy-builder-request.html"; 
+        document.getElementById('purchaseLink').href = `${nextFormFile}?book=${encodeURIComponent(title)}&donor=${encodeURIComponent(donor)}`;
+        
         document.getElementById('sliderModal').style.display = 'flex';
-        document.body.style.overflow = 'hidden'; // बैकग्राउंड स्क्रोल बंद
+        document.body.style.overflow = 'hidden'; 
     }
 
     function moveSlide(step) {
@@ -147,7 +156,7 @@
 
     function closeSlider() {
         document.getElementById('sliderModal').style.display = 'none';
-        document.body.style.overflow = 'auto'; 
+        document.body.style.overflow = 'auto';
     }
 
     loadBooks();
