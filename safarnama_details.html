@@ -7,121 +7,130 @@
     <script src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.1/dist/browser-image-compression.js"></script>
     <style>
         :root { --gold: #ffd700; --royal: #1a1a2e; --dark: #0c0c14; }
-        body { background: var(--dark); font-family: 'Poppins', sans-serif; margin: 0; color: #fff; display: flex; align-items: center; justify-content: center; min-height: 100vh; overflow-x: hidden; }
-        
+        body { background: var(--dark); font-family: 'Poppins', sans-serif; margin: 0; color: #fff; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
         .card { background: var(--royal); padding: 30px; border-radius: 30px; border: 2px solid var(--gold); width: 90%; max-width: 400px; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.8); position: relative; }
-        h1 { color: var(--gold); font-size: 26px; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 2px; }
-        p.sub { font-size: 12px; opacity: 0.8; margin-bottom: 20px; }
+        h1 { color: var(--gold); font-size: 26px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; }
         
-        input { width: 100%; padding: 14px; margin: 8px 0; border-radius: 12px; border: 1px solid #333; background: #252545; color: white; box-sizing: border-box; outline: none; font-size: 14px; }
-        input:focus { border-color: var(--gold); }
+        input, select { width: 100%; padding: 14px; margin: 8px 0; border-radius: 12px; border: 1px solid #333; background: #252545; color: white; box-sizing: border-box; outline: none; font-size: 14px; }
+        input:focus, select:focus { border-color: var(--gold); }
 
+        .price-btn-group { display: flex; gap: 10px; margin: 10px 0; }
+        .p-btn { flex: 1; padding: 12px; border-radius: 12px; border: 1px solid var(--gold); cursor: pointer; font-weight: bold; transition: 0.3s; }
+        
         .file-label { display: block; border: 2px dashed var(--gold); padding: 15px; border-radius: 15px; cursor: pointer; margin-top: 10px; background: rgba(255, 215, 0, 0.05); }
-        .file-label span { font-size: 13px; color: var(--gold); }
-
-        .btn { background: var(--gold); color: #000; width: 100%; padding: 16px; border-radius: 50px; font-weight: 900; border: none; font-size: 16px; cursor: pointer; margin-top: 20px; transition: 0.3s; }
-        .btn:disabled { background: #555; cursor: not-allowed; }
-
-        /* Success Overlay */
-        #successCard { 
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-            background: rgba(0,0,0,0.9); z-index: 100; align-items: center; justify-content: center; 
-        }
-        .pop-up { background: var(--royal); border: 2px solid var(--gold); padding: 40px 20px; border-radius: 30px; width: 85%; max-width: 350px; text-align: center; animation: zoomIn 0.4s ease; }
-        @keyframes zoomIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .btn { background: var(--gold); color: #000; width: 100%; padding: 16px; border-radius: 50px; font-weight: 900; border: none; font-size: 16px; cursor: pointer; margin-top: 20px; }
         
-        .wa-btn { background: #25D366; color: white; text-decoration: none; display: inline-block; padding: 12px 25px; border-radius: 50px; font-weight: bold; margin-top: 15px; font-size: 14px; }
-        
-        .loader { width: 0%; height: 5px; background: var(--gold); position: absolute; bottom: 0; left: 0; transition: 0.3s; }
+        /* Success Popup Style */
+        #successCard { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 100; align-items: center; justify-content: center; }
+        .pop-up { background: var(--royal); border: 2px solid var(--gold); padding: 40px 20px; border-radius: 30px; width: 85%; max-width: 350px; text-align: center; }
+        .wa-btn { background: #25D366; color: white; text-decoration: none; display: inline-block; padding: 12px 25px; border-radius: 50px; font-weight: bold; margin-top: 15px; }
     </style>
 </head>
 <body>
 
 <div class="card">
     <h1>सफ़रनामा 🚩</h1>
-    <p class="sub">अपनी विरासत को दुनिया से साझा करें</p>
     
     <input type="text" id="userName" placeholder="आपका शुभ नाम">
-    <input type="tel" id="userPhone" placeholder="मोबाइल नंबर (व्यक्तिगत आभार के लिए)">
-    <input type="text" id="bTitle" placeholder="किताब का नाम (जैसे: मनोविज्ञान 12th)">
+    <input type="tel" id="userPhone" placeholder="मोबाइल नंबर (WhatsApp)">
+    <input type="text" id="bTitle" placeholder="किताब/नोट्स का नाम">
     
+    <select id="bType">
+        <option value="Book">किताब (Book)</option>
+        <option value="Notes">नोट्स (Notes)</option>
+    </select>
+
+    <select id="bClass">
+        <option value="10th">10th Class</option>
+        <option value="12th">12th Class</option>
+        <option value="College">College</option>
+        <option value="Other">Other</option>
+    </select>
+
+    <div class="price-btn-group">
+        <div onclick="setPrice(0)" id="btnFree" class="p-btn" style="background:var(--gold); color:#000;">मुफ़्त (Free)</div>
+        <div onclick="setPrice('ask')" id="btnPaid" class="p-btn" style="background:transparent; color:var(--gold);">कीमत लगायें</div>
+    </div>
+    <input type="number" id="bPrice" placeholder="कीमत (₹)" style="display:none;">
+
     <label class="file-label">
-        <input type="file" id="bFile" accept="image/*" multiple style="display: none;" onchange="updateFileCount()">
-        <span id="fileStatus">📸 किताबें चुनें (Multiple Select)</span>
+        <input type="file" id="bFile" accept="image/*" multiple style="display:none;" onchange="updateCount()">
+        <span id="fileStatus">📸 किताबें चुनें (Multi)</span>
     </label>
 
-    <button onclick="startMission()" class="btn" id="upBtn">विरासत जमा करें ❯</button>
-    <div class="loader" id="pBar"></div>
+    <button onclick="startUpload()" class="btn" id="upBtn">विरासत जमा करें ❯</button>
 </div>
 
 <div id="successCard">
     <div class="pop-up">
-        <div style="font-size: 50px;">🏆</div>
-        <h2 style="color: var(--gold);">बधाई हो!</h2>
-        <p>आपकी विरासत 'The Royal Library' में सुरक्षित जमा कर ली गई है।</p>
-        <p style="font-size: 12px; color: #aaa;">SST Pro परिवार आपका आभार व्यक्त करता है।</p>
-        
-        <a href="https://wa.me/91XXXXXXXXXX?text=Hi, मैंने अपनी किताबें सफ़रनामा में जमा की हैं।" class="wa-btn">
-             Ask Help / Suggestion 💬
-        </a>
-        <br>
-        <button onclick="location.reload()" style="background:none; border:none; color:var(--gold); margin-top:20px; cursor:pointer;">वापस जाएँ</button>
+        <h2>🏆 बधाई हो!</h2>
+        <p>आपकी विरासत जमा हो गई है।</p>
+        <a href="https://wa.me/91XXXXXXXXXX" class="wa-btn">Ask Help / Suggestion 💬</a>
+        <br><br>
+        <button onclick="location.reload()" style="color:var(--gold); background:none; border:none; cursor:pointer;">वापस जाएँ</button>
     </div>
 </div>
 
 <script>
-    function updateFileCount() {
-        const files = document.getElementById('bFile').files;
-        document.getElementById('fileStatus').innerText = files.length > 0 ? `✅ ${files.length} फोटो सेलेक्ट की गईं` : "📸 किताबें चुनें (Multiple Select)";
+    let isPaid = false;
+
+    function setPrice(p) {
+        const pInput = document.getElementById('bPrice');
+        if(p === 'ask') {
+            isPaid = true;
+            pInput.style.display = 'block';
+            document.getElementById('btnPaid').style.background = 'var(--gold)';
+            document.getElementById('btnPaid').style.color = '#000';
+            document.getElementById('btnFree').style.background = 'transparent';
+            document.getElementById('btnFree').style.color = 'var(--gold)';
+        } else {
+            isPaid = false;
+            pInput.style.display = 'none';
+            pInput.value = 0;
+            document.getElementById('btnFree').style.background = 'var(--gold)';
+            document.getElementById('btnFree').style.color = '#000';
+            document.getElementById('btnPaid').style.background = 'transparent';
+            document.getElementById('btnPaid').style.color = 'var(--gold)';
+        }
     }
 
-    async function startMission() {
+    function updateCount() {
+        const files = document.getElementById('bFile').files;
+        document.getElementById('fileStatus').innerText = `✅ ${files.length} फोटो सेलेक्ट की गईं`;
+    }
+
+    async function startUpload() {
         const files = document.getElementById('bFile').files;
         const name = document.getElementById('userName').value;
         const phone = document.getElementById('userPhone').value;
         const title = document.getElementById('bTitle').value;
+        const type = document.getElementById('bType').value;
+        const bClass = document.getElementById('bClass').value;
+        const price = document.getElementById('bPrice').value || 0;
 
-        if(!files.length || !name || !title) return alert("नाम, नंबर और फोटो ज़रूरी हैं!");
+        if(!files.length || !name || !title || !phone) return alert("सारी जानकारी भरें!");
 
         const btn = document.getElementById('upBtn');
-        const pBar = document.getElementById('pBar');
         btn.disabled = true;
-        btn.innerText = "विरासत सुरक्षित की जा रही है...";
+        btn.innerText = "अपलोड हो रहा है...";
 
-        // हर फोटो को बारी-बारी अपलोड करना
         for (let i = 0; i < files.length; i++) {
-            try {
-                const options = { maxSizeMB: 0.8, maxWidthOrHeight: 1280, useWebWorker: true };
-                const compressedFile = await imageCompression(files[i], options);
-                
-                await uploadToCloud(compressedFile, name, phone, title, i + 1, files.length);
-                pBar.style.width = ((i + 1) / files.length * 100) + "%";
-            } catch (err) {
-                console.error(err);
-            }
-        }
-
-        // सब खत्म होने के बाद पॉप-अप दिखाएँ
-        document.getElementById('successCard').style.display = 'flex';
-    }
-
-    function uploadToCloud(file, name, phone, title, current, total) {
-        return new Promise((resolve, reject) => {
+            const options = { maxSizeMB: 0.7, maxWidthOrHeight: 1280, useWebWorker: true };
+            const compressed = await imageCompression(files[i], options);
+            
             const formData = new FormData();
-            formData.append('file', file);
+            formData.append('file', compressed);
             formData.append('upload_preset', 'sst_pro');
             formData.append('tags', 'sst_pro');
-            
-            // यह डेटा Cloudinary के अंदर छिपे हुए Context में जाएगा (लाइब्रेरी में नहीं दिखेगा)
-            formData.append('context', `donor=${name}|phone=${phone}|title=${title}`);
+            // यहाँ सारा डेटा Context में जा रहा है
+            formData.append('context', `donor=${name}|phone=${phone}|title=${title}|price=${price}|class=${bClass}|type=${type}`);
 
-            const xhr = new XMLHttpRequest();
-            xhr.open('POST', 'https://api.cloudinary.com/v1_1/dppmrodwf/image/upload', true);
-            
-            xhr.onload = () => xhr.status === 200 ? resolve() : reject();
-            xhr.onerror = () => reject();
-            xhr.send(formData);
-        });
+            await fetch('https://api.cloudinary.com/v1_1/dppmrodwf/image/upload', {
+                method: 'POST',
+                body: formData
+            });
+        }
+        document.getElementById('successCard').style.display = 'flex';
     }
 </script>
 </body>
