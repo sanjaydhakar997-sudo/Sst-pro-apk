@@ -6,15 +6,15 @@
     <title>The Royal Library - SST Pro</title>
     <style>
         :root { --gold: #ffd700; --royal: #1a1a2e; --dark: #0c0c14; }
-        body { background: var(--dark); font-family: 'Poppins', sans-serif; color: #fff; margin: 0; padding: 10px; }
+        body { background: var(--dark); font-family: 'Poppins', sans-serif; color: #fff; margin: 0; padding: 10px; overflow-x: hidden; }
         
         header { text-align: center; padding: 15px 0; border-bottom: 1px solid rgba(255,215,0,0.1); margin-bottom: 20px; }
         h1 { color: var(--gold); font-size: 22px; text-transform: uppercase; letter-spacing: 2px; margin: 0; }
 
-        /* छोटा ग्रिड ताकि ज्यादा बुक्स दिखें */
+        /* कॉम्पैक्ट ग्रिड - ताकि एक साथ 4-5 किताबें दिखें */
         .library-grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(145px, 1fr)); 
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); 
             gap: 12px; 
             max-width: 1200px; 
             margin: 0 auto; 
@@ -27,11 +27,11 @@
             overflow: hidden; 
             position: relative; 
             cursor: pointer; 
-            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: 0.3s ease;
         }
         .book-card:hover { transform: translateY(-5px); border-color: var(--gold); }
         
-        .book-img { width: 100%; height: 180px; object-fit: cover; }
+        .book-img { width: 100%; height: 170px; object-fit: cover; }
         
         .photo-badge { position: absolute; top: 8px; left: 8px; background: rgba(0,0,0,0.8); color: var(--gold); padding: 3px 7px; border-radius: 6px; font-size: 9px; font-weight: bold; border: 1px solid var(--gold); }
         .price-badge { position: absolute; top: 8px; right: 8px; padding: 3px 7px; border-radius: 6px; font-size: 9px; font-weight: 900; }
@@ -43,16 +43,15 @@
         .meta { font-size: 10px; color: #bbb; margin-top: 5px; }
 
         /* स्लाइडर मोडल */
-        #sliderModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.97); z-index: 9999; flex-direction: column; align-items: center; justify-content: center; }
-        .modal-content { width: 92%; max-width: 420px; text-align: center; position: relative; }
-        .slide-img { width: 100%; max-height: 65vh; border-radius: 15px; object-fit: contain; box-shadow: 0 0 30px rgba(255,215,0,0.15); }
+        #sliderModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); z-index: 9999; flex-direction: column; align-items: center; justify-content: center; }
+        .modal-content { width: 92%; max-width: 400px; text-align: center; position: relative; }
+        .slide-img { width: 100%; max-height: 60vh; border-radius: 15px; object-fit: contain; box-shadow: 0 0 30px rgba(255,215,0,0.2); }
         
-        .nav { position: absolute; top: 40%; background: var(--gold); border: none; width: 40px; height: 40px; border-radius: 50%; font-size: 20px; cursor: pointer; font-weight: bold; }
-        .prev { left: -15px; } .next { right: -15px; }
+        .nav { position: absolute; top: 40%; background: var(--gold); border: none; width: 35px; height: 35px; border-radius: 50%; cursor: pointer; font-weight: bold; }
+        .prev { left: -10px; } .next { right: -10px; }
+        .close-x { position: absolute; top: -50px; right: 0; color: #fff; font-size: 40px; cursor: pointer; }
         
-        .close-x { position: absolute; top: -50px; right: 0; color: #fff; font-size: 35px; cursor: pointer; }
-        
-        /* परचेज बटन जो दूसरे फॉर्म पर ले जाएगा */
+        /* परचेज बटन जो 'Legacy Builder' फॉर्म पर ले जाएगा */
         .purchase-btn { 
             background: var(--gold); color: #000; text-decoration: none; 
             padding: 15px 30px; border-radius: 50px; margin-top: 25px; 
@@ -76,7 +75,7 @@
             <img id="activeImg" class="slide-img">
             <button class="nav next" onclick="moveSlide(1)">❯</button>
             
-            <h3 id="activeTitle" style="color:var(--gold); margin: 20px 0 5px 0; font-size: 20px;"></h3>
+            <h3 id="activeTitle" style="color:var(--gold); margin: 20px 0 5px 0;"></h3>
             <p id="activeDonor" style="font-size:13px; color:#ccc; margin-bottom: 20px;"></p>
             
             <a id="purchaseLink" href="#" class="purchase-btn">अभी प्राप्त करें ❯</a>
@@ -85,9 +84,12 @@
 
 <script>
     const cloudName = "dppmrodwf"; 
-    const tag = "sst_pro";
+    const tag = "sst_pro"; // सफ़रनामा से आने वाला टैग
     let albumImages = [];
     let albumIndex = 0;
+
+    // 🚩 यहाँ अपनी उस फाइल का नाम लिखें जो 'Legacy Builder' (किताब माँगने वाला फॉर्म) है
+    const requestFormFile = "legacy-builder.html"; 
 
     async function loadBooks() {
         try {
@@ -124,7 +126,7 @@
                     <img src="${book.images[0]}" class="book-img">
                     <div class="info-box">
                         <p class="title">${book.title}</p>
-                        <p class="meta">दाता (Donor): ${book.donor}</p>
+                        <p class="meta">दाता: ${book.donor}</p>
                     </div>
                 `;
                 grid.appendChild(card);
@@ -137,11 +139,10 @@
         albumIndex = 0;
         document.getElementById('activeImg').src = albumImages[0];
         document.getElementById('activeTitle').innerText = title;
-        document.getElementById('activeDonor').innerText = "दाता (Donor): " + donor;
+        document.getElementById('activeDonor').innerText = "दाता: " + donor;
         
-        // 🚩 अपने दूसरे फॉर्म (Legacy Builder Request) का नाम यहाँ लिखें
-        const nextFormFile = "legacy-builder-request.html"; 
-        document.getElementById('purchaseLink').href = `${nextFormFile}?book=${encodeURIComponent(title)}&donor=${encodeURIComponent(donor)}`;
+        // ✨ जादुई लिंकिंग: यह अगले पेज पर किताब और दाता का नाम अपने आप भेज देगा
+        document.getElementById('purchaseLink').href = `${requestFormFile}?book=${encodeURIComponent(title)}&donor=${encodeURIComponent(donor)}`;
         
         document.getElementById('sliderModal').style.display = 'flex';
         document.body.style.overflow = 'hidden'; 
