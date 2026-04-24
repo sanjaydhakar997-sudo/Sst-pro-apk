@@ -26,6 +26,9 @@
         
         .file-label { display: block; border: 2px dashed var(--gold); padding: 20px; border-radius: 20px; cursor: pointer; margin-top: 15px; background: rgba(255, 215, 0, 0.05); }
         .btn { background: var(--gold); color: #000; width: 100%; padding: 18px; border-radius: 50px; font-weight: 900; border: none; font-size: 17px; cursor: pointer; margin-top: 20px; box-shadow: 0 5px 15px rgba(255,215,0,0.3); transition: 0.2s; }
+        
+        /* Help Button Styling */
+        .help-btn { color: var(--gold); font-size: 13px; text-decoration: underline; cursor: pointer; margin-top: 15px; display: inline-block; font-weight: bold; }
 
         #successCard { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 2000; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box; }
         .pop-up { background: var(--royal); border: 2px solid var(--gold); padding: 40px 25px; border-radius: 40px; width: 100%; max-width: 380px; text-align: center; }
@@ -97,6 +100,8 @@
         <span id="fileStatus">📸 फोटो (किताब या पूरे सेट की) *</span>
     </label>
 
+    <div class="help-btn" onclick="openHelp()">सहायता चाहिए? (Contact Admin)</div>
+
     <button onclick="uploadMission()" class="btn" id="upBtn">विरासत साझा करें ❯</button>
     <div class="progress-line" id="pLine"></div>
 </div>
@@ -105,12 +110,17 @@
     <div class="pop-up">
         <div style="font-size: 40px;">🚩</div>
         <h2 style="color: var(--gold);">अभिभूत हैं हम!</h2>
-        <p>आपकी विरासत <b>The Royal Library</b> में सज चुकी है। यह नेकदिली किसी का भविष्य बदल देगी।</p>
+        <p>आपकी विरासत <b>The Royal Library</b> में सज चुकी है।</p>
         <button onclick="location.reload()" style="background:var(--gold); color:#000; border:none; padding:12px 30px; border-radius:30px; font-weight:900; cursor:pointer; margin-top:20px;">धन्यवाद</button>
     </div>
 </div>
 
 <script>
+    // Help function - WhatsApp Admin
+    function openHelp() {
+        window.open("https://wa.me/YOUR_PHONE_NUMBER?text=SST%20Pro%20Safarnama%20Help!", "_blank");
+    }
+
     function checkType(v) {
         document.getElementById('setDetails').style.display = (v === 'Full Set') ? 'block' : 'none';
         document.getElementById('singleSubDiv').style.display = (v === 'Full Set') ? 'none' : 'block';
