@@ -3,132 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>सफ़रनामा 2.0 - SST Pro</title>
+    <title>सफ़रनामा - SST Pro (निःस्वार्थ सेवा)</title>
     <script src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.1/dist/browser-image-compression.js"></script>
     <style>
-        :root { --gold: #ffd700; --royal: #1a1a2e; --dark: #0c0c14; --red: #ff4d4d; }
-        body { background: var(--dark); font-family: 'Poppins', sans-serif; margin: 0; color: #fff; display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 10px; box-sizing: border-box; }
+        :root { --gold: #ffd700; --royal: #1a1a2e; --dark: #0c0c14; }
+        body { background: var(--dark); font-family: 'Poppins', sans-serif; margin: 0; color: #fff; display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 20px; box-sizing: border-box; }
         
-        .card { background: var(--royal); padding: 25px; border-radius: 30px; border: 2px solid var(--gold); width: 100%; max-width: 450px; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.8); position: relative; }
+        .card { background: var(--royal); padding: 30px; border-radius: 30px; border: 2px solid var(--gold); width: 100%; max-width: 420px; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.8); position: relative; }
         
-        .trust-banner { background: var(--gold); color: #000; font-size: 10px; font-weight: 900; padding: 5px 0; position: absolute; top: 0; left: 0; width: 100%; text-transform: uppercase; border-radius: 28px 28px 0 0; }
-        h1 { color: var(--gold); font-size: 26px; margin-top: 25px; margin-bottom: 5px; text-shadow: 0 2px 10px rgba(255,215,0,0.3); }
-        
-        input, select { width: 100%; padding: 12px; margin: 6px 0; border-radius: 10px; border: 1px solid #333; background: #252545; color: white; box-sizing: border-box; outline: none; font-size: 14px; }
+        .trust-banner { background: var(--gold); color: #000; font-size: 11px; font-weight: 900; padding: 5px 0; position: absolute; top: 0; left: 0; width: 100%; text-transform: uppercase; border-radius: 28px 28px 0 0; }
+        h1 { color: var(--gold); font-size: 28px; margin-top: 20px; margin-bottom: 5px; }
+        .tagline { font-size: 13px; color: #ddd; margin-bottom: 20px; line-height: 1.4; }
+
+        input, select { width: 100%; padding: 14px; margin: 8px 0; border-radius: 12px; border: 1px solid #333; background: #252545; color: white; box-sizing: border-box; outline: none; transition: 0.3s; font-size: 14px; }
         input:focus { border-color: var(--gold); }
 
-        /* Price Calculation Box */
-        .price-box { background: rgba(255,215,0,0.1); border: 1px dashed var(--gold); padding: 15px; border-radius: 15px; margin: 15px 0; text-align: left; }
-        .price-box label { font-size: 12px; color: var(--gold); font-weight: bold; }
-        .calc-text { font-size: 13px; margin-top: 5px; color: #ccc; }
-        .calc-text b { color: var(--gold); }
+        /* Location Styling */
+        .loc-box { background: rgba(255, 215, 0, 0.05); border: 1px solid #444; padding: 10px; border-radius: 12px; margin: 10px 0; }
 
-        /* Slip Upload Section (Private) */
-        .slip-section { background: #000; border: 1px solid #444; padding: 15px; border-radius: 15px; margin-top: 15px; }
-        .slip-title { font-size: 14px; color: var(--gold); margin-bottom: 10px; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 5px; }
-        .file-label { display: block; border: 2px dashed #666; padding: 15px; border-radius: 12px; cursor: pointer; font-size: 13px; color: #aaa; transition: 0.3s; }
-        .file-label:hover { border-color: var(--gold); color: white; }
+        .file-label { display: block; border: 2px dashed var(--gold); padding: 15px; border-radius: 20px; cursor: pointer; margin-top: 15px; background: rgba(255, 215, 0, 0.05); font-size: 13px; }
+        
+        /* Private Slip Area */
+        .slip-area { margin-top: 20px; padding: 15px; background: #000; border-radius: 20px; border: 1px solid #333; }
+        .slip-title { font-size: 12px; color: var(--gold); font-weight: bold; margin-bottom: 10px; text-transform: uppercase; }
 
-        .btn { background: var(--gold); color: #000; width: 100%; padding: 16px; border-radius: 50px; font-weight: 900; border: none; font-size: 16px; cursor: pointer; margin-top: 20px; transition: 0.2s; }
-        .btn:disabled { background: #555; cursor: not-allowed; }
-
-        /* Guarantee Card (Success View) */
-        #successCard { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); z-index: 5000; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box; }
-        .guarantee-card { background: linear-gradient(145deg, #1a1a2e, #0c0c14); border: 3px solid var(--gold); padding: 30px; border-radius: 20px; width: 100%; max-width: 350px; text-align: center; box-shadow: 0 0 30px var(--gold); }
+        .btn { background: var(--gold); color: #000; width: 100%; padding: 18px; border-radius: 50px; font-weight: 900; border: none; font-size: 17px; cursor: pointer; margin-top: 20px; box-shadow: 0 5px 15px rgba(255,215,0,0.3); }
+        
+        #successCard { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 2000; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box; }
+        .pop-up { background: var(--royal); border: 3px solid var(--gold); padding: 40px 25px; border-radius: 40px; width: 100%; max-width: 380px; text-align: center; }
     </style>
 </head>
 <body>
 
-<div class="card" id="mainForm">
-    <div class="trust-banner">SST Pro - शिक्षा की विरासत • समय सीमा मुक्त</div>
-    <h1>सफ़रनामा 2.0 🚩</h1>
+<div class="card">
+    <div class="trust-banner">100% निःशुल्क • शुद्ध सेवा • महादान</div>
+    <h1>सफ़रनामा 🚩</h1>
+    <p class="tagline">"पैसे नहीं, दुआएं कमाएं। आपकी किताब किसी का जीवन बदल सकती है।"</p>
     
-    <input type="text" id="userName" placeholder="दाता का नाम (Donor Name) *">
-    <input type="tel" id="userPhone" placeholder="WhatsApp नंबर *">
+    <input type="text" id="userName" placeholder="दाता का शुभ नाम *">
     
-    <input type="text" id="bTitle" placeholder="किताब का नाम (Book Title) *">
-
-    <div class="price-box">
-        <label>प्राइस कैप सिस्टम (20% Limit)</label>
-        <input type="number" id="mrpPrice" placeholder="किताब की असली MRP दर्ज करें *" oninput="calcPrice()">
-        <div class="calc-text">
-            आपको मिलेगा (20%): <b id="finalPay">₹0</b><br>
-            <small>*यह राशि किताब बिकने या वापसी पर देय होगी।</small>
-        </div>
+    <div class="loc-box">
+        <input type="text" id="userLoc" placeholder="आपका शहर / जिला (जैसे: श्रीगंगानगर) *">
     </div>
 
-    <label class="file-label" style="border-style: solid; margin-bottom: 10px;">
-        <input type="file" id="bookImg" accept="image/*" multiple style="display:none;" onchange="updateInfo('bookImg', 'bookStatus')">
-        <span id="bookStatus">📸 किताब की फोटो चुनें *</span>
+    <input type="text" id="bTitle" placeholder="किताब का शीर्षक (Book Title) *">
+    
+    <label class="file-label">
+        <input type="file" id="bFile" accept="image/*" multiple style="display:none;" onchange="updateText('bFile', 'fileStatus')">
+        <span id="fileStatus">📸 किताब की फोटो चुनें *</span>
     </label>
 
-    <div class="slip-section">
+    <div class="slip-area">
         <div class="slip-title">📫 डाक रसीद (Private Slip)</div>
-        <label class="file-label">
-            <input type="file" id="slipImg" accept="image/*" style="display:none;" onchange="updateInfo('slipImg', 'slipStatus')">
-            <span id="slipStatus">पहुंच रसीद की फोटो अपलोड करें *</span>
+        <label class="file-label" style="border-color: #666; background: transparent;">
+            <input type="file" id="slipFile" accept="image/*" style="display:none;" onchange="updateText('slipFile', 'slipStatus')">
+            <span id="slipStatus">पहुंच रसीद की फोटो डालें *</span>
         </label>
-        <div style="font-size: 10px; color: #888; margin-top: 8px;">यह रसीद सिर्फ एडमिन (SST Pro) को दिखेगी।</div>
+        <p style="font-size: 10px; color: #888; margin-top: 5px;">यह रसीद सिर्फ रिकॉर्ड के लिए है, सार्वजनिक नहीं होगी।</p>
     </div>
 
-    <button onclick="startMission()" class="btn" id="upBtn">विरासत और रसीद जमा करें ❯</button>
+    <button onclick="uploadMission()" class="btn" id="upBtn">विरासत दान करें ❯</button>
 </div>
 
 <div id="successCard">
-    <div class="guarantee-card">
-        <div style="font-size: 40px;">🛡️</div>
-        <h2 style="color: var(--gold);">SST गारंटी कार्ड</h2>
-        <p style="font-size: 13px; color: #eee;">आपकी विरासत "सफरनामा" में दर्ज हो चुकी है।</p>
-        <hr style="border: 0.5px solid #333;">
-        <div style="text-align: left; font-size: 14px; margin: 15px 0;">
-            🆔 ID: <b id="cardID">---</b><br>
-            📖 बुक वैल्यू (20%): <b id="cardVal">₹0</b><br>
+    <div class="pop-up">
+        <div style="font-size: 50px;">📜</div>
+        <h2 style="color: var(--gold);">सफ़रनामा में आपका स्वागत!</h2>
+        <p>आपकी किताब और रसीद हमारे पास सुरक्षित पहुँच गई है।</p>
+        <div style="background: #252545; padding: 15px; border-radius: 15px; text-align: left; font-size: 14px; border: 1px solid var(--gold); margin: 15px 0;">
+            📍 स्थान: <b id="displayLoc">---</b><br>
             🚚 वापसी खर्च: <b>SST Pro वहन करेगा</b><br>
-            ⏳ समय सीमा: <b>असीमित (None)</b>
+            🛡️ समय सीमा: <b>असीमित</b>
         </div>
-        <p style="font-size: 11px; color: var(--gold);">इसका स्क्रीनशॉट लेकर सुरक्षित रखें।</p>
-        <button onclick="location.reload()" style="background:var(--gold); color:#000; border:none; padding:10px 20px; border-radius:10px; font-weight:900; cursor:pointer;">धन्यवाद</button>
+        <button onclick="location.reload()" style="background:var(--gold); color:#000; border:none; padding:12px 30px; border-radius:30px; font-weight:900; cursor:pointer;">प्रणाम</button>
     </div>
 </div>
 
 <script>
-    // 20% कैलकुलेशन लॉजिक
-    function calcPrice() {
-        const mrp = document.getElementById('mrpPrice').value;
-        const reward = Math.floor(mrp * 0.20);
-        document.getElementById('finalPay').innerText = "₹" + reward;
-    }
-
-    function updateInfo(id, statusId) {
-        const c = document.getElementById(id).files.length;
-        document.getElementById(statusId).innerText = `✅ ${c} फोटो लोड हुई`;
+    function updateText(inputId, statusId) {
+        const count = document.getElementById(inputId).files.length;
+        document.getElementById(statusId).innerText = count > 0 ? `✅ फोटो लोड हो गई` : `📸 फोटो चुनें`;
         document.getElementById(statusId).style.color = "var(--gold)";
     }
 
-    async function startMission() {
-        const btn = document.getElementById('upBtn');
-        const mrp = document.getElementById('mrpPrice').value;
-        const slip = document.getElementById('slipImg').files;
-        const bookPhotos = document.getElementById('bookImg').files;
+    async function uploadMission() {
+        const name = document.getElementById('userName').value;
+        const loc = document.getElementById('userLoc').value;
+        const title = document.getElementById('bTitle').value;
+        const bFile = document.getElementById('bFile').files;
+        const sFile = document.getElementById('slipFile').files;
 
-        if(!mrp || !slip.length || !bookPhotos.length) {
-            return alert("बॉस, किताब की MRP और डाक रसीद डालना अनिवार्य है!");
+        if(!name || !loc || !title || !bFile.length || !sFile.length) {
+            return alert("बॉस, स्थान और डाक रसीद सहित सभी जानकारी अनिवार्य है!");
         }
 
+        const btn = document.getElementById('upBtn');
         btn.disabled = true;
-        btn.innerText = "सिस्टम में दर्ज हो रहा है...";
+        btn.innerText = "विरासत दर्ज हो रही है...";
 
-        const setID = "SST-LEGACY-" + Math.floor(Math.random() * 9000 + 1000);
-        const reward = Math.floor(mrp * 0.20);
-
-        // यहाँ Cloudinary अपलोड लॉजिक आएगा (जैसा आपके पुराने कोड में था)
-        // हम बुक फोटो को 'sst_pro' टैग देंगे और स्लिप को 'private_slip' टैग।
+        // यहाँ Cloudinary अपलोड लॉजिक आएगा
+        // बुक फोटो के लिए टैग: 'sst_pro'
+        // स्लिप फोटो के लिए टैग: 'private_slip' (ताकि लाइब्रेरी में न दिखे)
 
         setTimeout(() => {
-            document.getElementById('cardID').innerText = setID;
-            document.getElementById('cardVal').innerText = "₹" + reward;
+            document.getElementById('displayLoc').innerText = loc;
             document.getElementById('successCard').style.display = 'flex';
-        }, 2000); 
+        }, 2000);
     }
 </script>
 </body>
