@@ -21,30 +21,33 @@
             font-weight: 900; border: none; font-size: 18px; cursor: pointer; margin-top: 15px;
         }
         .progress-container { width: 100%; background: #333; border-radius: 10px; margin-top: 15px; display: none; }
-        .progress-bar { width: 0%; height: 10px; background: var(--gold); border-radius: 10px; }
-        #status { font-size: 14px; margin-top: 10px; color: var(--gold); }
+        .progress-bar { width: 0%; height: 10px; background: var(--gold); border-radius: 10px; transition: 0.3s; }
+        #status { font-size: 14px; margin-top: 10px; color: var(--gold); font-weight: bold; }
     </style>
 </head>
 <body>
 
 <div class="card">
     <h1>सफ़रनामा 🚩</h1>
+    <p style="font-size: 12px; opacity: 0.7;">अपनी विरासत को लाइब्रेरी से जोड़ें</p>
+    
     <input type="text" id="bTitle" placeholder="किताब का नाम">
-    <input type="file" id="bFile" accept="image/*">
+    <input type="file" id="bFile" accept="image/*" style="background: transparent; border: 1px dashed var(--gold);">
     
     <div class="progress-container" id="pCont">
         <div class="progress-bar" id="pBar"></div>
     </div>
 
-    <button onclick="justUpload()" class="btn" id="upBtn">विरासत जमा करें ❯</button>
-    <p id="status">SST Pro Mission</p>
+    <button onclick="finalPowerUpload()" class="btn" id="upBtn">विरासत जमा करें ❯</button>
+    <p id="status">SST Pro Server Online</p>
 </div>
 
 <script>
-    function justUpload() {
+    function finalPowerUpload() {
         const file = document.getElementById('bFile').files[0];
         const title = document.getElementById('bTitle').value;
-        if(!file || !title) return alert("नाम और फोटो भरें!");
+        
+        if(!file || !title) return alert("नाम और फोटो डालना ज़रूरी है भाई!");
 
         const btn = document.getElementById('upBtn');
         const pCont = document.getElementById('pCont');
@@ -53,32 +56,34 @@
 
         btn.disabled = true;
         pCont.style.display = 'block';
+        status.innerText = "सर्वर से जुड़ रहे हैं...";
 
-        const xhr = new XMLHttpRequest();
         const formData = new FormData();
         formData.append('file', file);
-        formData.append('upload_preset', 'sst_pro'); // Cloudinary Preset
+        formData.append('upload_preset', 'sst_pro'); // Cloudinary Preset Name
 
-        xhr.upload.addEventListener('progress', (e) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', 'https://api.cloudinary.com/v1_1/dppmrodwf/image/upload', true);
+
+        xhr.upload.onprogress = (e) => {
             const percent = Math.round((e.loaded / e.total) * 100);
             pBar.style.width = percent + '%';
             status.innerText = "अपलोडिंग: " + percent + "%";
-        });
+        };
 
-        xhr.onreadystatechange = () => {
-            if (xhr.readyState === 4) {
-                if(xhr.status === 200) {
-                    status.innerText = "बधाई हो! फोटो Cloudinary पर पहुँच गई ✅";
-                    alert("अपलोड सफल!");
-                    location.reload();
-                } else {
-                    status.innerText = "Cloudinary Error! Preset चेक करें।";
-                    btn.disabled = false;
-                }
+        xhr.onload = () => {
+            const response = JSON.parse(xhr.responseText);
+            if (xhr.status === 200) {
+                status.innerText = "बधाई हो! विरासत जमा हो गई ✅";
+                alert("सफ़रनामा: फोटो सफलतापूर्वक लाइब्रेरी के लिए भेज दी गई है!");
+                location.reload();
+            } else {
+                // यह लाइन बताएगी कि असली एरर क्या है
+                status.innerText = "गड़बड़: " + (response.error ? response.error.message : "Network Error");
+                btn.disabled = false;
             }
         };
 
-        xhr.open('POST', 'https://api.cloudinary.com/v1_1/dppmrodwf/image/upload', true);
         xhr.send(formData);
     }
 </script>
