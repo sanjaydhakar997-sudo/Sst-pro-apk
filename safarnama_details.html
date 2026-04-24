@@ -3,72 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>सफ़रनामा - अपनी विरासत साझा करें</title>
+    <title>सफ़रनामा - SST Pro</title>
     <script src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.1/dist/browser-image-compression.js"></script>
     <style>
         :root { --gold: #ffd700; --royal: #1a1a2e; --dark: #0c0c14; }
-        body { background: var(--dark); font-family: 'Poppins', sans-serif; margin: 0; color: #fff; display: flex; align-items: center; justify-content: center; min-height: 100vh; overflow-x: hidden; }
+        body { background: var(--dark); font-family: 'Poppins', sans-serif; margin: 0; color: #fff; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
         
-        .card { background: var(--royal); padding: 30px; border-radius: 30px; border: 2px solid var(--gold); width: 90%; max-width: 420px; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.8); position: relative; }
-        h1 { color: var(--gold); font-size: 28px; margin-bottom: 5px; letter-spacing: 2px; }
-        .tagline { font-size: 12px; opacity: 0.7; margin-bottom: 25px; font-style: italic; }
+        .card { background: var(--royal); padding: 30px; border-radius: 30px; border: 2px solid var(--gold); width: 90%; max-width: 420px; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.8); position: relative; overflow: hidden; }
+        
+        /* आपकी नई हेडलाइंस */
+        .trust-banner { background: var(--gold); color: #000; font-size: 11px; font-weight: 900; padding: 5px 0; position: absolute; top: 0; left: 0; width: 100%; text-transform: uppercase; }
+        h1 { color: var(--gold); font-size: 28px; margin-top: 20px; margin-bottom: 5px; }
+        .tagline { font-size: 13px; color: #ddd; margin-bottom: 20px; line-height: 1.4; }
 
-        input, select { width: 100%; padding: 14px; margin: 8px 0; border-radius: 12px; border: 1px solid #333; background: #252545; color: white; box-sizing: border-box; outline: none; transition: 0.3s; }
+        input, select { width: 100%; padding: 14px; margin: 8px 0; border-radius: 12px; border: 1px solid #333; background: #252545; color: white; box-sizing: border-box; outline: none; transition: 0.3s; font-size: 14px; }
         input:focus, select:focus { border-color: var(--gold); background: #2a2a4d; }
 
         .price-group { display: flex; gap: 10px; margin: 10px 0; }
-        .p-btn { flex: 1; padding: 12px; border-radius: 12px; border: 1px solid var(--gold); cursor: pointer; font-weight: bold; transition: 0.3s; font-size: 14px; }
+        .p-btn { flex: 1; padding: 12px; border-radius: 12px; border: 1px solid var(--gold); cursor: pointer; font-weight: bold; transition: 0.3s; font-size: 13px; display: flex; align-items: center; justify-content: center; }
         
-        .file-label { display: block; border: 2px dashed var(--gold); padding: 20px; border-radius: 20px; cursor: pointer; margin-top: 15px; background: rgba(255, 215, 0, 0.05); transition: 0.3s; }
-        .file-label:hover { background: rgba(255, 215, 0, 0.1); }
-        
-        .btn { background: var(--gold); color: #000; width: 100%; padding: 18px; border-radius: 50px; font-weight: 900; border: none; font-size: 18px; cursor: pointer; margin-top: 25px; box-shadow: 0 5px 15px rgba(255,215,0,0.3); }
-        .btn:disabled { background: #555; box-shadow: none; }
+        .file-label { display: block; border: 2px dashed var(--gold); padding: 20px; border-radius: 20px; cursor: pointer; margin-top: 15px; background: rgba(255, 215, 0, 0.05); }
+        .btn { background: var(--gold); color: #000; width: 100%; padding: 18px; border-radius: 50px; font-weight: 900; border: none; font-size: 17px; cursor: pointer; margin-top: 20px; box-shadow: 0 5px 15px rgba(255,215,0,0.3); }
 
-        /* Floating Help Icon */
-        .help-icon { position: fixed; bottom: 20px; right: 20px; background: #25D366; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 5px 15px rgba(0,0,0,0.3); z-index: 1000; font-size: 24px; animation: pulse 2s infinite; }
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
-
-        /* Emotional Success Popup */
-        #successCard { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 2000; align-items: center; justify-content: center; }
-        .pop-up { background: var(--royal); border: 2px solid var(--gold); padding: 40px 25px; border-radius: 40px; width: 85%; max-width: 380px; text-align: center; }
-        .pop-up h2 { color: var(--gold); margin-bottom: 15px; }
-        .pop-up p { line-height: 1.6; color: #eee; font-size: 15px; }
-        .heart { color: #ff4757; font-size: 40px; margin-bottom: 10px; }
-
+        #successCard { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 2000; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box; }
+        .pop-up { background: var(--royal); border: 2px solid var(--gold); padding: 40px 25px; border-radius: 40px; width: 100%; max-width: 380px; text-align: center; }
         .progress-line { width: 0%; height: 4px; background: var(--gold); position: absolute; bottom: 0; left: 0; transition: 0.3s; }
+        .help-icon { position: fixed; bottom: 20px; right: 20px; background: #25D366; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; z-index: 1000; font-size: 24px; box-shadow: 0 5px 15px rgba(0,0,0,0.4); }
     </style>
 </head>
 <body>
 
 <div class="card">
+    <div class="trust-banner">100% सुरक्षित • शून्य स्वार्थ • पूर्ण विश्वास</div>
     <h1>सफ़रनामा 🚩</h1>
-    <p class="tagline">"ज्ञान बाँटने से बढ़ता है, और विरासत संवारने से।"</p>
+    <p class="tagline">"आपका एक छोटा सा सहयोग, किसी छात्र के उज्ज्वल भविष्य की नींव बन सकता है।"</p>
     
     <input type="text" id="userName" placeholder="आपका शुभ नाम">
-    <input type="tel" id="userPhone" placeholder="WhatsApp नंबर (व्यक्तिगत आभार के लिए)">
-    <input type="text" id="bTitle" placeholder="किताब या नोट्स का नाम">
+    <input type="tel" id="userPhone" placeholder="WhatsApp नंबर (व्यक्तिगत आभार हेतु)">
     
     <select id="bType">
-        <option value="Book">📕 किताब (Book)</option>
-        <option value="Notes">📝 नोट्स (Notes)</option>
+        <option value="Book">📕 असली किताब (Full Book)</option>
+        <option value="Notes Sample">📝 नोट्स सैंपल (Notes Sample)</option>
     </select>
 
-    <select id="bClass" onchange="toggleOther(this.value)">
-        <option value="">कक्षा/श्रेणी चुनें</option>
-        <option value="1st to 8th">1st to 8th Class</option>
-        <option value="9th & 10th">9th & 10th Class</option>
-        <option value="11th & 12th">11th & 12th Class</option>
-        <option value="College">College / Graduation</option>
-        <option value="Other">Other / Competition Exam</option>
+    <input type="text" id="bTitle" placeholder="किताब / नोट्स का शीर्षक">
+    
+    <select id="bSubject" onchange="toggleOtherSub(this.value)">
+        <option value="">विषय (Subject) चुनें</option>
+        <option value="Science">Science (विज्ञान)</option>
+        <option value="Maths">Maths (गणित)</option>
+        <option value="Arts">Arts (कला)</option>
+        <option value="Commerce">Commerce (वाणिज्य)</option>
+        <option value="Competition">Competition (प्रतियोगिता)</option>
+        <option value="Other">अन्य (लिखें)</option>
     </select>
-    <input type="text" id="otherClass" placeholder="एग्जाम का नाम लिखें (जैसे: UPSC, NEET)" style="display:none;">
+    <input type="text" id="otherSub" placeholder="विषय का नाम लिखें" style="display:none;">
+
+    <select id="bClass" onchange="toggleOtherClass(this.value)">
+        <option value="">कक्षा / श्रेणी चुनें</option>
+        <option value="1st to 8th">1st to 8th</option>
+        <option value="9th & 10th">9th & 10th</option>
+        <option value="11th & 12th">11th & 12th</option>
+        <option value="Graduation">Graduation</option>
+        <option value="Other">अन्य (लिखें)</option>
+    </select>
+    <input type="text" id="otherClass" placeholder="कक्षा या एग्जाम का नाम लिखें" style="display:none;">
 
     <div class="price-group">
-        <div onclick="setPrice(0)" id="btnFree" class="p-btn" style="background:var(--gold); color:#000;">नेक दान (FREE)</div>
-        <div onclick="setPrice('ask')" id="btnPaid" class="p-btn" style="background:transparent; color:var(--gold);">हल्की कीमत (PAID)</div>
+        <div onclick="setPrice(0)" id="btnFree" class="p-btn" style="background:var(--gold); color:#000;">निशुल्क (Free)</div>
+        <div onclick="setPrice('ask')" id="btnPaid" class="p-btn" style="background:transparent; color:var(--gold);">कीमत (Price)</div>
     </div>
-    <input type="number" id="bPrice" placeholder="कीमत (₹)" style="display:none;">
+    <input type="number" id="bPrice" placeholder="राशि दर्ज करें (₹)" style="display:none;">
 
     <label class="file-label">
         <input type="file" id="bFile" accept="image/*" multiple style="display:none;" onchange="updateInfo()">
@@ -79,37 +84,33 @@
     <div class="progress-line" id="pLine"></div>
 </div>
 
-<a href="https://wa.me/91XXXXXXXXXX?text=Hi, मुझे सफ़रनामा के बारे में मदद चाहिए।" class="help-icon" title="सहायता">💬</a>
+<a href="https://wa.me/91XXXXXXXXXX" class="help-icon">💬</a>
 
 <div id="successCard">
     <div class="pop-up">
-        <div class="heart">❤️</div>
-        <h2>अभिभूत हैं हम!</h2>
-        <p>आपकी यह पहल किसी के भविष्य का उजाला बनेगी। आपकी विरासत <b>'The Royal Library'</b> में सम्मान के साथ शामिल कर ली गई है।</p>
-        <p style="font-size: 13px; color: var(--gold); margin-top: 15px;">SST Pro परिवार आपकी इस नेकदिली को सलाम करता है।</p>
+        <div style="font-size: 40px;">🙏</div>
+        <h2 style="color: var(--gold);">अभिभूत हैं हम!</h2>
+        <p>आपकी यह नेकदिली किसी के संघर्ष को सफलता में बदल देगी। आपकी विरासत <b>The Royal Library</b> में सज चुकी है।</p>
+        <p style="font-size: 13px; color: var(--gold); margin-top: 15px; font-weight: bold;">SST Pro परिवार आपको नमन करता है।</p>
         <br>
-        <button onclick="location.reload()" style="background:var(--gold); color:#000; border:none; padding:10px 25px; border-radius:20px; font-weight:bold; cursor:pointer;">धन्यवाद</button>
+        <button onclick="location.reload()" style="background:var(--gold); color:#000; border:none; padding:12px 30px; border-radius:30px; font-weight:900; cursor:pointer;">धन्यवाद</button>
     </div>
 </div>
 
 <script>
-    let currentPrice = 0;
-
-    function toggleOther(val) {
-        document.getElementById('otherClass').style.display = (val === 'Other') ? 'block' : 'none';
-    }
-
+    function toggleOtherSub(v){ document.getElementById('otherSub').style.display = (v==='Other')?'block':'none'; }
+    function toggleOtherClass(v){ document.getElementById('otherClass').style.display = (v==='Other')?'block':'none'; }
+    
     function setPrice(p) {
-        const pInput = document.getElementById('bPrice');
+        const inp = document.getElementById('bPrice');
         if(p === 'ask') {
-            pInput.style.display = 'block';
+            inp.style.display = 'block';
             document.getElementById('btnPaid').style.background = 'var(--gold)';
             document.getElementById('btnPaid').style.color = '#000';
             document.getElementById('btnFree').style.background = 'transparent';
             document.getElementById('btnFree').style.color = 'var(--gold)';
         } else {
-            pInput.style.display = 'none';
-            pInput.value = 0;
+            inp.style.display = 'none'; inp.value = 0;
             document.getElementById('btnFree').style.background = 'var(--gold)';
             document.getElementById('btnFree').style.color = '#000';
             document.getElementById('btnPaid').style.background = 'transparent';
@@ -118,8 +119,8 @@
     }
 
     function updateInfo() {
-        const count = document.getElementById('bFile').files.length;
-        document.getElementById('fileStatus').innerText = `✅ ${count} फोटो चुनी गईं`;
+        const c = document.getElementById('bFile').files.length;
+        document.getElementById('fileStatus').innerText = `✅ ${c} पन्ने/फोटो चुने गए`;
     }
 
     async function uploadMission() {
@@ -127,32 +128,35 @@
         const name = document.getElementById('userName').value;
         const phone = document.getElementById('userPhone').value;
         const title = document.getElementById('bTitle').value;
-        let bClass = document.getElementById('bClass').value;
-        if(bClass === 'Other') bClass = document.getElementById('otherClass').value;
-        const price = document.getElementById('bPrice').value || 0;
         const type = document.getElementById('bType').value;
+        let sub = document.getElementById('bSubject').value;
+        if(sub==='Other') sub = document.getElementById('otherSub').value;
+        let cls = document.getElementById('bClass').value;
+        if(cls==='Other') cls = document.getElementById('otherClass').value;
+        const price = document.getElementById('bPrice').value || 0;
 
-        if(!files.length || !name || !title || !phone || !bClass) return alert("कृपया पूरी जानकारी भरें!");
+        if(!files.length || !name || !title || !sub || !cls) return alert("कृपया सभी जानकारी भरें!");
 
         const btn = document.getElementById('upBtn');
         const pLine = document.getElementById('pLine');
+        const setID = Date.now(); // ग्रुपिंग के लिए यूनिक आईडी
+
         btn.disabled = true;
-        btn.innerText = "विरासत सुरक्षित की जा रही है...";
+        btn.innerText = "सुरक्षित जमा किया जा रहा है...";
 
         for (let i = 0; i < files.length; i++) {
             const options = { maxSizeMB: 0.7, maxWidthOrHeight: 1280, useWebWorker: true };
-            const compressed = await imageCompression(files[i], options);
+            const comp = await imageCompression(files[i], options);
             
             const formData = new FormData();
-            formData.append('file', compressed);
+            formData.append('file', comp);
             formData.append('upload_preset', 'sst_pro');
             formData.append('tags', 'sst_pro');
-            formData.append('context', `donor=${name}|phone=${phone}|title=${title}|price=${price}|class=${bClass}|type=${type}`);
+            formData.append('context', `donor=${name}|phone=${phone}|title=${title}|price=${price}|class=${cls}|type=${type}|subject=${sub}|setid=${setID}`);
 
             await fetch('https://api.cloudinary.com/v1_1/dppmrodwf/image/upload', { method: 'POST', body: formData });
             pLine.style.width = ((i + 1) / files.length * 100) + "%";
         }
-
         document.getElementById('successCard').style.display = 'flex';
     }
 </script>
