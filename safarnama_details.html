@@ -7,105 +7,110 @@
     <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore-compat.js"></script>
     <style>
-        :root { --gold: #ffd700; --royal: #1a1a2e; }
-        body { background: #0c0c14; font-family: 'Segoe UI', sans-serif; margin: 0; color: #fff; text-align: center; }
-        .container { padding: 40px 20px; max-width: 600px; margin: auto; }
+        :root { --gold: #ffd700; --royal: #1a1a2e; --dark: #0c0c14; }
+        body { background: var(--dark); font-family: 'Segoe UI', sans-serif; margin: 0; color: #fff; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
         .card { 
-            background: var(--royal); padding: 30px; border-radius: 30px; 
-            border: 3px solid var(--gold); box-shadow: 0 15px 40px rgba(255,215,0,0.2);
+            background: var(--royal); padding: 30px; border-radius: 30px; border: 2px solid var(--gold);
+            width: 90%; max-width: 400px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); text-align: center;
         }
-        h1 { color: var(--gold); font-size: 32px; font-weight: 950; margin-bottom: 10px; }
-        input, .file-label { 
-            width: 100%; padding: 15px; margin: 10px 0; border-radius: 15px; 
-            background: #252545; border: 1px solid #3e3e6e; color: white; box-sizing: border-box;
+        h1 { color: var(--gold); margin: 0 0 10px; font-size: 28px; }
+        input { 
+            width: 100%; padding: 15px; margin: 10px 0; border-radius: 12px; 
+            border: 1px solid #333; background: #252545; color: white; box-sizing: border-box;
         }
-        .form-btn { 
-            display: block; background: var(--gold); color: #000; padding: 20px; 
-            border-radius: 50px; font-weight: 950; width: 100%; border: none;
-            font-size: 20px; margin-top: 20px; cursor: pointer; transition: 0.3s;
+        .file-box { border: 1px dashed var(--gold); padding: 10px; border-radius: 12px; margin: 10px 0; background: rgba(255,215,0,0.05); }
+        .btn { 
+            background: var(--gold); color: #000; width: 100%; padding: 18px; border-radius: 50px; 
+            font-weight: 900; border: none; font-size: 18px; cursor: pointer; margin-top: 15px;
         }
-        #status { margin-top: 15px; color: var(--gold); font-weight: bold; }
+        .btn:disabled { background: #555; cursor: not-allowed; }
+        /* Progress Bar Style */
+        .progress-container { width: 100%; background: #333; border-radius: 10px; margin-top: 15px; display: none; }
+        .progress-bar { width: 0%; height: 10px; background: var(--gold); border-radius: 10px; transition: 0.3s; }
+        #status { font-size: 14px; margin-top: 10px; color: var(--gold); }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="card">
-        <h1>सफ़रनामा 🚩</h1>
-        <p>अपनी किताबों को एक नई "विरासत" में बदलें।</p>
-        
-        <input type="text" id="donorName" placeholder="आपका नाम">
-        <input type="text" id="bookTitle" placeholder="किताब का नाम">
-        <label class="file-label">किताब की फोटो चुनें: 
-            <input type="file" id="bookImg" accept="image/*" style="border:none; padding:5px;">
-        </label>
-
-        <button onclick="donateProcess()" class="form-btn" id="mainBtn">विरासत जमा करें ❯</button>
-        <p id="status">सुरक्षित एवं पारदर्शी - SST Pro Mission</p>
+<div class="card">
+    <h1>सफ़रनामा 🚩</h1>
+    <p style="font-size: 13px; opacity: 0.8;">अपनी किताबों को एक नई "विरासत" में बदलें</p>
+    
+    <input type="text" id="dName" placeholder="आपका शुभ नाम">
+    <input type="text" id="bTitle" placeholder="किताब का नाम">
+    
+    <div class="file-box">
+        <span style="font-size: 12px; display: block; margin-bottom: 5px;">किताब की साफ़ फोटो चुनें:</span>
+        <input type="file" id="bFile" accept="image/*" style="padding: 5px; border: none; background: transparent;">
     </div>
 
-    <div style="margin-top: 40px; padding: 25px; background: rgba(255, 255, 255, 0.03); border-radius: 20px; border: 1px dashed var(--gold);">
-        <h3 style="color: var(--gold); margin-top: 0;">सहायता केंद्र 🚩</h3>
-        <a href="tel:+919529812784" style="color: var(--gold); text-decoration: none; font-weight: bold;">📞 कॉल करें: +91 9529812784</a>
+    <div class="progress-container" id="pCont">
+        <div class="progress-bar" id="pBar"></div>
     </div>
+
+    <button onclick="startUpload()" class="btn" id="upBtn">विरासत जमा करें ❯</button>
+    <p id="status">SST Pro Mission</p>
 </div>
 
 <script>
-    // Firebase सेटअप
+    // Firebase Config (Keep it as it is)
     const firebaseConfig = {
         apiKey: "AIzaSyASJxjxshpwJZM9tGFKryIo8DNcR0qHTi0",
-        authDomain: "sst-pro-library.firebaseapp.com",
         projectId: "sst-pro-library",
     };
     firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
 
-    async function donateProcess() {
-        const name = document.getElementById('donorName').value;
-        const title = document.getElementById('bookTitle').value;
-        const file = document.getElementById('bookImg').files[0];
-        const status = document.getElementById('status');
-        const btn = document.getElementById('mainBtn');
+    function startUpload() {
+        const file = document.getElementById('bFile').files[0];
+        const name = document.getElementById('dName').value;
+        const title = document.getElementById('bTitle').value;
+        
+        if(!file || !name || !title) return alert("सब कुछ भरें भाई!");
 
-        if(!name || !title || !file) {
-            alert("कृपया सभी जानकारी भरें!");
-            return;
-        }
+        const btn = document.getElementById('upBtn');
+        const pCont = document.getElementById('pCont');
+        const pBar = document.getElementById('pBar');
+        const status = document.getElementById('status');
 
         btn.disabled = true;
-        status.innerText = "प्रोसेसिंग... कृपया रुकें ⏳";
+        pCont.style.display = 'block';
+        status.innerText = "SST Server से जुड़ रहे हैं...";
 
-        // 1. Cloudinary पर फोटो भेजना
+        const xhr = new XMLHttpRequest();
         const formData = new FormData();
         formData.append('file', file);
-        formData.append('upload_preset', 'sst_pro'); // आपका बनाया हुआ Preset
+        formData.append('upload_preset', 'sst_pro'); // Cloudinary में यही नाम होना चाहिए
 
-        try {
-            const res = await fetch(`https://api.cloudinary.com/v1_1/dppmrodwf/image/upload`, {
-                method: 'POST',
-                body: formData
-            });
-            const cloudData = await res.json();
+        // % देखने के लिए Logic
+        xhr.upload.addEventListener('progress', (e) => {
+            const percent = Math.round((e.loaded / e.total) * 100);
+            pBar.style.width = percent + '%';
+            status.innerText = "अपलोड हो रहा है: " + percent + "%";
+        });
 
-            if(cloudData.secure_url) {
-                // 2. Firebase Database में जानकारी सेव करना
+        xhr.onreadystatechange = async () => {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                const data = JSON.parse(xhr.responseText);
+                // Firebase में सेव करना
                 await db.collection("Safarnama").add({
                     donor: name,
-                    title: title,
-                    img: cloudData.secure_url,
-                    date: new Date().toLocaleDateString()
+                    book: title,
+                    image: data.secure_url,
+                    time: new Date()
                 });
-
-                status.innerText = "बधाई हो! आपकी बुक लाइब्रेरी में जुड़ गई ✅";
-                alert("धन्यवाद! आपकी विरासत अब 'Royal Library' का हिस्सा है।");
-                location.reload(); // पेज रिफ्रेश
+                status.innerText = "बधाई हो! लाइब्रेरी में जुड़ गई ✅";
+                alert("विरासत जमा हो गई!");
+                location.reload();
+            } else if (xhr.readyState === 4) {
+                status.innerText = "Error: Preset 'sst_pro' चेक करें!";
+                btn.disabled = false;
             }
-        } catch (err) {
-            status.innerText = "Error! इंटरनेट चेक करें।";
-            btn.disabled = false;
-        }
+        };
+
+        xhr.open('POST', 'https://api.cloudinary.com/v1_1/dppmrodwf/image/upload', true);
+        xhr.send(formData);
     }
 </script>
-
 </body>
 </html>
