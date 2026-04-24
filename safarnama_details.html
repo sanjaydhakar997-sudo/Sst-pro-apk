@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>सफ़रनामा - SST Pro</title>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore-compat.js"></script>
     <style>
         :root { --gold: #ffd700; --royal: #1a1a2e; }
         body { background: #0c0c14; font-family: 'Segoe UI', sans-serif; margin: 0; color: #fff; text-align: center; }
@@ -13,60 +15,97 @@
             border: 3px solid var(--gold); box-shadow: 0 15px 40px rgba(255,215,0,0.2);
         }
         h1 { color: var(--gold); font-size: 32px; font-weight: 950; margin-bottom: 10px; }
-        p { font-weight: 600; line-height: 1.6; opacity: 0.9; }
-        .form-btn { 
-            display: block; background: var(--gold); color: #000; padding: 22px; 
-            border-radius: 50px; font-weight: 950; text-decoration: none; 
-            font-size: 20px; margin-top: 30px; transition: 0.3s;
-            box-shadow: 0 10px 25px rgba(255,215,0,0.4);
+        input, .file-label { 
+            width: 100%; padding: 15px; margin: 10px 0; border-radius: 15px; 
+            background: #252545; border: 1px solid #3e3e6e; color: white; box-sizing: border-box;
         }
-        .form-btn:hover { transform: scale(1.05); }
-        .steps { text-align: left; margin-top: 30px; font-size: 14px; background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; }
-        .step-item { margin-bottom: 10px; display: flex; align-items: center; }
-        .step-num { background: var(--gold); color: #000; width: 25px; height: 25px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; margin-right: 10px; flex-shrink: 0; }
+        .form-btn { 
+            display: block; background: var(--gold); color: #000; padding: 20px; 
+            border-radius: 50px; font-weight: 950; width: 100%; border: none;
+            font-size: 20px; margin-top: 20px; cursor: pointer; transition: 0.3s;
+        }
+        #status { margin-top: 15px; color: var(--gold); font-weight: bold; }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="card">
-            <h1>सफ़रनामा 🚩</h1>
-            <p>अपनी किताबों को एक नई "विरासत" में बदलें। आपकी एक छोटी सी पहल किसी छात्र का भविष्य बना सकती है।</p>
-            
-            <div class="steps">
-                <div class="step-item"><div class="step-num">1</div> अपनी जानकारी और किताब का नाम भरें।</div>
-                <div class="step-item"><div class="step-num">2</div> किताब की 3-5 साफ़ फोटो अपलोड करें।</div>
-                <div class="step-item"><div class="step-num">3</div> जमा करने के बाद वह "Royal Library" में दिखेगी।</div>
-            </div>
+<div class="container">
+    <div class="card">
+        <h1>सफ़रनामा 🚩</h1>
+        <p>अपनी किताबों को एक नई "विरासत" में बदलें।</p>
+        
+        <input type="text" id="donorName" placeholder="आपका नाम">
+        <input type="text" id="bookTitle" placeholder="किताब का नाम">
+        <label class="file-label">किताब की फोटो चुनें: 
+            <input type="file" id="bookImg" accept="image/*" style="border:none; padding:5px;">
+        </label>
 
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLScRtJIsz4GCAON-0_mGodUJ43nNQeNNHrgrt7dgaoCQWQMEgA/viewform" class="form-btn">
-                विरासत जमा करें ❯
-            </a>
-
-            <p style="font-size: 12px; margin-top: 20px; opacity: 0.6;">सुरक्षित एवं पारदर्शी - SST Pro Mission</p>
-        </div>
+        <button onclick="donateProcess()" class="form-btn" id="mainBtn">विरासत जमा करें ❯</button>
+        <p id="status">सुरक्षित एवं पारदर्शी - SST Pro Mission</p>
     </div>
+
+    <div style="margin-top: 40px; padding: 25px; background: rgba(255, 255, 255, 0.03); border-radius: 20px; border: 1px dashed var(--gold);">
+        <h3 style="color: var(--gold); margin-top: 0;">सहायता केंद्र 🚩</h3>
+        <a href="tel:+919529812784" style="color: var(--gold); text-decoration: none; font-weight: bold;">📞 कॉल करें: +91 9529812784</a>
+    </div>
+</div>
+
+<script>
+    // Firebase सेटअप
+    const firebaseConfig = {
+        apiKey: "AIzaSyASJxjxshpwJZM9tGFKryIo8DNcR0qHTi0",
+        authDomain: "sst-pro-library.firebaseapp.com",
+        projectId: "sst-pro-library",
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    async function donateProcess() {
+        const name = document.getElementById('donorName').value;
+        const title = document.getElementById('bookTitle').value;
+        const file = document.getElementById('bookImg').files[0];
+        const status = document.getElementById('status');
+        const btn = document.getElementById('mainBtn');
+
+        if(!name || !title || !file) {
+            alert("कृपया सभी जानकारी भरें!");
+            return;
+        }
+
+        btn.disabled = true;
+        status.innerText = "प्रोसेसिंग... कृपया रुकें ⏳";
+
+        // 1. Cloudinary पर फोटो भेजना
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('upload_preset', 'sst_pro'); // आपका बनाया हुआ Preset
+
+        try {
+            const res = await fetch(`https://api.cloudinary.com/v1_1/dppmrodwf/image/upload`, {
+                method: 'POST',
+                body: formData
+            });
+            const cloudData = await res.json();
+
+            if(cloudData.secure_url) {
+                // 2. Firebase Database में जानकारी सेव करना
+                await db.collection("Safarnama").add({
+                    donor: name,
+                    title: title,
+                    img: cloudData.secure_url,
+                    date: new Date().toLocaleDateString()
+                });
+
+                status.innerText = "बधाई हो! आपकी बुक लाइब्रेरी में जुड़ गई ✅";
+                alert("धन्यवाद! आपकी विरासत अब 'Royal Library' का हिस्सा है।");
+                location.reload(); // पेज रिफ्रेश
+            }
+        } catch (err) {
+            status.innerText = "Error! इंटरनेट चेक करें।";
+            btn.disabled = false;
+        }
+    }
+</script>
 
 </body>
 </html>
-<div style="margin-top: 40px; padding: 25px; background: rgba(255, 255, 255, 0.03); border-radius: 20px; border: 1px dashed var(--gold);">
-    <h3 style="color: var(--gold); margin-top: 0; font-size: 20px;">सहायता केंद्र (Help Desk) 🚩</h3>
-    <p style="font-size: 14px; opacity: 0.8; margin-bottom: 20px;">यदि आपको फॉर्म भरने या किताब दान करने में कोई समस्या आ रही है, तो हमारी टीम से संपर्क करें:</p>
-    
-    <div style="display: flex; flex-direction: column; gap: 12px; max-width: 300px; margin: auto;">
-        
-        <a href="https://wa.me/919529812784?text=नमस्ते%20SST%20Pro%20टीम,%20मुझे%20सफ़रनामा%20के%20बारे%20में%20कुछ%20पूछना%20है।" 
-           target="_blank" 
-           style="background: #25D366; color: #fff; padding: 12px; border-radius: 10px; text-decoration: none; font-weight: 800; font-size: 14px; display: flex; align-items: center; justify-content: center; gap: 10px;">
-           <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="20" alt="WA"> WhatsApp पर पूछें
-        </a>
-
-        <a href="tel:+919529812784" 
-           style="background: transparent; color: var(--gold); padding: 12px; border-radius: 10px; text-decoration: none; font-weight: 800; font-size: 14px; border: 2px solid var(--gold);">
-           📞 डायरेक्ट कॉल करें
-        </a>
-        
-    </div>
-    
-    <p style="font-size: 11px; margin-top: 15px; color: #aaa;">उपलब्ध समय: सुबह 10:00 से शाम 6:00 तक</p>
-</div>
