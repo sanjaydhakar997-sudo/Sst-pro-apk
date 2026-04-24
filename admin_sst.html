@@ -3,30 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SST Pro Admin</title>
+    <title>SST Pro Admin Panel</title>
     <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-storage-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore-compat.js"></script>
     <style>
-        body { background-color: #0f0f1a; color: white; font-family: sans-serif; display: flex; justify-content: center; padding: 20px; }
-        .card { background: #1a1a2e; padding: 25px; border-radius: 15px; border: 1px solid #ffd700; width: 100%; max-width: 400px; text-align: center; }
-        input, select, button { width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: none; }
-        input, select { background: #252545; color: white; }
-        button { background: #ffd700; color: black; font-weight: bold; cursor: pointer; }
-        #status { margin-top: 15px; font-size: 14px; color: #ffd700; }
-        .progress-container { background: #252545; border-radius: 10px; height: 10px; width: 100%; display: none; }
-        #progressBar { background: #00ff00; height: 100%; width: 0%; border-radius: 10px; transition: 0.3s; }
+        body { background-color: #0f0f1a; color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .card { background: #1a1a2e; padding: 30px; border-radius: 20px; border: 2px solid #ffd700; width: 90%; max-width: 400px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: center; }
+        h2 { color: #ffd700; margin-bottom: 20px; }
+        input, select, button { width: 100%; padding: 12px; margin: 10px 0; border-radius: 10px; border: none; outline: none; box-sizing: border-box; }
+        input, select { background: #252545; color: white; border: 1px solid #3e3e6e; }
+        button { background: #ffd700; color: #000; font-weight: bold; font-size: 16px; cursor: pointer; transition: 0.3s; }
+        button:hover { background: #e6c200; transform: scale(1.02); }
+        #status { margin-top: 15px; font-size: 14px; color: #ffd700; font-weight: bold; }
+        .progress-container { background: #252545; border-radius: 10px; height: 12px; width: 100%; margin: 15px 0; display: none; overflow: hidden; }
+        #progressBar { background: linear-gradient(90deg, #00ff00, #008000); height: 100%; width: 0%; transition: 0.2s; }
     </style>
 </head>
 <body>
 
 <div class="card">
-    <h2>🚩 SST Pro - Admin</h2>
-    <input type="text" id="bookTitle" placeholder="किताब या फाइल का नाम">
+    <h2>🚩 SST Pro Admin</h2>
+    <input type="text" id="bookTitle" placeholder="किताब का नाम लिखें...">
     <select id="category">
         <option value="The Royal Library">The Royal Library</option>
         <option value="Safarnama">Safarnama</option>
     </select>
+    <p style="font-size: 12px; color: #bbb;">गैलरी से फोटो चुनें:</p>
     <input type="file" id="photoFile" accept="image/*">
     
     <div class="progress-container" id="pContainer">
@@ -38,16 +41,18 @@
 </div>
 
 <script>
-    // --- यहाँ अपनी Firebase Details डालें ---
+    // आपकी असली Config यहाँ डाल दी गई है
     const firebaseConfig = {
-        apiKey: "YOUR_API_KEY",
+        apiKey: "AIzaSyASJxjxshpwJZM9tGFKryIo8DNcR0qHTi0",
         authDomain: "sst-pro-library.firebaseapp.com",
         projectId: "sst-pro-library",
         storageBucket: "sst-pro-library.firebasestorage.app",
-        messagingSenderId: "YOUR_SENDER_ID",
-        appId: "YOUR_APP_ID"
+        messagingSenderId: "768642848018",
+        appId: "1:768642848018:web:eed62246b7c1c107d14fcb",
+        measurementId: "G-Y67ZP4W52Z"
     };
 
+    // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     const storage = firebase.storage();
     const db = firebase.firestore();
@@ -60,13 +65,18 @@
         const pBar = document.getElementById('progressBar');
         const pContainer = document.getElementById('pContainer');
 
-        if(!title || !file) { alert("नाम और फोटो दोनों ज़रूरी हैं!"); return; }
+        if(!title || !file) {
+            alert("कृपया नाम भरें और फोटो चुनें!");
+            return;
+        }
 
+        // फाइल का नाम यूनिक बनाने के लिए टाइम जोड़ रहे हैं
         const fileName = Date.now() + "_" + file.name;
         const storageRef = storage.ref('uploads/' + fileName);
         const uploadTask = storageRef.put(file);
 
         pContainer.style.display = 'block';
+        status.innerText = "संपर्क जोड़ रहे हैं...";
 
         uploadTask.on('state_changed', 
             (snapshot) => {
@@ -75,18 +85,25 @@
                 status.innerText = "अपलोड हो रहा है: " + Math.round(progress) + "%";
             }, 
             (error) => {
-                status.innerText = "Error: " + error.message;
+                status.innerText = "गड़बड़: " + error.message;
                 console.error(error);
+                alert("Storage Rules चेक करें, शायद दरवाजा बंद है!");
             }, 
             async () => {
+                // अपलोड सफल होने पर लिंक लेना
                 const downloadURL = await uploadTask.snapshot.ref.getDownloadURL();
+                
+                // Firestore में डेटा सेव करना
                 await db.collection(category).add({
                     title: title,
                     img: downloadURL,
-                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                    time: firebase.firestore.FieldValue.serverTimestamp()
                 });
-                status.innerText = "बधाई हो! फोटो लाइव हो गई ✅";
-                pContainer.style.display = 'none';
+
+                status.innerText = "बधाई हो! लाइब्रेरी में फोटो जुड़ गई ✅";
+                pBar.style.width = "100%";
+                setTimeout(() => { pContainer.style.display = 'none'; }, 3000);
+                document.getElementById('bookTitle').value = "";
             }
         );
     }
