@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>सफ़रनामा - SST Pro</title>
+    <title>सफ़रनामा 2.0 - SST Pro</title>
     <script src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.1/dist/browser-image-compression.js"></script>
     <style>
         :root { --gold: #ffd700; --royal: #1a1a2e; --dark: #0c0c14; }
@@ -18,46 +18,63 @@
         input, select { width: 100%; padding: 14px; margin: 8px 0; border-radius: 12px; border: 1px solid #333; background: #252545; color: white; box-sizing: border-box; outline: none; transition: 0.3s; font-size: 14px; }
         input:focus, select:focus { border-color: var(--gold); background: #2a2a4d; }
 
+        .set-box { background: rgba(255, 215, 0, 0.05); padding: 15px; border-radius: 15px; margin: 10px 0; text-align: left; border: 1px dashed var(--gold); }
+        .check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 13px; margin-top: 10px; }
+
         .price-group { display: flex; gap: 10px; margin: 10px 0; }
         .p-btn { flex: 1; padding: 12px; border-radius: 12px; border: 1px solid var(--gold); cursor: pointer; font-weight: bold; transition: 0.3s; font-size: 13px; display: flex; align-items: center; justify-content: center; }
         
         .file-label { display: block; border: 2px dashed var(--gold); padding: 20px; border-radius: 20px; cursor: pointer; margin-top: 15px; background: rgba(255, 215, 0, 0.05); }
         .btn { background: var(--gold); color: #000; width: 100%; padding: 18px; border-radius: 50px; font-weight: 900; border: none; font-size: 17px; cursor: pointer; margin-top: 20px; box-shadow: 0 5px 15px rgba(255,215,0,0.3); transition: 0.2s; }
-        .btn:active { transform: scale(0.98); }
 
         #successCard { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 2000; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box; }
         .pop-up { background: var(--royal); border: 2px solid var(--gold); padding: 40px 25px; border-radius: 40px; width: 100%; max-width: 380px; text-align: center; }
-        .progress-line { width: 0%; height: 6px; background: var(--gold); position: absolute; bottom: 0; left: 0; transition: 0.3s; box-shadow: 0 0 10px var(--gold); }
+        .progress-line { width: 0%; height: 6px; background: var(--gold); position: absolute; bottom: 0; left: 0; transition: 0.3s; }
     </style>
 </head>
 <body>
 
 <div class="card">
-    <div class="trust-banner">100% सुरक्षित • शून्य स्वार्थ • पूर्ण विश्वास</div>
+    <div class="trust-banner">100% सुरक्षित • निःस्वार्थ सेवा • पूर्ण विश्वास</div>
     <h1>सफ़रनामा 🚩</h1>
-    <p class="tagline">"आपका एक छोटा सा सहयोग, किसी छात्र के उज्ज्वल भविष्य की नींव बन सकता है।"</p>
+    <p class="tagline">"पूरी क्लास का सेट हो या एक किताब, आपका दान किसी का जीवन बदल देगा।"</p>
     
-    <input type="text" id="userName" placeholder="आपका शुभ नाम (Donor Name) *">
+    <input type="text" id="userName" placeholder="आपका शुभ नाम *">
     <input type="text" id="userLoc" placeholder="आपका शहर / जिला (Location) *">
-    <input type="tel" id="userPhone" placeholder="WhatsApp नंबर (संपर्क हेतु) *">
+    <input type="tel" id="userPhone" placeholder="WhatsApp नंबर *">
     
-    <select id="bType">
-        <option value="Book">📕 असली किताब (Full Book)</option>
-        <option value="Notes Sample">📝 नोट्स सैंपल (Notes Sample)</option>
+    <select id="bType" onchange="checkType(this.value)">
+        <option value="Book">📕 एक किताब (Single Book)</option>
+        <option value="Full Set">📚 पूरा क्लास सेट (Complete Set)</option>
+        <option value="Notes Sample">📝 नोट्स सैंपल (Notes)</option>
     </select>
 
-    <input type="text" id="bTitle" placeholder="किताब / नोट्स का शीर्षक *">
-    
-    <select id="bSubject" onchange="toggleOtherSub(this.value)">
-        <option value="">विषय (Subject) चुनें *</option>
-        <option value="Science">Science (विज्ञान)</option>
-        <option value="Maths">Maths (गणित)</option>
-        <option value="Arts">Arts (कला)</option>
-        <option value="Commerce">Commerce (वाणिज्य)</option>
-        <option value="Competition">Competition (प्रतियोगिता)</option>
-        <option value="Other">अन्य (लिखें)</option>
-    </select>
-    <input type="text" id="otherSub" placeholder="विषय का नाम लिखें" style="display:none;">
+    <input type="text" id="bTitle" placeholder="किताब या सेट का शीर्षक *">
+
+    <div id="setDetails" style="display:none;" class="set-box">
+        <p style="font-size: 12px; color: var(--gold); font-weight: bold;">सेट में शामिल विषय चुनें:</p>
+        <div class="check-grid">
+            <label><input type="checkbox" class="sub-check" value="विज्ञान"> विज्ञान</label>
+            <label><input type="checkbox" class="sub-check" value="गणित"> गणित</label>
+            <label><input type="checkbox" class="sub-check" value="हिंदी"> हिंदी</label>
+            <label><input type="checkbox" class="sub-check" value="अंग्रेजी"> अंग्रेजी</label>
+            <label><input type="checkbox" class="sub-check" value="सामाजिक"> सामाजिक</label>
+            <label><input type="checkbox" class="sub-check" value="संस्कृत"> संस्कृत</label>
+        </div>
+        <input type="text" id="otherSetSubs" placeholder="अन्य विषय (कोमा लगाकर लिखें)" style="margin-top:10px; padding: 10px; font-size: 12px;">
+    </div>
+
+    <div id="singleSubDiv">
+        <select id="bSubject" onchange="toggleOtherSub(this.value)">
+            <option value="">विषय चुनें *</option>
+            <option value="Science">Science</option>
+            <option value="Maths">Maths</option>
+            <option value="Arts">Arts</option>
+            <option value="Competition">Competition</option>
+            <option value="Other">अन्य (लिखें)</option>
+        </select>
+        <input type="text" id="otherSub" placeholder="विषय का नाम लिखें" style="display:none;">
+    </div>
 
     <select id="bClass" onchange="toggleOtherClass(this.value)">
         <option value="">कक्षा / श्रेणी चुनें *</option>
@@ -65,19 +82,19 @@
         <option value="9th & 10th">9th & 10th</option>
         <option value="11th & 12th">11th & 12th</option>
         <option value="Graduation">Graduation</option>
-        <option value="Other">अन्य (लिखें)</option>
+        <option value="Other">अन्य</option>
     </select>
-    <input type="text" id="otherClass" placeholder="कक्षा या एग्जाम का नाम लिखें" style="display:none;">
+    <input type="text" id="otherClass" placeholder="कक्षा का नाम लिखें" style="display:none;">
 
     <div class="price-group">
-        <div onclick="setPrice(0)" id="btnFree" class="p-btn" style="background:var(--gold); color:#000;">निशुल्क (Free)</div>
-        <div onclick="setPrice('ask')" id="btnPaid" class="p-btn" style="background:transparent; color:var(--gold);">कीमत (Price)</div>
+        <div onclick="setPrice(0)" id="btnFree" class="p-btn" style="background:var(--gold); color:#000;">निशुल्क</div>
+        <div onclick="setPrice('ask')" id="btnPaid" class="p-btn" style="background:transparent; color:var(--gold);">कीमत</div>
     </div>
-    <input type="number" id="bPrice" placeholder="राशि दर्ज करें (₹)" style="display:none;">
+    <input type="number" id="bPrice" placeholder="राशि (₹)" style="display:none;">
 
     <label class="file-label">
         <input type="file" id="bFile" accept="image/*" multiple style="display:none;" onchange="updateInfo()">
-        <span id="fileStatus">📸 फोटो चुनें (एक या अनेक) *</span>
+        <span id="fileStatus">📸 फोटो (किताब या पूरे सेट की) *</span>
     </label>
 
     <button onclick="uploadMission()" class="btn" id="upBtn">विरासत साझा करें ❯</button>
@@ -86,15 +103,19 @@
 
 <div id="successCard">
     <div class="pop-up">
-        <div style="font-size: 40px;">🙏</div>
+        <div style="font-size: 40px;">🚩</div>
         <h2 style="color: var(--gold);">अभिभूत हैं हम!</h2>
-        <p>आपकी यह नेकदिली किसी के संघर्ष को सफलता में बदल देगी। आपकी विरासत <b>The Royal Library</b> में सज चुकी है।</p>
-        <br>
-        <button onclick="location.reload()" style="background:var(--gold); color:#000; border:none; padding:12px 30px; border-radius:30px; font-weight:900; cursor:pointer;">धन्यवाद</button>
+        <p>आपकी विरासत <b>The Royal Library</b> में सज चुकी है। यह नेकदिली किसी का भविष्य बदल देगी।</p>
+        <button onclick="location.reload()" style="background:var(--gold); color:#000; border:none; padding:12px 30px; border-radius:30px; font-weight:900; cursor:pointer; margin-top:20px;">धन्यवाद</button>
     </div>
 </div>
 
 <script>
+    function checkType(v) {
+        document.getElementById('setDetails').style.display = (v === 'Full Set') ? 'block' : 'none';
+        document.getElementById('singleSubDiv').style.display = (v === 'Full Set') ? 'none' : 'block';
+    }
+
     function toggleOtherSub(v){ document.getElementById('otherSub').style.display = (v==='Other')?'block':'none'; }
     function toggleOtherClass(v){ document.getElementById('otherClass').style.display = (v==='Other')?'block':'none'; }
     
@@ -127,17 +148,28 @@
         const phone = document.getElementById('userPhone').value;
         const title = document.getElementById('bTitle').value;
         const type = document.getElementById('bType').value;
-        let sub = document.getElementById('bSubject').value;
-        if(sub==='Other') sub = document.getElementById('otherSub').value;
+
+        let finalSub = "";
+        if(type === 'Full Set') {
+            let subs = [];
+            document.querySelectorAll('.sub-check:checked').forEach(cb => subs.push(cb.value));
+            const others = document.getElementById('otherSetSubs').value;
+            if(others) subs.push(others);
+            finalSub = "SET: " + subs.join(', ');
+        } else {
+            finalSub = document.getElementById('bSubject').value;
+            if(finalSub === 'Other') finalSub = document.getElementById('otherSub').value;
+        }
+
         let cls = document.getElementById('bClass').value;
         if(cls==='Other') cls = document.getElementById('otherClass').value;
         const price = document.getElementById('bPrice').value || 0;
 
-        if(!files.length || !name || !loc || !title || !sub || !cls || !phone) return alert("बॉस, कृपया सारी जानकारी भरें!");
+        if(!files.length || !name || !loc || !title || !finalSub || !cls || !phone) return alert("बॉस, सारी जानकारी भरें!");
 
         const btn = document.getElementById('upBtn');
         const pLine = document.getElementById('pLine');
-        const setID = "SST_" + Date.now(); 
+        const setID = "SST_" + Date.now();
 
         btn.disabled = true;
         btn.innerText = "विरासत जमा हो रही है...";
@@ -150,16 +182,12 @@
             formData.append('file', comp);
             formData.append('upload_preset', 'sst_pro'); 
             formData.append('tags', 'sst_pro'); 
-            
-            // Context में Location भी जोड़ दी गई है
-            formData.append('context', `donor=${name}|location=${loc}|phone=${phone}|title=${title}|price=${price}|class=${cls}|type=${type}|subject=${sub}|setid=${setID}`);
+            formData.append('context', `donor=${name}|location=${loc}|phone=${phone}|title=${title}|price=${price}|class=${cls}|type=${type}|subject=${finalSub}|setid=${setID}`);
 
             try {
                 await fetch('https://api.cloudinary.com/v1_1/dppmrodwf/image/upload', { method: 'POST', body: formData });
                 pLine.style.width = ((i + 1) / files.length * 100) + "%";
-            } catch (err) {
-                console.error("Upload failed", err);
-            }
+            } catch (err) { console.error("Upload failed", err); }
         }
         document.getElementById('successCard').style.display = 'flex';
     }
