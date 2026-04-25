@@ -117,8 +117,10 @@
 </div>
 
 <script>
+    // आपका Google Script URL
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbym06GAtqxEr0hZ9giMcxfa1jFNQi1ijzhlmrW9O1AaGva2OmuJiDpWNLOBJx5wsBPc/exec';
+
     function finalize() {
-        // डेटा इकट्ठा करना
         const n = document.getElementById('name').value;
         const p = document.getElementById('phone').value;
         const s = document.getElementById('state').value;
@@ -126,46 +128,48 @@
         const h = document.getElementById('hobby').value;
         const a = document.getElementById('address').value;
 
-        // डेटा चेक करना
         if(n && p && s && d && h && a) {
             const btn = document.getElementById('submitBtn');
-            btn.innerText = "प्रक्रिया जारी है...";
+            btn.innerText = "शपथ दर्ज हो रही है...";
             btn.disabled = true;
 
-            // Formspree को डेटा भेजना
-            fetch("https://formspree.io/f/xzdyowdw", {
+            // गूगल शीट के लिए डेटा तैयार करना
+            const sheetData = {
+                "DonorName": n, // 'DonorName' का उपयोग नाम के लिए
+                "BookTitle": "Ground Executive Application", // पहचान के लिए
+                "Price": d + ", " + s, // जिला और राज्य
+                "ImageUrl": "https://img.icons8.com/color/96/soldier.png", // सिपाही आइकॉन
+                "Phone": p,
+                "Address": a,
+                "Hobby": h
+            };
+
+            fetch(scriptURL, {
                 method: "POST",
-                body: JSON.stringify({
-                    "सिपाही का नाम": n,
-                    "WhatsApp": p,
-                    "राज्य": s,
-                    "जिला": d,
-                    "रुचि (Hobby)": h,
-                    "पूरा पता": a,
-                    "Status": "Ground Executive Selection"
-                }),
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                }
+                mode: "no-cors",
+                body: JSON.stringify(sheetData)
             })
-            .then(response => {
-                if (response.ok) {
-                    // डेटा पहुँच गया, अब पेज बदलो
-                    document.getElementById('main-content').style.display = 'none';
-                    document.getElementById('success-page').style.display = 'block';
-                    window.scrollTo(0,0);
-                } else {
-                    throw new Error('Network response was not ok');
-                }
+            .then(() => {
+                // फॉर्म भरने वाले छात्र का व्हाट्सएप खोलना
+                const myNum = "919529812784";
+                const waText = `🚩 *ग्राउंड एग्जीक्यूटिव आवेदन!*%0A%0A*नाम:* ${n}%0A*WhatsApp:* ${p}%0A*जिला/राज्य:* ${d}, ${s}%0A*रुचि:* ${h}%0A*पता:* ${a}%0A%0A_मैं अपनी शपथ पर अडिग हूँ!_`;
+                
+                document.getElementById('main-content').style.display = 'none';
+                document.getElementById('success-page').style.display = 'block';
+                window.scrollTo(0,0);
+
+                // व्हाट्सएप पर रिडाइरेक्ट करना
+                setTimeout(() => {
+                    window.location.assign(`https://wa.me/${myNum}?text=${waText}`);
+                }, 1500);
             })
             .catch(error => {
-                alert("नेटवर्क धीमा है, कृपया एक बार फिर प्रयास करें।");
+                alert("नेटवर्क में समस्या है। कृपया फिर से कोशिश करें।");
                 btn.innerText = "शपथ स्वीकार करें";
                 btn.disabled = false;
             });
         } else {
-            alert("राष्ट्र सेवा के लिए पूरी जानकारी भरें!");
+            alert("कृपया राष्ट्र सेवा के लिए पूरी जानकारी भरें!");
         }
     }
 </script>
