@@ -21,7 +21,7 @@
             color: #333;
         }
 
-        /* शानदार हेडर */
+        /* प्रीमियम हेडर */
         .header {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
@@ -40,7 +40,7 @@
             margin: auto;
         }
 
-        /* अलर्ट बॉक्स */
+        /* लाइव अपडेट फीड बॉक्स */
         .feed-box {
             background: white;
             border-radius: 20px;
@@ -87,7 +87,7 @@
         h2 { color: var(--primary); margin-bottom: 10px; font-size: 22px; }
         .description { color: #555; font-size: 15px; line-height: 1.6; margin-bottom: 25px; }
 
-        /* अपडेटेड व्हाट्सएप बटन (आपका असली लिंक) */
+        /* व्हाट्सएप बटन - आपका नया लिंक */
         .btn-whatsapp {
             display: flex;
             align-items: center;
@@ -96,14 +96,17 @@
             background-color: var(--wa-green);
             color: white;
             text-decoration: none;
-            padding: 15px;
+            padding: 16px;
             border-radius: 12px;
             font-weight: bold;
             font-size: 18px;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            transition: 0.3s;
         }
 
-        /* हेल्प डेस्क */
+        .btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5); }
+
+        /* हेल्प सेंटर सेक्शन */
         .help-desk {
             background: var(--primary);
             color: white;
@@ -113,6 +116,7 @@
             align-items: center;
             gap: 15px;
             border: 1px solid var(--gold);
+            text-decoration: none;
         }
 
         .help-text h4 { margin: 0; font-size: 16px; color: var(--gold); }
@@ -137,25 +141,23 @@
     <div class="container">
         
         <div class="feed-box">
-            <div class="live-tag">NEW ALERTS</div>
+            <div class="live-tag">LIVE UPDATES</div>
             <div class="icon-circle">📢</div>
             <h2>भर्ती एवं परीक्षा अलर्ट</h2>
             <p class="description">
-                सभी सरकारी नौकरियों की जानकारी, एडमिट कार्ड और रिजल्ट की तुरंत अपडेट पाने के लिए हमारे चैनल से जुड़ें।
+                सरकारी नौकरियों की ताज़ा जानकारी, एडमिट कार्ड और रिजल्ट की तुरंत अपडेट सीधे अपने व्हाट्सएप पर पाने के लिए अभी फॉलो करें।
             </p>
             
-            <a href="https://whatsapp.com/channel/0029Vb8SVmOBvvsXp6gql446" class="btn-whatsapp">
+            <a href="https://whatsapp.com/channel/0029VbC9PI5J3jut4PGMlp17" class="btn-whatsapp">
                 🔔 अभी फॉलो करें
             </a>
         </div>
 
-        <a href="https://wa.me/919529812784?text=नमस्ते, मुझे परीक्षा फॉर्म के बारे में सहायता चाहिए।" style="text-decoration: none;">
-            <div class="help-desk">
-                <div style="font-size: 25px;">💬</div>
-                <div class="help-text">
-                    <h4>हेल्प सेंटर (Help Center)</h4>
-                    <p>क्या आपको फॉर्म भरने में मदद चाहिए? यहाँ क्लिक करें।</p>
-                </div>
+        <a href="https://wa.me/919529812784?text=नमस्ते, मुझे परीक्षा के बारे में सहायता चाहिए।" class="help-desk">
+            <div style="font-size: 25px;">💬</div>
+            <div class="help-text">
+                <h4>हेल्पर सेंटर (Help Center)</h4>
+                <p>फॉर्म भरने में दिक्कत है? सीधे मदद मांगें।</p>
             </div>
         </a>
 
