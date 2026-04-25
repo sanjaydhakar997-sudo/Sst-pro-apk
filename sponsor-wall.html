@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SST PRO - डोनर वॉल</title>
+    <style>
+        :root { --main: #1a3a5f; --gold: #ffd700; --bg: #f4f7f6; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; padding: 0; }
+        
+        .header { background: linear-gradient(135deg, #001f3f, #1a3a5f); color: white; padding: 35px 20px; text-align: center; border-bottom: 5px solid var(--gold); }
+        
+        .container { max-width: 600px; margin: 20px auto; padding: 0 15px; }
+        
+        /* छात्र कार्ड का डिजाइन */
+        .stu-card { 
+            background: white; border-radius: 20px; padding: 20px; margin-bottom: 20px; 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08); border-left: 10px solid var(--main); 
+            position: relative; animation: slideUp 0.5s ease;
+        }
+        
+        .verified-badge { 
+            position: absolute; top: 15px; right: 15px; background: #e8f5e9; 
+            color: #2e7d32; padding: 5px 12px; border-radius: 50px; font-size: 10px; font-weight: 900; 
+        }
+        
+        .stu-name { font-size: 20px; font-weight: 900; color: var(--main); margin: 0; }
+        .stu-meta { font-size: 12px; color: #666; margin: 5px 0 15px 0; font-weight: bold; }
+        
+        .book-list-box { 
+            background: #fff9e6; border: 1.5px dashed #ffd700; padding: 15px; 
+            border-radius: 12px; margin-bottom: 15px; 
+        }
+        .book-title { font-size: 11px; color: #b8860b; font-weight: 900; text-transform: uppercase; margin-bottom: 5px; }
+        .books { font-size: 15px; font-weight: bold; color: #333; line-height: 1.4; }
+        
+        .stu-story { font-size: 13px; color: #555; font-style: italic; margin-bottom: 20px; line-height: 1.5; }
+
+        .help-btn { 
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            background: var(--main); color: white; text-decoration: none; 
+            padding: 15px; border-radius: 15px; font-weight: 800; font-size: 15px;
+            box-shadow: 0 5px 15px rgba(26,58,95,0.3); transition: 0.3s;
+        }
+        .help-btn:active { transform: scale(0.97); }
+
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        #loading { text-align: center; padding: 50px; color: var(--main); font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1 style="margin: 0; font-size: 22px;">🙏 डोनर कनेक्ट पोर्टल</h1>
+    <p style="font-size: 11px; opacity: 0.8; margin-top: 5px;">होनहार छात्रों को आपकी सहायता की प्रतीक्षा है</p>
+</div>
+
+<div class="container" id="wallContainer">
+    <div id="loading">छात्रों की लिस्ट लोड हो रही है... ⏳</div>
+</div>
+
+<script>
+    async function fetchRequests() {
+        const cloudName = "dppmrodwf"; 
+        const tag = "book_help"; 
+        // Cloudinary JSON List API
+        const url = `https://res.cloudinary.com/${cloudName}/image/list/${tag}.json`;
+
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+            const container = document.getElementById('wallContainer');
+            container.innerHTML = ''; 
+
+            if (data.resources.length === 0) {
+                container.innerHTML = '<p style="text-align:center; color:#666; margin-top:50px;">अभी कोई नई रिक्वेस्ट नहीं है।</p>';
+                return;
+            }
+
+            data.resources.forEach(res => {
+                const ctx = res.context?.custom || {};
+                const name = ctx.name || "छात्र";
+                const city = ctx.city || "राजस्थान";
+                const exam = ctx.exam || "प्रतियोगी परीक्षा";
+                const books = ctx.books || "किताबों की सूची उपलब्ध नहीं";
+                const story = ctx.story || "आगे बढ़ना चाहता हूँ, बस किताबों का सहारा चाहिए।";
+
+                const cardHTML = `
+                    <div class="stu-card">
+                        <span class="verified-badge">✓ SST VERIFIED</span>
+                        <div class="stu-name">${name}</div>
+                        <div class="stu-meta">📍 ${city} | तैयारी: ${exam}</div>
+                        
+                        <div class="book-list-box">
+                            <div class="book-title">जरूरी किताबें:</div>
+                            <div class="books">${books}</div>
+                        </div>
+                        
+                        <div class="stu-story">"${story}"</div>
+                        
+                        <a href="https://wa.me/91XXXXXXXXXX?text=नमस्ते संजय सर, मैं छात्र '${name}' (${city}) की किताबों में मदद करना चाहता हूँ।" class="help-btn">
+                            🤝 मदद का हाथ बढ़ाएं
+                        </a>
+                    </div>
+                `;
+                container.innerHTML += cardHTML;
+            });
+        } catch (err) {
+            console.error(err);
+            document.getElementById('wallContainer').innerHTML = '<p style="text-align:center; color:red; padding:20px;">लिस्ट लोड नहीं हो पाई। कृपया इंटरनेट चेक करें।</p>';
+        }
+    }
+
+    fetchRequests();
+</script>
+
+</body>
+</html>
+
