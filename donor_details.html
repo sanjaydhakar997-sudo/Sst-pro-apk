@@ -71,20 +71,20 @@
             <div class="section-title"><span>📜</span> विरासत की शपथ</div>
             <div class="oath-box">
                 <label class="oath-item"><input type="checkbox" id="oath1"> <span>मैं इसे संभाल कर रखूँगा।</span></label>
-                <label class="oath-item"><input type="checkbox" id="oath2"> <span>काम पूरा होने पर SST Pro को लौटा दूँगा।</span></label>
+                <label class="oath-item"><input type="checkbox" id="oath2"> <span>काम पूरा होने पर लौटा दूँगा।</span></label>
             </div>
             
-            <button onclick="submitLegacyRequest()" class="request-btn" id="finalBtn">टीम से जुड़ें ❯</button>
+            <button onclick="submitLegacyRequest()" class="request-btn" id="finalBtn">रिक्वेस्ट भेजें ❯</button>
         </div>
 
         <div id="successBox" class="success-overlay">
             <h2 style="margin: 0;">रिक्वेस्ट दर्ज हुई! 🚩</h2>
-            <p>व्हाट्सएप पर मैसेज भेजें...</p>
+            <p>व्हाट्सएप पर रीडायरेक्ट किया जा रहा है...</p>
         </div>
     </div>
 
     <script>
-        // लाइब्रेरी से नाम और किताब का डेटा अपने आप उठाना
+        // लाइब्रेरी से डेटा लोड करना
         window.onload = function() {
             const params = new URLSearchParams(window.location.search);
             if(params.has('book')) document.getElementById('reqBook').value = params.get('book');
@@ -106,23 +106,19 @@
             }
 
             const btn = document.getElementById('finalBtn');
-            btn.innerText = "प्रोसेस हो रहा है...";
+            btn.innerText = "भेजा जा रहा है...";
             btn.disabled = true;
 
-            const finalData = { "छात्र": name, "किताब": book, "दाता": donor, "पता": address, "लक्ष्य": exam };
-
-            // Formspree पर डेटा भेजना
-            fetch("https://formspree.io/f/xzdyowdw", {
-                method: "POST",
-                body: JSON.stringify(finalData),
-                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }
-            }).then(() => {
-                const myNum = "919529812784";
-                const text = `🚩 *नई किताब रिक्वेस्ट!*%0A%0A*छात्र:* ${name}%0A*किताब:* ${book}%0A*दाता:* ${donor}%0A*पता:* ${address}%0A%0A_मैने शपथ ली है कि मैं किताब लौटा दूँगा।_`;
-                
-                document.getElementById('successBox').style.display = "block";
-                window.location.href = `https://wa.me/${myNum}?text=${text}`;
-            });
+            // व्हाट्सएप मैसेज तैयार करना
+            const myNum = "919529812784";
+            const waText = `🚩 *नई किताब रिक्वेस्ट!*%0A%0A*छात्र:* ${name}%0A*व्हाट्सएप:* ${phone}%0A*किताब:* ${book}%0A*दाता:* ${donor}%0A*लक्ष्य:* ${exam}%0A*पता:* ${address}%0A%0A_मैं शपथ लेता हूँ कि मैं इस विरासत का सम्मान करूँगा।_`;
+            
+            document.getElementById('successBox').style.display = "block";
+            
+            // व्हाट्सएप लिंक पर भेजना
+            setTimeout(() => {
+                window.location.href = `https://wa.me/${myNum}?text=${waText}`;
+            }, 1000);
         }
     </script>
 </body>
