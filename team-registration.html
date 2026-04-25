@@ -3,103 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SST PRO - Ground Executive Selection</title>
+    <title>SST PRO - Ground Executive Registration</title>
     <style>
-        :root { --primary: #1a237e; --secondary: #283593; --accent: #ffd700; }
-        body { font-family: 'Poppins', sans-serif; background: #0f172a; margin: 0; padding: 15px; color: #fff; }
+        :root { --primary: #1a237e; --accent: #ffd700; --bg: #f0f2f5; }
+        body { font-family: 'Poppins', sans-serif; background: var(--bg); margin: 0; padding: 15px; color: #333; }
         
-        /* मज़बूत हेडर */
-        .header-section { text-align: center; padding: 30px 10px; background: linear-gradient(135deg, #1a237e, #000); border-radius: 25px; margin-bottom: 20px; border-bottom: 4px solid var(--accent); }
-        .header-section h1 { font-size: 26px; margin: 0; letter-spacing: 1px; color: var(--accent); }
-        .header-section p { font-size: 14px; opacity: 0.8; margin-top: 5px; }
+        .mission-header { background: linear-gradient(135deg, #1a237e, #000); color: white; padding: 35px 20px; border-radius: 0 0 40px 40px; text-align: center; margin: -15px -15px 25px -15px; border-bottom: 5px solid var(--accent); }
+        .mission-header h1 { margin: 0; font-size: 28px; letter-spacing: 1px; color: var(--accent); }
 
-        /* सिलेक्शन कार्ड */
-        .form-card { background: #fff; color: #333; border-radius: 30px; padding: 25px; box-shadow: 0 15px 35px rgba(0,0,0,0.5); position: relative; overflow: hidden; }
+        .form-card { background: white; border-radius: 25px; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
         
-        .badge { background: var(--primary); color: #fff; padding: 5px 15px; border-radius: 50px; font-size: 12px; font-weight: bold; display: inline-block; margin-bottom: 15px; }
+        .input-group { margin-bottom: 15px; }
+        .input-group label { display: block; font-weight: bold; font-size: 13px; margin-bottom: 5px; color: var(--primary); }
+        .input-group input, .input-group textarea { width: 100%; padding: 12px; border: 2px solid #eef0f2; border-radius: 12px; font-size: 15px; box-sizing: border-box; background: #fdfdfd; }
+        .input-group input:focus { border-color: var(--primary); outline: none; }
 
-        .input-box { margin-bottom: 18px; }
-        .input-box label { display: block; font-weight: 700; font-size: 13px; margin-bottom: 8px; color: var(--primary); text-transform: uppercase; }
-        .input-box input, .input-box textarea { width: 100%; padding: 14px; border: 2px solid #e2e8f0; border-radius: 15px; font-size: 16px; box-sizing: border-box; background: #f8fafc; }
-        .input-box input:focus { border-color: var(--primary); outline: none; background: #fff; }
+        /* Preamble Section (End of Form) */
+        .preamble-box { background: #fffde7; border: 1.5px dashed #ffd700; padding: 15px; border-radius: 15px; margin: 25px 0; position: relative; }
+        .preamble-text { font-style: italic; font-size: 13px; line-height: 1.6; color: #444; text-align: center; }
 
-        /* फौलादी बटन */
-        .power-btn { width: 100%; background: linear-gradient(135deg, #1a237e, #283593); color: white; border: none; padding: 18px; border-radius: 18px; font-size: 18px; font-weight: 900; cursor: pointer; box-shadow: 0 8px 15px rgba(26, 35, 126, 0.3); text-transform: uppercase; transition: 0.3s; }
-        .power-btn:active { transform: scale(0.96); }
+        /* Vision Box (At the very end) */
+        .vision-box { background: #1a237e; color: white; padding: 15px; border-radius: 15px; text-align: center; margin-top: 10px; }
+        .vision-box b { color: var(--accent); display: block; font-size: 16px; margin-bottom: 5px; }
 
-        /* बधाई का गुप्त बॉक्स */
-        #success-overlay { display: none; text-align: center; padding: 40px 20px; }
-        .success-icon { font-size: 60px; margin-bottom: 15px; }
+        .power-btn { width: 100%; background: linear-gradient(135deg, #1a237e, #283593); color: white; border: none; padding: 18px; border-radius: 15px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 10px; box-shadow: 0 5px 15px rgba(26,35,126,0.3); }
+
+        #success-page { display: none; text-align: center; padding: 50px 20px; background: white; border-radius: 30px; height: 100vh; }
     </style>
 </head>
 <body>
 
-    <div id="main-content">
-        <div class="header-section">
-            <p>TEAM SOCIAL STUDIES CLASSES</p>
-            <h1>GROUND EXECUTIVE</h1>
-            <p>एक गाँव • एक लीडर • एक मिशन</p>
-        </div>
-
-        <div class="form-card">
-            <div class="badge">OFFICIAL SELECTION 2026</div>
-            
-            <form id="execForm">
-                <div class="input-box">
-                    <label>आपका शुभ नाम</label>
-                    <input type="text" id="name" placeholder="Name" required>
-                </div>
-
-                <div class="input-box">
-                    <label>WhatsApp नंबर</label>
-                    <input type="tel" id="phone" placeholder="98XXXXXXXX" required>
-                </div>
-
-                <div class="input-box">
-                    <label>जिला और तहसील</label>
-                    <input type="text" id="dist" placeholder="Chittorgarh, Nimbahera" required>
-                </div>
-
-                <div class="input-box">
-                    <label>आपके गाँव का नाम</label>
-                    <input type="text" id="village" placeholder="Village Name" required>
-                </div>
-
-                <div class="input-box">
-                    <label>आप गाँव की मदद कैसे करेंगे?</label>
-                    <textarea id="aim" rows="2" placeholder="अपना विज़न लिखें..."></textarea>
-                </div>
-
-                <button type="button" onclick="finalizeAction()" class="power-btn">जॉइन टीम SST PRO</button>
-            </form>
-        </div>
+<div id="form-container">
+    <div class="mission-header">
+        <p style="margin:0; font-size: 12px; opacity: 0.8;">TEAM SOCIAL STUDIES CLASSES</p>
+        <h1>GROUND EXECUTIVE</h1>
     </div>
 
-    <div id="success-overlay">
-        <div class="success-icon">🚩</div>
-        <h1 style="color: var(--accent);">बधाई हो, सिपाही!</h1>
-        <p style="font-size: 18px;">आपका आवेदन <b>SST PRO TEAM</b> के मुख्य सर्वर में सुरक्षित जमा कर लिया गया है।</p>
-        <p style="opacity: 0.7;">जल्द ही आपसे संपर्क किया जाएगा।</p>
-        <button onclick="window.location.href='index.html'" class="power-btn" style="margin-top:20px; background: #fff; color: #1a237e;">वापस ऐप पर चलें</button>
+    <div class="form-card">
+        <form id="regForm">
+            <div class="input-group">
+                <label>पूरा नाम</label>
+                <input type="text" id="name" placeholder="आपका नाम" required>
+            </div>
+
+            <div class="input-group">
+                <label>WhatsApp नंबर</label>
+                <input type="tel" id="phone" placeholder="98XXXXXXXX" required>
+            </div>
+
+            <div class="input-group">
+                <label>आपका पता (गाँव/मोहल्ला/शहर)</label>
+                <input type="text" id="address" placeholder="पूरा पता लिखें" required>
+            </div>
+
+            <div class="input-group">
+                <label>जिला</label>
+                <input type="text" id="dist" placeholder="जैसे: चित्तौड़गढ़" required>
+            </div>
+
+            <div class="input-group">
+                <label>आपकी हॉबी (Hobby क्या है?)</label>
+                <input type="text" id="hobby" placeholder="जैसे: पढ़ना, घूमना, सोशल मीडिया" required>
+            </div>
+
+            <div class="preamble-box">
+                <div class="preamble-text">
+                    "मैं शपथ लेता हूँ कि मेरे गाँव और शहर के हर घर तक शिक्षा की रोशनी पहुँचाने में मैं टीम का साथ दूँगा। पुरानी किताबों का आदान-प्रदान और हर छात्र की मदद करना अब मेरा लक्ष्य है।"
+                </div>
+            </div>
+
+            <button type="button" onclick="submitMission()" class="power-btn">मिशन जॉइन करें</button>
+
+            <div class="vision-box">
+                <b>हमारा विज़न</b>
+                <p style="margin:0; font-size: 12px; opacity: 0.9;">"गाँव का हर बच्चा पढ़ेगा, जब गाँव का हर युवा साथ चलेगा।"</p>
+            </div>
+        </form>
     </div>
+</div>
 
-    <script>
-        function finalizeAction() {
-            const n = document.getElementById('name').value;
-            const p = document.getElementById('phone').value;
-            const v = document.getElementById('village').value;
+<div id="success-page">
+    <h1 style="font-size: 60px; margin-bottom: 10px;">🏆</h1>
+    <h2 style="color: #1a237e;">बधाई हो, ग्राउंड एग्जीक्यूटिव!</h2>
+    <p>आपका संकल्प टीम तक पहुँच चुका है।</p>
+    <p style="font-weight: bold; color: #283593;">अब आप SST PRO मिशन का हिस्सा हैं।</p>
+    <button onclick="window.location.href='index.html'" class="power-btn" style="background: #eee; color: #333; box-shadow: none;">होम पर जाएं</button>
+</div>
 
-            if(n && p && v) {
-                // फॉर्म छुपाओ, बधाई दिखाओ
-                document.getElementById('main-content').style.display = 'none';
-                document.getElementById('success-overlay').style.display = 'block';
-                
-                // यहाँ बैकग्राउंड में डेटा भेजने का काम आप बाद में जोड़ सकते हैं
-                console.log("Data Captured: ", n, p, v);
-            } else {
-                alert("मिशन में शामिल होने के लिए पूरी जानकारी भरें!");
-            }
+<script>
+    function submitMission() {
+        const fields = ['name', 'phone', 'address', 'dist', 'hobby'];
+        let valid = true;
+        fields.forEach(id => { if(!document.getElementById(id).value) valid = false; });
+
+        if(valid) {
+            document.getElementById('form-container').style.display = 'none';
+            document.getElementById('success-page').style.display = 'block';
+        } else {
+            alert("कृपया पूरी जानकारी भरें!");
         }
-    </script>
+    }
+</script>
+
 </body>
 </html>
