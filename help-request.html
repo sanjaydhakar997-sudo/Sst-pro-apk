@@ -123,11 +123,55 @@
         document.getElementById(id).style.color = "#27ae60";
     }
 
-    async function submitHelp(mode) {
-        // यहाँ आपका पुराना सबमिशन लॉजिक रहेगा, बस IDs बदल जाएंगी (donorName, donorBooks आदि)
-        // मोड के हिसाब से डेटा Formspree पर जाएगा
-        alert("बॉस, डेटा जा रहा है! (लॉजिक सेट है)");
+async function submitHelp(mode) {
+    // 1. सुरक्षा जांच (Legal & Safety Check)
+    const ageChecked = document.getElementById('ageCheck') ? document.getElementById('ageCheck').checked : true;
+    const legalChecked = document.getElementById('legalAccept') ? document.getElementById('legalAccept').checked : true;
+
+    if (!ageChecked || !legalChecked) {
+        alert("⚠️ कृपया घोषणा पत्र और 18+ वाले बॉक्स पर टिक करें!");
+        return;
     }
+
+    // 2. लोडर चालू करें
+    document.getElementById('loader').style.display = 'block';
+
+    // 3. डेटा इकट्ठा करें (Mode के हिसाब से)
+    let formData = new FormData();
+    if (mode === 'need') {
+        formData.append("Type", "BOOK REQUEST");
+        formData.append("Name", document.getElementById('stuName').value);
+        formData.append("WhatsApp", document.getElementById('stuWhatsApp').value);
+        formData.append("Books", document.getElementById('bookList').value);
+        formData.append("Address", document.getElementById('stuAddress').value);
+    } else {
+        formData.append("Type", "BOOK DONATION");
+        formData.append("Name", document.getElementById('donorName').value);
+        formData.append("WhatsApp", document.getElementById('donorWhatsApp').value);
+        formData.append("Books", document.getElementById('donorBooks').value);
+    }
+
+    // 4. Formspree पर डेटा भेजें (अपनी ID यहाँ डालें)
+    try {
+        const response = await fetch("https://formspree.io/f/YOUR_ID_HERE", {
+            method: "POST",
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+            alert("✅ मिशन सफल! आपकी जानकारी सुरक्षित भेज दी गई है।");
+            location.reload(); // पेज रीसेट करें
+        } else {
+            alert("❌ सर्वर एरर! कृपया दोबारा कोशिश करें।");
+        }
+    } catch (error) {
+        alert("❌ इंटरनेट कनेक्शन चेक करें!");
+    } finally {
+        document.getElementById('loader').style.display = 'none';
+    }
+}
+
 </script>
 </body>
 </html>
