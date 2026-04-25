@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SST PRO - पुस्तक सहायता फॉर्म</title>
+    <script src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.1/dist/browser-image-compression.js"></script>
+    <style>
+        :root { --main: #004e92; --gold: #ffd700; --bg: #f4f7f6; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; padding: 15px; }
+        .header { background: linear-gradient(135deg, #000428, #004e92); color: white; padding: 30px 20px; text-align: center; border-radius: 0 0 30px 30px; border-bottom: 4px solid var(--gold); }
+        .form-card { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); max-width: 500px; margin: -20px auto 20px; position: relative; z-index: 10; }
+        h2 { color: var(--main); font-size: 20px; margin-bottom: 15px; text-align: center; }
+        input, textarea, select { width: 100%; padding: 14px; margin: 8px 0; border-radius: 12px; border: 1px solid #ddd; box-sizing: border-box; background: #fafafa; font-size: 14px; }
+        .upload-btn { border: 2px dashed var(--main); padding: 15px; text-align: center; border-radius: 15px; cursor: pointer; margin: 10px 0; background: #f0f7ff; }
+        .submit-btn { width: 100%; background: var(--main); color: white; border: none; padding: 18px; border-radius: 15px; font-size: 17px; font-weight: 800; cursor: pointer; margin-top: 10px; box-shadow: 0 8px 15px rgba(0,78,146,0.3); }
+        #loader { display: none; text-align: center; color: var(--main); font-weight: bold; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1 style="margin: 0; font-size: 22px;">📚 मदद का हाथ</h1>
+    <p style="font-size: 11px; opacity: 0.8; margin-top: 5px;">सिर्फ किताबों की सहायता के लिए रजिस्टर करें</p>
+</div>
+
+<div class="form-card">
+    <h2>अपनी जानकारी भरें 📝</h2>
+    
+    <input type="text" id="stuName" placeholder="आपका पूरा नाम *">
+    <input type="text" id="stuWhatsApp" placeholder="आपका व्हाट्सएप नंबर (अनिवार्य) *">
+    <input type="text" id="stuCity" placeholder="शहर / गांव का नाम *">
+    
+    <textarea id="stuAddress" rows="2" placeholder="पूरा डाक पता (ताकि डोनर किताबें भेज सके) *"></textarea>
+
+    <select id="examType">
+        <option value="">किस परीक्षा की तैयारी कर रहे हैं? *</option>
+        <option value="10th/12th">10वीं / 12वीं बोर्ड</option>
+        <option value="REET">REET / शिक्षक भर्ती</option>
+        <option value="SSC/Police">SSC / पुलिस / पटवार</option>
+        <option value="Other">अन्य (Other)</option>
+    </select>
+
+    <textarea id="bookList" rows="2" placeholder="कौनसी किताबें चाहिए? (नाम लिखें) *"></textarea>
+    <textarea id="stuStory" rows="3" placeholder="अपनी आर्थिक स्थिति बताएं... *"></textarea>
+
+    <label class="upload-btn">
+        <input type="file" id="marksheetPic" accept="image/*" style="display:none;" onchange="imgCheck()">
+        <div id="upStatus">📸 मार्कशीट या ID अपलोड करें</div>
+        <div style="font-size: 9px; color: #666; margin-top: 4px;">(केवल वेरिफिकेशन के लिए - गुप्त रहेगी)</div>
+    </label>
+
+    <div id="loader">विरासत की गुहार भेज रहे हैं... ⏳</div>
+    <button onclick="submitHelp()" class="submit-btn" id="sBtn">मदद के लिए रिक्वेस्ट भेजें ❯</button>
+</div>
+
+<script>
+    function imgCheck() {
+        document.getElementById('upStatus').innerHTML = "✅ फोटो तैयार है!";
+        document.getElementById('upStatus').style.color = "green";
+    }
+
+    async function submitHelp() {
+        const name = document.getElementById('stuName').value;
+        const wa = document.getElementById('stuWhatsApp').value;
+        const city = document.getElementById('stuCity').value;
+        const addr = document.getElementById('stuAddress').value;
+        const exam = document.getElementById('examType').value;
+        const books = document.getElementById('bookList').value;
+        const story = document.getElementById('stuStory').value;
+        const file = document.getElementById('marksheetPic').files[0];
+
+        if(!name || !wa || !city || !addr || !exam || !books || !story || !file) {
+            return alert("बॉस, सारी जानकारी भरना जरूरी है!");
+        }
+
+        const btn = document.getElementById('sBtn');
+        const loader = document.getElementById('loader');
+        btn.style.display = 'none'; loader.style.display = 'block';
+
+        try {
+            // 1. Cloudinary Upload
+            const options = { maxSizeMB: 0.5, maxWidthOrHeight: 1200 };
+            const comp = await imageCompression(file, options);
+            const formData = new FormData();
+            formData.append('file', comp);
+            formData.append('upload_preset', 'sst_pro'); 
+            formData.append('tags', 'book_help');
+            formData.append('context', `name=${name}|city=${city}|exam=${exam}|books=${books}|story=${story}`);
+
+            const resp = await fetch('https://api.cloudinary.com/v1_1/dppmrodwf/image/upload', { method: 'POST', body: formData });
+            const res = await resp.json();
+
+            // 2. Formspree Record
+            await fetch("https://formspree.io/f/xzdyowdw", {
+                method: "POST",
+                body: JSON.stringify({
+                    "Student": name,
+                    "WhatsApp": wa,
+                    "Address": addr,
+                    "Books": books,
+                    "Photo": res.secure_url
+                }),
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }
+            });
+
+            alert("आपकी रिक्वेस्ट संजय सर तक पहुँच गई है। वेरिफिकेशन के बाद इसे लाइव किया जाएगा। 🚩");
+            location.href = 'index.html';
+
+        } catch (err) {
+            alert("नेटवर्क एरर! फिर से कोशिश करें।");
+            btn.style.display = 'block'; loader.style.display = 'none';
+        }
+    }
+</script>
+</body>
+</html>
