@@ -5,64 +5,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Royal Library - SST Pro</title>
     <style>
-        :root { --gold: #ffd700; --royal: #1a1a2e; --dark: #0c0c14; }
-        body { background: var(--dark); font-family: 'Poppins', sans-serif; color: #fff; margin: 0; padding: 10px; overflow-x: hidden; }
+        :root { --gold: #ffd700; --royal: #1a1a2e; --dark: #0c0c14; --white: #ffffff; }
+        body { background: var(--dark); font-family: 'Poppins', sans-serif; color: var(--white); margin: 0; padding: 0; overflow-x: hidden; }
         
-        header { text-align: center; padding: 15px 0; border-bottom: 1px solid rgba(255,215,0,0.1); margin-bottom: 20px; }
-        h1 { color: var(--gold); font-size: 22px; text-transform: uppercase; letter-spacing: 2px; margin: 0; }
+        /* शानदार हेडर */
+        header { 
+            background: linear-gradient(180deg, var(--royal) 0%, var(--dark) 100%);
+            text-align: center; padding: 30px 10px; border-bottom: 4px solid var(--gold); 
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+        }
+        h1 { color: var(--gold); font-size: 26px; text-transform: uppercase; letter-spacing: 3px; margin: 0; font-weight: 900; }
+        .stats { font-size: 12px; color: #bbb; margin-top: 10px; font-weight: bold; }
 
+        /* सर्च बार */
+        .search-container { padding: 15px; max-width: 800px; margin: 0 auto; }
+        #searchBox { 
+            width: 100%; padding: 12px 20px; border-radius: 50px; border: 1px solid rgba(255,215,0,0.3);
+            background: #161625; color: white; outline: none; font-size: 14px; box-sizing: border-box;
+        }
+        #searchBox:focus { border-color: var(--gold); box-shadow: 0 0 10px rgba(255,215,0,0.2); }
+
+        /* लाइब्रेरी ग्रिड */
         .library-grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); 
-            gap: 12px; 
-            max-width: 1200px; 
-            margin: 0 auto; 
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); 
+            gap: 15px; padding: 15px; max-width: 1200px; margin: 0 auto; 
         }
 
         .book-card { 
-            background: var(--royal); 
-            border-radius: 15px; 
-            border: 1px solid rgba(255,215,0,0.15); 
-            overflow: hidden; 
-            position: relative; 
-            cursor: pointer; 
-            transition: 0.3s ease;
+            background: var(--royal); border-radius: 20px; border: 1px solid rgba(255,215,0,0.1); 
+            overflow: hidden; position: relative; cursor: pointer; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
-        .book-card:hover { transform: translateY(-5px); border-color: var(--gold); }
+        .book-card:hover { transform: translateY(-8px); border-color: var(--gold); }
         
-        .book-img { width: 100%; height: 170px; object-fit: cover; }
+        .book-img { width: 100%; height: 200px; object-fit: cover; }
         
-        .photo-badge { position: absolute; top: 8px; left: 8px; background: rgba(0,0,0,0.8); color: var(--gold); padding: 3px 7px; border-radius: 6px; font-size: 9px; font-weight: bold; border: 1px solid var(--gold); }
-        .price-badge { position: absolute; top: 8px; right: 8px; padding: 3px 7px; border-radius: 6px; font-size: 9px; font-weight: 900; }
+        .photo-badge { position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,0.7); color: var(--gold); padding: 4px 8px; border-radius: 8px; font-size: 10px; font-weight: bold; backdrop-filter: blur(5px); }
+        .price-badge { position: absolute; top: 10px; right: 10px; padding: 4px 8px; border-radius: 8px; font-size: 10px; font-weight: 900; }
         .is-free { background: #28a745; color: #fff; }
         .is-paid { background: var(--gold); color: #000; }
 
-        .info-box { padding: 10px; text-align: left; }
-        .title { font-size: 13px; font-weight: bold; color: var(--gold); margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .meta { font-size: 10px; color: #bbb; margin-top: 5px; }
+        .info-box { padding: 12px; border-top: 1px solid rgba(255,215,0,0.05); }
+        .title { font-size: 14px; font-weight: bold; color: var(--gold); margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .meta { font-size: 11px; color: #aaa; margin-top: 5px; }
 
+        /* स्लाइडर (Modal) */
         #sliderModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); z-index: 9999; flex-direction: column; align-items: center; justify-content: center; }
-        .modal-content { width: 92%; max-width: 400px; text-align: center; position: relative; }
-        .slide-img { width: 100%; max-height: 60vh; border-radius: 15px; object-fit: contain; box-shadow: 0 0 30px rgba(255,215,0,0.2); }
+        .modal-content { width: 90%; max-width: 450px; text-align: center; position: relative; }
+        .slide-img { width: 100%; max-height: 55vh; border-radius: 20px; object-fit: contain; border: 2px solid rgba(255,215,0,0.2); }
         
-        .nav { position: absolute; top: 40%; background: var(--gold); border: none; width: 35px; height: 35px; border-radius: 50%; cursor: pointer; font-weight: bold; }
-        .prev { left: -10px; } .next { right: -10px; }
-        .close-x { position: absolute; top: -50px; right: 0; color: #fff; font-size: 40px; cursor: pointer; }
+        .nav { position: absolute; top: 40%; background: var(--gold); border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-weight: bold; font-size: 18px; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+        .prev { left: -15px; } .next { right: -15px; }
+        .close-x { position: absolute; top: -60px; right: 0; color: #fff; font-size: 50px; cursor: pointer; }
         
         .purchase-btn { 
-            background: var(--gold); color: #000; text-decoration: none; 
-            padding: 15px 30px; border-radius: 50px; margin-top: 25px; 
-            font-weight: 900; display: inline-block; width: 85%; font-size: 16px;
-            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.2);
+            background: linear-gradient(90deg, #ffd700, #ffae00); color: #000; text-decoration: none; 
+            padding: 18px; border-radius: 50px; margin-top: 25px; 
+            font-weight: 900; display: block; font-size: 18px;
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3); text-transform: uppercase;
         }
+
+        .loader { border: 4px solid #f3f3f3; border-top: 4px solid var(--gold); border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 50px auto; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
 
     <header>
         <h1>THE ROYAL LIBRARY 🚩</h1>
+        <div class="stats" id="bookCount">विरासत लोड हो रही है...</div>
     </header>
 
+    <div class="search-container">
+        <input type="text" id="searchBox" placeholder="किताब या दाता का नाम खोजें..." oninput="filterBooks()">
+    </div>
+
+    <div id="loader" class="loader"></div>
     <div class="library-grid" id="mainGrid"></div>
 
     <div id="sliderModal">
@@ -72,8 +91,8 @@
             <img id="activeImg" class="slide-img">
             <button class="nav next" onclick="moveSlide(1)">❯</button>
             
-            <h3 id="activeTitle" style="color:var(--gold); margin: 20px 0 5px 0;"></h3>
-            <p id="activeDonor" style="font-size:13px; color:#ccc; margin-bottom: 20px;"></p>
+            <h3 id="activeTitle" style="color:var(--gold); margin: 25px 0 5px 0; font-size: 22px;"></h3>
+            <p id="activeDonor" style="font-size:14px; color:#bbb; margin-bottom: 25px;"></p>
             
             <a id="purchaseLink" href="#" class="purchase-btn">अभी प्राप्त करें ❯</a>
         </div>
@@ -82,14 +101,16 @@
 <script>
     const cloudName = "dppmrodwf"; 
     const tag = "sst_pro"; 
+    let allBooks = []; // सारा डेटा यहाँ स्टोर होगा
     let albumImages = [];
     let albumIndex = 0;
 
-    // 🚩 सुधार: यहाँ हमने फाइल का नाम GitHub के हिसाब से 'donor_details.html' कर दिया है
-    const requestFormFile = "donor_details.html"; 
+    // 🚩 यहाँ अपनी फाइल का नाम लिखें जो 'किताब प्राप्त करें' का फॉर्म है
+    const requestFormFile = "legacy-builder.html"; 
 
     async function loadBooks() {
         try {
+            // Cloudinary से डेटा खींचना (Timestamp जोड़कर ताकि पुराना कैश न दिखे)
             const response = await fetch(`https://res.cloudinary.com/${cloudName}/image/list/${tag}.json?cb=${Date.now()}`);
             const data = await response.json();
             const grouped = {}; 
@@ -99,7 +120,7 @@
                 const sid = ctx.setid || img.public_id; 
                 if (!grouped[sid]) {
                     grouped[sid] = {
-                        title: ctx.title || "Untitled Book",
+                        title: ctx.title || "Unknown Legacy",
                         donor: ctx.donor || "SST Member",
                         price: ctx.price || 0,
                         images: []
@@ -108,27 +129,48 @@
                 grouped[sid].images.push(`https://res.cloudinary.com/${cloudName}/image/upload/${img.public_id}.${img.format}`);
             });
 
-            const grid = document.getElementById('mainGrid');
-            grid.innerHTML = "";
+            allBooks = Object.values(grouped);
+            document.getElementById('loader').style.display = 'none';
+            document.getElementById('bookCount').innerText = `${allBooks.length} अनमोल विरासतें उपलब्ध`;
+            displayBooks(allBooks);
 
-            Object.values(grouped).forEach(book => {
-                const card = document.createElement('div');
-                card.className = 'book-card';
-                card.onclick = () => openSlider(book.images, book.title, book.donor);
-                card.innerHTML = `
-                    <div class="photo-badge">📸 ${book.images.length}</div>
-                    <div class="price-badge ${book.price == 0 ? 'is-free' : 'is-paid'}">
-                        ${book.price == 0 ? 'FREE' : '₹' + book.price}
-                    </div>
-                    <img src="${book.images[0]}" class="book-img">
-                    <div class="info-box">
-                        <p class="title">${book.title}</p>
-                        <p class="meta">दाता: ${book.donor}</p>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
-        } catch (e) { console.error("Loading Error", e); }
+        } catch (e) { 
+            console.error("Loading Error", e);
+            document.getElementById('bookCount').innerText = "नेटवर्क चेक करें सर!";
+        }
+    }
+
+    function displayBooks(books) {
+        const grid = document.getElementById('mainGrid');
+        grid.innerHTML = "";
+
+        books.forEach(book => {
+            const card = document.createElement('div');
+            card.className = 'book-card';
+            card.onclick = () => openSlider(book.images, book.title, book.donor);
+            card.innerHTML = `
+                <div class="photo-badge">📸 ${book.images.length}</div>
+                <div class="price-badge ${book.price == 0 ? 'is-free' : 'is-paid'}">
+                    ${book.price == 0 ? 'FREE' : '₹' + book.price}
+                </div>
+                <img src="${book.images[0]}" class="book-img" loading="lazy">
+                <div class="info-box">
+                    <p class="title">${book.title}</p>
+                    <p class="meta">दाता: ${book.donor}</p>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+    }
+
+    // सर्च फिल्टर
+    function filterBooks() {
+        const term = document.getElementById('searchBox').value.toLowerCase();
+        const filtered = allBooks.filter(b => 
+            b.title.toLowerCase().includes(term) || 
+            b.donor.toLowerCase().includes(term)
+        );
+        displayBooks(filtered);
     }
 
     function openSlider(imgs, title, donor) {
@@ -136,9 +178,9 @@
         albumIndex = 0;
         document.getElementById('activeImg').src = albumImages[0];
         document.getElementById('activeTitle').innerText = title;
-        document.getElementById('activeDonor').innerText = "दाता: " + donor;
+        document.getElementById('activeDonor').innerText = "विरासत दाता: " + donor;
         
-        // अब यह लिंक सही फाइल को खोलेगा
+        // फॉर्म के लिए लिंक तैयार करना
         document.getElementById('purchaseLink').href = `${requestFormFile}?book=${encodeURIComponent(title)}&donor=${encodeURIComponent(donor)}`;
         
         document.getElementById('sliderModal').style.display = 'flex';
@@ -157,6 +199,7 @@
         document.body.style.overflow = 'auto';
     }
 
+    // पेज लोड होते ही शुरू करें
     loadBooks();
 </script>
 </body>
