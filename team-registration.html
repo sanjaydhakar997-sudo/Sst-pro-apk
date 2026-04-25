@@ -9,7 +9,6 @@
         :root { --primary: #1a237e; --accent: #ffd700; --saffron: #FF9933; --green: #138808; }
         body { font-family: 'Poppins', sans-serif; background: #0b0f19; margin: 0; padding: 10px; color: #fff; }
 
-        /* मज़बूत ब्रांडिंग हेडर */
         .mission-header { 
             text-align: center; padding: 30px 15px; 
             background: linear-gradient(135deg, #1a237e, #000); 
@@ -21,7 +20,6 @@
         .main-title { font-size: 26px; font-weight: 900; color: var(--accent); margin: 5px 0; }
         .tagline { font-size: 13px; font-weight: 700; color: #fff; letter-spacing: 1px; }
 
-        /* कॉम्पैक्ट फॉर्म कार्ड */
         .form-card { background: #fff; color: #222; border-radius: 25px; padding: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.6); max-width: 450px; margin: 0 auto; }
         
         .input-group { margin-bottom: 12px; }
@@ -29,7 +27,6 @@
         .input-group input { width: 100%; padding: 12px; border: 2px solid #eef2f7; border-radius: 12px; font-size: 14px; box-sizing: border-box; background: #f8fafc; }
         .input-group input:focus { border-color: var(--primary); outline: none; background: #fff; }
 
-        /* शपथ बॉक्स */
         .preamble-container { 
             background: #fffdf2; border: 1.5px dashed #fbc02d; padding: 15px; 
             border-radius: 20px; margin: 20px 0; text-align: center;
@@ -40,13 +37,12 @@
         .preamble-text { font-style: italic; font-size: 13px; line-height: 1.6; color: #333; font-weight: 600; }
         .nara-text { font-size: 16px; font-weight: 900; color: #1a237e; display: block; margin-top: 10px; }
 
-        /* फौलादी बटन */
         .power-btn { 
             width: 100%; background: linear-gradient(135deg, #1a237e, #283593); color: #fff; 
             border: none; padding: 16px; border-radius: 15px; font-size: 16px; 
             font-weight: 900; cursor: pointer; text-transform: uppercase;
         }
-        .power-btn:active { transform: scale(0.97); }
+        .power-btn:disabled { opacity: 0.7; cursor: not-allowed; }
 
         #success-page { display: none; text-align: center; padding: 50px 20px; min-height: 100vh; }
     </style>
@@ -107,7 +103,7 @@
                 <p style="margin-top:5px; font-weight:bold; color:#555; font-size: 12px;">जय हिन्द!</p>
             </div>
 
-            <button type="button" onclick="finalize()" class="power-btn">शपथ स्वीकार करें</button>
+            <button type="button" onclick="finalize()" class="power-btn" id="submitBtn">शपथ स्वीकार करें</button>
         </form>
     </div>
 </div>
@@ -122,13 +118,52 @@
 
 <script>
     function finalize() {
+        // डेटा इकट्ठा करना
         const n = document.getElementById('name').value;
         const p = document.getElementById('phone').value;
         const s = document.getElementById('state').value;
-        if(n && p && s) {
-            document.getElementById('main-content').style.display = 'none';
-            document.getElementById('success-page').style.display = 'block';
-            window.scrollTo(0,0);
+        const d = document.getElementById('dist').value;
+        const h = document.getElementById('hobby').value;
+        const a = document.getElementById('address').value;
+
+        // डेटा चेक करना
+        if(n && p && s && d && h && a) {
+            const btn = document.getElementById('submitBtn');
+            btn.innerText = "प्रक्रिया जारी है...";
+            btn.disabled = true;
+
+            // Formspree को डेटा भेजना
+            fetch("https://formspree.io/f/xzdyowdw", {
+                method: "POST",
+                body: JSON.stringify({
+                    "सिपाही का नाम": n,
+                    "WhatsApp": p,
+                    "राज्य": s,
+                    "जिला": d,
+                    "रुचि (Hobby)": h,
+                    "पूरा पता": a,
+                    "Status": "Ground Executive Selection"
+                }),
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // डेटा पहुँच गया, अब पेज बदलो
+                    document.getElementById('main-content').style.display = 'none';
+                    document.getElementById('success-page').style.display = 'block';
+                    window.scrollTo(0,0);
+                } else {
+                    throw new Error('Network response was not ok');
+                }
+            })
+            .catch(error => {
+                alert("नेटवर्क धीमा है, कृपया एक बार फिर प्रयास करें।");
+                btn.innerText = "शपथ स्वीकार करें";
+                btn.disabled = false;
+            });
         } else {
             alert("राष्ट्र सेवा के लिए पूरी जानकारी भरें!");
         }
