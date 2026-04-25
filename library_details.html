@@ -78,7 +78,7 @@
     </header>
 
     <div class="search-container">
-        <input type="text" id="searchBox" placeholder="किताब या दाता का नाम खोजें..." oninput="filterBooks()">
+        <input type="text" id="searchBox" placeholder="किताब का नाम खोजें..." oninput="filterBooks()">
     </div>
 
     <div id="loader" class="loader"></div>
@@ -136,7 +136,7 @@
 
         } catch (e) { 
             console.error("Loading Error", e);
-            document.getElementById('bookCount').innerText = "नेटवर्क चेक करें सर!";
+            document.getElementById('bookCount').innerText = 
         }
     }
 
@@ -178,7 +178,7 @@
         albumIndex = 0;
         document.getElementById('activeImg').src = albumImages[0];
         document.getElementById('activeTitle').innerText = title;
-        document.getElementById('activeDonor').innerText = "विरासत दाता: " + donor;
+        document.getElementById('activeDonor').innerText = "Donar: " + donor;
         
         // फॉर्म के लिए लिंक तैयार करना
         document.getElementById('purchaseLink').href = `${requestFormFile}?book=${encodeURIComponent(title)}&donor=${encodeURIComponent(donor)}`;
