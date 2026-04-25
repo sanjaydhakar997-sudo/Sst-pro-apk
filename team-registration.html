@@ -3,54 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SST PRO - Mission Selection</title>
+    <title>SST PRO - Ground Executive Selection</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root { --primary: #1a237e; --accent: #ffd700; --saffron: #FF9933; --green: #138808; }
-        body { font-family: 'Poppins', sans-serif; background: #0b0f19; margin: 0; padding: 15px; color: #fff; overflow-x: hidden; }
+        body { font-family: 'Poppins', sans-serif; background: #0b0f19; margin: 0; padding: 10px; color: #fff; }
 
-        /* हेडर: टीम को मज़बूत दिखाने के लिए */
+        /* मज़बूत ब्रांडिंग हेडर */
         .mission-header { 
-            text-align: center; padding: 45px 20px; 
+            text-align: center; padding: 30px 15px; 
             background: linear-gradient(135deg, #1a237e, #000); 
-            border-radius: 0 0 50px 50px; margin: -15px -15px 30px -15px;
+            border-radius: 0 0 40px 40px; margin: -10px -10px 20px -10px;
             border-bottom: 5px solid var(--accent);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
         }
-        .brand-text { font-size: 14px; letter-spacing: 4px; font-weight: 700; color: #fff; opacity: 0.8; text-transform: uppercase; }
-        .main-title { font-size: 32px; font-weight: 900; color: var(--accent); margin: 5px 0; text-shadow: 2px 2px 5px rgba(0,0,0,0.5); }
-        .limited-tag { background: red; color: #fff; padding: 4px 12px; border-radius: 50px; font-size: 11px; font-weight: bold; display: inline-block; margin-top: 10px; animation: blink 1.5s infinite; }
-        @keyframes blink { 0% {opacity: 1;} 50% {opacity: 0.4;} 100% {opacity: 1;} }
+        .brand-text { font-size: 11px; letter-spacing: 2px; font-weight: 700; color: #fff; opacity: 0.8; text-transform: uppercase; }
+        .main-title { font-size: 26px; font-weight: 900; color: var(--accent); margin: 5px 0; }
+        .tagline { font-size: 13px; font-weight: 700; color: #fff; letter-spacing: 1px; }
 
-        /* फॉर्म कार्ड */
-        .form-card { background: #fff; color: #222; border-radius: 35px; padding: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.6); }
-        .input-group { margin-bottom: 20px; }
-        .input-group label { display: block; font-weight: 900; font-size: 12px; margin-bottom: 8px; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; }
-        .input-group input { width: 100%; padding: 15px; border: 2px solid #eef2f7; border-radius: 18px; font-size: 16px; box-sizing: border-box; background: #f8fafc; transition: 0.3s; }
-        .input-group input:focus { border-color: var(--primary); background: #fff; outline: none; }
-
-        /* Preamble: शपथ तिरंगे के साथ */
-        .preamble-container { 
-            background: #fffdf2; border: 2px dashed #fbc02d; padding: 25px; 
-            border-radius: 25px; margin: 30px 0; text-align: center;
-        }
-        .flag-box { display: flex; justify-content: center; gap: 5px; margin-bottom: 15px; }
-        .flag-line { width: 35px; height: 6px; border-radius: 3px; }
+        /* कॉम्पैक्ट फॉर्म कार्ड */
+        .form-card { background: #fff; color: #222; border-radius: 25px; padding: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.6); max-width: 450px; margin: 0 auto; }
         
-        .preamble-text { font-style: italic; font-size: 15px; line-height: 1.8; color: #333; font-weight: 600; }
-        .nara-text { font-size: 19px; font-weight: 900; color: #1a237e; display: block; margin-top: 15px; }
+        .input-group { margin-bottom: 12px; }
+        .input-group label { display: block; font-weight: 900; font-size: 11px; margin-bottom: 4px; color: var(--primary); text-transform: uppercase; }
+        .input-group input { width: 100%; padding: 12px; border: 2px solid #eef2f7; border-radius: 12px; font-size: 14px; box-sizing: border-box; background: #f8fafc; }
+        .input-group input:focus { border-color: var(--primary); outline: none; background: #fff; }
 
-        /* पावर बटन */
+        /* शपथ बॉक्स */
+        .preamble-container { 
+            background: #fffdf2; border: 1.5px dashed #fbc02d; padding: 15px; 
+            border-radius: 20px; margin: 20px 0; text-align: center;
+        }
+        .flag-box { display: flex; justify-content: center; gap: 4px; margin-bottom: 8px; }
+        .flag-line { width: 30px; height: 5px; border-radius: 2px; }
+        
+        .preamble-text { font-style: italic; font-size: 13px; line-height: 1.6; color: #333; font-weight: 600; }
+        .nara-text { font-size: 16px; font-weight: 900; color: #1a237e; display: block; margin-top: 10px; }
+
+        /* फौलादी बटन */
         .power-btn { 
             width: 100%; background: linear-gradient(135deg, #1a237e, #283593); color: #fff; 
-            border: none; padding: 20px; border-radius: 20px; font-size: 18px; 
-            font-weight: 900; cursor: pointer; box-shadow: 0 10px 20px rgba(26,35,126,0.3);
-            text-transform: uppercase; transition: 0.3s;
+            border: none; padding: 16px; border-radius: 15px; font-size: 16px; 
+            font-weight: 900; cursor: pointer; text-transform: uppercase;
         }
-        .power-btn:active { transform: scale(0.95); }
+        .power-btn:active { transform: scale(0.97); }
 
-        /* Success Page */
-        #success-page { display: none; text-align: center; padding: 60px 20px; background: #0b0f19; min-height: 100vh; }
+        #success-page { display: none; text-align: center; padding: 50px 20px; min-height: 100vh; }
     </style>
 </head>
 <body>
@@ -59,34 +57,41 @@
     <div class="mission-header">
         <div class="brand-text">Team Social Studies Classes</div>
         <h1 class="main-title">GROUND EXECUTIVE</h1>
-        <div class="limited-tag">⚠️ केवल 1 पद प्रति गाँव खाली</div>
+        <div class="tagline">1 गाँव • 1 लीडर • 1 मिशन</div>
     </div>
 
     <div class="form-card">
         <form id="missionForm">
             <div class="input-group">
                 <label>शुभ नाम</label>
-                <input type="text" id="name" placeholder="अपना नाम लिखें" required>
+                <input type="text" id="name" placeholder="Name" required>
             </div>
 
-            <div class="input-group">
-                <label>WhatsApp नंबर</label>
-                <input type="tel" id="phone" placeholder="सक्रिय नंबर दें" required>
+            <div style="display: flex; gap: 10px;">
+                <div class="input-group" style="flex: 1;">
+                    <label>WhatsApp नंबर</label>
+                    <input type="tel" id="phone" placeholder="98XXXXXXXX" required>
+                </div>
+                <div class="input-group" style="flex: 1;">
+                    <label>राज्य (State)</label>
+                    <input type="text" id="state" placeholder="जैसे: राजस्थान" required>
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 10px;">
+                <div class="input-group" style="flex: 1;">
+                    <label>जिला (District)</label>
+                    <input type="text" id="dist" placeholder="Jila" required>
+                </div>
+                <div class="input-group" style="flex: 1;">
+                    <label>हॉबी (Hobby)</label>
+                    <input type="text" id="hobby" placeholder="रुचि" required>
+                </div>
             </div>
 
             <div class="input-group">
                 <label>पूरा पता (मोहल्ला/गाँव/शहर)</label>
-                <input type="text" id="address" placeholder="गली, मकान नं, गाँव" required>
-            </div>
-
-            <div class="input-group">
-                <label>जिला</label>
-                <input type="text" id="dist" placeholder="जैसे: चित्तौड़गढ़" required>
-            </div>
-
-            <div class="input-group">
-                <label>आपकी हॉबी (Hobby)</label>
-                <input type="text" id="hobby" placeholder="आपकी रुचि क्या है?" required>
+                <input type="text" id="address" placeholder="गली, मकान नं, गाँव का नाम" required>
             </div>
 
             <div class="preamble-container">
@@ -96,10 +101,10 @@
                     <div style="background:var(--green)" class="flag-line"></div>
                 </div>
                 <div class="preamble-text">
-                    "मैं निष्ठापूर्वक शपथ लेता हूँ कि मेरे गाँव और शहर के हर घर तक शिक्षा की रोशनी पहुँचाने में मैं टीम का साथ दूँगा।"
+                    "मैं शपथ लेता हूँ कि मेरे गाँव और शहर के हर घर तक शिक्षा की रोशनी पहुँचाने में मैं टीम का साथ दूँगा।"
                 </div>
                 <span class="nara-text">मज़बूत भारत, सशक्त युवा! 🇮🇳</span>
-                <p style="margin-top:10px; font-weight:bold; color:#555;">जय हिन्द!</p>
+                <p style="margin-top:5px; font-weight:bold; color:#555; font-size: 12px;">जय हिन्द!</p>
             </div>
 
             <button type="button" onclick="finalize()" class="power-btn">शपथ स्वीकार करें</button>
@@ -108,31 +113,24 @@
 </div>
 
 <div id="success-page">
-    <div style="font-size: 100px; margin-bottom: 20px;">🚩</div>
-    <h1 style="color: var(--accent); font-size: 35px;">बधाई हो, सिपाही!</h1>
-    <p style="font-size: 18px; color: #fff; opacity: 0.9;">आपका आवेदन <b>SST PRO</b> के मुख्य सर्वर में दर्ज हो गया है।</p>
-    <p style="color: #ccc;">संजय धाकड़ सर आपकी प्रोफाइल का रिव्यू करेंगे।</p>
-    
-    <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 20px; margin: 30px 0;">
-        <p style="color: var(--accent); font-weight: bold; margin: 0;">अगला कदम:</p>
-        <p style="font-size: 14px;">सेलेक्शन होने पर आपका <b>Official ID Card</b> ऐप में एक्टिवेट कर दिया जाएगा।</p>
-    </div>
-
-    <button onclick="window.location.href='index.html'" class="power-btn" style="background:#fff; color:#1a237e;">वापस मिशन पर चलें</button>
+    <div style="font-size: 80px; margin-bottom: 20px;">🚩</div>
+    <h1 style="color: var(--accent); font-size: 30px;">बधाई हो, सिपाही!</h1>
+    <p style="font-size: 16px; opacity: 0.9;">आपका आवेदन <b>SST PRO</b> के सर्वर में दर्ज हो गया है।</p>
+    <p style="color: #ccc; font-size: 14px;">संजय धाकड़ सर आपकी प्रोफाइल का रिव्यू करेंगे।</p>
+    <button onclick="window.location.href='index.html'" class="power-btn" style="background:#fff; color:#1a237e; margin-top:30px;">होम पर जाएं</button>
 </div>
 
 <script>
     function finalize() {
-        const name = document.getElementById('name').value;
-        const phone = document.getElementById('phone').value;
-        const address = document.getElementById('address').value;
-
-        if(name && phone && address) {
+        const n = document.getElementById('name').value;
+        const p = document.getElementById('phone').value;
+        const s = document.getElementById('state').value;
+        if(n && p && s) {
             document.getElementById('main-content').style.display = 'none';
             document.getElementById('success-page').style.display = 'block';
             window.scrollTo(0,0);
         } else {
-            alert("राष्ट्र सेवा के लिए पूरी जानकारी भरना अनिवार्य है!");
+            alert("राष्ट्र सेवा के लिए पूरी जानकारी भरें!");
         }
     }
 </script>
