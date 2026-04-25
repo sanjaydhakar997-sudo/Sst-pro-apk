@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SST PRO - सम्मान पत्र</title>
+    <style>
+        :root { --main: #1a3a5f; --gold: #b8860b; }
+        body { font-family: 'Times New Roman', serif; background: #f0f0f0; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        
+        /* सर्टिफिकेट का मुख्य ढांचा */
+        .certificate {
+            width: 90%; max-width: 650px; background: white; padding: 40px;
+            border: 15px solid var(--main); position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2); background-image: radial-gradient(#fff 70%, #f9f9f9);
+        }
+
+        /* गोल्डन बॉर्डर */
+        .inner-border { border: 2px solid var(--gold); padding: 20px; outline: 5px solid var(--gold); outline-offset: -15px; }
+
+        .header { text-align: center; }
+        .header h1 { color: var(--main); font-size: 32px; margin: 0; text-transform: uppercase; letter-spacing: 2px; }
+        .header p { color: var(--gold); font-weight: bold; margin-top: 5px; font-size: 14px; }
+
+        .content { text-align: center; margin-top: 30px; }
+        .content h2 { font-style: italic; color: #555; font-weight: normal; margin-bottom: 10px; }
+        
+        /* छात्र का नाम - यह ऑटोमैटिक बदलेगा */
+        #studentName { color: var(--main); font-size: 38px; border-bottom: 2px solid #ddd; display: inline-block; padding: 0 30px; margin: 10px 0; font-family: 'Georgia', serif; }
+
+        .message { font-size: 16px; line-height: 1.6; color: #444; margin: 20px auto; max-width: 80%; }
+        
+        .footer { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 40px; }
+        .sign-box { text-align: center; border-top: 1px solid #333; padding-top: 5px; width: 150px; }
+        
+        .seal { width: 80px; height: 80px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 10px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2); border: 2px dashed white; }
+    </style>
+</head>
+<body>
+
+<div class="certificate">
+    <div class="inner-border">
+        <div class="header">
+            <h1>Social Studies Classes</h1>
+            <p>।। शिक्षा ही शक्ति है ।।</p>
+        </div>
+
+        <div class="content">
+            <h2>प्रमाणित किया जाता है कि</h2>
+            <div id="studentName">छात्र का नाम</div>
+            <p class="message">
+                ने <b>SST PRO - मिशन संकल्प</b> के तहत निस्वार्थ भाव से पाठ्य सामग्री दान कर ग्रामीण क्षेत्रों में शिक्षा की अलख जगाने में अपना बहुमूल्य योगदान दिया है। आपके इस नेक कार्य की हम सराहना करते हैं।
+            </p>
+        </div>
+
+        <div class="footer">
+            <div class="sign-box">
+                <p style="margin:0; font-size: 12px; font-weight: bold;">संजय धाकड़</p>
+                <p style="margin:0; font-size: 10px; color: #666;">संस्थापक - SST PRO</p>
+            </div>
+            
+            <div class="seal">
+                VERIFIED<br>DONOR<br>✅
+            </div>
+
+            <div class="sign-box">
+                <p style="margin:0; font-size: 10px; color: #666;">दिनांक:</p>
+                <p id="currentDate" style="margin:0; font-size: 12px; font-weight: bold;"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // URL से नाम निकालने का जादू
+    const urlParams = new URLSearchParams(window.location.search);
+    const name = urlParams.get('name');
+    if (name) {
+        document.getElementById('studentName').innerText = decodeURIComponent(name);
+    }
+
+    // आज की तारीख ऑटोमैटिक सेट करना
+    const d = new Date();
+    document.getElementById('currentDate').innerText = d.toLocaleDateString('hi-IN');
+</script>
+
+</body>
+</html>
