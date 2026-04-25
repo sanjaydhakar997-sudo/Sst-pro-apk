@@ -43,13 +43,14 @@
         /* लाइव अपडेट फीड बॉक्स */
         .feed-box {
             background: white;
-            border-radius: 20px;
-            padding: 30px 20px;
+            border-radius: 25px;
+            padding: 35px 20px;
             text-align: center;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             border: 1px solid #e1e8ed;
             margin-bottom: 25px;
             position: relative;
+            overflow: hidden;
         }
 
         .live-tag {
@@ -84,10 +85,10 @@
             border: 2px dashed var(--primary);
         }
 
-        h2 { color: var(--primary); margin-bottom: 10px; font-size: 22px; }
-        .description { color: #555; font-size: 15px; line-height: 1.6; margin-bottom: 25px; }
+        h2 { color: var(--primary); margin-bottom: 10px; font-size: 22px; font-weight: 800; }
+        .description { color: #555; font-size: 15px; line-height: 1.6; margin-bottom: 25px; font-weight: 500; }
 
-        /* व्हाट्सएप बटन - आपका नया लिंक */
+        /* व्हाट्सएप चैनल बटन */
         .btn-whatsapp {
             display: flex;
             align-items: center;
@@ -96,38 +97,44 @@
             background-color: var(--wa-green);
             color: white;
             text-decoration: none;
-            padding: 16px;
-            border-radius: 12px;
-            font-weight: bold;
+            padding: 18px;
+            border-radius: 15px;
+            font-weight: 900;
             font-size: 18px;
             box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
             transition: 0.3s;
+            text-transform: uppercase;
         }
 
-        .btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5); }
+        .btn-whatsapp:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6); }
 
-        /* हेल्प सेंटर सेक्शन */
+        /* हेल्प डेस्क लिंक */
         .help-desk {
             background: var(--primary);
             color: white;
-            border-radius: 15px;
-            padding: 15px;
+            border-radius: 18px;
+            padding: 18px;
             display: flex;
             align-items: center;
             gap: 15px;
-            border: 1px solid var(--gold);
+            border: 2px solid var(--gold);
             text-decoration: none;
+            transition: 0.3s;
         }
 
-        .help-text h4 { margin: 0; font-size: 16px; color: var(--gold); }
-        .help-text p { margin: 3px 0 0; font-size: 12px; opacity: 0.9; }
+        .help-desk:hover { background: var(--secondary); transform: scale(1.02); }
+
+        .help-text { text-align: left; }
+        .help-text h4 { margin: 0; font-size: 16px; color: var(--gold); font-weight: 800; }
+        .help-text p { margin: 3px 0 0; font-size: 13px; opacity: 0.9; font-weight: 500; }
 
         .footer-note {
             text-align: center;
             font-size: 12px;
             color: #888;
-            margin-top: 30px;
+            margin-top: 40px;
             padding-bottom: 20px;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -153,16 +160,17 @@
             </a>
         </div>
 
-        <a href="https://wa.me/919529812784?text=नमस्ते, मुझे परीक्षा के बारे में सहायता चाहिए।" class="help-desk">
-            <div style="font-size: 25px;">💬</div>
+        <a href="https://wa.me/919529812784?text=%E0%A4%A8%E0%A4%AE%E0%A4%B8%E0%A5%8D%E0%A4%A4%E0%A5%87%20%E0%A4%B8%E0%A4%82%E0%A4%9C%E0%A4%AF%20%E0%A4%B8%E0%A4%B0%2C%20%E0%A4%AE%E0%A5%81%E0%A4%9B%E0%A5%87%20%E0%A4%AA%E0%A4%B0%E0%A5%80%E0%A4%95%E0%A5%8D%E0%A4%B7%E0%A4%BE%20%E0%A4%85%E0%A4%B2%E0%A4%B0%E0%A5%8D%E0%A4%9F%20%E0%A4%95%E0%A5%87%20%E0%A4%AC%E0%A4%BE%E0%A4%B0%E0%A5%87%20%E0%A4%AE%E0%A5%87%E0%A4%82%20%E0%A4%B8%E0%A4%B9%E0%A4%BE%E0%A4%AF%E0%A4%A4%E0%A4%BE%20%E0%A4%9A%E0%A4%BE%E0%A4%B9%E0%A4%BF%E0%A4%8F%E0%A5%A4" class="help-desk">
+            <div style="font-size: 30px;">💬</div>
             <div class="help-text">
-                <h4>हेल्पर सेंटर (Help Center)</h4>
-                <p>फॉर्म भरने में दिक्कत है? सीधे मदद मांगें।</p>
+                <h4>हेल्प सेंटर (Help Center)</h4>
+                <p>कोई सवाल है? सीधे संजय सर से पूछें।</p>
             </div>
         </a>
 
         <div class="footer-note">
-            शिक्षा की रोशनी हर घर तक | Team SST PRO
+            शिक्षा की रोशनी हर घर तक | Team SST PRO <br>
+            Sanjay Dhakar - Chittorgarh, Rajasthan
         </div>
     </div>
 
