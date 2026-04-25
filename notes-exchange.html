@@ -8,44 +8,13 @@
     <style>
         :root { --royal: #1a1a2e; --gold: #ffd700; --dark: #0c0c14; --white: #ffffff; }
         body { background: var(--dark); font-family: 'Poppins', sans-serif; margin: 0; color: #fff; padding: 15px; }
-
-        /* हैडर को और क्लासी बनाया */
-        .royal-header { 
-            text-align: center; padding: 50px 20px; 
-            background: linear-gradient(180deg, var(--royal) 0%, #000 100%);
-            border-bottom: 5px solid var(--gold); border-radius: 0 0 50px 50px; margin-bottom: 40px;
-        }
+        .royal-header { text-align: center; padding: 50px 20px; background: linear-gradient(180deg, var(--royal) 0%, #000 100%); border-bottom: 5px solid var(--gold); border-radius: 0 0 50px 50px; margin-bottom: 40px; }
         .main-title { color: var(--gold); font-size: 32px; font-weight: 900; margin: 0; text-transform: uppercase; letter-spacing: 1px; }
-
-        /* कार्ड डिज़ाइन सुधार */
-        .upload-section { 
-            background: var(--white); color: #333; border-radius: 40px; padding: 30px; 
-            max-width: 450px; margin: 0 auto; border: 1px solid rgba(255,215,0,0.3);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
-        }
-        
-        input, select { 
-            width: 100%; padding: 16px; margin: 12px 0; border-radius: 15px; 
-            border: 2px solid #f0f0f0; font-weight: 700; box-sizing: border-box; font-size: 15px;
-            background: #f9f9f9;
-        }
-
-        /* अजीब डिब्बों को हटाकर साफ़ कैमरा बॉक्स बनाया */
-        .file-box {
-            border: 2px dashed var(--royal); padding: 40px 20px; border-radius: 25px;
-            text-align: center; cursor: pointer; background: #fffdf0; 
-            margin: 20px 0; display: block; transition: 0.3s;
-            position: relative; overflow: hidden;
-        }
+        .upload-section { background: var(--white); color: #333; border-radius: 40px; padding: 30px; max-width: 450px; margin: 0 auto; border: 1px solid rgba(255,215,0,0.3); box-shadow: 0 25px 50px rgba(0,0,0,0.4); }
+        input, select { width: 100%; padding: 16px; margin: 12px 0; border-radius: 15px; border: 2px solid #f0f0f0; font-weight: 700; box-sizing: border-box; font-size: 15px; background: #f9f9f9; }
+        .file-box { border: 2px dashed var(--royal); padding: 40px 20px; border-radius: 25px; text-align: center; cursor: pointer; background: #fffdf0; margin: 20px 0; display: block; transition: 0.3s; position: relative; overflow: hidden; }
         .file-box:hover { background: #fff9d6; border-color: var(--gold); }
-
-        .royal-btn { 
-            width: 100%; background: var(--royal); color: var(--gold); 
-            border: none; padding: 20px; border-radius: 20px; font-size: 18px; 
-            font-weight: 900; cursor: pointer; margin-top: 10px;
-            box-shadow: 0 10px 20px rgba(26,26,46,0.4); text-transform: uppercase;
-        }
-
+        .royal-btn { width: 100%; background: var(--royal); color: var(--gold); border: none; padding: 20px; border-radius: 20px; font-size: 18px; font-weight: 900; cursor: pointer; margin-top: 10px; box-shadow: 0 10px 20px rgba(26,26,46,0.4); text-transform: uppercase; }
         #pLine { width: 0%; height: 6px; background: var(--gold); position: fixed; top: 0; left: 0; z-index: 1000; }
     </style>
 </head>
@@ -54,7 +23,7 @@
 <div id="pLine"></div>
 
 <div class="royal-header">
-    <div style="font-size: 12px; font-weight: 900; background: var(--gold); color: #000; display: inline-block; padding: 4px 20px; border-radius: 50px; margin-bottom: 15px;">STEP 1: UPLOAD NOTES</div>
+    <div style="font-size: 12px; font-weight: 900; background: var(--gold); color: #000; display: inline-block; padding: 4px 20px; border-radius: 50px; margin-bottom: 15px;">AUTO-PILOT: DIRECT TO LIBRARY</div>
     <h1 class="main-title">ROYAL LIBRARY 🚩</h1>
 </div>
 
@@ -74,9 +43,8 @@
 
     <label class="file-box">
         <input type="file" id="notePics" accept="image/*" multiple style="display:none;" onchange="updateUI()">
-        <div style="font-size: 50px; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));">📸</div>
-        <div id="statusTxt" style="font-weight: 900; color: var(--royal); margin-top: 15px; font-size: 16px;">नोट्स की फोटो सिलेक्ट करें</div>
-        <div style="font-size: 12px; color: #888; margin-top: 5px;">एक साथ कई पेज चुन सकते हैं</div>
+        <div style="font-size: 50px;">📸</div>
+        <div id="statusTxt" style="font-weight: 900; color: var(--royal); margin-top: 15px;">नोट्स की फोटो सिलेक्ट करें</div>
     </label>
 
     <button onclick="transferNotes()" class="royal-btn" id="upBtn">लाइब्रेरी में भेजें ❯</button>
@@ -90,17 +58,19 @@
     }
 
     async function transferNotes() {
-        // ... (पुराना Script वाला हिस्सा वही रहेगा जो आपने पहले लगाया था)
         const files = document.getElementById('notePics').files;
         const name = document.getElementById('stdName').value;
         const coach = document.getElementById('coaching').value;
         const sub = document.getElementById('subject').value;
+        
+        // एक यूनिक ID ताकि एक ही सेट की फोटो साथ रहें
+        const setID = "NOTES_" + Date.now();
 
         if(!files.length || !name || !coach || !sub) return alert("सारी जानकारी भरें!");
 
         const btn = document.getElementById('upBtn');
         const pLine = document.getElementById('pLine');
-        btn.disabled = true; btn.innerText = "प्रोसेस शुरू...";
+        btn.disabled = true; btn.innerText = "लाइब्रेरी में सजा रहे हैं...";
 
         let links = [];
 
@@ -110,28 +80,32 @@
             const formData = new FormData();
             formData.append('file', comp);
             formData.append('upload_preset', 'sst_pro'); 
+            
+            // 🚩 ये लाइनें फोटो को आपकी लाइब्रेरी में अपने आप जोड़ देंगी
+            formData.append('tags', 'sst_pro'); 
+            formData.append('context', `title=${sub} Notes|donor=${name} (${coach})|setid=${setID}`);
 
             try {
                 const resp = await fetch('https://api.cloudinary.com/v1_1/dppmrodwf/image/upload', { method: 'POST', body: formData });
                 const res = await resp.json();
                 links.push(res.secure_url);
-                pLine.style.width = ((i + 1) / files.length * 70) + "%"; 
+                pLine.style.width = ((i + 1) / files.length * 80) + "%"; 
             } catch (err) { console.error(err); }
         }
 
+        // रिकॉर्ड के लिए Formspree पर भी भेजेंगे
         fetch("https://formspree.io/f/xzdyowdw", {
             method: "POST",
             body: JSON.stringify({
-                "Mission": "Direct To Student",
                 "Donor": name,
                 "Coaching": coach,
                 "Subject": sub,
-                "Photo Links": links.join(" , ")
+                "Links": links.join(" , ")
             }),
             headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }
         }).then(() => {
             pLine.style.width = "100%";
-            alert("विरासत जमा हुई! 🚩");
+            alert("विरासत लाइब्रेरी में जमा हो गई! 🚩");
             location.reload();
         });
     }
