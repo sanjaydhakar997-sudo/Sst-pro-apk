@@ -23,7 +23,7 @@
 <div id="pLine"></div>
 
 <div class="royal-header">
-    <div style="font-size: 12px; font-weight: 900; background: var(--gold); color: #000; display: inline-block; padding: 4px 20px; border-radius: 50px; margin-bottom: 15px;">AUTO-PILOT: DIRECT TO LIBRARY</div>
+    <div style="font-size: 12px; font-weight: 900; background: var(--gold); color: #000; display: inline-block; padding: 4px 20px; border-radius: 50px; margin-bottom: 15px;">MISSION: DIRECT TO LIBRARY</div>
     <h1 class="main-title">ROYAL LIBRARY 🚩</h1>
 </div>
 
@@ -63,7 +63,6 @@
         const coach = document.getElementById('coaching').value;
         const sub = document.getElementById('subject').value;
         
-        // एक यूनिक ID ताकि एक ही सेट की फोटो साथ रहें
         const setID = "NOTES_" + Date.now();
 
         if(!files.length || !name || !coach || !sub) return alert("सारी जानकारी भरें!");
@@ -80,8 +79,6 @@
             const formData = new FormData();
             formData.append('file', comp);
             formData.append('upload_preset', 'sst_pro'); 
-            
-            // 🚩 ये लाइनें फोटो को आपकी लाइब्रेरी में अपने आप जोड़ देंगी
             formData.append('tags', 'sst_pro'); 
             formData.append('context', `title=${sub} Notes|donor=${name} (${coach})|setid=${setID}`);
 
@@ -93,7 +90,6 @@
             } catch (err) { console.error(err); }
         }
 
-        // रिकॉर्ड के लिए Formspree पर भी भेजेंगे
         fetch("https://formspree.io/f/xzdyowdw", {
             method: "POST",
             body: JSON.stringify({
@@ -106,7 +102,8 @@
         }).then(() => {
             pLine.style.width = "100%";
             alert("विरासत लाइब्रेरी में जमा हो गई! 🚩");
-            location.href = 'library.html
+            // ✅ यहाँ हमने सुधार कर दिया है
+            window.location.href = 'library.html';
         });
     }
 </script>
