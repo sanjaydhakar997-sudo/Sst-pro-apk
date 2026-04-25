@@ -43,7 +43,7 @@
     </label>
 
     <button onclick="uploadMission()" class="btn" id="upBtn">विरासत साझा करें ❯</button>
-    <div class="progress-line" id="pLine"></div>
+    <div id="pLine"></div>
 </div>
 
 <script>
@@ -76,7 +76,8 @@
         const name = document.getElementById('userName').value;
         const phone = document.getElementById('userPhone').value;
         const title = document.getElementById('bTitle').value;
-        const price = document.getElementById('bPrice').value || "निशुल्क";
+        const priceValue = document.getElementById('bPrice').value;
+        const price = (priceValue && priceValue != 0) ? "₹" + priceValue : "निशुल्क";
 
         if(!file || !name || !title || !phone) return alert("कृपया सभी जानकारी भरें!");
 
@@ -113,12 +114,17 @@
                 body: JSON.stringify(sheetData)
             });
 
-            // 4. व्हाट्सएप मैसेज और धन्यवाद
-            const waMsg = `🚩 *नयी विरासत दर्ज!*%0A👤 *दाता:* ${name}%0A📚 *किताब:* ${title}%0A💰 *कीमत:* ${price}%0A📞 *संपर्क:* ${phone}`;
-            window.location.href = `https://wa.me/919529812784?text=${waMsg}`;
+            // 4. व्हाट्सएप लिंक फिक्स
+            const myNum = "919529812784";
+            const waText = `🚩 *नयी विरासत दर्ज!*%0A👤 *दाता:* ${name}%0A📚 *किताब:* ${title}%0A💰 *कीमत:* ${price}%0A📞 *संपर्क:* ${phone}%0A🖼️ *फोटो:* ${imageUrl}`;
+            
+            const finalWALink = `https://wa.me/${myNum}?text=${encodeURIComponent(waText)}`;
+            
+            alert("✅ विरासत दर्ज हो गई है!");
+            window.location.assign(finalWALink);
 
         } catch (err) {
-            alert("कुछ दिक्कत आई, कृपया दोबारा कोशिश करें।");
+            alert("कुछ दिक्कत आई: " + err.message);
             btn.disabled = false;
             btn.innerText = "विरासत साझा करें ❯";
         }
