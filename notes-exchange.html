@@ -3,45 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SST PRO - नोट्स अपलोड सेंटर</title>
+    <title>SST PRO - रॉयल लाइब्रेरी</title>
     <script src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.1/dist/browser-image-compression.js"></script>
     <style>
         :root { --royal: #1a1a2e; --gold: #ffd700; --dark: #0c0c14; --white: #ffffff; }
         body { background: var(--dark); font-family: 'Poppins', sans-serif; margin: 0; color: #fff; padding: 15px; }
 
+        /* हैडर को और क्लासी बनाया */
         .royal-header { 
-            text-align: center; padding: 40px 20px; 
+            text-align: center; padding: 50px 20px; 
             background: linear-gradient(180deg, var(--royal) 0%, #000 100%);
-            border-bottom: 5px solid var(--gold); border-radius: 0 0 40px 40px; margin-bottom: 30px;
+            border-bottom: 5px solid var(--gold); border-radius: 0 0 50px 50px; margin-bottom: 40px;
         }
-        .main-title { color: var(--gold); font-size: 28px; font-weight: 900; margin: 0; text-transform: uppercase; }
+        .main-title { color: var(--gold); font-size: 32px; font-weight: 900; margin: 0; text-transform: uppercase; letter-spacing: 1px; }
 
+        /* कार्ड डिज़ाइन सुधार */
         .upload-section { 
-            background: var(--white); color: #333; border-radius: 30px; padding: 25px; 
-            max-width: 450px; margin: 0 auto; border-right: 10px solid var(--gold);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            background: var(--white); color: #333; border-radius: 40px; padding: 30px; 
+            max-width: 450px; margin: 0 auto; border: 1px solid rgba(255,215,0,0.3);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
         }
         
         input, select { 
-            width: 100%; padding: 14px; margin: 10px 0; border-radius: 12px; 
-            border: 2px solid #eee; font-weight: 700; box-sizing: border-box; font-size: 14px;
+            width: 100%; padding: 16px; margin: 12px 0; border-radius: 15px; 
+            border: 2px solid #f0f0f0; font-weight: 700; box-sizing: border-box; font-size: 15px;
+            background: #f9f9f9;
         }
 
+        /* अजीब डिब्बों को हटाकर साफ़ कैमरा बॉक्स बनाया */
         .file-box {
-            border: 2px dashed var(--royal); padding: 30px; border-radius: 20px;
-            text-align: center; cursor: pointer; background: #fdfae5; margin-top: 15px;
+            border: 2px dashed var(--royal); padding: 40px 20px; border-radius: 25px;
+            text-align: center; cursor: pointer; background: #fffdf0; 
+            margin: 20px 0; display: block; transition: 0.3s;
+            position: relative; overflow: hidden;
         }
+        .file-box:hover { background: #fff9d6; border-color: var(--gold); }
 
         .royal-btn { 
             width: 100%; background: var(--royal); color: var(--gold); 
-            border: none; padding: 18px; border-radius: 50px; font-size: 18px; 
-            font-weight: 900; cursor: pointer; margin-top: 25px; box-shadow: 0 8px 15px rgba(26,26,46,0.3);
+            border: none; padding: 20px; border-radius: 20px; font-size: 18px; 
+            font-weight: 900; cursor: pointer; margin-top: 10px;
+            box-shadow: 0 10px 20px rgba(26,26,46,0.4); text-transform: uppercase;
         }
 
-        #pLine { width: 0%; height: 6px; background: var(--gold); position: fixed; top: 0; left: 0; transition: 0.3s; z-index: 1000; }
-
-        #successCard { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 2000; align-items: center; justify-content: center; }
-        .pop-up { background: var(--royal); border: 2px solid var(--gold); padding: 40px; border-radius: 40px; text-align: center; color: var(--gold); }
+        #pLine { width: 0%; height: 6px; background: var(--gold); position: fixed; top: 0; left: 0; z-index: 1000; }
     </style>
 </head>
 <body>
@@ -49,48 +54,43 @@
 <div id="pLine"></div>
 
 <div class="royal-header">
-    <div style="font-size: 11px; font-weight: 900; background: var(--gold); color: #000; display: inline-block; padding: 2px 15px; border-radius: 20px; margin-bottom: 10px;">STEP 1: UPLOAD NOTES</div>
+    <div style="font-size: 12px; font-weight: 900; background: var(--gold); color: #000; display: inline-block; padding: 4px 20px; border-radius: 50px; margin-bottom: 15px;">STEP 1: UPLOAD NOTES</div>
     <h1 class="main-title">ROYAL LIBRARY 🚩</h1>
 </div>
 
 <div class="upload-section">
-    <div style="color: var(--royal); font-weight: 900; margin-bottom: 15px;">📝 नोट्स अपलोड करें</div>
+    <div style="color: var(--royal); font-weight: 900; font-size: 20px; margin-bottom: 20px; text-align: center;">📝 नोट्स अपलोड करें</div>
     
-    <input type="text" id="stdName" placeholder="आपका नाम *">
+    <input type="text" id="stdName" placeholder="आपका शुभ नाम *">
     <input type="text" id="coaching" placeholder="कोचिंग का नाम (जैसे: उत्कर्ष) *">
     
     <select id="subject">
         <option value="">विषय चुनें (Subject) *</option>
-        <option value="History">इतिहास</option>
-        <option value="Geography">भूगोल</option>
-        <option value="Polity">राजनीति</option>
-        <option value="Science">विज्ञान</option>
+        <option value="History">इतिहास (History)</option>
+        <option value="Geography">भूगोल (Geography)</option>
+        <option value="Polity">राजनीति (Polity)</option>
+        <option value="Other">अन्य (Other)</option>
     </select>
 
     <label class="file-box">
         <input type="file" id="notePics" accept="image/*" multiple style="display:none;" onchange="updateUI()">
-        <div style="font-size: 40px;">📸</div>
-        <div id="statusTxt" style="font-weight: 900; color: var(--royal);">नोट्स की फोटो सिलेक्ट करें</div>
+        <div style="font-size: 50px; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));">📸</div>
+        <div id="statusTxt" style="font-weight: 900; color: var(--royal); margin-top: 15px; font-size: 16px;">नोट्स की फोटो सिलेक्ट करें</div>
+        <div style="font-size: 12px; color: #888; margin-top: 5px;">एक साथ कई पेज चुन सकते हैं</div>
     </label>
 
     <button onclick="transferNotes()" class="royal-btn" id="upBtn">लाइब्रेरी में भेजें ❯</button>
-</div>
-
-<div id="successCard">
-    <div class="pop-up">
-        <h2>🚩 विरासत जमा हुई!</h2>
-        <p style="color: #fff;">आपके नोट्स ईमेल पर पहुँच गए हैं।</p>
-        <button onclick="location.reload()" style="background:var(--gold); border:none; padding:10px 25px; border-radius:20px; font-weight:900;">OK</button>
-    </div>
 </div>
 
 <script>
     function updateUI() {
         const count = document.getElementById('notePics').files.length;
         document.getElementById('statusTxt').innerText = `✅ ${count} फोटो तैयार हैं`;
+        document.getElementById('statusTxt').style.color = "#27ae60";
     }
 
     async function transferNotes() {
+        // ... (पुराना Script वाला हिस्सा वही रहेगा जो आपने पहले लगाया था)
         const files = document.getElementById('notePics').files;
         const name = document.getElementById('stdName').value;
         const coach = document.getElementById('coaching').value;
@@ -100,11 +100,10 @@
 
         const btn = document.getElementById('upBtn');
         const pLine = document.getElementById('pLine');
-        btn.disabled = true; btn.innerText = "भेजा जा रहा है...";
+        btn.disabled = true; btn.innerText = "प्रोसेस शुरू...";
 
         let links = [];
 
-        // फोटो अपलोड (Cloudinary)
         for (let i = 0; i < files.length; i++) {
             const options = { maxSizeMB: 0.5, maxWidthOrHeight: 1200 };
             const comp = await imageCompression(files[i], options);
@@ -120,7 +119,6 @@
             } catch (err) { console.error(err); }
         }
 
-        // डेटा ईमेल पर भेजना (Formspree)
         fetch("https://formspree.io/f/xzdyowdw", {
             method: "POST",
             body: JSON.stringify({
@@ -133,7 +131,8 @@
             headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }
         }).then(() => {
             pLine.style.width = "100%";
-            document.getElementById('successCard').style.display = 'flex';
+            alert("विरासत जमा हुई! 🚩");
+            location.reload();
         });
     }
 </script>
