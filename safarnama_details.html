@@ -27,7 +27,6 @@
         .file-label { display: block; border: 2px dashed var(--gold); padding: 20px; border-radius: 20px; cursor: pointer; margin-top: 15px; background: rgba(255, 215, 0, 0.05); }
         .btn { background: var(--gold); color: #000; width: 100%; padding: 18px; border-radius: 50px; font-weight: 900; border: none; font-size: 17px; cursor: pointer; margin-top: 20px; box-shadow: 0 5px 15px rgba(255,215,0,0.3); transition: 0.2s; }
         
-        /* Help Button Styling */
         .help-btn { color: var(--gold); font-size: 13px; text-decoration: underline; cursor: pointer; margin-top: 15px; display: inline-block; font-weight: bold; }
 
         #successCard { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 2000; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box; }
@@ -116,9 +115,8 @@
 </div>
 
 <script>
-    // Help function - WhatsApp Admin
     function openHelp() {
-        window.open("https://wa.me/YOUR_PHONE_NUMBER?text=SST%20Pro%20Safarnama%20Help!", "_blank");
+        window.open("https://wa.me/91XXXXXXXXXX?text=SST%20Pro%20Safarnama%20Help!", "_blank");
     }
 
     function checkType(v) {
@@ -179,27 +177,55 @@
 
         const btn = document.getElementById('upBtn');
         const pLine = document.getElementById('pLine');
-        const setID = "SST_" + Date.now();
-
         btn.disabled = true;
         btn.innerText = "विरासत जमा हो रही है...";
 
+        let imageUrls = [];
+
+        // स्टेप 1: फोटो Cloudinary पर भेजना
         for (let i = 0; i < files.length; i++) {
-            const options = { maxSizeMB: 0.8, maxWidthOrHeight: 1280, useWebWorker: true };
+            const options = { maxSizeMB: 0.6, maxWidthOrHeight: 1200, useWebWorker: true };
             const comp = await imageCompression(files[i], options);
             
             const formData = new FormData();
             formData.append('file', comp);
             formData.append('upload_preset', 'sst_pro'); 
-            formData.append('tags', 'sst_pro'); 
-            formData.append('context', `donor=${name}|location=${loc}|phone=${phone}|title=${title}|price=${price}|class=${cls}|type=${type}|subject=${finalSub}|setid=${setID}`);
 
             try {
-                await fetch('https://api.cloudinary.com/v1_1/dppmrodwf/image/upload', { method: 'POST', body: formData });
-                pLine.style.width = ((i + 1) / files.length * 100) + "%";
-            } catch (err) { console.error("Upload failed", err); }
+                const resp = await fetch('https://api.cloudinary.com/v1_1/dppmrodwf/image/upload', { method: 'POST', body: formData });
+                const resData = await resp.json();
+                imageUrls.push(resData.secure_url);
+                pLine.style.width = ((i + 1) / files.length * 50) + "%"; 
+            } catch (err) { console.error("Cloudinary Error", err); }
         }
-        document.getElementById('successCard').style.display = 'flex';
+
+        // स्टेप 2: सारा डेटा Formspree पर भेजना (आपका ईमेल इंजन)
+        const finalData = {
+            "दाता का नाम": name,
+            "शहर/जिला": loc,
+            "WhatsApp": phone,
+            "किताब शीर्षक": title,
+            "प्रकार": type,
+            "विषय": finalSub,
+            "कक्षा": cls,
+            "कीमत (₹)": price,
+            "फोटो लिंक": imageUrls.join(" , ")
+        };
+
+        fetch("https://formspree.io/f/xzdyowdw", {
+            method: "POST",
+            body: JSON.stringify(finalData),
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }
+        })
+        .then(() => {
+            pLine.style.width = "100%";
+            document.getElementById('successCard').style.display = 'flex';
+        })
+        .catch(err => {
+            alert("डेटा भेजने में समस्या आई!");
+            btn.disabled = false;
+            btn.innerText = "विरासत साझा करें ❯";
+        });
     }
 </script>
 </body>
