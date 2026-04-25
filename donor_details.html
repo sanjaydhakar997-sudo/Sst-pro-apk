@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SST Pro - Legacy Builder (Get Book)</title>
+    <title>SST Pro - Legacy Builder</title>
     <style>
         :root { --royal-blue: #1a1a2e; --gold: #ffd700; --white: #ffffff; --green: #25D366; }
         body { background-color: #fdfae5; font-family: 'Poppins', sans-serif; margin: 0; padding: 0; color: var(--royal-blue); }
@@ -12,39 +12,29 @@
             background: linear-gradient(180deg, var(--royal-blue) 0%, #000 100%);
             padding: 40px 20px; text-align: center; border-bottom: 8px solid var(--gold); color: var(--gold);
         }
-
         .container { padding: 20px; max-width: 600px; margin: auto; }
-
         .legacy-card {
             background: var(--white); border-radius: 30px; padding: 25px;
             margin-bottom: 20px; border-right: 10px solid var(--gold);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1); position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
-
         .section-title { font-size: 20px; font-weight: 900; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
-        
         .input-vip { 
             width: 100%; padding: 15px; margin-bottom: 12px; border-radius: 12px; 
-            border: 2px solid #eee; font-weight: 700; box-sizing: border-box; font-family: inherit; font-size: 15px;
+            border: 2px solid #eee; font-weight: 700; box-sizing: border-box; font-size: 15px;
         }
         .input-vip:focus { border-color: var(--gold); outline: none; background: #fffdf0; }
-
         .oath-box { background: #fdfae5; padding: 15px; border-radius: 15px; border: 1px solid var(--gold); margin-bottom: 15px; }
-        .oath-item { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; font-weight: 700; margin-bottom: 10px; cursor: pointer; }
-
+        .oath-item { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; font-weight: 700; margin-bottom: 10px; }
         .request-btn {
             background: var(--royal-blue); color: var(--gold); width: 100%; padding: 20px; 
             border: none; border-radius: 20px; font-weight: 900; font-size: 18px; cursor: pointer;
-            text-transform: uppercase; box-shadow: 0 8px 20px rgba(26, 26, 46, 0.3); transition: 0.3s;
+            text-transform: uppercase; box-shadow: 0 8px 20px rgba(26, 26, 46, 0.3);
         }
-        .request-btn:active { transform: scale(0.95); }
-
         .success-overlay {
             display: none; background: var(--royal-blue); color: var(--gold); padding: 30px;
-            border-radius: 30px; text-align: center; border: 4px solid var(--gold);
-            margin-top: 20px; animation: slideUp 0.5s ease-out;
+            border-radius: 30px; text-align: center; border: 4px solid var(--gold); margin-top: 20px;
         }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
@@ -61,110 +51,77 @@
             <input type="tel" id="reqPhone" class="input-vip" placeholder="व्हाट्सएप नंबर *">
             
             <select id="reqExam" class="input-vip">
-                <option value="">किस एग्जाम की तैयारी कर रहे हैं? *</option>
-                <option value="Boards (10th/12th)">Boards (10th/12th)</option>
-                <option value="REET / Teacher Exams">REET / Teacher Exams</option>
-                <option value="SSC / Railway">SSC / Railway</option>
-                <option value="UPSC / State PCS">UPSC / State PCS</option>
-                <option value="Other Govt Exams">अन्य सरकारी नौकरी</option>
+                <option value="">तैयारी का लक्ष्य? *</option>
+                <option value="Boards">Boards (10th/12th)</option>
+                <option value="REET">REET / Teacher</option>
+                <option value="SSC/Railway">SSC / Railway</option>
+                <option value="UPSC">UPSC / State PCS</option>
+                <option value="Other">अन्य</option>
             </select>
         </div>
 
         <div class="legacy-card" style="border-right-color: var(--green);">
             <div class="section-title"><span>📚</span> चुनी गई किताब</div>
-            <input type="text" id="reqBook" class="input-vip" readonly style="background: #f1f1f1; color: #555;" placeholder="किताब का नाम">
-            <input type="text" id="reqDonor" class="input-vip" readonly style="background: #f1f1f1; color: #555;" placeholder="दाता (Donor)">
-            <input type="text" id="reqAddress" class="input-vip" placeholder="आपका पूरा पता (किताब भेजने हेतु) *">
+            <input type="text" id="reqBook" class="input-vip" readonly style="background: #f1f1f1;" placeholder="किताब का नाम">
+            <input type="text" id="reqDonor" class="input-vip" readonly style="background: #f1f1f1;" placeholder="दाता (Donor)">
+            <input type="text" id="reqAddress" class="input-vip" placeholder="पूरा पता (किताब भेजने हेतु) *">
         </div>
 
         <div class="legacy-card">
             <div class="section-title"><span>📜</span> विरासत की शपथ</div>
             <div class="oath-box">
-                <label class="oath-item">
-                    <input type="checkbox" id="oath1">
-                    <span>मैं शपथ लेता हूँ कि मैं इस किताब को बहुत संभाल कर रखूँगा।</span>
-                </label>
-                <label class="oath-item">
-                    <input type="checkbox" id="oath2">
-                    <span>पढ़ाई पूरी होने पर, मैं इसे SST Pro को वापस कर दूँगा ताकि किसी और की मदद हो सके।</span>
-                </label>
+                <label class="oath-item"><input type="checkbox" id="oath1"> <span>मैं इसे संभाल कर रखूँगा।</span></label>
+                <label class="oath-item"><input type="checkbox" id="oath2"> <span>काम पूरा होने पर SST Pro को लौटा दूँगा।</span></label>
             </div>
             
-            <textarea id="reqReason" class="input-vip" style="height: 80px;" placeholder="यह किताब आपके लिए क्यों ज़रूरी है? (वैकल्पिक)"></textarea>
-
             <button onclick="submitLegacyRequest()" class="request-btn" id="finalBtn">टीम से जुड़ें ❯</button>
         </div>
 
         <div id="successBox" class="success-overlay">
-            <h2 style="margin: 0; font-size: 24px;">रिक्वेस्ट दर्ज हुई! 🚩</h2>
-            <p style="margin-top: 10px; font-weight: 700;">व्हाट्सएप खुल रहा है, कृपया मैसेज भेजें।</p>
+            <h2 style="margin: 0;">रिक्वेस्ट दर्ज हुई! 🚩</h2>
+            <p>व्हाट्सएप पर मैसेज भेजें...</p>
         </div>
     </div>
 
     <script>
-        // लाइब्रेरी से डेटा पकड़ने वाला कोड
+        // लाइब्रेरी से नाम और किताब का डेटा अपने आप उठाना
         window.onload = function() {
             const params = new URLSearchParams(window.location.search);
-            if(params.has('book')) {
-                document.getElementById('reqBook').value = params.get('book');
-            }
-            if(params.has('donor')) {
-                document.getElementById('reqDonor').value = params.get('donor');
-            }
+            if(params.has('book')) document.getElementById('reqBook').value = params.get('book');
+            if(params.has('donor')) document.getElementById('reqDonor').value = params.get('donor');
         };
 
         function submitLegacyRequest() {
             const name = document.getElementById('reqName').value;
             const phone = document.getElementById('reqPhone').value;
-            const exam = document.getElementById('reqExam').value;
             const book = document.getElementById('reqBook').value;
-            const donor = document.getElementById('reqDonor').value;
             const address = document.getElementById('reqAddress').value;
-            const reason = document.getElementById('reqReason').value || "सिर्फ पढ़ाई हेतु";
+            const donor = document.getElementById('reqDonor').value;
+            const exam = document.getElementById('reqExam').value;
             const o1 = document.getElementById('oath1').checked;
             const o2 = document.getElementById('oath2').checked;
 
-            if(!name || !phone || !exam || !book || !address) {
-                alert("बॉस, * वाली सारी जानकारी भरना ज़रूरी है!"); return;
-            }
-            if(!o1 || !o2) {
-                alert("किताब पाने के लिए शपथ लेना अनिवार्य है!"); return;
+            if(!name || !phone || !address || !o1 || !o2) {
+                alert("कृपया शपथ लें और पूरी जानकारी भरें!"); return;
             }
 
             const btn = document.getElementById('finalBtn');
             btn.innerText = "प्रोसेस हो रहा है...";
             btn.disabled = true;
 
-            // --- Formspree Invisible Data (सिर्फ ये हिस्सा जोड़ा है) ---
-            const finalData = {
-                "छात्र": name,
-                "नंबर": phone,
-                "लक्ष्य": exam,
-                "किताब": book,
-                "दाता": donor,
-                "पता": address,
-                "संदेश": reason
-            };
+            const finalData = { "छात्र": name, "किताब": book, "दाता": donor, "पता": address, "लक्ष्य": exam };
 
+            // Formspree पर डेटा भेजना
             fetch("https://formspree.io/f/xzdyowdw", {
                 method: "POST",
                 body: JSON.stringify(finalData),
                 headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }
             }).then(() => {
-                // डेटा पहुँचने के बाद WhatsApp खोलना
                 const myNum = "919529812784";
-                const text = `*नई विरासत रिक्वेस्ट (Legacy Builder)*🚩%0A%0A*छात्र:* ${name}%0A*लक्ष्य:* ${exam}%0A*किताब:* ${book}%0A*दाता:* ${donor}%0A*पता:* ${address}%0A*मेसेज:* ${reason}%0A%0A_मैने शपथ ली है, मैं किताब सुरक्षित रखूँगा और वापस करूँगा।_`;
+                const text = `🚩 *नई किताब रिक्वेस्ट!*%0A%0A*छात्र:* ${name}%0A*किताब:* ${book}%0A*दाता:* ${donor}%0A*पता:* ${address}%0A%0A_मैने शपथ ली है कि मैं किताब लौटा दूँगा।_`;
                 
                 document.getElementById('successBox').style.display = "block";
-                
-                setTimeout(() => {
-                    window.open(`https://wa.me/${myNum}?text=${text}`, "_blank");
-                    btn.innerText = "टीम से जुड़ें ❯";
-                    btn.disabled = false;
-                }, 1200);
-            }).catch(() => {
-                alert("डेटा भेजने में त्रुटि!");
-                btn.disabled = false;
+                window.location.href = `https://wa.me/${myNum}?text=${text}`;
             });
         }
     </script>
