@@ -1,0 +1,182 @@
+from weasyprint import HTML
+
+# HTML सामग्री तैयार करना
+html_content = """
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SST PRO - एग्जाम अलर्ट सेंटर</title>
+    <style>
+        :root {
+            --primary: #1a3a5f;
+            --secondary: #0c243d;
+            --gold: #ffd700;
+            --wa-green: #25d366;
+            --accent: #ff4757;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        /* ऊपरी हिस्सा (Header) */
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--gold);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .header h1 { margin: 0; font-size: 24px; letter-spacing: 1px; }
+        .header p { margin: 10px 0 0; font-size: 14px; opacity: 0.9; }
+
+        .container {
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        /* लाइव अपडेट फीड बॉक्स */
+        .feed-box {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border: 1px solid #e1e8ed;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .live-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent);
+            color: white;
+            font-size: 10px;
+            padding: 4px 10px;
+            border-radius: 50px;
+            font-weight: bold;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .icon-circle {
+            width: 80px;
+            height: 80px;
+            background: #f0f4f8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 40px;
+        }
+
+        h2 { color: var(--primary); margin-bottom: 10px; font-size: 20px; }
+        .description { color: #666; font-size: 14px; line-height: 1.6; margin-bottom: 25px; }
+
+        /* व्हाट्सएप बटन */
+        .btn-whatsapp {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background-color: var(--wa-green);
+            color: white;
+            text-decoration: none;
+            padding: 18px;
+            border-radius: 15px;
+            font-weight: 800;
+            font-size: 16px;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-whatsapp:active { transform: scale(0.95); }
+
+        /* हेल्प डेस्क सेक्शन */
+        .help-desk {
+            background: var(--primary);
+            color: white;
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .help-icon { font-size: 30px; }
+        .help-text h4 { margin: 0; font-size: 16px; color: var(--gold); }
+        .help-text p { margin: 5px 0 0; font-size: 12px; opacity: 0.9; }
+
+        .footer-note {
+            text-align: center;
+            font-size: 12px;
+            color: #aaa;
+            margin-top: 40px;
+            padding-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>एग्जाम अलर्ट सेंटर</h1>
+        <p>गाँव के बच्चों की सफलता का साथी</p>
+    </div>
+
+    <div class="container">
+        
+        <div class="feed-box">
+            <div class="live-tag">LIVE UPDATES</div>
+            <div class="icon-circle">📲</div>
+            <h2>लेटेस्ट भर्ती और एडमिट कार्ड</h2>
+            <p class="description">
+                सरकारी नौकरी की ताज़ा खबरें, फॉर्म भरने की तारीखें और रिजल्ट की जानकारी सीधे मेरे व्हाट्सएप चैनल पर पाने के लिए नीचे बटन दबाएं।
+            </p>
+            
+            <a href="https://whatsapp.com/channel/YOUR_LINK_HERE" class="btn-whatsapp">
+                Follow WhatsApp Channel
+            </a>
+        </div>
+
+        <a href="https://wa.me/91XXXXXXXXXX?text=नमस्ते सर, मुझे फॉर्म भरने में सहायता चाहिए।" style="text-decoration: none;">
+            <div class="help-desk">
+                <div class="help-icon">👨‍🏫</div>
+                <div class="help-text">
+                    <h4>हेल्प डेस्क (Help Desk)</h4>
+                    <p>फॉर्म भरने में दिक्कत आ रही है? सीधे सर से पूछें।</p>
+                </div>
+            </div>
+        </a>
+
+        <div class="footer-note">
+            © SST PRO - मिशन संकल्प - संजय धाकड़
+        </div>
+    </div>
+
+</body>
+</html>
+"""
+
+# HTML को फाइल के रूप में सेव करना
+with open("exam-alerts.html", "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+print("File Created Successfully: exam-alerts.html")
