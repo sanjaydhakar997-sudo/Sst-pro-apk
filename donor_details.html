@@ -102,7 +102,7 @@
     </div>
 
     <script>
-        // ✨ लाइब्रेरी से डेटा पकड़ने वाला जादुई कोड
+        // लाइब्रेरी से डेटा पकड़ने वाला कोड
         window.onload = function() {
             const params = new URLSearchParams(window.location.search);
             if(params.has('book')) {
@@ -135,16 +135,37 @@
             btn.innerText = "प्रोसेस हो रहा है...";
             btn.disabled = true;
 
-            const myNum = "919529812784";
-            const text = `*नई विरासत रिक्वेस्ट (Legacy Builder)*🚩%0A%0A*छात्र:* ${name}%0A*लक्ष्य:* ${exam}%0A*किताब:* ${book}%0A*दाता:* ${donor}%0A*पता:* ${address}%0A*मेसेज:* ${reason}%0A%0A_मैने शपथ ली है, मैं किताब सुरक्षित रखूँगा और वापस करूँगा।_`;
-            
-            document.getElementById('successBox').style.display = "block";
-            
-            setTimeout(() => {
-                window.open(`https://wa.me/${myNum}?text=${text}`, "_blank");
-                btn.innerText = "टीम से जुड़ें ❯";
+            // --- Formspree Invisible Data (सिर्फ ये हिस्सा जोड़ा है) ---
+            const finalData = {
+                "छात्र": name,
+                "नंबर": phone,
+                "लक्ष्य": exam,
+                "किताब": book,
+                "दाता": donor,
+                "पता": address,
+                "संदेश": reason
+            };
+
+            fetch("https://formspree.io/f/xzdyowdw", {
+                method: "POST",
+                body: JSON.stringify(finalData),
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }
+            }).then(() => {
+                // डेटा पहुँचने के बाद WhatsApp खोलना
+                const myNum = "919529812784";
+                const text = `*नई विरासत रिक्वेस्ट (Legacy Builder)*🚩%0A%0A*छात्र:* ${name}%0A*लक्ष्य:* ${exam}%0A*किताब:* ${book}%0A*दाता:* ${donor}%0A*पता:* ${address}%0A*मेसेज:* ${reason}%0A%0A_मैने शपथ ली है, मैं किताब सुरक्षित रखूँगा और वापस करूँगा।_`;
+                
+                document.getElementById('successBox').style.display = "block";
+                
+                setTimeout(() => {
+                    window.open(`https://wa.me/${myNum}?text=${text}`, "_blank");
+                    btn.innerText = "टीम से जुड़ें ❯";
+                    btn.disabled = false;
+                }, 1200);
+            }).catch(() => {
+                alert("डेटा भेजने में त्रुटि!");
                 btn.disabled = false;
-            }, 1200);
+            });
         }
     </script>
 </body>
