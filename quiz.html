@@ -7,76 +7,119 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background-color: #f0f2f5; margin: 0; padding: 15px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        
-        .quiz-card { background: white; width: 100%; max-width: 500px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); overflow: hidden; border-top: 6px solid #003366; }
-        
-        .quiz-header { background: #003366; color: white; padding: 20px; text-align: center; }
-        .quiz-header h2 { margin: 0; font-size: 22px; color: #ffa502; }
-        
-        .quiz-body { padding: 25px; }
-        .question-text { font-size: 18px; font-weight: 600; color: #333; margin-bottom: 20px; line-height: 1.5; }
-        
-        .options-grid { display: grid; gap: 12px; }
-        .option { 
-            padding: 15px; border: 2px solid #e0e0e0; border-radius: 12px; 
-            background: #fff; cursor: pointer; transition: 0.3s; 
-            font-size: 16px; font-weight: 500; text-align: left;
+        body { 
+            background-color: #f0f2f5; 
+            margin: 0; 
+            padding: 15px; 
+            display: flex; 
+            flex-direction: column;
+            align-items: center; 
+            min-height: 100vh; 
         }
-        .option:active { transform: scale(0.98); }
         
-        /* सही और गलत जवाब के कलर्स */
-        .correct { background-color: #27ae60 !important; color: white !important; border-color: #2ecc71 !important; }
-        .wrong { background-color: #e74c3c !important; color: white !important; border-color: #ff4757 !important; }
-        
-        .footer { padding: 15px; text-align: center; font-size: 14px; color: #777; border-top: 1px solid #eee; }
-        
-        /* रिजल्ट स्क्रीन */
-        .result-screen { text-align: center; display: none; padding: 40px 20px; }
-        .result-screen h1 { color: #003366; font-size: 28px; }
-        .score-circle { 
-            width: 120px; height: 120px; border-radius: 50%; border: 8px solid #ffa502;
-            line-height: 104px; font-size: 30px; font-weight: bold; margin: 20px auto; color: #003366;
-        }
-        .btn-retry { 
-            background: #ffa502; color: #003366; border: none; padding: 12px 30px; 
-            border-radius: 25px; font-weight: bold; cursor: pointer; font-size: 16px;
+        /* इंडेक्स जैसी हेडर डिजाइन */
+        .header {
+            background: #003366;
+            width: 100%;
+            max-width: 500px;
+            padding: 20px;
+            text-align: center;
+            border-radius: 15px 15px 0 0;
+            color: white;
+            border-bottom: 4px solid #ffa502; /* इंडेक्स वाली गोल्ड लाइन */
         }
 
-        #loader { text-align: center; padding: 50px; }
-        .spinner { border: 4px solid #f3f3f3; border-top: 4px solid #ffa502; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: auto; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .quiz-card { 
+            background: white; 
+            width: 100%; 
+            max-width: 500px; 
+            border-radius: 0 0 15px 15px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+            overflow: hidden;
+            padding: 20px;
+        }
+        
+        .question-text { 
+            font-size: 18px; 
+            font-weight: 600; 
+            color: #003366; 
+            margin-bottom: 20px; 
+            line-height: 1.5;
+            min-height: 60px;
+        }
+        
+        .options-grid { display: grid; gap: 12px; }
+        
+        /* इंडेक्स के कार्ड जैसी बटन स्टाइल */
+        .option { 
+            padding: 15px; 
+            border: 1px solid #ddd; 
+            border-bottom: 4px solid #eee; /* कार्ड स्टाइल */
+            border-radius: 10px; 
+            background: #fff; 
+            cursor: pointer; 
+            transition: 0.2s; 
+            font-size: 16px; 
+            font-weight: 500; 
+            text-align: left;
+            color: #333;
+        }
+        
+        .option:active { transform: translateY(2px); border-bottom-width: 2px; }
+        
+        /* सही और गलत जवाब के कलर्स */
+        .correct { background-color: #27ae60 !important; color: white !important; border-bottom-color: #1e8449 !important; }
+        .wrong { background-color: #e74c3c !important; color: white !important; border-bottom-color: #c0392b !important; }
+        
+        .footer { 
+            margin-top: 20px;
+            font-size: 14px; 
+            color: #003366; 
+            font-weight: bold;
+        }
+
+        /* रिजल्ट स्क्रीन */
+        .result-screen { text-align: center; display: none; padding: 20px; }
+        .score-circle { 
+            width: 100px; height: 100px; border-radius: 50%; border: 5px solid #ffa502;
+            line-height: 90px; font-size: 24px; font-weight: bold; margin: 20px auto; color: #003366;
+        }
+        .btn-retry { 
+            background: #003366; color: white; border: none; padding: 12px 25px; 
+            border-radius: 10px; font-weight: bold; cursor: pointer; border-bottom: 4px solid #ffa502;
+        }
+
+        #loader { text-align: center; padding: 50px; background: white; border-radius: 15px; width: 100%; max-width: 500px;}
     </style>
 </head>
 <body>
 
-<div class="quiz-card">
+<div class="header">
+    <h2 id="title-text">SST PRO डेली क्विज़</h2>
+    <span id="progress-text">लोड हो रहा है...</span>
+</div>
+
+<div class="quiz-card" id="quiz-container">
     <div id="loader">
-        <div class="spinner"></div>
-        <p style="margin-top:15px; color:#003366;">संजय सर की क्लास के सवाल लोड हो रहे हैं...</p>
+        <p style="color:#003366; font-weight: bold;">संजय सर के सवाल आ रहे हैं...</p>
     </div>
 
     <div id="quiz-content" style="display:none;">
-        <div class="quiz-header">
-            <h2 id="progress-text">सवाल 1/10</h2>
-        </div>
-        <div class="quiz-body">
-            <div class="question-text" id="question-text">Loading question...</div>
-            <div class="options-grid" id="options-container"></div>
-        </div>
-        <div class="footer">SST PRO - आपकी सफलता, हमारा लक्ष्य</div>
+        <div class="question-text" id="question-text">Loading...</div>
+        <div class="options-grid" id="options-container"></div>
     </div>
 
     <div id="result-screen" class="result-screen">
-        <h1>आपका स्कोर</h1>
+        <h2 style="color: #003366;">क्विज़ स्कोर</h2>
         <div class="score-circle" id="score-display">0/0</div>
-        <p id="feedback-text" style="font-weight:600; color:#555; margin-bottom:25px;"></p>
-        <button class="btn-retry" onclick="location.reload()">दोबारा प्रयास करें</button>
+        <p id="feedback-text" style="margin-bottom:20px;"></p>
+        <button class="btn-retry" onclick="location.reload()">फिर से टेस्ट दें</button>
     </div>
 </div>
 
+<div class="footer">SST PRO - संजय सर की क्लास</div>
+
 <script>
-    // आपका Google Script URL
     const API_URL = 'https://script.google.com/macros/s/AKfycbz1P5OXVpEyHcngJHmmrMqDlGXMeLZV4SAOGWybknzxIalE0pK_Y79HiwqWGEiNHdCs/exec';
     
     let questions = [];
@@ -91,65 +134,55 @@
             document.getElementById('quiz-content').style.display = 'block';
             showQuestion();
         } catch (err) {
-            document.getElementById('loader').innerHTML = "❌ नेटवर्क समस्या! कृपया इंटरनेट चेक करें।";
+            document.getElementById('loader').innerHTML = "नेटवर्क चेक करें!";
         }
     }
 
     function showQuestion() {
         const q = questions[currentIdx];
-        document.getElementById('progress-text').innerText = `सवाल ${currentIdx + 1} / ${questions.length}`;
+        document.getElementById('progress-text').innerText = `प्रश्न: ${currentIdx + 1} / ${questions.length}`;
         document.getElementById('question-text').innerText = q.question;
         
         const container = document.getElementById('options-container');
         container.innerHTML = '';
         
-        const optionKeys = ['A', 'B', 'C', 'D'];
+        const keys = ['A', 'B', 'C', 'D'];
         q.options.forEach((optText, i) => {
             const btn = document.createElement('div');
             btn.className = 'option';
-            btn.innerText = `${optionKeys[i]}. ${optText}`;
-            btn.onclick = () => handleAnswer(btn, optionKeys[i], q.answer);
+            btn.innerText = `${keys[i]}. ${optText}`;
+            btn.onclick = () => handleAnswer(btn, keys[i], q.answer);
             container.appendChild(btn);
         });
     }
 
     function handleAnswer(selectedBtn, selectedKey, correctKey) {
-        const allOptions = document.querySelectorAll('.option');
-        allOptions.forEach(opt => opt.style.pointerEvents = 'none'); // क्लिक बंद करें
+        const all = document.querySelectorAll('.option');
+        all.forEach(o => o.style.pointerEvents = 'none');
 
         if (selectedKey === correctKey) {
             selectedBtn.classList.add('correct');
             score++;
         } else {
             selectedBtn.classList.add('wrong');
-            // सही जवाब भी दिखाएँ
-            allOptions.forEach((opt, idx) => {
-                if (['A', 'B', 'C', 'D'][idx] === correctKey) {
-                    opt.classList.add('correct');
-                }
+            all.forEach((o, idx) => {
+                if (['A', 'B', 'C', 'D'][idx] === correctKey) o.classList.add('correct');
             });
         }
 
         setTimeout(() => {
             currentIdx++;
-            if (currentIdx < questions.length) {
-                showQuestion();
-            } else {
-                showFinalResult();
-            }
-        }, 1500);
+            if (currentIdx < questions.length) showQuestion();
+            else showFinalResult();
+        }, 1200);
     }
 
     function showFinalResult() {
         document.getElementById('quiz-content').style.display = 'none';
         document.getElementById('result-screen').style.display = 'block';
+        document.getElementById('progress-text').innerText = "रिजल्ट";
         document.getElementById('score-display').innerText = `${score}/${questions.length}`;
-        
-        let feedback = "मेहनत जारी रखें!";
-        if(score === questions.length) feedback = "शानदार! आप टॉपर हैं।";
-        else if(score > questions.length/2) feedback = "बहुत अच्छा प्रयास!";
-        
-        document.getElementById('feedback-text').innerText = feedback;
+        document.getElementById('feedback-text').innerText = score > questions.length/2 ? "शाबाश! बहुत अच्छा।" : "मेहनत करें!";
     }
 
     fetchQuestions();
