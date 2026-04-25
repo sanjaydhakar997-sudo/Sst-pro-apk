@@ -10,9 +10,9 @@
         
         .header { background: linear-gradient(135deg, #001f3f, #1a3a5f); color: white; padding: 35px 20px; text-align: center; border-bottom: 5px solid var(--gold); }
         
-        .container { max-width: 600px; margin: 20px auto; padding: 0 15px; }
+        .container { max-width: 600px; margin: 20px auto; padding: 0 15px; min-height: 300px; }
         
-        /* छात्र कार्ड का डिजाइन */
+        /* कार्ड डिजाइन */
         .stu-card { 
             background: white; border-radius: 20px; padding: 20px; margin-bottom: 20px; 
             box-shadow: 0 8px 25px rgba(0,0,0,0.08); border-left: 10px solid var(--main); 
@@ -42,49 +42,62 @@
             padding: 15px; border-radius: 15px; font-weight: 800; font-size: 15px;
             box-shadow: 0 5px 15px rgba(26,58,95,0.3); transition: 0.3s;
         }
-        .help-btn:active { transform: scale(0.97); }
+
+        .no-data { text-align: center; padding: 60px 20px; color: #7f8c8d; }
+        .no-data .icon { font-size: 50px; margin-bottom: 15px; }
 
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        
-        #loading { text-align: center; padding: 50px; color: var(--main); font-weight: bold; }
     </style>
 </head>
 <body>
 
 <div class="header">
     <h1 style="margin: 0; font-size: 22px;">🙏 डोनर कनेक्ट पोर्टल</h1>
-    <p style="font-size: 11px; opacity: 0.8; margin-top: 5px;">होनहार छात्रों को आपकी सहायता की प्रतीक्षा है</p>
+    <p style="font-size: 11px; opacity: 0.8; margin-top: 5px;">शिक्षा के लिए आपका एक छोटा सा सहयोग</p>
 </div>
 
 <div class="container" id="wallContainer">
-    <div id="loading">छात्रों की लिस्ट लोड हो रही है... ⏳</div>
+    <div style="text-align: center; padding: 50px; color: var(--main);">छात्रों की लिस्ट चेक की जा रही है... ⏳</div>
 </div>
 
 <script>
     async function fetchRequests() {
         const cloudName = "dppmrodwf"; 
         const tag = "book_help"; 
-        // Cloudinary JSON List API
-        const url = `https://res.cloudinary.com/${cloudName}/image/list/${tag}.json`;
+        // Cache-busting के लिए रैंडम यूआरएल
+        const url = `https://res.cloudinary.com/${cloudName}/image/list/${tag}.json?v=${new Date().getTime()}`;
 
         try {
             const response = await fetch(url);
-            const data = await response.json();
             const container = document.getElementById('wallContainer');
-            container.innerHTML = ''; 
 
-            if (data.resources.length === 0) {
-                container.innerHTML = '<p style="text-align:center; color:#666; margin-top:50px;">अभी कोई नई रिक्वेस्ट नहीं है।</p>';
+            // अगर टैग की कोई फोटो नहीं है (404), तो खाली मैसेज दिखाओ
+            if (response.status === 404) {
+                container.innerHTML = `
+                    <div class="no-data">
+                        <div class="icon">📚</div>
+                        <h3 style="margin:0; color:#333;">अभी कोई नई गुहार नहीं है</h3>
+                        <p style="font-size:13px;">जैसे ही कोई छात्र मदद मांगेगा, यहाँ दिखाई देगा।</p>
+                    </div>`;
                 return;
             }
 
+            const data = await response.json();
+            container.innerHTML = ''; 
+
+            if (!data.resources || data.resources.length === 0) {
+                container.innerHTML = '<div class="no-data">अभी कोई छात्र लिस्ट में नहीं है।</div>';
+                return;
+            }
+
+            // डेटा को प्रोसेस करना
             data.resources.forEach(res => {
                 const ctx = res.context?.custom || {};
-                const name = ctx.name || "छात्र";
+                const name = ctx.name || "होनहार छात्र";
                 const city = ctx.city || "राजस्थान";
                 const exam = ctx.exam || "प्रतियोगी परीक्षा";
-                const books = ctx.books || "किताबों की सूची उपलब्ध नहीं";
-                const story = ctx.story || "आगे बढ़ना चाहता हूँ, बस किताबों का सहारा चाहिए।";
+                const books = ctx.books || "किताबों की लिस्ट उपलब्ध नहीं";
+                const story = ctx.story || "आगे बढ़ना चाहता हूँ, बस किताबों की कमी है।";
 
                 const cardHTML = `
                     <div class="stu-card">
@@ -107,8 +120,11 @@
                 container.innerHTML += cardHTML;
             });
         } catch (err) {
-            console.error(err);
-            document.getElementById('wallContainer').innerHTML = '<p style="text-align:center; color:red; padding:20px;">लिस्ट लोड नहीं हो पाई। कृपया इंटरनेट चेक करें।</p>';
+            // नेटवर्क या अन्य समस्या होने पर
+            document.getElementById('wallContainer').innerHTML = `
+                <div class="no-data">
+                    <p>लिस्ट लोड करने में समय लग रहा है...<br>कृपया एक बार पेज को रिफ्रेश करें।</p>
+                </div>`;
         }
     }
 
@@ -117,4 +133,3 @@
 
 </body>
 </html>
-
