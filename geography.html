@@ -4,158 +4,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>एडवांस भूगोल - SST Pro</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --blue: #0984e3;
-            --dark-blue: #2980b9;
-            --green: #2ecc71;
-            --bg: #f1f2f6;
-        }
-
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background-color: var(--bg); color: #2d3436; padding-bottom: 30px; }
+        body { background-color: #f1f2f6; color: #2d3436; padding-bottom: 30px; }
+        
+        .header { background: linear-gradient(135deg, #0984e3, #74b9ff); color: white; padding: 40px 20px; text-align: center; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; position: relative; }
+        .back-btn { position: absolute; top: 35px; left: 15px; color: white; text-decoration: none; font-size: 20px; background: rgba(255,255,255,0.2); padding: 5px 12px; border-radius: 10px; }
+        .header h1 { font-size: 22px; font-weight: 800; }
 
-        /* 🔝 प्रीमियम हेडर */
-        .header { 
-            background: linear-gradient(135deg, #0984e3, #74b9ff); 
-            color: white; padding: 40px 20px 30px; 
-            text-align: center; border-bottom-left-radius: 30px; 
-            border-bottom-right-radius: 30px; position: relative; 
-            box-shadow: 0 4px 15px rgba(9, 132, 227, 0.2);
-        }
-        .back-btn { 
-            position: absolute; top: 35px; left: 15px; 
-            color: white; text-decoration: none; font-size: 20px; 
-            background: rgba(255,255,255,0.2); padding: 5px 12px; border-radius: 10px;
-        }
-        .header h1 { font-size: 22px; font-weight: 800; font-family: 'Montserrat', sans-serif; }
+        .section-title { margin: 25px 15px 10px 15px; font-size: 16px; font-weight: 800; color: #0984e3; display: flex; align-items: center; }
+        .section-title::before { content: ""; width: 4px; height: 16px; background: #0984e3; margin-right: 8px; border-radius: 10px; }
 
-        /* सेक्शन टाइटल */
-        .section-title { 
-            margin: 25px 15px 15px; font-size: 17px; font-weight: 800; 
-            color: #2c3e50; display: flex; align-items: center; 
-        }
-        .section-title::before { 
-            content: ""; width: 5px; height: 18px; 
-            background: var(--blue); margin-right: 10px; border-radius: 10px; 
-        }
-
-        /* 📋 कार्ड स्टाइल */
         .topic-container { padding: 0 15px; }
-        .note-card {
-            background: white; margin-bottom: 15px; padding: 18px;
-            border-radius: 18px; display: flex; align-items: center;
-            justify-content: space-between; text-decoration: none;
-            color: #2d3436; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            transition: 0.3s; border: 1px solid #eee;
-        }
-        .note-card:active { transform: scale(0.97); }
+        
+        /* 📋 एडवांस नोट्स कार्ड स्टाइल */
+        .advanced-card-box { background: white; margin-bottom: 12px; padding: 18px; border-radius: 18px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #eee; position: relative; }
+        
+        /* कार्ड के ऊपर वाला डाउनलोड बटन */
+        .top-dl-link { position: absolute; top: 12px; right: 15px; text-decoration: none; background: #e8f5e9; color: #2e7d32; padding: 4px 10px; border-radius: 50px; font-size: 10px; font-weight: 800; border: 1px solid #c8e6c9; display: flex; align-items: center; gap: 4px; z-index: 10; }
+        
+        .card-content { display: flex; align-items: center; text-decoration: none; color: inherit; }
+        .topic-icon { font-size: 26px; margin-right: 15px; background: #fff3e0; padding: 10px; border-radius: 12px; }
+        .topic-info { flex: 1; margin-top: 5px; }
+        .topic-title { font-weight: 700; font-size: 15px; }
+        .topic-desc { font-size: 11px; color: #95a5a6; }
 
-        .card-left { display: flex; align-items: center; gap: 15px; }
-        .icon-box {
-            width: 50px; height: 50px; background: #e3f2fd;
-            border-radius: 14px; display: flex; align-items: center; justify-content: center;
-            font-size: 24px;
-        }
-
-        .title-area h3 { font-size: 15px; font-weight: 700; margin-bottom: 2px; color: #2d3436; }
-        .title-area p { font-size: 11px; color: #95a5a6; font-weight: 500; }
-
-        /* 📥 बटन स्टाइल */
-        .action-btn {
-            background: #e1f5fe; color: #0288d1;
-            padding: 6px 14px; border-radius: 50px;
-            font-size: 11px; font-weight: 800; letter-spacing: 0.5px;
-            border: 1px solid #b3e5fc; text-transform: uppercase;
-        }
-        .download-btn {
-            background: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9;
-        }
-
-        /* 🎡 एनीमेशन */
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-            50% { transform: scale(1.02); box-shadow: 0 8px 20px rgba(46, 204, 113, 0.15); }
-            100% { transform: scale(1); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-        }
-        .animate-card { animation: pulse 2.5s infinite ease-in-out; border-left: 6px solid var(--green); }
-
+        /* सामान्य टॉपिक कार्ड */
+        .topic-card { background: white; margin-bottom: 12px; padding: 18px; border-radius: 18px; display: flex; align-items: center; text-decoration: none; color: #2d3436; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #eee; }
     </style>
 </head>
 <body>
 
     <div class="header">
-        <a href="index.html" class="back-btn">← पीछे</a>
-        <h1>एडवांस भारतीय भूगोल</h1>
+        <a href="index.html" class="back-btn">←</a>
+        <h1>भूगोल (Geography)</h1>
     </div>
 
     <h2 class="section-title">स्टडी मटेरियल</h2>
     <div class="topic-container">
         
-        <a href="#" class="note-card">
-            <div class="card-left">
-                <div class="icon-box">📚</div>
-                <div class="title-area">
-                    <h3>भूगोल की बेस्ट बुक्स</h3>
-                    <p>NCERT एवं अन्य महत्वपूर्ण पुस्तकें</p>
+        <div class="advanced-card-box">
+            <a href="geography-notes.html" download class="top-dl-link">📥 PDF डाउनलोड</a>
+            
+            <a href="geography-notes.html" class="card-content">
+                <div class="topic-icon">📚</div>
+                <div class="topic-info">
+                    <div class="topic-title">एडवांस भारतीय भूगोल नोट्स</div>
+                    <div class="topic-desc">महत्वपूर्ण अवधारणाएं और विश्लेषण</div>
                 </div>
-            </div>
-            <span class="action-btn">BOOKS</span>
-        </a>
-
-        <a href="geography-notes.html" class="note-card">
-            <div class="card-left">
-                <div class="icon-box" style="background: #fff3e0;">📝</div>
-                <div class="title-area">
-                    <h3>एडवांस भूगोल नोट्स</h3>
-                    <p>महत्वपूर्ण अवधारणाएं और विश्लेषण</p>
-                </div>
-            </div>
-            <span class="action-btn" style="background:#fff3e0; color:#e67e22; border-color:#ffe0b2;">READ NOW</span>
-        </a>
-
-        <div class="note-card animate-card">
-            <div class="card-left">
-                <div class="icon-box" style="background: #e8f5e9;">📄</div>
-                <div class="title-area">
-                    <h3>गहन मानसून विश्लेषण</h3>
-                    <p>Class 4-D & 4-E (तकनीकी अध्ययन)</p>
-                </div>
-            </div>
-            <a href="geography-notes.html" download style="text-decoration: none;">
-                <span class="action-btn download-btn">📥 डाउनलोड</span>
             </a>
         </div>
+
+        <a href="#" class="topic-card">
+            <div class="topic-icon" style="background:#e3f2fd;">📖</div>
+            <div class="topic-info">
+                <div class="topic-title">भूगोल की बेस्ट बुक्स</div>
+                <div class="topic-desc">NCERT एवं अन्य महत्वपूर्ण पुस्तकें</div>
+            </div>
+        </a>
     </div>
 
     <h2 class="section-title">महत्वपूर्ण टॉपिक्स</h2>
     <div class="topic-container">
-        <a href="#" class="note-card">
-            <div class="card-left">
-                <div class="icon-box" style="background: #f3e5f5;">🪐</div>
-                <div class="title-area">
-                    <h3>सौरमंडल और ब्रह्मांड</h3>
-                    <p>पृथ्वी की स्थिति और ग्रह</p>
-                </div>
+        <a href="#" class="topic-card">
+            <div style="font-size: 24px; margin-right: 15px;">🪐</div>
+            <div class="topic-info">
+                <div class="topic-title">सौरमंडल और ब्रह्मांड</div>
+                <div class="topic-desc">पृथ्वी की स्थिति और ग्रह</div>
             </div>
             <div style="color:#ccc">❯</div>
         </a>
-
-        <a href="#" class="note-card">
-            <div class="card-left">
-                <div class="icon-box" style="background: #e0f2f1;">🌊</div>
-                <div class="title-area">
-                    <h3>नदियाँ और झीलें</h3>
-                    <p>भारत का अपवाह तंत्र</p>
-                </div>
+        <a href="#" class="topic-card">
+            <div style="font-size: 24px; margin-right: 15px;">🌊</div>
+            <div class="topic-info">
+                <div class="topic-title">नदियाँ और झीलें</div>
+                <div class="topic-desc">भारत का अपवाह तंत्र</div>
             </div>
             <div style="color:#ccc">❯</div>
         </a>
-    </div>
-
-    <div style="text-align: center; margin-top: 30px; font-size: 12px; color: #b2bec3; font-weight: 600;">
-        SST PRO | एडवांस्ड ज्योग्राफी सीरीज
     </div>
 
 </body>
