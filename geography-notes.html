@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPSC/RAS जुलाई ह्यूमिडिटी नोट्स</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .main-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .map-wrapper {
+            position: relative;
+            margin: 20px auto;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        /* भारत का मुख्य मैप */
+        .map-bg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* इंडेक्स बॉक्स */
+        .humidity-legend {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 150px;
+            height: auto;
+            border: 1px solid #aaa;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 5px;
+            border-radius: 4px;
+        }
+
+        /* एनिमेशन ज़ोन (मैप के ऊपर पारदर्शी लेयर्स) */
+        .zone {
+            position: absolute;
+            opacity: 0.6;
+            cursor: pointer;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+
+        .zone:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        /* 1. पश्चिमी घाट (गहरा हरा) */
+        .zone-wg {
+            top: 30%;
+            left: 15%;
+            width: 15%;
+            height: 40%;
+            background: #2e8b57; /* SeaGreen */
+            animation: pulseWG 2s infinite;
+        }
+
+        /* 2. बंगाल की खाड़ी (हरा) */
+        .zone-bob {
+            top: 25%;
+            left: 60%;
+            width: 25%;
+            height: 35%;
+            background: #66cdaa; /* MediumAquaMarine */
+        }
+
+        /* 3. उत्तर-पश्चिम भारत (पीला-सूखा) */
+        .zone-nw {
+            top: 15%;
+            left: 20%;
+            width: 20%;
+            height: 25%;
+            background: #fffacd; /* LemonChiffon */
+        }
+
+        /* 4. तमिलनाडु (रेन शैडो - पीला) */
+        .zone-tn {
+            top: 70%;
+            left: 30%;
+            width: 15%;
+            height: 20%;
+            background: #fffacd; /* LemonChiffon */
+        }
+
+        /* एनिमेशन */
+        @keyframes pulseWG {
+            0% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 0.6; }
+        }
+
+        /* नोट्स सेक्शन */
+        .notes-section {
+            margin-top: 30px;
+        }
+
+        .notes-card {
+            background: #eef7f2;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 5px solid #2e8b57;
+            border-radius: 4px;
+        }
+
+        .notes-card h3 {
+            margin-top: 0;
+            color: #2e8b57;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <h1>UPSC / RAS: भारतीय मानसून (जुलाई)</h1>
+        <h2>रिलेटिव ह्यूमिडिटी - दीप एनालिसिस</h2>
+
+        <div class="map-wrapper">
+            <img src="https://via.placeholder.com/600x700/dddddd/999999?text=India+Map" alt="India Map Base" class="map-bg">
+            
+            <div class="humidity-legend">
+                <strong>नमी (%)</strong><br>
+                <div style="width:15px;height:15px;background:#2e8b57;display:inline-block;margin-right:5px;"></div>Above 90<br>
+                <div style="width:15px;height:15px;background:#66cdaa;display:inline-block;margin-right:5px;"></div>70 - 80<br>
+                <div style="width:15px;height:15px;background:#fffacd;display:inline-block;margin-right:5px;"></div>Below 60
+            </div>
+
+            <div class="zone zone-wg" title="पश्चिमी घाट (नमी >90%)"></div>
+            <div class="zone zone-bob" title="बंगाल की खाड़ी"></div>
+            <div class="zone zone-nw" title="थार रेगिस्तान (सूखा)"></div>
+            <div class="zone zone-tn" title="तमिलनाडु (रेन शैडो)"></div>
+        </div>
+
+        <div class="notes-section">
+            <div class="notes-card">
+                <h3>1. अरब सागर शाखा (The Arab Sea Branch)</h3>
+                <p><strong>विज्ञान:</strong> जुलाई में मानसूनी हवाएं सीधे पश्चिमी तट से टकराती हैं। केरल और कर्नाटक के तट (मैप में गहरा हरा रंग) पर नमी 90% से ऊपर पहुँच जाती है। यह मानसून का 'प्रवेश द्वार' है।</p>
+            </div>
+            
+            <div class="notes-card">
+                <h3>2. बंगाल की खाड़ी शाखा (The Bay of Bengal Branch)</h3>
+                <p><strong>विज्ञान:</strong> यह हवाएं उत्तर-पूर्वी राज्यों में पहुँचती हैं। गारो-खासी पहाड़ियों के कारण नमी 80% से अधिक रहती है।</p>
+            </div>
+
+            <div class="notes-card">
+                <h3>3. नमी में कमी (Westward Movement)</h3>
+                <p><strong>विज्ञान:</strong> जैसे-जैसे हवाएं पश्चिम (गंगा के मैदान) की तरफ बढ़ती हैं (यूपी, दिल्ली), उनकी नमी 60-70% (मैप में पीला रंग) रह जाती है। समुद्र से दूरी इसका प्रमुख कारण है।</p>
+            </div>
+
+            <div class="notes-card">
+                <h3>4. शुष्क क्षेत्र (Arid Zones) - तमिलनाडु व राजस्थान</h3>
+                <p><strong>विज्ञान:</strong> जुलाई में तमिलनाडु का तट और पश्चिमी राजस्थान सबसे सूखे रहते हैं। तमिलनाडु अरावली की वृष्टि छाया में है, और राजस्थान में अरावली पहाड़ियाँ हवाओं के समानांतर हैं।</p>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPSC Geography: July Humidity 2.0</title>
+    <style>
+        :root {
+            --dark-green: #1a5c37;
+            --light-green: #7dc242;
+            --dry-yellow: #fff9ae;
+        }
+        body {
+            background: #0f172a; /* Dark professional theme */
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        /* 9:16 Ratio for Reels/Shorts */
+        .reels-container {
+            width: 360px;
+            height: 640px;
+            background: #ffffff;
+            color: #333;
+            position: relative;
+            overflow: hidden;
+            border: 5px solid #333;
+        }
+        .header {
+            background: #1e293b;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+        }
+        /* India Map Placeholder */
+        .map-container {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            background: #e2e8f0;
+            margin-top: 10px;
+        }
+        /* Animated Winds */
+        .wind {
+            position: absolute;
+            width: 2px;
+            height: 30px;
+            background: rgba(0, 102, 255, 0.6);
+            border-radius: 2px;
+            animation: moveWind 2s infinite linear;
+        }
+        @keyframes moveWind {
+            0% { transform: translateY(0) rotate(-45deg); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-100px) translateX(50px) rotate(-45deg); opacity: 0; }
+        }
+        /* Legend based on your map */
+        .legend {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            font-size: 10px;
+            background: white;
+            padding: 5px;
+            border: 1px solid #ccc;
+        }
+        .box { display: inline-block; width: 10px; height: 10px; margin-right: 5px; }
+
+        /* Content Area */
+        .info-panel {
+            padding: 15px;
+            font-size: 12px;
+            line-height: 1.4;
+        }
+        .high-light {
+            background: #dcfce7;
+            border-left: 4px solid var(--dark-green);
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+        .footer-tag {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: #be123c;
+            color: white;
+            text-align: center;
+            padding: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="reels-container">
+    <div class="header">
+        <b>UPSC/RAS GEOGRAPHY: JULY SERIES</b><br>
+        सापेक्ष आर्द्रता (Relative Humidity) का विश्लेषण
+    </div>
+
+    <div class="map-container">
+        <div class="wind" style="bottom: 20px; left: 50px;"></div>
+        <div class="wind" style="bottom: 40px; left: 80px; animation-delay: 0.5s;"></div>
+        <div class="wind" style="bottom: 10px; left: 120px; animation-delay: 1s;"></div>
+        
+        <p style="text-align:center; padding-top:100px; color:#94a3b8; font-weight:bold;">
+            [यहाँ अपना मैप इमेज लगायें]<br>
+            JULY HUMIDITY MAP
+        </p>
+
+        <div class="legend">
+            <b>आर्द्रता %</b><br>
+            <span class="box" style="background:var(--dark-green)"></span> > 80% (अत्यधिक)<br>
+            <span class="box" style="background:var(--light-green)"></span> 60-80% (मध्यम)<br>
+            <span class="box" style="background:var(--dry-yellow)"></span> < 40% (शुष्क)
+        </div>
+    </div>
+
+    <div class="info-panel">
+        <div class="high-light">
+            <b>1. पश्चिमी घाट (पश्चिमी तट):</b> 
+            जुलाई में यहाँ हवाएं समुद्र से सीधे टकराती हैं, इसलिए नमी 90% पार कर जाती है।
+        </div>
+        <div class="high-light" style="border-left-color: #f59e0b; background: #fef3c7;">
+            <b>2. थार मरुस्थल:</b> 
+            हवाएं यहाँ के तापमान के कारण गर्म हो जाती हैं, जिससे 'सापेक्ष आर्द्रता' गिरकर 40% से नीचे रह जाती है।
+        </div>
+        <div class="high-light" style="border-left-color: #3b82f6; background: #eff6ff;">
+            <b>3. लौटता मानसून vs जुलाई:</b> 
+            जुलाई में नमी का प्रवाह दक्षिण-पश्चिम से उत्तर-पूर्व की ओर होता है।
+        </div>
+    </div>
+
+    <div class="footer-tag">SANJAY SIR: GEOGRAPHY SPECIAL</div>
+</div>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPSC Pro-Board: July Humidity</title>
+    <style>
+        :root {
+            --primary: #1e293b;
+            --accent: #22c55e;
+            --warning: #eab308;
+            --danger: #ef4444;
+        }
+        body {
+            margin: 0;
+            background: #020617;
+            display: flex;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+        }
+        .app-container {
+            width: 360px;
+            height: 640px;
+            background: #ffffff;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        /* Header */
+        .header {
+            background: var(--primary);
+            padding: 15px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        /* Interactive Map Area */
+        .map-section {
+            height: 280px;
+            background: #f1f5f9;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .map-image {
+            width: 90%;
+            opacity: 0.8;
+            transition: all 0.5s;
+        }
+        /* Pulse Markers */
+        .marker {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: var(--accent);
+            border-radius: 50%;
+            cursor: pointer;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+            70% { transform: scale(1.2); box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
+        /* Dynamic Info Box */
+        .content-card {
+            flex: 1;
+            padding: 15px;
+            background: #fff;
+            color: #333;
+            border-top: 3px solid var(--primary);
+            overflow-y: auto;
+        }
+        .info-title {
+            color: var(--primary);
+            font-size: 18px;
+            margin-bottom: 8px;
+            border-bottom: 2px solid #eee;
+        }
+        .info-text {
+            font-size: 13px;
+            line-height: 1.6;
+            color: #475569;
+        }
+        /* Interactive Buttons */
+        .btn-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px;
+            padding: 10px;
+            background: #f8fafc;
+        }
+        button {
+            padding: 8px;
+            border: none;
+            border-radius: 4px;
+            background: var(--primary);
+            color: white;
+            font-size: 11px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:active { transform: scale(0.95); }
+        .footer {
+            background: var(--danger);
+            font-size: 12px;
+            text-align: center;
+            padding: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+    <div class="header">GEOGRAPHY DEEP DIVE: JULY MAP</div>
+    
+    <div class="map-section" id="mapSection">
+        <div class="marker" style="top: 180px; left: 80px;" onclick="showData('wg')"></div>
+        <div class="marker" style="top: 60px; left: 240px; background:var(--warning)" onclick="showData('ne')"></div>
+        <div class="marker" style="top: 80px; left: 60px; background:var(--danger)" onclick="showData('tr')"></div>
+
+        <img id="mainMap" src="https://res.cloudinary.com/dppmrodwf/image/upload/v1777122620/ail95dqfy0dqwbr3aqrs.jpg" class="map-image" alt="July Humidity">
+    </div>
+
+    <div class="btn-group">
+        <button onclick="showData('wg')">Western Ghats</button>
+        <button onclick="showData('ne')">North-East</button>
+        <button onclick="showData('tr')">Thar Desert</button>
+        <button onclick="showData('tn')">Tamil Nadu</button>
+    </div>
+
+    <div class="content-card" id="contentCard">
+        <div id="displayArea">
+            <h3 class="info-title">विषय चुनिए (Click Above)</h3>
+            <p class="info-text">UPSC/RAS की दृष्टि से जुलाई महीने की सापेक्ष आर्द्रता (Relative Humidity) का विश्लेषण करने के लिए किसी भी क्षेत्र पर क्लिक करें।</p>
+        </div>
+    </div>
+
+    <div class="footer">SANJAY SIR LIVE | 9:16 REELS MODE</div>
+</div>
+
+<script>
+    const data = {
+        wg: {
+            title: "पश्चिमी घाट: 90% आर्द्रता",
+            text: "जुलाई में दक्षिण-पश्चिम मानसून की अरब सागर शाखा सीधे टकराती है। यहाँ ओरोग्राफिक (पर्वतीय) वर्षा के कारण नमी उच्चतम स्तर पर होती है।"
+        },
+        ne: {
+            title: "उत्तर-पूर्व: मानसूनी हब",
+            text: "बंगाल की खाड़ी से उठने वाली हवाएं यहाँ पहाड़ियों में फंस जाती हैं। जुलाई में यहाँ नमी 80-90% रहती है, जो घने जंगलों के लिए उत्तरदायी है।"
+        },
+        tr: {
+            title: "थार मरुस्थल: शुष्क क्षेत्र",
+            text: "अरावली की दिशा मानसून हवाओं के समांतर होने के कारण हवाएं बिना रुके निकल जाती हैं। तापमान अधिक होने से आर्द्रता 40% से नीचे गिर जाती है।"
+        },
+        tn: {
+            title: "तमिलनाडु: वृष्टि छाया क्षेत्र",
+            text: "जुलाई में पूरा भारत भीगता है पर तमिलनाडु सूखा रहता है क्योंकि यह पश्चिमी घाट के 'Rain Shadow' एरिया में आता है।"
+        }
+    };
+
+    function showData(key) {
+        const display = document.getElementById('displayArea');
+        const map = document.getElementById('mainMap');
+        
+        // Animation effect
+        display.style.opacity = 0;
+        setTimeout(() => {
+            display.innerHTML = `
+                <h3 class="info-title">${data[key].title}</h3>
+                <p class="info-text">${data[key].text}</p>
+                <div style="background:#f0fdf4; padding:10px; border-radius:5px; font-size:12px; color:#166534">
+                    <b>UPSC Point:</b> जुलाई में भारत का औसत सापेक्ष आर्द्रता स्तर 70% रहता है।
+                </div>
+            `;
+            display.style.opacity = 1;
+        }, 200);
+
+        // Zoom effect on map
+        map.style.transform = "scale(1.1)";
+        setTimeout(() => map.style.transform = "scale(1)", 500);
+    }
+</script>
+
+</body>
+</html>
