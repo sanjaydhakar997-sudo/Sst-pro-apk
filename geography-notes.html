@@ -4,144 +4,199 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Social Studies Classes | Class 4-D</title>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Lora:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #d4af37; /* गोल्डन टच */
+            --bg: #fdfdfd;
+            --text: #2d3748;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body { 
-            background-color: #fdfbf7; /* पुराना कागज़ जैसा हल्का रंग - पढ़ाई के लिए बेस्ट */
-            color: #2c3e50;
-            font-family: 'Lora', serif;
-            line-height: 1.8;
-            padding: 20px;
-        }
-
-        .main-wrapper {
-            max-width: 600px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 40px 25px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
-            border-radius: 2px;
-            border-top: 8px solid #2c3e50;
+            background-color: #f7f9fc; 
+            color: var(--text);
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.9;
+            padding: 15px;
         }
 
         /* कोना वाला छोटा टैग */
-        .corner-tag {
-            position: absolute;
-            top: 10px;
-            right: 10px;
+        .top-label {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--primary);
+            color: #fff;
             font-size: 10px;
-            color: #95a5a6;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            text-align: center;
+            padding: 5px 0;
+            letter-spacing: 2px;
+            z-index: 100;
+            font-weight: bold;
+        }
+
+        .main-wrapper {
+            max-width: 650px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 40px 30px;
+            border-radius: 4px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+            position: relative;
         }
 
         .branding {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
         .branding h2 {
-            font-size: 22px;
-            color: #2c3e50;
-            border-bottom: 1px solid #eee;
-            display: inline-block;
-            padding-bottom: 5px;
-            font-weight: 700;
-        }
-
-        .chapter-title {
-            font-size: 28px;
-            color: #c0392b;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-
-        .story-box {
-            background: #f9f9f9;
-            padding: 25px;
-            border-left: 4px solid #c0392b;
-            margin-bottom: 30px;
-            font-style: italic;
-            font-family: 'Crimson Text', serif;
             font-size: 18px;
-            color: #555;
+            color: var(--primary);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
+            padding-bottom: 10px;
         }
 
-        .content-section {
+        .chapter-header {
+            text-align: center;
             margin-bottom: 40px;
         }
-
-        .content-section h3 {
-            font-size: 20px;
-            color: #2c3e50;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #f1c40f;
-            display: inline-block;
+        .chapter-header h1 {
+            font-family: 'Libre+Baskerville', serif;
+            font-size: 32px;
+            color: #1a202c;
+            margin-bottom: 10px;
+        }
+        .divider {
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            margin: 20px auto;
         }
 
-        .content-section p {
-            font-size: 16px;
-            margin-bottom: 20px;
+        /* कहानी का हिस्सा */
+        .narrative-box {
+            background: #fffcf5;
+            padding: 30px;
+            border-left: 5px solid var(--accent);
+            margin-bottom: 40px;
+            border-radius: 0 10px 10px 0;
+        }
+        .narrative-box p {
+            font-family: 'Libre+Baskerville', serif;
+            font-style: italic;
+            font-size: 18px;
+            color: #4a5568;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 40px 0 20px 0;
+            display: flex;
+            align-items: center;
+        }
+        .section-title::before {
+            content: "";
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            margin-right: 15px;
+            border-radius: 50%;
+        }
+
+        .text-content {
+            font-size: 17px;
             text-align: justify;
+            margin-bottom: 25px;
         }
 
-        .highlight-box {
-            background: #fff9e6;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-            border: 1px dashed #f1c40f;
+        /* आसान भाषा का डब्बा */
+        .easy-concept {
+            background: #eef2f7;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 30px 0;
+            border: 1px solid #cbd5e0;
+        }
+        .easy-concept h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+        }
+        .easy-concept p {
+            font-size: 15px;
+            color: #4a5568;
+            margin: 0;
         }
 
         .footer {
             text-align: center;
-            font-size: 12px;
-            color: #bdc3c7;
-            margin-top: 50px;
-            border-top: 1px solid #eee;
-            padding-top: 20px;
+            font-size: 11px;
+            color: #a0aec0;
+            margin-top: 60px;
+            letter-spacing: 1px;
         }
 
+        /* मोबाइल के लिए छोटे फोंट */
+        @media (max-width: 480px) {
+            .chapter-header h1 { font-size: 26px; }
+            .main-wrapper { padding: 30px 20px; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="corner-tag">RAS / UPSC | CLASS 4-D</div>
+    <div class="top-label">RAS & UPSC PREPARATION | 2026 EDITION</div>
 
     <div class="main-wrapper">
         <div class="branding">
             <h2>Social Studies Classes</h2>
         </div>
 
-        <h1 class="chapter-title">मानसून: जब समंदर का दिल धड़का</h1>
-
-        <div class="story-box">
-            "कल्पना कीजिये एक तपती दोपहर की, जहाँ उत्तर भारत की ज़मीन आग उगल रही है। मिट्टी प्यासी है और हवा गरम होकर आसमान की तरफ भाग रही है। दूसरी तरफ दूर हिंद महासागर शांत और ठंडा बैठा है। जैसे ही उत्तर भारत की गर्मी उसे पुकारती है, समुद्र अपनी सारी नमी और ठंडी हवा की पोटली बांधकर भारत की तरफ दौड़ पड़ता है। यही मानसून है—एक प्यासी धरती और एक विशाल समंदर का मिलन।"
+        <div class="chapter-header">
+            <p style="font-size: 14px; color: var(--accent); font-weight: bold;">CLASS 4-D</p>
+            <h1>भारतीय मानसून का विज्ञान</h1>
+            <div class="divider"></div>
         </div>
 
-        <div class="content-section">
-            <h3>1. निम्न दबाव का आकर्षण (The Low Pressure Logic)</h3>
-            <p>मई और जून के महीनों में सूरज की किरणें सीधे कर्क रेखा पर पड़ती हैं। इससे हमारा उत्तर भारत और तिब्बत का पठार एक लोहे के तवे की तरह गरम हो जाता है। भूगोल की भाषा में कहें तो यहाँ 'निम्न वायुदाब' (Low Pressure) बन जाता है। अब इस खाली जगह को भरने के लिए हवा की ज़रुरत होती है।</p>
-            <p>दूर दक्षिण में, जहाँ पानी है, वहाँ उच्च दबाव (High Pressure) बना हुआ है। प्रकृति का नियम है कि हवा हमेशा भीड़-भाड़ (High Pressure) से खाली जगह (Low Pressure) की तरफ भागती है। समुद्र से चलने वाली ये हवाएं अपने साथ अरबों टन पानी भाप के रूप में लेकर चलती हैं।</p>
+        <div class="narrative-box">
+            <p>"मान लीजिए मानसून एक विशालकाय इंजन है। इस इंजन का ईंधन 'सूरज की गर्मी' है, इसकी पटरियां 'हवा के दबाव' की लाइनें हैं, और इसकी मंज़िल भारत की सूखी मिट्टी है। यह कोई साधारण बारिश नहीं, बल्कि प्रकृति का एक बहुत बड़ा 'बैलेंसिंग एक्ट' है।"</p>
         </div>
 
-        <div class="content-section">
-            <h3>2. फेरल का नियम और दिशा परिवर्तन</h3>
-            <p>जैसे ही ये हवाएं भूमध्य रेखा (Equator) को पार करती हैं, पृथ्वी के घूमने के कारण (कोरिओलिस बल) ये अपनी दिशा बदल लेती हैं और दक्षिण-पश्चिम से भारत में घुसती हैं। इसीलिए हम इसे 'दक्षिण-पश्चिम मानसून' कहते हैं।</p>
-            
-            <div class="highlight-box">
-                <strong>एक उदाहरण से समझें:</strong> जैसे किसी प्यासे को दूर से पानी का मटका दिखे और वह अपनी पूरी ताकत लगाकर उस तरफ भागे, वैसे ही मानसून की हवाएं भारत की गर्मी को शांत करने के लिए समंदर से दौड़ती हुई आती हैं। रास्ते में 'पश्चिमी घाट' के पहाड़ एक द्वारपाल की तरह खड़े होते हैं, जिनसे टकराकर ये हवाएं जमकर बारिश करती हैं।
-            </div>
+        <div class="section-title">तापमान और दबाव का खेल</div>
+        <div class="text-content">
+            मई-जून के महीने में जब आप उत्तर भारत में लू के थपेड़े सह रहे होते हैं, तब दरअसल हमारा पूरा इलाका एक विशाल 'मैग्नेट' (चुंबक) में बदल रहा होता है। सूरज की गर्मी ज़मीन को इतना गर्म कर देती है कि वहाँ की हवा हल्की होकर ऊपर भाग जाती है। 
+            <br><br>
+            अब उस खाली जगह को भरने के लिए प्रकृति बेचैन हो उठती है। उधर हिंद महासागर में पानी धीरे-धीरे गर्म होता है, इसलिए वहाँ हवा भारी और ठंडी रहती है। यहाँ से शुरू होता है दुनिया का सबसे बड़ा 'सक्शन' (खिंचाव)।
         </div>
 
-        <div class="content-section">
-            <h3>3. निष्कर्ष: मानसून का महत्व</h3>
-            <p>यह मानसून सिर्फ बारिश नहीं है, यह भारत की अर्थव्यवस्था की रीढ़ है। यदि मानसून देरी से आए या कम आए, तो पूरा देश प्रभावित होता है। इसकी गहराई को समझना एक अधिकारी (RAS/UPSC) के लिए इसलिए ज़रूरी है क्योंकि खेती, सिंचाई और आपदा प्रबंधन इसी पर टिके हैं।</p>
+        <div class="easy-concept">
+            <h4>💡 एक उदाहरण से समझें</h4>
+            <p>जैसे जब आप स्ट्रॉ (नली) से जूस पीते हैं, तो आप नली के अंदर की हवा को खींचकर 'खाली जगह' बनाते हैं। उस खाली जगह को भरने के लिए गिलास का जूस अपने आप ऊपर चढ़ने लगता है। बस! भारत की गर्मी वही 'खाली जगह' बनाती है और समुद्र का पानी (भाप के रूप में) उस तरफ दौड़ा चला आता है।</p>
+        </div>
+
+        <div class="section-title">हिमालय: भारत का रक्षक</div>
+        <div class="text-content">
+            अगर हिमालय न होता, तो ये मानसूनी हवाएं भारत को पार करके चीन की तरफ निकल जातीं। हिमालय एक विशाल दीवार की तरह खड़ा है जो इन हवाओं को रोकता है और उन्हें पूरे उत्तर भारत में बरसने पर मजबूर कर देता है। इसीलिए हिमालय को 'मानसून का पहरेदार' कहा जाता है।
+        </div>
+
+        <div class="easy-concept" style="background: #fff5f5; border-color: #feb2b2;">
+            <h4>📌 RAS/UPSC पॉइंट</h4>
+            <p>याद रखिये, मानसून सिर्फ बारिश नहीं है। यह भारत के 60% लोगों के रोजगार (खेती) का आधार है। यदि यह 15 दिन भी लेट हो जाए, तो बाज़ार में अनाज के दाम बढ़ जाते हैं। इसीलिए एक अधिकारी के लिए मानसून को समझना 'देश की धड़कन' को समझने जैसा है।</p>
         </div>
 
         <div class="footer">
-            SST Pro | शैक्षणिक सामग्री | Class 4-D
+            Sanjay Sir | SST PRO | DESIGNED FOR EXCELLENCE
         </div>
     </div>
 
