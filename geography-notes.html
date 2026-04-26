@@ -3,92 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UPSC/RAS जुलाई ह्यूमिडिटी नोट्स</title>
+    <title>UPSC/RAS भूगोल नोट्स</title>
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f0f2f5;
-            margin: 0;
-            padding: 10px;
-        }
-
-        .main-container {
-            max-width: 500px; /* मोबाइल के लिए परफेक्ट चौड़ाई */
-            margin: 0 auto;
-            background: #fff;
-            padding: 15px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-
-        h1 { font-size: 20px; text-align: center; color: #0984e3; margin-bottom: 5px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background-color: #f0f2f5; padding: 15px; }
+        .main-container { max-width: 450px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        
+        h1 { font-size: 22px; text-align: center; color: #0984e3; margin-bottom: 5px; }
         h2 { font-size: 14px; text-align: center; color: #636e72; margin-bottom: 20px; }
 
-        /* मैप का जादू यहाँ है */
-        .map-wrapper {
+        /* मैप कंटेनर को सुधारा गया */
+        .map-box {
             position: relative;
-            margin: 10px auto;
+            width: 100%;
             background: #e3f2fd;
-            border-radius: 12px;
-            padding: 10px;
+            border-radius: 15px;
+            overflow: hidden;
             border: 2px solid #0984e3;
+            min-height: 350px; /* डब्बा खाली न दिखे इसलिए */
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .map-img {
-            width: 100%;
+            width: 95%;
             height: auto;
-            display: block;
-            filter: drop-shadow(2px 4px 6px black);
+            z-index: 1;
         }
 
-        /* नमी के रंगीन घेरे (एनिमेशन) */
-        .overlay-zone {
+        /* ग्लो इफ़ेक्ट को मैप के पीछे सेट किया */
+        .glow {
             position: absolute;
             border-radius: 50%;
-            filter: blur(10px);
-            opacity: 0.5;
-            animation: pulse 2s infinite;
+            filter: blur(20px);
+            opacity: 0.6;
+            z-index: 2;
+            animation: pulse 2s infinite ease-in-out;
         }
 
-        .west-ghat { top: 60%; left: 18%; width: 60px; height: 120px; background: #1b5e20; }
-        .north-east { top: 35%; left: 75%; width: 70px; height: 60px; background: #2e7d32; }
-        .thar-desert { top: 25%; left: 15%; width: 80px; height: 80px; background: #fbc02d; opacity: 0.3; }
+        .green-glow { top: 55%; left: 20%; width: 50px; height: 100px; background: #2ecc71; }
+        .yellow-glow { top: 20%; left: 20%; width: 70px; height: 70px; background: #f1c40f; }
 
         @keyframes pulse {
             0% { transform: scale(1); opacity: 0.4; }
-            50% { transform: scale(1.1); opacity: 0.6; }
+            50% { transform: scale(1.2); opacity: 0.7; }
             100% { transform: scale(1); opacity: 0.4; }
         }
 
-        .legend-box {
-            background: white;
-            padding: 8px;
-            border-radius: 8px;
-            font-size: 10px;
-            border: 1px solid #ddd;
-            margin-top: 10px;
+        .legend {
             display: flex;
             justify-content: space-around;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin: 15px 0;
+            font-size: 12px;
         }
 
         .notes-card {
-            background: #f8f9fa;
+            background: #ffffff;
+            border-left: 5px solid #0984e3;
             padding: 15px;
-            margin-top: 15px;
-            border-left: 6px solid #0984e3;
-            border-radius: 8px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
 
-        .notes-card h3 { font-size: 16px; color: #0984e3; margin-bottom: 8px; }
-        .notes-card p { font-size: 13px; line-height: 1.6; color: #2d3436; }
+        .notes-card h3 { font-size: 16px; color: #0984e3; margin-bottom: 5px; }
+        .notes-card p { font-size: 13px; color: #2d3436; line-height: 1.5; }
 
-        .back-link {
+        .back-btn {
             display: block;
             text-align: center;
-            margin-top: 20px;
+            margin-top: 15px;
             color: #0984e3;
             text-decoration: none;
             font-weight: bold;
+            font-size: 14px;
         }
     </style>
 </head>
@@ -98,32 +90,29 @@
         <h1>UPSC / RAS भूगोल</h1>
         <h2>जुलाई: सापेक्ष आर्द्रता (Relative Humidity)</h2>
 
-        <div class="map-wrapper">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/India_map_en.svg/600px-India_map_en.svg.png" alt="India Map" class="map-img">
+        <div class="map-box">
+            <img src="https://img.freepik.com/free-vector/map-india-with-states-districts_1035-18961.jpg" alt="India Map" class="map-img">
             
-            <div class="overlay-zone west-ghat" title="High Humidity"></div>
-            <div class="overlay-zone north-east" title="High Humidity"></div>
-            <div class="overlay-zone thar-desert" title="Low Humidity"></div>
+            <div class="glow green-glow"></div>
+            <div class="glow yellow-glow"></div>
         </div>
 
-        <div class="legend-box">
-            <span><b style="color:#1b5e20;">●</b> >90% (अत्यधिक)</span>
-            <span><b style="color:#fbc02d;">●</b> <40% (शुष्क)</span>
+        <div class="legend">
+            <span>🟢 अत्यधिक नमी (>90%)</span>
+            <span>🟡 शुष्क क्षेत्र (<40%)</span>
         </div>
 
-        <div class="notes-section">
-            <div class="notes-card">
-                <h3>1. पश्चिमी घाट (पश्चिमी तट)</h3>
-                <p>जुलाई में अरब सागर से मानसूनी हवाएं टकराती हैं। यहाँ नमी 90% पार कर जाती है। यह जैव-विविधता का केंद्र है।</p>
-            </div>
-            
-            <div class="notes-card">
-                <h3>2. थार मरुस्थल (राजस्थान)</h3>
-                <p>हवाएं अरावली के समांतर निकल जाती हैं, जिससे नमी 40% से कम रह जाती है। यह जुलाई का सबसे सूखा इलाका है।</p>
-            </div>
+        <div class="notes-card">
+            <h3>1. पश्चिमी घाट (Western Ghats)</h3>
+            <p>अरब सागर की मानसूनी हवाओं के सीधे टकराने से यहाँ आर्द्रता 90% से ऊपर रहती है।</p>
         </div>
 
-        <a href="geography.html" class="back-link">⬅️ वापस भूगोल डेस्क पर जाएँ</a>
+        <div class="notes-card">
+            <h3>2. थार मरुस्थल (राजस्थान)</h3>
+            <p>यहाँ हवाएं गर्म होकर अपनी नमी खो देती हैं, जिससे आर्द्रता 40% से नीचे गिर जाती है।</p>
+        </div>
+
+        <a href="geography.html" class="back-btn">⬅️ वापस भूगोल डेस्क पर जाएँ</a>
     </div>
 
 </body>
