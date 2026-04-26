@@ -3,180 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UPSC/RAS जुलाई आर्द्रता नोट्स - SST Pro</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>SST Pro: July Humidity Notes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         
         body { 
-            background-color: #f1f2f6; 
-            padding: 15px;
+            background-color: #0f172a; /* डार्क थीम, कोडिंग वाइब के लिए */
+            color: #e2e8f0;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        /* ----- 1. मैप सेक्शन का कोडिंग ----- */
-        .map-section {
-            width: 100%;
-            max-width: 400px; /* मोबाइल पर सही दिखने के लिए */
-            margin-bottom: 25px;
-        }
-
-        .map-frame {
-            position: relative;
-            width: 100%;
-            background: #ffffff;
-            border-radius: 20px;
-            overflow: hidden;
-            border: 3px solid #0984e3;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-            aspect-ratio: 9 / 12; /* डब्बे का अनुपात */
-        }
-
-        .map-img { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover; 
-            display: block; 
-        }
-
-        /* मैप इंडेक्स */
-        .map-legend {
-            position: absolute; 
-            bottom: 10px; 
-            right: 10px; 
-            width: 120px;
-            background: rgba(255, 255, 255, 0.9); 
-            padding: 8px;
-            border-radius: 6px; 
-            font-size: 11px; 
-            border: 1px solid #ccc; 
-            z-index: 5;
-        }
-
-        /* एनिमेशन ग्लो (Pulse Effect) */
-        .zone { 
-            position: absolute; 
-            border-radius: 50%; 
-            filter: blur(15px); 
-            opacity: 0.5; 
-            z-index: 2; 
-            animation: pulse 2s infinite ease-in-out; 
-        }
-        
-        /* मैप पर जगहों की सेटिंग (आपके कोडिंग के अनुसार) */
-        .zone-wg { top: 60%; left: 18%; width: 50px; height: 100px; background: #2e8b57; } /* पश्चिमी घाट */
-        .zone-bob { top: 30%; left: 70%; width: 70px; height: 70px; background: #66cdaa; } /* बंगाल की खाड़ी */
-        .zone-nw { top: 20%; left: 15%; width: 60px; height: 60px; background: #fbc02d; } /* थार रेगिस्तान */
-
-        @keyframes pulse { 
-            0%, 100% { transform: scale(1); opacity: 0.4; } 
-            50% { transform: scale(1.1); opacity: 0.7; } 
-        }
-
-        /* ----- 2. नोट्स सेक्शन का कोडिंग ----- */
-        .notes-container {
+        .main-container {
             width: 100%;
             max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .main-title {
+        /* 👑 टाइटल सेक्शन */
+        .header {
             text-align: center;
-            color: #2d3436;
-            font-size: 20px;
-            font-weight: 800;
-            margin-bottom: 5px;
+            margin-bottom: 25px;
+        }
+        .header h1 { font-size: 24px; font-weight: 900; color: #38bdf8; }
+        .header p { font-size: 12px; color: #94a3b8; }
+
+        /* 🗺️ PURE CODE "LINE-ART" MAP Section */
+        .map-section {
+            width: 100%;
+            height: 350px;
+            background: #1e293b;
+            border-radius: 20px;
+            border: 2px solid #38bdf8;
+            position: relative;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.2);
+            overflow: hidden;
         }
 
-        .sub-title {
-            text-align: center;
-            color: #0984e3;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 20px;
+        /* भारत का कोडिंग ढांचा (Line Art) */
+        .india-line-art {
+            position: absolute;
+            top: 10%; left: 10%; right: 10%; bottom: 10%;
+            border-left: 3px solid #64748b; /* पश्चिमी तट */
+            border-bottom: 3px solid #64748b; /* दक्षिणी नोक */
+            border-right: 3px solid #64748b; /* पूर्वी तट */
+            border-top: 3px solid #64748b; /* उत्तरी सीमा */
+            border-radius: 10px 10px 150px 150px; /* नोक बनाने के लिए */
+            opacity: 0.3;
+        }
+        /* अरावली की लाइन */
+        .aravali-line {
+            position: absolute;
+            top: 25%; left: 25%; width: 3px; height: 100px;
+            background: #eab308;
+            transform: rotate(-20deg);
+            opacity: 0.5;
         }
 
+        /* एनीमेटेड ह्यूमिडिटी ज़ोन (रंगीन ग्लो) */
+        .humidity-zone {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(15px);
+            opacity: 0.6;
+            animation: breathe 2.5s infinite ease-in-out;
+        }
+
+        /* 1. पश्चिमी घाट (गहरा हरा) */
+        .zone-wg {
+            top: 55%; left: 15%; width: 60px; height: 120px;
+            background: #166534; /* Dark Green */
+        }
+
+        /* 2. बंगाल की खाड़ी/NE (हरा) */
+        .zone-ne {
+            top: 30%; left: 65%; width: 80px; height: 70px;
+            background: #22c55e; /* Bright Green */
+        }
+
+        /* 3. थार रेगिस्तान (पीला) */
+        .zone-thar {
+            top: 25%; left: 18%; width: 70px; height: 70px;
+            background: #eab308; /* Yellow */
+        }
+
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        /* 📊 मैप इंडेक्स */
+        .map-legend {
+            position: absolute; bottom: 10px; right: 10px;
+            background: rgba(30, 41, 59, 0.9);
+            padding: 8px; border-radius: 8px; font-size: 10px;
+            border: 1px solid #334155; color: #cbd5e1;
+            z-index: 5;
+        }
+        .legend-item { display: flex; align-items: center; margin-bottom: 3px; }
+        .dot { width: 8px; height: 8px; border-radius: 50%; margin-right: 5px; }
+
+        /* 📝 नोट्स सेक्शन */
+        .notes-section { width: 100%; }
         .note-card {
-            background: white;
+            background: #1e293b;
             padding: 18px;
             border-radius: 15px;
             margin-bottom: 15px;
-            border-left: 6px solid #0984e3;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-left: 5px solid #38bdf8;
+            border: 1px solid #334155;
             transition: 0.3s;
         }
-
-        .note-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        .note-card:active { transform: scale(0.98); background: #334155; }
+        
+        .point-tag {
+            display: inline-block; background: #0369a1; color: #e0f2fe;
+            padding: 3px 10px; border-radius: 50px; font-size: 10px;
+            font-weight: 700; margin-bottom: 8px;
         }
+        .note-card h3 { font-size: 16px; color: #f1f5f9; margin-bottom: 6px; }
+        .note-card p { font-size: 13px; color: #94a3b8; line-height: 1.6; }
 
-        .point-badge {
-            display: inline-block;
-            background: #e1f5fe;
-            color: #0288d1;
-            padding: 3px 10px;
-            border-radius: 50px;
-            font-size: 10px;
-            font-weight: 800;
-            margin-bottom: 8px;
-        }
-
-        .note-card h3 {
-            font-size: 16px;
-            color: #2d3436;
-            margin-bottom: 6px;
-            font-weight: 700;
-        }
-
-        .note-card p {
-            font-size: 13px;
-            color: #636e72;
-            line-height: 1.6;
-        }
     </style>
 </head>
 <body>
 
-    <h1 class="main-title">UPSC / RAS भूगोल</h1>
-    <h2 class="sub-title">विषय: जुलाई में सापेक्ष आर्द्रता (RH)</h2>
+    <div class="main-container">
+        
+        <div class="header">
+            <h1>UPSC / RAS भूगोल</h1>
+            <p>जुलाई सीरीज: सापेक्ष आर्द्रता (Relative Humidity)</p>
+        </div>
 
-    <div class="map-section">
-        <div class="map-frame">
-            <img src="https://res.cloudinary.com/dppmrodwf/image/upload/v1777122620/ail95dqfy0dqwbr3aqrs.jpg" alt="India July Humidity Map" class="map-img">
+        <div class="map-section">
             
+            <div class="india-line-art"></div>
+            <div class="aravali-line" title="अरावली पर्वत"></div>
+            
+            <div class="humidity-zone zone-wg" title="Western Ghats"></div>
+            <div class="humidity-zone zone-ne" title="North East"></div>
+            <div class="humidity-zone zone-thar" title="Thar Desert"></div>
+
             <div class="map-legend">
-                <strong>आर्द्रता (%)</strong><br>
-                <div style="width:10px;height:10px;background:#2e8b57;display:inline-block;margin-right:5px;border-radius:50%;"></div> उच्च (>90%)<br>
-                <div style="width:10px;height:10px;background:#66cdaa;display:inline-block;margin-right:5px;border-radius:50%;"></div> मध्यम (70-80%)<br>
-                <div style="width:10px;height:10px;background:#fbc02d;display:inline-block;margin-right:5px;border-radius:50%;"></div> शुष्क (<60%)
+                <strong>आर्द्रता (%)</strong>
+                <div class="legend-item"><div class="dot" style="background:#166534"></div>> 90% (उच्च)</div>
+                <div class="legend-item"><div class="dot" style="background:#22c55e"></div> 70-80% (मध्यम)</div>
+                <div class="legend-item"><div class="dot" style="background:#eab308"></div> < 60% (शुष्क)</div>
+            </div>
+        </div>
+
+        <div class="notes-section">
+            
+            <div class="notes-card" style="border-left-color: #166534;">
+                <span class="point-tag">एनालिसिस 1</span>
+                <h3>पश्चिमी घाट (West Ghats)</h3>
+                <p>जुलाई में अरब सागर की मानसूनी हवाएं यहाँ सीधे टकराती हैं। पर्वतीय वर्षा के कारण आर्द्रता 90% से ऊपर पहुँच जाती है। यह मानसून का प्रवेश द्वार है।</p>
             </div>
 
-            <div class="zone zone-wg" title="पश्चिमी घाट"></div>
-            <div class="zone zone-bob" title="बंगाल की खाड़ी"></div>
-            <div class="zone zone-nw" title="थार रेगिस्तान"></div>
-        </div>
-    </div>
+            <div class="notes-card" style="border-left-color: #22c55e;">
+                <span class="point-tag" style="background:#15803d">एनालिसिस 2</span>
+                <h3>उत्तर-पूर्वी भारत (North-East)</h3>
+                <p>बंगाल की खाड़ी शाखा यहाँ पहाड़ियों (गारो, खासी) में फँस जाती है। यहाँ नमी 80% बनी रहती है, जो घने वनों के लिए उत्तरदायी है।</p>
+            </div>
 
-    <div class="notes-container">
-        
-        <div class="note-card">
-            <span class="point-badge">एनालिसिस 1</span>
-            <h3>पश्चिमी घाट (अरब सागर शाखा)</h3>
-            <p>जुलाई में मानसूनी हवाएं सीधे पश्चिमी तट से टकराती हैं। ओरोग्राफिक वर्षा के कारण यहाँ नमी 90% से ऊपर रहती है।</p>
-        </div>
+            <div class="notes-card" style="border-left-color: #eab308;">
+                <span class="point-tag" style="background:#a16207">एनालिसिस 3</span>
+                <h3>थार मरुस्थल (पश्चिमी राजस्थान)</h3>
+                <p>अरावली की स्थिति मानसूनी हवाओं के समानांतर होने और उच्च तापमान के कारण यहाँ नमी 40% से नीचे रह जाती है। यह जुलाई का सबसे शुष्क क्षेत्र है।</p>
+            </div>
 
-        <div class="note-card" style="border-left-color: #66cdaa;">
-            <span class="point-badge" style="background:#e8f5e9; color:#2e7d32;">एनालिसिस 2</span>
-            <h3>उत्तर-पूर्वी भारत (बंगाल की खाड़ी शाखा)</h3>
-            <p>गारो, खासी और जयंतिया पहाड़ियों के कारण हवाएं यहाँ फँस जाती हैं। नमी का स्तर 80% बना रहता है।</p>
-        </div>
-
-        <div class="note-card" style="border-left-color: #f1c40f;">
-            <span class="point-badge" style="background:#fffde7; color:#f57f17;">एनालिसिस 3</span>
-            <h3>थार मरुस्थल (पश्चिमी राजस्थान)</h3>
-            <p>उच्च तापमान और अरावली की हवाओं के समांतर स्थिति के कारण यहाँ नमी 40% से नीचे गिर जाती है।</p>
         </div>
 
     </div>
