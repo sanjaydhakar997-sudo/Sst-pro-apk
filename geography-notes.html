@@ -3,125 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UPSC/RAS जुलाई ह्यूमिडिटी नोट्स</title>
+    <title>UPSC/RAS जुलाई आर्द्रता नोट्स - SST Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        
+        body { 
+            background-color: #f1f2f6; 
             padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .main-container {
-            max-width: 450px; /* मोबाइल के लिए बेस्ट साइज */
-            margin: 0 auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        /* ----- 1. मैप सेक्शन का कोडिंग ----- */
+        .map-section {
+            width: 100%;
+            max-width: 400px; /* मोबाइल पर सही दिखने के लिए */
+            margin-bottom: 25px;
         }
 
-        h1, h2 {
+        .map-frame {
+            position: relative;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 3px solid #0984e3;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            aspect-ratio: 9 / 12; /* डब्बे का अनुपात */
+        }
+
+        .map-img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            display: block; 
+        }
+
+        /* मैप इंडेक्स */
+        .map-legend {
+            position: absolute; 
+            bottom: 10px; 
+            right: 10px; 
+            width: 120px;
+            background: rgba(255, 255, 255, 0.9); 
+            padding: 8px;
+            border-radius: 6px; 
+            font-size: 11px; 
+            border: 1px solid #ccc; 
+            z-index: 5;
+        }
+
+        /* एनिमेशन ग्लो (Pulse Effect) */
+        .zone { 
+            position: absolute; 
+            border-radius: 50%; 
+            filter: blur(15px); 
+            opacity: 0.5; 
+            z-index: 2; 
+            animation: pulse 2s infinite ease-in-out; 
+        }
+        
+        /* मैप पर जगहों की सेटिंग (आपके कोडिंग के अनुसार) */
+        .zone-wg { top: 60%; left: 18%; width: 50px; height: 100px; background: #2e8b57; } /* पश्चिमी घाट */
+        .zone-bob { top: 30%; left: 70%; width: 70px; height: 70px; background: #66cdaa; } /* बंगाल की खाड़ी */
+        .zone-nw { top: 20%; left: 15%; width: 60px; height: 60px; background: #fbc02d; } /* थार रेगिस्तान */
+
+        @keyframes pulse { 
+            0%, 100% { transform: scale(1); opacity: 0.4; } 
+            50% { transform: scale(1.1); opacity: 0.7; } 
+        }
+
+        /* ----- 2. नोट्स सेक्शन का कोडिंग ----- */
+        .notes-container {
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .main-title {
             text-align: center;
-            color: #1e293b;
+            color: #2d3436;
+            font-size: 20px;
+            font-weight: 800;
             margin-bottom: 5px;
         }
 
-        .map-wrapper {
-            position: relative;
-            margin: 20px auto;
-            border: 2px solid #0984e3;
-            border-radius: 12px;
-            overflow: hidden;
-            background: #e3f2fd;
+        .sub-title {
+            text-align: center;
+            color: #0984e3;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
         }
 
-        .map-bg {
-            width: 100%;
-            height: auto;
-            display: block;
+        .note-card {
+            background: white;
+            padding: 18px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            border-left: 6px solid #0984e3;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: 0.3s;
         }
 
-        .humidity-legend {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            width: 120px;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 8px;
-            border-radius: 6px;
-            font-size: 11px;
-            border: 1px solid #ccc;
+        .note-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
         }
 
-        /* एनिमेशन ज़ोन */
-        .zone {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(15px);
-            opacity: 0.5;
-            animation: pulse 2s infinite;
+        .point-badge {
+            display: inline-block;
+            background: #e1f5fe;
+            color: #0288d1;
+            padding: 3px 10px;
+            border-radius: 50px;
+            font-size: 10px;
+            font-weight: 800;
+            margin-bottom: 8px;
         }
 
-        .zone-wg { top: 60%; left: 18%; width: 50px; height: 100px; background: #2e8b57; }
-        .zone-bob { top: 30%; left: 70%; width: 70px; height: 70px; background: #66cdaa; }
-        .zone-nw { top: 20%; left: 15%; width: 60px; height: 60px; background: #fbc02d; }
-
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 0.4; }
-            50% { transform: scale(1.1); opacity: 0.7; }
-            100% { transform: scale(1); opacity: 0.4; }
+        .note-card h3 {
+            font-size: 16px;
+            color: #2d3436;
+            margin-bottom: 6px;
+            font-weight: 700;
         }
 
-        .notes-card {
-            background: #f8f9fa;
-            padding: 12px;
-            margin-bottom: 12px;
-            border-left: 5px solid #2e8b57;
-            border-radius: 6px;
+        .note-card p {
+            font-size: 13px;
+            color: #636e72;
+            line-height: 1.6;
         }
-
-        .notes-card h3 { margin: 0 0 5px 0; color: #1e293b; font-size: 16px; }
-        .notes-card p { margin: 0; font-size: 13px; color: #475569; line-height: 1.5; }
     </style>
 </head>
 <body>
 
-    <div class="main-container">
-        <h1>UPSC / RAS भूगोल</h1>
-        <h2>जुलाई: सापेक्ष आर्द्रता (RH)</h2>
+    <h1 class="main-title">UPSC / RAS भूगोल</h1>
+    <h2 class="sub-title">विषय: जुलाई में सापेक्ष आर्द्रता (RH)</h2>
 
-        <div class="map-wrapper">
-            <img src="https://res.cloudinary.com/dppmrodwf/image/upload/v1777122620/ail95dqfy0dqwbr3aqrs.jpg" alt="India Map" class="map-bg">
+    <div class="map-section">
+        <div class="map-frame">
+            <img src="https://res.cloudinary.com/dppmrodwf/image/upload/v1777122620/ail95dqfy0dqwbr3aqrs.jpg" alt="India July Humidity Map" class="map-img">
             
-            <div class="humidity-legend">
-                <strong>नमी (%)</strong><br>
-                <div style="width:10px;height:10px;background:#2e8b57;display:inline-block;margin-right:5px;"></div>> 90%<br>
-                <div style="width:10px;height:10px;background:#66cdaa;display:inline-block;margin-right:5px;"></div>70-80%<br>
-                <div style="width:10px;height:10px;background:#fbc02d;display:inline-block;margin-right:5px;"></div>< 60%
+            <div class="map-legend">
+                <strong>आर्द्रता (%)</strong><br>
+                <div style="width:10px;height:10px;background:#2e8b57;display:inline-block;margin-right:5px;border-radius:50%;"></div> उच्च (>90%)<br>
+                <div style="width:10px;height:10px;background:#66cdaa;display:inline-block;margin-right:5px;border-radius:50%;"></div> मध्यम (70-80%)<br>
+                <div style="width:10px;height:10px;background:#fbc02d;display:inline-block;margin-right:5px;border-radius:50%;"></div> शुष्क (<60%)
             </div>
 
-            <div class="zone zone-wg"></div>
-            <div class="zone zone-bob"></div>
-            <div class="zone zone-nw"></div>
+            <div class="zone zone-wg" title="पश्चिमी घाट"></div>
+            <div class="zone zone-bob" title="बंगाल की खाड़ी"></div>
+            <div class="zone zone-nw" title="थार रेगिस्तान"></div>
+        </div>
+    </div>
+
+    <div class="notes-container">
+        
+        <div class="note-card">
+            <span class="point-badge">एनालिसिस 1</span>
+            <h3>पश्चिमी घाट (अरब सागर शाखा)</h3>
+            <p>जुलाई में मानसूनी हवाएं सीधे पश्चिमी तट से टकराती हैं। ओरोग्राफिक वर्षा के कारण यहाँ नमी 90% से ऊपर रहती है।</p>
         </div>
 
-        <div class="notes-section">
-            <div class="notes-card">
-                <h3>1. पश्चिमी घाट</h3>
-                <p>जुलाई में मानसूनी हवाएं यहाँ सीधे टकराती हैं, जिससे नमी 90% से ऊपर रहती है। यह मानसून का प्रवेश द्वार है।</p>
-            </div>
-            
-            <div class="notes-card" style="border-left-color: #66cdaa;">
-                <h3>2. उत्तर-पूर्वी भारत</h3>
-                <p>बंगाल की खाड़ी शाखा यहाँ पहाड़ियों से टकराती है, जिससे नमी 80% से अधिक रहती है।</p>
-            </div>
-
-            <div class="notes-card" style="border-left-color: #fbc02d;">
-                <h3>3. पश्चिमी राजस्थान</h3>
-                <p>अरावली की स्थिति और उच्च तापमान के कारण नमी 40% से नीचे रह जाती है। यह सबसे शुष्क क्षेत्र है।</p>
-            </div>
+        <div class="note-card" style="border-left-color: #66cdaa;">
+            <span class="point-badge" style="background:#e8f5e9; color:#2e7d32;">एनालिसिस 2</span>
+            <h3>उत्तर-पूर्वी भारत (बंगाल की खाड़ी शाखा)</h3>
+            <p>गारो, खासी और जयंतिया पहाड़ियों के कारण हवाएं यहाँ फँस जाती हैं। नमी का स्तर 80% बना रहता है।</p>
         </div>
+
+        <div class="note-card" style="border-left-color: #f1c40f;">
+            <span class="point-badge" style="background:#fffde7; color:#f57f17;">एनालिसिस 3</span>
+            <h3>थार मरुस्थल (पश्चिमी राजस्थान)</h3>
+            <p>उच्च तापमान और अरावली की हवाओं के समांतर स्थिति के कारण यहाँ नमी 40% से नीचे गिर जाती है।</p>
+        </div>
+
     </div>
 
 </body>
