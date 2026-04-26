@@ -3,85 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UPSC/RAS भूगोल नोट्स</title>
+    <title>SST Pro | Class 4-D: Monsoon Concepts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
-        body { background-color: #f0f2f5; padding: 15px; }
-
-        /* 👑 मैप का डब्बा */
-        .map-section {
-            max-width: 450px;
-            margin: 0 auto 20px;
-            background: #fff;
-            padding: 10px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border: 2px solid #0984e3;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .map-img {
-            width: 100%;
-            border-radius: 15px;
-            display: block;
-        }
-
-        /* 🟢 एनीमेटेड ग्लो (डेटा दिखाने के लिए) */
-        .glow {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(15px);
-            opacity: 0.6;
-            animation: pulse 2s infinite ease-in-out;
-            z-index: 10;
-        }
-        .zone-wg { top: 60%; left: 18%; width: 50px; height: 100px; background: #2ecc71; }
-        .zone-ne { top: 30%; left: 70%; width: 60px; height: 60px; background: #27ae60; }
-        .zone-thar { top: 25%; left: 18%; width: 60px; height: 60px; background: #f1c40f; }
-
-        @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 0.4; } 50% { transform: scale(1.1); opacity: 0.7; } }
-
-        /* 📝 नोट्स का डब्बा */
-        .notes-container { max-width: 450px; margin: 0 auto; }
-        .note-card {
-            background: #fff;
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        
+        body { 
+            background-color: #0f172a; /* प्रीमियम डार्क थीम */
+            color: #cbd5e1;
             padding: 15px;
-            margin-bottom: 12px;
-            border-radius: 12px;
-            border-left: 6px solid #0984e3;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        .note-card h3 { font-size: 16px; color: #0984e3; margin-bottom: 5px; }
-        .note-card p { font-size: 13px; color: #333; line-height: 1.5; }
+
+        .container {
+            width: 100%;
+            max-width: 450px; /* मोबाइल पर बेस्ट व्यू के लिए */
+        }
+
+        /* 👑 टाइटल सेक्शन */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #38bdf8;
+            padding-bottom: 15px;
+        }
+        .header h1 { font-size: 26px; font-weight: 800; color: #fff; }
+        .header p { font-size: 14px; color: #38bdf8; font-weight: 600; margin-top: 5px; }
+
+        /* क्लास और विषय का बैच */
+        .class-badge {
+            display: block;
+            text-align: center;
+            background: rgba(56, 189, 248, 0.1);
+            color: #38bdf8;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            margin: -20px auto 30px auto;
+            border: 1px solid #38bdf8;
+            max-width: 150px;
+        }
+
+        /* 📝 नोट्स कार्ड सेक्शन */
+        .concept-card {
+            background: #1e293b;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #334155;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: 0.3s;
+            position: relative;
+        }
+        .concept-card:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(56, 189, 248, 0.15); }
+        
+        /* हरे रंग की ग्लो वाली लाइन */
+        .concept-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 6px; height: 100%;
+            background: #22c55e;
+            border-radius: 16px 0 0 16px;
+        }
+
+        .note-tag {
+            display: inline-block; background: #075985; color: #e0f2fe;
+            padding: 3px 10px; border-radius: 50px; font-size: 10px;
+            font-weight: 700; margin-bottom: 10px;
+        }
+        .concept-card h3 { font-size: 18px; color: #fff; margin-bottom: 8px; font-weight: 700; }
+        .concept-card p { font-size: 13px; color: #94a3b8; line-height: 1.6; }
+
+        /* 💡 1 सेकंड लॉजिक बॉक्स */
+        .quick-logic {
+            margin-top: 15px;
+            padding: 10px;
+            background: rgba(34, 197, 94, 0.1);
+            border-radius: 8px;
+            border-left: 3px solid #22c55e;
+        }
+        .quick-logic b { color: #22c55e; font-size: 13px; font-weight: 700; }
+
+        /* 'नेक्स्ट क्लास' का बटन */
+        .next-btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background: #0ea5e9;
+            color: #fff;
+            padding: 15px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            margin-top: 30px;
+            box-shadow: 0 4px 6px rgba(14, 165, 233, 0.3);
+            transition: 0.3s;
+        }
+        .next-btn:active { transform: scale(0.98); box-shadow: 0 2px 4px rgba(14, 165, 233, 0.2); }
+
     </style>
 </head>
 <body>
 
-    <div class="map-section">
-        <img src="https://img.freepik.com/free-vector/map-india-with-states-districts_1035-18961.jpg" class="map-img">
+    <div class="container">
         
-        <div class="glow zone-wg"></div>
-        <div class="glow zone-ne"></div>
-        <div class="glow zone-thar"></div>
-    </div>
-
-    <div class="notes-container">
-        
-        <div class="note-card">
-            <h3>1. पश्चिमी घाट (High Humidity)</h3>
-            <p>जुलाई में मानसूनी हवाएं यहाँ सीधे टकराती हैं, जिससे नमी 90% से ऊपर रहती है।</p>
+        <div class="header">
+            <h1>SST PRO</h1>
+            <p>UPSC भूगोल सीरीज (हिंदी माध्यम)</p>
         </div>
 
-        <div class="note-card" style="border-left-color: #27ae60;">
-            <h3>2. उत्तर-पूर्वी भारत (North-East)</h3>
-            <p>बंगाल की खाड़ी शाखा यहाँ पहाड़ियों में फँस जाती है, जिससे नमी 80% बनी रहती है।</p>
+        <div class="class-badge">CLASS 4-A</div>
+
+        <div class="concept-card">
+            <span class="note-tag">UPSC विशेष 01</span>
+            <h3>मानसून की 'चाबी': ताप और दाब</h3>
+            <p>मानसून कोई हवा नहीं, बल्कि एक 'सिस्टम' है। जून-जुलाई में सूरज उत्तरी गोलार्द्ध (भारत के ऊपर) सीधा चमकता है। इससे तिब्बत का पठार और उत्तर भारत अत्यधिक गर्म हो जाते हैं।</p>
+            <div class="quick-logic">
+                <b>1 सेकंड लॉजिक:</b> अधिक गर्मी → हवा गर्म होकर ऊपर उठी → धरती पर 'कम दबाव' (Low Pressure) का क्षेत्र बन गया।
+            </div>
         </div>
 
-        <div class="note-card" style="border-left-color: #f1c40f;">
-            <h3>3. थार मरुस्थल (Dry Zone)</h3>
-            <p>अरावली के समानांतर हवाएं होने के कारण यहाँ नमी 40% से नीचे गिर जाती है।</p>
+        <div class="concept-card" style="border-left-color: #38bdf8;">
+            <span class="note-tag" style="background:#0c4a6e; color:#bae6fd;">UPSC विशेष 02</span>
+            <h3>हवा का नियम: हाई से लो!</h3>
+            <p>उधर, हिंद महासागर (समुद्र) तुलनात्मक रूप से ठंडा होता है, जहाँ 'उच्च दबाव' (High Pressure) होता है। प्रकृति का नियम है कि हवा हमेशा उच्च दबाव से कम दबाव की ओर चलती है।</p>
+            <div class="quick-logic" style="border-left-color: #38bdf8; background:rgba(56, 189, 248, 0.1);">
+                <b>1 सेकंड लॉजिक:</b> समुद्र (High P) → भारत (Low P)। हवाएँ समुद्र की नमी समेट कर भारत की ओर दौड़ीं।
+            </div>
         </div>
+
+        <div class="concept-card" style="border-left-color: #f59e0b;">
+            <span class="note-tag" style="background:#854d0e; color:#fef3c7;">UPSC विशेष 03</span>
+            <h3>भारत में प्रवेश: केरल का तट</h3>
+            <p>भारत की प्रायद्वीपीय आकृति के कारण, यह हवा दो हिस्सों में बंट जाती है। सबसे पहले यह केरल के पश्चिमी तट पर जून के पहले सप्ताह में पहुँचती है, जिसे 'मानसून विस्फोट' (Burst) कहते हैं।</p>
+            <div class="quick-logic" style="border-left-color: #f59e0b; background:rgba(245, 158, 11, 0.1);">
+                <b>1 सेकंड लॉजिक:</b> समुद्र से नमी → पहाड़ (पश्चिमी घाट) से टक्कर → तेज़ी से ऊपर उठना → भारी बारिश।
+            </div>
+        </div>
+
+        <a href="#" class="next-btn">अगली क्लास (4-B) के नोट्स →</a>
 
     </div>
 
