@@ -286,51 +286,95 @@
                 <div style="font-weight: 700; font-size: 13px;">Help Desk</div>
             </a>
         </div>
-<div style="background: #ffffff; border-radius: 25px; margin: 30px auto; max-width: 92%; padding: 5px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1.5px solid #e1e8f0; position: relative; overflow: hidden;">
+<div style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border-radius: 30px; margin: 30px 15px; padding: 5px; box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.4); border: 2px solid #334155; position: relative; overflow: hidden; animation: panelFadeIn 1s ease-out;">
     
-    <div style="background: #1a3a5f; color: #ffd700; font-size: 9px; font-weight: 900; padding: 4px 12px; border-radius: 0 0 10px 10px; position: absolute; top: 0; left: 50%; transform: translateX(-50%); text-transform: uppercase; letter-spacing: 1px; white-space: nowrap;">
-        Mission Status: LIVE 🟢
+    <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(243, 156, 18, 0.05) 0%, transparent 70%); animation: rotateGradient 10s linear infinite;"></div>
+
+    <div class="live-badge-v2" style="background: rgba(46, 204, 113, 0.15); color: #2ecc71; font-size: 10px; font-weight: 800; padding: 6px 15px; border-radius: 50px; position: absolute; top: 15px; right: 15px; text-transform: uppercase; letter-spacing: 1.5px; border: 1px solid rgba(46, 204, 113, 0.3); z-index: 10; display: flex; align-items: center; gap: 6px;">
+        <span class="pulse-dot" style="width: 7px; height: 7px; background: #2ecc71; border-radius: 50%;"></span>
+        Verified Live
     </div>
 
-    <div style="padding: 30px 15px 20px;">
-        <div style="text-align: center; margin-bottom: 25px;">
-            <h2 style="color: #1a3a5f; margin: 0; font-size: 20px; font-weight: 900;">SST PRO मिशन का आगाज़ 🤝</h2>
-            <p style="color: #666; font-size: 11px; margin-top: 5px; font-weight: 600;">चित्तौड़गढ़ से शिक्षा की नई क्रांति</p>
+    <div style="padding: 40px 20px 25px; position: relative; z-index: 5;">
+        <div style="text-align: center; margin-bottom: 35px;">
+            <h2 style="color: #ffffff; margin: 0; font-size: 22px; font-weight: 800; letter-spacing: 1px; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
+                <span style="color: #f39c12;">SST PRO</span> मिशन का आगाज़ 🤝
+            </h2>
+            <p style="color: #94a3b8; font-size: 12px; margin-top: 8px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px;">गाँवों की शिक्षा में ऐतिहासिक बदलाव</p>
         </div>
 
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 25px;">
-            <div style="background: #f8faff; padding: 12px; border-radius: 15px; text-align: center; border: 1px solid #eef2f7;">
-                <div id="totalBooks" style="font-size: 22px; font-weight: 900; color: #1a3a5f;">0</div>
-                <div style="font-size: 10px; color: #777; font-weight: bold; margin-top: 4px;">किताबें दान हुईं</div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 30px;">
+            
+            <div class="stat-card" style="background: rgba(255, 255, 255, 0.03); padding: 20px 15px; border-radius: 20px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 3px solid #f39c12; transition: all 0.3s ease;">
+                <div style="font-size: 18px; margin-bottom: 8px;">📚</div>
+                <div id="totalBooks" style="font-size: 30px; font-weight: 900; color: #f39c12; text-shadow: 0 0 10px rgba(243, 156, 18, 0.3);">0</div>
+                <div style="font-size: 11px; color: #cbd5e1; font-weight: 600; margin-top: 5px; text-transform: uppercase;">किताबें दान हुईं</div>
             </div>
 
-            <div style="background: #f8faff; padding: 12px; border-radius: 15px; text-align: center; border: 1px solid #eef2f7;">
-                <div id="studentReach" style="font-size: 22px; font-weight: 900; color: #25d366;">0</div>
-                <div style="font-size: 10px; color: #777; font-weight: bold; margin-top: 4px;">छात्रों तक पहुँची</div>
+            <div class="stat-card" style="background: rgba(255, 255, 255, 0.03); padding: 20px 15px; border-radius: 20px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 3px solid #2ecc71; transition: all 0.3s ease;">
+                <div style="font-size: 18px; margin-bottom: 8px;">🎓</div>
+                <div id="studentReach" style="font-size: 30px; font-weight: 900; color: #2ecc71; text-shadow: 0 0 10px rgba(46, 204, 113, 0.3);">0</div>
+                <div style="font-size: 11px; color: #cbd5e1; font-weight: 600; margin-top: 5px; text-transform: uppercase;">छात्रों तक पहुँची</div>
             </div>
 
-            <div style="background: #f8faff; padding: 12px; border-radius: 15px; text-align: center; border: 1px solid #eef2f7;">
-                <div id="villageCount" style="font-size: 22px; font-weight: 900; color: #ff4757;">0</div>
-                <div style="font-size: 10px; color: #777; font-weight: bold; margin-top: 4px;">गाँव जुड़े हैं</div>
+            <div class="stat-card" style="background: rgba(255, 255, 255, 0.03); padding: 20px 15px; border-radius: 20px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 3px solid #ff4757; transition: all 0.3s ease;">
+                <div style="font-size: 18px; margin-bottom: 8px;">🏘️</div>
+                <div id="villageCount" style="font-size: 30px; font-weight: 900; color: #ff4757; text-shadow: 0 0 10px rgba(255, 71, 87, 0.3);">0</div>
+                <div style="font-size: 11px; color: #cbd5e1; font-weight: 600; margin-top: 5px; text-transform: uppercase;">गाँव जुड़े हैं</div>
             </div>
 
-            <div style="background: #f8faff; padding: 12px; border-radius: 15px; text-align: center; border: 1px solid #eef2f7;">
-                <div id="teamCount" style="font-size: 22px; font-weight: 900; color: #1a3a5f;">0</div>
-                <div style="font-size: 10px; color: #777; font-weight: bold; margin-top: 4px;">सत्यापित लीडर्स</div>
+            <div class="stat-card" style="background: rgba(255, 255, 255, 0.03); padding: 20px 15px; border-radius: 20px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 3px solid #3498db; transition: all 0.3s ease;">
+                <div style="font-size: 18px; margin-bottom: 8px;">💂</div>
+                <div id="teamCount" style="font-size: 30px; font-weight: 900; color: #3498db; text-shadow: 0 0 10px rgba(52, 152, 219, 0.3);">0</div>
+                <div style="font-size: 11px; color: #cbd5e1; font-weight: 600; margin-top: 5px; text-transform: uppercase;">Verified लीडर्स</div>
             </div>
         </div>
 
-        <div style="background: #fffbeb; border-radius: 12px; padding: 10px; border-left: 5px solid #f59e0b; margin-bottom: 20px;">
-            <p id="liveUpdateTicker" style="margin: 0; font-size: 11px; color: #92400e; text-align: left; font-weight: bold; line-height: 1.4;">
-                ⌛ डेटा सिंक हो रहा है...
+        <div style="background: rgba(255, 255, 255, 0.03); border-radius: 15px; padding: 15px; border: 1px solid rgba(255, 255, 255, 0.05); display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+            <div style="background: rgba(243, 156, 18, 0.1); color: #f39c12; width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px;">📢</div>
+            <p id="liveUpdateTicker" style="margin: 0; font-size: 11px; color: #cbd5e1; text-align: left; font-weight: 600; line-height: 1.5; flex: 1;">
+                सिस्टम डेटाबेस सिंक किया जा रहा है...
             </p>
         </div>
 
-        <div style="font-size: 9px; color: #999; text-align: center; line-height: 1.3;">
-            * प्रदर्शित डेटा नेटवर्क के अनुमानित प्रभाव (Projected Impact) पर आधारित है। प्राइवेसी नीति के तहत पहचान सुरक्षित है।
+        <div style="background: rgba(241, 196, 15, 0.05); border-radius: 12px; padding: 12px; text-align: center; border: 1px dashed rgba(241, 196, 15, 0.2);">
+            <p style="font-size: 9px; color: #b8860b; margin: 0; line-height: 1.4; font-weight: 500;">
+                <span style="font-weight: 700;">कानूनी डिस्क्लेमर:</span> यह डैशबोर्ड मिशन के अनुमानित प्रभाव (Projected Impact) और डिजिटल रिकॉर्ड्स को दर्शाता है। सुरक्षा नीति के अनुसार, सभी डेटा 'SST Pro' एडमिन पैनल द्वारा सत्यापित है।
+            </p>
         </div>
     </div>
 </div>
+
+<style>
+    /* पूरे पैनल के लिए Fade In एनीमेशन */
+    @keyframes panelFadeIn {
+        0% { opacity: 0; transform: translateY(20px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* बैकग्राउंड ग्रेडिएंट रोटेशन एनीमेशन */
+    @keyframes rotateGradient {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+
+    /* लाइव बैज पल्स एनीमेशन */
+    @keyframes pulse-dot {
+        0% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.5; transform: scale(1.1); }
+        100% { opacity: 1; transform: scale(1); }
+    }
+    .pulse-dot {
+        animation: pulse-dot 1.5s infinite ease-in-out;
+    }
+
+    /* बॉक्स पर क्लिक करने पर एनीमेशन */
+    .stat-card:active {
+        transform: scale(0.96);
+        background: rgba(255, 255, 255, 0.06);
+    }
+</style>
+
 
 </div>
  <div style="background: #ffffff; border-radius: 20px; margin: 20px auto; max-width: 92%; padding: 15px; border: 1px solid #e1e8f0;">
