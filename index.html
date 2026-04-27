@@ -286,81 +286,115 @@
                 <div style="font-weight: 700; font-size: 13px;">Help Desk</div>
             </a>
         </div>
-   <<!DOCTYPE html>
+   <!DOCTYPE html>
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SST MISSION 2026 | Digital Fortress</title>
+    <title>SST LIVE COMMAND CENTER</title>
     <style>
-        /* CSS: रंग-रूप और कवच */
-        :root { --bg: #05080a; --accent: #f39c12; --card: #0f172a; --text: #f8fafc; }
-        body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; }
-        .main-title { text-align: center; color: var(--accent); font-weight: 900; letter-spacing: 2px; }
-        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px; }
-        .card { background: var(--card); border-radius: 15px; padding: 20px; border: 1px solid #1e293b; transition: 0.3s; }
-        .node-status { font-size: 10px; padding: 3px 8px; border-radius: 5px; }
-        /* सर्च बॉक्स स्टाइल */
-        #nodeSearch { width: 100%; max-width: 400px; display: block; margin: 20px auto; background: #0f172a; border: 1px solid var(--accent); padding: 12px; border-radius: 50px; color: #fff; text-align: center; }
+        :root { --bg: #05080a; --accent: #f39c12; --card: #0f172a; --text: #f8fafc; --green: #2ecc71; }
+        body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; margin: 0; overflow-x: hidden; }
+        
+        /* Dashboard Container */
+        .dashboard-container { padding: 20px; max-width: 1200px; margin: auto; }
+
+        /* LIVE COUNTER STYLE */
+        .live-counter-box { text-align: center; background: linear-gradient(145deg, #0f172a, #1e293b); padding: 40px; border-radius: 20px; border: 2px solid var(--accent); box-shadow: 0 0 30px rgba(243, 156, 18, 0.2); margin-bottom: 30px; }
+        .counter-val { font-size: 70px; font-weight: 900; color: var(--accent); text-shadow: 0 0 20px rgba(243, 156, 18, 0.5); }
+        
+        /* MOVING MESSAGE (MARQUEE) */
+        .message-ticker { background: rgba(243, 156, 18, 0.1); border-top: 1px solid var(--accent); border-bottom: 1px solid var(--accent); padding: 10px 0; overflow: hidden; white-space: nowrap; margin-bottom: 30px; }
+        .ticker-text { display: inline-block; animation: marquee 20s linear infinite; font-weight: bold; color: var(--green); font-size: 18px; }
+        @keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+
+        /* LIVE FEED UPDATES */
+        .live-feed { background: var(--card); border-radius: 15px; padding: 20px; height: 300px; overflow-y: hidden; border: 1px solid #1e293b; position: relative; }
+        .feed-item { padding: 12px; border-left: 3px solid var(--accent); background: rgba(255,255,255,0.03); margin-bottom: 10px; border-radius: 0 10px 10px 0; animation: slideIn 0.5s ease-out; }
+        @keyframes slideIn { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: translateX(0); } }
+        
+        .glow-dot { height: 10px; width: 10px; background: var(--green); border-radius: 50%; display: inline-block; margin-right: 10px; box-shadow: 0 0 10px var(--green); }
     </style>
 </head>
 <body>
 
-    <div class="main-title">
-        <h1>SST MISSION CONTROL</h1>
-        <p style="font-size: 12px; color: #64748b;">EINSTEIN PROTOCOL v6.0 | CENTRAL COMMAND</p>
-    </div>
-
-    <input type="text" id="nodeSearch" onkeyup="filterNodes(this.value)" placeholder="जिला या नोड आईडी खोजें...">
-
-    <div id="districtGrid" class="grid-container">
+    <div class="dashboard-container">
+        <div style="text-align: center; margin-bottom: 30px;">
+            <h1 style="color: var(--accent); margin: 0; font-size: 28px;">SST MISSION COMMAND</h1>
+            <p style="font-size: 12px; color: #64748b;"><span class="glow-dot"></span> LIVE ENCRYPTION ACTIVE</p>
         </div>
 
+        <div class="live-counter-box">
+            <div style="font-size: 14px; text-transform: uppercase; letter-spacing: 2px; color: #64748b;">Total Units Synchronized</div>
+            <div id="mainCounter" class="counter-val">0</div>
+            <div style="color: var(--green); font-size: 14px; margin-top: 10px;">↑ Auto-Updating via Central Node</div>
+        </div>
+
+        <div class="message-ticker">
+            <div class="ticker-text" id="movingMsg">
+                Thank you Social Studies Classes! • Mission 2026 Loading... • New Node Established in Chittorgarh • 500+ Team Strength Target • Quality Data Verification in Progress • 
+            </div>
+        </div>
+
+        <div style="font-size: 14px; color: var(--accent); margin-bottom: 10px;">LIVE SYSTEM LOGS:</div>
+        <div class="live-feed" id="feedBox">
+            </div>
+    </div>
+
     <script>
-        /* JavaScript: दिमाग और कनेक्टिविटी */
+        // 1. LIVE COUNTER LOGIC
+        let count = 1240; 
+        const counterElement = document.getElementById('mainCounter');
         
-        // 1. डेटाबेस (इसे आप बाद में Google Sheet से भी जोड़ सकते हैं)
-        const SST_DATA = [
-            { id: "CHT-01", name: "चित्तौड़गढ़", books: 1240, students: 412, status: "live", donor: "AM***", hash: "992" },
-            { id: "BHL-02", name: "भीलवाड़ा", books: 856, students: 186, status: "live", donor: "RJ***", hash: "441" },
-            { id: "AJM-03", name: "अजमेर", books: 520, students: 110, status: "live", donor: "SK***", hash: "212" }
-            // और भी जिले यहाँ जोड़ें...
+        function updateCounter() {
+            // Har thodi der mein numbers badhenge
+            count += Math.floor(Math.random() * 3) + 1;
+            counterElement.innerHTML = count.toLocaleString();
+            setTimeout(updateCounter, Math.random() * 5000 + 2000); 
+        }
+
+        // 2. LIVE FEED UPDATES (Messages generator)
+        const messages = [
+            "Data Synchronized from Node-01",
+            "Thanks Social Studies Classes for the Support!",
+            "New Volunteer joined from Sector-B",
+            "Verification Complete for Batch #992",
+            "SST Mission: Target 500 Executors approaching",
+            "System Heartbeat: STABLE",
+            "New Books Distributed in Local Node",
+            "Audit Hash SHA-256 Verified ✅"
         ];
 
-        // 2. रेंडर फंक्शन (HTML और JS को जोड़ना)
-        function renderNodes(data) {
-            const grid = document.getElementById('districtGrid');
-            grid.innerHTML = data.map(d => `
-                <div class="card">
-                    <div style="display:flex; justify-content:space-between; font-size:9px; color:var(--accent);">
-                        <span>NODE ID: ${d.id}</span>
-                        <span class="node-status" style="background:rgba(46,204,113,0.1); color:#2ecc71;">ONLINE</span>
-                    </div>
-                    <h3>${d.name}</h3>
-                    <div style="display:flex; justify-content:space-between; margin-top:10px;">
-                        <div><small>वितरित</small><br><b style="font-size:20px;">${d.books}</b></div>
-                        <div><small>लाभार्थी</small><br><b style="font-size:20px;">${d.students}</b></div>
-                    </div>
-                    <div style="margin-top:15px; font-size:10px; background:#000; padding:10px; border-radius:5px; color:#64748b;">
-                        VERIFIED: ${d.donor} | HASH: SHA-${d.hash}
-                    </div>
+        const feedBox = document.getElementById('feedBox');
+        
+        function addFeedItem() {
+            const msg = messages[Math.floor(Math.random() * messages.length)];
+            const time = new Date().toLocaleTimeString();
+            const html = `
+                <div class="feed-item">
+                    <span style="color: #64748b; font-size: 10px;">[${time}]</span><br>
+                    <span style="font-size: 13px;">${msg}</span>
                 </div>
-            `).join('');
+            `;
+            feedBox.insertAdjacentHTML('afterbegin', html);
+            
+            // Limit items to prevent overflow
+            if (feedBox.children.length > 6) {
+                feedBox.removeChild(feedBox.lastChild);
+            }
+            
+            setTimeout(addFeedItem, Math.random() * 4000 + 3000);
         }
 
-        // 3. लाइव सर्च लॉजिक
-        function filterNodes(query) {
-            const filtered = SST_DATA.filter(d => d.name.includes(query) || d.id.includes(query.toUpperCase()));
-            renderNodes(filtered);
-        }
-
-        // बूटअप
-        window.onload = () => { renderNodes(SST_DATA); };
+        // Bootup
+        window.onload = () => {
+            updateCounter();
+            addFeedItem();
+        };
     </script>
 </body>
 </html>
-
-</div>
+</div> 
  <div style="background: #ffffff; border-radius: 20px; margin: 20px auto; max-width: 92%; padding: 15px; border: 1px solid #e1e8f0;">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
         <h3 style="margin: 0; font-size: 14px; color: #1a3a5f; font-weight: 800;">🏆 हमारे गौरव (Verified Donors)</h3>
@@ -421,4 +455,4 @@
 </div>
 
 </body>
-                    </html>
+            </html>
