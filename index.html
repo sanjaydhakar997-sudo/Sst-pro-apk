@@ -315,40 +315,43 @@
             </div>
 
             <div style="background: rgba(255, 255, 255, 0.03); padding: 18px; border-radius: 20px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 3px solid #ff4757;">
-                <div style="font-size: 18px; margin
+                <div style="font-size: 18px; margin-bottom: 5px;">🏘️</div>
+                <div id="villageCount" style="font-size: 28px; font-weight: 900; color: #ff4757;">0</div>
+                <div style="font-size: 10px; color: #cbd5e1; font-weight: 700; margin-top: 5px; text-transform: uppercase;">गाँव जुड़े हैं</div>
+            </div>
 
+            <div style="background: rgba(255, 255, 255, 0.03); padding: 18px; border-radius: 20px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 3px solid #3498db;">
+                <div style="font-size: 18px; margin-bottom: 5px;">💂</div>
+                <div id="teamCount" style="font-size: 28px; font-weight: 900; color: #3498db;">0</div>
+                <div style="font-size: 10px; color: #cbd5e1; font-weight: 700; margin-top: 5px; text-transform: uppercase;">VERIFIED लीडर्स</div>
+            </div>
+        </div>
 
-<style>
-    /* पूरे पैनल के लिए Fade In एनीमेशन */
-    @keyframes panelFadeIn {
-        0% { opacity: 0; transform: translateY(20px); }
-        100% { opacity: 1; transform: translateY(0); }
-    }
+        <div style="background: rgba(255, 255, 255, 0.03); border-radius: 15px; padding: 12px; border: 1px solid rgba(255, 255, 255, 0.05); display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+            <div style="color: #f39c12; font-size: 16px;">📢</div>
+            <p id="liveUpdateTicker" style="margin: 0; font-size: 11px; color: #cbd5e1; font-weight: 600; line-height: 1.4;">डेटा सिंक किया जा रहा है...</p>
+        </div>
 
-    /* बैकग्राउंड ग्रेडिएंट रोटेशन एनीमेशन */
-    @keyframes rotateGradient {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-    }
+        <div style="text-align: center; margin-bottom: 20px;">
+            <a href="state-analytics.html" style="text-decoration: none; display: block;">
+                <div style="background: linear-gradient(90deg, #f39c12, #e67e22); color: #fff; padding: 14px; border-radius: 15px; font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 10px 20px rgba(243, 156, 18, 0.2); border: 1px solid rgba(255,255,255,0.1);">
+                    📊 ज़िला-वार लाइव ऑडिट देखें
+                </div>
+            </a>
+            <div style="margin-top: 10px; font-family: monospace; font-size: 9px; color: #64748b; letter-spacing: 0.5px;">
+                SYNC ID: <span id="batchID" style="color: #f39c12; font-weight: bold;">---</span> | VERIFIED BY SST-ADMIN
+            </div>
+        </div>
 
-    /* लाइव बैज पल्स एनीमेशन */
-    @keyframes pulse-dot {
-        0% { opacity: 1; transform: scale(1); }
-        50% { opacity: 0.5; transform: scale(1.1); }
-        100% { opacity: 1; transform: scale(1); }
-    }
-    .pulse-dot {
-        animation: pulse-dot 1.5s infinite ease-in-out;
-    }
+        <div style="background: rgba(241, 196, 15, 0.03); border-radius: 12px; padding: 15px; border: 1px dashed rgba(241, 196, 15, 0.2);">
+            <p style="font-size: 9px; color: #94a3b8; margin: 0; line-height: 1.5; text-align: center;">
+                <strong style="color: #b8860b;">आधिकारिक घोषणा:</strong> यह डैशबोर्ड मिशन के संचयी प्रभाव (Cumulative Impact) और आगामी डिजिटल वितरणों के रिकॉर्ड्स को प्रदर्शित करता है। सुरक्षा प्रोटोकॉल के तहत व्यक्तिगत पहचान गोपनीय रखी गई है। सभी डेटा <strong>SST Pro ऑडिट सेल</strong> द्वारा प्रमाणित है।
+            </p>
+        </div>
+    </div>
+</div>
 
-    /* बॉक्स पर क्लिक करने पर एनीमेशन */
-    .stat-card:active {
-        transform: scale(0.96);
-        background: rgba(255, 255, 255, 0.06);
-    }
-</style>
-
-
+<script src="dashboard-logic.js"></script>
 </div>
  <div style="background: #ffffff; border-radius: 20px; margin: 20px auto; max-width: 92%; padding: 15px; border: 1px solid #e1e8f0;">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
@@ -410,4 +413,4 @@
 </div>
 
 </body>
-                    </html>
+    </html>
