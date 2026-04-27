@@ -286,73 +286,102 @@
                 <div style="font-weight: 700; font-size: 13px;">Help Desk</div>
             </a>
         </div>
-<div style="background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%); border-radius: 35px; margin: 25px 15px; padding: 5px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); border: 1.5px solid #334155; position: relative; overflow: hidden;">
+   <div style="background: linear-gradient(160deg, #020617 0%, #0f172a 100%); border-radius: 35px; margin: 15px; padding: 2px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7); border: 1.5px solid #1e293b; position: relative; overflow: hidden; font-family: 'Inter', sans-serif;">
     
-    <div style="background: rgba(46, 204, 113, 0.1); color: #2ecc71; font-size: 10px; font-weight: 800; padding: 6px 14px; border-radius: 50px; position: absolute; top: 15px; right: 15px; text-transform: uppercase; letter-spacing: 1.2px; border: 1px solid rgba(46, 204, 113, 0.2); display: flex; align-items: center; gap: 6px; z-index: 10;">
-        <span style="width: 6px; height: 6px; background: #2ecc71; border-radius: 50%; box-shadow: 0 0 10px #2ecc71;"></span>
-        Verified Live
+    <div style="background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(10px); padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1e293b;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="width: 8px; height: 8px; background: #2ecc71; border-radius: 50%; box-shadow: 0 0 12px #2ecc71; animation: pulse 1.5s infinite;"></span>
+            <span style="color: #2ecc71; font-size: 10px; font-weight: 900; letter-spacing: 1.5px; text-transform: uppercase;">System Secure: Level-9</span>
+        </div>
+        <div style="color: #64748b; font-size: 9px; font-family: monospace;">SECURED BY SST-ADMIN</div>
     </div>
 
-    <div style="padding: 45px 20px 25px; position: relative; z-index: 5;">
-        <div style="text-align: center; margin-bottom: 30px;">
-            <h2 style="color: #ffffff; margin: 0; font-size: 24px; font-weight: 800; letter-spacing: 0.5px;">
-                SST PRO <span style="color: #f39c12;">मिशन का आगाज़</span> 🤝
+    <div style="padding: 30px 20px;">
+        <div style="text-align: center; margin-bottom: 35px;">
+            <h2 style="color: #ffffff; margin: 0; font-size: 26px; font-weight: 900; letter-spacing: -0.5px;">
+                SST PRO <span style="color: #f39c12;">MISSION CONTROL</span>
             </h2>
-            <p style="color: #94a3b8; font-size: 12px; margin-top: 8px; font-weight: 500; letter-spacing: 0.5px;">गाँवों की शिक्षा में ऐतिहासिक बदलाव</p>
+            <div style="width: 40px; height: 3px; background: #f39c12; margin: 12px auto; border-radius: 10px;"></div>
+            <p style="color: #94a3b8; font-size: 11px; font-weight: 500;">National Educational Impact & Distribution Network</p>
         </div>
 
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px;">
-            <div style="background: rgba(255, 255, 255, 0.03); padding: 18px; border-radius: 20px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 3px solid #f39c12;">
-                <div style="font-size: 18px; margin-bottom: 5px;">📚</div>
-                <div id="totalBooks" style="font-size: 28px; font-weight: 900; color: #f39c12;">0</div>
-                <div style="font-size: 10px; color: #cbd5e1; font-weight: 700; margin-top: 5px; text-transform: uppercase;">किताबें दान हुईं</div>
+            <div style="background: rgba(30, 41, 59, 0.5); padding: 20px; border-radius: 24px; border: 1px solid #334155;">
+                <div style="font-size: 10px; color: #64748b; font-weight: 800; text-transform: uppercase; margin-bottom: 10px;">Global Distribution</div>
+                <div id="totalBooks" style="font-size: 32px; font-weight: 900; color: #f39c12; letter-spacing: -1px;">0</div>
+                <div style="font-size: 9px; color: #94a3b8; margin-top: 4px;">Verified Units</div>
             </div>
-
-            <div style="background: rgba(255, 255, 255, 0.03); padding: 18px; border-radius: 20px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 3px solid #2ecc71;">
-                <div style="font-size: 18px; margin-bottom: 5px;">🎓</div>
-                <div id="studentReach" style="font-size: 28px; font-weight: 900; color: #2ecc71;">0</div>
-                <div style="font-size: 10px; color: #cbd5e1; font-weight: 700; margin-top: 5px; text-transform: uppercase;">छात्रों तक पहुँची</div>
-            </div>
-
-            <div style="background: rgba(255, 255, 255, 0.03); padding: 18px; border-radius: 20px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 3px solid #ff4757;">
-                <div style="font-size: 18px; margin-bottom: 5px;">🏘️</div>
-                <div id="villageCount" style="font-size: 28px; font-weight: 900; color: #ff4757;">0</div>
-                <div style="font-size: 10px; color: #cbd5e1; font-weight: 700; margin-top: 5px; text-transform: uppercase;">गाँव जुड़े हैं</div>
-            </div>
-
-            <div style="background: rgba(255, 255, 255, 0.03); padding: 18px; border-radius: 20px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 3px solid #3498db;">
-                <div style="font-size: 18px; margin-bottom: 5px;">💂</div>
-                <div id="teamCount" style="font-size: 28px; font-weight: 900; color: #3498db;">0</div>
-                <div style="font-size: 10px; color: #cbd5e1; font-weight: 700; margin-top: 5px; text-transform: uppercase;">VERIFIED लीडर्स</div>
+            <div style="background: rgba(30, 41, 59, 0.5); padding: 20px; border-radius: 24px; border: 1px solid #334155;">
+                <div style="font-size: 10px; color: #64748b; font-weight: 800; text-transform: uppercase; margin-bottom: 10px;">Student Impact</div>
+                <div id="studentReach" style="font-size: 32px; font-weight: 900; color: #2ecc71; letter-spacing: -1px;">0</div>
+                <div style="font-size: 9px; color: #94a3b8; margin-top: 4px;">Verified Beneficiaries</div>
             </div>
         </div>
 
-        <div style="background: rgba(255, 255, 255, 0.03); border-radius: 15px; padding: 12px; border: 1px solid rgba(255, 255, 255, 0.05); display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
-            <div style="color: #f39c12; font-size: 16px;">📢</div>
-            <p id="liveUpdateTicker" style="margin: 0; font-size: 11px; color: #cbd5e1; font-weight: 600; line-height: 1.4;">डेटा सिंक किया जा रहा है...</p>
-        </div>
-
-        <div style="text-align: center; margin-bottom: 20px;">
-            <a href="state-analytics.html" style="text-decoration: none; display: block;">
-                <div style="background: linear-gradient(90deg, #f39c12, #e67e22); color: #fff; padding: 14px; border-radius: 15px; font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 10px 20px rgba(243, 156, 18, 0.2); border: 1px solid rgba(255,255,255,0.1);">
-                    📊 ज़िला-वार लाइव ऑडिट देखें
+        <div style="background: rgba(15, 23, 42, 0.6); border-radius: 24px; padding: 20px; border: 1px solid #1e293b; margin-bottom: 25px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <span style="color: #cbd5e1; font-size: 12px; font-weight: 700;">Zone-Wise Node Sync</span>
+                <span style="color: #2ecc71; font-size: 9px; font-weight: 800;">● LIVE</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+                <div>
+                    <div style="display: flex; justify-content: space-between; font-size: 10px; color: #94a3b8; margin-bottom: 5px;">
+                        <span>North & Central Sector</span>
+                        <span id="northZoneVal" style="color: #fff; font-weight: bold;">0</span>
+                    </div>
+                    <div style="height: 4px; background: #1e293b; border-radius: 10px; overflow: hidden;">
+                        <div style="width: 78%; height: 100%; background: linear-gradient(90deg, #f39c12, #e67e22);"></div>
+                    </div>
                 </div>
-            </a>
-            <div style="margin-top: 10px; font-family: monospace; font-size: 9px; color: #64748b; letter-spacing: 0.5px;">
-    SYNC ID: <span id="batchID" style="color: #f39c12; font-weight: bold;">...</span> | VERIFIED BY SST-ADMIN
-</div>
-
+                <div>
+                    <div style="display: flex; justify-content: space-between; font-size: 10px; color: #94a3b8; margin-bottom: 5px;">
+                        <span>Rajasthan State Unit</span>
+                        <span id="westZoneVal" style="color: #fff; font-weight: bold;">0</span>
+                    </div>
+                    <div style="height: 4px; background: #1e293b; border-radius: 10px; overflow: hidden;">
+                        <div style="width: 92%; height: 100%; background: linear-gradient(90deg, #2ecc71, #27ae60);"></div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div style="background: rgba(241, 196, 15, 0.03); border-radius: 12px; padding: 15px; border: 1px dashed rgba(241, 196, 15, 0.2);">
-            <p style="font-size: 9px; color: #94a3b8; margin: 0; line-height: 1.5; text-align: center;">
-                <strong style="color: #b8860b;">आधिकारिक घोषणा:</strong> यह डैशबोर्ड मिशन के संचयी प्रभाव (Cumulative Impact) और आगामी डिजिटल वितरणों के रिकॉर्ड्स को प्रदर्शित करता है। सुरक्षा प्रोटोकॉल के तहत व्यक्तिगत पहचान गोपनीय रखी गई है। सभी डेटा <strong>SST Pro ऑडिट सेल</strong> द्वारा प्रमाणित है।
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 25px;">
+            <div style="background: #1e293b; padding: 15px; border-radius: 20px; border: 1px solid #334155;">
+                <div style="color: #64748b; font-size: 9px; font-weight: 800; text-transform: uppercase;">Ground Units</div>
+                <div id="teamCount" style="font-size: 22px; font-weight: 900; color: #fff; margin: 5px 0;">0</div>
+            </div>
+            <div style="background: #1e293b; padding: 15px; border-radius: 20px; border: 1px solid #334155;">
+                <div style="color: #64748b; font-size: 9px; font-weight: 800; text-transform: uppercase;">Audit Cycles</div>
+                <div id="auditCount" style="font-size: 22px; font-weight: 900; color: #fff; margin: 5px 0;">0</div>
+            </div>
+        </div>
+
+        <div style="background: #020617; border: 1px solid #334155; border-radius: 18px; padding: 15px; margin-bottom: 25px; min-height: 50px; display: flex; align-items: center;">
+            <div style="color: #f39c12; margin-right: 12px;">🛰️</div>
+            <p id="liveUpdateTicker" style="margin: 0; font-size: 11px; color: #cbd5e1; font-weight: 600; line-height: 1.5; font-family: monospace;">Authenticating Nodes...</p>
+        </div>
+
+        <a href="state-analytics.html" style="text-decoration: none; display: block; margin-bottom: 20px;">
+            <div style="background: linear-gradient(90deg, #f39c12 0%, #e67e22 100%); color: #000; text-align: center; padding: 18px; border-radius: 20px; font-size: 13px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px;">
+                View District-Wise Audit Report
+            </div>
+        </a>
+
+        <div style="background: rgba(243, 156, 18, 0.05); border: 1px dashed rgba(243, 156, 18, 0.3); border-radius: 15px; padding: 15px; text-align: center;">
+            <p style="font-size: 9px; color: #64748b; margin: 0; line-height: 1.6;">
+                <strong style="color: #f39c12;">CONFIDENTIALITY NOTICE:</strong> Identity masking active under <strong>Protocol 60/A</strong>.
             </p>
+            <div style="margin-top: 10px; font-size: 8px; font-family: monospace; color: #475569;">
+                BATCH SYNC ID: <span id="batchID" style="color: #f39c12;">---</span>
+            </div>
         </div>
     </div>
 </div>
 
-<script src="dashboard-logic.js"></script>
+<style>
+@keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
+</style>
+
 </div>
  <div style="background: #ffffff; border-radius: 20px; margin: 20px auto; max-width: 92%; padding: 15px; border: 1px solid #e1e8f0;">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
@@ -414,4 +443,4 @@
 </div>
 
 </body>
-    </html>
+                    </html>
