@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SST Mission Control | Team Orbit v1.0</title>
+    <style>
+        :root {
+            --bg: #05080a;
+            --card: #0f172a;
+            --accent: #3498db; /* टीम के लिए शांत नीला रंग - शांति का प्रतीक */
+            --gold: #f1c40f;
+            --text: #f8fafc;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0; padding: 20px;
+        }
+
+        /* 1. ORBIT LOGIC: टीम का बँटवारा */
+        .orbit-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .team-sector {
+            background: var(--card);
+            border: 1px solid #1e293b;
+            border-radius: 15px;
+            padding: 20px;
+        }
+
+        .sector-header {
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* 2. QUANTUM RECOGNITION: तुलना खत्म करने वाले रिवॉर्ड्स */
+        .badge {
+            font-size: 10px;
+            padding: 3px 8px;
+            border-radius: 5px;
+            margin-right: 5px;
+            background: rgba(52, 152, 219, 0.2);
+            color: var(--accent);
+        }
+
+        .badge.quality { color: #2ecc71; background: rgba(46, 204, 113, 0.1); }
+        .badge.speed { color: #e74c3c; background: rgba(231, 76, 60, 0.1); }
+
+        /* 3. OBSERVER PROTOCOL: पारदर्शिता */
+        .live-pulse {
+            height: 10px; width: 10px;
+            background: #2ecc71;
+            border-radius: 50%;
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(46, 204, 113, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(46, 204, 113, 0); }
+        }
+
+        .team-list { font-size: 13px; list-style: none; padding: 0; }
+        .team-member {
+            padding: 10px;
+            border-bottom: 1px solid #1e293b;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 style="text-align:center; color:var(--accent);">SST MISSION CONTROL</h1>
+    <p style="text-align:center; color:#64748b; font-size:12px;">EINSTEIN PROTOCOL: ZERO-CONFLICT COORDINATION</p>
+
+    <div style="background:#000; padding:15px; border-radius:10px; text-align:center; border:1px solid var(--accent);">
+        <span style="font-size:12px; color:var(--accent);">ACTIVE EXECUTORS:</span>
+        <h2 style="margin:5px 0; font-size:35px;">15 <small style="font-size:15px; color:#475569;">/ 500</small></h2>
+        <div style="width:100%; background:#1e293b; height:5px; border-radius:10px;">
+            <div style="width:3%; background:var(--accent); height:100%; border-radius:10px;"></div>
+        </div>
+    </div>
+
+    <div class="orbit-container">
+        <div class="team-sector">
+            <div class="sector-header">
+                <span>SECTOR: उत्तर (NORTH)</span>
+                <span class="live-pulse"></span>
+            </div>
+            <div class="team-list">
+                <div class="team-member">
+                    <span>Executor_01 (Node_CHT)</span>
+                    <div>
+                        <span class="badge speed">FAST DISPATCH</span>
+                        <span class="badge">ACTIVE</span>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <span>Executor_05 (Node_BHL)</span>
+                    <div>
+                        <span class="badge quality">ACCURATE DATA</span>
+                        <span class="badge">ACTIVE</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="team-sector">
+            <div class="sector-header">
+                <span>SECTOR: दक्षिण (SOUTH)</span>
+                <span class="live-pulse" style="background:#f1c40f;"></span>
+            </div>
+            <div class="team-list">
+                <p style="color:#475569; text-align:center;">नोड्स सिंक हो रहे हैं... (Expansion in Progress)</p>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top:30px; font-size:11px; color:#475569; text-align:center; border-top:1px solid #1e293b; padding-top:20px;">
+        "जब सब अपनी कक्षा (Orbit) में चमकते हैं, तो ब्रह्मांड में कभी टकराव नहीं होता।" - SST Einstein Protocol
+    </div>
+
+</body>
+</html>
