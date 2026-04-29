@@ -61,6 +61,78 @@
     </style>
 </head>
 <body>
+<div id="upsc-splash" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 10000; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.8s cubic-bezier(0.65, 0, 0.35, 1);">
+    
+    <div style="text-align: center; animation: mainFade 1.8s ease-out forwards;">
+        
+        <div style="font-size: 55px; margin-bottom: 10px; filter: drop-shadow(0 0 15px rgba(243,156,18,0.4));">🏛️</div>
+        
+        <h1 style="color: #f39c12; font-size: 26px; font-weight: 900; letter-spacing: 3px; margin: 0; font-family: 'Arial Black', sans-serif;">SOCIAL STUDIES</h1>
+        <h2 style="color: #fff; font-size: 15px; font-weight: 700; letter-spacing: 6px; opacity: 0.8; margin-top: 2px;">CLASSES</h2>
+        
+        <div style="margin-top: 20px; position: relative;">
+            <p style="color: #fff; font-size: 14px; font-weight: 600; letter-spacing: 2px; margin: 0; animation: nameSlide 2s ease-out;">By Sanjay Dhakar</p>
+            <div style="width: 40px; height: 2px; background: #f39c12; margin: 8px auto; border-radius: 10px;"></div>
+        </div>
+    </div>
+
+    <div style="position: absolute; bottom: 60px; width: 100%; text-align: center; padding: 0 20px; animation: visionFade 2.5s ease-in;">
+        <p style="color: rgba(255,255,255,0.7); font-size: 12px; font-style: italic; letter-spacing: 1px; font-family: serif; line-height: 1.5;">
+            "गुणवत्तापूर्ण शिक्षा, अब हर छात्र का अधिकार।"
+        </p>
+    </div>
+
+    <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background: rgba(255,255,255,0.05);">
+        <div style="height: 100%; background: linear-gradient(to right, #f39c12, #ffcc00); animation: splashProgress 3s linear forwards;"></div>
+    </div>
+</div>
+
+<style>
+/* मुख्य एनीमेशन - ज़ूम और फेड इन */
+@keyframes mainFade {
+    0% { transform: scale(0.9); opacity: 0; filter: blur(5px); }
+    100% { transform: scale(1); opacity: 1; filter: blur(0); }
+}
+
+/* नाम का एनीमेशन - नीचे से ऊपर */
+@keyframes nameSlide {
+    0% { transform: translateY(10px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+/* विजन लाइन का एनीमेशन */
+@keyframes visionFade {
+    0% { opacity: 0; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* प्रोग्रेस बार एनीमेशन */
+@keyframes splashProgress {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+/* स्क्रीन हटने का एनीमेशन */
+.splash-exit {
+    opacity: 0 !important;
+    transform: scale(1.1) !important;
+    pointer-events: none;
+}
+</style>
+
+<script>
+    // 3 सेकंड बाद स्क्रीन हटाना
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            const splash = document.getElementById('upsc-splash');
+            if(splash) {
+                splash.classList.add('splash-exit');
+                setTimeout(() => { splash.style.display = 'none'; }, 800);
+            }
+        }, 3000);
+    });
+</script>
 
     <div class="upsc-master-wrapper" style="margin: 0; padding: 0; overflow: hidden; background: #fff;">
     
