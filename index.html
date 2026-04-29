@@ -62,10 +62,83 @@
 </head>
 <body>
 
-    <div class="header">
-        <h1>SOCIAL STUDIES CLASSES</h1>
-        <div class="user-tag">Sanjay Dhakar</div>
+    <div class="main-slider-wrapper" style="margin: 15px; border-radius: 30px; overflow: hidden; position: relative; height: 210px; background: #000; box-shadow: 0 25px 50px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.15);">
+    
+    <div class="slides-container" id="deepSlider" style="display: flex; height: 100%; width: 500%; transition: transform 0.9s cubic-bezier(0.65, 0, 0.35, 1);">
+        
+        <div class="slide-item" style="width: 100%; background: linear-gradient(135deg, #1a1c2c, #4a192c); display: flex; align-items: center; padding: 25px; position: relative;">
+            <div style="z-index: 5;">
+                <h3 style="color: #f1c40f; font-size: 12px; font-weight: 800; letter-spacing: 2px;">SOCIAL STUDIES CLASSES</h3>
+                <h2 style="color: white; font-size: 22px; font-weight: 900; margin-top: 5px;">हमारा मिशन: <br><span style="color: #3498db;">शिक्षा का दान</span></h2>
+                <p style="color: rgba(255,255,255,0.7); font-size: 11px; margin-top: 8px;">संजय धाकड़ के साथ जुड़ें और <br>एक नई डिजिटल क्रांति का हिस्सा बनें।</p>
+            </div>
+            <div style="position: absolute; right: 10px; opacity: 0.2; font-size: 100px;">🌏</div>
+        </div>
+
+        <div class="slide-item" style="width: 100%; background: linear-gradient(135deg, #e67e22, #d35400); display: flex; align-items: center; padding: 25px;">
+            <div style="z-index: 5;">
+                <div style="background: rgba(255,255,255,0.2); display: inline-block; padding: 3px 12px; border-radius: 50px; color: white; font-size: 10px; font-weight: 800; margin-bottom: 10px;">VVIP LIBRARY</div>
+                <h2 style="color: white; font-size: 20px; font-weight: 900;">किताबें जो बदलें <br>किसी का भविष्य!</h2>
+                <p style="color: white; font-size: 11px; opacity: 0.9; margin-top: 5px;">अपनी पुरानी किताबें जरूरतमंद को दें, <br>0% मार्जिन मिशन में योगदान करें।</p>
+            </div>
+            <div style="flex: 1; text-align: right; font-size: 60px;">📚</div>
+        </div>
+
+        <div class="slide-item" style="width: 100%; background: linear-gradient(135deg, #0984e3, #6c5ce7); display: flex; align-items: center; padding: 25px;">
+            <div style="z-index: 5;">
+                <h2 style="color: white; font-size: 20px; font-weight: 900;">नोट्स एक्सचेंज</h2>
+                <p style="color: white; font-size: 12px; opacity: 0.9; margin-top: 5px;">कोचिंग के प्रीमियम नोट्स, <br>अब सीधे आपके मोबाइल पर।</p>
+                <div style="margin-top: 15px; border: 1px solid white; display: inline-block; padding: 5px 15px; border-radius: 8px; color: white; font-size: 10px; font-weight: 700;">EXPLORE NOW</div>
+            </div>
+            <div style="position: absolute; right: 20px; bottom: 20px; font-size: 80px; opacity: 0.1;">📝</div>
+        </div>
+
+        <div class="slide-item" style="width: 100%; background: #222; display: flex; align-items: center; padding: 25px;">
+            <div style="flex: 1;">
+                <h2 style="color: #00ff00; font-size: 18px; font-weight: 800; font-family: monospace;">SYSTEM LOGS ACTIVE</h2>
+                <p style="color: #ecf0f1; font-size: 11px; margin-top: 5px;">SHA-256 ऑडिट द्वारा सत्यापित।<br>100% Authentic & Secure System.</p>
+                <div style="background: rgba(0,255,0,0.1); color: #00ff00; padding: 5px; font-size: 9px; margin-top: 10px; border-radius: 4px;">Hash: f6e4...9b2c (Verified)</div>
+            </div>
+            <div style="font-size: 50px; filter: grayscale(1);">🛡️</div>
+        </div>
+
+        <div class="slide-item" style="width: 100%; background: linear-gradient(135deg, #27ae60, #2ecc71); display: flex; align-items: center; padding: 25px;">
+            <div style="z-index: 5;">
+                <h2 style="color: white; font-size: 22px; font-weight: 900;">टीम SST के साथ</h2>
+                <p style="color: white; font-size: 12px; opacity: 0.9; margin-top: 5px;">हमारे टॉप दानदाता और <br>सहयोगियों की लिस्ट देखें।</p>
+            </div>
+            <div style="position: absolute; right: 20px; font-size: 60px;">🤝</div>
+        </div>
     </div>
+
+    <div style="position: absolute; bottom: 20px; left: 25px; display: flex; gap: 8px; align-items: center;">
+        <div class="progress-bar" style="width: 30px; height: 5px; background: white; border-radius: 10px; opacity: 1;"></div>
+        <div class="progress-bar" style="width: 10px; height: 5px; background: white; border-radius: 10px; opacity: 0.3;"></div>
+        <div class="progress-bar" style="width: 10px; height: 5px; background: white; border-radius: 10px; opacity: 0.3;"></div>
+        <div class="progress-bar" style="width: 10px; height: 5px; background: white; border-radius: 10px; opacity: 0.3;"></div>
+        <div class="progress-bar" style="width: 10px; height: 5px; background: white; border-radius: 10px; opacity: 0.3;"></div>
+    </div>
+</div>
+
+<script>
+    let activeIdx = 0;
+    const sliderDom = document.getElementById('deepSlider');
+    const bars = document.querySelectorAll('.progress-bar');
+
+    function animateSlider() {
+        activeIdx = (activeIdx + 1) % 5;
+        if(sliderDom) {
+            sliderDom.style.transform = `translateX(-${activeIdx * 20}%)`;
+            bars.forEach((bar, i) => {
+                bar.style.opacity = i === activeIdx ? '1' : '0.3';
+                bar.style.width = i === activeIdx ? '35px' : '10px';
+                bar.style.transition = 'all 0.6s ease';
+            });
+        }
+    }
+    setInterval(animateSlider, 5000);
+</script>
+
 
     <div class="gandhi-box">
         <p class="quote">"ऐसे जिएं कि जैसे आपको कल मरना है, सीखें ऐसे कि जैसे आपको हमेशा जीना है।"</p>
