@@ -63,65 +63,72 @@
 <body>
 <div id="upsc-splash" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 100000; display: flex; flex-direction: column; align-items: center; justify-content: center;">
     
-    <div style="text-align: center; animation: mainFade 1.8s ease-out forwards;">
+    <div style="text-align: center; animation: mainFade 2s ease-out forwards;">
         
-        <div style="font-size: 70px; margin-bottom: 10px; animation: treeGrow 2s cubic-bezier(0.175, 0.885, 0.32, 1.275); filter: drop-shadow(0 0 15px rgba(46, 204, 113, 0.4));">
+        <div style="font-size: 75px; margin-bottom: 12px; animation: treeGrow 2.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); filter: drop-shadow(0 0 20px rgba(46, 204, 113, 0.3));">
             🌳
         </div>
         
         <h1 style="color: #f39c12; font-size: 26px; font-weight: 900; letter-spacing: 3px; margin: 0; font-family: 'Arial Black', sans-serif;">SOCIAL STUDIES</h1>
         <h2 style="color: #fff; font-size: 15px; font-weight: 700; letter-spacing: 6px; opacity: 0.8; margin-top: 2px;">CLASSES</h2>
         
-        <div style="margin-top: 20px;">
-            <p style="color: #fff; font-size: 14px; font-weight: 600; letter-spacing: 2px; margin: 0; animation: nameSlide 1.5s ease-out;">By Sanjay Dhakar</p>
-            <div style="width: 45px; height: 2px; background: #2ecc71; margin: 8px auto; border-radius: 10px;"></div>
+        <div style="margin-top: 25px;">
+            <p style="color: #fff; font-size: 14px; font-weight: 600; letter-spacing: 2px; margin: 0; animation: nameSlide 1.8s ease-out;">By Sanjay Dhakar</p>
+            <div style="width: 50px; height: 2px; background: #f39c12; margin: 10px auto; border-radius: 10px; animation: lineExpand 2s ease-in-out;"></div>
         </div>
     </div>
 
-    <div style="position: absolute; bottom: 70px; width: 100%; text-align: center; padding: 0 30px; animation: visionFade 2.5s ease-in;">
-        <p style="color: #2ecc71; font-size: 13px; font-weight: 700; font-style: italic; letter-spacing: 0.5px; line-height: 1.6;">
-            "शिक्षा की जड़ें कड़वी होती हैं, <br>परंतु इसका फल एक छायादार वृक्ष की तरह मीठा होता है।"
+    <div style="position: absolute; bottom: 80px; width: 100%; text-align: center; padding: 0 40px; animation: visionFade 3s ease-in;">
+        <p style="color: #ffffff; font-size: 14px; font-weight: 500; letter-spacing: 1.2px; line-height: 1.6; font-family: 'Georgia', serif; font-style: italic;">
+            "The roots of education are bitter, <br>but the fruit is sweet."
         </p>
     </div>
 
-    <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 5px; background: rgba(255,255,255,0.05);">
-        <div style="height: 100%; background: linear-gradient(to right, #2ecc71, #f39c12); animation: splashProgress 3s linear forwards;"></div>
+    <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background: rgba(255,255,255,0.05);">
+        <div style="height: 100%; background: linear-gradient(to right, #f39c12, #2ecc71); animation: splashProgress 3.8s linear forwards;"></div>
     </div>
 </div>
 
 <style>
-/* पेड़ के उगने का एनीमेशन */
+/* पेड़ के उगने और हिलने का एनीमेशन */
 @keyframes treeGrow {
-    0% { transform: scale(0) translateY(20px); opacity: 0; }
-    60% { transform: scale(1.2); }
-    100% { transform: scale(1) translateY(0); opacity: 1; }
+    0% { transform: scale(0) rotate(-10deg); opacity: 0; }
+    50% { transform: scale(1.1) rotate(5deg); }
+    100% { transform: scale(1) rotate(0deg); opacity: 1; }
 }
 
-@keyframes mainFade { 0% { opacity: 0; } 100% { opacity: 1; } }
-@keyframes nameSlide { 0% { transform: translateY(15px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
+/* लाइन का धीरे से फैलना */
+@keyframes lineExpand {
+    0% { width: 0; opacity: 0; }
+    100% { width: 50px; opacity: 1; }
+}
+
+@keyframes mainFade { 0% { opacity: 0; transform: translateY(10px); } 100% { opacity: 1; transform: translateY(0); } }
+@keyframes nameSlide { 0% { transform: scale(0.9); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
 @keyframes visionFade { 0% { opacity: 0; } 100% { opacity: 1; } }
 @keyframes splashProgress { 0% { width: 0%; } 100% { width: 100%; } }
 
+/* स्क्रीन का स्मूथ एग्जिट */
 .splash-exit { 
     opacity: 0 !important; 
-    transform: translateY(-20px); 
-    transition: all 0.8s ease; 
+    filter: blur(10px);
+    transition: all 1s ease; 
     pointer-events: none; 
 }
 </style>
 
 <script>
     (function() {
+        // समय बढ़ाकर 3.8 सेकंड कर दिया है ताकि छात्र शांति से देख सके
         setTimeout(function() {
             const splash = document.getElementById('upsc-splash');
             if(splash) {
                 splash.classList.add('splash-exit');
-                setTimeout(() => { splash.style.display = 'none'; }, 800);
+                setTimeout(() => { splash.style.display = 'none'; }, 1000);
             }
-        }, 3000); 
+        }, 3800); 
     })();
 </script>
-
     <div class="upsc-master-wrapper" style="margin: 0; padding: 0; overflow: hidden; background: #fff;">
     
     <div class="slider-box" style="position: relative; height: 235px; width: 100%; overflow: hidden; border-bottom-left-radius: 45px; border-bottom-right-radius: 45px; background: #000; box-shadow: 0 15px 30px rgba(0,0,0,0.25);">
