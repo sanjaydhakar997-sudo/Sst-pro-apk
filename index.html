@@ -62,93 +62,91 @@
 </head>
 <body>
 
-    <div class="curved-slider-wrapper" style="margin: 15px; border-radius: 35px; overflow: hidden; position: relative; height: 210px; background: #000; box-shadow: 0 15px 40px rgba(0,0,0,0.25); border: 2px solid rgba(255,255,255,0.1); margin-top: 10px;">
+    <div class="brand-slider-section" style="margin: 0; padding: 0; overflow: hidden;">
     
-    <div style="position: absolute; top: 0; left: 0; width: 100%; background: rgba(0,0,0,0.5); backdrop-filter: blur(8px); padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; z-index: 100; border-bottom: 1px solid rgba(255,255,255,0.1);">
-        <span style="color: #f39c12; font-size: 11px; font-weight: 900; letter-spacing: 1.5px; text-transform: uppercase;">Social Studies Classes</span>
-        <div style="display: flex; align-items: center; gap: 7px;">
-            <span style="width: 7px; height: 7px; background: #00ff00; border-radius: 50%; box-shadow: 0 0 10px #00ff00;"></span>
-            <span style="color: white; font-size: 10px; opacity: 0.8; font-weight: 700;">AUTHENTIC</span>
-        </div>
-    </div>
-
-    <div class="slides" id="mainCurvedSlider" style="display: flex; height: 100%; width: 500%; transition: transform 0.8s cubic-bezier(0.6, 0, 0.4, 1);">
+    <div class="full-curved-wrapper" style="position: relative; height: 250px; width: 100%; overflow: hidden; border-bottom-left-radius: 45px; border-bottom-right-radius: 45px; background: #000; box-shadow: 0 15px 35px rgba(0,0,0,0.3);">
         
-        <div class="slide" style="width: 100%; background: linear-gradient(135deg, #0f172a, #1e293b); display: flex; align-items: center; padding: 50px 25px 25px;">
-            <div style="z-index: 5;">
-                <h2 style="color: white; font-size: 22px; font-weight: 900;">Sanjay Dhakar</h2>
-                <p style="color: #3498db; font-size: 11px; font-weight: 700;">Deep Dive Analysis for UPSC & State PSC.</p>
-                <div style="height: 3px; width: 40px; background: #f39c12; border-radius: 10px; margin: 10px 0;"></div>
-            </div>
-            <div style="position: absolute; right: 10px; bottom: 10px; font-size: 100px; opacity: 0.05; color: white;">🎓</div>
+        <div style="position: absolute; top: 0; left: 0; width: 100%; z-index: 100; padding: 20px; background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent); text-align: center;">
+            <h1 style="color: #f39c12; font-size: 18px; font-weight: 900; letter-spacing: 2px; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); margin: 0; text-transform: uppercase;">Social Studies Classes</h1>
+            <p style="color: white; font-size: 10px; opacity: 0.7; font-weight: 600; margin-top: 3px;">SANJAY DHAKAR | MISSION: NOTES EXCHANGE</p>
         </div>
 
-        <div class="slide" style="width: 100%; background: linear-gradient(135deg, #d35400, #f39c12); display: flex; align-items: center; padding: 50px 25px 25px; color: white;">
-            <div style="z-index: 5; width: 100%;">
-                <h2 style="font-size: 20px; font-weight: 900;">VVIP Library Mission</h2>
-                <p style="font-size: 11px; opacity: 0.9;">किताबें जो बदलें किसी का भविष्य।<br>0% मार्जिन मिशन में योगदान करें।</p>
-                <div style="background: white; color: #d35400; display: inline-block; padding: 5px 12px; border-radius: 50px; font-size: 10px; font-weight: 800; margin-top: 10px;">DONATE BOOKS</div>
+        <div id="mainSlideEngine" style="display: flex; width: 500%; height: 100%; transition: transform 0.8s cubic-bezier(0.7, 0, 0.3, 1);">
+            
+            <div style="width: 100%; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1513258496099-48168024aec0?q=80&w=2070&auto=format&fit=crop'); background-size: cover; background-position: center; display: flex; align-items: flex-end; padding: 40px 25px;">
+                <div style="color: white; animation: slideUp 1s ease;">
+                    <h2 style="font-size: 24px; font-weight: 900;">Best Learning App</h2>
+                    <p style="font-size: 12px; opacity: 0.9;">SST ko samjhein ek naye andaz mein.</p>
+                </div>
+            </div>
+
+            <div style="width: 100%; background: linear-gradient(135deg, #d35400, #f39c12); display: flex; align-items: flex-end; padding: 40px 25px;">
+                <div style="color: white;">
+                    <h2 style="font-size: 24px; font-weight: 900;">VVIP Library</h2>
+                    <p style="font-size: 12px; opacity: 0.9;">Kitabein jo badlein kisi ka bhavishya.</p>
+                </div>
+            </div>
+
+            <div style="width: 100%; background: linear-gradient(135deg, #2980b9, #6c5ce7); display: flex; align-items: flex-end; padding: 40px 25px;">
+                <div style="color: white;">
+                    <h2 style="font-size: 24px; font-weight: 900;">Premium Notes</h2>
+                    <p style="font-size: 12px; opacity: 0.9;">Direct Coaching Notes for Students.</p>
+                </div>
+            </div>
+
+            <div style="width: 100%; background: #1a1a1a; display: flex; align-items: center; padding: 25px; border-left: 8px solid #00ff00;">
+                <div style="color: #00ff00;">
+                    <h2 style="font-size: 20px; font-weight: 900; font-family: monospace;">> SYSTEM LOGS ACTIVE</h2>
+                    <p style="font-size: 11px; color: white;">SHA-256 Verified Data & Security.</p>
+                </div>
+            </div>
+
+            <div style="width: 100%; background: linear-gradient(135deg, #27ae60, #16a085); display: flex; align-items: flex-end; padding: 40px 25px;">
+                <div style="color: white;">
+                    <h2 style="font-size: 24px; font-weight: 900;">Humare Gaurav</h2>
+                    <p style="font-size: 12px; opacity: 0.9;">Satyapit Dan-Dataon ki suchi.</p>
+                </div>
             </div>
         </div>
 
-        <div class="slide" style="width: 100%; background: linear-gradient(135deg, #0984e3, #6c5ce7); display: flex; align-items: center; padding: 50px 25px 25px; color: white;">
-            <div style="z-index: 5;">
-                <h2 style="font-size: 20px; font-weight: 900;">Premium Notes Exchange</h2>
-                <p style="font-size: 11px; opacity: 0.9;">Coaching Notes, Direct to Student.<br>Verify and Download Digital PDF.</p>
-            </div>
-        </div>
-
-        <div class="slide" style="width: 100%; background: #2d3436; display: flex; align-items: center; padding: 50px 25px 25px;">
-            <div style="border-left: 5px solid #00ff00; padding-left: 15px;">
-                <h2 style="color: #00ff00; font-size: 18px; font-weight: 800;">SHA-256 Verified</h2>
-                <p style="color: #ecf0f1; font-size: 11px; margin-top: 5px;">Athentic & Secured Data System.</p>
-                <div style="font-family: monospace; color: #00ff00; font-size: 9px; opacity: 0.6; margin-top: 5px;">> Connection Stable</div>
-            </div>
-        </div>
-
-        <div class="slide" style="width: 100%; background: linear-gradient(135deg, #27ae60, #2ecc71); display: flex; align-items: center; padding: 50px 25px 25px; color: white; text-align: center;">
-            <div style="z-index: 5; width: 100%;">
-                <h2 style="font-size: 20px; font-weight: 900;">हमारे गौरव 🌟</h2>
-                <p style="font-size: 11px; opacity: 0.9;">सत्यापित दानदाताओं की सूची में अपना नाम जोड़ें।</p>
-            </div>
+        <div style="position: absolute; bottom: 20px; width: 100%; display: flex; justify-content: center; gap: 8px; z-index: 100;">
+            <div class="p-dot" style="width: 25px; height: 5px; background: #f39c12; border-radius: 10px; transition: 0.4s;"></div>
+            <div class="p-dot" style="width: 8px; height: 5px; background: rgba(255,255,255,0.5); border-radius: 10px; transition: 0.4s;"></div>
+            <div class="p-dot" style="width: 8px; height: 5px; background: rgba(255,255,255,0.5); border-radius: 10px; transition: 0.4s;"></div>
+            <div class="p-dot" style="width: 8px; height: 5px; background: rgba(255,255,255,0.5); border-radius: 10px; transition: 0.4s;"></div>
+            <div class="p-dot" style="width: 8px; height: 5px; background: rgba(255,255,255,0.5); border-radius: 10px; transition: 0.4s;"></div>
         </div>
     </div>
 
-    <div style="position: absolute; bottom: 15px; left: 0; width: 100%; display: flex; justify-content: center; gap: 8px;">
-        <div class="nav-bar active" style="width: 30px; height: 6px; background: white; border-radius: 100px; opacity: 1; transition: 0.4s;"></div>
-        <div class="nav-bar" style="width: 6px; height: 6px; background: white; border-radius: 100px; opacity: 0.4; transition: 0.4s;"></div>
-        <div class="nav-bar" style="width: 6px; height: 6px; background: white; border-radius: 100px; opacity: 0.4; transition: 0.4s;"></div>
-        <div class="nav-bar" style="width: 6px; height: 6px; background: white; border-radius: 100px; opacity: 0.4; transition: 0.4s;"></div>
-        <div class="nav-bar" style="width: 6px; height: 6px; background: white; border-radius: 100px; opacity: 0.4; transition: 0.4s;"></div>
+    <div style="margin: -20px 20px 25px; background: white; padding: 20px; border-radius: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 15px; position: relative; z-index: 100; border: 1px solid #f0f0f0;">
+        <div style="min-width: 50px; height: 50px; background: #f39c12; border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 24px; color: white; box-shadow: 0 5px 15px rgba(243,156,18,0.3);">🕉️</div>
+        <div style="text-align: left;">
+            <p style="font-size: 13px; font-weight: 700; color: #2c3e50; font-style: italic; line-height: 1.4;">"Aise seekhein jaise hamesha jeena hai."</p>
+            <p style="font-size: 11px; font-weight: 900; color: #f39c12; margin-top: 3px;">— MAHATMA GANDHI</p>
+        </div>
     </div>
-</div>
-
-<div style="background: white; margin: 0 15px 20px; padding: 25px 20px; border-radius: 35px; text-align: center; box-shadow: 0 8px 15px rgba(0,0,0,0.05); position: relative; border: 1px solid #eee;">
-    <div style="position: absolute; top: -5px; left: -5px; font-size: 60px; color: #f39c12; opacity: 0.08;">"</div>
-    <p style="font-size: 14px; font-weight: 600; color: #2d3436; font-style: italic; font-family: 'Lora', serif; line-height: 1.6; z-index: 2;">
-        "ऐसे जिएं कि जैसे आपको कल मरना है, <br>सीखें ऐसे कि जैसे आपको हमेशा जीना है।"
-    </p>
-    <p style="font-size: 12px; font-weight: 800; color: #f39c12; margin-top: 12px;">— महात्मा गांधी</p>
-    <div style="position: absolute; bottom: -5px; right: -5px; font-size: 60px; color: #f39c12; opacity: 0.08;">"</div>
 </div>
 
 <script>
-    let cSlideIdx = 0;
-    const cSliderDom = document.getElementById('mainCurvedSlider');
-    const cBarsDom = document.querySelectorAll('.nav-bar');
+    let currentS = 0;
+    const engine = document.getElementById('mainSlideEngine');
+    const pDots = document.querySelectorAll('.p-dot');
 
-    setInterval(() => {
-        cSlideIdx = (cSlideIdx + 1) % 5;
-        if(cSliderDom) {
-            cSliderDom.style.transform = `translateX(-${cSlideIdx * 20}%)`;
-            cBarsDom.forEach((bar, i) => {
-                bar.style.opacity = i === cSlideIdx ? '1' : '0.4';
-                bar.style.width = i === cSlideIdx ? '30px' : '6px';
-                bar.style.background = i === cSlideIdx ? '#ffffff' : 'rgba(255,255,255,0.7)';
+    function runSlider() {
+        currentS = (currentS + 1) % 5;
+        if(engine) {
+            engine.style.transform = `translateX(-${currentS * 20}%)`;
+            pDots.forEach((d, i) => {
+                d.style.width = i === currentS ? '25px' : '8px';
+                d.style.background = i === currentS ? '#f39c12' : 'rgba(255,255,255,0.5)';
             });
         }
-    }, 4500); // Very smooth timing
+    }
+    setInterval(runSlider, 4000);
 </script>
+<style>
+    @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+</style>
 <div style="margin: 20px 15px;">
     <div style="display: flex; gap: 10px; margin: 20px 15px;">
 
@@ -517,4 +515,4 @@
 </div>
 
 </body>
-</html>
+            </html>
