@@ -187,7 +187,34 @@
 
     <div style="margin: -30px 20px 30px; background: white; padding: 25px; border-radius: 35px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 15px; position: relative; z-index: 120; border: 1px solid #f0f0f0;">
         <div style="min-width: 55px; height: 55px; background: linear-gradient(135deg, #f39c12, #e67e22); border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 26px; color: white;">📖</div>
-        
+        <div>
+            <p id="typeQuote" style="font-size: 15px; font-weight: 800; color: #1e272e; line-height: 1.4; margin: 0; min-height: 42px;"></p>
+            <p style="font-size: 11px; font-weight: 900; color: #f39c12; margin-top: 4px; letter-spacing: 1px;">— शहीद-ए-आजम भगत सिंह</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Slider Animation
+    let fIdx = 0;
+    const fEngine = document.getElementById('finalEngine');
+    const fDots = document.querySelectorAll('.f-dot');
+
+    setInterval(() => {
+        fIdx = (fIdx + 1) % 5;
+        if(fEngine) {
+            fEngine.style.transform = `translateX(-${fIdx * 20}%)`;
+            fDots.forEach((dot, i) => {
+                dot.style.width = i === fIdx ? '25px' : '8px';
+                dot.style.opacity = i === fIdx ? '1' : '0.4';
+            });
+        }
+    }, 5000);
+
+    // Typing Animation
+    const qText = "वे मुझे मार सकते हैं, लेकिन वे मेरे विचारों को नहीं मार सकते। वे मेरे शरीर को कुचल सकते हैं, लेकिन वे मेरी आत्मा को नहीं कुचल पाएंगे।";
+    let qPos = 0;
+    const qTarget = document.getElementById('typeQuote');
 
     function startTyping() {
         if (qPos < qText.length) {
@@ -574,4 +601,4 @@
 </div>
 
 </body>
-</html>
+    </html>
