@@ -113,6 +113,65 @@
     font-size: 22px;
     font-weight: bold;
 }
+/* 📝 6वाँ खंभा: डेली क्विज़ (Promotion Section) */
+.daily-quiz-card {
+    background: white;
+    margin: 0 20px 25px;
+    padding: 20px;
+    border-radius: 22px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+    border: 1px solid #f1f5f9;
+}
+.quiz-tag {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+.q-badge {
+    background: #fff0f0;
+    color: #e74c3c;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 6px;
+    text-transform: uppercase;
+}
+.question {
+    font-size: 15px;
+    color: #1e293b;
+    font-weight: 700;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+.opt {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 8px;
+    border: 1px solid #f1f5f9;
+    border-radius: 12px;
+    background: #f8fafc;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 600;
+    color: #475569;
+    cursor: pointer;
+    transition: 0.2s;
+    border: none;
+    outline: none;
+}
+.opt:active { transform: scale(0.98); }
+.opt.win { background: #dcfce7 !important; border: 1.5px solid #22c55e !important; color: #166534; }
+.opt.loose { background: #fee2e2 !important; border: 1.5px solid #ef4444 !important; color: #991b1b; }
+
+#quiz-feedback {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    display: none;
+}
 
     </style>
 
@@ -131,6 +190,16 @@
                 });
                 lazyImages.forEach(function(lazyImage) { lazyImageObserver.observe(lazyImage); });
             }
+          // 👤 5वें खंभे का असली जादू (Dynamic Name)
+window.addEventListener('load', function() {
+    const userName = localStorage.getItem('userName') || 'विद्यार्थी';
+    const nameElement = document.querySelector('.user-info h4');
+    const avatarElement = document.querySelector('.avatar');
+
+    if(nameElement) nameElement.innerHTML = `नमस्ते, ${userName} 👋`;
+    if(avatarElement) avatarElement.innerText = userName.charAt(0).toUpperCase();
+});
+  
         });
     </script>
 
@@ -151,6 +220,23 @@
     <div style="margin-left: auto;">
         <span style="background: #fff4e5; color: #f39c12; font-size: 10px; padding: 5px 12px; border-radius: 50px; font-weight: 800; border: 1px solid #ffe8cc;">SSC PRO</span>
     </div>
+</div>
+<div class="daily-quiz-card">
+    <div class="quiz-tag">
+        <span class="q-badge">आज का प्रश्न 💡</span>
+        <span style="font-size: 10px; color: #64748b; font-weight: 700;">By: SANJAY SIR</span>
+    </div>
+    
+    <div class="question">राजस्थान का वह किला जिसे 'यूनेस्को' ने 2013 में विश्व धरोहर सूची में शामिल नहीं किया?</div>
+    
+    <div class="quiz-options">
+        <button class="opt" onclick="verifyQ(this, false)">A. गागरोण</button>
+        <button class="opt" onclick="verifyQ(this, false)">B. जैसलमेर</button>
+        <button class="opt" onclick="verifyQ(this, true)">C. मेहरानगढ़</button>
+        <button class="opt" onclick="verifyQ(this, false)">D. कुम्भलगढ़</button>
+    </div>
+    
+    <div id="quiz-feedback"></div>
 </div>
 
 <div class="update-container">
