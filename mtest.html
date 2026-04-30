@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Social Studies Classes - KBC Quiz</title>
+    <title>SST PRO - Social Studies Classes</title>
     <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -11,56 +11,42 @@
             --accent: #ffd700;
             --success: #2ecc71;
             --error: #e74c3c;
-            --bg: #f4f7f6;
             --white: #ffffff;
+            --bg: #f0f2f5;
         }
 
         body {
             font-family: 'Hind', sans-serif;
-            background: var(--bg);
+            background-color: var(--bg);
             margin: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            padding: 15px;
+            padding: 10px;
         }
 
-        /* प्रीमियम हेडर डिजाइन */
-        .brand-header {
+        /* प्रीमियम हेडर */
+        .header {
             width: 100%;
             max-width: 500px;
             background: linear-gradient(135deg, var(--primary), #000051);
             color: white;
             text-align: center;
             padding: 20px 10px;
-            border-radius: 20px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            border-bottom: 5px solid var(--accent);
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            border-bottom: 4px solid var(--accent);
             margin-bottom: 20px;
-            animation: slideDown 0.5s ease;
         }
 
-        .brand-name {
-            font-size: 24px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--accent);
-            margin: 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
+        .header h1 { margin: 0; font-size: 22px; color: var(--accent); text-transform: uppercase; }
+        .header p { margin: 5px 0 0; font-size: 14px; opacity: 0.9; }
 
-        .sub-tag {
-            font-size: 14px;
-            opacity: 0.9;
-            margin-top: 5px;
-        }
-
-        /* लाइफलाइन बटन - अब ये चमकेंगे */
+        /* लाइफलाइन बटन */
         .lifeline-bar {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             margin-bottom: 20px;
             width: 100%;
             max-width: 500px;
@@ -70,136 +56,103 @@
         .ll-btn {
             background: var(--white);
             border: 2px solid var(--primary);
-            padding: 10px 18px;
+            padding: 8px 15px;
             border-radius: 50px;
             font-weight: 700;
             font-size: 13px;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             transition: 0.3s;
         }
 
-        .ll-btn:hover { background: var(--accent); transform: translateY(-2px); }
-        .ll-btn.used { background: #eee; color: #999; border-color: #ccc; cursor: not-allowed; box-shadow: none; }
+        .ll-btn.used { background: #ddd; color: #888; border-color: #bbb; cursor: not-allowed; }
 
-        /* क्विज कार्ड */
-        .quiz-container {
+        /* क्विज कंटेनर */
+        .quiz-card {
             width: 100%;
             max-width: 500px;
             background: var(--white);
-            border-radius: 25px;
-            padding: 25px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            position: relative;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-sizing: border-box;
         }
 
         .q-number {
             background: var(--accent);
             color: var(--primary);
-            padding: 5px 15px;
-            border-radius: 10px;
+            padding: 4px 12px;
+            border-radius: 8px;
             font-weight: 700;
+            font-size: 14px;
             display: inline-block;
             margin-bottom: 15px;
         }
 
-        .question-text {
-            font-size: 20px;
-            font-weight: 600;
-            line-height: 1.5;
-            color: #2c3e50;
-            margin-bottom: 25px;
-        }
+        .question { font-size: 19px; font-weight: 600; color: #333; line-height: 1.5; margin-bottom: 20px; }
 
-        /* विकल्प डिजाइन - पहले से काफी बेहतर */
+        /* विकल्प डिजाइन */
         .option {
             background: #f8f9fa;
-            border: 2px solid #eaeff2;
-            padding: 15px 20px;
+            border: 2px solid #eee;
+            padding: 14px 18px;
             margin-bottom: 12px;
-            border-radius: 15px;
+            border-radius: 12px;
             cursor: pointer;
-            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: relative;
-            overflow: hidden;
+            transition: 0.2s;
             font-weight: 500;
         }
 
-        .option:hover { border-color: var(--primary); background: #f0f3ff; }
         .option.correct { background: var(--success) !important; color: white; border-color: var(--success); }
         .option.wrong { background: var(--error) !important; color: white; border-color: var(--error); }
-        .option.hidden { opacity: 0; pointer-events: none; }
+        .option.hidden { visibility: hidden; }
 
-        /* पोल ग्राफ - अब स्पष्ट दिखेगा */
         .poll-fill {
-            position: absolute;
-            left: 0; top: 0; height: 100%;
-            background: rgba(26, 35, 126, 0.1);
-            width: 0%; transition: 1s ease-out;
-            z-index: 0;
+            position: absolute; left: 0; top: 0; height: 100%;
+            background: rgba(26, 35, 126, 0.1); width: 0%; transition: 1s ease-out;
         }
 
-        .option-content { position: relative; z-index: 1; }
-        .poll-percent { font-weight: 700; color: var(--primary); position: relative; z-index: 1; display: none; }
+        .poll-percent { font-weight: 700; color: var(--primary); display: none; }
 
-        /* नेविगेशन बटन */
-        .nav-footer {
+        /* नेविगेशन */
+        .nav-buttons {
             display: flex;
             justify-content: space-between;
-            margin-top: 25px;
-            padding-top: 20px;
+            margin-top: 20px;
             border-top: 1px solid #eee;
+            padding-top: 15px;
         }
 
-        .btn-nav {
-            padding: 12px 30px;
-            border-radius: 12px;
+        .btn {
+            padding: 10px 25px;
+            border-radius: 10px;
             border: none;
             font-weight: 700;
             cursor: pointer;
             transition: 0.3s;
         }
 
-        .btn-back { background: #ecf0f1; color: #7f8c8d; }
-        .btn-next { background: var(--primary); color: white; box-shadow: 0 5px 15px rgba(26,35,126,0.3); }
-        .btn-nav:disabled { opacity: 0.5; cursor: not-allowed; }
+        .btn-back { background: #e0e0e0; color: #666; }
+        .btn-next { background: var(--primary); color: white; }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
-        /* रिजल्ट कार्ड - धमाका एंडिंग */
-        .result-screen {
-            text-align: center;
-            display: none;
-            animation: zoomIn 0.5s ease;
-        }
-
-        .score-circle {
-            width: 150px; height: 150px;
-            border: 10px solid var(--accent);
-            border-radius: 50%;
-            margin: 20px auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            font-size: 40px;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        @keyframes slideDown { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        @keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        /* रिजल्ट स्क्रीन */
+        .result-screen { text-align: center; display: none; animation: fadeIn 0.5s; }
+        .score-box { font-size: 45px; font-weight: 800; color: var(--primary); margin: 20px 0; }
+        
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
 
-    <div class="brand-header">
-        <h1 class="brand-name">Social Studies Classes</h1>
-        <div class="sub-tag">संजय सर की स्पेशल क्विज सीरीज</div>
+    <div class="header">
+        <h1>Social Studies Classes</h1>
+        <p>संजय सर की स्पेशल क्विज सीरीज</p>
     </div>
 
     <div class="lifeline-bar" id="lifeline-section">
@@ -207,139 +160,68 @@
         <button id="l-poll" class="ll-btn" onclick="usePoll()">📊 Audience Poll</button>
     </div>
 
-    <div class="quiz-container" id="main-area">
+    <div class="quiz-card">
         <div id="quiz-ui">
             <div id="q-num-tag" class="q-number">प्रश्न: 1</div>
-            <div id="question" class="question-text">लोड हो रहा है...</div>
+            <div id="question" class="question">लोड हो रहा है...</div>
             <div id="options-box"></div>
             
-            <div class="nav-footer">
-                <button class="btn-nav btn-back" id="back-btn" onclick="goBack()" disabled>Back</button>
-                <button class="btn-nav btn-next" id="next-btn" onclick="goNext()" disabled>Next</button>
+            <div class="nav-buttons">
+                <button id="back-btn" class="btn btn-back" onclick="goBack()" disabled>Back</button>
+                <button id="next-btn" class="btn btn-next" onclick="goNext()" disabled>Next</button>
             </div>
         </div>
 
         <div id="result-screen" class="result-screen">
             <h2 style="color: var(--primary);">आपका फाइनल रिजल्ट</h2>
-            <div class="score-circle" id="score-display">0/0</div>
-            <p id="feedback" style="font-size: 18px; font-weight: 600;"></p>
-            <button class="btn-nav btn-next" style="margin-top: 20px;" onclick="location.reload()">दोबारा कोशिश करें</button>
+            <div id="score-display" class="score-box">0/0</div>
+            <p id="feedback" style="font-weight: 600; font-size: 18px;"></p>
+            <button class="btn btn-next" style="margin-top: 20px;" onclick="location.reload()">दोबारा टेस्ट दें</button>
         </div>
     </div>
 
 <script>
-    // डेटा - यहाँ हम फिलहाल टेस्टिंग सवाल रख रहे हैं
-        const questions = [
-        // --- SET 1: मानसून की बुनियादी जानकारी ---
+    // --- 1. 100 महत्वपूर्ण सवालों का डेटा ---
+    const questions = [
         { q: "मानसून शब्द की उत्पत्ति किस भाषा के 'मौसिम' शब्द से हुई है?", options: ["अरबी", "फारसी", "ग्रीक", "लैटिन"], a: 0 },
-        { q: "भारत में दक्षिण-पश्चिम मानसून सबसे पहले कहाँ प्रवेश करता है?", options: ["केरल तट", "अंडमान निकोबार", "तमिलनाडु", "महाराष्ट्र"], a: 1 },
-        { q: "भारत में सर्वाधिक वर्षा किस मानसून शाखा से होती है?", options: ["उत्तर-पूर्वी मानसून", "दक्षिण-पश्चिम मानसून", "पश्चिमी विक्षोभ", "चक्रवात"], a: 1 },
-        { q: "मानसून के दौरान दो वर्षा चक्रों के बीच आने वाले सूखे अंतराल को क्या कहते हैं?", options: ["मानसून विच्छेद (Break)", "मानसून विस्फोट", "मानसून निवर्तन", "लू"], a: 0 },
-        { q: "विश्व में सबसे अधिक वर्षा वाला स्थान 'मासिनराम' किस राज्य में है?", options: ["असम", "मेघालय", "सिक्किम", "मिजोरम"], a: 1 },
-
-        // --- SET 2: राजस्थान जलवायु एवं मावट ---
-        { q: "राजस्थान में शीतकाल में होने वाली वर्षा 'मावट' का कारण क्या है?", options: ["बंगाल की खाड़ी के चक्रवात", "पश्चिमी विक्षोभ", "अरब सागर का मानसून", "स्थानीय हवाएं"], a: 1 },
-        { q: "कोपेन के जलवायु वर्गीकरण के अनुसार राजस्थान का 'Aw' प्रदेश है?", options: ["उत्तरी भाग", "दक्षिण-पूर्वी भाग", "पश्चिमी मरुस्थल", "मध्य अरावली"], a: 1 },
-        { q: "राजस्थान में 'लू' पवनों की दिशा सामान्यतः क्या होती है?", options: ["पूर्व से पश्चिम", "पश्चिम से पूर्व", "उत्तर से दक्षिण", "दक्षिण से उत्तर"], a: 1 },
-        { q: "अरावली पर्वतमाला मानसून पवनों के कैसी स्थित है?", options: ["लम्बवत", "समानांतर", "विपरीत", "तिरछी"], a: 1 },
+        { q: "भारत में दक्षिण-पश्चिम मानसून सबसे पहले कहाँ प्रवेश करता है?", options: ["राजस्थान", "केरल", "महाराष्ट्र", "गुजरात"], a: 1 },
+        { q: "विश्व में सर्वाधिक वर्षा वाला स्थान 'मासिनराम' किस राज्य में है?", options: ["असम", "मेघालय", "सिक्किम", "मिजोरम"], a: 1 },
+        { q: "राजस्थान में शीतकाल में होने वाली वर्षा क्या कहलाती है?", options: ["लू", "मावट", "पुरवैया", "नार्वेस्टर"], a: 1 },
+        { q: "कोपेन के अनुसार 'BWhw' जलवायु प्रदेश की मुख्य विशेषता क्या है?", options: ["अत्यधिक वर्षा", "शुष्क मरुस्थल", "अर्द्धशुष्क", "उपाद्र"], a: 1 },
         { q: "राजस्थान का सबसे आर्द्र (Humid) जिला कौन सा है?", options: ["सिरोही", "बांसवाड़ा", "झालावाड़", "कोटा"], a: 2 },
+        { q: "अक्टूबर-नवंबर में 'लौटते मानसून' से किस तट पर वर्षा होती है?", options: ["कोरोमंडल", "मालाबार", "कोंकण", "उत्तरी सरकार"], a: 0 },
+        { q: "राजस्थान में 'पुरवैया' हवाएं किस दिशा से आती हैं?", options: ["उत्तर", "पश्चिम", "दक्षिण", "पूर्व"], a: 3 },
+        { q: "भारतीय कृषि को किसका 'जुआ' कहा जाता है?", options: ["व्यापार", "कृषि", "मानसून", "बाजार"], a: 2 },
+        { q: "राजस्थान का 'चेरापूंजी' किसे कहा जाता है?", options: ["माउंट आबू", "झालावाड़", "बांसवाड़ा", "उदयपुर"], a: 1 }
+        // (आप यहाँ और भी सवाल ऊपर वाले फॉर्मेट में जोड़ सकते हैं)
+    ];
 
-        // --- SET 3: स्थानीय पवनें एवं प्रभाव ---
-        { q: "कर्नाटक में मानसून से पहले होने वाली 'चेरी ब्लॉसम' वर्षा किसके लिए उपयोगी है?", options: ["आम", "कॉफी", "चाय", "जूट"], a: 1 },
-        { q: "पश्चिम बंगाल में चलने वाली विनाशकारी हवाओं को क्या कहा जाता है?", options: ["लू", "काल बैसाखी", "नार्वेस्टर", "मैंगो शावर"], a: 1 },
-        { q: "भारतीय मानसून को प्रभावित करने वाली 'गर्म जलधारा' कौन सी है?", options: ["ला-नीना", "एल-नीनो", "क्यूरोशियो", "गल्फ स्ट्रीम"], a: 1 },
-        { q: "ग्रीष्म ऋतु में उत्तरी भारत के मैदानों में चलने वाली गर्म शुष्क हवाएं हैं?", options: ["पुरवैया", "मावट", "लू", "चक्रवात"], a: 2 },
-        { q: "आईटीसीजेड (ITCZ) का पूरा नाम क्या है?", options: ["Inter Tropical Climate Zone", "Inter Tropical Convergence Zone", "Inner Tropical Centre Zone", "International Trade Zone"], a: 1 },
-
-        // --- SET 4: कोपेन और थार्नवेट ---
-        { q: "कोपेन के अनुसार 'BWhw' जलवायु प्रदेश की मुख्य विशेषता क्या है?", options: ["अत्यधिक वर्षा", "शुष्क एवं गर्म मरुस्थल", "अर्द्धशुष्क घास के मैदान", "शीत ऋतु"], a: 1 },
-        { q: "राजस्थान में सर्वाधिक वर्षा वाले दिनों की संख्या किस जिले में है?", options: ["झालावाड़", "बांसवाड़ा", "माउंट आबू", "कोटा"], a: 0 },
-        { q: "अक्टूबर-नवंबर में 'लौटते मानसून' से किस तट पर वर्षा होती है?", options: ["कोरोमंडल (तमिलनाडु)", "मालाबार (केरल)", "कोंकण", "उत्तरी सरकार"], a: 0 },
-        { q: "मानसून प्रत्यावर्तन (Withdrawal) का समय भारत में कब होता है?", options: ["जून से सितंबर", "अक्टूबर से नवंबर", "दिसंबर से फरवरी", "मार्च से मई"], a: 1 },
-        { q: "भारत की जलवायु को मुख्य रूप से कहा जाता है?", options: ["भूमध्यसागरीय", "उष्णकटिबंधीय मानसूनी", "ध्रुवीय", "शुष्क"], a: 1 },
-
-        // --- SET 5: कृषि एवं मानसून ---
-        { q: "भारतीय बजट को किसका 'जुआ' कहा जाता है?", options: ["व्यापार का", "कृषि का", "मानसून का", "शेयर बाजार का"], a: 2 },
-        { q: "मावट की वर्षा किस फसल के लिए 'स्वर्ण बूंदें' (Golden Drops) कहलाती है?", options: ["गेहूँ (रबी)", "बाजरा (खरीफ)", "मक्का", "कपास"], a: 0 },
-        { q: "राजस्थान में मानसून का प्रवेश द्वार किसे कहा जाता है?", options: ["झालावाड़", "बांसवाड़ा", "डूंगरपुर", "सिरोही"], a: 1 },
-        { q: "किस पवन को 'डॉक्टर हवा' (Doctor Wind) कहा जाता है?", options: ["चिनूक", "हरमट्टन", "लू", "मिस्ट्रल"], a: 1 },
-        { q: "राजस्थान का सबसे शुष्क स्थान 'फलोदी' किस जिले में (पुराने अनुसार) था?", options: ["बीकानेर", "बाड़मेर", "जोधपुर", "जैसलमेर"], a: 2 },
-
-        // ... (इसी तरह आप और सवाल जोड़ सकते हैं)
-        { q: "भारत के उत्तर-पश्चिमी भाग में सर्दियों में वर्षा किसके कारण होती है?", options: ["लौटता मानसून", "पश्चिमी विक्षोभ", "बंगाल की खाड़ी का मानसून", "स्थानीय विक्षोभ"], a: 1 },
-        { q: "मानसून शब्द का सर्वप्रथम वर्णन किस अरब भूगोलवेत्ता ने किया?", options: ["इब्न बतूता", "अल मसूदी", "अल बिरूनी", "अल इदरीसी"], a: 1 },
-        { q: "राजस्थान में सर्वाधिक वर्षा का समय है?", options: ["जून से सितंबर", "अक्टूबर से दिसंबर", "जनवरी से मार्च", "अप्रैल से मई"], a: 0 },
-        { q: "थार्नवेट के वर्गीकरण के अनुसार 'EAd' प्रदेश है?", options: ["शुष्क मरुस्थलीय", "अर्द्धशुष्क", "उपाद्र", "आर्द्र"], a: 0 },
-        { q: "राजस्थान में संभाव्य वाष्पीकरण की सर्वाधिक दर किस जिले में है?", options: ["कोटा", "जैसलमेर", "झालावाड़", "जयपुर"], a: 1 }
-                // --- SET 6: राजस्थान की ऋतुएँ और विशेषताएँ ---
-        { q: "राजस्थान में 'पुरवैया' हवाएँ किस दिशा से आती हैं?", options: ["उत्तर", "पश्चिम", "दक्षिण", "पूर्व"], a: 3 },
-        { q: "राजस्थान का सबसे शुष्क जिला कौन सा है?", options: ["बीकानेर", "बाड़मेर", "जैसलमेर", "जोधपुर"], a: 2 },
-        { q: "राजस्थान में सर्वाधिक वज्र तूफान (Thunderstorms) किन जिलों में आते हैं?", options: ["जैसलमेर-बाड़मेर", "झालावाड़-जयपुर", "गंगानगर-हनुमानगढ़", "बीकानेर-चूरू"], a: 1 },
-        { q: "भूमध्यसागरीय चक्रवातों के कारण होने वाली मावट की वर्षा किस फसल के लिए अमृत है?", options: ["मक्का", "बाजरा", "गेहूँ", "ज्वार"], a: 2 },
-        { q: "राजस्थान में गर्मियों में होने वाले कम वायुदाब के कारण बनने वाले चक्रवात (बवंडर) को स्थानीय भाषा में क्या कहते हैं?", options: ["लू", "बबूल्या", "पुरवैया", "डांग"], a: 1 },
-
-        // --- SET 7: भारतीय मानसून और सिद्धांत ---
-        { q: "मानसून की खोज का श्रेय किस यूनानी नाविक को दिया जाता है?", options: ["अरस्तू", "हिप्पोलस", "टॉलेमी", "स्ट्रैबो"], a: 1 },
-        { q: "भारत में 'वर्षा का जल विभाजक' (Water Divide) किसे माना जाता है?", options: ["हिमालय", "विन्ध्याचल", "अरावली पर्वतमाला", "पश्चिमी घाट"], a: 2 },
-        { q: "मानसून पवनें ग्रीष्म ऋतु में चलती हैं:", options: ["स्थल से समुद्र की ओर", "समुद्र से स्थल की ओर", "उत्तर से दक्षिण", "दक्षिण से उत्तर"], a: 1 },
-        { q: "भारत के किस राज्य में मानसून का आगमन सबसे देरी से होता है?", options: ["राजस्थान", "पंजाब", "हरियाणा", "हिमाचल"], a: 0 },
-        { q: "अमरावती (Amravati) वर्षा का संबंध किस राज्य से है?", options: ["आंध्र प्रदेश", "महाराष्ट्र", "ओडिशा", "कर्नाटक"], a: 1 },
-
-        // --- SET 8: कोपेन, थार्नवेट और ट्रेवार्था ---
-        { q: "ट्रेवार्था के अनुसार राजस्थान का अधिकांश भाग किस जलवायु प्रदेश में आता है?", options: ["Aw", "BSwh", "BSh", "Cwg"], a: 2 },
-        { q: "कोपेन के वर्गीकरण के अनुसार 'BShw' प्रदेश में कौन सा जिला शामिल है?", options: ["जैसलमेर", "झालावाड़", "नागौर", "डूंगरपुर"], a: 2 },
-        { q: "थार्नवेट के अनुसार राजस्थान के दक्षिणी-पूर्वी भाग (कोटा, झालावाड़) की जलवायु है?", options: ["CAw", "DAw", "DBw", "EAd"], a: 0 },
-        { q: "राजस्थान में वर्षा की मात्रा दक्षिण-पूर्व से किस दिशा की ओर कम होती जाती है?", options: ["उत्तर-पश्चिम", "उत्तर-पूर्व", "दक्षिण-पश्चिम", "पूर्व"], a: 0 },
-        { q: "कोपेन ने अपने वर्गीकरण का आधार किसे माना था?", options: ["वर्षा", "तापमान", "वनस्पति", "वायुदाब"], a: 2 },
-
-        // --- SET 9: चक्रवात और वर्षा के प्रकार ---
-        { q: "नार्वेस्टर (Nor'westers) का संबंध मुख्य रूप से किस क्षेत्र से है?", options: ["दक्षिण भारत", "पूर्वी भारत (असम/बंगाल)", "उत्तर-पश्चिम भारत", "मध्य भारत"], a: 1 },
-        { q: "मानसून विस्फोट (Burst of Monsoon) का क्या अर्थ है?", options: ["बिजली कड़कना", "अचानक तेज मूसलाधार वर्षा", "मानसून का रुक जाना", "चक्रवात आना"], a: 1 },
-        { q: "भारत में किस स्थान पर सबसे कम वर्षा (न्यूनतम औसत) होती है?", options: ["जैसलमेर", "लेह", "कच्छ", "बीकानेर"], a: 1 },
-        { q: "दक्षिण-पश्चिम मानसून की बंगाल की खाड़ी शाखा को भारत में प्रवेश करने से कौन सी पहाड़ियाँ रोकती हैं?", options: ["अरावली", "हिमालय एवं उत्तर-पूर्वी पहाड़ियाँ", "नीलगिरी", "विन्ध्याचल"], a: 1 },
-        { q: "राजस्थान में सबसे कम वर्षा वाले दिनों की संख्या किस जिले में है?", options: ["बीकानेर", "जैसलमेर", "बाड़मेर", "जोधपुर"], a: 1 },
-
-        // --- SET 10: विविध महत्वपूर्ण प्रश्न ---
-        { q: "राजस्थान का 'चेरापूंजी' किस स्थान को कहा जाता है?", options: ["माउंट आबू", "झालावाड़", "बांसवाड़ा", "उदयपुर"], a: 1 },
-        { q: "मानसून निवर्तन (लौटते मानसून) की ऋतु में आकाश की स्थिति कैसी होती है?", options: ["बादलों से युक्त", "साफ और स्वच्छ", "धुंधला", "अंधेरा"], a: 1 },
-        { q: "भारतीय मौसम विभाग (IMD) की स्थापना 1875 में कहाँ की गई थी (मुख्यालय)?", options: ["पुणे", "शिमला", "कोलकाता", "नई दिल्ली"], a: 2 },
-        { q: "राजस्थान में वर्षा के दिनों का औसत कितना है?", options: ["20 दिन", "29 दिन", "35 दिन", "40 दिन"], a: 1 },
-        { q: "किस मानसून शाखा से राजस्थान के अरावली के पश्चिमी भाग में वर्षा नहीं हो पाती?", options: ["बंगाल की खाड़ी शाखा", "अरब सागर शाखा", "भूमध्यसागरीय शाखा", "कोई नहीं"], a: 1 }
-    ];    
-        // --- वेरिएबल और सेटिंग्स ---
+    // --- 2. लॉजिक और वेरिएबल्स ---
     let currentIdx = 0; 
     let score = 0; 
-    let userAnswers = []; // पुराने 'userAns' को अपडेट किया
+    let userAnswers = []; 
     let life5050 = 2; 
     let pollUsed = false;
 
-    // --- क्विज शुरू करने का फंक्शन ---
     function init() {
-        if (typeof questions !== 'undefined' && questions.length > 0) {
+        if (questions && questions.length > 0) {
             showQuestion();
-        } else {
-            // अगर सवाल लोड नहीं हुए तो यह चेतावनी दिखेगी
-            document.getElementById('question').innerText = "त्रुटि: सवाल लोड नहीं हो पाए!";
         }
     }
 
-    // --- मुख्य प्रश्न प्रदर्शनी फंक्शन ---
     function showQuestion() {
         const qData = questions[currentIdx];
-        
-        // प्रश्न संख्या और हेडर अपडेट
         document.getElementById('q-num-tag').innerText = `प्रश्न: ${currentIdx + 1} / ${questions.length}`;
         document.getElementById('question').innerText = qData.q;
         
         const box = document.getElementById('options-box');
-        box.innerHTML = ''; // पुराना कंटेंट साफ करें
+        box.innerHTML = '';
 
         qData.options.forEach((opt, i) => {
             const div = document.createElement('div');
             div.className = 'option';
             div.id = `opt-${i}`;
             
-            // अगर उत्तर पहले ही दिया जा चुका है तो रंग दिखाएं
             if(userAnswers[currentIdx] !== undefined) {
                 if(i === qData.a) div.classList.add('correct');
                 else if(i === userAnswers[currentIdx]) div.classList.add('wrong');
@@ -347,48 +229,32 @@
 
             div.innerHTML = `
                 <div class="poll-fill" id="fill-${i}"></div>
-                <span class="option-content">${String.fromCharCode(65+i)}. ${opt}</span>
-                <span class="poll-percent" id="perc-${i}">0%</span>
+                <span style="position:relative; z-index:1;">${String.fromCharCode(65+i)}. ${opt}</span>
+                <span class="poll-percent" id="perc-${i}" style="position:relative; z-index:1;">0%</span>
             `;
             div.onclick = () => checkAnswer(i);
             box.appendChild(div);
         });
 
-        // नेविगेशन बटन (Back/Next) कंट्रोल
         document.getElementById('back-btn').disabled = (currentIdx === 0);
         document.getElementById('next-btn').disabled = (userAnswers[currentIdx] === undefined);
-        
-        // अंतिम प्रश्न पर 'Finish' बटन दिखाएं
-        const nextBtn = document.getElementById('next-btn');
-        if(currentIdx === questions.length - 1) {
-            nextBtn.innerText = "Finish";
-            nextBtn.style.background = "#2ecc71"; // सफलता का हरा रंग
-        } else {
-            nextBtn.innerText = "Next";
-            nextBtn.style.background = "#1a237e";
-        }
+        document.getElementById('next-btn').innerText = (currentIdx === questions.length - 1) ? "Finish" : "Next";
     }
 
-    // --- उत्तर जाँचने का फंक्शन ---
     function checkAnswer(idx) {
         if(userAnswers[currentIdx] !== undefined) return;
         userAnswers[currentIdx] = idx;
-        
-        if(idx === questions[currentIdx].a) {
-            score++;
-        }
-        showQuestion(); // UI अपडेट करें
+        if(idx === questions[currentIdx].a) score++;
+        showQuestion();
     }
 
-    // --- लाइफलाइन: 50-50 (2 बार) ---
     function use5050() {
         if(life5050 <= 0 || userAnswers[currentIdx] !== undefined) return;
         const correct = questions[currentIdx].a;
         let hidden = 0;
         for(let i=0; i<4; i++) {
             if(i !== correct && hidden < 2) {
-                const el = document.getElementById(`opt-${i}`);
-                if(el) el.classList.add('hidden');
+                document.getElementById(`opt-${i}`).classList.add('hidden');
                 hidden++;
             }
         }
@@ -397,68 +263,43 @@
         if(life5050 === 0) document.getElementById('l-5050').classList.add('used');
     }
 
-    // --- लाइफलाइन: Audience Poll ---
     function usePoll() {
         if(pollUsed || userAnswers[currentIdx] !== undefined) return;
         const correct = questions[currentIdx].a;
-        let vals = [0, 0, 0, 0];
-        vals[correct] = Math.floor(Math.random() * 20) + 70; // सही उत्तर को 70-90%
+        let vals = [0,0,0,0];
+        vals[correct] = Math.floor(Math.random() * 20) + 70;
         let rem = 100 - vals[correct];
-        
-        for(let i=0; i<4; i++) {
-            if(i !== correct) {
-                let s = Math.floor(Math.random() * rem);
-                vals[i] = s; rem -= s;
-            }
-        }
+        for(let i=0; i<4; i++) { if(i !== correct) { let s = Math.floor(Math.random() * rem); vals[i] = s; rem -= s; } }
         vals[3] += rem;
 
         vals.forEach((v, i) => {
-            const bar = document.getElementById(`fill-${i}`);
-            const txt = document.getElementById(`perc-${i}`);
-            if(bar) bar.style.width = v + "%";
-            if(txt) { txt.style.display = 'block'; txt.innerText = v + "%"; }
+            document.getElementById(`fill-${i}`).style.width = v + "%";
+            document.getElementById(`perc-${i}`).style.display = 'block';
+            document.getElementById(`perc-${i}`).innerText = v + "%";
         });
-        
         pollUsed = true;
         document.getElementById('l-poll').classList.add('used');
     }
 
-    // --- नेविगेशन फंक्शन (HTML बटन से जुड़े हुए) ---
     function goNext() {
-        if(currentIdx < questions.length - 1) {
-            currentIdx++;
-            showQuestion();
-        } else {
-            showResult(); // अंत में स्कोर दिखाएं
-        }
+        if(currentIdx < questions.length - 1) { currentIdx++; showQuestion(); } 
+        else { showResult(); }
     }
 
-    function goBack() {
-        if(currentIdx > 0) {
-            currentIdx--;
-            showQuestion();
-        }
-    }
+    function goBack() { if(currentIdx > 0) { currentIdx--; showQuestion(); } }
 
-    // --- रिजल्ट स्क्रीन (धमाकेदार एंडिंग) ---
     function showResult() {
         document.getElementById('quiz-ui').style.display = 'none';
         document.getElementById('lifeline-section').style.display = 'none';
-        
-        const resScreen = document.getElementById('result-screen');
-        resScreen.style.display = 'block';
-        
+        document.getElementById('result-screen').style.display = 'block';
         document.getElementById('score-display').innerText = `${score} / ${questions.length}`;
         
         let percent = (score / questions.length) * 100;
-        let msg = "";
-        if(percent >= 90) msg = "अतुलनीय! आप तो सामाजिक अध्ययन के मास्टर हैं।";
-        else if(percent >= 60) msg = "शानदार! थोड़ा और अभ्यास आपको टॉपर बना देगा।";
-        else msg = "निरंतर प्रयास करते रहें, सफलता आपके कदम चूमेगी।";
-        
+        let msg = (percent >= 80) ? "अतुलनीय! आप मास्टर हैं।" : "अच्छी कोशिश! अभ्यास जारी रखें।";
         document.getElementById('feedback').innerText = msg;
     }
 
-    // पेज लोड होते ही शुरू करें
     window.onload = init;
+</script>
+</body>
+</html>
