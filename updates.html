@@ -429,6 +429,44 @@ function verifyQ(btn, isCorrect) {
             document.querySelector('.help-input').value = "";
         }
     }
+    // 🔍 7वाँ खंभा: सर्च और फ़िल्टर का असली दिमाग
+function filterContent() {
+    let input = document.getElementById('searchInput').value.toLowerCase();
+    let cards = document.querySelectorAll('.update-card');
+
+    cards.forEach(card => {
+        let title = card.querySelector('.update-title').innerText.toLowerCase();
+        let desc = card.querySelector('.update-desc').innerText.toLowerCase();
+        
+        if (title.includes(input) || desc.includes(input)) {
+            card.style.display = "block";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
+
+function filterCategory(category, btn) {
+    // बटन का रंग बदलना
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    let cards = document.querySelectorAll('.update-card');
+    cards.forEach(card => {
+        if (category === 'all') {
+            card.style.display = "block";
+        } else {
+            // कार्ड के अंदर के टैग को चेक करना
+            let tag = card.querySelector('.tag').innerText.toLowerCase();
+            if (tag.includes(category.toLowerCase())) {
+                card.style.display = "block";
+            } else {
+                card.style.display = "none";
+            }
+        }
+    });
+}
+
 </script>
 
 </body>
