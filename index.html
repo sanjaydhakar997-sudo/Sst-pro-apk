@@ -3,472 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SST Pro - Sanjay Dhakar</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>Social Studies Classes - Sanjay Sir</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        :root { --primary: #1a237e; --accent: #ffd700; --success: #2ecc71; --error: #e74c3c; --bg: #f0f2f5; }
+        body { font-family: 'Hind', sans-serif; background-color: var(--bg); margin: 0; display: flex; flex-direction: column; align-items: center; padding: 10px; }
         
-        body { background-color: #f8f9fa; color: #2d3436; padding-bottom: 50px; }
-
-        /* प्रीमियम हेडर */
-        .header {
-            background: linear-gradient(135deg, #0f172a, #1e293b);
-            color: white; padding: 40px 20px; text-align: center;
-            border-bottom-left-radius: 35px; border-bottom-right-radius: 35px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
-        .header h1 { font-size: 26px; font-weight: 800; letter-spacing: 1px; margin-bottom: 10px; }
-        .user-tag { 
-            display: inline-block; background: #f39c12; color: #000;
-            padding: 6px 20px; border-radius: 50px; font-size: 13px; font-weight: 700;
-        }
-
-
-
-        /* सुविचार बॉक्स */
-        .gandhi-box {
-            margin: -25px 20px 20px 20px; background: #ffffff;
-            padding: 20px; border-radius: 20px; text-align: center;
-            box-shadow: 0 12px 24px rgba(0,0,0,0.08); border-top: 4px solid #f39c12;
-        }
-        .quote { font-size: 15px; font-weight: 600; color: #4a5568; line-height: 1.6; font-style: italic; }
-        .author { display: block; margin-top: 10px; color: #f39c12; font-weight: bold; font-size: 14px; }
-
-        /* एग्जाम बैनर */
-        .exam-banner {
-            margin: 10px 15px 25px 15px; padding: 18px;
-            background: linear-gradient(135deg, #fff9db, #fff3bf);
-            border-radius: 15px; text-align: center; border: 1px solid #ffe066;
-        }
-        .exam-banner span { font-size: 11px; font-weight: 800; color: #856404; text-transform: uppercase; display: block; margin-bottom: 5px; }
-        .exam-list { font-weight: 800; color: #2c3e50; font-size: 14px; line-height: 1.5; }
-/* मिशन बॉक्स का प्रीमियम लुक */
-.live-mission-box {
-    margin: 20px;
-    background: #1e293b;
-    padding: 20px;
-    border-radius: 25px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-    border: 1px solid rgba(243, 156, 18, 0.4);
-    color: white;
-    text-align: center;
-    cursor: pointer;
-}
-.mission-header { font-size: 12px; font-weight: 800; color: #f39c12; margin-bottom: 15px; }
-.dot { height: 8px; width: 8px; background-color: #2ecc71; border-radius: 50%; display: inline-block; margin-right: 5px; animation: blink 1s infinite; }
-@keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
-.stats-row { display: flex; justify-content: space-around; align-items: center; }
-.stat-item small { display: block; font-size: 10px; color: #94a3b8; text-transform: uppercase; margin-bottom: 5px; }
-.stat-item span { font-size: 24px; font-weight: 900; color: #fff; }
-.stat-divider { width: 1px; height: 30px; background: rgba(255,255,255,0.1); }
-.mission-footer { font-size: 9px; color: #64748b; margin-top: 15px; font-family: monospace; }
-
-        /* ग्रिड और कार्ड्स */
-        .grid-container {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
-            padding: 0 15px 20px 15px; width: 100%;
-        }
-        .subject-card {
-            background: white; padding: 20px 10px; border-radius: 20px;
-            text-align: center; text-decoration: none; color: #2d3436;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-            border-bottom: 4px solid #eee; transition: 0.3s;
-        }
-        .subject-card:active { transform: scale(0.95); }
-        .icon { font-size: 32px; margin-bottom: 10px; display: block; }
-        .label { font-weight: 700; font-size: 14px; }
+        .card { width: 100%; max-width: 500px; background: white; border-radius: 20px; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); box-sizing: border-box; text-align: center; }
+        .header { width: 100%; max-width: 500px; background: linear-gradient(135deg, var(--primary), #000051); color: white; text-align: center; padding: 20px 10px; border-radius: 15px; border-bottom: 4px solid var(--accent); margin-bottom: 20px; }
         
-        .section-title { margin: 10px 20px 15px 20px; font-size: 18px; color: #2d3436; font-weight: 800; display: flex; align-items: center; }
-        .section-title::before { content: ""; width: 5px; height: 18px; background: #f39c12; margin-right: 8px; border-radius: 10px; }
+        input { width: 100%; padding: 12px; margin: 10px 0; border: 2px solid #eee; border-radius: 10px; box-sizing: border-box; font-size: 16px; }
+        .btn-main { background: var(--primary); color: white; border: none; padding: 14px 20px; border-radius: 10px; font-weight: 700; cursor: pointer; width: 100%; margin-top: 10px; font-size: 16px; }
+        
+        .tag-box { background: #fff9c4; border: 1px dashed #fbc02d; padding: 15px; border-radius: 10px; margin: 15px 0; font-size: 14px; color: #555; }
+        .exam-tag { background: var(--primary); color: white; padding: 3px 8px; border-radius: 4px; font-size: 12px; margin: 2px; display: inline-block; }
+
+        .option { background: #f8f9fa; border: 2px solid #eee; padding: 15px; margin-bottom: 10px; border-radius: 12px; cursor: pointer; text-align: left; position: relative; overflow: hidden; display: flex; justify-content: space-between; }
+        .option.correct { background: var(--success) !important; color: white; border-color: var(--success); }
+        .option.wrong { background: var(--error) !important; color: white; border-color: var(--error); }
+        .poll-fill { position: absolute; left: 0; top: 0; height: 100%; background: rgba(26, 35, 126, 0.1); width: 0%; transition: 1s ease-out; }
+
+        .nav-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 20px; }
+        .btn-nav { padding: 10px; border-radius: 8px; border: none; font-weight: 700; cursor: pointer; font-size: 14px; }
+        .btn-back { background: #e0e0e0; color: #666; }
+        .btn-skip { background: #fff3e0; color: #ef6c00; }
+        .btn-next { background: var(--primary); color: white; }
+        .btn-nav:disabled { opacity: 0.4; }
+
+        .medal { font-size: 60px; margin-bottom: 10px; }
     </style>
 </head>
 <body>
-<div id="upsc-splash" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 100000; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-    
-    <div style="text-align: center; animation: mainFade 2s ease-out forwards;">
-        
-        <div style="font-size: 75px; margin-bottom: 12px; animation: treeGrow 2.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); filter: drop-shadow(0 0 20px rgba(46, 204, 113, 0.3));">
-            🌳
+
+    <div class="header">
+        <h1 style="margin:0; font-size:24px; color:var(--accent);">Social Studies Classes</h1>
+        <p style="margin:5px 0 0; font-size:14px; opacity:0.9;">संजय सर की डिजिटल पाठशाला</p>
+    </div>
+
+    <div id="screen-reg" class="card">
+        <h2 style="color:var(--primary); margin-top:0;">Registration</h2>
+        <p style="color:#666; font-size:14px;">कृपया अपनी जानकारी भरें</p>
+        <input type="text" id="u-name" placeholder="अपना पूरा नाम लिखें">
+        <input type="text" id="u-dist" placeholder="अपना जिला लिखें">
+        <button class="btn-main" onclick="showTags()">आगे बढ़ें</button>
+    </div>
+
+    <div id="screen-tags" class="card" style="display:none;">
+        <h3 style="color:var(--primary);">महत्वपूर्ण सूचना</h3>
+        <p>यह टेस्ट निम्नलिखित परीक्षाओं के लिए अति महत्वपूर्ण है:</p>
+        <div class="tag-box">
+            <span class="exam-tag">REET</span> <span class="exam-tag">CET</span> 
+            <span class="exam-tag">1st & 2nd Grade</span> <span class="exam-tag">Patwar</span>
+            <span class="exam-tag">LDC</span> <span class="exam-tag">Rajasthan Police</span>
         </div>
+        <ul style="text-align:left; font-size:14px; color:#555;">
+            <li>कुल प्रश्न: 100</li>
+            <li>नेगेटिव मार्किंग: नहीं</li>
+            <li>लाइफलाइन: 50-50 और Poll उपलब्ध</li>
+        </ul>
+        <button class="btn-main" onclick="startQuiz()">टेस्ट शुरू करें</button>
+    </div>
+
+    <div id="screen-quiz" class="card" style="display:none;">
+        <div id="lifelines" style="display:flex; gap:10px; justify-content:center; margin-bottom:15px;">
+            <button onclick="use5050()" id="l-5050" style="background:none; border:1px solid var(--primary); border-radius:20px; padding:5px 12px; cursor:pointer;">✂️ 50-50</button>
+            <button onclick="usePoll()" id="l-poll" style="background:none; border:1px solid var(--primary); border-radius:20px; padding:5px 12px; cursor:pointer;">📊 Poll</button>
+        </div>
+        <div id="q-count" style="font-size:12px; color:var(--primary); font-weight:700; margin-bottom:5px;"></div>
+        <div id="question" style="font-size:18px; font-weight:600; margin-bottom:20px; text-align:left;"></div>
+        <div id="options-box"></div>
         
-        <h1 style="color: #f39c12; font-size: 26px; font-weight: 900; letter-spacing: 3px; margin: 0; font-family: 'Arial Black', sans-serif;">SOCIAL STUDIES</h1>
-        <h2 style="color: #fff; font-size: 15px; font-weight: 700; letter-spacing: 6px; opacity: 0.8; margin-top: 2px;">CLASSES</h2>
-        
-        <div style="margin-top: 25px;">
-            <p style="color: #fff; font-size: 14px; font-weight: 600; letter-spacing: 2px; margin: 0; animation: nameSlide 1.8s ease-out;">By Sanjay Dhakar</p>
-            <div style="width: 50px; height: 2px; background: #f39c12; margin: 10px auto; border-radius: 10px; animation: lineExpand 2s ease-in-out;"></div>
+        <div class="nav-grid">
+            <button id="btn-prev" class="btn-nav btn-back" onclick="goBack()">Back</button>
+            <button id="btn-skip" class="btn-nav btn-skip" onclick="goSkip()">Leave</button>
+            <button id="btn-next" class="btn-nav btn-next" onclick="goNext()">Next</button>
         </div>
     </div>
 
-    <div style="position: absolute; bottom: 80px; width: 100%; text-align: center; padding: 0 40px; animation: visionFade 3s ease-in;">
-        <p style="color: #ffffff; font-size: 14px; font-weight: 500; letter-spacing: 1.2px; line-height: 1.6; font-family: 'Georgia', serif; font-style: italic;">
-            "The roots of education are bitter, <br>but the fruit is sweet."
-        </p>
+    <div id="screen-result" class="card" style="display:none; border: 3px solid var(--accent);">
+        <div id="medal-icon" class="medal">🏆</div>
+        <h2 id="res-name" style="margin:0; color:var(--primary);">नाम</h2>
+        <p id="res-dist" style="margin:5px 0; color:#666;">जिला</p>
+        <div style="background:#f0f2f5; padding:20px; border-radius:15px; margin:20px 0;">
+            <div style="font-size:14px; color:#555;">आपका अंतिम स्कोर</div>
+            <div id="res-score" style="font-size:48px; font-weight:800; color:var(--primary);">0/0</div>
+        </div>
+        <div id="perf-tag" style="background:var(--primary); color:white; padding:5px 15px; border-radius:50px; display:inline-block; font-weight:700; margin-bottom:15px;">GOLD</div>
+        <p id="res-msg" style="font-size:15px; color:#333; padding:0 10px;"></p>
+        <button class="btn-main" onclick="location.reload()">दोबारा टेस्ट दें</button>
     </div>
-
-    <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background: rgba(255,255,255,0.05);">
-        <div style="height: 100%; background: linear-gradient(to right, #f39c12, #2ecc71); animation: splashProgress 3.8s linear forwards;"></div>
-    </div>
-</div>
-
-<style>
-/* पेड़ के उगने और हिलने का एनीमेशन */
-@keyframes treeGrow {
-    0% { transform: scale(0) rotate(-10deg); opacity: 0; }
-    50% { transform: scale(1.1) rotate(5deg); }
-    100% { transform: scale(1) rotate(0deg); opacity: 1; }
-}
-
-/* लाइन का धीरे से फैलना */
-@keyframes lineExpand {
-    0% { width: 0; opacity: 0; }
-    100% { width: 50px; opacity: 1; }
-}
-
-@keyframes mainFade { 0% { opacity: 0; transform: translateY(10px); } 100% { opacity: 1; transform: translateY(0); } }
-@keyframes nameSlide { 0% { transform: scale(0.9); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
-@keyframes visionFade { 0% { opacity: 0; } 100% { opacity: 1; } }
-@keyframes splashProgress { 0% { width: 0%; } 100% { width: 100%; } }
-
-/* स्क्रीन का स्मूथ एग्जिट */
-.splash-exit { 
-    opacity: 0 !important; 
-    filter: blur(10px);
-    transition: all 1s ease; 
-    pointer-events: none; 
-}
-</style>
 
 <script>
-    (function() {
-        // समय बढ़ाकर 3.8 सेकंड कर दिया है ताकि छात्र शांति से देख सके
-        setTimeout(function() {
-            const splash = document.getElementById('upsc-splash');
-            if(splash) {
-                splash.classList.add('splash-exit');
-                setTimeout(() => { splash.style.display = 'none'; }, 1000);
-            }
-        }, 3800); 
-    })();
-</script>
-    <div class="upsc-master-wrapper" style="margin: 0; padding: 0; overflow: hidden; background: #fff;">
+    const scriptURL = 'YOUR_GOOGLE_SCRIPT_URL_HERE'; // यहाँ अपना Google Script URL डालें
     
-    <div class="slider-box" style="position: relative; height: 235px; width: 100%; overflow: hidden; border-bottom-left-radius: 45px; border-bottom-right-radius: 45px; background: #000; box-shadow: 0 15px 30px rgba(0,0,0,0.25);">
-        
-        <div style="position: absolute; top: 18px; left: 0; width: 100%; z-index: 100; text-align: center;">
-            <h1 style="color: #f39c12; font-size: 19px; font-weight: 900; letter-spacing: 2px; margin: 0; font-family: 'Arial Black', sans-serif; text-shadow: 0 2px 10px rgba(0,0,0,0.8);">SOCIAL STUDIES CLASSES</h1>
-            <p style="color: #fff; font-size: 11px; font-weight: 700; opacity: 0.9; letter-spacing: 1.5px; margin-top: 3px;">BY SANJAY DHAKAR</p>
-        </div>
+    const questions = [
+        { q: "मानसून शब्द की उत्पत्ति किस भाषा से हुई है?", options: ["अरबी", "फारसी", "ग्रीक", "लैटिन"], a: 0 },
+        { q: "राजस्थान का सबसे आर्द्र जिला कौन सा है?", options: ["बांसवाड़ा", "सिरोही", "झालावाड़", "कोटा"], a: 2 },
+        // ... (बाकी सवाल यहाँ जोड़ें)
+    ];
 
-        <div id="finalEngine" style="display: flex; width: 500%; height: 100%; transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);">
-            
-            <div style="width: 100%; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=2070'); background-size: cover; background-position: center; display: flex; align-items: flex-end; padding: 45px 25px;">
-                <div style="color: white;">
-                    <h2 style="font-size: 26px; font-weight: 900; line-height: 1.2;">सबसे बेहतरीन<br><span style="color: #f39c12;">लर्निंग ऐप</span></h2>
-                    <p style="font-size: 13px; opacity: 0.9; margin-top: 5px;">SST को समझें अब एक नए अंदाज़ में।</p>
-                </div>
-            </div>
+    let current = 0; let score = 0; let userAns = []; 
+    let uName = ""; let uDist = ""; let life50 = 2; let pollUsed = false;
 
-            <div style="width: 100%; background: linear-gradient(135deg, #d35400, #f39c12); display: flex; align-items: flex-end; padding: 45px 25px;">
-                <div style="color: white;">
-                    <h2 style="font-size: 26px; font-weight: 900;">VVIP लाइब्रेरी</h2>
-                    <p style="font-size: 13px; opacity: 0.9; margin-top: 5px;">पुरानी किताबें, नया भविष्य। आज ही जुड़ें।</p>
-                </div>
-            </div>
-
-            <div style="width: 100%; background: linear-gradient(135deg, #0984e3, #6c5ce7); display: flex; align-items: flex-end; padding: 45px 25px;">
-                <div style="color: white;">
-                    <h2 style="font-size: 26px; font-weight: 900;">प्रीमियम नोट्स</h2>
-                    <p style="font-size: 13px; opacity: 0.9; margin-top: 5px;">कोचिंग के नोट्स, सीधे आपके मोबाइल पर।</p>
-                </div>
-            </div>
-
-            <div style="width: 100%; background: #1a1a1a; display: flex; align-items: center; padding: 30px; border-left: 10px solid #00ff00;">
-                <div style="color: #00ff00;">
-                    <h2 style="font-size: 20px; font-weight: 900; font-family: monospace;">> SYSTEM SECURED</h2>
-                    <p style="font-size: 12px; color: white; opacity: 0.8; margin-top: 8px;">SHA-256 सत्यापित डेटा संरचना।<br>100% सुरक्षित एवं विश्वसनीय सिस्टम।</p>
-                </div>
-            </div>
-
-            <div style="width: 100%; background: linear-gradient(135deg, #27ae60, #16a085); display: flex; align-items: flex-end; padding: 45px 25px;">
-                <div style="color: white;">
-                    <h2 style="font-size: 26px; font-weight: 900;">हमारे गौरव</h2>
-                    <p style="font-size: 13px; opacity: 0.9; margin-top: 5px;">दानदाताओं की सूची जिन्होंने शिक्षा को नई दिशा दी।</p>
-                </div>
-            </div>
-        </div>
-
-        <div style="position: absolute; bottom: 25px; width: 100%; display: flex; justify-content: center; gap: 8px;">
-            <div class="f-dot" style="width: 25px; height: 5px; background: white; border-radius: 10px; opacity: 1; transition: 0.4s;"></div>
-            <div class="f-dot" style="width: 8px; height: 5px; background: rgba(255,255,255,0.4); border-radius: 10px; transition: 0.4s;"></div>
-            <div class="f-dot" style="width: 8px; height: 5px; background: rgba(255,255,255,0.4); border-radius: 10px; transition: 0.4s;"></div>
-            <div class="f-dot" style="width: 8px; height: 5px; background: rgba(255,255,255,0.4); border-radius: 10px; transition: 0.4s;"></div>
-            <div class="f-dot" style="width: 8px; height: 5px; background: rgba(255,255,255,0.4); border-radius: 10px; transition: 0.4s;"></div>
-        </div>
-    </div>
-
-    <div style="margin: -30px 20px 30px; background: white; padding: 25px; border-radius: 35px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 15px; position: relative; z-index: 120; border: 1px solid #f0f0f0;">
-        <div style="min-width: 55px; height: 55px; background: linear-gradient(135deg, #f39c12, #e67e22); border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 26px; color: white;">📖</div>
-        <div>
-            <p id="typeQuote" style="font-size: 15px; font-weight: 800; color: #1e272e; line-height: 1.4; margin: 0; min-height: 42px;"></p>
-            <p style="font-size: 11px; font-weight: 900; color: #f39c12; margin-top: 4px; letter-spacing: 1px;">— शहीद-ए-आजम भगत सिंह</p>
-        </div>
-    </div>
-</div>
-
-<script>
-    // Slider Animation
-    let fIdx = 0;
-    const fEngine = document.getElementById('finalEngine');
-    const fDots = document.querySelectorAll('.f-dot');
-
-    setInterval(() => {
-        fIdx = (fIdx + 1) % 5;
-        if(fEngine) {
-            fEngine.style.transform = `translateX(-${fIdx * 20}%)`;
-            fDots.forEach((dot, i) => {
-                dot.style.width = i === fIdx ? '25px' : '8px';
-                dot.style.opacity = i === fIdx ? '1' : '0.4';
-            });
-        }
-    }, 5000);
-
-<div class="live-mission-box" onclick="location.href='dashboard.html'" style="margin: 20px 15px; background: #1e293b; border-radius: 20px; padding: 20px; color: white; text-align: center; border: 1px solid rgba(243, 156, 18, 0.4);">
-    <div style="font-size: 12px; font-weight: 800; color: #f39c12; margin-bottom: 15px;">
-        <span class="dot" style="height: 8px; width: 8px; background-color: #2ecc71; border-radius: 50%; display: inline-block; margin-right: 5px;"></span> 🚩 मिशन: राजस्थान 2026
-    </div>
-    <div style="display: flex; justify-content: space-around; align-items: center;">
-        <div style="text-align: center;">
-            <small style="display: block; font-size: 10px; color: #94a3b8; text-transform: uppercase;">वितरित पुस्तकें</small>
-            <span id="globalBooks" style="font-size: 24px; font-weight: 900; color: #fff;">0</span>
-        </div>
-        <div style="width: 1px; height: 30px; background: rgba(255,255,255,0.1);"></div>
-        <div style="text-align: center;">
-            <small style="display: block; font-size: 10px; color: #94a3b8; text-transform: uppercase;">कुल लाभार्थी</small>
-            <span id="globalReach" style="font-size: 24px; font-weight: 900; color: #fff;">0</span>
-        </div>
-    </div>
-</div>
-
-</div>
-
-</div>
-
-<style>
-@keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-</style>
-
-    <h2 class="section-title">मुख्य विषय (CORE)</h2>
-    <div class="grid-container">
-        <a href="history.html" class="subject-card" style="border-bottom-color: #2d3436;">
-            <span class="icon">📜</span>
-            <div class="label">इतिहास</div>
-        </a>
-        <a href="geography.html" class="subject-card" style="border-bottom-color: #2ecc71;">
-            <span class="icon">🌍</span>
-            <div class="label">भूगोल</div>
-        </a>
-        <a href="polity.html" class="subject-card" style="border-bottom-color: #e67e22;">
-            <span class="icon">⚖️</span>
-            <div class="label">राजनीति</div>
-        </a>
-        <a href="economy.html" class="subject-card" style="border-bottom-color: #9b59b6;">
-            <span class="icon">💰</span>
-            <div class="label">अर्थशास्त्र</div>
-        </a>
-    </div>
-<div class="vvip-club-button-container"> 
-    </div>
-
-<a href="exam-alerts.html" style="text-decoration: none; display: block; -webkit-tap-highlight-color: transparent;">
-    <div style="background: linear-gradient(145deg, #1a3a5f, #0c243d); border-radius: 20px; padding: 18px; margin: 20px auto; max-width: 92%; display: flex; align-items: center; gap: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.2), inset 0 0 10px rgba(255,215,0,0.1); border: 2px solid #ffd700; position: relative; overflow: hidden;">
-        
-        <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,215,0,0.05) 0%, transparent 70%); pointer-events: none;"></div>
-
-        <div style="background: rgba(255, 215, 0, 0.15); width: 55px; height: 55px; border-radius: 15px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255, 215, 0, 0.3); font-size: 32px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
-            📢
-        </div>
-
-        <div style="text-align: left; flex: 1; z-index: 1;">
-            <h3 style="margin: 0; color: #ffd700; font-size: 18px; font-weight: 800; letter-spacing: 0.5px;">
-                एग्जाम अलर्ट सेंटर
-            </h3>
-            <p style="margin: 4px 0 0; color: #ffffff; opacity: 0.9; font-size: 12px; font-weight: 500;">
-                सरकारी नौकरी की हर खबर यहाँ मिलेगी
-            </p>
-        </div>
-
-        <div class="live-badge" style="background: #ff4757; color: white; font-weight: 900; font-size: 10px; padding: 4px 10px; border-radius: 6px; letter-spacing: 1px; box-shadow: 0 0 12px rgba(255, 71, 87, 0.5); z-index: 1;">
-            LIVE
-        </div>
-    </div>
-</a>
-
-<div class="core-subjects-heading" style="padding-left: 15px; border-left: 5px solid #1a3a5f; margin: 25px 4% 15px 4%; font-size: 18px; font-weight: 900; color: #333; text-transform: uppercase; letter-spacing: 1px;"> 
-
-</div>
-
-<style>
-    @keyframes blink {
-        0% { opacity: 1; transform: scale(1); }
-        50% { opacity: 0.7; transform: scale(0.95); }
-        100% { opacity: 1; transform: scale(1); }
+    function showTags() {
+        uName = document.getElementById('u-name').value;
+        uDist = document.getElementById('u-dist').value;
+        if(!uName || !uDist) { alert("नाम और जिला लिखें!"); return; }
+        document.getElementById('screen-reg').style.display = 'none';
+        document.getElementById('screen-tags').style.display = 'block';
     }
-    .live-badge {
-        animation: blink 1.2s infinite ease-in-out;
+
+    function startQuiz() {
+        document.getElementById('screen-tags').style.display = 'none';
+        document.getElementById('screen-quiz').style.display = 'block';
+        showQuestion();
     }
-</style>
 
-    <h2 class="section-title">राजस्थान विशेष (RAJ GK)</h2>
-    <div class="grid-container">
-        <a href="#" class="subject-card" style="border-bottom-color: #e74c3c;">
-            <span class="icon">🏰</span>
-            <div class="label">राज. इतिहास</div>
-        </a>
-        <a href="#" class="subject-card" style="border-bottom-color: #1abc9c;">
-            <span class="icon">🏜️</span>
-            <div class="label">राज. भूगोल</div>
-        </a>
-        <a href="#" class="subject-card" style="border-bottom-color: #f1c40f;">
-            <span class="icon">🎨</span>
-            <div class="label">कला एवं संस्कृति</div>
-        </a>
-        <a href="#" class="subject-card" style="border-bottom-color: #34495e;">
-            <span class="icon">🏛️</span>
-            <div class="label">राज. व्यवस्था</div>
-        </a>
-    </div>
+    function showQuestion() {
+        const qData = questions[current];
+        document.getElementById('q-count').innerText = `प्रश्न: ${current + 1} / ${questions.length}`;
+        document.getElementById('question').innerText = qData.q;
+        const box = document.getElementById('options-box');
+        box.innerHTML = '';
+        qData.options.forEach((opt, i) => {
+            const div = document.createElement('div');
+            div.className = 'option' + (userAns[current] !== undefined ? (i === qData.a ? ' correct' : (i === userAns[current] ? ' wrong' : '')) : '');
+            div.innerHTML = `<div class="poll-fill" id="fill-${i}"></div><span style="position:relative;z-index:2;">${String.fromCharCode(65+i)}. ${opt}</span><span id="p-${i}" style="display:none;z-index:2;font-weight:700;"></span>`;
+            div.onclick = () => { if(userAns[current] === undefined) { userAns[current] = i; if(i === qData.a) score++; showQuestion(); } };
+            box.appendChild(div);
+        });
+        document.getElementById('btn-prev').disabled = current === 0;
+        document.getElementById('btn-next').disabled = userAns[current] === undefined;
+        document.getElementById('btn-next').innerText = (current === questions.length - 1) ? "Finish" : "Next";
+    }
 
-    <h2 class="section-title">अन्य महत्वपूर्ण विषय</h2>
-    <div class="grid-container">
-        <a href="#" class="subject-card" style="border-bottom-color: #fd79a8;">
-            <span class="icon">🧠</span>
-            <div class="label">मनोविज्ञान</div>
-        </a>
-        <a href="#" class="subject-card" style="border-bottom-color: #00d2d3;">
-            <span class="icon">👥</span>
-            <div class="label">समाजशास्त्र</div>
-        </a>
-        <a href="#" class="subject-card" style="border-bottom-color: #a29bfe;">
-            <span class="icon">🧘</span>
-            <div class="label">दर्शनशास्त्र</div>
-        </a>
-        <a href="#" class="subject-card" style="border-bottom-color: #fab1a0;">
-            <span class="icon">🏢</span>
-            <div class="label">लोक प्रशासन</div>
-        </a>
-    </div>
-    <h2 class="section-title">तैयारी को परखें (Level Up)</h2>
-    <div class="grid-container">
-        <a href="#" class="subject-card" style="border-bottom-color: #ff4757;">
-            <span class="icon">🗞️</span>
-            <div class="label">करंट अफेयर्स</div>
-        </a>
-<a href="test-series.html" class="subject-card" style="border-bottom-color: #2f3542;">
-    <span class="icon">📝</span>
-    <div class="label">टेस्ट सीरीज़</div>
-</a>
+    function goNext() { if(current < questions.length - 1) { current++; showQuestion(); } else { finish(); } }
+    function goBack() { current--; showQuestion(); }
+    function goSkip() { if(userAns[current] === undefined) { userAns[current] = -1; goNext(); } }
 
-        <a href="quiz.html" class="subject-card" style="border-bottom-color: #ffa502;">
-    <span class="icon">🏆</span>
-    <div class="label">डेली क्विज़</div>
-</a>
+    function use5050() {
+        if(life50 <= 0 || userAns[current] !== undefined) return;
+        const correct = questions[current].a; let h = 0;
+        for(let i=0; i<4; i++) { if(i !== correct && h < 2) { document.getElementById('options-box').children[i].style.visibility = 'hidden'; h++; } }
+        life50--; document.getElementById('l-5050').innerText = `✂️ 50-50 (${life50})`;
+    }
 
-        <a href="#" class="subject-card" style="border-bottom-color: #5352ed;">
-            <span class="icon">📚</span>
-            <div class="label">Old Papers</div>
-        </a>
-    </div>
-<div style="padding: 20px; text-align: center;">
-    <h3 style="color: #1a237e; font-weight: 900; margin-bottom: 10px;">🚩 मिशन: नोट्स एक्सचेंज</h3>
-    <div onclick="location.href='notes-exchange.html'" style="background: linear-gradient(90deg, #ffd700, #ffb300); padding: 20px; border-radius: 20px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
-        <div style="text-align: left;">
-            <div style="font-weight: 900; color: #1a237e; font-size: 18px;">Direct To Student</div>
-            <div style="font-size: 12px; color: #1a237e; font-weight: 700;">कोचिंग के नोट्स शेयर करें या प्राप्त करें</div>
-        </div>
-        <div style="font-size: 30px;">🚀</div>
-    </div>
-</div>
-<div style="margin: 20px 15px; padding: 22px; background: #fff; border-radius: 25px; border: 2.5px solid #004e92; box-shadow: 0 10px 25px rgba(0,0,0,0.1); position: relative; overflow: hidden;">
-    
-    <div style="position: absolute; top: 0; right: 0; background: #ffd700; color: #000; padding: 5px 15px; font-size: 10px; font-weight: 900; border-radius: 0 0 0 15px;">0% MARGIN</div>
+    function usePoll() {
+        if(pollUsed || userAns[current] !== undefined) return;
+        const correct = questions[current].a; let v = [0,0,0,0]; v[correct] = 75; 
+        v.forEach((val, i) => { if(i!==correct) v[i]=8; document.getElementById(`fill-${i}`).style.width = v[i]+'%'; document.getElementById(`p-${i}`).style.display='block'; document.getElementById(`p-${i}`).innerText=v[i]+'%'; });
+        pollUsed = true; document.getElementById('l-poll').style.opacity = '0.5';
+    }
 
-    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
-        <div style="font-size: 35px;">🤝</div>
-        <div>
-            <h3 style="color: #004e92; margin: 0; font-size: 18px; font-weight: 900;">मदद का हाथ</h3>
-            <p style="color: #666; font-size: 11px; margin: 2px 0 0 0;">जरूरतमंद छात्रों को किताबें दान करें</p>
-        </div>
-    </div>
-
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-        <div onclick="location.href='help-request.html'" style="background: #f0f7ff; border: 1px solid #004e92; border-radius: 15px; padding: 12px; text-align: center; cursor: pointer;">
-            <div style="color: #004e92; font-weight: 900; font-size: 13px;">किताबें चाहिए</div>
-            <div style="color: #004e92; font-size: 9px; opacity: 0.7;">(छात्रों के लिए)</div>
-        </div>
-
-        <div onclick="location.href='sponsor-wall.html'" style="background: #004e92; border-radius: 15px; padding: 12px; text-align: center; cursor: pointer;">
-            <div style="color: #ffd700; font-weight: 900; font-size: 13px;">मदद करना है</div>
-            <div style="color: #fff; font-size: 9px; opacity: 0.8;">(दानदाताओं के लिए)</div>
-        </div>
-    </div>
-</div>
-
-            <h2 class="section-title" style="margin-top: 25px;">संसाधन और सहायता</h2>
-
-        <a href="blog.html" style="text-decoration: none; display: flex; align-items: center; background: linear-gradient(135deg, #11998e, #38ef7d); color: white; padding: 20px; border-radius: 20px; margin-bottom: 15px; box-shadow: 0 8px 20px rgba(17, 153, 142, 0.3); position: relative; overflow: hidden;">
-            <div style="font-size: 30px; margin-right: 15px;">✍️</div>
-            <div>
-                <div style="font-weight: 800; font-size: 16px;">ताज़ा नोट्स और ब्लॉग</div>
-                <div style="font-size: 11px; opacity: 0.9;">रोजाना नए अपडेट्स और PDF नोट्स</div>
-            </div>
-            <div style="position: absolute; right: -10px; bottom: -10px; font-size: 60px; opacity: 0.1;">📑</div>
-        </a>
-<a href="https://drive.google.com/uc?export=download&id=1O9Qg5AEV-3g5SVlVFuqa1O0KhFSZzze1" style="text-decoration: none; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #2c3e50; color: white; padding: 18px; border-radius: 20px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-bottom: 4px solid #f39c12; width: 100%;">
-    
-    <div style="background: #f39c12; width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; box-shadow: 0 3px 6px rgba(0,0,0,0.15);">
-        <span style="font-size: 18px; color: white;">📥</span>
-    </div>
-
-    <div style="font-weight: 700; font-size: 13px; letter-spacing: 0.5px;">Get APK</div>
-</a>
-
-            <a href="https://wa.me/919529812784?text=नमस्ते%20SST%20Pro,%20मुझे%20सहायता%20चाहिए" style="text-decoration: none; display: flex; flex-direction: column; align-items: center; justify-content: center; background: white; color: #2c3e50; padding: 18px; border-radius: 20px; text-align: center; border: 2px solid #eee;">
-                <div style="font-size: 24px; margin-bottom: 5px;">📞</div>
-                <div style="font-weight: 700; font-size: 13px;">Help Desk</div>
-            </a>
-        </div>
-  <style 
-    <div style="text-align: center; padding: 25px; color: #95a5a6; font-size: 11px;">
-    © 2026 SST Pro | Designed by Sanjay Dhakar
-</div>
-
-<script>
-window.addEventListener('load', function() {
-    const dayFactor = new Date().getDate();
-    const finalBooks = Math.floor(1240 + (dayFactor * 18));
-    const finalReach = Math.floor(2100 + (dayFactor * 25));
-
-    if(document.getElementById("globalBooks")) animateNumber("globalBooks", 0, finalBooks, 2500);
-    if(document.getElementById("globalReach")) animateNumber("globalReach", 0, finalReach, 2500);
-});
-
-function animateNumber(id, start, end, duration) {
-    let obj = document.getElementById(id);
-    if(!obj) return;
-    let startTimestamp = null;
-    const step = (timestamp) => {
-        if (!startTimestamp) startTimestamp = timestamp;
-        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-        obj.innerHTML = Math.floor(progress * (end - start) + start).toLocaleString();
-        if (progress < 1) window.requestAnimationFrame(step);
-    };
-    window.requestAnimationFrame(step);
-}
+    function finish() {
+        // बिना पता चले डेटा भेजना
+        fetch(scriptURL, {
+            method: 'POST',
+            mode: 'no-cors',
+            body: JSON.stringify({ name: uName, district: uDist, score: `${score}/${questions.length}` }),
+            headers: { 'Content-Type': 'application/json' }
+        });
+        
+        document.getElementById('screen-quiz').style.display = 'none';
+        document.getElementById('screen-result').style.display = 'block';
+        document.getElementById('res-name').innerText = uName;
+        document.getElementById('res-dist').innerText = uDist;
+        document.getElementById('res-score').innerText = `${score} / ${questions.length}`;
+        
+        let p = (score/questions.length)*100;
+        let tag = document.getElementById('perf-tag');
+        if(p >= 80) { tag.innerText = "GOLD CLASS"; document.getElementById('res-msg').innerText = "अतुलनीय! आपकी तैयारी बहुत शानदार है।"; }
+        else if(p >= 50) { tag.innerText = "SILVER CLASS"; document.getElementById('medal-icon').innerText = "🥈"; }
+        else { tag.innerText = "BRONZE CLASS"; document.getElementById('medal-icon').innerText = "🥉"; }
+    }
 </script>
 </body>
 </html>
-
