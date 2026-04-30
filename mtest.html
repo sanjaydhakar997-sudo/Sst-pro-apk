@@ -3,303 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SST PRO - Social Studies Classes</title>
-    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>SST PRO - Sanjay Sir Official</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #1a237e;
-            --accent: #ffd700;
-            --success: #2ecc71;
-            --error: #e74c3c;
-            --white: #ffffff;
-            --bg: #f0f2f5;
-        }
+        :root { --primary: #1a237e; --accent: #ffd700; --success: #2ecc71; --error: #e74c3c; --bg: #f0f2f5; }
+        body { font-family: 'Hind', sans-serif; background: var(--bg); margin: 0; padding: 10px; display: flex; flex-direction: column; align-items: center; }
 
-        body {
-            font-family: 'Hind', sans-serif;
-            background-color: var(--bg);
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            padding: 10px;
-        }
+        /* प्रोफेशनल हेडर */
+        .header { width: 100%; max-width: 500px; background: linear-gradient(135deg, var(--primary), #0d47a1); color: white; text-align: center; padding: 25px 15px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); border-bottom: 5px solid var(--accent); margin-bottom: 25px; box-sizing: border-box; }
+        
+        .card { width: 100%; max-width: 500px; background: white; border-radius: 25px; padding: 30px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); box-sizing: border-box; text-align: center; border: 1px solid #e0e0e0; }
+        
+        /* इनपुट और फॉर्म स्टाइल */
+        .input-group { text-align: left; margin-bottom: 20px; }
+        .input-group label { display: block; font-weight: 600; color: #555; margin-bottom: 8px; font-size: 14px; }
+        input { width: 100%; padding: 14px; border: 2px solid #eaeff5; border-radius: 12px; font-size: 16px; box-sizing: border-box; }
+        input:focus { border-color: var(--primary); outline: none; }
 
-        /* प्रीमियम हेडर */
-        .header {
-            width: 100%;
-            max-width: 500px;
-            background: linear-gradient(135deg, var(--primary), #000051);
-            color: white;
-            text-align: center;
-            padding: 20px 10px;
-            border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-            border-bottom: 4px solid var(--accent);
-            margin-bottom: 20px;
-        }
+        .instruction-box { background: #fffde7; border-left: 5px solid var(--accent); padding: 15px; text-align: left; border-radius: 10px; margin-bottom: 25px; font-size: 14px; color: #444; }
 
-        .header h1 { margin: 0; font-size: 22px; color: var(--accent); text-transform: uppercase; }
-        .header p { margin: 5px 0 0; font-size: 14px; opacity: 0.9; }
-
-        /* लाइफलाइन बटन */
-        .lifeline-bar {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            width: 100%;
-            max-width: 500px;
-            justify-content: center;
-        }
-
-        .ll-btn {
-            background: var(--white);
-            border: 2px solid var(--primary);
-            padding: 8px 15px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 13px;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            transition: 0.3s;
-        }
-
-        .ll-btn.used { background: #ddd; color: #888; border-color: #bbb; cursor: not-allowed; }
-
-        /* क्विज कंटेनर */
-        .quiz-card {
-            width: 100%;
-            max-width: 500px;
-            background: var(--white);
-            border-radius: 20px;
-            padding: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            box-sizing: border-box;
-        }
-
-        .q-number {
-            background: var(--accent);
-            color: var(--primary);
-            padding: 4px 12px;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 14px;
-            display: inline-block;
-            margin-bottom: 15px;
-        }
-
-        .question { font-size: 19px; font-weight: 600; color: #333; line-height: 1.5; margin-bottom: 20px; }
-
-        /* विकल्प डिजाइन */
-        .option {
-            background: #f8f9fa;
-            border: 2px solid #eee;
-            padding: 14px 18px;
-            margin-bottom: 12px;
-            border-radius: 12px;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: 0.2s;
-            font-weight: 500;
-        }
-
+        .btn-main { background: linear-gradient(to right, var(--primary), #3949ab); color: white; border: none; padding: 16px; border-radius: 12px; width: 100%; font-size: 18px; font-weight: 700; cursor: pointer; transition: 0.3s; }
+        
+        /* क्विज ऑप्शन स्टाइल */
+        .option { background: #f8f9fa; border: 2px solid #eee; padding: 15px; margin-bottom: 12px; border-radius: 15px; cursor: pointer; text-align: left; font-weight: 500; display: flex; justify-content: space-between; transition: 0.2s; }
         .option.correct { background: var(--success) !important; color: white; border-color: var(--success); }
         .option.wrong { background: var(--error) !important; color: white; border-color: var(--error); }
-        .option.hidden { visibility: hidden; }
 
-        .poll-fill {
-            position: absolute; left: 0; top: 0; height: 100%;
-            background: rgba(26, 35, 126, 0.1); width: 0%; transition: 1s ease-out;
-        }
+        .nav-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 25px; }
+        .btn-nav { padding: 12px; border-radius: 10px; border: none; font-weight: 700; cursor: pointer; }
 
-        .poll-percent { font-weight: 700; color: var(--primary); display: none; }
-
-        /* नेविगेशन */
-        .nav-buttons {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-            border-top: 1px solid #eee;
-            padding-top: 15px;
-        }
-
-        .btn {
-            padding: 10px 25px;
-            border-radius: 10px;
-            border: none;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .btn-back { background: #e0e0e0; color: #666; }
-        .btn-next { background: var(--primary); color: white; }
-        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
-
-        /* रिजल्ट स्क्रीन */
-        .result-screen { text-align: center; display: none; animation: fadeIn 0.5s; }
-        .score-box { font-size: 45px; font-weight: 800; color: var(--primary); margin: 20px 0; }
-        
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        #result-screen { display: none; }
+        .medal { font-size: 60px; margin-bottom: 10px; }
     </style>
 </head>
 <body>
 
     <div class="header">
-        <h1>Social Studies Classes</h1>
-        <p>संजय सर की स्पेशल क्विज सीरीज</p>
+        <h1 style="margin:0;">Social Studies Classes</h1>
+        <p style="margin:5px 0 0; font-size:14px; opacity:0.9;">संजय सर: ऑनलाइन टेस्ट सीरीज</p>
     </div>
 
-    <div class="lifeline-bar" id="lifeline-section">
-        <button id="l-5050" class="ll-btn" onclick="use5050()">✂️ 50-50 (2-2 बार)</button>
-        <button id="l-poll" class="ll-btn" onclick="usePoll()">📊 Audience Poll</button>
+    <div id="screen-reg" class="card">
+        <h2 style="color:var(--primary); margin-top:0;">विद्यार्थी पंजीकरण</h2>
+        <div class="instruction-box">
+            <strong>📢 ध्यान दें:</strong> अपना सही नाम और जिला भरें ताकि टॉपर्स की लिस्ट में आपका नाम सही से आ सके।
+        </div>
+        <div class="input-group">
+            <label>आपका शुभ नाम</label>
+            <input type="text" id="u-name" placeholder="नाम यहाँ लिखें...">
+        </div>
+        <div class="input-group">
+            <label>आपका जिला</label>
+            <input type="text" id="u-dist" placeholder="जिला यहाँ लिखें...">
+        </div>
+        <button class="btn-main" onclick="showTags()">आगे बढ़ें →</button>
     </div>
 
-    <div class="quiz-card">
-        <div id="quiz-ui">
-            <div id="q-num-tag" class="q-number">प्रश्न: 1</div>
-            <div id="question" class="question">लोड हो रहा है...</div>
-            <div id="options-box"></div>
-            
-            <div class="nav-buttons">
-                <button id="back-btn" class="btn btn-back" onclick="goBack()" disabled>Back</button>
-                <button id="next-btn" class="btn btn-next" onclick="goNext()" disabled>Next</button>
-            </div>
+    <div id="screen-tags" class="card" style="display:none;">
+        <h3 style="color:var(--primary);">🎯 यह टेस्ट किसके लिए है?</h3>
+        <div style="margin:15px 0;">
+            <span style="background:var(--primary); color:white; padding:5px 12px; border-radius:50px; font-size:12px; margin:3px; display:inline-block;">REET L-1 & L-2</span>
+            <span style="background:var(--primary); color:white; padding:5px 12px; border-radius:50px; font-size:12px; margin:3px; display:inline-block;">CET</span>
+            <span style="background:var(--primary); color:white; padding:5px 12px; border-radius:50px; font-size:12px; margin:3px; display:inline-block;">2nd Grade</span>
+            <span style="background:var(--primary); color:white; padding:5px 12px; border-radius:50px; font-size:12px; margin:3px; display:inline-block;">Rajasthan Police</span>
         </div>
+        <button class="btn-main" onclick="startQuiz()">टेस्ट शुरू करें 🚀</button>
+    </div>
 
-        <div id="result-screen" class="result-screen">
-            <h2 style="color: var(--primary);">आपका फाइनल रिजल्ट</h2>
-            <div id="score-display" class="score-box">0/0</div>
-            <p id="feedback" style="font-weight: 600; font-size: 18px;"></p>
-            <button class="btn btn-next" style="margin-top: 20px;" onclick="location.reload()">दोबारा टेस्ट दें</button>
+    <div id="screen-quiz" class="card" style="display:none;">
+        <div id="q-count" style="font-weight:700; color:var(--primary); margin-bottom:10px;"></div>
+        <div id="question" style="font-size:19px; font-weight:600; text-align:left; margin-bottom:20px;">लोड हो रहा है...</div>
+        <div id="options-box"></div>
+        
+        <div class="nav-grid">
+            <button id="btn-prev" class="btn-nav" style="background:#ddd;" onclick="goBack()">Back</button>
+            <button id="btn-skip" class="btn-nav" style="background:#fff3e0; color:#e65100;" onclick="goSkip()">Skip</button>
+            <button id="btn-next" class="btn-nav" style="background:var(--primary); color:white;" onclick="goNext()">Next</button>
         </div>
+    </div>
+
+    <div id="screen-result" class="card">
+        <div id="medal" class="medal">🏆</div>
+        <h2 id="res-name" style="margin:0;">नाम</h2>
+        <p id="res-dist" style="color:#666; margin-bottom:20px;">जिला</p>
+        <div style="border: 2px solid var(--primary); padding:20px; border-radius:20px; background:#f8f9fa; margin-bottom:20px;">
+            <div style="font-size:14px; color:#555;">आपका कुल स्कोर</div>
+            <div id="res-score" style="font-size:50px; font-weight:800; color:var(--primary);">0/0</div>
+        </div>
+        <p id="res-msg" style="font-weight:600; color:#333;"></p>
+        <button class="btn-main" onclick="location.reload()">दोबारा टेस्ट दें</button>
     </div>
 
 <script>
-    // --- 1. 100 महत्वपूर्ण सवालों का डेटा ---
+    // आपका गूगल शीट लिंक यहाँ फिट कर दिया गया है
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyjgh5VuLxdek4DeE-l6wsBFi9KWhhD6VPmhkZTYxkzEO3tmg0KwKxVzqwwBqg5CP2_/exec'; 
+
     const questions = [
-        { q: "मानसून शब्द की उत्पत्ति किस भाषा के 'मौसिम' शब्द से हुई है?", options: ["अरबी", "फारसी", "ग्रीक", "लैटिन"], a: 0 },
-        { q: "भारत में दक्षिण-पश्चिम मानसून सबसे पहले कहाँ प्रवेश करता है?", options: ["राजस्थान", "केरल", "महाराष्ट्र", "गुजरात"], a: 1 },
-        { q: "विश्व में सर्वाधिक वर्षा वाला स्थान 'मासिनराम' किस राज्य में है?", options: ["असम", "मेघालय", "सिक्किम", "मिजोरम"], a: 1 },
-        { q: "राजस्थान में शीतकाल में होने वाली वर्षा क्या कहलाती है?", options: ["लू", "मावट", "पुरवैया", "नार्वेस्टर"], a: 1 },
-        { q: "कोपेन के अनुसार 'BWhw' जलवायु प्रदेश की मुख्य विशेषता क्या है?", options: ["अत्यधिक वर्षा", "शुष्क मरुस्थल", "अर्द्धशुष्क", "उपाद्र"], a: 1 },
-        { q: "राजस्थान का सबसे आर्द्र (Humid) जिला कौन सा है?", options: ["सिरोही", "बांसवाड़ा", "झालावाड़", "कोटा"], a: 2 },
-        { q: "अक्टूबर-नवंबर में 'लौटते मानसून' से किस तट पर वर्षा होती है?", options: ["कोरोमंडल", "मालाबार", "कोंकण", "उत्तरी सरकार"], a: 0 },
-        { q: "राजस्थान में 'पुरवैया' हवाएं किस दिशा से आती हैं?", options: ["उत्तर", "पश्चिम", "दक्षिण", "पूर्व"], a: 3 },
-        { q: "भारतीय कृषि को किसका 'जुआ' कहा जाता है?", options: ["व्यापार", "कृषि", "मानसून", "बाजार"], a: 2 },
-        { q: "राजस्थान का 'चेरापूंजी' किसे कहा जाता है?", options: ["माउंट आबू", "झालावाड़", "बांसवाड़ा", "उदयपुर"], a: 1 }
-        // (आप यहाँ और भी सवाल ऊपर वाले फॉर्मेट में जोड़ सकते हैं)
+        { q: "मानसून शब्द की उत्पत्ति किस भाषा से हुई है?", options: ["अरबी", "फारसी", "लैटिन", "ग्रीक"], a: 0 },
+        { q: "राजस्थान का सबसे आर्द्र स्थान कौन सा है?", options: ["झालावाड़", "माउंट आबू", "बांसवाड़ा", "कोटा"], a: 1 },
+        { q: "मावट की वर्षा कौन सी फसल के लिए लाभदायक है?", options: ["बाजरा", "मक्का", "गेहूँ", "ज्वार"], a: 2 }
+        // यहाँ अपने बाकी सवाल इसी तरह जोड़ें...
     ];
 
-    // --- 2. लॉजिक और वेरिएबल्स ---
-    let currentIdx = 0; 
-    let score = 0; 
-    let userAnswers = []; 
-    let life5050 = 2; 
-    let pollUsed = false;
+    let current = 0; let score = 0; let userAns = []; 
+    let uName = ""; let uDist = "";
 
-    function init() {
-        if (questions && questions.length > 0) {
-            showQuestion();
-        }
+    function showTags() {
+        uName = document.getElementById('u-name').value;
+        uDist = document.getElementById('u-dist').value;
+        if(!uName || !uDist) { alert("कृपया नाम और जिला लिखें!"); return; }
+        document.getElementById('screen-reg').style.display = 'none';
+        document.getElementById('screen-tags').style.display = 'block';
     }
 
-    function showQuestion() {
-        const qData = questions[currentIdx];
-        document.getElementById('q-num-tag').innerText = `प्रश्न: ${currentIdx + 1} / ${questions.length}`;
-        document.getElementById('question').innerText = qData.q;
-        
-        const box = document.getElementById('options-box');
-        box.innerHTML = '';
-
-        qData.options.forEach((opt, i) => {
-            const div = document.createElement('div');
-            div.className = 'option';
-            div.id = `opt-${i}`;
-            
-            if(userAnswers[currentIdx] !== undefined) {
-                if(i === qData.a) div.classList.add('correct');
-                else if(i === userAnswers[currentIdx]) div.classList.add('wrong');
-            }
-
-            div.innerHTML = `
-                <div class="poll-fill" id="fill-${i}"></div>
-                <span style="position:relative; z-index:1;">${String.fromCharCode(65+i)}. ${opt}</span>
-                <span class="poll-percent" id="perc-${i}" style="position:relative; z-index:1;">0%</span>
-            `;
-            div.onclick = () => checkAnswer(i);
-            box.appendChild(div);
-        });
-
-        document.getElementById('back-btn').disabled = (currentIdx === 0);
-        document.getElementById('next-btn').disabled = (userAnswers[currentIdx] === undefined);
-        document.getElementById('next-btn').innerText = (currentIdx === questions.length - 1) ? "Finish" : "Next";
-    }
-
-    function checkAnswer(idx) {
-        if(userAnswers[currentIdx] !== undefined) return;
-        userAnswers[currentIdx] = idx;
-        if(idx === questions[currentIdx].a) score++;
+    function startQuiz() {
+        document.getElementById('screen-tags').style.display = 'none';
+        document.getElementById('screen-quiz').style.display = 'block';
         showQuestion();
     }
 
-    function use5050() {
-        if(life5050 <= 0 || userAnswers[currentIdx] !== undefined) return;
-        const correct = questions[currentIdx].a;
-        let hidden = 0;
-        for(let i=0; i<4; i++) {
-            if(i !== correct && hidden < 2) {
-                document.getElementById(`opt-${i}`).classList.add('hidden');
-                hidden++;
-            }
-        }
-        life5050--;
-        document.getElementById('l-5050').innerText = `✂️ 50-50 (${life5050} बचा)`;
-        if(life5050 === 0) document.getElementById('l-5050').classList.add('used');
-    }
-
-    function usePoll() {
-        if(pollUsed || userAnswers[currentIdx] !== undefined) return;
-        const correct = questions[currentIdx].a;
-        let vals = [0,0,0,0];
-        vals[correct] = Math.floor(Math.random() * 20) + 70;
-        let rem = 100 - vals[correct];
-        for(let i=0; i<4; i++) { if(i !== correct) { let s = Math.floor(Math.random() * rem); vals[i] = s; rem -= s; } }
-        vals[3] += rem;
-
-        vals.forEach((v, i) => {
-            document.getElementById(`fill-${i}`).style.width = v + "%";
-            document.getElementById(`perc-${i}`).style.display = 'block';
-            document.getElementById(`perc-${i}`).innerText = v + "%";
+    function showQuestion() {
+        const qData = questions[current];
+        document.getElementById('q-count').innerText = `प्रश्न: ${current + 1} / ${questions.length}`;
+        document.getElementById('question').innerText = qData.q;
+        const box = document.getElementById('options-box');
+        box.innerHTML = '';
+        qData.options.forEach((opt, i) => {
+            const div = document.createElement('div');
+            div.className = 'option' + (userAns[current] !== undefined ? (i === qData.a ? ' correct' : (i === userAns[current] ? ' wrong' : '')) : '');
+            div.innerHTML = `<span>${String.fromCharCode(65+i)}. ${opt}</span>`;
+            div.onclick = () => { if(userAns[current] === undefined) { userAns[current] = i; if(i === qData.a) score++; showQuestion(); } };
+            box.appendChild(div);
         });
-        pollUsed = true;
-        document.getElementById('l-poll').classList.add('used');
+        document.getElementById('btn-prev').disabled = current === 0;
+        document.getElementById('btn-next').disabled = userAns[current] === undefined;
+        document.getElementById('btn-next').innerText = (current === questions.length - 1) ? "Finish" : "Next";
     }
 
-    function goNext() {
-        if(currentIdx < questions.length - 1) { currentIdx++; showQuestion(); } 
-        else { showResult(); }
-    }
+    function goNext() { if(current < questions.length - 1) { current++; showQuestion(); } else { finish(); } }
+    function goBack() { current--; showQuestion(); }
+    function goSkip() { if(userAns[current] === undefined) { userAns[current] = -1; goNext(); } }
 
-    function goBack() { if(currentIdx > 0) { currentIdx--; showQuestion(); } }
-
-    function showResult() {
-        document.getElementById('quiz-ui').style.display = 'none';
-        document.getElementById('lifeline-section').style.display = 'none';
-        document.getElementById('result-screen').style.display = 'block';
-        document.getElementById('score-display').innerText = `${score} / ${questions.length}`;
+    function finish() {
+        // डेटा गूगल शीट पर भेजना
+        fetch(scriptURL, {
+            method: 'POST',
+            mode: 'no-cors',
+            body: JSON.stringify({ name: uName, district: uDist, score: `${score}/${questions.length}` }),
+            headers: { 'Content-Type': 'application/json' }
+        });
         
-        let percent = (score / questions.length) * 100;
-        let msg = (percent >= 80) ? "अतुलनीय! आप मास्टर हैं।" : "अच्छी कोशिश! अभ्यास जारी रखें।";
-        document.getElementById('feedback').innerText = msg;
+        document.getElementById('screen-quiz').style.display = 'none';
+        document.getElementById('screen-result').style.display = 'block';
+        document.getElementById('res-name').innerText = uName;
+        document.getElementById('res-dist').innerText = uDist;
+        document.getElementById('res-score').innerText = `${score} / ${questions.length}`;
+        
+        let p = (score/questions.length)*100;
+        document.getElementById('res-msg').innerText = p >= 80 ? "अद्भुत तैयारी!" : "कोशिश जारी रखें!";
     }
-
-    window.onload = init;
 </script>
 </body>
 </html>
