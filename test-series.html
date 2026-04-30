@@ -78,16 +78,20 @@
         title: "भारतीय मानसून",
         icon: "🌍",
         questions: "15 Q",
-        link: "quiz.html?type=mansoon", // यह लिंक उसे बताएगा कि मानसून के सवाल खोलने हैं
+        // यहाँ Mansoon और quiz के बीच में %20 लगाना ज़रूरी है क्योंकि आपके फाइल नाम में स्पेस है
+        link: "Mansoon%20quiz.html?type=mansoon", 
         isNew: true
     },
     {
         title: "राजस्थान इतिहास",
         icon: "🏰",
         questions: "20 Q",
-        link: "quiz.html?type=raj_history", // यह इतिहास के सवाल खोलेगा
+        // इसे भी बदल दें अगर इसकी अलग फाइल बनाई है
+        link: "Mansoon%20quiz.html?type=raj_history", 
         isNew: false
     }
+];
+
     // ... बाकी भी ऐसे ही
 ];
 
