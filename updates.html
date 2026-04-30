@@ -60,6 +60,43 @@
 </div>
 
 <div class="update-container">
+    <div class="update-container">
+
+        <div class="update-card" style="border-left: 5px solid #27ae60; position: relative;">
+            
+            <div style="position: absolute; top: 15px; right: 15px; background: #27ae60; color: white; font-size: 9px; padding: 3px 8px; border-radius: 5px; font-weight: 800; display: flex; align-items: center; gap: 4px; box-shadow: 0 4px 8px rgba(39, 174, 96, 0.2);">
+                <span>✓</span> SST VERIFIED
+            </div>
+
+            <span class="tag tag-pdf" style="background: #e8f5e9; color: #2e7d32;">PREMIUM PDF</span>
+            <h3 class="update-title" style="margin-right: 85px;">राजस्थान का भूगोल (Sanjay Sir Special)</h3>
+            <p class="update-desc">यह कंटेंट दूसरे खंभे (Quality Filter) द्वारा जांचा गया है। इसमें 100% सटीक जानकारी है।</p>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
+                <a href="#" class="action-btn" style="background: #27ae60;">डाउनलोड करें</a>
+                
+                <button onclick="reportTrash(this)" style="background: none; border: none; color: #e74c3c; font-size: 10px; cursor: pointer; font-weight: 700; opacity: 0.7;">
+                    🚩 रिपोर्ट (गलत जानकारी?)
+                </button>
+            </div>
+        </div>
+
+        ```
+
+### **संजय सर, इसे डालने के बाद एक काम और करें:**
+अपनी फाइल के सबसे नीचे, `</body>` टैग से ठीक पहले (लगभग **Line 91** के पास), यह छोटा सा स्क्रिप्ट कोड डाल दें ताकि 'रिपोर्ट' बटन काम करने लगे:
+
+```html
+<script>
+function reportTrash(btn) {
+    let confirmReport = confirm("क्या आप इस कंटेंट की रिपोर्ट करना चाहते हैं? 5 रिपोर्ट होने पर इसे टीम द्वारा हटा दिया जाएगा।");
+    if(confirmReport) {
+        alert("आपकी रिपोर्ट दर्ज हो गई है। धन्यवाद!");
+        btn.innerText = "🚩 रिपोर्टेड";
+        btn.style.color = "#95a5a6";
+    }
+}
+</script>
 
     <div class="update-card">
         <span class="tag tag-pdf">PDF नोट्स</span>
