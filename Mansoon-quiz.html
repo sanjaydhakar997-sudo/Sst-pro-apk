@@ -3,57 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SST Pro Quiz</title>
+    <title>SST Pro - Premium Test</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: sans-serif; background: #f4f7f6; padding: 20px; }
-        .box { max-width: 500px; margin: auto; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        h2 { color: #1a237e; border-bottom: 2px solid #ffd700; padding-bottom: 10px; }
-        .q { font-weight: bold; margin-top: 20px; font-size: 18px; }
-        .opt { display: block; background: #f0f0f0; padding: 10px; margin: 10px 0; border-radius: 8px; cursor: pointer; }
-        .opt:hover { background: #ffd700; }
+        :root { --primary: #1a237e; --accent: #ffd700; --success: #2ecc71; --error: #e74c3c; --bg: #f0f2f5; }
+        body { font-family: 'Hind', sans-serif; background: var(--bg); margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .quiz-card { width: 90%; max-width: 500px; background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); animation: slideIn 0.5s ease; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        h2 { color: var(--primary); text-align: center; font-size: 22px; margin-bottom: 20px; border-bottom: 3px solid var(--accent); padding-bottom: 10px; }
+        .question { font-size: 19px; font-weight: 600; margin-bottom: 15px; color: #2d3436; }
+        .option { background: #f8f9fa; border: 2px solid #edeff2; padding: 12px 15px; margin: 10px 0; border-radius: 12px; cursor: pointer; transition: 0.3s; font-size: 16px; }
+        .option:hover { border-color: var(--accent); background: #fffdf2; }
+        .option.correct { background: var(--success) !important; color: white; border-color: var(--success); }
+        .option.wrong { background: var(--error) !important; color: white; border-color: var(--error); }
+        #progress { height: 8px; background: #dfe4ea; border-radius: 10px; margin-bottom: 20px; overflow: hidden; }
+        #progress-bar { height: 100%; background: var(--accent); width: 0%; transition: 0.4s; }
+        .score-card { text-align: center; display: none; }
+        .btn-restart { background: var(--primary); color: white; border: none; padding: 12px 30px; border-radius: 10px; cursor: pointer; margin-top: 20px; font-weight: bold;}
     </style>
 </head>
 <body>
 
-<div class="box">
-    <h2 id="title">टेस्ट शुरू हो रहा है...</h2>
-    <div id="content"></div>
+<div class="quiz-card">
+    <h2 id="quiz-title">लोड हो रहा है...</h2>
+    <div id="progress"><div id="progress-bar"></div></div>
+    
+    <div id="quiz-content">
+        </div>
+
+    <div id="result-area" class="score-card">
+        <h3>आपका रिजल्ट</h3>
+        <div id="final-score" style="font-size: 50px; font-weight: bold; color: var(--success);">0</div>
+        <p>शानदार प्रयास!</p>
+        <button class="btn-restart" onclick="location.reload()">दोबारा शुरू करें</button>
+    </div>
 </div>
 
 <script>
-    // मानसून के सवाल यहाँ हैं
     const data = {
         "mansoon": {
             name: "भारतीय मानसून टेस्ट",
             qs: [
-                { q: "मानसून शब्द की उत्पत्ति किस भाषा से हुई है?", options: ["अरबी", "फारसी", "हिंदी", "अंग्रेजी"] },
-                { q: "भारत में सबसे ज्यादा वर्षा किस मानसून से होती है?", options: ["उत्तर-पूर्वी", "दक्षिण-पश्चिम", "पश्चिमी विक्षोभ", "इनमें से कोई नहीं"] }
-            ]
-        },
-        "raj_history": {
-            name: "राजस्थान इतिहास टेस्ट",
-            qs: [
-                { q: "हल्दीघाटी का युद्ध कब हुआ था?", options: ["1576", "1526", "1761", "1556"] }
+                // --- SET 1 (पहले 10 सवाल) ---
+                { q: "मानसून शब्द की उत्पत्ति किस भाषा से हुई है?", options: ["अरबी", "फारसी", "हिंदी", "अंग्रेजी"], a: 0 },
+                { q: "भारत में मानसून सबसे पहले किस राज्य में आता है?", options: ["राजस्थान", "केरल", "महाराष्ट्र", "गुजरात"], a: 1 },
+                { q: "मानसून को ऊर्जा देने वाला 'इंजन' किसे कहा जाता है?", options: ["हिमालय", "थार मरुस्थल", "हिंद महासागर", "जंगल"], a: 1 },
+                { q: "पेड़ों के नीचे ठंडक का अनुभव किस कारण होता है?", options: ["वाष्पीकरण", "वाष्पोत्सर्जन", "प्रकाश संश्लेषण", "छाया"], a: 1 },
+                { q: "भारत में सबसे ज्यादा वर्षा किस मानसून से होती है?", options: ["उत्तर-पूर्वी", "दक्षिण-पश्चिम", "पश्चिमी विक्षोभ", "चक्रवात"], a: 1 },
+                { q: "अक्टूबर-नवंबर में वर्षा कहाँ अधिक होती है?", options: ["पंजाब", "तमिलनाडु तट", "असम", "गुजरात"], a: 1 },
+                { q: "मासिनराम किस राज्य में स्थित है?", options: ["असम", "मेघालय", "सिक्किम", "त्रिपुरा"], a: 1 },
+                { q: "काल बैसाखी कहाँ का स्थानीय तूफान है?", options: ["राजस्थान", "पश्चिम बंगाल", "केरल", "पंजाब"], a: 1 },
+                { q: "आम्र वर्षा (Mango Shower) कहाँ होती है?", options: ["यूपी", "केरल-कर्नाटक", "बिहार", "हरियाणा"], a: 1 },
+                { q: "भारत का सबसे शुष्क स्थान कौन सा है?", options: ["जैसलमेर", "लेह", "बीकानेर", "जोधपुर"], a: 1 }
+                // --- अगले सवाल यहाँ जुड़ेंगे ---
             ]
         }
     };
 
-    // URL से पता करना कि कौन सा कार्ड दबाया गया है
     const urlParams = new URLSearchParams(window.location.search);
-    const type = urlParams.get('type');
-    const selectedTest = data[type];
+    const type = urlParams.get('type') || 'mansoon';
+    const test = data[type];
+    let currentQ = 0; let score = 0;
 
-    if(selectedTest) {
-        document.getElementById('title').innerText = selectedTest.name;
-        let html = "";
-        selectedTest.qs.forEach((item, i) => {
-            html += `<div class="q">${i+1}. ${item.q}</div>`;
-            item.options.forEach(o => {
-                html += `<div class="opt">${o}</div>`;
-            });
-        });
-        document.getElementById('content').innerHTML = html;
+    function init() {
+        if(!test) return;
+        document.getElementById('quiz-title').innerText = test.name;
+        showQuestion();
     }
+
+    function showQuestion() {
+        const qData = test.qs[currentQ];
+        let html = `<div class="question">${currentQ + 1}. ${qData.q}</div>`;
+        qData.options.forEach((opt, i) => {
+            html += `<div class="option" onclick="check(${i})">${opt}</div>`;
+        });
+        document.getElementById('quiz-content').innerHTML = html;
+        document.getElementById('progress-bar').style.width = ((currentQ) / test.qs.length * 100) + "%";
+    }
+
+    function check(idx) {
+        const options = document.querySelectorAll('.option');
+        options.forEach(o => o.style.pointerEvents = 'none');
+        if(idx === test.qs[currentQ].a) {
+            options[idx].classList.add('correct'); score++;
+        } else {
+            options[idx].classList.add('wrong');
+            options[test.qs[currentQ].a].classList.add('correct');
+        }
+        setTimeout(() => {
+            currentQ++;
+            if(currentQ < test.qs.length) showQuestion();
+            else finish();
+        }, 1000);
+    }
+
+    function finish() {
+        document.getElementById('quiz-content').style.display = 'none';
+        document.getElementById('progress').style.display = 'none';
+        document.getElementById('result-area').style.display = 'block';
+        document.getElementById('final-score').innerText = `${score}/${test.qs.length}`;
+    }
+
+    init();
 </script>
 </body>
 </html>
