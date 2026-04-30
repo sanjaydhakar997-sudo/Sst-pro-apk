@@ -214,8 +214,74 @@
     color: #fff;
     border-color: #27ae60;
 }
+/* 📈 8वाँ खंभा: प्रोग्रेस ट्रैकर स्टाइल */
+.progress-container {
+    background: #ffffff;
+    margin: 0 20px 20px;
+    padding: 18px;
+    border-radius: 20px;
+    border: 1px solid #f1f5f9;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+}
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.prog-title {
+    font-size: 12px;
+    font-weight: 800;
+    color: #1e293b;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.prog-percent {
+    font-size: 12px;
+    font-weight: 800;
+    color: #27ae60;
+    background: #e8f5e9;
+    padding: 2px 8px;
+    border-radius: 6px;
+}
+.progress-bar-bg {
+    width: 100%;
+    height: 10px;
+    background: #f1f5f9;
+    border-radius: 20px;
+    overflow: hidden;
+}
+.progress-fill {
+    width: 0%; /* जादू (JS) से बढ़ेगा */
+    height: 100%;
+    background: linear-gradient(90deg, #27ae60, #2ecc71);
+    border-radius: 20px;
+    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.prog-footer {
+    font-size: 10px;
+    color: #64748b;
+    margin-top: 10px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+}
 
     </style>
+<div class="progress-container">
+    <div class="progress-header">
+        <span class="prog-title">🚀 आपकी आज की तैयारी</span>
+        <span class="prog-percent" id="prog-percent">0%</span>
+    </div>
+    <div class="progress-bar-bg">
+        <div class="progress-fill" id="prog-fill"></div>
+    </div>
+    <div class="prog-footer">
+        <span>लक्ष्य: 5 टॉपिक</span>
+        <span id="prog-status">शुरुआत करें...</span>
+    </div>
+</div>
 
         <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -429,6 +495,25 @@ function verifyQ(btn, isCorrect) {
             document.querySelector('.help-input').value = "";
         }
     }
+        // 📈 8वाँ खंभा: प्रोग्रेस बार का एनीमेशन जादू
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            const fill = document.getElementById('prog-fill');
+            const percentText = document.getElementById('prog-percent');
+            const statusText = document.getElementById('prog-status');
+            
+            let targetProgress = 65; // इसे छात्र की मेहनत के हिसाब से बदल सकते हैं
+            
+            if(fill) {
+                fill.style.width = targetProgress + '%';
+                if(percentText) percentText.innerText = targetProgress + '%';
+                if(statusText && targetProgress > 50) {
+                    statusText.innerText = "आधे से ज्यादा लक्ष्य पूरा! 🔥";
+                }
+            }
+        }, 800); 
+    });
+
     // 🔍 7वाँ खंभा: सर्च और फ़िल्टर का असली दिमाग
 function filterContent() {
     let input = document.getElementById('searchInput').value.toLowerCase();
