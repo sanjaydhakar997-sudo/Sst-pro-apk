@@ -22,11 +22,28 @@
             display: inline-block; background: #f39c12; color: #000;
             padding: 6px 20px; border-radius: 50px; font-size: 13px; font-weight: 700;
         }
-<div class="live-summary" onclick="location.href='dashboard.html'">
-    <p>कुल वितरित पुस्तकें: <span id="globalBooks">1,240</span></p>
-    <p>लाइव नोड्स: <span id="activeNodes">41</span></p>
-    <small>टैप करें: पूरा डैशबोर्ड देखें ➔</small>
+<div class="live-mission-box" onclick="location.href='dashboard.html'">
+    <div class="mission-header">
+        <span class="dot"></span> 🚩 मिशन: राजस्थान 2026
+    </div>
+    
+    <div class="stats-row">
+        <div class="stat-item">
+            <small>वितरित पुस्तकें</small>
+            <span id="globalBooks" class="count-up">1,240</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+            <small>कुल लाभार्थी</small>
+            <span id="globalReach" class="count-up">2,100</span>
+        </div>
+    </div>
+    
+    <div class="mission-footer">
+        AUDIT ID: SHA-256-V6 | <span style="color:#f39c12">पूरा डैशबोर्ड देखें ➔</span>
+    </div>
 </div>
+
 
         /* सुविचार बॉक्स */
         .gandhi-box {
@@ -45,6 +62,26 @@
         }
         .exam-banner span { font-size: 11px; font-weight: 800; color: #856404; text-transform: uppercase; display: block; margin-bottom: 5px; }
         .exam-list { font-weight: 800; color: #2c3e50; font-size: 14px; line-height: 1.5; }
+/* मिशन बॉक्स का प्रीमियम लुक */
+.live-mission-box {
+    margin: 20px;
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    border: 1px solid rgba(243, 156, 18, 0.4);
+    color: white;
+    text-align: center;
+    cursor: pointer;
+}
+.mission-header { font-size: 12px; font-weight: 800; color: #f39c12; margin-bottom: 15px; }
+.dot { height: 8px; width: 8px; background-color: #2ecc71; border-radius: 50%; display: inline-block; margin-right: 5px; animation: blink 1s infinite; }
+@keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+.stats-row { display: flex; justify-content: space-around; align-items: center; }
+.stat-item small { display: block; font-size: 10px; color: #94a3b8; text-transform: uppercase; margin-bottom: 5px; }
+.stat-item span { font-size: 24px; font-weight: 900; color: #fff; }
+.stat-divider { width: 1px; height: 30px; background: rgba(255,255,255,0.1); }
+.mission-footer { font-size: 9px; color: #64748b; margin-top: 15px; font-family: monospace; }
 
         /* ग्रिड और कार्ड्स */
         .grid-container {
