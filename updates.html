@@ -267,6 +267,26 @@
     display: flex;
     justify-content: space-between;
 }
+/* 🛠️ 9वाँ खंभा: स्मार्ट हेल्प डेस्क */
+.help-box {
+    background: #fdfdfd;
+    border: 2px solid #eef2f6;
+    border-radius: 18px;
+    padding: 15px;
+    transition: 0.3s;
+}
+.help-box:focus-within {
+    border-color: #3498db;
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.1);
+}
+.help-input {
+    width: 100%;
+    border: none;
+    background: transparent;
+    font-size: 13px;
+    outline: none;
+    resize: none;
+}
 
     </style>
 <div class="progress-container">
@@ -485,16 +505,32 @@ function verifyQ(btn, isCorrect) {
             btn.style.color = "#95a5a6";
         }
     }
+function postHelp() {
+    const input = document.querySelector('.help-input');
+    const msg = input.value.trim();
+    const btn = document.querySelector('.help-box .action-btn');
 
-    function postHelp() {
-        let msg = document.querySelector('.help-input').value;
-        if(msg.trim() === "") {
-            alert("संजय सर की टीम से मदद पाने के लिए कृपया अपनी समस्या लिखें!");
-        } else {
-            alert("आपकी रिक्वेस्ट SSC हेल्प डेस्क पर भेज दी गई है। जल्द ही कोई छात्र या सर जवाब देंगे!");
-            document.querySelector('.help-input').value = "";
-        }
+    if (msg === "") {
+        alert("संजय सर की टीम से मदद पाने के लिए कृपया अपनी समस्या लिखें!");
+        return;
     }
+
+    // बटन का लुक बदलना (Loading State)
+    const oldText = btn.innerHTML;
+    btn.innerHTML = "भेजा जा रहा है...";
+    btn.style.opacity = "0.7";
+    btn.disabled = true;
+
+    // 1.2 सेकंड बाद रिस्पॉन्स दिखाना
+    setTimeout(() => {
+        alert("संजय सर! आपकी समस्या 'SST हेल्प डेस्क' पर दर्ज कर ली गई है। जल्द ही जवाब दिया जाएगा। ✅");
+        input.value = "";
+        btn.innerHTML = oldText;
+        btn.style.opacity = "1";
+        btn.disabled = false;
+    }, 1200);
+}
+
         // 📈 8वाँ खंभा: प्रोग्रेस बार का एनीमेशन जादू
     window.addEventListener('load', () => {
         setTimeout(() => {
