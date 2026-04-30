@@ -79,6 +79,25 @@
             cursor: pointer; font-weight: 700; opacity: 0.6;
         }
     </style>
+
+        <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var lazyImages = [].slice.call(document.querySelectorAll("img"));
+            if ("IntersectionObserver" in window) {
+                let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            let lazyImage = entry.target;
+                            lazyImage.src = lazyImage.dataset.src;
+                            lazyImageObserver.unobserve(lazyImage);
+                        }
+                    });
+                });
+                lazyImages.forEach(function(lazyImage) { lazyImageObserver.observe(lazyImage); });
+            }
+        });
+    </script>
+
 </head>
 <body>
 
