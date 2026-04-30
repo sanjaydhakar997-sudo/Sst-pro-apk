@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SST Pro - New Updates</title>
+    <title>Social Studies Classes - Updates</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
@@ -12,118 +12,120 @@
         /* प्रीमियम हेडर */
         .up-header {
             background: linear-gradient(135deg, #0f172a, #1e293b);
-            color: white; padding: 30px 20px; text-align: center;
-            border-bottom-left-radius: 30px; border-bottom-right-radius: 30px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            color: white; padding: 35px 20px; text-align: center;
+            border-bottom-left-radius: 35px; border-bottom-right-radius: 35px;
+            box-shadow: 0 12px 25px rgba(0,0,0,0.2);
         }
 
         .back-btn {
             position: absolute; top: 20px; left: 15px; color: #f39c12;
-            text-decoration: none; font-weight: 800; font-size: 14px;
+            text-decoration: none; font-weight: 800; font-size: 13px;
+            background: rgba(255,255,255,0.1); padding: 5px 12px; border-radius: 50px;
         }
 
-        /* अपडेट कार्ड्स */
-        .update-container { padding: 20px 15px; }
+        /* अपडेट कंटेनर */
+        .update-container { padding: 25px 15px; }
         
         .update-card {
-            background: white; border-radius: 20px; padding: 20px;
-            margin-bottom: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            border-left: 5px solid #f39c12;
+            background: white; border-radius: 22px; padding: 22px;
+            margin-bottom: 20px; box-shadow: 0 8px 18px rgba(0,0,0,0.06);
+            border-left: 6px solid #f39c12; position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .update-card:active { transform: scale(0.98); }
+
+        /* वेरिफिकेशन बैज */
+        .verified-badge {
+            position: absolute; top: 18px; right: 18px; background: #27ae60;
+            color: white; font-size: 9px; padding: 4px 10px; border-radius: 6px;
+            font-weight: 800; display: flex; align-items: center; gap: 4px;
         }
 
         .tag {
-            display: inline-block; padding: 4px 12px; border-radius: 50px;
+            display: inline-block; padding: 5px 14px; border-radius: 50px;
             font-size: 10px; font-weight: 800; text-transform: uppercase;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
-        .tag-new { background: #ffeaa7; color: #d35400; }
-        .tag-video { background: #fab1a0; color: #e17055; }
-        .tag-pdf { background: #a29bfe; color: #6c5ce7; }
+        .tag-premium { background: #e8f5e9; color: #2e7d32; }
+        .tag-video { background: #ffebee; color: #c62828; }
+        .tag-pdf { background: #e8eaf6; color: #283593; }
 
-        .update-title { font-size: 17px; font-weight: 800; color: #1e272e; margin-bottom: 5px; }
-        .update-desc { font-size: 12px; color: #636e72; line-height: 1.5; }
+        .update-title { font-size: 18px; font-weight: 800; color: #1e272e; margin-bottom: 6px; }
+        .update-desc { font-size: 12px; color: #636e72; line-height: 1.6; }
         
         .action-btn {
-            display: inline-block; margin-top: 15px; padding: 8px 20px;
+            display: inline-block; margin-top: 15px; padding: 10px 22px;
             background: #1e293b; color: white; border-radius: 50px;
             text-decoration: none; font-size: 12px; font-weight: 600;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .report-btn {
+            background: none; border: none; color: #e74c3c; font-size: 11px;
+            cursor: pointer; font-weight: 700; opacity: 0.6;
         }
     </style>
 </head>
 <body>
 
 <div class="up-header">
-    <a href="index.html" class="back-btn">⇠ वापस जाएँ</a>
-    <h1 style="font-size: 22px;">नया क्या है? 🚀</h1>
-    <p style="font-size: 11px; opacity: 0.8; margin-top: 5px;">मिशन राजस्थान 2026 की ताजा अपडेट्स</p>
+    <a href="index.html" class="back-btn">⇠ बैक</a>
+    <h1 style="font-size: 24px; letter-spacing: 0.5px;">नया क्या है? 🚀</h1>
+    <p style="font-size: 12px; opacity: 0.8; margin-top: 5px; font-weight: 500;">Social Studies Classes - मिशन 2026</p>
 </div>
 
 <div class="update-container">
-    <div class="update-container">
 
-        <div class="update-card" style="border-left: 5px solid #27ae60; position: relative;">
-            
-            <div style="position: absolute; top: 15px; right: 15px; background: #27ae60; color: white; font-size: 9px; padding: 3px 8px; border-radius: 5px; font-weight: 800; display: flex; align-items: center; gap: 4px; box-shadow: 0 4px 8px rgba(39, 174, 96, 0.2);">
-                <span>✓</span> SST VERIFIED
-            </div>
-
-            <span class="tag tag-pdf" style="background: #e8f5e9; color: #2e7d32;">PREMIUM PDF</span>
-            <h3 class="update-title" style="margin-right: 85px;">राजस्थान का भूगोल (Sanjay Sir Special)</h3>
-            <p class="update-desc">यह कंटेंट दूसरे खंभे (Quality Filter) द्वारा जांचा गया है। इसमें 100% सटीक जानकारी है।</p>
-            
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
-                <a href="#" class="action-btn" style="background: #27ae60;">डाउनलोड करें</a>
-                
-                <button onclick="reportTrash(this)" style="background: none; border: none; color: #e74c3c; font-size: 10px; cursor: pointer; font-weight: 700; opacity: 0.7;">
-                    🚩 रिपोर्ट (गलत जानकारी?)
-                </button>
-            </div>
+    <div class="update-card" style="border-left-color: #27ae60;">
+        <div class="verified-badge">✓ SSC VERIFIED</div>
+        <span class="tag tag-premium">PREMIUM NOTES</span>
+        <h3 class="update-title">राजस्थान भूगोल - पूर्ण हस्तलिखित</h3>
+        <p class="update-desc">Social Studies Classes द्वारा सत्यापित। नए जिलों के अनुसार अपडेटेड नोट्स।</p>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <a href="#" class="action-btn" style="background: #27ae60;">डाउनलोड करें</a>
+            <button onclick="reportContent(this)" class="report-btn">🚩 रिपोर्ट</button>
         </div>
+    </div>
 
-        ```
+    <div class="update-card" style="border-left-color: #ff7675;">
+        <span class="tag tag-video">LATEST VIDEO</span>
+        <h3 class="update-title">राजनीति विज्ञान - मौलिक अधिकार</h3>
+        <p class="update-desc">संस्थान की नई वीडियो क्लास अब पोर्टल पर लाइव है।</p>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <a href="#" class="action-btn" style="background: #ff7675;">अभी देखें</a>
+            <button onclick="reportContent(this)" class="report-btn">🚩 रिपोर्ट</button>
+        </div>
+    </div>
 
-### **संजय सर, इसे डालने के बाद एक काम और करें:**
-अपनी फाइल के सबसे नीचे, `</body>` टैग से ठीक पहले (लगभग **Line 91** के पास), यह छोटा सा स्क्रिप्ट कोड डाल दें ताकि 'रिपोर्ट' बटन काम करने लगे:
+    <div class="update-card" style="border-left-color: #00b894;">
+        <span class="tag" style="background: #e0f2f1; color: #00695c;">NEWS</span>
+        <h3 class="update-title">VVIP दानदाताओं की सूची</h3>
+        <p class="update-desc">पुस्तकों का दान करने वाले नए सदस्यों के नाम अपडेट कर दिए गए हैं।</p>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <a href="sponsor-wall.html" class="action-btn" style="background: #00b894;">सूची देखें</a>
+            <button onclick="reportContent(this)" class="report-btn">🚩 रिपोर्ट</button>
+        </div>
+    </div>
 
-```html
+</div>
+
+<div style="text-align: center; color: #b2bec3; font-size: 11px; padding-bottom: 40px; font-weight: 600;">
+    SOCIAL STUDIES CLASSES | Ver 2.0
+</div>
+
 <script>
-function reportTrash(btn) {
-    let confirmReport = confirm("क्या आप इस कंटेंट की रिपोर्ट करना चाहते हैं? 5 रिपोर्ट होने पर इसे टीम द्वारा हटा दिया जाएगा।");
+function reportContent(btn) {
+    let confirmReport = confirm("क्या यह कंटेंट गलत या अनुपयुक्त है? आपकी रिपोर्ट दूसरे खंभे (Quality Filter) को भेज दी जाएगी।");
     if(confirmReport) {
-        alert("आपकी रिपोर्ट दर्ज हो गई है। धन्यवाद!");
-        btn.innerText = "🚩 रिपोर्टेड";
+        alert("रिपोर्ट दर्ज कर ली गई है। धन्यवाद!");
+        btn.innerHTML = "🚩 रिपोर्टेड";
+        btn.style.opacity = "1";
         btn.style.color = "#95a5a6";
     }
 }
 </script>
-
-    <div class="update-card">
-        <span class="tag tag-pdf">PDF नोट्स</span>
-        <h3 class="update-title">राजस्थान का इतिहास - हस्तलिखित नोट्स</h3>
-        <p class="update-desc">मेवाड़ के इतिहास के बेहतरीन शॉर्ट नोट्स आज अपलोड कर दिए गए हैं।</p>
-        <a href="#" class="action-btn">डाउनलोड करें</a>
-    </div>
-
-    <div class="update-card" style="border-left-color: #ff7675;">
-        <span class="tag tag-video">वीडियो क्लास</span>
-        <h3 class="update-title">राजनीति विज्ञान - नई क्लास</h3>
-        <p class="update-desc">संजय धाकड़ सर की मौलिक अधिकारों पर स्पेशल क्लास अब लाइव है।</p>
-        <a href="#" class="action-btn" style="background: #ff7675;">अभी देखें</a>
-    </div>
-
-    <div class="update-card" style="border-left-color: #00b894;">
-        <span class="tag tag-new">जानकारी</span>
-        <h3 class="update-title">VVIP क्लब दानदाताओं की नई सूची</h3>
-        <p class="update-desc">उन महान दानदाताओं के नाम जुड़ चुके हैं जिन्होंने हाल ही में पुस्तकें दान की हैं।</p>
-        <a href="sponsor-wall.html" class="action-btn" style="background: #00b894;">सूची देखें</a>
-    </div>
-
-</div>
-
-<div style="text-align: center; color: #b2bec3; font-size: 11px; padding-bottom: 30px;">
-    SST Pro | Latest Version 2.0
-</div>
 
 </body>
 </html>
