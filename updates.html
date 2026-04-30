@@ -15,8 +15,24 @@
     <title>Social Studies Classes - Updates</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background-color: #f1f2f6; color: #2d3436; }
+        /* 🎨 10वाँ खंभा: फाइनल ब्रांडिंग और थीम */
+:root {
+    --primary-color: #27ae60; 
+    --bg-light: #f8fafc;
+}
+
+body {
+    background-color: var(--bg-light);
+    color: #1e293b;
+    scroll-behavior: smooth; /* पेज धीरे से ऊपर-नीचे होगा */
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* पूरी ऐप के बटनों को एक जैसा करना */
+.action-btn, .filter-btn.active, .progress-fill, .q-badge {
+    background: var(--primary-color) !important;
+    color: white !important;
+}
 
         /* प्रीमियम हेडर */
         .up-header {
@@ -491,9 +507,15 @@ function verifyQ(btn, isCorrect) {
     </div>
 </div>
 
-<div style="text-align: center; color: #b2bec3; font-size: 11px; padding-bottom: 40px; font-weight: 600;">
-    SOCIAL STUDIES CLASSES | Ver 2.0
+<div style="text-align: center; padding: 40px 20px; background: #ffffff; margin-top: 25px; border-top: 1.5px solid #edf2f7; border-radius: 30px 30px 0 0; box-shadow: 0 -10px 25px rgba(0,0,0,0.02);">
+    <p style="color: #27ae60; font-weight: 800; font-size: 16px; margin-bottom: 8px; letter-spacing: 0.5px;">SOCIAL STUDIES CLASSES</p>
+    <div style="width: 40px; height: 3px; background: #27ae60; margin: 0 auto 12px; border-radius: 10px; opacity: 0.3;"></div>
+    <p style="color: #64748b; font-size: 11px; font-weight: 600; line-height: 1.6;">
+        संजय सर के साथ सफलता की ओर <br>
+        <span style="color: #94a3b8; font-size: 10px;">मिशन 2026 🚀 | Version 2.1</span>
+    </p>
 </div>
+
 
 <script>
     function reportContent(btn) {
