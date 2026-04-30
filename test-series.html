@@ -74,28 +74,23 @@
     <script>
         // --- बस यहाँ नया टेस्ट जोड़ें और जादू देखें ---
         const myTests = [
-            {
-                title: "भारतीय मानसून",
-                icon: "🌍",
-                questions: "15 Q",
-                link: "quiz1.html", // आपके टेस्ट का लिंक
-                isNew: true
-            },
-            {
-                title: "राजस्थान इतिहास",
-                icon: "🏰",
-                questions: "20 Q",
-                link: "quiz2.html",
-                isNew: false
-            },
-            {
-                title: "दर्शनशास्त्र",
-                icon: "🧘",
-                questions: "10 Q",
-                link: "quiz3.html",
-                isNew: false
-            }
-        ];
+    {
+        title: "भारतीय मानसून",
+        icon: "🌍",
+        questions: "15 Q",
+        link: "quiz.html?type=mansoon", // यह लिंक उसे बताएगा कि मानसून के सवाल खोलने हैं
+        isNew: true
+    },
+    {
+        title: "राजस्थान इतिहास",
+        icon: "🏰",
+        questions: "20 Q",
+        link: "quiz.html?type=raj_history", // यह इतिहास के सवाल खोलेगा
+        isNew: false
+    }
+    // ... बाकी भी ऐसे ही
+];
+
 
         // --- ऑटोमेशन कोड (इसे छेड़ने की जरूरत नहीं) ---
         const listContainer = document.getElementById('test-list');
