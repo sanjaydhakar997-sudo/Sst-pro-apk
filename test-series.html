@@ -26,21 +26,19 @@
 
         .header h1 { margin: 0; color: #1a237e; font-size: 22px; }
 
-        /* Automatic Grid System */
         #test-list { 
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
             gap: 15px; 
         }
 
-        /* Dynamic Test Card */
         .test-card { 
             background: #fff; 
             border-radius: 12px; 
             padding: 15px; 
             text-align: center;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            border-bottom: 4px solid #2f3542; /* Matches your index style */
+            border-bottom: 4px solid #1a237e; 
             transition: 0.3s;
             position: relative;
             text-decoration: none;
@@ -48,13 +46,9 @@
         }
 
         .test-card:active { transform: scale(0.95); }
-
         .icon { font-size: 30px; display: block; margin-bottom: 10px; }
-        
         .label { font-weight: 600; font-size: 14px; color: #1a237e; }
-
         .meta { font-size: 11px; color: #747d8c; margin-top: 5px; }
-
         .new-tag {
             position: absolute; top: 5px; right: 5px;
             background: #ff4757; color: white;
@@ -72,31 +66,32 @@
     <div id="test-list"></div>
 
     <script>
-        // --- बस यहाँ नया टेस्ट जोड़ें और जादू देखें ---
+        // --- यहाँ नया टेस्ट जोड़ें ---
         const myTests = [
-    {
-        title: "भारतीय मानसून",
-        icon: "🌍",
-        questions: "15 Q",
-        // यहाँ Mansoon और quiz के बीच में %20 लगाना ज़रूरी है क्योंकि आपके फाइल नाम में स्पेस है
-        link: "Mansoon%20quiz.html?type=mansoon", 
-        isNew: true
-    },
-    {
-        title: "राजस्थान इतिहास",
-        icon: "🏰",
-        questions: "20 Q",
-        // इसे भी बदल दें अगर इसकी अलग फाइल बनाई है
-        link: "Mansoon%20quiz.html?type=raj_history", 
-        isNew: false
-    }
-];
+            {
+                title: "भारतीय मानसून",
+                icon: "🌍",
+                questions: "100 Q",
+                link: "mtest.html?type=mansoon", // एनीमेशन वाली फाइल का नया नाम
+                isNew: true
+            },
+            {
+                title: "राजस्थान इतिहास",
+                icon: "🏰",
+                questions: "20 Q",
+                link: "mtest.html?type=raj_history", 
+                isNew: false
+            },
+            {
+                title: "दर्शनशास्त्र",
+                icon: "🧘",
+                questions: "10 Q",
+                link: "mtest.html?type=philosophy", 
+                isNew: false
+            }
+        ];
 
-    // ... बाकी भी ऐसे ही
-];
-
-
-        // --- ऑटोमेशन कोड (इसे छेड़ने की जरूरत नहीं) ---
+        // --- ऑटोमेशन कोड ---
         const listContainer = document.getElementById('test-list');
 
         myTests.forEach(test => {
