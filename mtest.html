@@ -306,32 +306,43 @@
         { q: "राजस्थान में वर्षा के दिनों का औसत कितना है?", options: ["20 दिन", "29 दिन", "35 दिन", "40 दिन"], a: 1 },
         { q: "किस मानसून शाखा से राजस्थान के अरावली के पश्चिमी भाग में वर्षा नहीं हो पाती?", options: ["बंगाल की खाड़ी शाखा", "अरब सागर शाखा", "भूमध्यसागरीय शाखा", "कोई नहीं"], a: 1 }
     ];    
-    ];
+        // --- वेरिएबल और सेटिंग्स ---
+    let currentIdx = 0; 
+    let score = 0; 
+    let userAnswers = []; // पुराने 'userAns' को अपडेट किया
+    let life5050 = 2; 
+    let pollUsed = false;
 
-    let current = 0; let score = 0; let userAns = []; 
-    let life5050 = 2; let pollUsed = false;
-
+    // --- क्विज शुरू करने का फंक्शन ---
     function init() {
-        showQuestion();
+        if (typeof questions !== 'undefined' && questions.length > 0) {
+            showQuestion();
+        } else {
+            // अगर सवाल लोड नहीं हुए तो यह चेतावनी दिखेगी
+            document.getElementById('question').innerText = "त्रुटि: सवाल लोड नहीं हो पाए!";
+        }
     }
 
+    // --- मुख्य प्रश्न प्रदर्शनी फंक्शन ---
     function showQuestion() {
-        const qData = questions[current];
-        document.getElementById('q-num-tag').innerText = `प्रश्न: ${current + 1} / ${questions.length}`;
+        const qData = questions[currentIdx];
+        
+        // प्रश्न संख्या और हेडर अपडेट
+        document.getElementById('q-num-tag').innerText = `प्रश्न: ${currentIdx + 1} / ${questions.length}`;
         document.getElementById('question').innerText = qData.q;
         
         const box = document.getElementById('options-box');
-        box.innerHTML = '';
+        box.innerHTML = ''; // पुराना कंटेंट साफ करें
 
         qData.options.forEach((opt, i) => {
             const div = document.createElement('div');
             div.className = 'option';
             div.id = `opt-${i}`;
             
-            // अगर जवाब दे चुके हैं
-            if(userAns[current] !== undefined) {
+            // अगर उत्तर पहले ही दिया जा चुका है तो रंग दिखाएं
+            if(userAnswers[currentIdx] !== undefined) {
                 if(i === qData.a) div.classList.add('correct');
-                else if(i === userAns[current]) div.classList.add('wrong');
+                else if(i === userAnswers[currentIdx]) div.classList.add('wrong');
             }
 
             div.innerHTML = `
@@ -339,30 +350,46 @@
                 <span class="option-content">${String.fromCharCode(65+i)}. ${opt}</span>
                 <span class="poll-percent" id="perc-${i}">0%</span>
             `;
-            div.onclick = () => select(i);
+            div.onclick = () => checkAnswer(i);
             box.appendChild(div);
         });
 
-        document.getElementById('back-btn').disabled = current === 0;
-        document.getElementById('next-btn').disabled = userAns[current] === undefined;
-        document.getElementById('next-btn').innerText = (current === questions.length - 1) ? "Finish" : "Next";
+        // नेविगेशन बटन (Back/Next) कंट्रोल
+        document.getElementById('back-btn').disabled = (currentIdx === 0);
+        document.getElementById('next-btn').disabled = (userAnswers[currentIdx] === undefined);
+        
+        // अंतिम प्रश्न पर 'Finish' बटन दिखाएं
+        const nextBtn = document.getElementById('next-btn');
+        if(currentIdx === questions.length - 1) {
+            nextBtn.innerText = "Finish";
+            nextBtn.style.background = "#2ecc71"; // सफलता का हरा रंग
+        } else {
+            nextBtn.innerText = "Next";
+            nextBtn.style.background = "#1a237e";
+        }
     }
 
-    function select(idx) {
-        if(userAns[current] !== undefined) return;
-        userAns[current] = idx;
-        if(idx === questions[current].a) score++;
-        showQuestion();
+    // --- उत्तर जाँचने का फंक्शन ---
+    function checkAnswer(idx) {
+        if(userAnswers[currentIdx] !== undefined) return;
+        userAnswers[currentIdx] = idx;
+        
+        if(idx === questions[currentIdx].a) {
+            score++;
+        }
+        showQuestion(); // UI अपडेट करें
     }
 
+    // --- लाइफलाइन: 50-50 (2 बार) ---
     function use5050() {
-        if(life5050 <= 0 || userAns[current] !== undefined) return;
-        let count = 0;
-        const correct = questions[current].a;
+        if(life5050 <= 0 || userAnswers[currentIdx] !== undefined) return;
+        const correct = questions[currentIdx].a;
+        let hidden = 0;
         for(let i=0; i<4; i++) {
-            if(i !== correct && count < 2) {
-                document.getElementById(`opt-${i}`).classList.add('hidden');
-                count++;
+            if(i !== correct && hidden < 2) {
+                const el = document.getElementById(`opt-${i}`);
+                if(el) el.classList.add('hidden');
+                hidden++;
             }
         }
         life5050--;
@@ -370,12 +397,14 @@
         if(life5050 === 0) document.getElementById('l-5050').classList.add('used');
     }
 
+    // --- लाइफलाइन: Audience Poll ---
     function usePoll() {
-        if(pollUsed || userAns[current] !== undefined) return;
-        const correct = questions[current].a;
-        let vals = [0,0,0,0];
-        vals[correct] = Math.floor(Math.random() * 30) + 60; // 60-90% for correct
+        if(pollUsed || userAnswers[currentIdx] !== undefined) return;
+        const correct = questions[currentIdx].a;
+        let vals = [0, 0, 0, 0];
+        vals[correct] = Math.floor(Math.random() * 20) + 70; // सही उत्तर को 70-90%
         let rem = 100 - vals[correct];
+        
         for(let i=0; i<4; i++) {
             if(i !== correct) {
                 let s = Math.floor(Math.random() * rem);
@@ -385,35 +414,51 @@
         vals[3] += rem;
 
         vals.forEach((v, i) => {
-            document.getElementById(`fill-${i}`).style.width = v + "%";
-            document.getElementById(`perc-${i}`).style.display = 'block';
-            document.getElementById(`perc-${i}`).innerText = v + "%";
+            const bar = document.getElementById(`fill-${i}`);
+            const txt = document.getElementById(`perc-${i}`);
+            if(bar) bar.style.width = v + "%";
+            if(txt) { txt.style.display = 'block'; txt.innerText = v + "%"; }
         });
+        
         pollUsed = true;
         document.getElementById('l-poll').classList.add('used');
     }
 
+    // --- नेविगेशन फंक्शन (HTML बटन से जुड़े हुए) ---
     function goNext() {
-        if(current < questions.length - 1) {
-            current++; showQuestion();
+        if(currentIdx < questions.length - 1) {
+            currentIdx++;
+            showQuestion();
         } else {
-            showResult();
+            showResult(); // अंत में स्कोर दिखाएं
         }
     }
 
-    function goBack() { current--; showQuestion(); }
+    function goBack() {
+        if(currentIdx > 0) {
+            currentIdx--;
+            showQuestion();
+        }
+    }
 
+    // --- रिजल्ट स्क्रीन (धमाकेदार एंडिंग) ---
     function showResult() {
         document.getElementById('quiz-ui').style.display = 'none';
         document.getElementById('lifeline-section').style.display = 'none';
-        document.getElementById('result-screen').style.display = 'block';
-        document.getElementById('score-display').innerText = `${score}/${questions.length}`;
         
-        let msg = score === questions.length ? "अतुलनीय! आप टॉपर हैं।" : "बहुत बढ़िया प्रयास! जारी रखें।";
+        const resScreen = document.getElementById('result-screen');
+        resScreen.style.display = 'block';
+        
+        document.getElementById('score-display').innerText = `${score} / ${questions.length}`;
+        
+        let percent = (score / questions.length) * 100;
+        let msg = "";
+        if(percent >= 90) msg = "अतुलनीय! आप तो सामाजिक अध्ययन के मास्टर हैं।";
+        else if(percent >= 60) msg = "शानदार! थोड़ा और अभ्यास आपको टॉपर बना देगा।";
+        else msg = "निरंतर प्रयास करते रहें, सफलता आपके कदम चूमेगी।";
+        
         document.getElementById('feedback').innerText = msg;
     }
 
-    init();
-</script>
-</body>
-</html>
+    // पेज लोड होते ही शुरू करें
+    window.onload = init;
