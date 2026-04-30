@@ -47,6 +47,17 @@
             font-size: 10px; font-weight: 800; text-transform: uppercase;
             margin-bottom: 12px;
         }
+        /* तीसरा खंभा: लीडरबोर्ड और हेल्प डेस्क */
+        .engagement-section { background: white; border-radius: 25px; padding: 20px; margin: 20px 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .section-title { font-size: 16px; font-weight: 800; color: #1e293b; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
+        
+        .leaderboard-item { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px border-bottom: 1px solid #f1f2f6; }
+        .student-info { display: flex; align-items: center; gap: 10px; }
+        .rank-badge { background: #f39c12; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; }
+        .points { font-size: 11px; font-weight: 700; color: #27ae60; background: #e8f5e9; padding: 2px 8px; border-radius: 5px; }
+
+        .help-box { background: #f8f9fa; border-radius: 15px; padding: 15px; margin-top: 10px; border: 1px dashed #cbd5e1; }
+        .help-input { width: 100%; border: 1px solid #ddd; padding: 10px; border-radius: 10px; font-size: 12px; margin-bottom: 10px; }
 
         .tag-premium { background: #e8f5e9; color: #2e7d32; }
         .tag-video { background: #ffebee; color: #c62828; }
@@ -126,6 +137,50 @@ function reportContent(btn) {
     }
 }
 </script>
+<div class="engagement-section">
+    <div class="section-title"><span>🏆</span> टॉप ज्ञान रत्न (Weekly)</div>
+    
+    <div class="leaderboard-item">
+        <div class="student-info">
+            <div class="rank-badge">1</div>
+            <div>
+                <p style="font-size: 13px; font-weight: 600;">अजय शर्मा</p>
+                <p style="font-size: 10px; color: #95a5a6;">SST सारथी बैज</p>
+            </div>
+        </div>
+        <span class="points">+1250 Pts</span>
+    </div>
+
+    <div class="leaderboard-item">
+        <div class="student-info">
+            <div class="rank-badge" style="background: #95a5a6;">2</div>
+            <div>
+                <p style="font-size: 13px; font-weight: 600;">प्रियंका मीणा</p>
+                <p style="font-size: 10px; color: #95a5a6;">विद्या रत्न बैज</p>
+            </div>
+        </div>
+        <span class="points">+980 Pts</span>
+    </div>
+</div>
+
+<div class="engagement-section" style="margin-top: 0;">
+    <div class="section-title"><span>🤝</span> SSC हेल्प डेस्क</div>
+    <p style="font-size: 11px; color: #636e72; margin-bottom: 10px;">कोई सवाल है या नोट्स चाहिए? यहाँ लिखें, कम्युनिटी आपकी मदद करेगी।</p>
+    
+    <div class="help-box">
+        <textarea class="help-input" placeholder="अपनी समस्या यहाँ लिखें..."></textarea>
+        <button onclick="postHelp()" class="action-btn" style="margin-top: 0; width: 100%; background: #1e293b;">मदद मांगें (Post)</button>
+    </div>
+</div>
+function postHelp() {
+    let msg = document.querySelector('.help-input').value;
+    if(msg.trim() === "") {
+        alert("कृपया अपनी समस्या लिखें!");
+    } else {
+        alert("आपकी रिक्वेस्ट SSC हेल्प डेस्क पर भेज दी गई है। जल्द ही कोई छात्र या सर जवाब देंगे!");
+        document.querySelector('.help-input').value = "";
+    }
+}
 
 </body>
 </html>
