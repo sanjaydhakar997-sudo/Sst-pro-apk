@@ -148,6 +148,19 @@
         </div>
     </div>
 </div>
+<div style="text-align: right; margin-bottom: 10px;">
+    <button onclick="shareLeaderboard()" style="background: #25D366; color: white; border: none; padding: 5px 12px; border-radius: 50px; font-size: 10px; font-weight: 800; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;">
+        📲 दोस्तों को दिखाएं
+    </button>
+</div>
+
+<script>
+function shareLeaderboard() {
+    let text = "देखो! मैं Social Studies Classes (SSC) के साप्ताहिक लीडरबोर्ड में टॉप पर हूँ। 🚀 आप भी अपनी तैयारी चेक करें और नोट्स डाउनलोड करें: " + window.location.href;
+    let url = "https://wa.me/?text=" + encodeURIComponent(text);
+    window.open(url, '_blank');
+}
+</script>
 
 <div class="engagement-section">
     <div class="section-title"><span>🏆</span> टॉप ज्ञान रत्न (Weekly)</div>
