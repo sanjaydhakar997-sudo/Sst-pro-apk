@@ -3,6 +3,9 @@
    - Point 4: Security Masking
    - Point 5: Growth Simulation
 */
+// आज की तारीख के आधार पर ग्रोथ फैक्टर (जैसे आज 30 तारीख है तो ग्रोथ ज्यादा होगी)
+const today = new Date().getDate();
+const growthFactor = 1 + (today * 0.02); // हर दिन 2% की बढ़त का हिसाब
 
 // 1. मास्टर डेटाबेस (पूरे 41 जिलों का स्लॉट तैयार है)
 const SST_DISTRICT_DATA = [
@@ -40,6 +43,17 @@ function buildSSTDashboard() {
 
     let totalBooks = 0;
     let totalStudents = 0;
+grid.innerHTML = SST_DISTRICT_DATA.map((d, index) => {
+    const isLive = d.status === "live";
+    
+    // यहाँ बदलाव करें: असली डेटा को ग्रोथ फैक्टर से गुणा करें
+    const liveBooks = isLive ? Math.floor(d.books * growthFactor) : 0;
+    const liveStudents = isLive ? Math.floor(d.students * growthFactor) : 0;
+
+    if(isLive) {
+        totalBooks += liveBooks;
+        totalStudents += liveStudents;
+    }
 
     grid.innerHTML = SST_DISTRICT_DATA.map((d, index) => {
         const isLive = d.status === "live";
@@ -54,6 +68,11 @@ function buildSSTDashboard() {
                 <span>● NODE: ${d.id}</span>
                 <span>SYNC: ${isLive ? 'STABLE' : 'WAITING'}</span>
             </div>
+// किताबों के लिए (लाइन 69 के पास)
+<span class="value counter" data-target="${liveBooks}">${isLive ? 0 : '---'}</span>
+
+// लाभार्थियों के लिए (लाइन 75 के पास)
+<span class="value counter" data-target="${liveStudents}">${isLive ? 0 : '---'}</span>
 
             <div class="card-header">
                 <span class="district-name" style="font-size: 22px; font-weight: 800;">${d.name}</span>
