@@ -172,6 +172,48 @@
     text-align: center;
     display: none;
 }
+/* 🔍 7वाँ खंभा: सर्च और फ़िल्टर स्टाइल */
+.search-box-container {
+    margin: 0 20px 15px;
+    display: flex;
+    gap: 10px;
+}
+.search-input {
+    flex: 1;
+    padding: 12px 15px;
+    border-radius: 15px;
+    border: 1.5px solid #edf2f7;
+    font-size: 14px;
+    outline: none;
+    background: #f8fafc;
+}
+.search-input:focus {
+    border-color: #27ae60;
+    background: #fff;
+}
+.filter-tags {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 0 20px 20px;
+    scrollbar-width: none;
+}
+.filter-btn {
+    white-space: nowrap;
+    padding: 8px 18px;
+    border-radius: 50px;
+    background: #fff;
+    border: 1px solid #edf2f7;
+    font-size: 12px;
+    font-weight: 700;
+    color: #64748b;
+    cursor: pointer;
+}
+.filter-btn.active {
+    background: #27ae60;
+    color: #fff;
+    border-color: #27ae60;
+}
 
     </style>
 
@@ -237,6 +279,18 @@ window.addEventListener('load', function() {
     </div>
     
     <div id="quiz-feedback"></div>
+</div>
+<div class="search-box-container" style="margin: 0 20px 15px;">
+    <input type="text" id="searchInput" 
+           style="width: 100%; padding: 12px 18px; border-radius: 15px; border: 1.5px solid #edf2f7; font-size: 14px; outline: none; background: #f8fafc; box-sizing: border-box;" 
+           placeholder="नोट्स, टॉपिक या टीचर खोजें..." 
+           onkeyup="filterContent()">
+</div>
+
+<div class="filter-tags" style="display: flex; gap: 10px; overflow-x: auto; padding: 0 20px 20px; scrollbar-width: none;">
+    <button class="filter-btn active" onclick="filterCategory('all', this)">सब देखें</button>
+    <button class="filter-btn" onclick="filterCategory('premium', this)">Premium</button>
+    <button class="filter-btn" onclick="filterCategory('video', this)">Videos</button>
 </div>
 
 <div class="update-container">
