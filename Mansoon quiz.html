@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SST Pro Quiz</title>
+    <style>
+        body { font-family: sans-serif; background: #f4f7f6; padding: 20px; }
+        .box { max-width: 500px; margin: auto; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        h2 { color: #1a237e; border-bottom: 2px solid #ffd700; padding-bottom: 10px; }
+        .q { font-weight: bold; margin-top: 20px; font-size: 18px; }
+        .opt { display: block; background: #f0f0f0; padding: 10px; margin: 10px 0; border-radius: 8px; cursor: pointer; }
+        .opt:hover { background: #ffd700; }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2 id="title">टेस्ट शुरू हो रहा है...</h2>
+    <div id="content"></div>
+</div>
+
+<script>
+    // मानसून के सवाल यहाँ हैं
+    const data = {
+        "mansoon": {
+            name: "भारतीय मानसून टेस्ट",
+            qs: [
+                { q: "मानसून शब्द की उत्पत्ति किस भाषा से हुई है?", options: ["अरबी", "फारसी", "हिंदी", "अंग्रेजी"] },
+                { q: "भारत में सबसे ज्यादा वर्षा किस मानसून से होती है?", options: ["उत्तर-पूर्वी", "दक्षिण-पश्चिम", "पश्चिमी विक्षोभ", "इनमें से कोई नहीं"] }
+            ]
+        },
+        "raj_history": {
+            name: "राजस्थान इतिहास टेस्ट",
+            qs: [
+                { q: "हल्दीघाटी का युद्ध कब हुआ था?", options: ["1576", "1526", "1761", "1556"] }
+            ]
+        }
+    };
+
+    // URL से पता करना कि कौन सा कार्ड दबाया गया है
+    const urlParams = new URLSearchParams(window.location.search);
+    const type = urlParams.get('type');
+    const selectedTest = data[type];
+
+    if(selectedTest) {
+        document.getElementById('title').innerText = selectedTest.name;
+        let html = "";
+        selectedTest.qs.forEach((item, i) => {
+            html += `<div class="q">${i+1}. ${item.q}</div>`;
+            item.options.forEach(o => {
+                html += `<div class="opt">${o}</div>`;
+            });
+        });
+        document.getElementById('content').innerHTML = html;
+    }
+</script>
+</body>
+</html>
