@@ -283,6 +283,38 @@ function shareLeaderboard() {
     let url = "https://wa.me/?text=" + encodeURIComponent(text);
     window.open(url, '_blank');
 }
+    // 📝 6वाँ खंभा: क्विज़ चेक करने का असली जादू
+function verifyQ(btn, isCorrect) {
+    const card = btn.closest('.daily-quiz-card');
+    const feedback = card.querySelector('#quiz-feedback');
+    const allOpts = card.querySelectorAll('.opt');
+    
+    // दोबारा क्लिक करने से रोकें (Lock buttons)
+    allOpts.forEach(opt => opt.style.pointerEvents = 'none');
+    
+    if(isCorrect) {
+        btn.classList.add('win'); // सही होने पर हरा रंग
+        feedback.style.display = 'block';
+        feedback.style.background = '#dcfce7';
+        feedback.style.color = '#166534';
+        feedback.style.padding = '10px';
+        feedback.style.marginTop = '10px';
+        feedback.style.borderRadius = '10px';
+        feedback.style.fontWeight = 'bold';
+        feedback.innerHTML = 'शानदार! मेहरानगढ़ सूची में शामिल नहीं है। ✅';
+    } else {
+        btn.classList.add('loose'); // गलत होने पर लाल रंग
+        feedback.style.display = 'block';
+        feedback.style.background = '#fee2e2';
+        feedback.style.color = '#991b1b';
+        feedback.style.padding = '10px';
+        feedback.style.marginTop = '10px';
+        feedback.style.borderRadius = '10px';
+        feedback.style.fontWeight = 'bold';
+        feedback.innerHTML = 'ओह! सही उत्तर "C. मेहरानगढ़" है। ❌';
+    }
+}
+
 </script>
 
 <div class="engagement-section">
