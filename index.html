@@ -233,69 +233,22 @@
         }
     }, 5000);
 
-    // Typing Animation
-    const qText = "वे मुझे मार सकते हैं, लेकिन वे मेरे विचारों को नहीं मार सकते। वे मेरे शरीर को कुचल सकते हैं, लेकिन वे मेरी आत्मा को नहीं कुचल पाएंगे।";
-    let qPos = 0;
-    const qTarget = document.getElementById('typeQuote');
-<div class="live-mission-box" onclick="location.href='dashboard.html'">
-    <div class="mission-header">
-        <span class="dot"></span> 🚩 मिशन: राजस्थान 2026
+<div class="live-mission-box" onclick="location.href='dashboard.html'" style="margin: 20px 15px; background: #1e293b; border-radius: 20px; padding: 20px; color: white; text-align: center; border: 1px solid rgba(243, 156, 18, 0.4);">
+    <div style="font-size: 12px; font-weight: 800; color: #f39c12; margin-bottom: 15px;">
+        <span class="dot" style="height: 8px; width: 8px; background-color: #2ecc71; border-radius: 50%; display: inline-block; margin-right: 5px;"></span> 🚩 मिशन: राजस्थान 2026
     </div>
-    <div class="stats-row">
-        <div class="stat-item">
-            <small>वितरित पुस्तकें</small>
-            <span id="globalBooks">0</span>
+    <div style="display: flex; justify-content: space-around; align-items: center;">
+        <div style="text-align: center;">
+            <small style="display: block; font-size: 10px; color: #94a3b8; text-transform: uppercase;">वितरित पुस्तकें</small>
+            <span id="globalBooks" style="font-size: 24px; font-weight: 900; color: #fff;">0</span>
         </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-            <small>कुल लाभार्थी</small>
-            <span id="globalReach">0</span>
+        <div style="width: 1px; height: 30px; background: rgba(255,255,255,0.1);"></div>
+        <div style="text-align: center;">
+            <small style="display: block; font-size: 10px; color: #94a3b8; text-transform: uppercase;">कुल लाभार्थी</small>
+            <span id="globalReach" style="font-size: 24px; font-weight: 900; color: #fff;">0</span>
         </div>
-    </div>
-    <div class="mission-footer">
-        AUDIT ID: SHA-256-V6 | <span style="color:#f39c12">पूरा डैशबोर्ड देखें ➔</span>
     </div>
 </div>
-
-    function startTyping() {
-        if (qPos < qText.length) {
-            qTarget.innerHTML += qText.charAt(qPos);
-            qPos++;
-            setTimeout(startTyping, 120);
-        } else {
-            setTimeout(() => {
-                qTarget.innerHTML = "";
-                qPos = 0;
-                startTyping();
-            }, 3000);
-        }
-    }
-    startTyping();
-</script>
-
-
-<div style="margin: 20px 15px;">
-    <div style="display: flex; gap: 10px; margin: 20px 15px;">
-
-    <a href="mission.html" style="text-decoration: none; flex: 1;">
-        <div style="background: linear-gradient(135deg, #FFD700, #FF8C00); padding: 15px 10px; border-radius: 20px; position: relative; overflow: hidden; display: flex; align-items: center; height: 80px;">
-            <div style="background: white; width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-right: 10px;">🏆</div>
-            <div>
-                <div style="color: #000; font-weight: 900; font-size: 12px; text-transform: uppercase;">VVIP क्लब</div>
-                <div style="color: #333; font-size: 9px; font-weight: 600; opacity: 0.8;">किताबें दान करें</div>
-            </div>
-        </div>
-    </a>
-
-    <a href="team-registration.html" style="text-decoration: none; flex: 1;">
-        <div style="background: linear-gradient(135deg, #1a237e, #283593); padding: 15px 10px; border-radius: 20px; position: relative; overflow: hidden; display: flex; align-items: center; height: 80px;">
-            <div style="background: rgba(255,255,255,0.2); width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-right: 10px;">🤝</div>
-            <div>
-                <div style="color: #fff; font-weight: 900; font-size: 12px; text-transform: uppercase;">SST TEAM</div>
-                <div style="color: #eee; font-size: 9px; font-weight: 600; opacity: 0.9;">Ground Exe. बनें</div>
-            </div>
-        </div>
-    </a>
 
 </div>
 
@@ -643,28 +596,37 @@
 </div>
 <script>
 window.addEventListener('load', function() {
-    // आज की तारीख के हिसाब से 2.1% ग्रोथ
+    // आज की तारीख के हिसाब से कैलकुलेशन
     const dayFactor = new Date().getDate();
     const finalBooks = Math.floor(1240 + (dayFactor * 18));
     const finalReach = Math.floor(2100 + (dayFactor * 25));
 
-    // नंबर भगाने का फंक्शन
-    animateNumber("globalBooks", 0, finalBooks, 2500);
-    animateNumber("globalReach", 0, finalReach, 2500);
+    // यहाँ चेक करें कि ID सही है या नहीं
+    if(document.getElementById("globalBooks")) {
+        animateNumber("globalBooks", 0, finalBooks, 2500);
+    }
+    if(document.getElementById("globalReach")) {
+        animateNumber("globalReach", 0, finalReach, 2500);
+    }
 });
 
 function animateNumber(id, start, end, duration) {
     let obj = document.getElementById(id);
+    if(!obj) return; // अगर ID नहीं मिली तो कोड बंद न हो
+    
     let startTimestamp = null;
     const step = (timestamp) => {
         if (!startTimestamp) startTimestamp = timestamp;
         const progress = Math.min((timestamp - startTimestamp) / duration, 1);
         obj.innerHTML = Math.floor(progress * (end - start) + start).toLocaleString();
-        if (progress < 1) window.requestAnimationFrame(step);
+        if (progress < 1) {
+            window.requestAnimationFrame(step);
+        }
     };
     window.requestAnimationFrame(step);
 }
 </script>
+
 
 </body>
     </html>
