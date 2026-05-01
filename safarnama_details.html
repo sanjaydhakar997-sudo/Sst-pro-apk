@@ -4,35 +4,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>सफ़रनामा 🚩 - SST Pro</title>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.1/dist/browser-image-compression.js"></script>
-    
+
     <style>
-        :root { --gold: #ffd700; --royal: #1a1a2e; --dark: #0c0c14; --glass: rgba(255, 255, 255, 0.05); }
-        body { background: var(--dark); font-family: 'Poppins', sans-serif; margin: 0; color: #fff; display: flex; flex-direction: column; align-items: center; min-height: 100vh; padding: 20px; box-sizing: border-box; }
+        :root { 
+            --gold: #ffd700; --royal: #1a1a2e; --dark: #0c0c14; 
+            --white: #ffffff; --glass: rgba(255, 255, 255, 0.05);
+            --success: #2ecc71; --error: #ff4444;
+        }
+
+        body { 
+            background: var(--dark); font-family: 'Poppins', sans-serif; 
+            margin: 0; color: var(--white); display: flex; 
+            flex-direction: column; align-items: center; padding: 20px; 
+            box-sizing: border-box; min-height: 100vh;
+        }
+
+        .back-nav {
+            align-self: flex-start; margin-bottom: 20px; text-decoration: none;
+            color: var(--gold); font-size: 13px; font-weight: 800;
+            background: var(--glass); padding: 10px 20px; border-radius: 50px;
+            border: 1px solid rgba(255, 215, 0, 0.3); transition: 0.3s;
+        }
+
+        .card { 
+            background: var(--royal); padding: 35px 25px; border-radius: 35px; 
+            border: 2px solid var(--gold); width: 100%; max-width: 450px; 
+            text-align: center; box-shadow: 0 25px 60px rgba(0,0,0,0.9); 
+            position: relative; overflow: hidden;
+        }
+
+        .trust-banner { 
+            background: var(--gold); color: #000; font-size: 11px; 
+            font-weight: 900; padding: 8px 0; position: absolute; 
+            top: 0; left: 0; width: 100%; text-transform: uppercase; 
+            letter-spacing: 2px;
+        }
+
+        h1 { color: var(--gold); font-size: 30px; margin-top: 25px; margin-bottom: 5px; }
         
-        .back-nav { align-self: flex-start; margin-bottom: 20px; text-decoration: none; color: var(--gold); font-size: 12px; font-weight: bold; background: var(--glass); padding: 8px 15px; border-radius: 50px; border: 1px solid rgba(255, 215, 0, 0.3); }
+        .motivation-text { font-size: 12px; color: #ccc; margin-bottom: 25px; font-style: italic; }
 
-        .card { background: var(--royal); padding: 30px; border-radius: 30px; border: 2px solid var(--gold); width: 100%; max-width: 420px; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.8); position: relative; overflow: hidden; }
-        
-        .trust-banner { background: var(--gold); color: #000; font-size: 10px; font-weight: 900; padding: 6px 0; position: absolute; top: 0; left: 0; width: 100%; text-transform: uppercase; letter-spacing: 1px; }
-        
-        h1 { color: var(--gold); font-size: 26px; margin-top: 25px; margin-bottom: 5px; }
-        .motivation-text { font-size: 12px; color: #ddd; margin-bottom: 25px; line-height: 1.6; font-style: italic; border-bottom: 1px solid rgba(255,215,0,0.2); padding-bottom: 15px; }
+        .input-group { text-align: left; margin-bottom: 18px; }
+        .input-label { display: block; font-size: 11px; color: var(--gold); margin-bottom: 6px; font-weight: 700; text-transform: uppercase; margin-left: 5px;}
 
-        input { width: 100%; padding: 14px; margin-bottom: 12px; border-radius: 12px; border: 1px solid rgba(255,215,0,0.2); background: #252545; color: white; box-sizing: border-box; outline: none; font-size: 14px; transition: 0.3s; }
-        input:focus { border-color: var(--gold); background: #2a2a4d; }
+        input, select, textarea { 
+            width: 100%; padding: 15px; border-radius: 12px; 
+            border: 1px solid rgba(255, 215, 0, 0.15); 
+            background: #1e1e3a; color: white; box-sizing: border-box; 
+            outline: none; font-size: 14px; transition: 0.3s; 
+        }
 
-        .price-group { display: flex; gap: 10px; margin-bottom: 15px; }
-        .p-btn { flex: 1; padding: 12px; border-radius: 12px; border: 1px solid var(--gold); cursor: pointer; font-weight: bold; font-size: 13px; transition: 0.3s; }
+        input:focus, select:focus { border-color: var(--gold); background: #25254d; }
 
-        .file-label { display: block; border: 2px dashed rgba(255,215,0,0.4); padding: 25px 20px; border-radius: 20px; cursor: pointer; background: rgba(255, 215, 0, 0.03); margin-bottom: 20px; }
+        .price-group { display: flex; gap: 10px; margin-bottom: 10px; }
+        .p-btn { 
+            flex: 1; padding: 12px; border-radius: 12px; border: 2px solid var(--gold); 
+            cursor: pointer; font-weight: 800; font-size: 13px; text-align: center;
+        }
 
-        .btn { background: var(--gold); color: #000; width: 100%; padding: 18px; border-radius: 50px; font-weight: 900; border: none; font-size: 16px; cursor: pointer; box-shadow: 0 10px 20px rgba(255,215,0,0.2); transition: 0.3s; margin-top: 10px; }
-        .btn:disabled { background: #555; opacity: 0.7; }
+        .file-label { 
+            display: block; border: 2px dashed rgba(255, 215, 0, 0.3); 
+            padding: 30px 15px; border-radius: 20px; cursor: pointer; 
+            background: rgba(255, 215, 0, 0.02); margin-top: 10px;
+        }
 
-        #pBarParent { width: 100%; height: 6px; background: rgba(255,215,0,0.1); border-radius: 10px; margin-top: 20px; display: none; overflow: hidden; }
-        #pLine { width: 0%; height: 100%; background: var(--gold); transition: 0.4s; box-shadow: 0 0 10px var(--gold); }
+        .btn { 
+            background: var(--gold); color: #000; width: 100%; padding: 18px; 
+            border-radius: 50px; font-weight: 900; border: none; font-size: 17px; 
+            cursor: pointer; box-shadow: 0 10px 20px rgba(255, 215, 0, 0.2); 
+            margin-top: 15px; text-transform: uppercase;
+        }
+
+        #pBarParent { 
+            width: 100%; height: 6px; background: rgba(255,255,255,0.05); 
+            border-radius: 10px; margin-top: 20px; display: none; overflow: hidden; 
+        }
+        #pLine { width: 0%; height: 100%; background: var(--gold); transition: 0.4s; }
+
+        footer { margin-top: 30px; text-align: center; border-top: 1px solid rgba(255,215,0,0.1); width: 100%; padding-top: 20px;}
     </style>
 </head>
 <body>
@@ -40,145 +91,222 @@
     <a href="library_details.html" class="back-nav">⇠ वापस लाइब्रेरी</a>
 
     <div class="card">
-        <div class="trust-banner">SST PRO • शिक्षा दान • महादान</div>
+        <div class="trust-banner">SST PRO • सेवा ही संकल्प</div>
         <h1>सफ़रनामा 🚩</h1>
-        <p class="motivation-text">"किताबें अलमारी में धूल खाने के लिए नहीं, किसी का भविष्य संवारने के लिए होती हैं।"</p>
+        <p class="motivation-text">"ज्ञान बांटने से बढ़ता है, संजोने से नहीं।"</p>
 
-        <input type="text" id="userName" placeholder="आपका शुभ नाम *">
-        <input type="tel" id="userPhone" placeholder="WhatsApp नंबर *">
-        
-        <input type="text" id="bTitle" placeholder="किताब का नाम / क्लास सेट *">
-
-        <div class="price-group">
-            <div onclick="setPrice(0)" id="btnFree" class="p-btn" style="background:var(--gold); color:#000;">निशुल्क दान</div>
-            <div onclick="setPrice('ask')" id="btnPaid" class="p-btn" style="color:var(--gold);">सहयोग राशि</div>
+        <div class="input-group">
+            <label class="input-label">1. दानदाता की पहचान</label>
+            <input type="text" id="userName" placeholder="आपका शुभ नाम *">
+            <div style="height: 10px;"></div>
+            <input type="tel" id="userPhone" placeholder="WhatsApp नंबर *">
         </div>
 
-        <div id="priceInputArea" style="display:none;">
-            <input type="number" id="fullPrice" placeholder="M.R.P. (असली कीमत) *" oninput="calculateLimit()">
-            <input type="number" id="bPrice" placeholder="आपकी राशि (Max 20%) *" oninput="calculateLimit()">
-            <p id="limitNote" style="font-size: 10px; color: #ff4444; margin-bottom: 10px; font-weight: bold; display: none;"></p>
+        <div class="input-group">
+            <label class="input-label">2. विरासत की श्रेणी और प्रकार</label>
+            <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+                <select id="examCat">
+                    <option value="" disabled selected>परीक्षा चुनें</option>
+                    <option value="10th/12th Board">10th/12th बोर्ड</option>
+                    <option value="REET/Teacher">REET / शिक्षक भर्ती</option>
+                    <option value="CET/Patwar">CET / पटवार / LDC</option>
+                    <option value="Police/Defense">पुलिस / डिफेंस</option>
+                    <option value="Notes/Others">नोट्स / अन्य</option>
+                </select>
+                <select id="bookType">
+                    <option value="Single">एकल किताब</option>
+                    <option value="Full Set">पूरा सेट</option>
+                </select>
+            </div>
+            <input type="text" id="bTitle" placeholder="किताब का नाम (जैसे: लक्ष्या राजस्थान जीके) *">
         </div>
 
-        <label class="file-label">
-            <input type="file" id="bFile" accept="image/*" style="display:none;" onchange="updateInfo()">
-            <div id="uploadUI">
-                <span style="font-size: 30px;">📸</span><br>
-                <span id="fileStatus" style="font-size: 12px; font-weight: bold;">किताब की फोटो चुनें *</span>
+        <div class="input-group">
+            <label class="input-label">3. स्थिति और आपका संदेश</label>
+            <select id="bCondition" style="margin-bottom: 10px;">
+                <option value="New">स्थिति: बिल्कुल नई (5★)</option>
+                <option value="Good">स्थिति: अच्छी (4★)</option>
+                <option value="Old">स्थिति: पुरानी पर पठनीय (3★)</option>
+            </select>
+            <textarea id="userMsg" placeholder="लेने वाले छात्र के लिए कोई सन्देश... (Optional)" rows="2"></textarea>
+        </div>
+
+        <div class="input-group">
+            <label class="input-label">4. सेवा का प्रकार (20% नियम लागू)</label>
+            <div class="price-group">
+                <div onclick="setPrice(0)" id="btnFree" class="p-btn" style="background:var(--gold); color:#000;">निशुल्क</div>
+                <div onclick="setPrice('ask')" id="btnPaid" class="p-btn" style="color:var(--gold);">सहयोग राशि</div>
             </div>
-            <div id="uploadSuccess" style="display: none;">
-                <span style="font-size: 25px; color: #2ecc71;">✅</span>
-                <p style="font-size: 12px; color: #2ecc71; font-weight: bold; margin: 0;">फोटो सुरक्षित!</p>
+            <div id="priceInputArea" style="display:none;">
+                <input type="number" id="fullPrice" placeholder="M.R.P. *" oninput="calculateLimit()" style="margin-bottom: 8px;">
+                <input type="number" id="bPrice" placeholder="आपकी रेट (Max 20%) *" oninput="calculateLimit()">
+                <p id="limitNote" style="font-size: 10px; color: var(--error); margin-top: 5px; font-weight: bold; display: none;"></p>
             </div>
-        </label>
+        </div>
+
+        <div class="input-group">
+            <label class="input-label">5. किताब की साफ़ फोटो</label>
+            <label class="file-label">
+                <input type="file" id="bFile" accept="image/*" style="display:none;" onchange="updateInfo()">
+                <div id="uploadUI">
+                    <span style="font-size: 30px;">📸</span><br>
+                    <span id="fileStatus" style="font-size: 12px; font-weight: bold;">फोटो चुनें *</span>
+                </div>
+                <div id="uploadSuccess" style="display: none;">
+                    <span style="font-size: 25px; color: var(--success);">✅</span>
+                    <p style="font-size: 12px; color: var(--success); font-weight: 800; margin: 0;">फोटो तैयार है!</p>
+                </div>
+            </label>
+        </div>
 
         <button onclick="uploadMission()" class="btn" id="upBtn">विरासत साझा करें ❯</button>
         
         <div id="pBarParent">
             <div id="pLine"></div>
         </div>
-        <p id="statusMsg" style="font-size: 10px; color: #aaa; margin-top: 10px;"></p>
+        <p id="statusMsg" style="font-size: 11px; color: #aaa; margin-top: 15px;"></p>
     </div>
 
-    <footer style="margin-top: 30px; padding: 20px; text-align: center; border-top: 1px solid rgba(255,215,0,0.1); width: 100%; max-width: 420px;">
+    <footer>
         <p style="font-size: 11px; color: var(--gold); font-weight: bold; margin: 0;">© 2024-25 SST PRO APK - ALL RIGHTS RESERVED</p>
-        <p style="font-size: 9px; color: #666; margin-top: 5px;">Designed & Managed by: Sanjay Dhakar Sir</p>
+        <p style="font-size: 9px; color: #666; margin-top: 5px;">Sanjay Dhakar Sir की विशेष प्रस्तुति 🚩</p>
     </footer>
+        <script>
+        let isFree = true;
+        // आपकी Google Script का URL
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbym06GAtqxEr0hZ9giMcxfa1jFNQi1ijzhlmrW9O1AaGva2OmuJiDpWNLOBJx5wsBPc/exec';
 
-<script>
-    let isFree = true;
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbym06GAtqxEr0hZ9giMcxfa1jFNQi1ijzhlmrW9O1AaGva2OmuJiDpWNLOBJx5wsBPc/exec';
-
-    function setPrice(p) {
-        const pArea = document.getElementById('priceInputArea');
-        const bFree = document.getElementById('btnFree');
-        const bPaid = document.getElementById('btnPaid');
-        isFree = (p === 0);
-        
-        pArea.style.display = isFree ? 'none' : 'block';
-        bFree.style.background = isFree ? 'var(--gold)' : 'transparent';
-        bFree.style.color = isFree ? '#000' : 'var(--gold)';
-        bPaid.style.background = isFree ? 'transparent' : 'var(--gold)';
-        bPaid.style.color = isFree ? 'var(--gold)' : '#000';
-    }
-
-    function calculateLimit() {
-        const full = parseFloat(document.getElementById('fullPrice').value) || 0;
-        const your = parseFloat(document.getElementById('bPrice').value) || 0;
-        const note = document.getElementById('limitNote');
-        const max = full * 0.20;
-
-        if (your > max && full > 0) {
-            note.style.display = 'block';
-            note.innerText = `⚠️ आप अधिकतम ₹${max.toFixed(0)} ही ले सकते हैं!`;
-            return false;
-        } else {
-            note.style.display = 'none';
-            return true;
-        }
-    }
-
-    function updateInfo() {
-        document.getElementById('uploadUI').style.display = 'none';
-        document.getElementById('uploadSuccess').style.display = 'block';
-    }
-
-    async function uploadMission() {
-        if(!isFree && !calculateLimit()) return alert("🚩 राशि नियम के विरुद्ध है!");
-        
-        const file = document.getElementById('bFile').files[0];
-        const name = document.getElementById('userName').value;
-        const title = document.getElementById('bTitle').value;
-        const phone = document.getElementById('userPhone').value;
-
-        if(!file || !name || !title || !phone) return alert("⚠️ सभी जानकारी भरें!");
-
-        const btn = document.getElementById('upBtn');
-        const pLine = document.getElementById('pLine');
-        const pBar = document.getElementById('pBarParent');
-        const status = document.getElementById('statusMsg');
-
-        btn.disabled = true;
-        btn.innerText = "प्रक्रिया जारी...";
-        pBar.style.display = 'block';
-        pLine.style.width = "30%";
-        status.innerText = "⏳ फोटो कंप्रेस हो रही है...";
-
-        try {
-            const options = { maxSizeMB: 0.2, maxWidthOrHeight: 800 };
-            const compressedFile = await imageCompression(file, options);
+        // 💰 मूल्य नियंत्रण स्विच
+        function setPrice(p) {
+            const pArea = document.getElementById('priceInputArea');
+            const bFree = document.getElementById('btnFree');
+            const bPaid = document.getElementById('btnPaid');
+            isFree = (p === 0);
             
-            pLine.style.width = "60%";
-            status.innerText = "☁️ क्लाउड पर भेज रहे हैं...";
-
-            const formData = new FormData();
-            formData.append('file', compressedFile);
-            formData.append('upload_preset', 'sst_pro'); 
-
-            const cloudResp = await fetch('https://api.cloudinary.com/v1_1/dppmrodwf/image/upload', { method: 'POST', body: formData });
-            const cloudData = await cloudResp.json();
-            const imageUrl = cloudData.secure_url;
-
-            pLine.style.width = "90%";
-            status.innerText = "📂 डेटा सुरक्षित हो रहा है...";
-
-            const price = isFree ? "निशुल्क" : "₹" + document.getElementById('bPrice').value;
-            const sheetData = { "DonorName": name, "BookTitle": title, "Price": price, "ImageUrl": imageUrl, "Phone": phone };
-
-            await fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(sheetData) });
-
-            pLine.style.width = "100%";
-            const waText = `🚩 *सफ़रनामा: नयी विरासत दर्ज!*%0A---------------------------%0A👤 *दाता:* ${name}%0A📚 *किताब:* ${title}%0A💰 *कीमत:* ${price}%0A📞 *संपर्क:* ${phone}%0A🖼️ *फोटो:* ${imageUrl}%0A---------------------------%0A_SST PRO - बदलें देश, बदलें शिक्षा_`;
-            
-            alert("✅ विरासत सफलतापूर्वक दर्ज हो गई!");
-            window.location.assign(`https://wa.me/919529812784?text=${encodeURIComponent(waText)}`);
-
-        } catch (err) {
-            alert("❌ त्रुटि: " + err.message);
-            btn.disabled = false;
-            pBar.style.display = 'none';
+            pArea.style.display = isFree ? 'none' : 'block';
+            bFree.style.background = isFree ? 'var(--gold)' : 'transparent';
+            bFree.style.color = isFree ? '#000' : 'var(--gold)';
+            bPaid.style.background = isFree ? 'transparent' : 'var(--gold)';
+            bPaid.style.color = isFree ? '#000' : 'var(--gold)';
         }
-    }
-</script>
+
+        // 🚩 20% का कड़ा नियम
+        function calculateLimit() {
+            const full = parseFloat(document.getElementById('fullPrice').value) || 0;
+            const your = parseFloat(document.getElementById('bPrice').value) || 0;
+            const note = document.getElementById('limitNote');
+            const maxAllowed = full * 0.20;
+
+            if (your > maxAllowed && full > 0) {
+                note.style.display = 'block';
+                note.innerText = `🚩 मर्यादा लांघी! आप ₹${maxAllowed.toFixed(0)} से अधिक नहीं ले सकते।`;
+                return false;
+            } else {
+                note.style.display = 'none';
+                return true;
+            }
+        }
+
+        // 📸 फोटो चयन अपडेट
+        function updateInfo() {
+            document.getElementById('uploadUI').style.display = 'none';
+            document.getElementById('uploadSuccess').style.display = 'block';
+        }
+
+        // 🚀 मुख्य मिशन: अपलोड और डेटा सुरक्षित करना
+        async function uploadMission() {
+            // नियम जाँच
+            if(!isFree && !calculateLimit()) {
+                return alert("🚩 कृपया SST PRO के 20% नियम का पालन करें।");
+            }
+
+            // डेटा इकठ्ठा करना
+            const file = document.getElementById('bFile').files[0];
+            const name = document.getElementById('userName').value;
+            const phone = document.getElementById('userPhone').value;
+            const exam = document.getElementById('examCat').value;
+            const type = document.getElementById('bookType').value;
+            const title = document.getElementById('bTitle').value;
+            const condition = document.getElementById('bCondition').value;
+            const msg = document.getElementById('userMsg').value || "कोई संदेश नहीं";
+
+            // अनिवार्यता जाँच
+            if(!file || !name || !phone || !exam || !title) {
+                return alert("⚠️ श्रीमान, सभी महत्वपूर्ण जानकारी (नाम, नंबर, परीक्षा, फोटो) भरना अनिवार्य है!");
+            }
+
+            const btn = document.getElementById('upBtn');
+            const pLine = document.getElementById('pLine');
+            const pBar = document.getElementById('pBarParent');
+            const status = document.getElementById('statusMsg');
+
+            btn.disabled = true;
+            btn.innerText = "विरासत संसाधित हो रही है...";
+            pBar.style.display = 'block';
+            pLine.style.width = "20%";
+            status.innerText = "⏳ फोटो को छोटा (Compress) किया जा रहा है...";
+
+            try {
+                // 1. फोटो कम्प्रेशन (Professional Level)
+                const options = { maxSizeMB: 0.2, maxWidthOrHeight: 800, useWebWorker: true };
+                const compressedFile = await imageCompression(file, options);
+                
+                pLine.style.width = "50%";
+                status.innerText = "📤 बादलों (Cloudinary) पर सुरक्षित किया जा रहा है...";
+
+                // 2. Cloudinary अपलोड
+                const formData = new FormData();
+                formData.append('file', compressedFile);
+                formData.append('upload_preset', 'sst_pro'); 
+
+                const cloudResp = await fetch('https://api.cloudinary.com/v1_1/dppmrodwf/image/upload', { 
+                    method: 'POST', 
+                    body: formData 
+                });
+                const cloudData = await cloudResp.json();
+                const imageUrl = cloudData.secure_url;
+
+                pLine.style.width = "80%";
+                status.innerText = "📝 डेटाबेस (Google Sheet) में दर्ज किया जा रहा है...";
+
+                // 3. Google Sheet एंट्री
+                const finalPrice = isFree ? "निशुल्क" : "₹" + document.getElementById('bPrice').value;
+                const sheetData = {
+                    "DonorName": name,
+                    "Phone": phone,
+                    "Exam": exam,
+                    "Type": type,
+                    "Title": title,
+                    "Condition": condition,
+                    "Price": finalPrice,
+                    "Image": imageUrl,
+                    "Message": msg
+                };
+
+                await fetch(scriptURL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: JSON.stringify(sheetData)
+                });
+
+                // 4. व्हाट्सएप संदेश की तैयारी
+                pLine.style.width = "100%";
+                status.innerText = "✅ सफ़रनामा सफल! शुभ कामनाएं...";
+                
+                const waText = `🚩 *सफ़रनामा: नयी विरासत दर्ज!*%0A---------------------------%0A👤 *दाता:* ${name}%0A📞 *संपर्क:* ${phone}%0A📚 *किताब:* ${title}%0A🎓 *कैटेगरी:* ${exam} (${type})%0A🌟 *स्थिति:* ${condition}%0A💰 *कीमत:* ${finalPrice}%0A💬 *संदेश:* ${msg}%0A🖼️ *फोटो:* ${imageUrl}%0A---------------------------%0A_SST PRO - बदलें देश, बदलें शिक्षा_`;
+                
+                alert("✅ आपकी विरासत 'सफ़रनामा' में सफलतापूर्वक सुरक्षित कर ली गई है।");
+                
+                // आपके नंबर पर रीडायरेक्ट
+                window.location.assign(`https://wa.me/919529812784?text=${encodeURIComponent(waText)}`);
+
+            } catch (err) {
+                alert("❌ क्षमा करें, तकनीकी त्रुटि: " + err.message);
+                btn.disabled = false;
+                btn.innerText = "पुनः प्रयास करें ❯";
+                pBar.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>
