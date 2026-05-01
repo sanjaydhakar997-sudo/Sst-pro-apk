@@ -3,271 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>सफ़रनामा: एक नई शुरुआत 🚩</title>
+    <title>सफ़रनामा 🚩 - SST Pro</title>
     
     <script src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.1/dist/browser-image-compression.js"></script>
     
     <style>
-        :root { 
-            --gold: #ffd700; 
-            --royal: #1a1a2e; 
-            --dark: #0c0c14; 
-            --glass: rgba(255, 255, 255, 0.05);
-        }
-
-        body { 
-            background: var(--dark); 
-            font-family: 'Poppins', sans-serif; 
-            margin: 0; 
-            color: #fff; 
-            display: flex; 
-            flex-direction: column;
-            align-items: center; 
-            min-height: 100vh; 
-            padding: 20px; 
-            box-sizing: border-box; 
-        }
-
-        /* शाही बैक बटन */
-        .back-nav {
-            align-self: flex-start;
-            margin-bottom: 20px;
-            text-decoration: none;
-            color: var(--gold);
-            font-size: 12px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            background: var(--glass);
-            padding: 8px 15px;
-            border-radius: 50px;
-            border: 1px solid rgba(255, 215, 0, 0.3);
-        }
-
-        /* मुख्य कार्ड */
-        .card { 
-            background: var(--royal); 
-            padding: 30px; 
-            border-radius: 30px; 
-            border: 2px solid var(--gold); 
-            width: 100%; 
-            max-width: 420px; 
-            text-align: center; 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8); 
-            position: relative; 
-            overflow: hidden; 
-        }
-
-        /* ट्रस्ट बैनर */
-        .trust-banner { 
-            background: var(--gold); 
-            color: #000; 
-            font-size: 10px; 
-            font-weight: 900; 
-            padding: 6px 0; 
-            position: absolute; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            text-transform: uppercase; 
-            letter-spacing: 1px;
-        }
-
-        h1 { color: var(--gold); font-size: 26px; margin-top: 25px; margin-bottom: 5px; letter-spacing: 1px; }
+        :root { --gold: #ffd700; --royal: #1a1a2e; --dark: #0c0c14; --glass: rgba(255, 255, 255, 0.05); }
+        body { background: var(--dark); font-family: 'Poppins', sans-serif; margin: 0; color: #fff; display: flex; flex-direction: column; align-items: center; min-height: 100vh; padding: 20px; box-sizing: border-box; }
         
-        .motivation-text { 
-            font-size: 12px; 
-            color: #ddd; 
-            margin-bottom: 25px; 
-            line-height: 1.6; 
-            font-style: italic;
-            border-bottom: 1px solid rgba(255,215,0,0.2);
-            padding-bottom: 15px;
-        }
+        .back-nav { align-self: flex-start; margin-bottom: 20px; text-decoration: none; color: var(--gold); font-size: 12px; font-weight: bold; background: var(--glass); padding: 8px 15px; border-radius: 50px; border: 1px solid rgba(255, 215, 0, 0.3); }
+
+        .card { background: var(--royal); padding: 30px; border-radius: 30px; border: 2px solid var(--gold); width: 100%; max-width: 420px; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.8); position: relative; overflow: hidden; }
+        
+        .trust-banner { background: var(--gold); color: #000; font-size: 10px; font-weight: 900; padding: 6px 0; position: absolute; top: 0; left: 0; width: 100%; text-transform: uppercase; letter-spacing: 1px; }
+        
+        h1 { color: var(--gold); font-size: 26px; margin-top: 25px; margin-bottom: 5px; }
+        .motivation-text { font-size: 12px; color: #ddd; margin-bottom: 25px; line-height: 1.6; font-style: italic; border-bottom: 1px solid rgba(255,215,0,0.2); padding-bottom: 15px; }
+
+        input { width: 100%; padding: 14px; margin-bottom: 12px; border-radius: 12px; border: 1px solid rgba(255,215,0,0.2); background: #252545; color: white; box-sizing: border-box; outline: none; font-size: 14px; transition: 0.3s; }
+        input:focus { border-color: var(--gold); background: #2a2a4d; }
+
+        .price-group { display: flex; gap: 10px; margin-bottom: 15px; }
+        .p-btn { flex: 1; padding: 12px; border-radius: 12px; border: 1px solid var(--gold); cursor: pointer; font-weight: bold; font-size: 13px; transition: 0.3s; }
+
+        .file-label { display: block; border: 2px dashed rgba(255,215,0,0.4); padding: 25px 20px; border-radius: 20px; cursor: pointer; background: rgba(255, 215, 0, 0.03); margin-bottom: 20px; }
+
+        .btn { background: var(--gold); color: #000; width: 100%; padding: 18px; border-radius: 50px; font-weight: 900; border: none; font-size: 16px; cursor: pointer; box-shadow: 0 10px 20px rgba(255,215,0,0.2); transition: 0.3s; margin-top: 10px; }
+        .btn:disabled { background: #555; opacity: 0.7; }
+
+        #pBarParent { width: 100%; height: 6px; background: rgba(255,215,0,0.1); border-radius: 10px; margin-top: 20px; display: none; overflow: hidden; }
+        #pLine { width: 0%; height: 100%; background: var(--gold); transition: 0.4s; box-shadow: 0 0 10px var(--gold); }
     </style>
 </head>
 <body>
 
-    <a href="library_details.html" class="back-nav">⇠ वापस स्वर्ग (लाइब्रेरी)</a>
+    <a href="library_details.html" class="back-nav">⇠ वापस लाइब्रेरी</a>
 
     <div class="card">
         <div class="trust-banner">SST PRO • शिक्षा दान • महादान</div>
         <h1>सफ़रनामा 🚩</h1>
         <p class="motivation-text">"किताबें अलमारी में धूल खाने के लिए नहीं, किसी का भविष्य संवारने के लिए होती हैं।"</p>
 
-        ```
+        <input type="text" id="userName" placeholder="आपका शुभ नाम *">
+        <input type="tel" id="userPhone" placeholder="WhatsApp नंबर *">
+        
+        <input type="text" id="bTitle" placeholder="किताब का नाम / क्लास सेट *">
 
----
-
-**संजय सर, यह पहला चरण है।** इसमें हमने:
-1.  **Back Button** दिया है ताकि छात्र को ऐप जैसा अहसास हो।
-2.  **Motivation** के लिए एक दमदार कोट डाला है ताकि दान करने वाले को खुशी हो।
-3.  **UI** को गहरा और शाही रखा है।
-
-जैसे ही आप कहें, मैं **चरण 2: दानदाता की पहचान (Donor Input)** का कोड दूँ? इसमें हम छात्र का मान-सम्मान बढ़ाते हुए इनपुट लेंगे। 🚩
-        <div style="margin-bottom: 20px;">
-            <label style="display: block; text-align: left; font-size: 10px; color: var(--gold); margin-left: 10px; margin-bottom: 5px; font-weight: bold; text-transform: uppercase;">1. आपकी पहचान</label>
-            <input type="text" id="userName" placeholder="आपका शुभ नाम (जैसे: संजय धाकड़) *" style="width: 100%; padding: 14px; margin-bottom: 10px; border-radius: 12px; border: 1px solid rgba(255,215,0,0.2); background: #252545; color: white; box-sizing: border-box; outline: none; transition: 0.3s; font-size: 14px;">
-            
-            <input type="tel" id="userPhone" placeholder="WhatsApp नंबर (संपर्क के लिए) *" style="width: 100%; padding: 14px; border-radius: 12px; border: 1px solid rgba(255,215,0,0.2); background: #252545; color: white; box-sizing: border-box; outline: none; transition: 0.3s; font-size: 14px;">
-            <p style="font-size: 9px; color: #888; text-align: left; margin: 5px 10px 0;">* आपका नंबर केवल जरूरतमंद छात्र ही देख पाएगा।</p>
+        <div class="price-group">
+            <div onclick="setPrice(0)" id="btnFree" class="p-btn" style="background:var(--gold); color:#000;">निशुल्क दान</div>
+            <div onclick="setPrice('ask')" id="btnPaid" class="p-btn" style="color:var(--gold);">सहयोग राशि</div>
         </div>
 
-        ```
-
----
-
-**संजय सर, इस चरण की खासियत:**
-1. **Labeling:** हमने "आपकी पहचान" को गोल्ड कलर में ऊपर रखा है जो एक प्रोफेशनल लुक देता है।
-2. **Privacy Note:** छोटा सा मैसेज दिया है कि नंबर सुरक्षित है, जिससे छात्र बेझिझक डेटा भरेगा।
-3. **Design:** इनपुट बॉक्स को थोड़ा गहरा (Dark Blueish) रखा है ताकि वह गोल्ड बॉर्डर के साथ रॉयल दिखे।
-
-अब जब छात्र अपनी पहचान बता चुका है, तो **चरण 3** में हम उसकी **"विरासत" (किताब)** का विवरण लेंगे। क्या मैं चरण 3 का कोड दूँ? 🚩
-        <div style="margin-bottom: 25px; padding-top: 10px; border-top: 1px solid rgba(255,215,0,0.1);">
-            <label style="display: block; text-align: left; font-size: 10px; color: var(--gold); margin-left: 10px; margin-bottom: 5px; font-weight: bold; text-transform: uppercase;">2. विरासत का नाम</label>
-            
-            <input type="text" id="bTitle" placeholder="किताब का नाम या क्लास सेट (जैसे: 10th NCERT Full Set) *" style="width: 100%; padding: 14px; border-radius: 12px; border: 1px solid rgba(255,215,0,0.2); background: #252545; color: white; box-sizing: border-box; outline: none; transition: 0.3s; font-size: 14px;">
-            
-            <p style="font-size: 9px; color: #aaa; text-align: left; margin: 8px 10px 0; line-height: 1.4;">
-                <span style="color: var(--gold);">💡 टिप:</span> यदि नोट्स हैं, तो विषय का नाम स्पष्ट लिखें ताकि छात्र को ढूँढने में आसानी हो।
-            </p>
+        <div id="priceInputArea" style="display:none;">
+            <input type="number" id="fullPrice" placeholder="M.R.P. (असली कीमत) *" oninput="calculateLimit()">
+            <input type="number" id="bPrice" placeholder="आपकी राशि (Max 20%) *" oninput="calculateLimit()">
+            <p id="limitNote" style="font-size: 10px; color: #ff4444; margin-bottom: 10px; font-weight: bold; display: none;"></p>
         </div>
 
-        ```
-
----
-
-**संजय सर, इस स्टेप में हमने क्या बेहतर किया?**
-* **स्पष्टता:** उदाहरण दिया है (जैसे: 10th NCERT) ताकि छात्र कन्फ्यूज न हो।
-* **टिप सेक्शन:** छोटे अक्षरों में सुझाव दिया है, जिससे डेटा की क्वालिटी अच्छी रहेगी।
-* **विजुअल ब्रेक:** ऊपर एक हल्की सी लाइन दी है ताकि "पहचान" और "किताब का नाम" अलग-अलग साफ दिखें।
-
-अब आता है सबसे बड़ा पड़ाव—**चरण 4**, जहाँ हम आपका **"20% वाला सख्त नियम"** लागू करेंगे ताकि कोई भी किताब को महंगा न बेच सके। 
-
-क्या मैं **चरण 4 (कीमत और 20% लिमिट)** का कोड पेश करूँ? 🚩
-        <div style="margin-bottom: 25px; padding: 15px; background: rgba(255,215,0,0.05); border-radius: 15px; border: 1px dashed rgba(255,215,0,0.3);">
-            <label style="display: block; text-align: left; font-size: 10px; color: var(--gold); margin-bottom: 10px; font-weight: bold; text-transform: uppercase;">3. सेवा का प्रकार</label>
-            
-            <div class="price-group" style="display: flex; gap: 10px; margin-bottom: 15px;">
-                <div onclick="setPrice(0)" id="btnFree" style="flex: 1; padding: 12px; border-radius: 12px; border: 1px solid var(--gold); cursor: pointer; font-weight: bold; font-size: 13px; background: var(--gold); color: #000; transition: 0.3s;">निशुल्क दान</div>
-                <div onclick="setPrice('ask')" id="btnPaid" style="flex: 1; padding: 12px; border-radius: 12px; border: 1px solid var(--gold); cursor: pointer; font-weight: bold; font-size: 13px; color: var(--gold); transition: 0.3s;">सहयोग राशि</div>
+        <label class="file-label">
+            <input type="file" id="bFile" accept="image/*" style="display:none;" onchange="updateInfo()">
+            <div id="uploadUI">
+                <span style="font-size: 30px;">📸</span><br>
+                <span id="fileStatus" style="font-size: 12px; font-weight: bold;">किताब की फोटो चुनें *</span>
             </div>
-
-            <div id="priceInputArea" style="display:none;">
-                <input type="number" id="fullPrice" placeholder="किताब की असली रेट (M.R.P.) *" oninput="calculateLimit()" style="width: 100%; padding: 12px; margin-bottom: 8px; border-radius: 10px; border: 1px solid #444; background: #1a1a2e; color: white; outline: none; font-size: 13px;">
-                
-                <input type="number" id="bPrice" placeholder="आपकी राशि (Max 20%) *" oninput="calculateLimit()" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #444; background: #1a1a2e; color: white; outline: none; font-size: 13px;">
-                
-                <p id="limitNote" style="font-size: 10px; color: #ff4444; margin-top: 8px; display: none; font-weight: bold; line-height: 1.2;"></p>
+            <div id="uploadSuccess" style="display: none;">
+                <span style="font-size: 25px; color: #2ecc71;">✅</span>
+                <p style="font-size: 12px; color: #2ecc71; font-weight: bold; margin: 0;">फोटो सुरक्षित!</p>
             </div>
-            
-            <p style="font-size: 9px; color: #ccc; margin-top: 10px; line-height: 1.4;">
-                🚩 <span style="color: var(--gold);">नियम:</span> SST PRO पर कोई भी किताब MRP के 20% से ज्यादा पर साझा नहीं की जा सकती।
-            </p>
+        </label>
+
+        <button onclick="uploadMission()" class="btn" id="upBtn">विरासत साझा करें ❯</button>
+        
+        <div id="pBarParent">
+            <div id="pLine"></div>
         </div>
+        <p id="statusMsg" style="font-size: 10px; color: #aaa; margin-top: 10px;"></p>
+    </div>
 
-        ```
+    <footer style="margin-top: 30px; padding: 20px; text-align: center; border-top: 1px solid rgba(255,215,0,0.1); width: 100%; max-width: 420px;">
+        <p style="font-size: 11px; color: var(--gold); font-weight: bold; margin: 0;">© 2024-25 SST PRO APK - ALL RIGHTS RESERVED</p>
+        <p style="font-size: 9px; color: #666; margin-top: 5px;">Designed & Managed by: Sanjay Dhakar Sir</p>
+    </footer>
 
----
-
-**संजय सर, इस चरण की गहराई समझिए:**
-* **मनोवैज्ञानिक असर:** हमने "Price" शब्द की जगह **"सहयोग राशि"** लिखा है, ताकि छात्र को लगे कि वह कमा नहीं रहा, बल्कि मदद कर रहा है।
-* **
-        <div style="margin-bottom: 30px;">
-            <label style="display: block; text-align: left; font-size: 10px; color: var(--gold); margin-left: 10px; margin-bottom: 8px; font-weight: bold; text-transform: uppercase;">4. किताब की स्थिति</label>
-            
-            <label class="file-label" style="display: block; border: 2px dashed rgba(255,215,0,0.4); padding: 30px 20px; border-radius: 20px; cursor: pointer; background: rgba(255, 215, 0, 0.03); transition: 0.3s; position: relative; overflow: hidden;">
-                <input type="file" id="bFile" accept="image/*" style="display:none;" onchange="updateInfo()">
-                
-                <div id="uploadUI">
-                    <span style="font-size: 40px; display: block; margin-bottom: 10px;">📸</span>
-                    <span id="fileStatus" style="font-size: 13px; color: #fff; font-weight: 600;">साफ़ फोटो चुनें या खींचें *</span>
-                    <p style="font-size: 9px; color: #888; margin-top: 5px;">(सामने का कवर पेज सबसे बेहतर है)</p>
-                </div>
-
-                <div id="uploadSuccess" style="display: none;">
-                    <span style="font-size: 30px; color: #2ecc71;">✅</span>
-                    <p style="font-size: 12px; color: #2ecc71; font-weight: bold; margin-top: 5px;">फोटो सुरक्षित कर ली गई!</p>
-                </div>
-            </label>
-        </div>
-
-        ```
-
----
-
-**संजय सर, इस स्टेप की बारीकियां:**
-* **बड़ा क्लिक एरिया:** हमने `padding: 30px` दी है ताकि छात्र मोबाइल पर आसानी से कहीं भी टच करके कैमरा खोल सके।
-* **सफलता का संकेत (Visual Feedback):** `uploadSuccess` वाला हिस्सा शुरू में छुपा रहेगा, लेकिन जैसे ही फोटो सिलेक्ट होगी, हम जावास्क्रिप्ट से इसे दिखाएंगे (जो आगे के चरणों में आएगा)। इससे छात्र को "मजा" आएगा।
-* **गाइडेंस:** हमने लिख दिया है कि "कवर पेज सबसे बेहतर है", जिससे लाइब्रेरी में सब कुछ प्रोफेशनल दिखेगा।
-
-अब बारी है **चरण 6** की, जहाँ हम वह **"भव्य बटन"** बनाएंगे जिसे दबाकर छात्र अपनी विरासत को दुनिया के लिए समर्पित करेगा।
-
-क्या मैं **चरण 6 (विरासत साझा करें - Action Button)** का कोड दूँ? 🚩
-        <div style="margin-top: 10px; position: relative;">
-            <button onclick="uploadMission()" class="btn" id="upBtn" style="background: var(--gold); color: #000; width: 100%; padding: 18px; border-radius: 50px; font-weight: 900; border: none; font-size: 16px; cursor: pointer; box-shadow: 0 10px 20px rgba(255,215,0,0.2); transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 10px;">
-                <span>विरासत साझा करें</span> ❯
-            </button>
-            
-            <div style="width: 100%; height: 4px; background: rgba(255,215,0,0.1); border-radius: 10px; margin-top: 20px; overflow: hidden; display: none;" id="pBarParent">
-                <div id="pLine" style="width: 0%; height: 100%; background: var(--gold); transition: 0.4s; box-shadow: 0 0 10px var(--gold);"></div>
-            </div>
-            
-            <p id="statusMsg" style="font-size: 10px; color: #aaa; margin-top: 10px; font-weight: bold;"></p>
-        </div>
-
-    </div> ```
-
----
-
-**संजय सर, इस स्टेप की गहराई:**
-* **Visual Weight:** बटन को थोड़ा बड़ा और भारी रखा है ताकि यह "मुख्य क्रिया" (Main Action) जैसा लगे।
-* **pLine (प्रगति रेखा):** यह बहुत ज़रूरी है। जब फोटो अपलोड होगी, तो यह लाइन 0% से 100% तक भागेगी, जिससे छात्र को भरोसा रहेगा कि सिस्टम काम कर रहा है और वह "Back" बटन नहीं दबाएगा।
-* **Shadow Effect:** बटन के नीचे गोल्ड शेडो दी है, जो उसे स्क्रीन पर उभरता हुआ दिखाएगी।
-
-अब शुरू होता है **सफ़रनामा का दिमाग (Brain)**। **चरण 7** में हम वह कोडिंग डालेंगे जो छात्र द्वारा चुनी गई फोटो को "कम्प्रेस" करेगी और उसे 20% वाले नियम की याद दिलाएगी।
-
-क्या मैं **चरण 7 (20% कैलकुलेशन और फोटो अपडेट लॉजिक)** का कोड दूँ? 🚩
 <script>
-    // 🚩 20% सुरक्षा चक्र का दिमाग
     let isFree = true;
-    // यहाँ अपनी गूगल स्क्रिप्ट का URL डालें
     const scriptURL = 'https://script.google.com/macros/s/AKfycbym06GAtqxEr0hZ9giMcxfa1jFNQi1ijzhlmrW9O1AaGva2OmuJiDpWNLOBJx5wsBPc/exec';
 
-    // कीमत का बटन बदलने वाला फंक्शन
     function setPrice(p) {
         const pArea = document.getElementById('priceInputArea');
         const bFree = document.getElementById('btnFree');
         const bPaid = document.getElementById('btnPaid');
+        isFree = (p === 0);
         
-        if(p === 'ask') {
-            isFree = false;
-            pArea.style.display = 'block';
-            bPaid.style.background = 'var(--gold)';
-            bPaid.style.color = '#000';
-            bFree.style.background = 'transparent';
-            bFree.style.color = 'var(--gold)';
-        } else {
-            isFree = true;
-            pArea.style.display = 'none';
-            bFree.style.background = 'var(--gold)';
-            bFree.style.color = '#000';
-            bPaid.style.background = 'transparent';
-            bPaid.style.color = 'var(--gold)';
-        }
+        pArea.style.display = isFree ? 'none' : 'block';
+        bFree.style.background = isFree ? 'var(--gold)' : 'transparent';
+        bFree.style.color = isFree ? '#000' : 'var(--gold)';
+        bPaid.style.background = isFree ? 'transparent' : 'var(--gold)';
+        bPaid.style.color = isFree ? 'var(--gold)' : '#000';
     }
 
-    // 💰 20% कैलकुलेशन: जो आपने कहा था
     function calculateLimit() {
         const full = parseFloat(document.getElementById('fullPrice').value) || 0;
         const your = parseFloat(document.getElementById('bPrice').value) || 0;
         const note = document.getElementById('limitNote');
-        const maxAllowed = full * 0.20; // आपका 20% वाला नियम
+        const max = full * 0.20;
 
-        if (your > maxAllowed && full > 0) {
+        if (your > max && full > 0) {
             note.style.display = 'block';
-            note.innerText = `⚠️ नियम विरुद्ध! आप अधिकतम ₹${maxAllowed.toFixed(0)} ही ले सकते हैं।`;
+            note.innerText = `⚠️ आप अधिकतम ₹${max.toFixed(0)} ही ले सकते हैं!`;
             return false;
         } else {
             note.style.display = 'none';
@@ -275,118 +118,67 @@
         }
     }
 
-    // 📸 फोटो अपडेट सिग्नल
     function updateInfo() {
         document.getElementById('uploadUI').style.display = 'none';
         document.getElementById('uploadSuccess').style.display = 'block';
     }
-    // 🚀 फोटो को छोटा करने और प्रोसेस करने का मुख्य फंक्शन
+
     async function uploadMission() {
-        // पहले चेक करें कि नियम का पालन हुआ है या नहीं
-        if(!calculateLimit() && !isFree) {
-            return alert("🚩 क्षमा करें! आपकी सहयोग राशि MRP के 20% से अधिक है। कृपया इसे कम करें।");
-        }
+        if(!isFree && !calculateLimit()) return alert("🚩 राशि नियम के विरुद्ध है!");
         
         const file = document.getElementById('bFile').files[0];
         const name = document.getElementById('userName').value;
         const title = document.getElementById('bTitle').value;
         const phone = document.getElementById('userPhone').value;
-        
-        // फॉर्म चेकिंग
-        if(!file || !name || !title || !phone) {
-            return alert("⚠️ कृपया सभी जानकारी भरें और फोटो चुनें!");
-        }
+
+        if(!file || !name || !title || !phone) return alert("⚠️ सभी जानकारी भरें!");
 
         const btn = document.getElementById('upBtn');
         const pLine = document.getElementById('pLine');
         const pBar = document.getElementById('pBarParent');
         const status = document.getElementById('statusMsg');
 
-        // बटन को लॉक करें और प्रोग्रेस बार दिखाएं
         btn.disabled = true;
-        btn.innerHTML = "विरासत संसाधित हो रही है...";
+        btn.innerText = "प्रक्रिया जारी...";
         pBar.style.display = 'block';
-        pLine.style.width = "20%";
-        status.innerText = "⏳ फोटो को छोटा (Compress) किया जा रहा है...";
+        pLine.style.width = "30%";
+        status.innerText = "⏳ फोटो कंप्रेस हो रही है...";
 
         try {
-            // 📸 फोटो कम्प्रेशन: 0.2 MB से कम का लक्ष्य
-            const options = { 
-                maxSizeMB: 0.2, 
-                maxWidthOrHeight: 800,
-                useWebWorker: true 
-            };
-            
+            const options = { maxSizeMB: 0.2, maxWidthOrHeight: 800 };
             const compressedFile = await imageCompression(file, options);
-            pLine.style.width = "40%";
-            status.innerText = "✅ फोटो संकुचित हो गई! अब बादलों (Cloud) पर भेज रहे हैं...";
+            
+            pLine.style.width = "60%";
+            status.innerText = "☁️ क्लाउड पर भेज रहे हैं...";
 
-            // यहाँ से अगला चरण 9 (Cloudinary Upload) शुरू होगा
-            // ☁️ फोटो को Cloudinary पर अपलोड करना
             const formData = new FormData();
             formData.append('file', compressedFile);
-            formData.append('upload_preset', 'sst_pro'); // आपका क्लाउडिनरी प्रीसेट
+            formData.append('upload_preset', 'sst_pro'); 
 
-            const cloudResp = await fetch('https://api.cloudinary.com/v1_1/dppmrodwf/image/upload', { 
-                method: 'POST', 
-                body: formData 
-            });
+            const cloudResp = await fetch('https://api.cloudinary.com/v1_1/dppmrodwf/image/upload', { method: 'POST', body: formData });
             const cloudData = await cloudResp.json();
-            const imageUrl = cloudData.secure_url; // फोटो का इंटरनेट लिंक
+            const imageUrl = cloudData.secure_url;
 
-            pLine.style.width = "80%";
-            status.innerText = "📂 डेटाबेस में विरासत दर्ज हो रही है...";
+            pLine.style.width = "90%";
+            status.innerText = "📂 डेटा सुरक्षित हो रहा है...";
 
-            // 📊 गूगल शीट में डेटा की फाइनल एंट्री
             const price = isFree ? "निशुल्क" : "₹" + document.getElementById('bPrice').value;
-            const sheetData = {
-                "DonorName": name,
-                "BookTitle": title,
-                "Price": price,
-                "ImageUrl": imageUrl,
-                "Phone": phone
-            };
+            const sheetData = { "DonorName": name, "BookTitle": title, "Price": price, "ImageUrl": imageUrl, "Phone": phone };
 
-            await fetch(scriptURL, {
-                method: 'POST',
-                mode: 'no-cors',
-                body: JSON.stringify(sheetData)
-            });
+            await fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(sheetData) });
 
             pLine.style.width = "100%";
-            status.innerText = "✅ विरासत सफलतापूर्वक सुरक्षित!";
-
-            // यहाँ से अगला और अंतिम चरण 10 (WhatsApp & Celebration) शुरू होगा
-            // 📲 व्हाट्सएप संदेश और सफलता का जश्न
-            const myNum = "919529812784";
             const waText = `🚩 *सफ़रनामा: नयी विरासत दर्ज!*%0A---------------------------%0A👤 *दाता:* ${name}%0A📚 *किताब:* ${title}%0A💰 *कीमत:* ${price}%0A📞 *संपर्क:* ${phone}%0A🖼️ *फोटो:* ${imageUrl}%0A---------------------------%0A_SST PRO - बदलें देश, बदलें शिक्षा_`;
             
-            // सफलता का अलर्ट
-            alert("✅ बधाई हो! आपकी विरासत 'सफ़रनामा' के इतिहास में दर्ज हो गई है।");
-            
-            // व्हाट्सएप पर भेजना
-            window.location.assign(`https://wa.me/${myNum}?text=${encodeURIComponent(waText)}`);
+            alert("✅ विरासत सफलतापूर्वक दर्ज हो गई!");
+            window.location.assign(`https://wa.me/919529812784?text=${encodeURIComponent(waText)}`);
 
         } catch (err) {
-            alert("❌ क्षमा करें! तकनीकी बाधा आई: " + err.message);
+            alert("❌ त्रुटि: " + err.message);
             btn.disabled = false;
-            btn.innerHTML = "पुनः प्रयास करें ❯";
             pBar.style.display = 'none';
         }
     }
 </script>
-
-<footer style="margin-top: 30px; padding: 20px; text-align: center; border-top: 1px solid rgba(255,215,0,0.1); width: 100%; max-width: 420px;">
-    <p style="font-size: 11px; color: var(--gold); font-weight: bold; margin: 0; letter-spacing: 1px;">
-        © 2024-25 SST PRO APK - ALL RIGHTS RESERVED
-    </p>
-    <p style="font-size: 9px; color: #666; margin-top: 5px;">
-        Designed & Managed by: <span style="color: #888;">Sanjay Dhakar Sir</span>
-    </p>
-    <div style="margin-top: 10px; opacity: 0.5;">
-        <span style="font-size: 12px;">🚩</span>
-    </div>
-</footer>
-
 </body>
 </html>
