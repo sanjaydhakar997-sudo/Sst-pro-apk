@@ -3,171 +3,210 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Royal Library - SST PRO 🚩</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>SST PRO - The Authentic Library 🚩</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root { --gold: #ffd700; --royal-bg: #0c0c14; --card-bg: #1a1a2e; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background: var(--royal-bg); color: white; overflow-x: hidden; padding-bottom: 50px; }
-
-        .library-header {
-            background: linear-gradient(180deg, #1a1a2e 0%, #0c0c14 100%);
-            padding: 60px 20px; text-align: center; border-bottom: 4px solid var(--gold);
-            margin-bottom: 30px;
+        :root { 
+            --gold: #ffd700; 
+            --deep-gold: #b8860b;
+            --royal-bg: #0a0a12; 
+            --shelf-bg: #161625;
+            --glass: rgba(255, 215, 0, 0.05);
         }
-        .library-header h1 { color: var(--gold); font-size: 28px; font-weight: 900; }
 
-        .pillar-section { margin: 20px; padding: 20px; border-left: 4px solid var(--gold); background: rgba(255,255,255,0.02); border-radius: 0 15px 15px 0; }
-        .pillar-title { font-size: 18px; font-weight: 800; color: var(--gold); margin-bottom: 15px; text-transform: uppercase; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background: var(--royal-bg); color: #e0e0e0; line-height: 1.6; }
+
+        /* 🏛️ Authentic Library Header */
+        .lib-header {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover; background-position: center;
+            padding: 80px 20px; text-align: center; border-bottom: 5px double var(--gold);
+        }
+        .lib-header h1 { 
+            font-family: 'Cinzel', serif; color: var(--gold); font-size: 35px; 
+            letter-spacing: 3px; text-shadow: 0 0 15px rgba(255,215,0,0.5);
+        }
+        .lib-header p { font-size: 14px; color: #aaa; margin-top: 10px; font-style: italic; }
+
+        /* 📖 Library Shelf Concept */
+        .shelf-container { max-width: 1200px; margin: 0 auto; padding: 20px; }
         
-        .content-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; }
+        .pillar-section { 
+            margin-bottom: 50px; padding: 25px; 
+            background: var(--shelf-bg); border-radius: 15px;
+            box-shadow: inset 0 0 20px #000; border: 1px solid rgba(255,215,0,0.1);
+        }
         
-        .royal-card { background: var(--card-bg); border-radius: 12px; border: 1px solid rgba(255,215,0,0.1); overflow: hidden; text-align: center; padding-bottom: 10px; transition: 0.3s; }
-        .royal-card img { width: 100%; height: 150px; object-fit: cover; background: #000; }
-        .card-info h4 { font-size: 11px; color: var(--gold); padding: 5px; min-height: 40px; display: flex; align-items: center; justify-content: center; }
-        .btn-view { background: var(--gold); color: black; padding: 5px 10px; border-radius: 5px; font-size: 10px; font-weight: 700; text-decoration: none; display: inline-block; margin-top: 5px; }
+        .pillar-title { 
+            font-family: 'Cinzel', serif; font-size: 20px; font-weight: 700; 
+            color: var(--gold); margin-bottom: 25px; display: flex; align-items: center; gap: 15px;
+            border-bottom: 1px solid var(--glass); padding-bottom: 10px;
+        }
+        .pillar-title i { font-style: normal; font-size: 24px; }
+
+        /* 📚 Book Cards (Authentic Look) */
+        .content-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 20px; }
         
-        .back-btn { position: absolute; top: 20px; left: 15px; display: flex; align-items: center; gap: 5px; background: rgba(255, 215, 0, 0.1); border: 1px solid #ffd700; padding: 6px 15px; border-radius: 50px; text-decoration: none; color: #ffd700; font-size: 11px; font-weight: 800; z-index: 1000; backdrop-filter: blur(5px); }
+        .book-card { 
+            background: #1e1e2f; border-radius: 8px; overflow: hidden; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5); transition: 0.4s ease;
+            border: 1px solid rgba(255,215,0,0.05); position: relative;
+        }
+        .book-card:hover { transform: translateY(-10px); border-color: var(--gold); }
+        
+        .book-card img { width: 100%; height: 210px; object-fit: cover; filter: sepia(20%); }
+        
+        .book-info { padding: 12px; text-align: center; }
+        .book-info h4 { font-size: 12px; color: var(--gold); margin-bottom: 8px; height: 35px; overflow: hidden; }
+        .donor-tag { font-size: 9px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+
+        .btn-action { 
+            display: block; width: 100%; padding: 10px; background: var(--gold); 
+            color: #000; text-decoration: none; font-weight: 800; font-size: 10px;
+            text-transform: uppercase; transition: 0.3s;
+        }
+        .btn-action:hover { background: #fff; }
+
+        /* 🔍 Professional Search Bar */
+        .search-box { 
+            width: 100%; padding: 15px; background: rgba(0,0,0,0.3); border: 1px solid var(--gold); 
+            border-radius: 50px; color: #fff; margin-bottom: 30px; outline: none;
+            text-align: center; font-size: 14px;
+        }
+
+        .back-btn { 
+            position: fixed; top: 20px; left: 15px; background: rgba(0,0,0,0.6); 
+            color: var(--gold); border: 1px solid var(--gold); padding: 8px 18px; 
+            border-radius: 30px; text-decoration: none; font-size: 12px; font-weight: bold; z-index: 1000;
+        }
+
+        footer { text-align: center; padding: 50px; opacity: 0.5; font-size: 11px; letter-spacing: 2px; }
     </style>
 </head>
 <body>
 
-<a href="index.html" class="back-btn"><span>⇠</span> बैक</a>
+<a href="index.html" class="back-btn">⇠ BACK</a>
 
-<div class="library-header">
-    <h1>Library of <br>Social Studies Classes</h1>
-    <p style="font-size: 12px; color: #888; margin-top: 10px;">"ज्ञान का स्वर्ग: 10 दिव्य खंभे"</p>
+<div class="lib-header">
+    <h1>SST PRO</h1>
+    <p>विरासत: जहाँ ज्ञान अमर रहता है</p>
 </div>
 
-<div class="pillar-section" id="pillar1">
-    <div class="pillar-title">01. Premium Reference Library</div>
-    
-    <div style="margin-bottom: 15px;">
-        <input type="text" id="sheetSearch" placeholder="इस खंभे में खोजें..." oninput="filterSheetBooks()" 
-               style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ffd70033; background: #161625; color: white; font-size: 13px;">
+<div class="shelf-container">
+
+    <div class="pillar-section">
+        <div class="pillar-title"><i>📜</i> Premium Reference Library</div>
+        <input type="text" id="sheetSearch" class="search-box" placeholder="खजाने में किताब खोजें..." oninput="filterBooks()">
+        <div class="content-grid" id="googleSheetGrid">
+            <p style="text-align: center; width: 100%; color: #555;">अलमारियाँ सज रही हैं...</p>
+        </div>
     </div>
 
-    <div class="content-grid" id="googleSheetGrid">
-        <p style="color: var(--gold); font-size: 12px; grid-column: 1/-1;">खजाना खुल रहा है, कृपया प्रतीक्षा करें...</p>
+    <div class="pillar-section">
+        <div class="pillar-title"><i>📚</i> Standard Textbook Archive</div>
+        <div class="content-grid">
+            <div class="book-card">
+                <img src="https://ncert.nic.in/textbook/pdf/jess101.jpg">
+                <div class="book-info"><h4>NCERT Class 10</h4><span class="donor-tag">SST PRO Verified</span></div>
+                <a href="#" class="btn-action">Download PDF</a>
+            </div>
+            <div class="book-card">
+                <img src="https://ncert.nic.in/textbook/pdf/lehs101.jpg">
+                <div class="book-info"><h4>NCERT Class 12</h4><span class="donor-tag">SST PRO Verified</span></div>
+                <a href="#" class="btn-action">Download PDF</a>
+            </div>
+        </div>
     </div>
+
+    <div class="pillar-section">
+        <div class="pillar-title"><i>✍️</i> Handwritten Master-Notes</div>
+        <div class="content-grid">
+            <div class="book-card">
+                <div style="height:210px; background: linear-gradient(45deg, #1a1a2e, #27ae60); display: flex; align-items: center; justify-content: center; font-size: 40px;">🗺️</div>
+                <div class="book-info"><h4>राजस्थान भूगोल</h4><span class="donor-tag">Sanjay Sir Special</span></div>
+                <a href="#" class="btn-action">Open Notes</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="pillar-section">
+        <div class="pillar-title"><i>🤝</i> Safarnama: Donation Registry</div>
+        <div class="content-grid">
+            <div class="book-card" style="border: 1px dashed var(--gold);">
+                <div style="height:210px; background: #111; display: flex; align-items: center; justify-content: center; font-size: 40px;">✨</div>
+                <div class="book-info"><h4>आपका नाम यहाँ होगा</h4><span class="donor-tag">Donate Now</span></div>
+                <a href="safarnama_form.html" class="btn-action">दान दर्ज करें</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="pillar-section">
+        <div class="pillar-title"><i>🛡️</i> Legacy Builder: User Ledger</div>
+        <div class="content-grid">
+            <div class="book-card">
+                <div style="height:210px; background: #111; display: flex; align-items: center; justify-content: center; font-size: 40px;">📜</div>
+                <div class="book-info"><h4>मेरी विरासत</h4><span class="donor-tag">Personal Records</span></div>
+                <a href="legacy_builder.html" class="btn-action">View Records</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="pillar-section">
+        <div class="pillar-title"><i>📞</i> Student Helpdesk & Request</div>
+        <div class="content-grid">
+            <div class="book-card">
+                <div style="height:210px; background: #000; display: flex; align-items: center; justify-content: center; font-size: 40px;">🆘</div>
+                <div class="book-info"><h4>24/7 सहायता</h4><span class="donor-tag">Contact Us</span></div>
+                <a href="https://wa.me/919529812784" class="btn-action">WhatsApp Support</a>
+            </div>
+        </div>
+    </div>
+
 </div>
 
-<div class="pillar-section" id="pillar2">
-    <div class="pillar-title">02. Standard Textbook Archive</div>
-    <div class="content-grid">
-        <div class="royal-card">
-            <img src="https://ncert.nic.in/textbook/pdf/jess101.jpg">
-            <div class="card-info"><h4>NCERT कक्षा 10</h4><p style="font-size:9px;">सामाजिक विज्ञान</p><a href="#" class="btn-view">डाउनलोड PDF</a></div>
-        </div>
-        <div class="royal-card">
-            <img src="https://ncert.nic.in/textbook/pdf/lehs101.jpg">
-            <div class="card-info"><h4>NCERT कक्षा 12</h4><p style="font-size:9px;">भारतीय इतिहास</p><a href="#" class="btn-view">डाउनलोड PDF</a></div>
-        </div>
-    </div>
-</div>
-
-<div class="pillar-section" id="pillar3">
-    <div class="pillar-title">03. Handwritten Master-Notes</div>
-    <div class="content-grid">
-        <div class="royal-card" style="border-color: #27ae60;">
-            <div style="height:150px; background: linear-gradient(135deg, #1e293b, #27ae60); display:flex; align-items:center; justify-content:center; color:white; font-size:40px;">✍️</div>
-            <div class="card-info"><h4>राजस्थान भूगोल</h4><a href="#" class="btn-view" style="background:#27ae60; color:white;">अभी पढ़ें ❯</a></div>
-        </div>
-        <div class="royal-card" style="border-color: #27ae60;">
-            <div style="height:150px; background: linear-gradient(135deg, #1e293b, #e67e22); display:flex; align-items:center; justify-content:center; color:white; font-size:40px;">📝</div>
-            <div class="card-info"><h4>भारतीय इतिहास</h4><a href="#" class="btn-view" style="background:#27ae60; color:white;">अभी पढ़ें ❯</a></div>
-        </div>
-    </div>
-</div>
-
-<div class="pillar-section" id="pillar5">
-    <div class="pillar-title">05. Safarnama: Donation Registry</div>
-    <div style="background: linear-gradient(45deg, #ffd700, #b8860b); padding: 15px; border-radius: 12px; margin-bottom: 15px; color: black; text-align: center;">
-        <h3 style="font-size: 14px; font-weight: 900;">VVIP डोनर वॉल ऑफ फेम</h3>
-    </div>
-    <div class="content-grid">
-        <div class="royal-card" style="border-color: #ffd700;">
-            <div style="height:120px; background: #222; display:flex; align-items:center; justify-content:center; font-size:40px;">👑</div>
-            <div class="card-info"><h4>संजय ढाकड़</h4><p style="font-size:9px;">मुख्य दानदाता</p></div>
-        </div>
-        <div class="royal-card">
-            <div style="height:120px; background: #222; display:flex; align-items:center; justify-content:center; font-size:40px;">👤</div>
-            <div class="card-info"><h4>आगामी भामाशाह</h4><a href="safarnama_form.html" class="btn-view">नाम दर्ज करें</a></div>
-        </div>
-    </div>
-</div>
-
-<div class="pillar-section" id="pillar6">
-    <div class="pillar-title">06. Legacy Builder: User Ledger</div>
-    <div class="content-grid">
-        <div class="royal-card">
-            <div style="height:140px; background: #161625; display:flex; align-items:center; justify-content:center; font-size:35px;">📘</div>
-            <div class="card-info"><h4>वर्तमान पुस्तकें</h4><a href="legacy_builder.html" class="btn-view">विवरण देखें</a></div>
-        </div>
-    </div>
-</div>
-
-<div class="pillar-section" id="pillar10">
-    <div class="pillar-title">10. Student Helpdesk & Request</div>
-    <div class="content-grid">
-        <div class="royal-card" style="border-color: #e74c3c;">
-            <div style="height:140px; background: #0c0c14; display:flex; align-items:center; justify-content:center; font-size:35px;">🤝</div>
-            <div class="card-info"><h4>हेल्प डेस्क</h4><a href="https://wa.me/919529812784" class="btn-view" style="background:#e74c3c; color:white;">मदद लें ❯</a></div>
-        </div>
-    </div>
-</div>
-
-<footer style="text-align: center; padding: 40px 20px; color: #444; font-size: 10px; font-weight: 800; letter-spacing: 2px;">
-    Designed by Sanjay Sir | SST PRO 🚩
+<footer>
+    © 2026 SOCIAL STUDIES CLASSES - PROTECTION ACTIVE<br>
+    DESIGNED BY SANJAY SIR | SST PRO 🚩
 </footer>
 
 <script>
-    // 🚩 गूगल शीट का लिंक (अपडेटेड)
     const scriptURL = 'https://script.google.com/macros/s/AKfycbym06GAtqxEr0hZ9giMcxfa1jFNQi1ijzhlmrW9O1AaGva2OmuJiDpWNLOBJx5wsBPc/exec';
-    let sheetBooks = [];
+    let allBooks = [];
 
-    async function loadPillarOne() {
-        const grid = document.getElementById('googleSheetGrid');
+    async function fetchBooks() {
         try {
-            const response = await fetch(scriptURL);
-            const data = await response.json();
-            sheetBooks = data;
-            displaySheetBooks(sheetBooks);
+            const res = await fetch(scriptURL);
+            allBooks = await res.json();
+            renderBooks(allBooks);
         } catch (e) {
-            grid.innerHTML = "<p>डेटा लोड करने में समस्या आ रही है।</p>";
+            document.getElementById('googleSheetGrid').innerHTML = "<p>कनेक्शन की प्रतीक्षा...</p>";
         }
     }
 
-    function displaySheetBooks(data) {
+    function renderBooks(data) {
         const grid = document.getElementById('googleSheetGrid');
         grid.innerHTML = "";
-
-        if(data.length === 0) {
-            grid.innerHTML = "<p>अभी कोई किताब उपलब्ध नहीं है।</p>";
-            return;
-        }
-
         data.forEach(row => {
-            // row[1] = दाता, row[2] = किताब का नाम, row[4] = फोटो लिंक
             grid.innerHTML += `
-                <div class="royal-card">
-                    <img src="${row[4] || 'https://via.placeholder.com/150/1a1a2e/ffd700?text=SST+PRO'}" onerror="this.src='https://via.placeholder.com/150/1a1a2e/ffd700?text=SST+PRO'">
-                    <div class="card-info">
-                        <h4>${row[2] || 'बिना नाम की किताब'}</h4>
-                        <p style="font-size:9px; color:#888;">दाता: ${row[1] || 'SST PRO'}</p>
-                        <a href="https://wa.me/919529812784?text=नमस्ते! मुझे यह किताब चाहिए: ${row[2]}" class="btn-view">प्राप्त करें</a>
+                <div class="book-card">
+                    <img src="${row[4] || 'https://via.placeholder.com/200x300/111/ffd700?text=SST+BOOK'}" onerror="this.src='https://via.placeholder.com/200x300/111/ffd700?text=NO+IMAGE'">
+                    <div class="book-info">
+                        <h4>${row[2]}</h4>
+                        <span class="donor-tag">दाता: ${row[1]}</span>
                     </div>
+                    <a href="https://wa.me/919529812784?text=नमस्ते! मुझे यह किताब चाहिए: ${row[2]}" class="btn-action">प्राप्त करें ❯</a>
                 </div>`;
         });
     }
 
-    function filterSheetBooks() {
-        const val = document.getElementById('sheetSearch').value.toLowerCase();
-        const filtered = sheetBooks.filter(r => r[2] && r[2].toLowerCase().includes(val));
-        displaySheetBooks(filtered);
+    function filterBooks() {
+        const query = document.getElementById('sheetSearch').value.toLowerCase();
+        const filtered = allBooks.filter(b => b[2] && b[2].toLowerCase().includes(query));
+        renderBooks(filtered);
     }
 
-    window.onload = loadPillarOne;
+    window.onload = fetchBooks;
 </script>
 </body>
 </html>
