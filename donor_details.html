@@ -3,123 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SST Pro - Legacy Builder</title>
+    <title>SST Pro - Legacy Builder 🚩</title>
     <style>
-        :root { --royal-blue: #1a1a2e; --gold: #ffd700; --white: #ffffff; --green: #25D366; }
-        body { background-color: #fdfae5; font-family: 'Poppins', sans-serif; margin: 0; padding: 0; color: var(--royal-blue); }
-        
-        .header {
-            background: linear-gradient(180deg, var(--royal-blue) 0%, #000 100%);
-            padding: 40px 20px; text-align: center; border-bottom: 8px solid var(--gold); color: var(--gold);
+        :root { 
+            --gold: #ffd700; --royal: #1a1a2e; --dark: #0c0c14; 
+            --white: #ffffff; --glass: rgba(255, 255, 255, 0.05);
         }
-        .container { padding: 20px; max-width: 600px; margin: auto; }
-        .legacy-card {
-            background: var(--white); border-radius: 30px; padding: 25px;
-            margin-bottom: 20px; border-right: 10px solid var(--gold);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        body { 
+            background: var(--dark); font-family: 'Poppins', sans-serif; 
+            margin: 0; color: var(--white); display: flex; 
+            flex-direction: column; align-items: center; padding: 20px; 
+            box-sizing: border-box; min-height: 100vh;
         }
-        .section-title { font-size: 20px; font-weight: 900; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
-        .input-vip { 
-            width: 100%; padding: 15px; margin-bottom: 12px; border-radius: 12px; 
-            border: 2px solid #eee; font-weight: 700; box-sizing: border-box; font-size: 15px;
+        .card { 
+            background: var(--royal); padding: 40px 25px; border-radius: 35px; 
+            border: 2px solid var(--gold); width: 100%; max-width: 450px; 
+            text-align: center; box-shadow: 0 25px 60px rgba(0,0,0,0.9); 
+            position: relative; overflow: hidden;
         }
-        .input-vip:focus { border-color: var(--gold); outline: none; background: #fffdf0; }
-        .oath-box { background: #fdfae5; padding: 15px; border-radius: 15px; border: 1px solid var(--gold); margin-bottom: 15px; }
-        .oath-item { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; font-weight: 700; margin-bottom: 10px; }
-        .request-btn {
-            background: var(--royal-blue); color: var(--gold); width: 100%; padding: 20px; 
-            border: none; border-radius: 20px; font-weight: 900; font-size: 18px; cursor: pointer;
-            text-transform: uppercase; box-shadow: 0 8px 20px rgba(26, 26, 46, 0.3);
+        .trust-banner { 
+            background: var(--gold); color: #000; font-size: 11px; 
+            font-weight: 900; padding: 8px 0; position: absolute; 
+            top: 0; left: 0; width: 100%; text-transform: uppercase; 
+            letter-spacing: 2px;
         }
-        .success-overlay {
-            display: none; background: var(--royal-blue); color: var(--gold); padding: 30px;
-            border-radius: 30px; text-align: center; border: 4px solid var(--gold); margin-top: 20px;
+        h1 { color: var(--gold); font-size: 28px; margin-top: 25px; margin-bottom: 5px; }
+        .sub-text { font-size: 12px; color: #ccc; margin-bottom: 25px; }
+
+        /* 📑 इनपुट स्टाइल */
+        .input-group { text-align: left; margin-bottom: 18px; }
+        .input-label { display: block; font-size: 11px; color: var(--gold); margin-bottom: 6px; font-weight: 700; text-transform: uppercase; margin-left: 5px;}
+        input, select, textarea { 
+            width: 100%; padding: 15px; border-radius: 12px; 
+            border: 1px solid rgba(255, 215, 0, 0.15); 
+            background: #1e1e3a; color: white; box-sizing: border-box; 
+            outline: none; font-size: 14px; 
+        }
+        .readonly-box { background: rgba(255, 215, 0, 0.05); border-color: var(--gold); color: var(--gold); font-weight: bold; }
+
+        /* 📜 शपथ बॉक्स */
+        .oath-container {
+            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 215, 0, 0.2);
+            padding: 15px; border-radius: 15px; margin-top: 10px;
+        }
+        .oath-item { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; text-align: left; margin-bottom: 8px; cursor: pointer;}
+        .oath-item input { width: 18px; height: 18px; accent-color: var(--gold); cursor: pointer; }
+
+        .btn { 
+            background: var(--gold); color: #000; width: 100%; padding: 18px; 
+            border-radius: 50px; font-weight: 900; border: none; font-size: 17px; 
+            cursor: pointer; box-shadow: 0 10px 20px rgba(255, 215, 0, 0.2); 
+            margin-top: 15px; text-transform: uppercase;
         }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <h1 style="margin: 0; font-size: 30px; font-weight: 900;">LEGACY BUILDER</h1>
-        <p style="font-weight: 700; color: #fff; margin-top: 5px;">किताब नहीं, भविष्य चुनें 🚩</p>
-    </div>
+    <div class="card">
+        <div class="trust-banner">SST PRO • विरासत को आगे बढ़ाएं</div>
+        <h1>LEGACY BUILDER 🚩</h1>
+        <p class="sub-text">"किताब नहीं, भविष्य चुनें"</p>
 
-    <div class="container">
-        <div class="legacy-card">
-            <div class="section-title"><span>👤</span> छात्र का प्रोफाइल</div>
-            <input type="text" id="reqName" class="input-vip" placeholder="आपका पूरा नाम *">
-            <input type="tel" id="reqPhone" class="input-vip" placeholder="व्हाट्सएप नंबर *">
-            
-            <select id="reqExam" class="input-vip">
-                <option value="">तैयारी का लक्ष्य? *</option>
-                <option value="Boards">Boards (10th/12th)</option>
-                <option value="REET">REET / Teacher</option>
-                <option value="SSC/Railway">SSC / Railway</option>
-                <option value="UPSC">UPSC / State PCS</option>
-                <option value="Other">अन्य</option>
+        <div class="input-group">
+            <label class="input-label">1. आपकी जानकारी</label>
+            <input type="text" id="reqName" placeholder="आपका पूरा नाम *">
+            <input type="tel" id="reqPhone" placeholder="WhatsApp नंबर *" style="margin-top:10px;">
+            <select id="reqExam" style="margin-top:10px;">
+                <option value="" disabled selected>तैयारी का लक्ष्य? *</option>
+                <option value="REET / Teacher">REET / शिक्षक भर्ती</option>
+                <option value="10th/12th Board">10th/12th बोर्ड</option>
+                <option value="Police / Defense">पुलिस / डिफेंस</option>
+                <option value="UPSC / State PCS">UPSC / State PCS</option>
             </select>
         </div>
 
-        <div class="legacy-card" style="border-right-color: var(--green);">
-            <div class="section-title"><span>📚</span> चुनी गई किताब</div>
-            <input type="text" id="reqBook" class="input-vip" readonly style="background: #f1f1f1;" placeholder="किताब का नाम">
-            <input type="text" id="reqDonor" class="input-vip" readonly style="background: #f1f1f1;" placeholder="दाता (Donor)">
-            <input type="text" id="reqAddress" class="input-vip" placeholder="पूरा पता (किताब भेजने हेतु) *">
+        <div class="input-group">
+            <label class="input-label">2. चुनी गई विरासत</label>
+            <input type="text" id="reqBook" class="readonly-box" readonly placeholder="किताब का नाम">
+            <input type="text" id="reqDonor" class="readonly-box" readonly placeholder="विरासत प्रणेता (Donor)" style="margin-top:10px;">
         </div>
 
-        <div class="legacy-card">
-            <div class="section-title"><span>📜</span> विरासत की शपथ</div>
-            <div class="oath-box">
-                <label class="oath-item"><input type="checkbox" id="oath1"> <span>मैं इसे संभाल कर रखूँगा।</span></label>
-                <label class="oath-item"><input type="checkbox" id="oath2"> <span>काम पूरा होने पर लौटा दूँगा।</span></label>
+        <div class="input-group">
+            <label class="input-label">3. कूरियर हेतु पता</label>
+            <textarea id="reqAddress" placeholder="पूरा पता (गांव/शहर, तहसील, जिला, पिनकोड) *" rows="3"></textarea>
+            <select id="shipPay" style="margin-top:10px;">
+                <option value="में कूरियर चार्ज दूंगा">मैं कूरियर चार्ज दूंगा (Pay on Delivery)</option>
+                <option value="दाता से अनुरोध">दाता से अनुरोध (यदि निशुल्क संभव हो)</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label class="input-label">4. विरासत की शपथ</label>
+            <div class="oath-container">
+                <label class="oath-item"><input type="checkbox" id="oath1"> <span>मैं इस किताब को संभाल कर रखूँगा।</span></label>
+                <label class="oath-item"><input type="checkbox" id="oath2"> <span>काम पूरा होने पर किसी और छात्र को सौंप दूँगा।</span></label>
             </div>
-            
-            <button onclick="submitLegacyRequest()" class="request-btn" id="finalBtn">रिक्वेस्ट भेजें ❯</button>
         </div>
 
-        <div id="successBox" class="success-overlay">
-            <h2 style="margin: 0;">रिक्वेस्ट दर्ज हुई! 🚩</h2>
-            <p>व्हाट्सएप पर रीडायरेक्ट किया जा रहा है...</p>
-        </div>
+        <button onclick="submitLegacyRequest()" class="btn" id="finalBtn">रिक्वेस्ट भेजें ❯</button>
+        <p id="statusMsg" style="font-size: 11px; color: #aaa; margin-top: 15px;"></p>
     </div>
 
-    <script>
-        // लाइब्रेरी से डेटा लोड करना
+    <footer style="margin-top: 30px; text-align: center;">
+        <p style="font-size: 10px; color: var(--gold); font-weight: bold;">© SST PRO - बदलते भारत की डिजिटल लाइब्रेरी 🚩</p>
+    </footer>
+        <script>
+        // 📥 लाइब्रेरी से डेटा (URL Parameters) लोड करना
         window.onload = function() {
             const params = new URLSearchParams(window.location.search);
-            if(params.has('book')) document.getElementById('reqBook').value = params.get('book');
-            if(params.has('donor')) document.getElementById('reqDonor').value = params.get('donor');
+            if(params.has('book')) {
+                document.getElementById('reqBook').value = params.get('book');
+            }
+            if(params.has('donor')) {
+                document.getElementById('reqDonor').value = params.get('donor');
+            }
         };
 
-        function submitLegacyRequest() {
+        // 🚀 मुख्य मिशन: रिक्वेस्ट भेजना
+        async function submitLegacyRequest() {
+            // डेटा इकट्ठा करना
             const name = document.getElementById('reqName').value;
             const phone = document.getElementById('reqPhone').value;
-            const book = document.getElementById('reqBook').value;
-            const address = document.getElementById('reqAddress').value;
-            const donor = document.getElementById('reqDonor').value;
             const exam = document.getElementById('reqExam').value;
+            const book = document.getElementById('reqBook').value;
+            const donor = document.getElementById('reqDonor').value;
+            const address = document.getElementById('reqAddress').value;
+            const shipping = document.getElementById('shipPay').value;
             const o1 = document.getElementById('oath1').checked;
             const o2 = document.getElementById('oath2').checked;
 
-            if(!name || !phone || !address || !o1 || !o2) {
-                alert("कृपया शपथ लें और पूरी जानकारी भरें!"); return;
+            // ⚠️ कड़ा वैलिडेशन
+            if(!name || !phone || !exam || !address) {
+                return alert("🚩 श्रीमान, अपनी पहचान और पता भरना अनिवार्य है!");
+            }
+            if(!o1 || !o2) {
+                return alert("📜 कृपया विरासत की दोनों शपथ स्वीकार करें!");
             }
 
             const btn = document.getElementById('finalBtn');
-            btn.innerText = "भेजा जा रहा है...";
-            btn.disabled = true;
+            const status = document.getElementById('statusMsg');
 
-            // व्हाट्सएप मैसेज तैयार करना
-            const myNum = "919529812784";
-            const waText = `🚩 *नई किताब रिक्वेस्ट!*%0A%0A*छात्र:* ${name}%0A*व्हाट्सएप:* ${phone}%0A*किताब:* ${book}%0A*दाता:* ${donor}%0A*लक्ष्य:* ${exam}%0A*पता:* ${address}%0A%0A_मैं शपथ लेता हूँ कि मैं इस विरासत का सम्मान करूँगा।_`;
-            
-            document.getElementById('successBox').style.display = "block";
-            
-            // व्हाट्सएप लिंक पर भेजना
-            setTimeout(() => {
-                window.location.href = `https://wa.me/${myNum}?text=${waText}`;
-            }, 1000);
+            btn.disabled = true;
+            btn.innerText = "विरासत की अर्जी दर्ज हो रही है...";
+            status.innerText = "⏳ डेटा सुरक्षित किया जा रहा है...";
+
+            try {
+                // 📲 प्रोफेशनल व्हाट्सएप मैसेज (Clean Format - No %0A visible)
+                // जैसा हमने 'सफ़रनामा' में सुधारा था
+                const waMessage = `🚩 *नई विरासत रिक्वेस्ट! (Legacy Builder)*
+
+👤 *छात्र:* ${name}
+📞 *व्हाट्सएप:* ${phone}
+🎓 *लक्ष्य:* ${exam}
+
+📚 *चुनी गई किताब:* ${book}
+🤝 *विरासत प्रणेता (Donor):* ${donor}
+
+📍 *पता:* ${address}
+🚚 *शिपिंग:* ${shipping}
+
+---------------------------
+_मैं शपथ लेता हूँ कि मैं इस विरासत का सम्मान करूँगा और इसे आगे बढ़ाऊंगा।_
+---------------------------
+*SST PRO - सेवा ही संकल्प*`;
+
+                // गूगल शीट या डेटाबेस के लिए (वैकल्पिक - यदि आप जोड़ना चाहें)
+                // यहाँ आप अपना fetch(scriptURL) वाला कोड भी डाल सकते हैं।
+
+                setTimeout(() => {
+                    alert("✅ आपकी रिक्वेस्ट तैयार है! अब आपको व्हाट्सएप पर भेजा जा रहा है।");
+                    // आपके नंबर पर रीडायरेक्ट (919529812784)
+                    window.location.assign(`https://wa.me/919529812784?text=${encodeURIComponent(waMessage)}`);
+                }, 800);
+
+            } catch (err) {
+                alert("❌ त्रुटि: " + err.message);
+                btn.disabled = false;
+                btn.innerText = "पुनः प्रयास करें ❯";
+            }
         }
     </script>
 </body>
 </html>
+
