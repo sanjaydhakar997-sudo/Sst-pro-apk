@@ -1,344 +1,333 @@
-<!DOCTYPE html>
-<html lang="hi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>सफ़रनामा 🚩 - SST Pro महा-अभियान</title>
+<style>
+    /* 🎨 शाही कलर पैलेट और ग्लोबल स्टाइल */
+    :root { 
+        --gold: #ffd700; 
+        --royal: #1a1a2e; 
+        --dark: #0c0c14; 
+        --white: #ffffff;
+        --glass: rgba(255, 255, 255, 0.05);
+        --success: #2ecc71;
+        --error: #ff4444;
+    }
 
-    <script src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.1/dist/browser-image-compression.js"></script>
+    body { 
+        background: var(--dark); 
+        font-family: 'Poppins', sans-serif; 
+        margin: 0; 
+        color: var(--white); 
+        display: flex; 
+        flex-direction: column;
+        align-items: center; 
+        min-height: 100vh; 
+        padding: 20px; 
+        box-sizing: border-box; 
+    }
 
-    <style>
-        /* 🎨 शाही कलर पैलेट और ग्लोबल स्टाइल */
-        :root { 
-            --gold: #ffd700; 
-            --royal: #1a1a2e; 
-            --dark: #0c0c14; 
-            --white: #ffffff;
-            --glass: rgba(255, 255, 255, 0.05);
-            --success: #2ecc71;
-            --error: #ff4444;
-        }
+    /* ⇠ बैक नेविगेशन बटन */
+    .back-nav {
+        align-self: flex-start;
+        margin-bottom: 25px;
+        text-decoration: none;
+        color: var(--gold);
+        font-size: 13px;
+        font-weight: 800;
+        background: var(--glass);
+        padding: 12px 25px;
+        border-radius: 50px;
+        border: 1px solid rgba(255, 215, 0, 0.3);
+        transition: 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
 
-        body { 
-            background: var(--dark); 
-            font-family: 'Poppins', sans-serif; 
-            margin: 0; 
-            color: var(--white); 
-            display: flex; 
-            flex-direction: column;
-            align-items: center; 
-            min-height: 100vh; 
-            padding: 20px; 
-            box-sizing: border-box; 
-        }
+    .back-nav:hover { background: rgba(255, 215, 0, 0.1); transform: translateX(-5px); }
 
-        /* ⇠ बैक नेविगेशन बटन */
-        .back-nav {
-            align-self: flex-start;
-            margin-bottom: 25px;
-            text-decoration: none;
-            color: var(--gold);
-            font-size: 13px;
-            font-weight: 800;
-            background: var(--glass);
-            padding: 12px 25px;
-            border-radius: 50px;
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            transition: 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+    /* 🚩 मुख्य कार्ड डिज़ाइन */
+    .card { 
+        background: var(--royal); 
+        padding: 45px 30px; 
+        border-radius: 40px; 
+        border: 2px solid var(--gold); 
+        width: 100%; 
+        max-width: 480px; 
+        text-align: center; 
+        box-shadow: 0 30px 70px rgba(0,0,0,0.9); 
+        position: relative; 
+        overflow: hidden; 
+    }
 
-        .back-nav:hover { background: rgba(255, 215, 0, 0.1); transform: translateX(-5px); }
+    /* ऊपर का गोल्डन रिबन */
+    .trust-banner { 
+        background: var(--gold); 
+        color: #000; 
+        font-size: 11px; 
+        font-weight: 900; 
+        padding: 10px 0; 
+        position: absolute; 
+        top: 0; 
+        left: 0; 
+        width: 100%; 
+        text-transform: uppercase; 
+        letter-spacing: 2px;
+    }
 
-        /* 🚩 मुख्य कार्ड डिज़ाइन */
-        .card { 
-            background: var(--royal); 
-            padding: 45px 30px; 
-            border-radius: 40px; 
-            border: 2px solid var(--gold); 
-            width: 100%; 
-            max-width: 480px; 
-            text-align: center; 
-            box-shadow: 0 30px 70px rgba(0,0,0,0.9); 
-            position: relative; 
-            overflow: hidden; 
-        }
+    h1 { color: var(--gold); font-size: 34px; margin-top: 35px; margin-bottom: 10px; }
+    .motivation-text { font-size: 13px; color: #ccc; margin-bottom: 35px; font-style: italic; line-height: 1.6; }
 
-        /* ऊपर का गोल्डन रिबन */
-        .trust-banner { 
-            background: var(--gold); 
-            color: #000; 
-            font-size: 11px; 
-            font-weight: 900; 
-            padding: 10px 0; 
-            position: absolute; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            text-transform: uppercase; 
-            letter-spacing: 2px;
-        }
+    /* ⌨️ फॉर्म इनपुट स्टाइल */
+    .input-group { text-align: left; margin-bottom: 22px; }
+    .input-label { display: block; font-size: 12px; color: var(--gold); margin-bottom: 8px; font-weight: 700; text-transform: uppercase; padding-left: 5px; }
 
-        h1 { color: var(--gold); font-size: 34px; margin-top: 35px; margin-bottom: 10px; }
-        .motivation-text { font-size: 13px; color: #ccc; margin-bottom: 35px; font-style: italic; line-height: 1.6; }
+    input, select, textarea { 
+        width: 100%; padding: 16px; border-radius: 15px; 
+        border: 1px solid rgba(255, 215, 0, 0.15); 
+        background: #1e1e3a; color: white; box-sizing: border-box; 
+        outline: none; font-size: 15px; transition: 0.3s; 
+    }
 
-        /* ⌨️ फॉर्म इनपुट स्टाइल */
-        .input-group { text-align: left; margin-bottom: 22px; }
-        .input-label { display: block; font-size: 12px; color: var(--gold); margin-bottom: 8px; font-weight: 700; text-transform: uppercase; padding-left: 5px; }
+    input:focus, select:focus { border-color: var(--gold); background: #25254d; box-shadow: 0 0 15px rgba(255, 215, 0, 0.1); }
 
-        input, select, textarea { 
-            width: 100%; padding: 16px; border-radius: 15px; 
-            border: 1px solid rgba(255, 215, 0, 0.15); 
-            background: #1e1e3a; color: white; box-sizing: border-box; 
-            outline: none; font-size: 15px; transition: 0.3s; 
-        }
+    /* 💰 मूल्य चुनाव बटन */
+    .price-group { display: flex; gap: 15px; margin-bottom: 12px; }
+    .p-btn { 
+        flex: 1; padding: 15px; border-radius: 15px; border: 2px solid var(--gold); 
+        cursor: pointer; font-weight: 800; font-size: 14px; text-align: center; transition: 0.4s;
+    }
 
-        input:focus, select:focus { border-color: var(--gold); background: #25254d; box-shadow: 0 0 15px rgba(255, 215, 0, 0.1); }
+    /* 📸 फोटो अपलोड बॉक्स */
+    .file-label { 
+        display: block; border: 2px dashed rgba(255, 215, 0, 0.3); 
+        padding: 40px 20px; border-radius: 25px; cursor: pointer; 
+        background: rgba(255, 215, 0, 0.02); transition: 0.3s;
+    }
+    .file-label:hover { border-color: var(--gold); background: rgba(255, 215, 0, 0.05); }
 
-        /* 💰 मूल्य चुनाव बटन */
-        .price-group { display: flex; gap: 15px; margin-bottom: 12px; }
-        .p-btn { 
-            flex: 1; padding: 15px; border-radius: 15px; border: 2px solid var(--gold); 
-            cursor: pointer; font-weight: 800; font-size: 14px; text-align: center; transition: 0.4s;
-        }
+    /* 🚀 मुख्य बटन */
+    .btn { 
+        background: var(--gold); color: #000; width: 100%; padding: 20px; 
+        border-radius: 60px; font-weight: 900; border: none; font-size: 18px; 
+        cursor: pointer; margin-top: 20px; box-shadow: 0 15px 30px rgba(255, 215, 0, 0.2); 
+        text-transform: uppercase; letter-spacing: 1px;
+    }
+    .btn:disabled { background: #444; color: #888; cursor: not-allowed; }
 
-        /* 📸 फोटो अपलोड बॉक्स */
-        .file-label { 
-            display: block; border: 2px dashed rgba(255, 215, 0, 0.3); 
-            padding: 40px 20px; border-radius: 25px; cursor: pointer; 
-            background: rgba(255, 215, 0, 0.02); transition: 0.3s;
-        }
-        .file-label:hover { border-color: var(--gold); background: rgba(255, 215, 0, 0.05); }
+    /* 📊 प्रोग्रेस बार */
+    #pBarParent { width: 100%; height: 8px; background: rgba(255,255,255,0.05); border-radius: 10px; margin-top: 25px; display: none; overflow: hidden; }
+    #pLine { width: 0%; height: 100%; background: linear-gradient(90deg, var(--gold), #fff); transition: 0.4s; }
 
-        /* 🚀 मुख्य बटन */
-        .btn { 
-            background: var(--gold); color: #000; width: 100%; padding: 20px; 
-            border-radius: 60px; font-weight: 900; border: none; font-size: 18px; 
-            cursor: pointer; margin-top: 20px; box-shadow: 0 15px 30px rgba(255, 215, 0, 0.2); 
-            text-transform: uppercase; letter-spacing: 1px;
-        }
-        .btn:disabled { background: #444; color: #888; cursor: not-allowed; }
+    /* 📜 कॉपीराइट फुटर */
+    footer { margin-top: 50px; padding: 30px; text-align: center; border-top: 1px solid rgba(255, 215, 0, 0.1); width: 100%; max-width: 480px; }
+    .copyright { font-size: 12px; color: var(--gold); font-weight: 700; margin: 0; letter-spacing: 1.5px; }
+</style>
 
-        /* 📊 प्रोग्रेस बार */
-        #pBarParent { width: 100%; height: 8px; background: rgba(255,255,255,0.05); border-radius: 10px; margin-top: 25px; display: none; overflow: hidden; }
-        #pLine { width: 0%; height: 100%; background: linear-gradient(90deg, var(--gold), #fff); transition: 0.4s; }
+<a href="library_details.html" class="back-nav">⇠ वापस लाइब्रेरी</a>
 
-        /* 📜 कॉपीराइट फुटर */
-        footer { margin-top: 50px; padding: 30px; text-align: center; border-top: 1px solid rgba(255, 215, 0, 0.1); width: 100%; max-width: 480px; }
-        .copyright { font-size: 12px; color: var(--gold); font-weight: 700; margin: 0; letter-spacing: 1.5px; }
-    </style>
-</head>
-<body>
+<div class="card">
+    <div class="trust-banner">SST PRO • शिक्षा दान • महादान</div>
+    <h1>सफ़रनामा 🚩</h1>
+    <p class="motivation-text">"किताबें अलमारी में धूल खाने के लिए नहीं, किसी का भविष्य संवारने के लिए होती हैं।"</p>
 
-    <a href="library_details.html" class="back-nav">⇠ वापस लाइब्रेरी</a>
-
-    <div class="card">
-        <div class="trust-banner">SST PRO • शिक्षा दान • महादान</div>
-        <h1>सफ़रनामा 🚩</h1>
-        <p class="motivation-text">"किताबें अलमारी में धूल खाने के लिए नहीं, किसी का भविष्य संवारने के लिए होती हैं।"</p>
-
-        <div class="input-group">
-            <label class="input-label">1. दानदाता का विवरण</label>
-            <input type="text" id="userName" placeholder="आपका शुभ नाम *">
-            <div style="height: 12px;"></div>
-            <input type="tel" id="userPhone" placeholder="WhatsApp नंबर *">
-        </div>
-
-        <div class="input-group">
-            <label class="input-label">2. श्रेणी और प्रकार</label>
-            <div style="display: flex; gap: 10px; margin-bottom: 12px;">
-                <select id="examCat">
-                    <option value="" disabled selected>परीक्षा चुनें</option>
-                    <option value="10th/12th Board">10th/12th बोर्ड</option>
-                    <option value="REET/Teacher">REET / शिक्षक भर्ती</option>
-                    <option value="CET/Patwar">CET / पटवार / LDC</option>
-                    <option value="Police/Defense">पुलिस / डिफेंस</option>
-                    <option value="Notes/Others">नोट्स / अन्य</option>
-                </select>
-                <select id="bookType">
-                    <option value="Single Book">एकल किताब</option>
-                    <option value="Full Set">पूरा सेट</option>
-                </select>
-            </div>
-            <input type="text" id="bTitle" placeholder="किताब का नाम / सेट का विवरण *">
-        </div>
-
-        <div class="input-group">
-            <label class="input-label">3. किताब की स्थिति</label>
-            <select id="bCondition" style="margin-bottom: 12px;">
-                <option value="बिल्कुल नई (5★)">बिल्कुल नई (5★)</option>
-                <option value="अच्छी (4★)">अच्छी स्थिति (4★)</option>
-                <option value="पुरानी (3★)">पुरानी पर पठनीय (3★)</option>
-            </select>
-            <textarea id="userMsg" placeholder="लेने वाले छात्र के लिए कोई प्यारा सन्देश... (Optional)" rows="2"></textarea>
-        </div>
-
-        <div class="input-group">
-            <label class="input-label">4. सेवा का प्रकार (Max 20% राशि)</label>
-            <div class="price-group">
-                <div onclick="setPrice(0)" id="btnFree" class="p-btn" style="background:var(--gold); color:#000;">निशुल्क दान</div>
-                <div onclick="setPrice('ask')" id="btnPaid" class="p-btn" style="color:var(--gold);">सहयोग राशि</div>
-            </div>
-            <div id="priceInputArea" style="display:none;">
-                <input type="number" id="fullPrice" placeholder="किताब की असली रेट (M.R.P.) *" oninput="calculateLimit()" style="margin-bottom: 10px;">
-                <input type="number" id="bPrice" placeholder="आपकी राशि (20% के अंदर) *" oninput="calculateLimit()">
-                <p id="limitNote" style="font-size: 11px; color: var(--error); margin-top: 8px; font-weight: bold; display: none;"></p>
-            </div>
-        </div>
-
-        <div class="input-group">
-            <label class="input-label">5. साक्ष्य (1 से 5 फोटो चुनें)</label>
-            <label class="file-label">
-                <input type="file" id="bFile" accept="image/*" multiple onchange="updateInfo()">
-                <div id="uploadUI">
-                    <span style="font-size: 40px; display: block; margin-bottom: 10px;">📸</span>
-                    <span id="fileStatus" style="font-size: 14px; font-weight: bold;">गैलरी से फोटो चुनें *</span>
-                </div>
-                <div id="uploadSuccess" style="display: none;">
-                    <span style="font-size: 35px; color: var(--success);">✅</span>
-                    <p id="photoCount" style="font-size: 14px; color: var(--success); font-weight: 800; margin-top: 5px;"></p>
-                </div>
-            </label>
-        </div>
-
-        <button onclick="uploadMission()" class="btn" id="upBtn">विरासत साझा करें ❯</button>
-        
-        <div id="pBarParent"><div id="pLine"></div></div>
-        <p id="statusMsg" style="font-size: 11px; color: #aaa; margin-top: 20px; font-weight: 600;"></p>
+    <div class="input-group">
+        <label class="input-label">1. दानदाता का विवरण</label>
+        <input type="text" id="userName" placeholder="आपका शुभ नाम *">
+        <div style="height: 12px;"></div>
+        <input type="tel" id="userPhone" placeholder="WhatsApp नंबर *">
     </div>
 
-    <footer>
-        <p class="copyright">© 2024-25 SST PRO APK - ALL RIGHTS RESERVED</p>
-        <p style="font-size: 10px; color: #555; margin-top: 10px;">Designed & Managed by Sanjay Dhakar Sir 🚩</p>
-    </footer>
-        <script>
-        let isFree = true;
-        // 🚩 आपकी Google Script का सही URL यहाँ डालें
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbym06GAtqxEr0hZ9giMcxfa1jFNQi1ijzhlmrW9O1AaGva2OmuJiDpWNLOBJx5wsBPc/exec';
+    <div class="input-group">
+        <label class="input-label">2. श्रेणी और प्रकार</label>
+        <div style="display: flex; gap: 10px; margin-bottom: 12px;">
+            <select id="examCat">
+                <option value="" disabled selected>परीक्षा चुनें</option>
+                <option value="10th/12th Board">10th/12th बोर्ड</option>
+                <option value="REET/Teacher">REET / शिक्षक भर्ती</option>
+                <option value="CET/Patwar">CET / पटवार / LDC</option>
+                <option value="Police/Defense">पुलिस / डिफेंस</option>
+                <option value="Notes/Others">नोट्स / अन्य</option>
+            </select>
+            <select id="bookType">
+                <option value="Single Book">एकल किताब</option>
+                <option value="Full Set">पूरा सेट</option>
+            </select>
+        </div>
+        <input type="text" id="bTitle" placeholder="किताब का नाम / सेट का विवरण *">
+    </div>
 
-        // 💰 मूल्य स्विच लॉजिक
-        function setPrice(p) {
-            const pArea = document.getElementById('priceInputArea');
-            const bFree = document.getElementById('btnFree');
-            const bPaid = document.getElementById('btnPaid');
-            isFree = (p === 0);
-            
-            pArea.style.display = isFree ? 'none' : 'block';
-            bFree.style.background = isFree ? 'var(--gold)' : 'transparent';
-            bFree.style.color = isFree ? '#000' : 'var(--gold)';
-            bPaid.style.background = isFree ? 'transparent' : 'var(--gold)';
-            bPaid.style.color = isFree ? 'var(--gold)' : '#000';
+    <div class="input-group">
+        <label class="input-label">3. किताब की स्थिति</label>
+        <select id="bCondition" style="margin-bottom: 12px;">
+            <option value="बिल्कुल नई (5★)">बिल्कुल नई (5★)</option>
+            <option value="अच्छी (4★)">अच्छी स्थिति (4★)</option>
+            <option value="पुरानी (3★)">पुरानी पर पठनीय (3★)</option>
+        </select>
+        <textarea id="userMsg" placeholder="लेने वाले छात्र के लिए कोई प्यारा सन्देश... (Optional)" rows="2"></textarea>
+    </div>
+        <div class="input-group">
+        <label class="input-label">4. सेवा का प्रकार (Max 20% राशि)</label>
+        <div class="price-group">
+            <div onclick="setPrice(0)" id="btnFree" class="p-btn" style="background:var(--gold); color:#000;">निशुल्क दान</div>
+            <div onclick="setPrice('ask')" id="btnPaid" class="p-btn" style="color:var(--gold);">सहयोग राशि</div>
+        </div>
+        <div id="priceInputArea" style="display:none;">
+            <input type="number" id="fullPrice" placeholder="किताब की असली रेट (M.R.P.) *" oninput="calculateLimit()" style="margin-bottom: 10px;">
+            <input type="number" id="bPrice" placeholder="आपकी राशि (20% के अंदर) *" oninput="calculateLimit()">
+            <p id="limitNote" style="font-size: 11px; color: var(--error); margin-top: 8px; font-weight: bold; display: none;"></p>
+        </div>
+    </div>
+
+    <div class="input-group">
+        <label class="input-label">5. साक्ष्य (1 से 5 फोटो चुनें)</label>
+        <label class="file-label">
+            <input type="file" id="bFile" accept="image/*" multiple onchange="updateInfo()">
+            <div id="uploadUI">
+                <span style="font-size: 40px; display: block; margin-bottom: 10px;">📸</span>
+                <span id="fileStatus" style="font-size: 14px; font-weight: bold;">गैलरी से फोटो चुनें *</span>
+            </div>
+            <div id="uploadSuccess" style="display: none;">
+                <span style="font-size: 35px; color: var(--success);">✅</span>
+                <p id="photoCount" style="font-size: 14px; color: var(--success); font-weight: 800; margin-top: 5px;"></p>
+            </div>
+        </label>
+    </div>
+
+    <button onclick="uploadMission()" class="btn" id="upBtn">विरासत साझा करें ❯</button>
+    
+    <div id="pBarParent"><div id="pLine"></div></div>
+    <p id="statusMsg" style="font-size: 11px; color: #aaa; margin-top: 20px; font-weight: 600;"></p>
+</div>
+
+<footer>
+    <p class="copyright">© 2024-25 SST PRO APK - ALL RIGHTS RESERVED</p>
+    <p style="font-size: 10px; color: #555; margin-top: 10px;">Designed & Managed by Sanjay Dhakar Sir 🚩</p>
+</footer>
+
+<script>
+    let isFree = true;
+    // 🚩 आपकी Google Script का सही URL यहाँ डालें
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbym06GAtqxEr0hZ9giMcxfa1jFNQi1ijzhlmrW9O1AaGva2OmuJiDpWNLOBJx5wsBPc/exec';
+
+    // 💰 मूल्य स्विच लॉजिक
+    function setPrice(p) {
+        const pArea = document.getElementById('priceInputArea');
+        const bFree = document.getElementById('btnFree');
+        const bPaid = document.getElementById('btnPaid');
+        isFree = (p === 0);
+        
+        pArea.style.display = isFree ? 'none' : 'block';
+        bFree.style.background = isFree ? 'var(--gold)' : 'transparent';
+        bFree.style.color = isFree ? '#000' : 'var(--gold)';
+        bPaid.style.background = isFree ? 'transparent' : 'var(--gold)';
+        bPaid.style.color = isFree ? 'var(--gold)' : '#000';
+    }
+
+    // 🚩 20% सुरक्षा नियम
+    function calculateLimit() {
+        const full = parseFloat(document.getElementById('fullPrice').value) || 0;
+        const your = parseFloat(document.getElementById('bPrice').value) || 0;
+        const note = document.getElementById('limitNote');
+        const maxAllowed = full * 0.20;
+
+        if (!isFree && your > maxAllowed && full > 0) {
+            note.style.display = 'block';
+            note.innerText = `⚠️ मर्यादा नियम: आप ₹${maxAllowed.toFixed(0)} से ज्यादा नहीं ले सकते!`;
+            return false;
+        } else {
+            note.style.display = 'none';
+            return true;
         }
+    }
 
-        // 🚩 20% सुरक्षा नियम
-        function calculateLimit() {
-            const full = parseFloat(document.getElementById('fullPrice').value) || 0;
-            const your = parseFloat(document.getElementById('bPrice').value) || 0;
-            const note = document.getElementById('limitNote');
-            const maxAllowed = full * 0.20;
-
-            if (!isFree && your > maxAllowed && full > 0) {
-                note.style.display = 'block';
-                note.innerText = `⚠️ मर्यादा नियम: आप ₹${maxAllowed.toFixed(0)} से ज्यादा नहीं ले सकते!`;
-                return false;
-            } else {
-                note.style.display = 'none';
-                return true;
-            }
+    // 📸 फोटो चयन अपडेट (मल्टीपल फोटो सपोर्ट)
+    function updateInfo() {
+        const files = document.getElementById('bFile').files;
+        if(files.length > 0) {
+            document.getElementById('uploadUI').style.display = 'none';
+            document.getElementById('uploadSuccess').style.display = 'block';
+            document.getElementById('photoCount').innerText = `✅ ${files.length} फोटो चुनी गईं! (Max 5)`;
         }
-
-        // 📸 फोटो चयन अपडेट (मल्टीपल फोटो सपोर्ट)
-        function updateInfo() {
-            const files = document.getElementById('bFile').files;
-            if(files.length > 0) {
-                document.getElementById('uploadUI').style.display = 'none';
-                document.getElementById('uploadSuccess').style.display = 'block';
-                document.getElementById('photoCount').innerText = `✅ ${files.length} फोटो चुनी गईं! (Max 5)`;
-            }
-        }
-
+    }
         // 🚀 मुख्य मिशन: 5 फोटो अपलोड और डेटा सुरक्षा
-        async function uploadMission() {
-            // 1. वैलिडेशन
-            if(!isFree && !calculateLimit()) return alert("🚩 कृपया राशि को MRP के 20% के अंदर रखें!");
-            
-            const files = document.getElementById('bFile').files;
-            const name = document.getElementById('userName').value;
-            const phone = document.getElementById('userPhone').value;
-            const exam = document.getElementById('examCat').value;
-            const type = document.getElementById('bookType').value;
-            const title = document.getElementById('bTitle').value;
-            const condition = document.getElementById('bCondition').value;
-            const msg = document.getElementById('userMsg').value || "कोई संदेश नहीं";
+    async function uploadMission() {
+        // 1. वैलिडेशन
+        if(!isFree && !calculateLimit()) return alert("🚩 कृपया राशि को MRP के 20% के अंदर रखें!");
+        
+        const files = document.getElementById('bFile').files;
+        const name = document.getElementById('userName').value;
+        const phone = document.getElementById('userPhone').value;
+        const exam = document.getElementById('examCat').value;
+        const type = document.getElementById('bookType').value;
+        const title = document.getElementById('bTitle').value;
+        const condition = document.getElementById('bCondition').value;
+        const msg = document.getElementById('userMsg').value || "कोई संदेश नहीं";
 
-            if(files.length === 0 || !name || !phone || !exam || !title) {
-                return alert("⚠️ श्रीमान, सभी अनिवार्य जानकारी और कम से कम 1 फोटो ज़रूर दें!");
+        if(files.length === 0 || !name || !phone || !exam || !title) {
+            return alert("⚠️ श्रीमान, सभी अनिवार्य जानकारी और कम से कम 1 फोटो ज़रूर दें!");
+        }
+
+        const btn = document.getElementById('upBtn');
+        const pLine = document.getElementById('pLine');
+        const pBar = document.getElementById('pBarParent');
+        const status = document.getElementById('statusMsg');
+
+        btn.disabled = true;
+        pBar.style.display = 'block';
+
+        let imageUrls = [];
+
+        try {
+            // 📸 मल्टीपल फोटो हैंडलिंग लूप
+            for (let i = 0; i < files.length && i < 5; i++) {
+                let progress = Math.round(((i + 1) / files.length) * 80);
+                pLine.style.width = progress + "%";
+                status.innerText = `⏳ फोटो ${i+1}/${files.length} को कंप्रेस और अपलोड किया जा रहा है...`;
+
+                // फोटो कम्प्रेशन
+                const options = { maxSizeMB: 0.2, maxWidthOrHeight: 800, useWebWorker: true };
+                const compressedFile = await imageCompression(files[i], options);
+
+                // Cloudinary अपलोड
+                const formData = new FormData();
+                formData.append('file', compressedFile);
+                formData.append('upload_preset', 'sst_pro'); 
+
+                const cloudResp = await fetch('https://api.cloudinary.com/v1_1/dppmrodwf/image/upload', { 
+                    method: 'POST', 
+                    body: formData 
+                });
+                const cloudData = await cloudResp.json();
+                imageUrls.push(cloudData.secure_url);
             }
 
-            const btn = document.getElementById('upBtn');
-            const pLine = document.getElementById('pLine');
-            const pBar = document.getElementById('pBarParent');
-            const status = document.getElementById('statusMsg');
+            // 📝 डेटाबेस एंट्री (Google Sheet - Library Bridge)
+            status.innerText = "📝 सफ़रनामा रजिस्टर में एंट्री की जा रही है...";
+            const finalPrice = isFree ? "निशुल्क" : "₹" + document.getElementById('bPrice').value;
+            
+            // यहाँ Keys वही रखी गई हैं जो आपकी लाइब्रेरी फाइल पढ़ती है
+            const sheetData = {
+                "Title": title,
+                "DonorName": name,
+                "Images": imageUrls[0], // लाइब्रेरी में पहली फोटो थंबनेल बनेगी
+                "Phone": phone,
+                "Exam": exam,
+                "Type": type,
+                "Condition": condition,
+                "Price": finalPrice,
+                "AllImages": imageUrls.join(" , "), // बाकी सभी फोटो का बैकअप
+                "Message": msg
+            };
 
-            btn.disabled = true;
-            pBar.style.display = 'block';
+            await fetch(scriptURL, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: JSON.stringify(sheetData)
+            });
 
-            let imageUrls = [];
+            // 📲 प्रोफेशनल व्हाट्सएप संदेश
+            pLine.style.width = "100%";
+            status.innerText = "✅ सफ़रनामा सफल! शुभ कामनाएं...";
 
-            try {
-                // 📸 मल्टीपल फोटो हैंडलिंग लूप
-                for (let i = 0; i < files.length && i < 5; i++) {
-                    let progress = Math.round(((i + 1) / files.length) * 80);
-                    pLine.style.width = progress + "%";
-                    status.innerText = `⏳ फोटो ${i+1}/${files.length} को कंप्रेस और अपलोड किया जा रहा है...`;
-
-                    // फोटो कम्प्रेशन
-                    const options = { maxSizeMB: 0.2, maxWidthOrHeight: 800, useWebWorker: true };
-                    const compressedFile = await imageCompression(files[i], options);
-
-                    // Cloudinary अपलोड
-                    const formData = new FormData();
-                    formData.append('file', compressedFile);
-                    formData.append('upload_preset', 'sst_pro'); 
-
-                    const cloudResp = await fetch('https://api.cloudinary.com/v1_1/dppmrodwf/image/upload', { 
-                        method: 'POST', 
-                        body: formData 
-                    });
-                    const cloudData = await cloudResp.json();
-                    imageUrls.push(cloudData.secure_url);
-                }
-
-                // 📝 डेटाबेस एंट्री (Google Sheet)
-                status.innerText = "📝 सफ़रनामा रजिस्टर में एंट्री की जा रही है...";
-                const finalPrice = isFree ? "निशुल्क" : "₹" + document.getElementById('bPrice').value;
-                
-                const sheetData = {
-                    "DonorName": name,
-                    "Phone": phone,
-                    "Exam": exam,
-                    "Type": type,
-                    "Title": title,
-                    "Condition": condition,
-                    "Price": finalPrice,
-                    "Images": imageUrls.join(" , "), // सभी फोटो के लिंक एक साथ
-                    "Message": msg
-                };
-
-                await fetch(scriptURL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    body: JSON.stringify(sheetData)
-                });
-
-                // 📲 प्रोफेशनल व्हाट्सएप संदेश (Clean Format)
-                pLine.style.width = "100%";
-                status.innerText = "✅ सफ़रनामा सफल! शुभ कामनाएं...";
-
-                // यहाँ \n का उपयोग किया गया है जो encodeURIComponent के साथ मिलकर असली New Line बनाएगा
-                const waMessage = `🚩 *सफ़रनामा: नयी विरासत दर्ज!*
+            const waMessage = `🚩 *सफ़रनामा: नयी विरासत दर्ज!*
 
 👤 *दाता:* ${name}
 📞 *संपर्क:* ${phone}
@@ -354,17 +343,17 @@ ${imageUrls.map((url, idx) => `${idx+1}. ${url}`).join('\n')}
 ---------------------------
 _SST PRO - सेवा ही संकल्प_`;
 
-                setTimeout(() => {
-                    alert("✅ बधाई! आपकी विरासत 'सफ़रनामा' में दर्ज हो गई है।");
-                    window.location.assign(`https://wa.me/919529812784?text=${encodeURIComponent(waMessage)}`);
-                }, 500);
+            setTimeout(() => {
+                alert("✅ बधाई! आपकी विरासत 'सफ़रनामा' में दर्ज हो गई है।");
+                window.location.assign(`https://wa.me/919529812784?text=${encodeURIComponent(waMessage)}`);
+            }, 500);
 
-            } catch (err) {
-                alert("❌ त्रुटि: " + err.message);
-                btn.disabled = false;
-                pBar.style.display = 'none';
-            }
+        } catch (err) {
+            alert("❌ त्रुटि: " + err.message);
+            btn.disabled = false;
+            pBar.style.display = 'none';
         }
-    </script>
+    }
+</script>
 </body>
 </html>
