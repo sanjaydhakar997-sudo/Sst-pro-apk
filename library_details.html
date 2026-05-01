@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Royal Library - SST PRO</title>
+    <title>The Royal Library - SST PRO 🚩</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root { --gold: #ffd700; --royal-bg: #0c0c14; --card-bg: #1a1a2e; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         body { background: var(--royal-bg); color: white; overflow-x: hidden; padding-bottom: 50px; }
 
-        /* 🚩 रॉयल हेडर */
         .library-header {
             background: linear-gradient(180deg, #1a1a2e 0%, #0c0c14 100%);
             padding: 60px 20px; text-align: center; border-bottom: 4px solid var(--gold);
@@ -18,19 +17,22 @@
         }
         .library-header h1 { color: var(--gold); font-size: 28px; font-weight: 900; }
 
-        /* 🏗️ खंभों की स्टाइल */
         .pillar-section { margin: 20px; padding: 20px; border-left: 4px solid var(--gold); background: rgba(255,255,255,0.02); border-radius: 0 15px 15px 0; }
         .pillar-title { font-size: 18px; font-weight: 800; color: var(--gold); margin-bottom: 15px; text-transform: uppercase; }
         
         .content-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; }
         
-        .royal-card { background: var(--card-bg); border-radius: 12px; border: 1px solid rgba(255,215,0,0.1); overflow: hidden; text-align: center; padding-bottom: 10px; }
-        .royal-card img { width: 100%; height: 150px; object-fit: cover; }
-        .card-info h4 { font-size: 11px; color: var(--gold); padding: 5px; }
-        .btn-view { background: var(--gold); color: black; padding: 5px 10px; border-radius: 5px; font-size: 10px; font-weight: 700; text-decoration: none; }
+        .royal-card { background: var(--card-bg); border-radius: 12px; border: 1px solid rgba(255,215,0,0.1); overflow: hidden; text-align: center; padding-bottom: 10px; transition: 0.3s; }
+        .royal-card img { width: 100%; height: 150px; object-fit: cover; background: #000; }
+        .card-info h4 { font-size: 11px; color: var(--gold); padding: 5px; min-height: 40px; display: flex; align-items: center; justify-content: center; }
+        .btn-view { background: var(--gold); color: black; padding: 5px 10px; border-radius: 5px; font-size: 10px; font-weight: 700; text-decoration: none; display: inline-block; margin-top: 5px; }
+        
+        .back-btn { position: absolute; top: 20px; left: 15px; display: flex; align-items: center; gap: 5px; background: rgba(255, 215, 0, 0.1); border: 1px solid #ffd700; padding: 6px 15px; border-radius: 50px; text-decoration: none; color: #ffd700; font-size: 11px; font-weight: 800; z-index: 1000; backdrop-filter: blur(5px); }
     </style>
 </head>
 <body>
+
+<a href="index.html" class="back-btn"><span>⇠</span> बैक</a>
 
 <div class="library-header">
     <h1>Library of <br>Social Studies Classes</h1>
@@ -42,105 +44,97 @@
     
     <div style="margin-bottom: 15px;">
         <input type="text" id="sheetSearch" placeholder="इस खंभे में खोजें..." oninput="filterSheetBooks()" 
-               style="width: 100%; padding: 10px; border-radius: 10px; border: 1px solid #ffd70033; background: #161625; color: white; font-size: 12px;">
+               style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ffd70033; background: #161625; color: white; font-size: 13px;">
     </div>
 
     <div class="content-grid" id="googleSheetGrid">
-        <p style="color: #555; font-size: 12px;">खजाना खुल रहा है...</p>
+        <p style="color: var(--gold); font-size: 12px; grid-column: 1/-1;">खजाना खुल रहा है, कृपया प्रतीक्षा करें...</p>
     </div>
 </div>
 
+<div class="pillar-section" id="pillar2">
+    <div class="pillar-title">02. Standard Textbook Archive</div>
+    <div class="content-grid">
+        <div class="royal-card">
+            <img src="https://ncert.nic.in/textbook/pdf/jess101.jpg">
+            <div class="card-info"><h4>NCERT कक्षा 10</h4><p style="font-size:9px;">सामाजिक विज्ञान</p><a href="#" class="btn-view">डाउनलोड PDF</a></div>
+        </div>
+        <div class="royal-card">
+            <img src="https://ncert.nic.in/textbook/pdf/lehs101.jpg">
+            <div class="card-info"><h4>NCERT कक्षा 12</h4><p style="font-size:9px;">भारतीय इतिहास</p><a href="#" class="btn-view">डाउनलोड PDF</a></div>
+        </div>
+    </div>
+</div>
+
+<div class="pillar-section" id="pillar3">
+    <div class="pillar-title">03. Handwritten Master-Notes</div>
+    <div class="content-grid">
+        <div class="royal-card" style="border-color: #27ae60;">
+            <div style="height:150px; background: linear-gradient(135deg, #1e293b, #27ae60); display:flex; align-items:center; justify-content:center; color:white; font-size:40px;">✍️</div>
+            <div class="card-info"><h4>राजस्थान भूगोल</h4><a href="#" class="btn-view" style="background:#27ae60; color:white;">अभी पढ़ें ❯</a></div>
+        </div>
+        <div class="royal-card" style="border-color: #27ae60;">
+            <div style="height:150px; background: linear-gradient(135deg, #1e293b, #e67e22); display:flex; align-items:center; justify-content:center; color:white; font-size:40px;">📝</div>
+            <div class="card-info"><h4>भारतीय इतिहास</h4><a href="#" class="btn-view" style="background:#27ae60; color:white;">अभी पढ़ें ❯</a></div>
+        </div>
+    </div>
+</div>
+
+<div class="pillar-section" id="pillar5">
+    <div class="pillar-title">05. Safarnama: Donation Registry</div>
+    <div style="background: linear-gradient(45deg, #ffd700, #b8860b); padding: 15px; border-radius: 12px; margin-bottom: 15px; color: black; text-align: center;">
+        <h3 style="font-size: 14px; font-weight: 900;">VVIP डोनर वॉल ऑफ फेम</h3>
+    </div>
+    <div class="content-grid">
+        <div class="royal-card" style="border-color: #ffd700;">
+            <div style="height:120px; background: #222; display:flex; align-items:center; justify-content:center; font-size:40px;">👑</div>
+            <div class="card-info"><h4>संजय ढाकड़</h4><p style="font-size:9px;">मुख्य दानदाता</p></div>
+        </div>
+        <div class="royal-card">
+            <div style="height:120px; background: #222; display:flex; align-items:center; justify-content:center; font-size:40px;">👤</div>
+            <div class="card-info"><h4>आगामी भामाशाह</h4><a href="safarnama_form.html" class="btn-view">नाम दर्ज करें</a></div>
+        </div>
+    </div>
+</div>
+
+<div class="pillar-section" id="pillar6">
+    <div class="pillar-title">06. Legacy Builder: User Ledger</div>
+    <div class="content-grid">
+        <div class="royal-card">
+            <div style="height:140px; background: #161625; display:flex; align-items:center; justify-content:center; font-size:35px;">📘</div>
+            <div class="card-info"><h4>वर्तमान पुस्तकें</h4><a href="legacy_builder.html" class="btn-view">विवरण देखें</a></div>
+        </div>
+    </div>
+</div>
+
+<div class="pillar-section" id="pillar10">
+    <div class="pillar-title">10. Student Helpdesk & Request</div>
+    <div class="content-grid">
+        <div class="royal-card" style="border-color: #e74c3c;">
+            <div style="height:140px; background: #0c0c14; display:flex; align-items:center; justify-content:center; font-size:35px;">🤝</div>
+            <div class="card-info"><h4>हेल्प डेस्क</h4><a href="https://wa.me/919529812784" class="btn-view" style="background:#e74c3c; color:white;">मदद लें ❯</a></div>
+        </div>
+    </div>
+</div>
+
+<footer style="text-align: center; padding: 40px 20px; color: #444; font-size: 10px; font-weight: 800; letter-spacing: 2px;">
+    Designed by Sanjay Sir | SST PRO 🚩
+</footer>
+
 <script>
-    // 1. आपका गूगल शीट इंजन
-    
-<!DOCTYPE html>
-<html lang="hi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SST PRO - Digital Library 🚩</title>
-    <style>
-        :root { --gold: #ffd700; --royal: #1a1a2e; --dark: #0c0c14; }
-        body { background: var(--dark); font-family: 'Poppins', sans-serif; margin: 0; color: white; text-align: center; }
-        .header { background: linear-gradient(180deg, var(--royal) 0%, #000 100%); padding: 30px; border-bottom: 3px solid var(--gold); }
-        .tab-bar { display: flex; justify-content: center; gap: 10px; padding: 15px; position: sticky; top: 0; background: var(--dark); z-index: 100; overflow-x: auto; }
-        .tab { border: 1px solid var(--gold); color: var(--gold); padding: 8px 15px; border-radius: 50px; font-size: 12px; cursor: pointer; white-space: nowrap; }
-        .tab.active { background: var(--gold); color: #000; font-weight: bold; }
-        .container { padding: 15px; display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; }
-        .card { background: var(--royal); border-radius: 15px; overflow: hidden; border: 1px solid rgba(255,215,0,0.1); position: relative; text-align: left; }
-        .card img { width: 100%; height: 180px; object-fit: cover; }
-        .card-body { padding: 10px; }
-        .card-title { font-size: 14px; font-weight: bold; color: var(--gold); margin: 0; }
-        .btn { background: var(--gold); color: #000; display: block; text-align: center; padding: 8px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 11px; margin-top: 10px; }
-    </style>
-</head>
-<body>
-
-<div class="header">
-    <h1 style="color: var(--gold); margin: 0;">SST PRO 🚩</h1>
-    <p style="font-size: 12px;">आपकी विरासत, आपकी लाइब्रेरी</p>
-</div>
-
-<div class="tab-bar">
-    <div class="tab active" onclick="loadData('Lybrery')">📚 किताबें</div>
-    <div class="tab" onclick="alert('जल्द आ रहा है...')">📝 नोट्स</div>
-    <div class="tab" onclick="alert('जल्द आ रहा है...')">🎥 क्लासेज</div>
-</div>
-
-<div id="display-area" class="container">
-    <p style="grid-column: 1/-1; color: var(--gold);">किताबें लोड हो रही हैं...</p>
-</div>
-
-<script>
-    // 🚩 यहाँ अपना नीला Web App URL पेस्ट करें
-    const scriptURL = "https://script.google.com/macros/s/AKfycb...Vz7nb/exec"; 
-
-    async function loadData(tabName) {
-        const area = document.getElementById('display-area');
-        area.innerHTML = '<p style="grid-column: 1/-1; color: var(--gold);">खोज जारी है...</p>';
-        
-        try {
-            const response = await fetch(`${scriptURL}?type=${tabName}`);
-            const data = await response.json();
-            
-            area.innerHTML = '';
-            if (data.length === 0) {
-                area.innerHTML = '<p style="grid-column: 1/-1;">अभी कोई सामग्री उपलब्ध नहीं है।</p>';
-                return;
-            }
-
-            data.forEach(item => {
-                area.innerHTML += `
-                    <div class="card">
-                        <img src="${item.Images || 'https://via.placeholder.com/150'}">
-                        <div class="card-body">
-                            <h3 class="card-title">${item.Title}</h3>
-                            <p style="font-size:10px; color:#ccc; margin:5px 0;">दाता: ${item.DonorName}</p>
-                            <a href="legacy_builder.html?book=${encodeURIComponent(item.Title)}&donor=${encodeURIComponent(item.DonorName)}" class="btn">किताब प्राप्त करें ❯</a>
-                        </div>
-                    </div>`;
-            });
-        } catch (error) {
-            area.innerHTML = '<p style="grid-column: 1/-1;">कनेक्शन में समस्या है, कृपया दोबारा प्रयास करें।</p>';
-        }
-    }
-
-    // पहली बार लोड होने पर
-    window.onload = () => loadData('Lybrery');
-</script>
-
-</body>
-</html>
-
+    // 🚩 गूगल शीट का लिंक (अपडेटेड)
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbym06GAtqxEr0hZ9giMcxfa1jFNQi1ijzhlmrW9O1AaGva2OmuJiDpWNLOBJx5wsBPc/exec';
+    let sheetBooks = [];
 
     async function loadPillarOne() {
+        const grid = document.getElementById('googleSheetGrid');
         try {
             const response = await fetch(scriptURL);
             const data = await response.json();
             sheetBooks = data;
             displaySheetBooks(sheetBooks);
         } catch (e) {
-            console.log("Sheet Loading Error");
+            grid.innerHTML = "<p>डेटा लोड करने में समस्या आ रही है।</p>";
         }
     }
 
@@ -148,389 +142,32 @@
         const grid = document.getElementById('googleSheetGrid');
         grid.innerHTML = "";
 
-        // ए. असली किताबें (Real Data from Sheet)
+        if(data.length === 0) {
+            grid.innerHTML = "<p>अभी कोई किताब उपलब्ध नहीं है।</p>";
+            return;
+        }
+
         data.forEach(row => {
+            // row[1] = दाता, row[2] = किताब का नाम, row[4] = फोटो लिंक
             grid.innerHTML += `
                 <div class="royal-card">
-                    <img src="${row[4]}" onerror="this.src='https://via.placeholder.com/150/1a1a2e/ffd700?text=SST+PRO'">
+                    <img src="${row[4] || 'https://via.placeholder.com/150/1a1a2e/ffd700?text=SST+PRO'}" onerror="this.src='https://via.placeholder.com/150/1a1a2e/ffd700?text=SST+PRO'">
                     <div class="card-info">
-                        <h4>${row[2]}</h4>
-                        <p>दाता: ${row[1]}</p>
+                        <h4>${row[2] || 'बिना नाम की किताब'}</h4>
+                        <p style="font-size:9px; color:#888;">दाता: ${row[1] || 'SST PRO'}</p>
                         <a href="https://wa.me/919529812784?text=नमस्ते! मुझे यह किताब चाहिए: ${row[2]}" class="btn-view">प्राप्त करें</a>
                     </div>
                 </div>`;
         });
-
-        // बी. यकीन के लिए 20 'Coming Soon' कार्ड्स
-        for(let i=1; i<=20; i++) {
-            grid.innerHTML += `
-                <div class="royal-card" style="opacity: 0.3;">
-                    <div style="height:150px; display:flex; align-items:center; justify-content:center; font-size:30px;">🔒</div>
-                    <div class="card-info"><h4>Premium Book #${i}</h4><p>Coming Soon</p></div>
-                </div>`;
-        }
     }
 
     function filterSheetBooks() {
         const val = document.getElementById('sheetSearch').value.toLowerCase();
-        const filtered = sheetBooks.filter(r => r[2].toLowerCase().includes(val));
+        const filtered = sheetBooks.filter(r => r[2] && r[2].toLowerCase().includes(val));
         displaySheetBooks(filtered);
     }
 
-    // पेज लोड होते ही इंजन चालू करें
-    loadPillarOne();
+    window.onload = loadPillarOne;
 </script>
-<div class="pillar-section" id="pillar2">
-    <div class="pillar-title">02. Standard Textbook Archive</div>
-    
-    <div class="content-grid">
-        <div class="royal-card">
-            <img src="https://ncert.nic.in/textbook/pdf/jess101.jpg" onerror="this.src='https://via.placeholder.com/150/1a1a2e/ffd700?text=NCERT+10'">
-            <div class="card-info">
-                <h4>NCERT कक्षा 10</h4>
-                <p>सामाजिक विज्ञान (सत्यापित)</p>
-                <a href="#" class="btn-view">डाउनलोड PDF</a>
-            </div>
-        </div>
-
-        <div class="royal-card">
-            <img src="https://ncert.nic.in/textbook/pdf/lehs101.jpg" onerror="this.src='https://via.placeholder.com/150/1a1a2e/ffd700?text=NCERT+12'">
-            <div class="card-info">
-                <h4>NCERT कक्षा 12</h4>
-                <p>भारतीय इतिहास के कुछ विषय</p>
-                <a href="#" class="btn-view">डाउनलोड PDF</a>
-            </div>
-        </div>
-
-        <div class="royal-card" style="opacity: 0.3;">
-            <div style="height:150px; display:flex; align-items:center; justify-content:center; font-size:30px;">📖</div>
-            <div class="card-info"><h4>RBSE कक्षा 9-12</h4><p>Coming Soon</p></div>
-        </div>
-        
-        <div class="royal-card" style="opacity: 0.3;">
-            <div style="height:150px; display:flex; align-items:center; justify-content:center; font-size:30px;">📖</div>
-            <div class="card-info"><h4>Old NCERT Archive</h4><p>Processing...</p></div>
-        </div>
-    </div>
-</div>
-<div class="pillar-section" id="pillar3">
-    <div class="pillar-title">03. Handwritten Master-Notes</div>
-    
-    <div class="content-grid">
-        <div class="royal-card" style="border-color: #27ae60;">
-            <div style="height:150px; background: linear-gradient(135deg, #1e293b, #27ae60); display:flex; align-items:center; justify-content:center; color:white; font-size:40px;">✍️</div>
-            <div class="card-info">
-                <h4>राजस्थान भूगोल</h4>
-                <p>नए 50 जिलों के अनुसार</p>
-                <a href="#" class="btn-view" style="background:#27ae60; color:white;">अभी पढ़ें ❯</a>
-            </div>
-        </div>
-
-        <div class="royal-card" style="border-color: #27ae60;">
-            <div style="height:150px; background: linear-gradient(135deg, #1e293b, #e67e22); display:flex; align-items:center; justify-content:center; color:white; font-size:40px;">📝</div>
-            <div class="card-info">
-                <h4>भारतीय इतिहास</h4>
-                <p>प्राचीन एवं मध्यकालीन</p>
-                <a href="#" class="btn-view" style="background:#27ae60; color:white;">अभी पढ़ें ❯</a>
-            </div>
-        </div>
-
-        <div class="royal-card" style="opacity: 0.3;">
-            <div style="height:150px; display:flex; align-items:center; justify-content:center; font-size:30px;">⏳</div>
-            <div class="card-info">
-                <h4>राजनीति विज्ञान</h4>
-                <p>Sanjay Sir Special</p>
-            </div>
-        </div>
-
-        <div class="royal-card" style="opacity: 0.3;">
-            <div style="height:150px; display:flex; align-items:center; justify-content:center; font-size:30px;">⏳</div>
-            <div class="card-info">
-                <h4>अर्थशास्त्र नोट्स</h4>
-                <p>Coming Soon</p>
-            </div>
-        </div>
-    </div>
-</div><div class="pillar-section" id="pillar4">
-    <div class="pillar-title">04. Competitive Exam Cell</div>
-    
-    <div class="content-grid">
-        <div class="royal-card" style="border: 1px solid #f39c12;">
-            <div style="height:150px; background: linear-gradient(135deg, #0c0c14, #f39c12); display:flex; align-items:center; justify-content:center; color:white; font-size:40px;">🎯</div>
-            <div class="card-info">
-                <h4>REET 2026</h4>
-                <p>मिशन मोड सामग्री</p>
-                <a href="#" class="btn-view">चेक करें ❯</a>
-            </div>
-        </div>
-
-        <div class="royal-card">
-            <div style="height:150px; background: linear-gradient(135deg, #0c0c14, #3498db); display:flex; align-items:center; justify-content:center; color:white; font-size:40px;">📋</div>
-            <div class="card-info">
-                <h4>CET & Grade Exams</h4>
-                <p>महत्वपूर्ण प्रश्न बैंक</p>
-                <a href="#" class="btn-view">ओपन करें</a>
-            </div>
-        </div>
-
-        <div class="royal-card" style="opacity: 0.3;">
-            <div style="height:150px; display:flex; align-items:center; justify-content:center; font-size:30px;">⏱️</div>
-            <div class="card-info">
-                <h4>Live Test Series</h4>
-                <p>Coming Soon</p>
-            </div>
-        </div>
-
-        <div class="royal-card" style="opacity: 0.3;">
-            <div style="height:150px; display:flex; align-items:center; justify-content:center; font-size:30px;">📄</div>
-            <div class="card-info">
-                <h4>Previous Papers</h4>
-                <p>Processing...</p>
-            </div>
-        </div>
-    </div>
-</div><div class="pillar-section" id="pillar5">
-    <div class="pillar-title">05. Safarnama: Donation Registry</div>
-    
-    <div style="background: linear-gradient(45deg, #ffd700, #b8860b); padding: 20px; border-radius: 15px; margin-bottom: 20px; color: black; text-align: center;">
-        <h3 style="font-size: 16px; font-weight: 900;">VVIP डोनर वॉल ऑफ फेम</h3>
-        <p style="font-size: 10px; font-weight: 700; margin-top: 5px;">उन महान हस्तियों का आभार जिन्होंने ज्ञान दान किया</p>
-    </div>
-
-    <div class="content-grid">
-        <div class="royal-card" style="border-color: #ffd700;">
-            <div style="height:120px; background: #222; display:flex; flex-direction:column; align-items:center; justify-content:center;">
-                <span style="font-size: 40px;">👑</span>
-            </div>
-            <div class="card-info">
-                <h4>संजय ढाकड़</h4>
-                <p>मुख्य दानदाता</p>
-                <span style="font-size: 9px; color: #27ae60; font-weight: 800;">50+ पुस्तकें</span>
-            </div>
-        </div>
-
-        <div class="royal-card">
-            <div style="height:120px; background: #222; display:flex; flex-direction:column; align-items:center; justify-content:center;">
-                <span style="font-size: 40px;">👤</span>
-            </div>
-            <div class="card-info">
-                <h4>आगामी भामाशाह</h4>
-                <p>स्थान सुरक्षित है</p>
-                <a href="safarnama_form.html" class="btn-view" style="font-size: 8px;">नाम दर्ज करें</a>
-            </div>
-        </div>
-
-        <div class="royal-card" style="opacity: 0.3;">
-            <div style="height:120px; display:flex; align-items:center; justify-content:center; font-size:30px;">📝</div>
-            <div class="card-info">
-                <h4>पूरी सूची</h4>
-                <p>अपडेट हो रही है...</p>
-            </div>
-        </div>
-    </div>
-</div><div class="pillar-section" id="pillar6">
-    <div class="pillar-title">06. Legacy Builder: User Ledger</div>
-    
-    <div style="background: rgba(255,255,255,0.05); border: 1px dashed #ffd700; padding: 20px; border-radius: 15px; margin-bottom: 20px; display: flex; align-items: center; gap: 15px;">
-        <div style="font-size: 30px;">🛡️</div>
-        <div>
-            <h3 style="font-size: 14px; color: #ffd700;">आपकी लेगेसी (My Records)</h3>
-            <p style="font-size: 10px; color: #888;">यहाँ आपकी ली गई पुस्तकों का विवरण दिखेगा।</p>
-        </div>
-    </div>
-
-    <div class="content-grid">
-        <div class="royal-card">
-            <div style="height:140px; background: #161625; display:flex; flex-direction:column; align-items:center; justify-content:center;">
-                <span style="font-size: 35px;">📘</span>
-            </div>
-            <div class="card-info">
-                <h4>वर्तमान पुस्तकें</h4>
-                <p>आपके पास 0 किताबें हैं</p>
-                <a href="#" class="btn-view">विवरण देखें</a>
-            </div>
-        </div>
-
-        <div class="royal-card">
-            <div style="height:140px; background: #161625; display:flex; flex-direction:column; align-items:center; justify-content:center;">
-                <span style="font-size: 35px;">📜</span>
-            </div>
-            <div class="card-info">
-                <h4>पुराना रिकॉर्ड</h4>
-                <p>वापस की गई पुस्तकें</p>
-                <a href="#" class="btn-view">चेक करें</a>
-            </div>
-        </div>
-
-        <div class="royal-card" style="opacity: 0.3;">
-            <div style="height:140px; display:flex; align-items:center; justify-content:center; font-size:30px;">🎓</div>
-            <div class="card-info">
-                <h4>Legacy Certificate</h4>
-                <p>Coming Soon</p>
-            </div>
-        </div>
-    </div>
-</div><div class="pillar-section" id="pillar7">
-    <div class="pillar-title">07. Digital Atlas & Cartography</div>
-    
-    <div class="content-grid">
-        <div class="royal-card" style="border-color: #3498db;">
-            <div style="height:150px; background: url('https://img.freepik.com/free-vector/map-rajasthan-with-districts_1057-23423.jpg?t=st=1714552000') center; background-size: cover;"></div>
-            <div class="card-info">
-                <h4>राजस्थान (नया स्वरूप)</h4>
-                <p>50 जिलों का प्रामाणिक मैप</p>
-                <a href="#" class="btn-view" style="background:#3498db; color:white;">HD में देखें</a>
-            </div>
-        </div>
-
-        <div class="royal-card">
-            <div style="height:150px; background: linear-gradient(135deg, #1a1a2e, #0c0c14); display:flex; align-items:center; justify-content:center; color:white; font-size:40px;">🗺️</div>
-            <div class="card-info">
-                <h4>भारत: भौतिक स्वरूप</h4>
-                <p>मास्टर रिविजन चार्ट</p>
-                <a href="#" class="btn-view">डाउनलोड</a>
-            </div>
-        </div>
-
-        <div class="royal-card" style="opacity: 0.3;">
-            <div style="height:150px; display:flex; align-items:center; justify-content:center; font-size:30px;">🧭</div>
-            <div class="card-info">
-                <h4>Interactive Atlas</h4>
-                <p>Coming Soon</p>
-            </div>
-        </div>
-
-        <div class="royal-card" style="opacity: 0.3;">
-            <div style="height:150px; display:flex; align-items:center; justify-content:center; font-size:30px;">📊</div>
-            <div class="card-info">
-                <h4>SST Data Charts</h4>
-                <p>Processing...</p>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="pillar-section" id="pillar8">
-    <div class="pillar-title">08. Research & Toppers’ Resource</div>
-    
-    <div class="content-grid">
-        <div class="royal-card" style="border-color: #ffd700;">
-            <div style="height:150px; background: linear-gradient(135deg, #1a1a2e, #ffd70033); display:flex; align-items:center; justify-content:center; color:white; font-size:40px;">🥇</div>
-            <div class="card-info">
-                <h4>REET टॉपर कॉपी</h4>
-                <p>लिखने की कला सीखें</p>
-                <a href="#" class="btn-view">एनालिसिस देखें</a>
-            </div>
-        </div>
-
-        <div class="royal-card">
-            <div style="height:150px; background: linear-gradient(135deg, #0c0c14, #2c3e50); display:flex; align-items:center; justify-content:center; color:white; font-size:40px;">🔬</div>
-            <div class="card-info">
-                <h4>SST विशेष शोध</h4>
-                <p>जटिल विषयों का समाधान</p>
-                <a href="#" class="btn-view">पढ़ें ❯</a>
-            </div>
-        </div>
-
-        <div class="royal-card" style="opacity: 0.3;">
-            <div style="height:150px; display:flex; align-items:center; justify-content:center; font-size:30px;">🎤</div>
-            <div class="card-info">
-                <h4>Toppers Strategy</h4>
-                <p>Coming Soon</p>
-            </div>
-        </div>
-
-        <div class="royal-card" style="opacity: 0.3;">
-            <div style="height:150px; display:flex; align-items:center; justify-content:center; font-size:30px;">📑</div>
-            <div class="card-info">
-                <h4>Model Answers</h4>
-                <p>Under Review</p>
-            </div>
-        </div>
-    </div>
-</div><div class="pillar-section" id="pillar9">
-    <div class="pillar-title">09. AI-Driven Quick Revision</div>
-    
-    <div style="background: linear-gradient(135deg, #1a1a2e, #0c0c14); padding: 20px; border-radius: 15px; margin-bottom: 20px; border: 1px solid #ffd70044; text-align: center;">
-        <div style="font-size: 24px; margin-bottom: 10px;">🤖</div>
-        <h3 style="font-size: 14px; color: #ffd700;">AI रिविजन असिस्टेंट</h3>
-        <p style="font-size: 9px; color: #888; margin-top: 5px;">किसी भी टॉपिक को सेकंडों में दोहराएँ</p>
-    </div>
-
-    <div class="content-grid">
-        <div class="royal-card" style="border-color: #ffd700;">
-            <div style="height:140px; background: #0c0c14; display:flex; flex-direction:column; align-items:center; justify-content:center;">
-                <span style="font-size: 35px;">⚡</span>
-            </div>
-            <div class="card-info">
-                <h4>1857 की क्रांति</h4>
-                <p>AI क्विक समरी</p>
-                <a href="#" class="btn-view">Revision ❯</a>
-            </div>
-        </div>
-
-        <div class="royal-card">
-            <div style="height:140px; background: #0c0c14; display:flex; flex-direction:column; align-items:center; justify-content:center;">
-                <span style="font-size: 35px;">💡</span>
-            </div>
-            <div class="card-info">
-                <h4>संविधान की धाराएं</h4>
-                <p>याद करने की AI ट्रिक</p>
-                <a href="#" class="btn-view">Revision ❯</a>
-            </div>
-        </div>
-
-        <div class="royal-card" style="opacity: 0.3;">
-            <div style="height:140px; display:flex; align-items:center; justify-content:center; font-size:30px;">🛰️</div>
-            <div class="card-info">
-                <h4>AI Mind Maps</h4>
-                <p>Coming Soon</p>
-            </div>
-        </div>
-    </div>
-</div><a href="index.html" style="position: absolute; top: 20px; left: 15px; display: flex; align-items: center; gap: 5px; background: rgba(255, 215, 0, 0.1); border: 1px solid #ffd700; padding: 6px 15px; border-radius: 50px; text-decoration: none; color: #ffd700; font-size: 11px; font-weight: 800; z-index: 1000; backdrop-filter: blur(5px); box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
-    <span style="font-size: 16px;">⇠</span> बैक
-</a>
-
-<div class="pillar-section" id="pillar10" style="margin-top: 40px;">
-    <div class="pillar-title">10. Student Helpdesk & Request</div>
-    
-    <div class="content-grid">
-        <div class="royal-card" style="border-color: #e74c3c;">
-            <div style="height:140px; background: #0c0c14; display:flex; flex-direction:column; align-items:center; justify-content:center;">
-                <span style="font-size: 35px;">🤝</span>
-            </div>
-            <div class="card-info">
-                <h4>हेल्प डेस्क</h4>
-                <p>कोई समस्या या सवाल?</p>
-                <a href="https://wa.me/919529812784?text=नमस्ते! मुझे लाइब्रेरी के संबंध में सहायता चाहिए।" class="btn-view" style="background:#e74c3c; color:white;">मदद लें ❯</a>
-            </div>
-        </div>
-
-        <div class="royal-card">
-            <div style="height:140px; background: #0c0c14; display:flex; flex-direction:column; align-items:center; justify-content:center;">
-                <span style="font-size: 35px;">📚</span>
-            </div>
-            <div class="card-info">
-                <h4>पुस्तक की मांग</h4>
-                <p>जो यहाँ नहीं, वो यहाँ मांगें</p>
-                <a href="legacy_builder.html" class="btn-view">फॉर्म भरें</a>
-            </div>
-        </div>
-    </div>
-
-    <div style="margin: 50px 10px 20px; padding: 25px; background: rgba(0,0,0,0.5); border-radius: 20px; border: 1px solid rgba(255,215,0,0.15); text-align: center; backdrop-filter: blur(10px);">
-        <div style="font-size: 24px; color: #ffd700; margin-bottom: 12px;">🛡️</div>
-        <h4 style="font-size: 13px; color: #ffd700; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase;">Social Studies Classes - Protection</h4>
-        <p style="font-size: 10px; color: #aaa; line-height: 1.8; margin-top: 10px; font-weight: 500;">
-            © 2026 <span style="color: #ffd700;">Sanjay Dhakar Sir</span>. सर्वाधिकार सुरक्षित।<br>
-            इस डिजिटल लाइब्रेरी की समस्त सामग्री (Handwritten Notes, PDF, Maps) का बिना लिखित अनुमति के व्यावसायिक उपयोग, कॉपी करना या अन्य प्लेटफॉर्म पर शेयर करना कानूनी रूप से प्रतिबंधित है। <br>
-            <span style="color: #444; font-weight: bold; letter-spacing: 1px;">IP TRACKING & DATA SECURITY ACTIVE</span>
-        </p>
-    </div>
-</div>
-
-<footer style="text-align: center; padding: 40px 20px; color: #333; font-size: 9px; font-weight: 900; letter-spacing: 4px; text-transform: uppercase;">
-    Designed with Vision by Sanjay Sir | SST PRO 🚩
-</footer>
 </body>
 </html>
