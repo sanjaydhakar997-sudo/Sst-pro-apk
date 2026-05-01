@@ -52,8 +52,86 @@
 
 <script>
     // 1. आपका गूगल शीट इंजन
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbym06GAtqxEr0hZ9giMcxfa1jFNQi1ijzhlmrW9O1AaGva2OmuJiDpWNLOBJx5wsBPc/exec';
-    let sheetBooks = [];
+    
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SST PRO - Digital Library 🚩</title>
+    <style>
+        :root { --gold: #ffd700; --royal: #1a1a2e; --dark: #0c0c14; }
+        body { background: var(--dark); font-family: 'Poppins', sans-serif; margin: 0; color: white; text-align: center; }
+        .header { background: linear-gradient(180deg, var(--royal) 0%, #000 100%); padding: 30px; border-bottom: 3px solid var(--gold); }
+        .tab-bar { display: flex; justify-content: center; gap: 10px; padding: 15px; position: sticky; top: 0; background: var(--dark); z-index: 100; overflow-x: auto; }
+        .tab { border: 1px solid var(--gold); color: var(--gold); padding: 8px 15px; border-radius: 50px; font-size: 12px; cursor: pointer; white-space: nowrap; }
+        .tab.active { background: var(--gold); color: #000; font-weight: bold; }
+        .container { padding: 15px; display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; }
+        .card { background: var(--royal); border-radius: 15px; overflow: hidden; border: 1px solid rgba(255,215,0,0.1); position: relative; text-align: left; }
+        .card img { width: 100%; height: 180px; object-fit: cover; }
+        .card-body { padding: 10px; }
+        .card-title { font-size: 14px; font-weight: bold; color: var(--gold); margin: 0; }
+        .btn { background: var(--gold); color: #000; display: block; text-align: center; padding: 8px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 11px; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1 style="color: var(--gold); margin: 0;">SST PRO 🚩</h1>
+    <p style="font-size: 12px;">आपकी विरासत, आपकी लाइब्रेरी</p>
+</div>
+
+<div class="tab-bar">
+    <div class="tab active" onclick="loadData('Lybrery')">📚 किताबें</div>
+    <div class="tab" onclick="alert('जल्द आ रहा है...')">📝 नोट्स</div>
+    <div class="tab" onclick="alert('जल्द आ रहा है...')">🎥 क्लासेज</div>
+</div>
+
+<div id="display-area" class="container">
+    <p style="grid-column: 1/-1; color: var(--gold);">किताबें लोड हो रही हैं...</p>
+</div>
+
+<script>
+    // 🚩 यहाँ अपना नीला Web App URL पेस्ट करें
+    const scriptURL = "https://script.google.com/macros/s/AKfycb...Vz7nb/exec"; 
+
+    async function loadData(tabName) {
+        const area = document.getElementById('display-area');
+        area.innerHTML = '<p style="grid-column: 1/-1; color: var(--gold);">खोज जारी है...</p>';
+        
+        try {
+            const response = await fetch(`${scriptURL}?type=${tabName}`);
+            const data = await response.json();
+            
+            area.innerHTML = '';
+            if (data.length === 0) {
+                area.innerHTML = '<p style="grid-column: 1/-1;">अभी कोई सामग्री उपलब्ध नहीं है।</p>';
+                return;
+            }
+
+            data.forEach(item => {
+                area.innerHTML += `
+                    <div class="card">
+                        <img src="${item.Images || 'https://via.placeholder.com/150'}">
+                        <div class="card-body">
+                            <h3 class="card-title">${item.Title}</h3>
+                            <p style="font-size:10px; color:#ccc; margin:5px 0;">दाता: ${item.DonorName}</p>
+                            <a href="legacy_builder.html?book=${encodeURIComponent(item.Title)}&donor=${encodeURIComponent(item.DonorName)}" class="btn">किताब प्राप्त करें ❯</a>
+                        </div>
+                    </div>`;
+            });
+        } catch (error) {
+            area.innerHTML = '<p style="grid-column: 1/-1;">कनेक्शन में समस्या है, कृपया दोबारा प्रयास करें।</p>';
+        }
+    }
+
+    // पहली बार लोड होने पर
+    window.onload = () => loadData('Lybrery');
+</script>
+
+</body>
+</html>
+
 
     async function loadPillarOne() {
         try {
