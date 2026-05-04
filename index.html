@@ -1,328 +1,247 @@
-<div id="upsc-splash" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 100000; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SST Pro - Mission 2026 | Sanjay Dhakar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #f39c12;
+            --success: #2ecc71;
+            --light-bg: #f8f9fa;
+            --card-shadow: 0 10px 20px rgba(0,0,0,0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; -webkit-tap-highlight-color: transparent; }
+        body { background-color: var(--light-bg); color: #2d3436; overflow-x: hidden; }
+
+        /* Watermark */
+        .watermark {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 999; opacity: 0.03;
+            display: flex; flex-wrap: wrap; transform: rotate(-30deg);
+        }
+
+        /* Splash Screen */
+        #upsc-splash {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; z-index: 100000; display: flex; 
+            flex-direction: column; align-items: center; justify-content: center;
+        }
+
+        /* Header & Slider */
+        .master-wrapper { background: #fff; position: relative; }
+        .slider-box {
+            position: relative; height: 260px; width: 100%; overflow: hidden;
+            border-bottom-left-radius: 40px; border-bottom-right-radius: 40px;
+            background: #000; box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Typing Box */
+        .quote-box {
+            margin: -35px 20px 20px; background: white; padding: 20px;
+            border-radius: 25px; box-shadow: var(--card-shadow);
+            position: relative; z-index: 100; border-left: 5px solid var(--accent);
+        }
+
+        /* Section Title */
+        .section-title {
+            margin: 25px 20px 15px; font-size: 18px; font-weight: 900;
+            color: var(--primary); display: flex; align-items: center;
+            text-transform: uppercase; letter-spacing: 1px;
+        }
+        .section-title::before {
+            content: ""; width: 6px; height: 20px; background: var(--accent);
+            margin-right: 10px; border-radius: 10px;
+        }
+
+        /* Subject Cards */
+        .grid-container {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+            padding: 0 15px 20px;
+        }
+        .subject-card {
+            background: white; padding: 25px 10px; border-radius: 22px;
+            text-align: center; text-decoration: none; color: #2d3436;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            border-bottom: 4px solid #eee; transition: 0.3s;
+        }
+        .subject-card:active { transform: scale(0.95); }
+        .icon { font-size: 35px; margin-bottom: 12px; display: block; }
+        .label { font-weight: 800; font-size: 14px; }
+
+        /* Animations */
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        .live-badge { animation: blink 1.5s infinite; background: #ff4757; color: white; padding: 3px 10px; border-radius: 5px; font-size: 10px; }
+        
+        .splash-exit { opacity: 0 !important; transition: 1s; pointer-events: none; }
+    </style>
+</head>
+<body>
+
+<div class="watermark">
+    <p style="font-size: 20px; padding: 50px;">SST PRO - SANJAY DHAKAR</p>
+</div>
+
+<div id="upsc-splash">
     <div style="text-align: center;">
-        <div style="font-size: 70px; margin-bottom: 10px; animation: treeGrow 1s ease-out;">🌳</div>
-        <h1 style="color: #f39c12; font-size: 24px; font-weight: 900; letter-spacing: 2px; margin: 0;">SST PRO</h1>
-        <p style="color: #fff; font-size: 12px; font-weight: 600; opacity: 0.8; margin-top: 5px;">BY SANJAY DHAKAR</p>
+        <div style="font-size: 80px; margin-bottom: 15px; animation: treeGrow 2s ease-out;">🌳</div>
+        <h1 style="color: var(--accent); font-size: 28px; font-weight: 900; letter-spacing: 2px;">SOCIAL STUDIES</h1>
+        <p style="color: #fff; letter-spacing: 5px; font-size: 12px;">MISSION 2026</p>
+    </div>
+    <div style="position: absolute; bottom: 50px; color: white; font-style: italic; text-align: center; padding: 0 30px;">
+        "शिक्षा की जड़ें कड़वी हैं, लेकिन फल मीठा होता है।"
+    </div>
+</div>
+
+<div class="master-wrapper">
+    <div class="slider-box">
+        <div id="sliderEngine" style="display: flex; width: 500%; height: 100%; transition: transform 0.7s ease-in-out;">
+            <div style="width: 20%; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=1000') center/cover;">
+                <div style="padding: 80px 30px; color: white;">
+                    <h2 style="font-size: 30px; font-weight: 900;">मिशन 2026<br><span style="color: var(--accent);">नया आगाज</span></h2>
+                </div>
+            </div>
+            <div style="width: 20%; background: linear-gradient(135deg, #d35400, #f39c12); display: flex; align-items: center; padding: 30px; color: white;">
+                <h2>VVIP लाइब्रेरी<br><small>ज्ञान का भंडार</small></h2>
+            </div>
+            <div style="width: 20%; background: linear-gradient(135deg, #2c3e50, #4ca1af); display: flex; align-items: center; padding: 30px; color: white;">
+                <h2>प्रीमियम नोट्स<br><small>सफलता की कुंजी</small></h2>
+            </div>
+            <div style="width: 20%; background: #1a1a1a; display: flex; align-items: center; padding: 30px; color: #00ff00; font-family: monospace;">
+                <h2>> SYSTEM SECURED<br><small style="color: white;">Encrypted Access</small></h2>
+            </div>
+            <div style="width: 20%; background: linear-gradient(135deg, #27ae60, #16a085); display: flex; align-items: center; padding: 30px; color: white;">
+                <h2>हमारे गौरव<br><small>दानदाताओं का सम्मान</small></h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="quote-box">
+        <div style="display: flex; gap: 15px; align-items: center;">
+            <div style="background: var(--accent); color: white; width: 50px; height: 50px; border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 24px;">📖</div>
+            <div>
+                <p id="typeQuote" style="font-size: 14px; font-weight: 700; color: #333; min-height: 40px;"></p>
+                <p style="font-size: 10px; color: var(--accent); font-weight: 800; margin-top: 5px;">— शहीद भगत सिंह</p>
+            </div>
+        </div>
+    </div>
+
+    <div style="display: flex; gap: 10px; padding: 0 15px;">
+        <a href="mission.html" style="flex: 1; text-decoration: none; background: linear-gradient(135deg, #ffd700, #ff8c00); padding: 15px; border-radius: 20px; display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 25px;">🏆</span>
+            <span style="color: #000; font-weight: 900; font-size: 12px;">VVIP क्लब</span>
+        </a>
+        <a href="team-registration.html" style="flex: 1; text-decoration: none; background: linear-gradient(135deg, #1a237e, #3949ab); padding: 15px; border-radius: 20px; display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 25px;">🤝</span>
+            <span style="color: #fff; font-weight: 900; font-size: 12px;">SST TEAM</span>
+        </a>
+    </div>
+
+    <div style="background: #fffbe6; border: 1px solid #ffe58f; margin: 20px 15px; padding: 10px; border-radius: 10px; overflow: hidden;">
+        <marquee style="font-size: 12px; font-weight: 700; color: #856404;">
+            🚀 मिशन 2026 अपडेट: चित्तौड़गढ़ नोड पर नए प्रीमियम नोट्स अपलोड कर दिए गए हैं... पुराने पेपर्स अब हल सहित उपलब्ध हैं... 📚
+        </marquee>
+    </div>
+
+    <h2 class="section-title">मुख्य विषय (Core)</h2>
+    <div class="grid-container">
+        <a href="history.html" class="subject-card" style="border-bottom-color: #34495e;">
+            <span class="icon">📜</span><span class="label">इतिहास</span>
+        </a>
+        <a href="geography.html" class="subject-card" style="border-bottom-color: #27ae60;">
+            <span class="icon">🌍</span><span class="label">भूगोल</span>
+        </a>
+        <a href="polity.html" class="subject-card" style="border-bottom-color: #e67e22;">
+            <span class="icon">⚖️</span><span class="label">राजनीति</span>
+        </a>
+        <a href="economy.html" class="subject-card" style="border-bottom-color: #9b59b6;">
+            <span class="icon">💰</span><span class="label">अर्थशास्त्र</span>
+        </a>
+    </div>
+
+    <a href="exam-alerts.html" style="text-decoration: none; margin: 20px 15px; display: block;">
+        <div style="background: #0f172a; padding: 20px; border-radius: 25px; border: 2px solid var(--accent); display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <span style="font-size: 30px;">📢</span>
+                <div>
+                    <h3 style="color: var(--accent); font-size: 16px;">एग्जाम अलर्ट सेंटर</h3>
+                    <p style="color: #ccc; font-size: 11px;">लेटेस्ट सरकारी नौकरी की अपडेट्स</p>
+                </div>
+            </div>
+            <span class="live-badge">LIVE</span>
+        </div>
+    </a>
+
+    <div style="background: white; margin: 20px 15px; padding: 20px; border-radius: 25px; box-shadow: var(--card-shadow); text-align: center;">
+        <p style="font-size: 11px; font-weight: bold; color: #666;">Synchronized Users</p>
+        <h2 id="mainCounter" style="font-size: 45px; font-weight: 900; color: var(--primary);">0</h2>
+        <div style="height: 2px; background: #eee; margin: 15px 0;"></div>
+        <div id="feedBox" style="height: 40px; font-size: 12px; font-weight: 600; color: var(--success);"></div>
+    </div>
+
+    <div style="padding: 0 20px 20px;">
+        <h3 style="font-size: 14px; margin-bottom: 10px;">🏆 हमारे गौरव (Top Donors)</h3>
+        <div style="display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px;">
+            <div style="min-width: 80px; text-align: center;">
+                <img src="https://ui-avatars.com/api/?name=Aman&background=0f172a&color=fff" style="width: 50px; border-radius: 50%; border: 2px solid var(--accent);">
+                <p style="font-size: 10px; font-weight: 800;">अमन</p>
+            </div>
+            <div style="min-width: 80px; text-align: center;">
+                <img src="https://ui-avatars.com/api/?name=Priya&background=0f172a&color=fff" style="width: 50px; border-radius: 50%; border: 2px solid var(--accent);">
+                <p style="font-size: 10px; font-weight: 800;">प्रिया</p>
+            </div>
+            <div style="min-width: 80px; border: 2px dashed #ccc; border-radius: 50%; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 20px; color: #ccc;">+</div>
+        </div>
+    </div>
+
+    <div style="background: #0f172a; padding: 30px; text-align: center; color: white; border-top-left-radius: 40px; border-top-right-radius: 40px;">
+        <p style="font-size: 14px; font-weight: 800;">© 2026 Social Studies Classes</p>
+        <p style="font-size: 10px; opacity: 0.6; margin-top: 5px;">Designed by Sanjay Dhakar | Chittorgarh</p>
     </div>
 </div>
 
 <script>
-    // Splash logic: 2 Seconds and then vanishes
-    (function() {
-        if (!sessionStorage.getItem('splashShown')) {
-            setTimeout(function() {
-                const splash = document.getElementById('upsc-splash');
-                if(splash) {
-                    splash.style.opacity = '0';
-                    setTimeout(() => { splash.style.display = 'none'; }, 500);
-                }
-            }, 2000); 
-            sessionStorage.setItem('splashShown', 'true');
-        } else {
-            document.getElementById('upsc-splash').style.display = 'none';
-        }
-    })();
-</script>
+    // Splash Logic
+    setTimeout(() => {
+        document.getElementById('upsc-splash').classList.add('splash-exit');
+    }, 3800);
 
-<style>
-@keyframes treeGrow { 0% { transform: scale(0); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
-</style>
-
-<div class="upsc-master-wrapper" style="background: #fff;">
-    <div class="slider-box" style="position: relative; height: 180px; width: 100%; overflow: hidden; border-bottom-left-radius: 40px; border-bottom-right-radius: 40px; background: #000; box-shadow: 0 10px 25px rgba(0,0,0,0.15);">
-        
-        <div id="finalEngine" style="display: flex; width: 500%; height: 100%; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);">
-            <div style="width: 100%; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=2070'); background-size: cover; display: flex; align-items: center; padding: 20px;">
-                <h2 style="color: white; font-size: 22px; font-weight: 900;">SST Pro <br><span style="color: #f39c12;">New Learning</span></h2>
-            </div>
-            <div style="width: 100%; background: linear-gradient(135deg, #d35400, #f39c12); display: flex; align-items: center; padding: 20px;">
-                <h2 style="color: white; font-size: 22px; font-weight: 900;">VVIP लाइब्रेरी<br><span style="font-size: 14px; font-weight: 500; opacity: 0.9;">शिक्षा का नया भविष्य</span></h2>
-            </div>
-            <div style="width: 100%; background: linear-gradient(135deg, #0984e3, #6c5ce7); display: flex; align-items: center; padding: 20px;">
-                <h2 style="color: white; font-size: 22px; font-weight: 900;">प्रीमियम नोट्स<br><span style="font-size: 14px; font-weight: 500; opacity: 0.9;">Best Content for You</span></h2>
-            </div>
-            <div style="width: 100%; background: #1a1a1a; display: flex; align-items: center; padding: 20px; border-left: 5px solid #00ff00;">
-                <h2 style="color: #00ff00; font-size: 18px; font-family: monospace;">> SYSTEM SECURED</h2>
-            </div>
-            <div style="width: 100%; background: linear-gradient(135deg, #27ae60, #16a085); display: flex; align-items: center; padding: 20px;">
-                <h2 style="color: white; font-size: 22px; font-weight: 900;">Our Donors<br><span style="font-size: 14px; font-weight: 500; opacity: 0.9;">शिक्षा का दान, महादान</span></h2>
-            </div>
-        </div>
-
-        <div style="position: absolute; bottom: 15px; width: 100%; display: flex; justify-content: center; gap: 5px;">
-            <div class="f-dot" style="width: 20px; height: 4px; background: #fff; border-radius: 10px;"></div>
-            <div class="f-dot" style="width: 6px; height: 4px; background: rgba(255,255,255,0.4); border-radius: 10px;"></div>
-            <div class="f-dot" style="width: 6px; height: 4px; background: rgba(255,255,255,0.4); border-radius: 10px;"></div>
-            <div class="f-dot" style="width: 6px; height: 4px; background: rgba(255,255,255,0.4); border-radius: 10px;"></div>
-            <div class="f-dot" style="width: 6px; height: 4px; background: rgba(255,255,255,0.4); border-radius: 10px;"></div>
-        </div>
-    </div>
-</div>
-
-<script>
-    let fIdx = 0;
-    const fEngine = document.getElementById('finalEngine');
-    const fDots = document.querySelectorAll('.f-dot');
+    // Slider Logic
+    let sIdx = 0;
     setInterval(() => {
-        fIdx = (fIdx + 1) % 5;
-        if(fEngine) {
-            fEngine.style.transform = `translateX(-${fIdx * 20}%)`;
-            fDots.forEach((dot, i) => {
-                dot.style.width = i === fIdx ? '20px' : '6px';
-                dot.style.opacity = i === fIdx ? '1' : '0.4';
-            });
+        sIdx = (sIdx + 1) % 5;
+        document.getElementById('sliderEngine').style.transform = `translateX(-${sIdx * 20}%)`;
+    }, 5000);
+
+    // Typing Logic
+    const qText = "वे मुझे मार सकते हैं, लेकिन मेरे विचारों को नहीं। वे मेरे शरीर को कुचल सकते हैं, पर मेरी आत्मा को नहीं।";
+    let qPos = 0;
+    function type() {
+        if (qPos < qText.length) {
+            document.getElementById('typeQuote').innerHTML += qText.charAt(qPos);
+            qPos++; setTimeout(type, 100);
         }
-    }, 4000);
-</script>
-<div style="padding: 20px 15px 10px;">
-    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
-        <h2 style="font-size: 20px; font-weight: 800; color: #2d3436; display: flex; align-items: center;">
-            <span style="background: #e74c3c; width: 4px; height: 20px; border-radius: 10px; margin-right: 10px; display: inline-block;"></span>
-            राजस्थान विशेष (RAJ GK)
-        </h2>
-        <span style="background: #ffeaa7; color: #d35400; font-size: 10px; font-weight: 900; padding: 4px 10px; border-radius: 50px; animation: pulse 1.5s infinite;">Most Popular</span>
-    </div>
-
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-        
-        <a href="raj-history.html" style="text-decoration: none; transform: translateZ(0); transition: 0.3s;">
-            <div style="background: linear-gradient(145deg, #ffffff, #f1f2f6); padding: 18px; border-radius: 24px; text-align: center; border: 1px solid #fab1a0; box-shadow: 0 8px 15px rgba(231, 76, 60, 0.1);">
-                <div style="font-size: 35px; margin-bottom: 8px; filter: drop-shadow(0 5px 5px rgba(0,0,0,0.1));">🏰</div>
-                <div style="font-weight: 800; font-size: 14px; color: #e74c3c;">राज. इतिहास</div>
-                <div style="font-size: 9px; color: #636e72; font-weight: 600; margin-top: 2px;">प्राचीन एवं मध्यकालीन</div>
-            </div>
-        </a>
-
-        <a href="raj-geo.html" style="text-decoration: none;">
-            <div style="background: linear-gradient(145deg, #ffffff, #f1f2f6); padding: 18px; border-radius: 24px; text-align: center; border: 1px solid #81ecec; box-shadow: 0 8px 15px rgba(26, 188, 156, 0.1);">
-                <div style="font-size: 35px; margin-bottom: 8px;">🏜️</div>
-                <div style="font-weight: 800; font-size: 14px; color: #1abc9c;">राज. भूगोल</div>
-                <div style="font-size: 9px; color: #636e72; font-weight: 600; margin-top: 2px;">नक्शों के साथ अध्ययन</div>
-            </div>
-        </a>
-
-        <a href="raj-culture.html" style="text-decoration: none;">
-            <div style="background: linear-gradient(145deg, #ffffff, #f1f2f6); padding: 18px; border-radius: 24px; text-align: center; border: 1px solid #ffeaa7; box-shadow: 0 8px 15px rgba(241, 196, 15, 0.1);">
-                <div style="font-size: 35px; margin-bottom: 8px;">🎨</div>
-                <div style="font-weight: 800; font-size: 14px; color: #f1c40f;">कला-संस्कृति</div>
-                <div style="font-size: 9px; color: #636e72; font-weight: 600; margin-top: 2px;">मेले, त्यौहार एवं दुर्ग</div>
-            </div>
-        </a>
-
-        <a href="raj-polity.html" style="text-decoration: none;">
-            <div style="background: linear-gradient(145deg, #ffffff, #f1f2f6); padding: 18px; border-radius: 24px; text-align: center; border: 1px solid #dfe6e9; box-shadow: 0 8px 15px rgba(52, 73, 94, 0.1);">
-                <div style="font-size: 35px; margin-bottom: 8px;">🏛️</div>
-                <div style="font-weight: 800; font-size: 14px; color: #34495e;">राज. व्यवस्था</div>
-                <div style="font-size: 9px; color: #636e72; font-weight: 600; margin-top: 2px;">प्रशासनिक ढांचा</div>
-            </div>
-        </a>
-    </div>
-
-    <div style="display: flex; gap: 10px; margin-top: 15px;">
-        <a href="test-series.html" style="flex: 1; text-decoration: none; background: #2d3436; padding: 12px; border-radius: 15px; display: flex; align-items: center; justify-content: center; gap: 8px;">
-            <span style="font-size: 16px;">📝</span>
-            <span style="color: white; font-weight: 700; font-size: 13px;">Test Series</span>
-        </a>
-        <a href="quiz.html" style="flex: 1; text-decoration: none; background: #f39c12; padding: 12px; border-radius: 15px; display: flex; align-items: center; justify-content: center; gap: 8px;">
-            <span style="font-size: 16px;">🏆</span>
-            <span style="color: white; font-weight: 700; font-size: 13px;">Daily Quiz</span>
-        </a>
-    </div>
-</div>
-
-<style>
-@keyframes pulse {
-    0% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.05); opacity: 0.8; }
-    100% { transform: scale(1); opacity: 1; }
-}
-/* क्लिक इफेक्ट */
-a:active { transform: scale(0.96); transition: 0.1s; }
-</style>
-<div style="padding: 15px;">
-    <a href="updates.html" style="text-decoration: none; display: flex; align-items: center; justify-content: space-between; background: linear-gradient(135deg, #1e3a8a, #3b82f6); padding: 18px; border-radius: 25px; box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2); border: 2px solid rgba(255,255,255,0.1); position: relative; overflow: hidden;">
-        <div style="position: absolute; right: -20px; top: -20px; font-size: 80px; opacity: 0.1; transform: rotate(-15deg);">🚀</div>
-        
-        <div style="display: flex; align-items: center; gap: 15px; position: relative; z-index: 2;">
-            <div style="background: rgba(255,255,255,0.2); width: 45px; height: 45px; border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 24px;">🔥</div>
-            <div>
-                <div style="color: #ffd700; font-weight: 900; font-size: 16px; letter-spacing: 1px; text-transform: uppercase;">मिशन 2026</div>
-                <div style="color: white; font-size: 11px; font-weight: 600; opacity: 0.9;">नई अपडेट्स और फीचर्स यहाँ देखें</div>
-            </div>
-        </div>
-        <div style="background: white; color: #1e3a8a; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 18px; z-index: 2;">➔</div>
-    </a>
-</div>
-
-<div style="display: flex; gap: 12px; padding: 5px 15px 20px 15px;">
-
-    <a href="mission.html" style="text-decoration: none; flex: 1;">
-        <div style="background: #ffffff; padding: 15px; border-radius: 22px; border: 1.5px solid #FFD700; display: flex; align-items: center; gap: 10px; box-shadow: 0 5px 15px rgba(255, 215, 0, 0.1);">
-            <div style="font-size: 22px; background: #fff9e6; width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center;">🏆</div>
-            <div>
-                <div style="color: #000; font-weight: 800; font-size: 12px;">VVIP क्लब</div>
-                <div style="color: #f39c12; font-size: 9px; font-weight: 700;">किताबें दान करें</div>
-            </div>
-        </div>
-    </a>
-
-    <a href="team-registration.html" style="text-decoration: none; flex: 1;">
-        <div style="background: #1a237e; padding: 15px; border-radius: 22px; display: flex; align-items: center; gap: 10px; box-shadow: 0 8px 20px rgba(26, 35, 126, 0.2);">
-            <div style="font-size: 22px; background: rgba(255,255,255,0.1); width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center;">🤝</div>
-            <div>
-                <div style="color: #fff; font-weight: 800; font-size: 12px;">SST TEAM</div>
-                <div style="color: rgba(255,255,255,0.7); font-size: 9px; font-weight: 700;">Ground Exe.</div>
-            </div>
-        </div>
-    </a>
-
-</div>
-<div style="padding: 0 15px;">
-    <h2 style="font-size: 18px; font-weight: 800; color: #2d3436; margin-bottom: 15px; display: flex; align-items: center;">
-        <span style="background: #1e3a8a; width: 4px; height: 18px; border-radius: 10px; margin-right: 8px;"></span>
-        मुख्य विषय (CORE - INDIA)
-    </h2>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 25px;">
-        <a href="history.html" class="subject-card" style="border-bottom: 4px solid #2d3436; background: #fff; padding: 20px; border-radius: 20px; text-align: center; text-decoration: none; display: block; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
-            <span style="font-size: 30px; display: block; margin-bottom: 8px;">📜</span>
-            <div style="font-weight: 700; color: #333;">इतिहास</div>
-        </a>
-        <a href="geography.html" class="subject-card" style="border-bottom: 4px solid #2ecc71; background: #fff; padding: 20px; border-radius: 20px; text-align: center; text-decoration: none; display: block; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
-            <span style="font-size: 30px; display: block; margin-bottom: 8px;">🌍</span>
-            <div style="font-weight: 700; color: #333;">भूगोल</div>
-        </a>
-        <a href="polity.html" class="subject-card" style="border-bottom: 4px solid #e67e22; background: #fff; padding: 20px; border-radius: 20px; text-align: center; text-decoration: none; display: block; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
-            <span style="font-size: 30px; display: block; margin-bottom: 8px;">⚖️</span>
-            <div style="font-weight: 700; color: #333;">राजनीति</div>
-        </a>
-        <a href="economy.html" class="subject-card" style="border-bottom: 4px solid #9b59b6; background: #fff; padding: 20px; border-radius: 20px; text-align: center; text-decoration: none; display: block; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
-            <span style="font-size: 30px; display: block; margin-bottom: 8px;">💰</span>
-            <div style="font-weight: 700; color: #333;">अर्थशास्त्र</div>
-        </a>
-    </div>
-</div>
-
-<div style="padding: 0 15px;">
-    <h2 style="font-size: 18px; font-weight: 800; color: #2d3436; margin-bottom: 15px; display: flex; align-items: center;">
-        <span style="background: #fd79a8; width: 4px; height: 18px; border-radius: 10px; margin-right: 8px;"></span>
-        अन्य महत्वपूर्ण विषय
-    </h2>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 25px;">
-        <a href="#" class="subject-card" style="border-bottom: 4px solid #fd79a8; background: #fff; padding: 20px; border-radius: 20px; text-align: center; text-decoration: none;">
-            <span style="font-size: 30px; display: block; margin-bottom: 8px;">🧠</span>
-            <div style="font-weight: 700; color: #333;">मनोविज्ञान</div>
-        </a>
-        <a href="#" class="subject-card" style="border-bottom: 4px solid #00d2d3; background: #fff; padding: 20px; border-radius: 20px; text-align: center; text-decoration: none;">
-            <span style="font-size: 30px; display: block; margin-bottom: 8px;">👥</span>
-            <div style="font-weight: 700; color: #333;">समाजशास्त्र</div>
-        </a>
-    </div>
-</div>
-
-<div style="background: #fff; margin: 15px; padding: 20px; border-radius: 25px; border: 2px solid #f39c12; box-shadow: 0 10px 20px rgba(0,0,0,0.05);">
-    <div style="text-align: center; margin-bottom: 15px;">
-        <h3 style="color: #1a3a5f; font-size: 18px; text-transform: uppercase; font-weight: 900;">SST Live Dashboard</h3>
-        <p style="font-size: 10px; color: #64748b;"><span style="height: 8px; width: 8px; background: #2ecc71; border-radius: 50%; display: inline-block; margin-right: 5px;"></span> सिस्टम सिंक: सक्रिय</p>
-    </div>
-    <div style="text-align: center; padding: 20px; background: #f8fafc; border-radius: 20px;">
-        <div style="font-size: 11px; font-weight: bold; color: #64748b;">कुल इकाइयां (Synchronized)</div>
-        <div id="mainCounter" style="font-size: 40px; font-weight: 900; color: #1a3a5f;">1,240</div>
-        <a href="state-analytics.html" style="background: #1a3a5f; color: white; padding: 8px 20px; border-radius: 50px; text-decoration: none; display: inline-block; margin-top: 10px; font-weight: bold; font-size: 12px;">सुरक्षित पोर्टल खोलें</a>
-    </div>
-</div>
-
-<div style="background: #ffffff; border-radius: 20px; margin: 20px 15px; padding: 15px; border: 1px solid #e1e8f0;">
-    <h3 style="margin-bottom: 15px; font-size: 14px; color: #1a3a5f; font-weight: 800;">🏆 हमारे गौरव (Verified Donors)</h3>
-    <div style="display: flex; gap: 20px; overflow-x: auto; padding-bottom: 10px;">
-        <div style="min-width: 80px; text-align: center;">
-            <img src="https://ui-avatars.com/api/?name=Aman&background=1a3a5f&color=fff" style="width: 45px; border-radius: 50%; border: 2px solid #ffd700;">
-            <div style="font-size: 11px; font-weight: 800; margin-top: 5px;">अमन</div>
-        </div>
-        <div style="min-width: 80px; text-align: center;">
-            <img src="https://ui-avatars.com/api/?name=Priya&background=1a3a5f&color=fff" style="width: 45px; border-radius: 50%; border: 2px solid #ffd700;">
-            <div style="font-size: 11px; font-weight: 800; margin-top: 5px;">प्रिया</div>
-        </div>
-        <div style="min-width: 80px; text-align: center; opacity: 0.5;">
-            <div style="width: 45px; height: 45px; border-radius: 50%; border: 2px dashed #ccc; display: flex; align-items: center; justify-content: center; margin: auto;">+</div>
-            <div style="font-size: 10px; font-weight: 800; margin-top: 5px;">Join Us</div>
-        </div>
-    </div>
-</div>
-<a href="exam-alerts.html" style="text-decoration: none; display: block; -webkit-tap-highlight-color: transparent; margin: 20px 15px;">
-    <div style="background: linear-gradient(145deg, #1a3a5f, #0c243d); border-radius: 20px; padding: 18px; display: flex; align-items: center; gap: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.2); border: 2px solid #ffd700; position: relative; overflow: hidden;">
-        <div style="background: rgba(255, 215, 0, 0.15); width: 50px; height: 50px; border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 28px;">📢</div>
-        <div style="flex: 1;">
-            <h3 style="margin: 0; color: #ffd700; font-size: 17px; font-weight: 800;">एग्जाम अलर्ट सेंटर</h3>
-            <p style="margin: 2px 0 0; color: #ffffff; opacity: 0.8; font-size: 11px;">सरकारी नौकरी की हर खबर यहाँ</p>
-        </div>
-        <div class="live-badge" style="background: #ff4757; color: white; font-weight: 900; font-size: 9px; padding: 4px 8px; border-radius: 6px; animation: blink 1.2s infinite;">LIVE</div>
-    </div>
-</a>
-
-<div style="margin: 20px 15px; padding: 20px; background: #fff; border-radius: 25px; border: 2px solid #004e92; box-shadow: 0 10px 20px rgba(0,0,0,0.05);">
-    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
-        <div style="font-size: 30px;">🤝</div>
-        <h3 style="color: #004e92; margin: 0; font-size: 17px; font-weight: 900;">मदद का हाथ</h3>
-    </div>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-        <div onclick="location.href='help-request.html'" style="background: #f0f7ff; border: 1px solid #004e92; border-radius: 15px; padding: 12px; text-align: center; cursor: pointer;">
-            <div style="color: #004e92; font-weight: 900; font-size: 12px;">किताबें चाहिए</div>
-        </div>
-        <div onclick="location.href='sponsor-wall.html'" style="background: #004e92; border-radius: 15px; padding: 12px; text-align: center; cursor: pointer;">
-            <div style="color: #ffd700; font-weight: 900; font-size: 12px;">मदद करना है</div>
-        </div>
-    </div>
-</div>
-
-<div style="padding: 0 15px 30px;">
-    <a href="blog.html" style="text-decoration: none; display: flex; align-items: center; background: linear-gradient(135deg, #11998e, #38ef7d); color: white; padding: 18px; border-radius: 20px; margin-bottom: 15px;">
-        <div style="font-size: 26px; margin-right: 12px;">✍️</div>
-        <div>
-            <div style="font-weight: 800; font-size: 15px;">ताज़ा नोट्स और ब्लॉग</div>
-            <div style="font-size: 10px; opacity: 0.9;">PDF नोट्स और डेली अपडेट्स</div>
-        </div>
-    </a>
-
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-        <a href="https://wa.me/919529812784" style="text-decoration: none; background: #fff; color: #2c3e50; padding: 15px; border-radius: 20px; text-align: center; border: 2px solid #eee;">
-            <div style="font-size: 20px;">📞</div>
-            <div style="font-weight: 700; font-size: 12px;">Help Desk</div>
-        </a>
-        <a href="#" style="text-decoration: none; background: #2c3e50; color: white; padding: 15px; border-radius: 20px; text-align: center; border-bottom: 4px solid #f39c12;">
-            <div style="font-size: 20px;">📥</div>
-            <div style="font-weight: 700; font-size: 12px;">Get APK</div>
-        </a>
-    </div>
-</div>
-
-<div style="background: #f8f9fa; border-top: 2px solid #eee; padding: 30px 20px; text-align: center;">
-    <p style="color: #1a3a5f; font-weight: 900; font-size: 14px;">© 2026 SOCIAL STUDIES CLASSES</p>
-    <p style="color: #95a5a6; font-size: 10px; margin-top: 5px;">Designed with ❤️ by Sanjay Dhakar | Chittorgarh</p>
-</div>
-
-<script>
-    // Counter Activation
-    let count = 1240;
-    function updateCounter() {
-        count += Math.floor(Math.random() * 3) + 1;
-        const el = document.getElementById('mainCounter');
-        if(el) el.innerHTML = count.toLocaleString();
-        setTimeout(updateCounter, 4000);
     }
-    
-    // Security: Right Click & DevTools Block
+    window.onload = type;
+
+    // Counter Logic
+    let count = 1240;
+    setInterval(() => {
+        count += Math.floor(Math.random() * 5);
+        document.getElementById('mainCounter').innerHTML = count.toLocaleString();
+    }, 3000);
+
+    // Feed Logic
+    const msgs = ["डेटा सिंक सफल ✅", "नया PDF अपलोड हुआ 📄", "सिस्टम स्थिर है 🛡️", "चित्तौड़गढ़ नोड एक्टिव 📍"];
+    setInterval(() => {
+        document.getElementById('feedBox').innerHTML = msgs[Math.floor(Math.random() * msgs.length)];
+    }, 4000);
+
+    // Security
     document.addEventListener('contextmenu', e => e.preventDefault());
-    document.onkeydown = function(e) {
-        if (e.keyCode == 123 || (e.ctrlKey && (e.keyCode == 'U'.charCodeAt(0) || e.keyCode == 'I'.charCodeAt(0)))) return false;
-    };
-
-    window.onload = updateCounter;
 </script>
-
-<style>
-@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
-.subject-card:active { transform: scale(0.95); }
-</style>
-
 </body>
 </html>
