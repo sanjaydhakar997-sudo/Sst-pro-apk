@@ -2,2224 +2,873 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Social Studies Classes - Professional APK</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>SST Pro - Sanjay Dhakar</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Noto+Sans+Devanagari:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
     
     <style>
-        /* PHASE 1: APK ARCHITECTURE & DESIGN SYSTEM */
+        /* ब्रांड कलर्स और वैरियेबल्स */
         :root {
-            --primary-navy: #0f172a;   /* Android Deep Theme */
-            --accent-gold: #f39c12;    /* Education Gold */
-            --surface-white: #ffffff;  /* Card Background */
-            --app-bg: #f1f5f9;         /* Material Grey Background */
-            --success-green: #2ecc71;  /* Status Indicators */
+            --primary: #0f172a;   /* प्रीमियम नेवी */
+            --accent: #f39c12;    /* ब्रांड गोल्ड */
+            --bg: #f8fafc;        /* हल्का बैकग्राउंड */
+            --surface: #ffffff;
             --text-main: #1e293b;
-            --text-muted: #64748b;
-            --radius-android: 24px;    /* Rounded APK Corners */
+            --shadow-sm: 0 4px 12px rgba(0,0,0,0.05);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
         }
 
+        /* ग्लोबल रिसेट - ऐप जैसा व्यवहार करने के लिए */
         * { 
             margin: 0; padding: 0; box-sizing: border-box; 
-            -webkit-tap-highlight-color: transparent; /* Removes blue flash on click */
+            font-family: 'Manrope', sans-serif;
+            -webkit-tap-highlight-color: transparent; /* टैप करने पर नीला डब्बा गायब */
         }
 
         body { 
-            background-color: var(--app-bg); 
-            font-family: 'Manrope', 'Noto Sans Devanagari', sans-serif;
+            background: var(--bg); 
             color: var(--text-main);
-            max-width: 500px; /* Mobile View Only */
-            margin: 0 auto;
             overflow-x: hidden;
-            padding-bottom: 100px; /* Space for Bottom Nav */
+            -webkit-user-select: none; /* कंटेंट चोरी रोकना */
+            line-height: 1.6;
         }
 
-        /* APK Style Status Bar (Point 15) */
-        .android-status-bar {
-            background: var(--primary-navy);
-            height: 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 18px;
-            color: white;
-            font-size: 11px;
-            font-weight: 700;
+        /* एंटी-लोकल लिंक स्टाइलिंग */
+        a { 
+            text-decoration: none !important; 
+            color: inherit !important;
+            transition: 0.2s ease;
         }
 
-        /* Premium App Header */
-        .app-header {
-            background: var(--surface-white);
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+        /* क्लिक करने पर बटन का अहसास (Micro-interaction) */
+        .btn-active:active {
+            transform: scale(0.96);
+            opacity: 0.9;
         }
 
-        .brand-box h1 {
-            font-size: 14px;
-            font-weight: 900;
-            letter-spacing: 0.5px;
-            color: var(--primary-navy);
-            line-height: 1;
-        }
-
-        .brand-box p {
-            font-size: 9px;
-            font-weight: 800;
-            color: var(--accent-gold);
-            text-transform: uppercase;
-        }
-
-        /* The Vision Banner (Replacer for Mission 2026 Title) */
-        .vision-banner {
-            background: var(--primary-navy);
-            color: white;
-            margin: 15px;
-            padding: 25px;
-            border-radius: var(--radius-android);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.2);
-        }
-
-        .vision-banner h2 {
-            font-size: 24px;
-            font-weight: 900;
-            color: var(--accent-gold);
-        }
-
-        .vision-banner p {
-            font-size: 12px;
-            opacity: 0.8;
-            margin-top: 5px;
-            font-weight: 600;
-        }
-
-        .vision-tag {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 4px 12px;
-            border-radius: 50px;
-            font-size: 10px;
-            font-weight: 800;
-            margin-bottom: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        /* Haptic Tap Effect (Point 4) */
-        .tap-effect:active {
-            transform: scale(0.95);
-            transition: 0.1s;
-        }
-
-        /* Floating Decoration Objects */
-        .decoration-circle {
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            background: var(--accent-gold);
-            opacity: 0.1;
-            border-radius: 50%;
-            top: -20px;
-            right: -20px;
-        }
+        /* हिडन स्क्रॉलबार लेकिन फंक्शनल */
+        ::-webkit-scrollbar { display: none; }
     </style>
 </head>
 <body>
 
-    <div class="android-status-bar">
-        <span id="currentTime">12:00</span>
-        <div style="display: flex; gap: 8px;">
-            <span>📶 5G</span>
-            <span>🔋 98%</span>
+    <div id="main-app">
         </div>
-    </div>
-
-    <header class="app-header">
-        <div class="brand-box">
-            <h1>SOCIAL STUDIES CLASSES</h1>
-            <p>Education with Vision • By Sanjay Dhakar</p>
-        </div>
-        <div class="header-icons tap-effect" style="font-size: 20px;">🔔</div>
-    </header>
-
-    <section class="vision-banner reveal">
-        <div class="decoration-circle"></div>
-        <span class="vision-tag">शिक्षा से परिवर्तन 🚩</span>
-        <h2>श्रेष्ठ शिक्षा,<br>उज्ज्वल भविष्य।</h2>
-        <p>गुणवत्तापूर्ण शिक्षा अब हर छात्र की पहुँच में।</p>
-        <div style="margin-top: 15px; font-size: 20px; opacity: 0.3; text-align: right;">🎓</div>
-    </section>
-
-    <script>
-        // System Time Logic
-        function updateTime() {
-            const now = new Date();
-            document.getElementById('currentTime').innerText = 
-                now.getHours().toString().padStart(2, '0') + ":" + 
-                now.getMinutes().toString().padStart(2, '0');
-        }
-        setInterval(updateTime, 1000);
-        updateTime();
-    </script>
-    <style>
-    .raj-section {
-        margin: 25px 0;
-        padding-left: 18px; /* Standard Android Padding */
-    }
-
-    .raj-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-right: 18px;
-        margin-bottom: 15px;
-    }
-
-    .raj-header h3 {
-        font-size: 18px;
-        font-weight: 900;
-        color: var(--primary-navy);
-        display: flex;
-        align-items: center;
-    }
-
-    .raj-header h3::before {
-        content: "🚩";
-        margin-right: 8px;
-        font-size: 16px;
-    }
-
-    /* Horizontal Scroll Physics (Point 15) */
-    .raj-scroll-wrapper {
-        display: flex;
-        overflow-x: auto;
-        gap: 15px;
-        padding-bottom: 15px;
-        scrollbar-width: none; /* Hide for Firefox */
-        -ms-overflow-style: none; /* Hide for IE/Edge */
-    }
-
-    .raj-scroll-wrapper::-webkit-scrollbar {
-        display: none; /* Hide for Chrome/Safari */
-    }
-
-    /* Professional Card Design */
-    .raj-item-card {
-        min-width: 140px;
-        background: var(--surface-white);
-        border-radius: var(--radius-md);
-        padding: 20px 15px;
-        text-align: center;
-        box-shadow: var(--apk-shadow);
-        border: 1px solid rgba(0,0,0,0.03);
-        position: relative;
-        overflow: hidden;
-    }
-
-    .raj-item-card .card-icon {
-        font-size: 32px;
-        margin-bottom: 10px;
-        display: block;
-        transition: transform 0.3s;
-    }
-
-    .raj-item-card:active .card-icon {
-        transform: scale(1.2) rotate(5deg);
-    }
-
-    .raj-item-card p {
-        font-size: 13px;
-        font-weight: 800;
-        color: var(--primary-navy);
-    }
-
-    .raj-item-card span {
-        font-size: 9px;
-        font-weight: 700;
-        color: var(--accent-gold);
-        text-transform: uppercase;
-        display: block;
-        margin-top: 4px;
-    }
-
-    /* Point 14: Shimmer Decoration */
-    .card-shimmer {
-        position: absolute;
-        top: 0; left: -100%;
-        width: 100%; height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-        animation: shimmerMove 3s infinite;
-    }
-
-    @keyframes shimmerMove {
-        100% { left: 100%; }
-    }
-</style>
-
-<section class="raj-section reveal">
-    <div class="raj-header">
-        <h3>राजस्थान विशेष (Top)</h3>
-        <span style="font-size: 11px; font-weight: 800; color: var(--text-muted);">View All ➔</span>
-    </div>
-
-    <div class="raj-scroll-wrapper">
-        <div class="raj-item-card tap-effect">
-            <div class="card-shimmer"></div>
-            <span class="card-icon">🏰</span>
-            <p>राज. इतिहास</p>
-            <span>Premium Notes</span>
-        </div>
-
-        <div class="raj-item-card tap-effect">
-            <span class="card-icon">🏜️</span>
-            <p>राज. भूगोल</p>
-            <span>Updated 2026</span>
-        </div>
-
-        <div class="raj-item-card tap-effect">
-            <span class="card-icon">🎨</span>
-            <p>कला-संस्कृति</p>
-            <span>Best Seller</span>
-        </div>
-
-        <div class="raj-item-card tap-effect">
-            <span class="card-icon">🏛️</span>
-            <p>राज. व्यवस्था</p>
-            <span>Live Class</span>
-        </div>
-        
-        <div style="min-width: 5px;"></div>
-    </div>
-</section>
-<style>
-    .core-section {
-        margin: 20px 18px;
-    }
-
-    .section-info {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 15px;
-    }
-
-    .section-info h3 {
-        font-size: 18px;
-        font-weight: 900;
-        color: var(--primary-navy);
-    }
-
-    /* Smart Subject Grid (Point 20) */
-    .subject-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 15px;
-    }
-
-    .core-card {
-        background: var(--surface-white);
-        border-radius: var(--radius-md);
-        padding: 18px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        box-shadow: var(--apk-shadow);
-        border: 1px solid rgba(0,0,0,0.02);
-        position: relative;
-        min-height: 140px;
-    }
-
-    .core-card .s-icon {
-        width: 45px;
-        height: 45px;
-        background: var(--app-bg);
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 22px;
-        margin-bottom: 12px;
-    }
-
-    .core-card h4 {
-        font-size: 14px;
-        font-weight: 800;
-        color: var(--primary-navy);
-        line-height: 1.2;
-    }
-
-    /* Point 6: Learning Progress Bar */
-    .progress-container {
-        margin-top: 12px;
-    }
-
-    .p-label {
-        display: flex;
-        justify-content: space-between;
-        font-size: 9px;
-        font-weight: 800;
-        color: var(--text-muted);
-        margin-bottom: 4px;
-    }
-
-    .p-bar-bg {
-        width: 100%;
-        height: 6px;
-        background: #eef2f6;
-        border-radius: 10px;
-        overflow: hidden;
-    }
-
-    .p-bar-fill {
-        height: 100%;
-        background: linear-gradient(90deg, var(--primary-navy), #3b82f6);
-        border-radius: 10px;
-        transition: width 1.5s ease-in-out;
-    }
-
-    /* Status Dot */
-    .status-dot {
-        position: absolute;
-        top: 15px;
-        right: 15px;
-        width: 8px;
-        height: 8px;
-        background: var(--success-green);
-        border-radius: 50%;
-        box-shadow: 0 0 5px var(--success-green);
-    }
-</style>
-
-<section class="core-section reveal">
-    <div class="section-info">
-        <h3>मुख्य विषय (Core)</h3>
-        <span class="tap-effect" style="font-size: 10px; font-weight: 800; color: #3b82f6; background: #eff6ff; padding: 4px 10px; border-radius: 50px;">80+ Chapters</span>
-    </div>
-
-    <div class="subject-grid">
-        <div class="core-card tap-effect">
-            <div class="status-dot"></div>
-            <div class="s-icon">📜</div>
-            <h4>भारतीय इतिहास</h4>
-            <div class="progress-container">
-                <div class="p-label"><span>Progress</span><span>75%</span></div>
-                <div class="p-bar-bg">
-                    <div class="p-bar-fill" style="width: 75%;"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="core-card tap-effect">
-            <div class="s-icon">🌍</div>
-            <h4>भूगोल (World & IN)</h4>
-            <div class="progress-container">
-                <div class="p-label"><span>Progress</span><span>40%</span></div>
-                <div class="p-bar-bg">
-                    <div class="p-bar-fill" style="width: 40%;"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="core-card tap-effect">
-            <div class="s-icon">⚖️</div>
-            <h4>राजनीति विज्ञान</h4>
-            <div class="progress-container">
-                <div class="p-label"><span>Progress</span><span>20%</span></div>
-                <div class="p-bar-bg">
-                    <div class="p-bar-fill" style="width: 20%;"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="core-card tap-effect">
-            <div class="s-icon">💰</div>
-            <h4>अर्थशास्त्र</h4>
-            <div class="progress-container">
-                <div class="p-label"><span>Progress</span><span>10%</span></div>
-                <div class="p-bar-bg">
-                    <div class="p-bar-fill" style="width: 10%;"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<style>
-    .command-center {
-        margin: 20px 18px;
-    }
-
-    /* Exam Alert Card (Point 18) */
-    .alert-card {
-        background: linear-gradient(145deg, #1e3a8a, #172554);
-        border-radius: var(--radius-md);
-        padding: 20px;
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        position: relative;
-        overflow: hidden;
-        border: 1px solid rgba(243, 156, 18, 0.3);
-        box-shadow: 0 10px 25px rgba(30, 58, 138, 0.2);
-    }
-
-    .alert-icon-box {
-        width: 50px;
-        height: 50px;
-        background: rgba(243, 156, 18, 0.2);
-        border-radius: 14px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 24px;
-        border: 1px solid var(--accent-gold);
-    }
-
-    .alert-text h4 {
-        color: var(--accent-gold);
-        font-size: 16px;
-        font-weight: 800;
-        margin-bottom: 2px;
-    }
-
-    .alert-text p {
-        color: white;
-        font-size: 11px;
-        font-weight: 600;
-        opacity: 0.9;
-    }
-
-    .live-ping {
-        position: absolute;
-        top: 15px;
-        right: 15px;
-        background: #ef4444;
-        color: white;
-        font-size: 8px;
-        font-weight: 900;
-        padding: 2px 8px;
-        border-radius: 4px;
-        animation: pulseRed 1.5s infinite;
-    }
-
-    @keyframes pulseRed {
-        0% { opacity: 1; transform: scale(1); }
-        50% { opacity: 0.5; transform: scale(0.95); }
-        100% { opacity: 1; transform: scale(1); }
-    }
-
-    /* System Dashboard (Point 23 & 25) */
-    .system-dashboard {
-        margin-top: 20px;
-        background: var(--surface-white);
-        border-radius: var(--radius-md);
-        padding: 20px;
-        box-shadow: var(--apk-shadow);
-        border: 1px solid #e2e8f0;
-    }
-
-    .stats-row {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 15px;
-        border-bottom: 1px dashed #e2e8f0;
-        padding-bottom: 15px;
-    }
-
-    .stat-item { text-align: center; flex: 1; }
-    .stat-item h5 { font-size: 18px; font-weight: 900; color: var(--primary-navy); }
-    .stat-item p { font-size: 9px; font-weight: 800; color: var(--text-muted); text-transform: uppercase; }
-
-    /* Moving Logs (Point 11) */
-    .log-terminal {
-        background: #0f172a;
-        border-radius: 12px;
-        padding: 12px;
-        font-family: 'Courier New', monospace;
-        font-size: 10px;
-        color: #22c55e;
-        height: 60px;
-        overflow: hidden;
-    }
-
-    .log-line {
-        margin-bottom: 4px;
-        display: flex;
-        gap: 8px;
-    }
-
-    .log-line span { color: #64748b; }
-</style>
-
-<section class="command-center reveal">
-    <div class="alert-card tap-effect">
-        <div class="live-ping">LIVE ALERT</div>
-        <div class="alert-icon-box">📢</div>
-        <div class="alert-text">
-            <h4>एग्जाम अलर्ट सेंटर</h4>
-            <p>नई सरकारी भर्ती और एडमिट कार्ड की जानकारी</p>
-        </div>
-    </div>
-
-    <div class="system-dashboard">
-        <div class="stats-row">
-            <div class="stat-item">
-                <h5 id="onlineStudents">1342</h5>
-                <p>लाइव छात्र</p>
-            </div>
-            <div style="width: 1px; background: #e2e8f0;"></div>
-            <div class="stat-item">
-                <h5>Active</h5>
-                <p>चित्तौड़गढ़ नोड</p>
-            </div>
-        </div>
-
-        <div class="log-terminal" id="logTerminal">
-            <div class="log-line"><span>[19:05:31]</span> > सिस्टम सिंक पूर्ण...</div>
-            <div class="log-line"><span>[19:05:32]</span> > डेटा सुरक्षित (SHA-256)</div>
-        </div>
-    </div>
-</section>
-
-<script>
-    // Live Counter Simulation (Point 23)
-    let onlineCount = 1342;
-    setInterval(() => {
-        onlineCount += Math.floor(Math.random() * 5) - 2;
-        document.getElementById('onlineStudents').innerText = onlineCount;
-    }, 4000);
-
-    // Dynamic Logs Simulation
-    const systemLogs = [
-        "> भूगोल नोट्स अपडेट हुए",
-        "> सर्वर स्थिति: स्टेबल",
-        "> राजस्थान GK सिंक पूर्ण",
-        "> VVIP एक्सेस सत्यापित",
-        "> चित्तौड़गढ़ डेटा नोड एक्टिव"
-    ];
-
-    setInterval(() => {
-        const terminal = document.getElementById('logTerminal');
-        const now = new Date();
-        const timeStr = now.getHours().toString().padStart(2, '0') + ":" + 
-                        now.getMinutes().toString().padStart(2, '0') + ":" + 
-                        now.getSeconds().toString().padStart(2, '0');
-        
-        const newLog = document.createElement('div');
-        newLog.className = 'log-line';
-        newLog.innerHTML = `<span>[${timeStr}]</span> ${systemLogs[Math.floor(Math.random() * systemLogs.length)]}`;
-        
-        terminal.prepend(newLog);
-        if (terminal.children.length > 3) terminal.removeChild(terminal.lastChild);
-    }, 5000);
-</script>
-<style>
-    .premium-hub {
-        margin: 25px 18px;
-    }
-
-    /* Professional Gold Card Design (Point 9) */
-    .vvip-card {
-        background: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
-        border-radius: var(--radius-md);
-        padding: 2px; /* For the gold border effect */
-        box-shadow: 0 15px 35px rgba(184, 134, 11, 0.25);
-        margin-bottom: 20px;
-        position: relative;
-    }
-
-    .vvip-inner {
-        background: var(--primary-navy);
-        border-radius: calc(var(--radius-md) - 2px);
-        padding: 22px;
-        color: white;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .vvip-info h3 {
-        font-size: 18px;
-        font-weight: 900;
-        color: #fcf6ba; /* Gold Text */
-        letter-spacing: 1px;
-    }
-
-    .vvip-info p {
-        font-size: 11px;
-        color: rgba(255, 255, 255, 0.7);
-        margin-top: 4px;
-        font-weight: 600;
-    }
-
-    .vvip-badge {
-        background: linear-gradient(to bottom, #fcf6ba, #bf953f);
-        color: #000;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 24px;
-        box-shadow: 0 0 15px rgba(252, 246, 186, 0.4);
-    }
-
-    /* Notes Exchange Grid (Direct To Student) */
-    .exchange-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 15px;
-    }
-
-    .exchange-box {
-        background: var(--surface-white);
-        border: 1px solid #e2e8f0;
-        border-radius: var(--radius-md);
-        padding: 15px;
-        text-align: center;
-        position: relative;
-    }
-
-    .exchange-box .tag {
-        position: absolute;
-        top: 0;
-        right: 0;
-        background: var(--accent-gold);
-        color: black;
-        font-size: 8px;
-        font-weight: 900;
-        padding: 2px 8px;
-        border-radius: 0 var(--radius-md) 0 10px;
-    }
-
-    .exchange-box h5 {
-        font-size: 13px;
-        font-weight: 800;
-        color: var(--primary-navy);
-        margin: 10px 0 5px;
-    }
-
-    .exchange-box p {
-        font-size: 9px;
-        color: var(--text-muted);
-        font-weight: 700;
-    }
-
-    .exchange-btn {
-        margin-top: 10px;
-        width: 100%;
-        background: var(--app-bg);
-        border: none;
-        padding: 8px;
-        border-radius: 10px;
-        font-size: 10px;
-        font-weight: 800;
-        color: var(--primary-navy);
-    }
-
-    .exchange-box:active {
-        background: #fff9db;
-    }
-</style>
-
-<section class="premium-hub reveal">
-    <div style="margin-bottom: 15px;">
-        <h3 style="font-size: 18px; font-weight: 900; color: var(--primary-navy);">मदद का हाथ और साझीदारी</h3>
-    </div>
-
-    <div class="vvip-card tap-effect">
-        <div class="vvip-inner">
-            <div class="vvip-info">
-                <h3>VVIP लाइब्रेरी</h3>
-                <p>पुरानी किताबें, नया भविष्य।<br>आज ही अपना एक्सेस प्राप्त करें।</p>
-            </div>
-            <div class="vvip-badge">💎</div>
-        </div>
-    </div>
-
-    <div class="exchange-grid">
-        <div class="exchange-box tap-effect">
-            <div class="tag">0% MARGIN</div>
-            <div style="font-size: 28px;">🤝</div>
-            <h5>किताबें चाहिए</h5>
-            <p>(जरूरतमंद छात्र)</p>
-            <button class="exchange-btn">रिक्वेस्ट भेजें</button>
-        </div>
-
-        <div class="exchange-box tap-effect" style="border-color: var(--primary-navy);">
-            <div class="tag" style="background: var(--primary-navy); color: white;">HERO</div>
-            <div style="font-size: 28px;">🎁</div>
-            <h5>किताबें दान करें</h5>
-            <p>(दानदाताओं के लिए)</p>
-            <button class="exchange-btn" style="background: var(--primary-navy); color: white;">संपर्क करें</button>
-        </div>
-    </div>
-</section>
-<style>
-    .honor-wall {
-        margin: 20px 0;
-        background: var(--surface-white);
-        padding: 20px 0;
-        border-top: 1px solid #e2e8f0;
-        border-bottom: 1px solid #e2e8f0;
-    }
-
-    .honor-header {
-        padding: 0 18px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 18px;
-    }
-
-    .honor-header h3 {
-        font-size: 16px;
-        font-weight: 900;
-        color: var(--primary-navy);
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-
-    /* Live Indicator for Donors */
-    .live-dot-container {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        background: #ecfdf5;
-        padding: 4px 10px;
-        border-radius: 50px;
-    }
-
-    .live-dot {
-        width: 6px;
-        height: 6px;
-        background: var(--success-green);
-        border-radius: 50%;
-        animation: pulseGreen 1.5s infinite;
-    }
-
-    @keyframes pulseGreen {
-        0% { transform: scale(1); opacity: 1; }
-        50% { transform: scale(1.5); opacity: 0.5; }
-        100% { transform: scale(1); opacity: 1; }
-    }
-
-    /* Donor Scroll Wrapper (Android Style) */
-    .donor-scroll {
-        display: flex;
-        overflow-x: auto;
-        gap: 20px;
-        padding: 5px 18px 15px 18px;
-        scrollbar-width: none;
-    }
-
-    .donor-scroll::-webkit-scrollbar { display: none; }
-
-    .donor-profile {
-        min-width: 85px;
-        text-align: center;
-        position: relative;
-    }
-
-    /* Verified Ring (Point 13) */
-    .avatar-wrapper {
-        width: 65px;
-        height: 65px;
-        margin: 0 auto 8px;
-        position: relative;
-        padding: 3px;
-        background: linear-gradient(45deg, #f39c12, #ffeb3b, #2ecc71);
-        border-radius: 50%;
-    }
-
-    .avatar-wrapper img {
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-        background: #fff;
-        object-fit: cover;
-        border: 2px solid white;
-    }
-
-    .v-badge {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        background: #3b82f6;
-        color: white;
-        font-size: 10px;
-        width: 18px;
-        height: 18px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: 2px solid white;
-    }
-
-    .donor-name {
-        font-size: 11px;
-        font-weight: 800;
-        color: var(--primary-navy);
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .donor-contribution {
-        font-size: 9px;
-        color: var(--accent-gold);
-        font-weight: 900;
-        text-transform: uppercase;
-        margin-top: 2px;
-    }
-
-    /* Join Donor Wall Button */
-    .add-hero {
-        min-width: 85px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .add-circle {
-        width: 65px;
-        height: 65px;
-        border: 2px dashed #cbd5e1;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 24px;
-        color: #94a3b8;
-        margin-bottom: 8px;
-    }
-</style>
-
-<section class="honor-wall reveal">
-    <div class="honor-header">
-        <h3>हमारे गौरव (Verified)</h3>
-        <div class="live-dot-container">
-            <div class="live-dot"></div>
-            <span style="font-size: 9px; font-weight: 900; color: #065f46;">LIVE UPDATE</span>
-        </div>
-    </div>
-
-    <div class="donor-scroll">
-        <div class="donor-profile tap-effect">
-            <div class="avatar-wrapper">
-                <img src="https://ui-avatars.com/api/?name=Aman+Kumar&background=0f172a&color=fff" alt="Donor">
-                <div class="v-badge">✓</div>
-            </div>
-            <div class="donor-name">अमन कुमार</div>
-            <div class="donor-contribution">5 किताबें 🌟</div>
-        </div>
-
-        <div class="donor-profile tap-effect">
-            <div class="avatar-wrapper">
-                <img src="https://ui-avatars.com/api/?name=Priya+Sharma&background=0f172a&color=fff" alt="Donor">
-                <div class="v-badge">✓</div>
-            </div>
-            <div class="donor-name">प्रिया शर्मा</div>
-            <div class="donor-contribution">3 किताबें ⭐</div>
-        </div>
-
-        <div class="donor-profile tap-effect">
-            <div class="avatar-wrapper">
-                <img src="https://ui-avatars.com/api/?name=Suresh+Jat&background=0f172a&color=fff" alt="Donor">
-                <div class="v-badge">✓</div>
-            </div>
-            <div class="donor-name">सुरेश जाट</div>
-            <div class="donor-contribution">VIP डोनर 💎</div>
-        </div>
-
-        <div class="add-hero tap-effect" onclick="showToast()">
-            <div class="add-circle">+</div>
-            <div class="donor-name" style="color: #94a3b8;">आपका नाम?</div>
-            <div class="donor-contribution" style="color: #cbd5e1;">जुड़ें</div>
-        </div>
-    </div>
-</section>
-<style>
-    .resource-hub {
-        margin: 25px 18px;
-    }
-
-    .hub-title {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 20px;
-    }
-
-    .hub-title h3 {
-        font-size: 18px;
-        font-weight: 900;
-        color: var(--primary-navy);
-    }
-
-    /* Success Grid Layout */
-    .resource-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-    }
-
-    .res-card {
-        background: var(--surface-white);
-        padding: 15px;
-        border-radius: var(--radius-md);
-        box-shadow: var(--apk-shadow);
-        border: 1px solid rgba(0,0,0,0.02);
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        position: relative;
-        overflow: hidden;
-    }
-
-    /* Point 17: Category Badges */
-    .res-tag {
-        font-size: 8px;
-        font-weight: 900;
-        padding: 2px 8px;
-        border-radius: 4px;
-        text-transform: uppercase;
-        margin-bottom: 8px;
-    }
-
-    .tag-blue { background: #dbeafe; color: #1e40af; }
-    .tag-purple { background: #f3e8ff; color: #6b21a8; }
-    .tag-red { background: #fee2e2; color: #991b1b; }
-
-    .res-card h4 {
-        font-size: 13px;
-        font-weight: 800;
-        color: var(--primary-navy);
-        margin-bottom: 4px;
-    }
-
-    .res-card p {
-        font-size: 9px;
-        color: var(--text-muted);
-        font-weight: 600;
-    }
-
-    .res-icon-circle {
-        position: absolute;
-        bottom: -10px;
-        right: -10px;
-        font-size: 45px;
-        opacity: 0.08;
-        transform: rotate(-15deg);
-    }
-
-    /* Level Up Button (Point 18) */
-    .quiz-banner {
-        grid-column: span 2;
-        background: linear-gradient(135deg, #059669, #10b981);
-        padding: 15px 20px;
-        border-radius: var(--radius-md);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        color: white;
-        margin-bottom: 5px;
-    }
-
-    .quiz-info h4 { font-size: 16px; font-weight: 900; }
-    .quiz-info p { font-size: 10px; opacity: 0.9; font-weight: 600; }
-    .quiz-btn {
-        background: white;
-        color: #059669;
-        padding: 8px 15px;
-        border-radius: 10px;
-        font-size: 11px;
-        font-weight: 900;
-    }
-</style>
-
-<section class="resource-hub reveal">
-    <div class="hub-title">
-        <h3>तैयारी को परखें (Level Up)</h3>
-    </div>
-
-    <div class="resource-grid">
-        <div class="quiz-banner tap-effect">
-            <div class="quiz-info">
-                <h4>डेली लाइव क्विज़</h4>
-                <p>आज के विजेता बनें और रैंक पाएं</p>
-            </div>
-            <div class="quiz-btn">अभी शुरू करें</div>
-        </div>
-
-        <div class="res-card tap-effect">
-            <div class="res-tag tag-blue">MOST IMP</div>
-            <h4>शिक्षा मनोविज्ञान</h4>
-            <p>150+ सॉर्ट नोट्स</p>
-            <div class="res-icon-circle">🧠</div>
-        </div>
-
-        <div class="res-card tap-effect">
-            <div class="res-tag tag-purple">UPDATED</div>
-            <h4>समाजशास्त्र</h4>
-            <p>NCRT आधारित सार</p>
-            <div class="res-icon-circle">👥</div>
-        </div>
-
-        <div class="res-card tap-effect">
-            <div class="res-tag tag-red">LIVE</div>
-            <h4>Old Papers</h4>
-            <p>2010-2025 हल सहित</p>
-            <div class="res-icon-circle">📚</div>
-        </div>
-
-        <div class="res-card tap-effect">
-            <div class="res-tag tag-blue">DAILY</div>
-            <h4>करंट अफेयर्स</h4>
-            <p>रोजाना सुबह 8 बजे</p>
-            <div class="res-icon-circle">🗞️</div>
-        </div>
-    </div>
-</section>
-<style>
-    /* Premium Bottom Bar (Point 15) */
-    .bottom-nav {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 70px;
-        background: var(--surface-white);
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        box-shadow: 0 -5px 25px rgba(0,0,0,0.08);
-        z-index: 9999;
-        border-top: 1px solid #e2e8f0;
-        max-width: 500px; /* Fixed for Mobile View */
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    .nav-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        color: var(--text-muted);
-        text-decoration: none;
-        transition: 0.3s;
-        position: relative;
-        flex: 1;
-    }
-
-    .nav-item.active {
-        color: var(--primary-navy);
-    }
-
-    .nav-icon {
-        font-size: 22px;
-        margin-bottom: 4px;
-        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    .nav-item.active .nav-icon {
-        transform: translateY(-5px);
-        color: var(--accent-gold);
-    }
-
-    .nav-label {
-        font-size: 10px;
-        font-weight: 800;
-        letter-spacing: 0.3px;
-    }
-
-    /* Active Indicator Dot */
-    .nav-item.active::after {
-        content: "";
-        position: absolute;
-        bottom: -8px;
-        width: 5px;
-        height: 5px;
-        background: var(--accent-gold);
-        border-radius: 50%;
-    }
-
-    /* Floating Center Button (Optional APK Style) */
-    .nav-center {
-        width: 55px;
-        height: 55px;
-        background: var(--primary-navy);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-top: -35px;
-        border: 5px solid var(--app-bg);
-        box-shadow: 0 8px 15px rgba(15, 23, 42, 0.3);
-        color: var(--accent-gold);
-        font-size: 24px;
-    }
-
-    /* Side Menu Trigger (Point 11) */
-    .menu-trigger {
-        position: fixed;
-        bottom: 90px;
-        right: 18px;
-        width: 45px;
-        height: 45px;
-        background: var(--surface-white);
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: var(--apk-shadow);
-        z-index: 9998;
-        border: 1px solid #e2e8f0;
-        font-size: 20px;
-    }
-</style>
-
-<div class="menu-trigger tap-effect" onclick="showToast()">
-    ☰
-</div>
-
-<nav class="bottom-nav">
-    <a href="#" class="nav-item active tap-effect">
-        <span class="nav-icon">🏠</span>
-        <span class="nav-label">Home</span>
-    </a>
-    
-    <a href="#" class="nav-item tap-effect">
-        <span class="nav-icon">📖</span>
-        <span class="nav-label">Courses</span>
-    </a>
-
-    <div class="nav-center tap-effect" onclick="showToast()">
-        💎
-    </div>
-
-    <a href="#" class="nav-item tap-effect">
-        <span class="nav-icon">✍️</span>
-        <span class="nav-label">Test</span>
-    </a>
-
-    <a href="#" class="nav-item tap-effect">
-        <span class="nav-icon">👤</span>
-        <span class="nav-label">Profile</span>
-    </a>
-</nav>
-
-<script>
-    // Navigation Toggle Logic
-    const navItems = document.querySelectorAll('.nav-item');
-    navItems.forEach(item => {
-        item.addEventListener('click', function(e) {
-            e.preventDefault();
-            navItems.forEach(i => i.classList.remove('active'));
-            this.classList.add('active');
-        });
-    });
-</script>
-<style>
-    .search-container {
-        margin: 20px 18px;
-        position: relative;
-    }
-
-    /* Professional Search Bar (Point 11) */
-    .search-wrapper {
-        display: flex;
-        align-items: center;
-        background: var(--surface-white);
-        border-radius: 16px;
-        padding: 12px 18px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-        border: 1px solid #e2e8f0;
-        transition: 0.3s;
-    }
-
-    .search-wrapper:focus-within {
-        border-color: var(--accent-gold);
-        box-shadow: 0 4px 20px rgba(243, 156, 18, 0.1);
-    }
-
-    .search-wrapper input {
-        border: none;
-        outline: none;
-        width: 100%;
-        margin-left: 12px;
-        font-size: 14px;
-        font-weight: 600;
-        color: var(--primary-navy);
-        background: transparent;
-    }
-
-    .search-wrapper input::placeholder {
-        color: var(--text-muted);
-        font-weight: 500;
-    }
-
-    /* Filter Chips (Android Material Design) */
-    .filter-scroll {
-        display: flex;
-        overflow-x: auto;
-        gap: 10px;
-        margin-top: 15px;
-        padding-bottom: 5px;
-        scrollbar-width: none;
-    }
-
-    .filter-scroll::-webkit-scrollbar { display: none; }
-
-    .chip {
-        white-space: nowrap;
-        background: #f1f5f9;
-        color: var(--text-muted);
-        padding: 8px 16px;
-        border-radius: 50px;
-        font-size: 11px;
-        font-weight: 800;
-        border: 1px solid transparent;
-        transition: 0.3s;
-    }
-
-    .chip.active {
-        background: #eff6ff;
-        color: #3b82f6;
-        border-color: #3b82f6;
-    }
-
-    /* Trending Section */
-    .trending-box {
-        margin-top: 20px;
-        background: rgba(255, 255, 255, 0.5);
-        border-radius: 20px;
-        padding: 5px;
-    }
-
-    .trending-header {
-        font-size: 11px;
-        font-weight: 900;
-        color: var(--text-muted);
-        text-transform: uppercase;
-        margin-bottom: 12px;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-    }
-
-    .trending-item {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 10px 0;
-        border-bottom: 1px solid #f1f5f9;
-    }
-
-    .trending-item:last-child { border: none; }
-
-    .t-info { display: flex; align-items: center; gap: 12px; }
-    .t-rank { font-size: 12px; font-weight: 900; color: #cbd5e1; }
-    .t-name { font-size: 13px; font-weight: 700; color: var(--primary-navy); }
-</style>
-
-<section class="search-container reveal">
-    <div class="search-wrapper">
-        <span style="font-size: 18px;">🔍</span>
-        <input type="text" placeholder="विषय या टॉपिक खोजें (उदा: मेवाड़ का इतिहास)">
-        <span class="tap-effect" style="font-size: 18px; color: var(--text-muted);">🎙️</span>
-    </div>
-
-    <div class="filter-scroll">
-        <div class="chip active tap-effect">सभी (All)</div>
-        <div class="chip tap-effect">PDF नोट्स</div>
-        <div class="chip tap-effect">वीडियो लेक्चर</div>
-        <div class="chip tap-effect">क्विज़</div>
-        <div class="chip tap-effect">पुराने पेपर</div>
-    </div>
-
-    <div class="trending-box">
-        <div class="trending-header">
-            <span>🔥</span> ट्रेंडिंग सर्च
-        </div>
-        
-        <div class="trending-item tap-effect">
-            <div class="t-info">
-                <span class="t-rank">01</span>
-                <span class="t-name">राजस्थान का नया भूगोल (2026)</span>
-            </div>
-            <span style="font-size: 12px; color: #2ecc71;">↗</span>
-        </div>
-
-        <div class="trending-item tap-effect">
-            <div class="t-info">
-                <span class="t-rank">02</span>
-                <span class="t-name">REET मुख्य परीक्षा मॉडल पेपर</span>
-            </div>
-            <span style="font-size: 12px; color: #2ecc71;">↗</span>
-        </div>
-    </div>
-</section>
-<style>
-    .video-hub {
-        margin: 25px 0;
-    }
-
-    .video-header {
-        padding: 0 18px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 15px;
-    }
-
-    .video-header h3 {
-        font-size: 18px;
-        font-weight: 900;
-        color: var(--primary-navy);
-    }
-
-    /* Video Horizontal Scroll */
-    .video-scroll {
-        display: flex;
-        overflow-x: auto;
-        gap: 15px;
-        padding: 5px 18px 15px;
-        scrollbar-width: none;
-    }
-
-    .video-scroll::-webkit-scrollbar { display: none; }
-
-    /* Video Card Design (Point 21) */
-    .v-card {
-        min-width: 260px;
-        background: var(--surface-white);
-        border-radius: var(--radius-md);
-        overflow: hidden;
-        box-shadow: var(--apk-shadow);
-        border: 1px solid rgba(0,0,0,0.03);
-    }
-
-    .v-thumbnail {
-        width: 100%;
-        height: 145px;
-        background-size: cover;
-        background-position: center;
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    /* Play Button Overlay */
-    .play-btn {
-        width: 45px;
-        height: 45px;
-        background: rgba(255, 255, 255, 0.9);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        color: #ef4444;
-        font-size: 20px;
-        transition: 0.3s;
-    }
-
-    .v-card:active .play-btn {
-        transform: scale(1.2);
-        background: #ef4444;
-        color: white;
-    }
-
-    /* Duration & Live Badge */
-    .v-badge-time {
-        position: absolute;
-        bottom: 8px;
-        right: 8px;
-        background: rgba(0,0,0,0.8);
-        color: white;
-        font-size: 9px;
-        font-weight: 800;
-        padding: 2px 6px;
-        border-radius: 4px;
-    }
-
-    .v-badge-live {
-        position: absolute;
-        top: 8px;
-        left: 8px;
-        background: #ef4444;
-        color: white;
-        font-size: 9px;
-        font-weight: 900;
-        padding: 2px 8px;
-        border-radius: 4px;
-        letter-spacing: 0.5px;
-    }
-
-    .v-content {
-        padding: 12px;
-    }
-
-    .v-content h4 {
-        font-size: 14px;
-        font-weight: 800;
-        color: var(--primary-navy);
-        line-height: 1.3;
-        margin-bottom: 6px;
-    }
-
-    .v-stats {
-        display: flex;
-        gap: 12px;
-        font-size: 10px;
-        font-weight: 700;
-        color: var(--text-muted);
-    }
-
-    .v-stats span {
-        display: flex;
-        align-items: center;
-        gap: 4px;
-    }
-</style>
-
-<section class="video-hub reveal">
-    <div class="video-header">
-        <h3>वीडियो लेक्चर्स (Demo)</h3>
-        <span class="tap-effect" style="font-size: 11px; font-weight: 800; color: #ef4444;">Live Now 🔴</span>
-    </div>
-
-    <div class="video-scroll">
-        <div class="v-card tap-effect">
-            <div class="v-thumbnail" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1599591037488-8ec667828067?q=80&w=400');">
-                <div class="v-badge-live">RECORDED</div>
-                <div class="play-btn">▶</div>
-                <div class="v-badge-time">45:20</div>
-            </div>
-            <div class="v-content">
-                <h4>मेवाड़ का गौरवशाली इतिहास - भाग 1</h4>
-                <div class="v-stats">
-                    <span>👁️ 12.5k</span>
-                    <span>👍 2.1k</span>
-                    <span>📅 2 Days ago</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="v-card tap-effect">
-            <div class="v-thumbnail" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=400');">
-                <div class="v-badge-live" style="background: #3b82f6;">NEW</div>
-                <div class="play-btn">▶</div>
-                <div class="v-badge-time">32:15</div>
-            </div>
-            <div class="v-content">
-                <h4>राजस्थान के भौतिक प्रदेश (New Map)</h4>
-                <div class="v-stats">
-                    <span>👁️ 8.9k</span>
-                    <span>👍 1.5k</span>
-                    <span>📅 Today</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<style>
-    .test-leaderboard {
-        margin: 25px 18px;
-    }
-
-    .section-flex {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 15px;
-    }
-
-    .section-flex h3 {
-        font-size: 18px;
-        font-weight: 900;
-        color: var(--primary-navy);
-    }
-
-    /* Leaderboard Container (Point 23) */
-    .leaderboard-card {
-        background: var(--surface-white);
-        border-radius: var(--radius-md);
-        padding: 20px;
-        box-shadow: var(--apk-shadow);
-        border: 1px solid #e2e8f0;
-        margin-bottom: 20px;
-    }
-
-    .rank-row {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 12px 0;
-        border-bottom: 1px solid #f1f5f9;
-    }
-
-    .rank-row:last-child { border: none; }
-
-    .rank-num {
-        width: 24px;
-        font-size: 14px;
-        font-weight: 900;
-        color: var(--text-muted);
-    }
-
-    .rank-1 { color: #f39c12; } /* Gold */
-    .rank-2 { color: #94a3b8; } /* Silver */
-    .rank-3 { color: #cd7f32; } /* Bronze */
-
-    .user-img {
-        width: 35px;
-        height: 35px;
-        border-radius: 50%;
-        background: #f1f5f9;
-    }
-
-    .user-info { flex: 1; }
-    .user-info h5 { font-size: 13px; font-weight: 800; color: var(--primary-navy); }
-    .user-info p { font-size: 10px; color: var(--text-muted); font-weight: 600; }
-
-    .user-score {
-        text-align: right;
-    }
-
-    .score-val {
-        display: block;
-        font-size: 14px;
-        font-weight: 900;
-        color: var(--primary-navy);
-    }
-
-    .score-label { font-size: 8px; color: var(--success-green); font-weight: 800; }
-
-    /* Test Series Action (Point 18) */
-    .test-action-box {
-        background: #f8fafc;
-        border: 2px dashed #cbd5e1;
-        border-radius: 15px;
-        padding: 15px;
-        display: flex;
-        align-items: center;
-        gap: 15px;
-    }
-
-    .test-icon { font-size: 28px; }
-
-    .test-meta h4 { font-size: 14px; font-weight: 800; color: var(--primary-navy); }
-    .test-meta p { font-size: 10px; color: var(--text-muted); font-weight: 600; }
-</style>
-
-<section class="test-leaderboard reveal">
-    <div class="section-flex">
-        <h3>टॉपर बोर्ड (Leaderboard)</h3>
-        <span style="font-size: 10px; font-weight: 800; color: var(--accent-gold);">View Full Rank ➔</span>
-    </div>
-
-    <div class="leaderboard-card">
-        <div class="rank-row">
-            <span class="rank-num rank-1">01</span>
-            <img class="user-img" src="https://ui-avatars.com/api/?name=Rajesh+G&background=f39c12&color=fff" alt="User">
-            <div class="user-info">
-                <h5>राजेश गुर्जर</h5>
-                <p>चित्तौड़गढ़ • REET Level 2</p>
-            </div>
-            <div class="user-score">
-                <span class="score-val">148/150</span>
-                <span class="score-label">TOPPER</span>
-            </div>
-        </div>
-
-        <div class="rank-row">
-            <span class="rank-num rank-2">02</span>
-            <img class="user-img" src="https://ui-avatars.com/api/?name=Anita+M&background=94a3b8&color=fff" alt="User">
-            <div class="user-info">
-                <h5>अनीता मीणा</h5>
-                <p>जयपुर • RAS Pre</p>
-            </div>
-            <div class="user-score">
-                <span class="score-val">142/150</span>
-                <span class="score-label">+2.5 Rank</span>
-            </div>
-        </div>
-
-        <div class="rank-row">
-            <span class="rank-num rank-3">03</span>
-            <img class="user-img" src="https://ui-avatars.com/api/?name=Sunil+V&background=cd7f32&color=fff" alt="User">
-            <div class="user-info">
-                <h5>सुनिल विश्नोई</h5>
-                <p>जोधपुर • Constable</p>
-            </div>
-            <div class="user-score">
-                <span class="score-val">139/150</span>
-                <span class="score-label">Steady</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="test-action-box tap-effect">
-        <div class="test-icon">📝</div>
-        <div class="test-meta">
-            <h4>मेगा स्कॉलरशिप टेस्ट</h4>
-            <p>अगला टेस्ट: कल सुबह 10 बजे (Live)</p>
-        </div>
-    </div>
-</section>
-<style>
-    .bookshelf-section {
-        margin: 25px 0;
-        background: #f8fafc; /* Light distinct background */
-        padding: 25px 18px;
-    }
-
-    .shelf-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 20px;
-    }
-
-    .shelf-header h3 {
-        font-size: 18px;
-        font-weight: 900;
-        color: var(--primary-navy);
-    }
-
-    /* Bookshelf Grid (Point 10) */
-    .shelf-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 15px;
-    }
-
-    .book-item {
-        perspective: 1000px;
-        text-align: center;
-    }
-
-    .book-cover {
-        width: 100%;
-        aspect-ratio: 2/3;
-        background: var(--surface-white);
-        border-radius: 4px 12px 12px 4px; /* Book spine look */
-        box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
-        position: relative;
-        overflow: hidden;
-        margin-bottom: 8px;
-        transition: transform 0.4s ease;
-        border-left: 5px solid rgba(0,0,0,0.1); /* Spine shadow */
-    }
-
-    /* Book Themes */
-    .book-history { background: linear-gradient(135deg, #7c2d12, #b91c1c); }
-    .book-geo { background: linear-gradient(135deg, #1e3a8a, #3b82f6); }
-    .book-culture { background: linear-gradient(135deg, #78350f, #d97706); }
-
-    .book-item:active .book-cover {
-        transform: rotateY(-20deg) scale(1.05);
-    }
-
-    .book-title-overlay {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        padding: 8px;
-        background: rgba(0,0,0,0.4);
-        backdrop-filter: blur(4px);
-        color: white;
-        font-size: 9px;
-        font-weight: 800;
-        text-transform: uppercase;
-    }
-
-    .book-name {
-        font-size: 11px;
-        font-weight: 800;
-        color: var(--primary-navy);
-        display: block;
-        line-height: 1.2;
-    }
-
-    /* Download Progress (Point 6) */
-    .download-status {
-        font-size: 8px;
-        font-weight: 900;
-        color: var(--success-green);
-        margin-top: 4px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 3px;
-    }
-
-    /* VIP Lock Badge */
-    .vip-lock {
-        position: absolute;
-        top: 5px;
-        right: 5px;
-        background: var(--accent-gold);
-        color: black;
-        font-size: 10px;
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
-</style>
-
-<section class="bookshelf-section reveal">
-    <div class="shelf-header">
-        <h3>ई-पुस्तकालय (E-Books)</h3>
-        <span class="tap-effect" style="font-size: 11px; font-weight: 800; color: var(--primary-navy);">Filters 🔍</span>
-    </div>
-
-    <div class="shelf-grid">
-        <div class="book-item tap-effect">
-            <div class="book-cover book-history">
-                <div class="vip-lock">💎</div>
-                <div style="font-size: 30px; margin-top: 25px;">🏰</div>
-                <div class="book-title-overlay">History</div>
-            </div>
-            <span class="book-name">मेवाड़ का सार</span>
-            <div class="download-status">✓ Offline</div>
-        </div>
-
-        <div class="book-item tap-effect">
-            <div class="book-cover book-geo">
-                <div style="font-size: 30px; margin-top: 25px;">🗺️</div>
-                <div class="book-title-overlay">Geography</div>
-            </div>
-            <span class="book-name">नया राजस्थान</span>
-            <div class="download-status" style="color: #64748b;">9.2 MB</div>
-        </div>
-
-        <div class="book-item tap-effect">
-            <div class="book-cover book-culture">
-                <div class="vip-lock">💎</div>
-                <div style="font-size: 30px; margin-top: 25px;">🎨</div>
-                <div class="book-title-overlay">Culture</div>
-            </div>
-            <span class="book-name">हस्तशिल्प</span>
-            <div class="download-status" style="color: #64748b;">5.4 MB</div>
-        </div>
-    </div>
-</section>
-<style>
-    .support-section {
-        margin: 25px 18px;
-        padding-bottom: 100px; /* Space for bottom nav */
-    }
-
-    .support-card {
-        background: var(--surface-white);
-        border-radius: var(--radius-md);
-        padding: 20px;
-        box-shadow: var(--apk-shadow);
-        border: 1px solid #e2e8f0;
-    }
-
-    .support-header {
-        margin-bottom: 18px;
-    }
-
-    .support-header h3 {
-        font-size: 18px;
-        font-weight: 900;
-        color: var(--primary-navy);
-    }
-
-    .support-header p {
-        font-size: 11px;
-        color: var(--text-muted);
-        font-weight: 600;
-    }
-
-    /* Support Options Grid */
-    .support-options {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-    }
-
-    .opt-box {
-        padding: 15px;
-        border-radius: 12px;
-        text-align: center;
-        border: 1px solid #f1f5f9;
-        transition: 0.3s;
-    }
-
-    .opt-box:active {
-        transform: scale(0.95);
-        background: #f8fafc;
-    }
-
-    .opt-icon {
-        font-size: 24px;
-        margin-bottom: 8px;
-        display: block;
-    }
-
-    .opt-title {
-        font-size: 12px;
-        font-weight: 800;
-        color: var(--primary-navy);
-    }
-
-    /* WhatsApp Special Button (Point 18) */
-    .whatsapp-btn {
-        margin-top: 15px;
-        background: #25D366;
-        color: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        padding: 14px;
-        border-radius: 12px;
-        font-weight: 900;
-        font-size: 14px;
-        box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-    }
-
-    /* Feedback Form Preview */
-    .feedback-mini {
-        margin-top: 20px;
-        background: #fdfcf0; /* Creamy yellow for feedback */
-        padding: 15px;
-        border-radius: 12px;
-        border: 1px dashed var(--accent-gold);
-    }
-
-    .feedback-mini h4 {
-        font-size: 13px;
-        font-weight: 800;
-        color: #854d0e;
-        margin-bottom: 10px;
-    }
-
-    .star-rating {
-        display: flex;
-        gap: 8px;
-        color: var(--accent-gold);
-        font-size: 18px;
-    }
-</style>
-
-<section class="support-section reveal">
-    <div class="support-card">
-        <div class="support-header">
-            <h3>सहायता केंद्र (Support)</h3>
-            <p>हम आपकी सफलता के लिए 24/7 तैयार हैं।</p>
-        </div>
-
-        <div class="support-options">
-            <div class="opt-box tap-effect">
-                <span class="opt-icon">❓</span>
-                <span class="opt-title">FAQs</span>
-            </div>
-            <div class="opt-box tap-effect">
-                <span class="opt-icon">📑</span>
-                <span class="opt-title">My Tickets</span>
-            </div>
-        </div>
-
-        <div class="whatsapp-btn tap-effect" onclick="window.location.href='https://wa.me/your-number'">
-            <span>💬</span> सीधे व्हाट्सएप पर बात करें
-        </div>
-
-        <div class="feedback-mini">
-            <h4>कैसा रहा आपका अनुभव?</h4>
-            <div class="star-rating">
-                <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
-            </div>
-            <p style="font-size: 9px; margin-top: 8px; color: #a16207; font-weight: 700;">
-                आपकी सलाह हमें और बेहतर बनाएगी।
-            </p>
-        </div>
-    </div>
-</section>
-<style>
-    .settings-section {
-        margin: 25px 18px;
-        padding-bottom: 50px;
-    }
-
-    .settings-card {
-        background: var(--surface-white);
-        border-radius: var(--radius-md);
-        overflow: hidden;
-        box-shadow: var(--apk-shadow);
-        border: 1px solid #e2e8f0;
-    }
-
-    /* Settings Group Header */
-    .set-group-title {
-        background: #f8fafc;
-        padding: 12px 18px;
-        font-size: 10px;
-        font-weight: 900;
-        color: var(--text-muted);
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        border-bottom: 1px solid #e2e8f0;
-    }
-
-    /* Settings Row Item */
-    .set-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 16px 18px;
-        border-bottom: 1px solid #f1f5f9;
-        transition: 0.2s;
-    }
-
-    .set-row:active { background: #f8fafc; }
-
-    .set-left {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-    }
-
-    .set-icon-bg {
-        width: 36px;
-        height: 36px;
-        background: var(--app-bg);
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 18px;
-    }
-
-    .set-text h4 {
-        font-size: 14px;
-        font-weight: 800;
-        color: var(--primary-navy);
-    }
-
-    .set-text p {
-        font-size: 10px;
-        color: var(--text-muted);
-        font-weight: 600;
-    }
-
-    /* Custom Toggle Switch (Android Style) */
-    .toggle-switch {
-        position: relative;
-        width: 42px;
-        height: 22px;
-        background: #cbd5e1;
-        border-radius: 50px;
-        transition: 0.3s;
-    }
-
-    .toggle-knob {
-        position: absolute;
-        top: 2px;
-        left: 2px;
-        width: 18px;
-        height: 18px;
-        background: white;
-        border-radius: 50%;
-        transition: 0.3s;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-
-    /* Active State for Toggle */
-    .toggle-switch.active { background: var(--success-green); }
-    .toggle-switch.active .toggle-knob { left: 22px; }
-
-    /* Performance Badge */
-    .p-badge {
-        font-size: 9px;
-        background: #eff6ff;
-        color: #3b82f6;
-        padding: 4px 10px;
-        border-radius: 50px;
-        font-weight: 900;
-    }
-</style>
-
-<section class="settings-section reveal">
-    <div class="settings-card">
-        <div class="set-group-title">ऐप सेटिंग्स</div>
-        
-        <div class="set-row tap-effect" onclick="toggleSwitch(this)">
-            <div class="set-left">
-                <div class="set-icon-bg">📶</div>
-                <div class="set-text">
-                    <h4>डेटा सेवर मोड</h4>
-                    <p>कम इंटरनेट में बेहतर लोडिंग</p>
-                </div>
-            </div>
-            <div class="toggle-switch active"><div class="toggle-knob"></div></div>
-        </div>
-
-        <div class="set-row tap-effect" onclick="toggleSwitch(this)">
-            <div class="set-left">
-                <div class="set-icon-bg">🔔</div>
-                <div class="set-text">
-                    <h4>पुश नोटिफिकेशन</h4>
-                    <p>क्लास और टेस्ट अलर्ट</p>
-                </div>
-            </div>
-            <div class="toggle-switch active"><div class="toggle-knob"></div></div>
-        </div>
-
-        <div class="set-group-title">स्टोरेज और डेटा</div>
-
-        <div class="set-row tap-effect">
-            <div class="set-left">
-                <div class="set-icon-bg">💾</div>
-                <div class="set-text">
-                    <h4>डाउनलोड फोल्डर</h4>
-                    <p>सभी PDF नोट्स यहाँ हैं</p>
-                </div>
-            </div>
-            <span class="p-badge">124 MB Used</span>
-        </div>
-
-        <div class="set-row tap-effect">
-            <div class="set-left">
-                <div class="set-icon-bg">🧹</div>
-                <div class="set-text">
-                    <h4>कैश साफ़ करें</h4>
-                    <p>ऐप को फ़ास्ट बनाएं</p>
-                </div>
-            </div>
-            <span style="font-size: 18px; color: #cbd5e1;">➔</span>
-        </div>
-    </div>
-</section>
-
-<script>
-    // Simple toggle logic for demo
-    function toggleSwitch(element) {
-        const toggle = element.querySelector('.toggle-switch');
-        toggle.classList.toggle('active');
-        
-        // Haptic feedback simulation
-        if(window.navigator.vibrate) window.navigator.vibrate(10);
-    }
-</script>
-<style>
-    /* Final Branding Footer */
-    .app-final-footer {
-        text-align: center;
-        padding: 40px 18px;
-        background: var(--surface-white);
-        border-top: 1px solid #e2e8f0;
-        margin-top: 20px;
-    }
-
-    .footer-logo {
-        font-size: 24px;
-        margin-bottom: 10px;
-    }
-
-    .footer-credits {
-        font-size: 11px;
-        font-weight: 800;
-        color: var(--text-muted);
-        letter-spacing: 0.5px;
-    }
-
-    .chittorgarh-tag {
-        display: inline-block;
-        margin-top: 15px;
-        background: #fff7ed;
-        color: #c2410c;
-        padding: 6px 15px;
-        border-radius: 50px;
-        font-size: 10px;
-        font-weight: 900;
-        border: 1px solid #ffedd5;
-    }
-
-    /* Version Info */
-    .version-pill {
-        font-size: 9px;
-        color: #cbd5e1;
-        margin-top: 20px;
-        font-weight: 700;
-    }
-</style>
-
-<footer class="app-final-footer reveal">
-    <div class="footer-logo">🚩</div>
-    <div class="footer-credits">
-        © 2026 संजय सर विजन<br>
-        शिक्षित राजस्थान, सशक्त राजस्थान
-    </div>
-    <div class="chittorgarh-tag">MADE WITH ❤️ IN CHITTORGARH</div>
-    <div class="version-pill">App Version 2.0.4 (Stable Node)</div>
-</footer>
-
-</div> <script>
-    /* GLOBAL APP LOGIC 
-       यह हिस्सा आपके पूरे ऐप (Phase 1-15) को कंट्रोल करेगा 
-    */
-
-    // 1. Splash Screen Control (अगर आपने Phase 15 का पिछला Splash इस्तेमाल किया है)
-    window.addEventListener('load', () => {
-        const splash = document.getElementById('splash-screen');
-        if(splash) {
-            setTimeout(() => {
-                splash.style.opacity = '0';
-                setTimeout(() => splash.style.display = 'none', 800);
-            }, 1500);
-        }
-    });
-
-    // 2. Scroll Reveal Animation (सभी Phases के लिए)
-    function revealOnScroll() {
-        var reveals = document.querySelectorAll(".reveal");
-        for (var i = 0; i < reveals.length; i++) {
-            var windowHeight = window.innerHeight;
-            var elementTop = reveals[i].getBoundingClientRect().top;
-            var elementVisible = 100;
-            if (elementTop < windowHeight - elementVisible) {
-                reveals[i].classList.add("active");
-            }
-        }
-    }
-    window.addEventListener("scroll", revealOnScroll);
-    revealOnScroll(); // Initial check
-
-    // 3. Android Back Button Logic (Simulation)
-    document.addEventListener("backbutton", function(e) {
-       // बैक बटन दबाने पर क्या हो
-       console.log("Back Pressed");
-    }, false);
-
-    // 4. Global Toast System
-    function showToast(msg = "यह फीचर अगले अपडेट में आएगा! 🚀") {
-        alert(msg);
-    }
-</script>
 
 </body>
 </html>
+<div id="brand-splash">
+    <div class="splash-wrapper">
+        <div class="splash-tree">🌳</div>
+        
+        <div class="brand-titles">
+            <h1 class="main-title">SOCIAL STUDIES</h1>
+            <h2 class="sub-title">CLASSES</h2>
+        </div>
+
+        <div class="splash-quote">
+            "शिक्षा से परिवर्तन 🚩"
+            <span>By Sanjay Dhakar</span>
+        </div>
+    </div>
+
+    <div class="progress-container">
+        <div class="progress-fill"></div>
+    </div>
+</div>
+
+<style>
+    /* SPLASH STYLES */
+    #brand-splash {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background: var(--primary); /* Phase 1 वाला डार्क नेवी */
+        z-index: 99999;
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        overflow: hidden;
+    }
+
+    .splash-wrapper { text-align: center; }
+
+    .splash-tree {
+        font-size: 80px;
+        filter: drop-shadow(0 0 20px rgba(243, 156, 18, 0.3));
+        animation: treePop 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+
+    .main-title {
+        color: var(--accent);
+        font-family: 'Poppins', sans-serif;
+        font-weight: 900;
+        letter-spacing: 4px;
+        font-size: 26px;
+        margin-top: 15px;
+        opacity: 0;
+        animation: fadeInDown 0.8s ease 0.8s forwards;
+    }
+
+    .sub-title {
+        color: #ffffff;
+        font-size: 14px;
+        letter-spacing: 8px;
+        opacity: 0;
+        animation: fadeInDown 0.8s ease 1s forwards;
+    }
+
+    .splash-quote {
+        margin-top: 40px;
+        color: rgba(255,255,255,0.7);
+        font-style: italic;
+        font-size: 13px;
+        opacity: 0;
+        animation: fadeInUp 1s ease 1.5s forwards;
+    }
+
+    .splash-quote span {
+        display: block;
+        font-style: normal;
+        font-weight: 800;
+        color: #ffffff;
+        margin-top: 8px;
+        letter-spacing: 1px;
+    }
+
+    /* प्रोग्रेस बार */
+    .progress-container {
+        position: absolute; bottom: 0; left: 0; width: 100%; height: 4px;
+        background: rgba(255,255,255,0.05);
+    }
+    .progress-fill {
+        height: 100%; width: 0;
+        background: linear-gradient(to right, var(--accent), #2ecc71);
+        animation: loadProgress 3.5s linear forwards;
+    }
+
+    /* KEYFRAMES */
+    @keyframes treePop { 0% { transform: scale(0) rotate(-15deg); } 100% { transform: scale(1) rotate(0); } }
+    @keyframes fadeInDown { 0% { opacity: 0; transform: translateY(-20px); } 100% { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInUp { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
+    @keyframes loadProgress { 0% { width: 0%; } 100% { width: 100%; } }
+
+    /* एग्जिट एनीमेशन */
+    .splash-fade-out {
+        opacity: 0 !important;
+        transform: scale(1.1);
+        transition: all 0.8s ease;
+        pointer-events: none;
+    }
+</style>
+
+<script>
+    // SPLASH LOGIC
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+            const splash = document.getElementById('brand-splash');
+            splash.classList.add('splash-fade-out');
+            setTimeout(() => { splash.style.display = 'none'; }, 800);
+        }, 3500); // 3.5 सेकंड का इंतज़ार
+    });
+</script>
+<div id="main-app">
+    
+    <header class="top-bar">
+        <div class="brand-info">
+            <h1 class="nav-title">SOCIAL STUDIES CLASSES</h1>
+            <p class="nav-subtitle">EDUCATION WITH VISION • BY SANJAY DHAKAR</p>
+        </div>
+        <div class="notif-icon btn-active">🔔</div>
+    </header>
+
+    <main class="content-scroll">
+        </main>
+
+    <nav class="bottom-nav">
+        <a href="#" class="nav-item active btn-active">
+            <span class="nav-icon">🏠</span>
+            <span class="nav-label">Home</span>
+        </a>
+        <a href="#" class="nav-item btn-active">
+            <span class="nav-icon">📚</span>
+            <span class="nav-label">Courses</span>
+        </a>
+        
+        <div class="nav-center">
+            <div class="diamond-btn btn-active">
+                <span class="diamond-icon">💎</span>
+            </div>
+        </div>
+
+        <a href="#" class="nav-item btn-active">
+            <span class="nav-icon">📝</span>
+            <span class="nav-label">Test</span>
+        </a>
+        <a href="#" class="nav-item btn-active">
+            <span class="nav-icon">👤</span>
+            <span class="nav-label">Profile</span>
+        </a>
+    </nav>
+</div>
+
+<style>
+    /* TOP BAR STYLES */
+    .top-bar {
+        position: sticky; top: 0; left: 0; width: 100%;
+        background: var(--surface); padding: 15px 20px;
+        display: flex; justify-content: space-between; align-items: center;
+        z-index: 1000; box-shadow: 0 2px 15px rgba(0,0,0,0.03);
+    }
+    .nav-title { font-size: 16px; font-weight: 900; color: var(--primary); letter-spacing: 0.5px; }
+    .nav-subtitle { font-size: 9px; font-weight: 700; color: var(--accent); opacity: 0.8; }
+    .notif-icon { font-size: 22px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.1)); }
+
+    /* BOTTOM NAV STYLES */
+    .bottom-nav {
+        position: fixed; bottom: 0; left: 0; width: 100%;
+        background: var(--surface); height: 75px;
+        display: flex; justify-content: space-around; align-items: center;
+        padding: 0 10px; border-top: 1px solid #edf2f7;
+        z-index: 10000;
+    }
+    .nav-item { 
+        display: flex; flex-direction: column; align-items: center; 
+        text-align: center; flex: 1; 
+    }
+    .nav-icon { font-size: 20px; margin-bottom: 4px; opacity: 0.5; transition: 0.3s; }
+    .nav-label { font-size: 10px; font-weight: 800; color: #94a3b8; }
+    
+    .nav-item.active .nav-icon { opacity: 1; transform: translateY(-2px); }
+    .nav-item.active .nav-label { color: var(--primary); }
+
+    /* CENTER DIAMOND BUTTON */
+    .nav-center { position: relative; width: 70px; height: 100%; }
+    .diamond-btn {
+        position: absolute; top: -35px; left: 50%;
+        transform: translateX(-50%);
+        width: 60px; height: 60px;
+        background: var(--primary);
+        border-radius: 20px;
+        display: flex; align-items: center; justify-content: center;
+        box-shadow: 0 8px 25px rgba(15, 23, 42, 0.3);
+        border: 4px solid var(--surface);
+        transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .diamond-icon { font-size: 28px; }
+    
+    /* CONTENT AREA */
+    .content-scroll {
+        padding-bottom: 100px; /* नेविगेशन के लिए जगह */
+        min-height: 100vh;
+    }
+</style>
+<section class="app-body">
+    
+    <div class="slider-wrapper">
+        <div class="slider-engine" id="sliderEngine">
+            <div class="slide-item active" style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent), url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=1000');">
+                <div class="slide-info">
+                    <span class="slide-tag">New</span>
+                    <h2>बेहतरीन लर्निंग विजन</h2>
+                    <p>SST को समझें अब एक नए अंदाज़ में</p>
+                </div>
+            </div>
+            <div class="slide-item" style="background: linear-gradient(135deg, #1e3a8a, #3b82f6);">
+                <div class="slide-info">
+                    <span class="slide-tag">VVIP</span>
+                    <h2>प्रीमियम लाइब्रेरी</h2>
+                    <p>पुरानी किताबें, नया भविष्य</p>
+                </div>
+            </div>
+        </div>
+        <div class="slider-dots" id="sliderDots">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+
+    <div class="quote-container btn-active">
+        <div class="quote-header">
+            <span class="quote-icon">🚩</span>
+            <span class="quote-label">आज का विचार</span>
+        </div>
+        <div class="quote-body">
+            <p id="typingQuote"></p>
+            <span class="quote-author">— शहीद-ए-आजम भगत सिंह</span>
+        </div>
+    </div>
+
+</section>
+
+<style>
+    /* SLIDER STYLES */
+    .slider-wrapper {
+        margin: 15px; height: 200px; border-radius: 25px;
+        overflow: hidden; position: relative; box-shadow: var(--shadow-lg);
+    }
+    .slider-engine { display: flex; width: 200%; height: 100%; transition: 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+    .slide-item { 
+        width: 100%; height: 100%; background-size: cover; background-position: center;
+        display: flex; align-items: flex-end; padding: 25px;
+    }
+    .slide-tag { background: var(--accent); color: white; padding: 2px 10px; border-radius: 50px; font-size: 10px; font-weight: 900; text-transform: uppercase; }
+    .slide-info h2 { color: white; font-size: 22px; font-weight: 800; margin-top: 5px; }
+    .slide-info p { color: rgba(255,255,255,0.8); font-size: 11px; }
+
+    .slider-dots { position: absolute; bottom: 15px; left: 25px; display: flex; gap: 6px; }
+    .dot { width: 8px; height: 4px; background: rgba(255,255,255,0.4); border-radius: 10px; transition: 0.4s; }
+    .dot.active { width: 20px; background: white; }
+
+    /* QUOTE BOX STYLES */
+    .quote-container {
+        margin: 20px 15px; background: var(--surface); padding: 20px;
+        border-radius: 25px; border-left: 6px solid var(--accent);
+        box-shadow: var(--shadow-sm);
+    }
+    .quote-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+    .quote-label { font-size: 11px; font-weight: 900; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; }
+    .quote-body p { font-size: 14px; font-weight: 700; color: var(--text-main); line-height: 1.5; min-height: 42px; }
+    .quote-author { display: block; margin-top: 10px; font-size: 10px; font-weight: 800; color: #94a3b8; }
+</style>
+
+<script>
+    // Slider Logic
+    let currentSlide = 0;
+    const engine = document.getElementById('sliderEngine');
+    const dots = document.querySelectorAll('.dot');
+    
+    setInterval(() => {
+        currentSlide = (currentSlide + 1) % 2;
+        engine.style.transform = `translateX(-${currentSlide * 50}%)`;
+        dots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+    }, 5000);
+
+    // Typing Animation Logic
+    const quoteTxt = "वे मुझे मार सकते हैं, लेकिन वे मेरे विचारों को नहीं मार सकते।";
+    let charIdx = 0;
+    const target = document.getElementById('typingQuote');
+
+    function typeWriter() {
+        if (charIdx < quoteTxt.length) {
+            target.innerHTML += quoteTxt.charAt(charIdx);
+            charIdx++;
+            setTimeout(typeWriter, 100);
+        }
+    }
+    // स्प्लैश स्क्रीन के बाद शुरू हो (3.5s + 0.5s)
+    setTimeout(typeWriter, 4000);
+        </script>
+        <section class="subjects-section">
+    <div class="section-header">
+        <h3 class="section-title">मुख्य विषय (Core)</h3>
+        <span class="badge-count">80+ Chapters</span>
+    </div>
+
+    <div class="subject-grid">
+        <div class="subject-card btn-active">
+            <div class="card-top">
+                <div class="icon-box history-bg">📜</div>
+                <div class="live-dot"></div>
+            </div>
+            <h4>भारतीय इतिहास</h4>
+            <div class="progress-wrapper">
+                <div class="progress-text">
+                    <span>Progress</span>
+                    <span>75%</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" style="width: 75%;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="subject-card btn-active">
+            <div class="card-top">
+                <div class="icon-box geography-bg">🌍</div>
+            </div>
+            <h4>भूगोल (World & IN)</h4>
+            <div class="progress-wrapper">
+                <div class="progress-text">
+                    <span>Progress</span>
+                    <span>40%</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" style="width: 40%;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="subject-card btn-active">
+            <div class="card-top">
+                <div class="icon-box polity-bg">⚖️</div>
+            </div>
+            <h4>राजनीति विज्ञान</h4>
+            <div class="progress-wrapper">
+                <div class="progress-text">
+                    <span>Progress</span>
+                    <span>20%</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" style="width: 20%;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="subject-card btn-active">
+            <div class="card-top">
+                <div class="icon-box eco-bg">💰</div>
+            </div>
+            <h4>अर्थशास्त्र</h4>
+            <div class="progress-wrapper">
+                <div class="progress-text">
+                    <span>Progress</span>
+                    <span>10%</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" style="width: 10%;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* SUBJECT GRID STYLES */
+    .subjects-section { padding: 0 15px; margin-bottom: 25px; }
+    .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+    .section-title { font-size: 18px; font-weight: 900; color: var(--primary); }
+    .badge-count { font-size: 10px; background: #e2e8f0; color: #64748b; padding: 4px 10px; border-radius: 8px; font-weight: 700; }
+
+    .subject-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    
+    .subject-card {
+        background: var(--surface); padding: 20px 15px; border-radius: 24px;
+        box-shadow: var(--shadow-sm); border: 1px solid rgba(0,0,0,0.02);
+        position: relative; overflow: hidden;
+    }
+
+    .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
+    .icon-box { 
+        width: 45px; height: 45px; border-radius: 14px; 
+        display: flex; align-items: center; justify-content: center; font-size: 22px;
+    }
+    
+    /* कलर्स */
+    .history-bg { background: #fff7ed; }
+    .geography-bg { background: #f0f9ff; }
+    .polity-bg { background: #fdf2f2; }
+    .eco-bg { background: #f0fdf4; }
+
+    .live-dot { width: 8px; height: 8px; background: #2ecc71; border-radius: 50%; box-shadow: 0 0 10px #2ecc71; animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
+
+    .subject-card h4 { font-size: 14px; font-weight: 800; color: var(--text-main); margin-bottom: 12px; }
+
+    /* प्रोग्रेस बार */
+    .progress-text { display: flex; justify-content: space-between; font-size: 9px; font-weight: 800; color: #94a3b8; margin-bottom: 5px; text-transform: uppercase; }
+    .progress-bar-bg { width: 100%; height: 6px; background: #f1f5f9; border-radius: 10px; overflow: hidden; }
+    .progress-bar-fill { height: 100%; background: var(--primary); border-radius: 10px; }
+</style>
+<section class="alerts-and-special">
+    
+    <div class="alert-banner btn-active">
+        <div class="alert-content">
+            <div class="alert-icon-box">
+                <span class="mega-icon">📢</span>
+            </div>
+            <div class="alert-text">
+                <div class="alert-tag">LIVE ALERT</div>
+                <h4>एग्जाम अलर्ट सेंटर</h4>
+                <p>नई सरकारी भर्ती और एडमिट कार्ड की जानकारी</p>
+            </div>
+        </div>
+        <div class="alert-arrow">→</div>
+    </div>
+
+    <div class="special-section">
+        <div class="section-header">
+            <h3 class="section-title">🚩 राजस्थान विशेष (Top)</h3>
+            <span class="view-all">View All →</span>
+        </div>
+
+        <div class="horizontal-scroll">
+            <div class="special-card btn-active">
+                <div class="special-emoji">🎨</div>
+                <h5>कला-संस्कृति</h5>
+                <span class="special-tag gold">BEST SELLER</span>
+            </div>
+            <div class="special-card btn-active">
+                <div class="special-emoji">🏛️</div>
+                <h5>राज. व्यवस्था</h5>
+                <span class="special-tag blue">LIVE CLASS</span>
+            </div>
+            <div class="special-card btn-active">
+                <div class="special-emoji">🏔️</div>
+                <h5>नया भूगोल</h5>
+                <span class="special-tag green">UPDATED</span>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<style>
+    /* ALERT BANNER STYLES */
+    .alert-banner {
+        margin: 0 15px 25px 15px;
+        background: linear-gradient(135deg, var(--primary), #1e293b);
+        padding: 20px; border-radius: 28px;
+        display: flex; justify-content: space-between; align-items: center;
+        color: white; box-shadow: 0 15px 30px rgba(15, 23, 42, 0.2);
+        position: relative; overflow: hidden;
+    }
+    .alert-content { display: flex; gap: 15px; align-items: center; }
+    .alert-icon-box { 
+        width: 50px; height: 50px; background: rgba(255,255,255,0.1); 
+        border-radius: 15px; display: flex; align-items: center; justify-content: center;
+        font-size: 24px;
+    }
+    .alert-tag { 
+        font-size: 8px; background: #ef4444; color: white; padding: 2px 8px; 
+        border-radius: 4px; font-weight: 900; display: inline-block; margin-bottom: 4px;
+        animation: pulseAlert 1s infinite;
+    }
+    .alert-text h4 { font-size: 16px; font-weight: 800; }
+    .alert-text p { font-size: 10px; opacity: 0.7; }
+    .alert-arrow { font-size: 20px; opacity: 0.5; }
+
+    /* RAJASTHAN SPECIAL STYLES */
+    .special-section { padding-left: 15px; margin-bottom: 30px; }
+    .view-all { font-size: 11px; font-weight: 800; color: var(--accent); }
+    
+    .horizontal-scroll { 
+        display: flex; gap: 15px; overflow-x: auto; padding: 10px 15px 10px 0;
+        scroll-snap-type: x mandatory;
+    }
+    .horizontal-scroll::-webkit-scrollbar { display: none; }
+
+    .special-card {
+        min-width: 140px; background: white; padding: 20px; border-radius: 24px;
+        text-align: center; box-shadow: var(--shadow-sm); border: 1px solid rgba(0,0,0,0.03);
+    }
+    .special-emoji { font-size: 30px; margin-bottom: 10px; }
+    .special-card h5 { font-size: 13px; font-weight: 800; color: var(--primary); margin-bottom: 8px; }
+    .special-tag { font-size: 8px; font-weight: 900; padding: 3px 8px; border-radius: 6px; }
+    
+    /* टैग कलर्स */
+    .gold { background: #fef3c7; color: #d97706; }
+    .blue { background: #dbeafe; color: #2563eb; }
+    .green { background: #dcfce7; color: #16a34a; }
+
+    @keyframes pulseAlert {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+        </style>
+        <section class="discovery-area">
+
+    <div class="search-box-container">
+        <div class="search-bar">
+            <span class="search-icon">🔍</span>
+            <input type="text" placeholder="विषय या टॉपिक खोजें (उदा: मेवाड़ का इतिहास)" id="appSearch">
+            <span class="mic-icon">🎙️</span>
+        </div>
+        
+        <div class="filter-pills">
+            <span class="pill active">सभी (All)</span>
+            <span class="pill">PDF नोट्स</span>
+            <span class="pill">वीडियो लेक्चर</span>
+            <span class="pill">क्विज़</span>
+        </div>
+    </div>
+
+    <div class="video-section">
+        <div class="section-header">
+            <h3 class="section-title">वीडियो लेक्चर्स (Demo)</h3>
+            <span class="live-indicator">● Live</span>
+        </div>
+
+        <div class="video-grid">
+            <div class="video-card btn-active">
+                <div class="video-thumbnail" style="background-image: url('https://img.youtube.com/vi/dQw4w9WgXcQ/0.jpg');">
+                    <div class="play-btn">▶</div>
+                    <span class="duration">12:45</span>
+                </div>
+                <div class="video-info">
+                    <h5>सिंधु घाटी सभ्यता: एक परिचय</h5>
+                    <p>Sanjay Sir • 2.5K Students</p>
+                </div>
+            </div>
+
+            <div class="video-card btn-active">
+                <div class="video-thumbnail" style="background-image: url('https://img.youtube.com/vi/3JZ_D3ELwOQ/0.jpg');">
+                    <div class="play-btn">▶</div>
+                    <span class="duration">18:20</span>
+                </div>
+                <div class="video-info">
+                    <h5>भारतीय संविधान की प्रस्तावना</h5>
+                    <p>Sanjay Sir • 1.8K Students</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<style>
+    /* SEARCH STYLES */
+    .search-box-container { padding: 15px; background: #f1f5f9; margin: 10px 15px 25px 15px; border-radius: 30px; }
+    .search-bar { 
+        background: white; display: flex; align-items: center; padding: 12px 18px; 
+        border-radius: 20px; box-shadow: var(--shadow-sm);
+    }
+    .search-bar input { 
+        border: none; outline: none; width: 100%; margin-left: 10px; 
+        font-size: 13px; font-weight: 600; color: var(--text-main);
+    }
+    .search-icon, .mic-icon { font-size: 18px; opacity: 0.6; }
+
+    .filter-pills { display: flex; gap: 8px; margin-top: 15px; overflow-x: auto; padding-bottom: 5px; }
+    .filter-pills::-webkit-scrollbar { display: none; }
+    .pill { 
+        white-space: nowrap; padding: 8px 18px; border-radius: 15px; 
+        background: white; font-size: 11px; font-weight: 800; color: #64748b;
+        border: 1px solid #e2e8f0;
+    }
+    .pill.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+    /* VIDEO GRID STYLES */
+    .video-section { padding: 0 15px; margin-bottom: 30px; }
+    .live-indicator { color: #ef4444; font-size: 11px; font-weight: 900; letter-spacing: 1px; }
+
+    .video-grid { display: flex; gap: 15px; overflow-x: auto; padding-bottom: 10px; }
+    .video-grid::-webkit-scrollbar { display: none; }
+
+    .video-card { min-width: 240px; background: white; border-radius: 22px; overflow: hidden; box-shadow: var(--shadow-sm); }
+    .video-thumbnail { 
+        height: 135px; background-size: cover; background-position: center;
+        position: relative; display: flex; align-items: center; justify-content: center;
+    }
+    .play-btn { 
+        width: 45px; height: 45px; background: rgba(255,255,255,0.9); 
+        border-radius: 50%; display: flex; align-items: center; justify-content: center;
+        color: var(--primary); font-size: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    .duration { 
+        position: absolute; bottom: 8px; right: 10px; background: rgba(0,0,0,0.8);
+        color: white; font-size: 9px; padding: 2px 6px; border-radius: 4px;
+    }
+    .video-info { padding: 12px; }
+    .video-info h5 { font-size: 13px; font-weight: 800; color: var(--text-main); margin-bottom: 4px; }
+    .video-info p { font-size: 10px; color: #94a3b8; font-weight: 600; }
+        </style>
+        <section class="mission-area">
+
+    <div class="library-box">
+        <div class="section-header">
+            <h3 class="section-title">📚 VVIP ई-लाइब्रेरी</h3>
+            <span class="badge-gold">PREMIUM</span>
+        </div>
+        
+        <div class="book-shelf">
+            <div class="book-card btn-active">
+                <div class="book-cover history-gradient">
+                    <span class="book-icon">📖</span>
+                </div>
+                <h6>प्राचीन भारत</h6>
+                <p>NCRT सार</p>
+            </div>
+            <div class="book-card btn-active">
+                <div class="book-cover polity-gradient">
+                    <span class="book-icon">⚖️</span>
+                </div>
+                <h6>संविधान</h6>
+                <p>हस्तलिखित</p>
+            </div>
+            <div class="book-card btn-active">
+                <div class="book-cover raj-gradient">
+                    <span class="book-icon">🏜️</span>
+                </div>
+                <h6>राज. GK</h6>
+                <p>मैप्स के साथ</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="donation-container">
+        <div class="donation-card btn-active">
+            <div class="donation-info">
+                <div class="mission-tag">MISSION 2026</div>
+                <h4>मदद का हाथ</h4>
+                <p>जरूरतमंद छात्रों को अपनी पुरानी किताबें दान करें या प्राप्त करें।</p>
+                <div class="donation-actions">
+                    <button class="action-btn donate">दान करें 🎁</button>
+                    <button class="action-btn receive">मदद चाहिए 🤝</button>
+                </div>
+            </div>
+            <div class="mission-icon">✨</div>
+        </div>
+    </div>
+
+    <div class="support-grid">
+        <a href="https://wa.me/919529812784" class="support-item btn-active">
+            <span class="sup-icon">💬</span>
+            <div class="sup-text">
+                <strong>WhatsApp</strong>
+                <span>Direct Support</span>
+            </div>
+        </a>
+        <a href="tel:+919529812784" class="support-item btn-active">
+            <span class="sup-icon">📞</span>
+            <div class="sup-text">
+                <strong>Call Us</strong>
+                <span>Help Desk</span>
+            </div>
+        </a>
+    </div>
+
+</section>
+
+<style>
+    /* LIBRARY STYLES */
+    .library-box { padding: 0 15px; margin-bottom: 30px; }
+    .badge-gold { background: #fef3c7; color: #d97706; font-size: 10px; font-weight: 900; padding: 4px 10px; border-radius: 8px; }
+    
+    .book-shelf { display: flex; gap: 15px; overflow-x: auto; padding: 10px 0; }
+    .book-shelf::-webkit-scrollbar { display: none; }
+    
+    .book-card { min-width: 100px; text-align: center; }
+    .book-cover { 
+        height: 130px; border-radius: 18px; margin-bottom: 8px;
+        display: flex; align-items: center; justify-content: center;
+        box-shadow: var(--shadow-sm); position: relative;
+    }
+    /* बुक ग्रेडिएंट्स */
+    .history-gradient { background: linear-gradient(135deg, #fbbf24, #d97706); }
+    .polity-gradient { background: linear-gradient(135deg, #60a5fa, #2563eb); }
+    .raj-gradient { background: linear-gradient(135deg, #f87171, #dc2626); }
+    
+    .book-icon { font-size: 40px; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2)); }
+    .book-card h6 { font-size: 12px; font-weight: 800; color: var(--text-main); }
+    .book-card p { font-size: 10px; color: #94a3b8; font-weight: 700; }
+
+    /* DONATION CARD STYLES */
+    .donation-container { padding: 0 15px; margin-bottom: 30px; }
+    .donation-card { 
+        background: var(--primary); color: white; padding: 25px; 
+        border-radius: 30px; position: relative; overflow: hidden;
+        box-shadow: 0 20px 40px rgba(15, 23, 42, 0.2);
+    }
+    .mission-tag { background: var(--accent); color: var(--primary); font-size: 9px; font-weight: 900; padding: 3px 10px; border-radius: 50px; display: inline-block; margin-bottom: 10px; }
+    .donation-card h4 { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
+    .donation-card p { font-size: 12px; opacity: 0.8; margin-bottom: 20px; line-height: 1.4; }
+    
+    .donation-actions { display: flex; gap: 10px; }
+    .action-btn { 
+        flex: 1; border: none; padding: 12px; border-radius: 15px; 
+        font-size: 12px; font-weight: 800; cursor: pointer; transition: 0.3s;
+    }
+    .action-btn.donate { background: var(--accent); color: var(--primary); }
+    .action-btn.receive { background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); }
+    
+    .mission-icon { position: absolute; right: -10px; bottom: -10px; font-size: 100px; opacity: 0.1; transform: rotate(-15deg); }
+
+    /* SUPPORT GRID STYLES */
+    .support-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 0 15px; margin-bottom: 30px; }
+    .support-item { 
+        background: white; padding: 15px; border-radius: 20px; 
+        display: flex; align-items: center; gap: 12px; box-shadow: var(--shadow-sm);
+    }
+    .sup-icon { font-size: 24px; }
+    .sup-text strong { display: block; font-size: 13px; color: var(--primary); }
+    .sup-text span { font-size: 10px; color: #94a3b8; font-weight: 700; }
+        </style>
+        <section class="final-polish">
+
+    <div class="stats-container">
+        <div class="stat-item">
+            <span class="stat-value" data-target="5000">0</span>
+            <span class="stat-label">Happy Students</span>
+        </div>
+        <div class="divider"></div>
+        <div class="stat-item">
+            <span class="stat-value" data-target="150">0</span>
+            <span class="stat-label">Expert Notes</span>
+        </div>
+        <div class="divider"></div>
+        <div class="stat-item">
+            <span class="stat-value" data-target="4.9">0</span>
+            <span class="stat-label">Rating</span>
+        </div>
+    </div>
+
+    <footer class="app-footer">
+        <div class="footer-logo">🌳</div>
+        <h3>SOCIAL STUDIES CLASSES</h3>
+        <p>Created with ❤️ by Sanjay Dhakar</p>
+        <div class="footer-links">
+            <span>Privacy Policy</span> • <span>Terms of Use</span>
+        </div>
+        <div class="version-tag">Version 4.0.1 (Premium)</div>
+    </footer>
+
+</section>
+
+<style>
+    /* STATS STYLES */
+    .stats-container {
+        margin: 20px 15px; background: white; padding: 25px; 
+        border-radius: 30px; display: flex; justify-content: space-around;
+        box-shadow: var(--shadow-sm); text-align: center;
+    }
+    .stat-value { display: block; font-size: 20px; font-weight: 900; color: var(--primary); }
+    .stat-label { font-size: 10px; font-weight: 700; color: #94a3b8; text-transform: uppercase; }
+    .divider { width: 1px; height: 30px; background: #f1f5f9; align-self: center; }
+
+    /* FOOTER STYLES */
+    .app-footer {
+        padding: 40px 20px 120px 20px; /* नीचे 120px जगह ताकि Nav Bar न छुपे */
+        text-align: center; background: #f8fafc;
+    }
+    .footer-logo { font-size: 40px; margin-bottom: 10px; filter: grayscale(1); opacity: 0.5; }
+    .app-footer h3 { font-size: 14px; font-weight: 900; color: var(--primary); letter-spacing: 2px; }
+    .app-footer p { font-size: 11px; font-weight: 700; color: #94a3b8; margin: 5px 0 15px 0; }
+    .footer-links { font-size: 10px; color: #cbd5e1; font-weight: 600; margin-bottom: 20px; }
+    .version-tag { 
+        display: inline-block; padding: 5px 15px; background: #e2e8f0; 
+        color: #64748b; font-size: 9px; font-weight: 800; border-radius: 50px; 
+    }
+
+    /* स्मूथ लोडिंग एनीमेशन (Main App Entrance) */
+    #main-app {
+        animation: slideUpFade 0.8s ease-out 3.8s both;
+    }
+    @keyframes slideUpFade {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+
+<script>
+    // Stats Counter Logic
+    function animateStats() {
+        const stats = document.querySelectorAll('.stat-value');
+        stats.forEach(s => {
+            const target = +s.getAttribute('data-target');
+            let count = 0;
+            const inc = target / 50; 
+            const update = () => {
+                if(count < target) {
+                    count = Math.ceil(count + inc);
+                    s.innerText = count + (target === 4.9 ? "" : "+");
+                    if(target === 4.9) s.innerText = "4.9/5";
+                    setTimeout(update, 30);
+                }
+            };
+            update();
+        });
+    }
+
+    // जब स्प्लैश खत्म हो तब काउंटर चले
+    setTimeout(animateStats, 4500);
+                       </script>
+                       
