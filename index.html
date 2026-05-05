@@ -155,3 +155,208 @@
     </style>
 </head>
 <body>
+    <div class="phase-2-lcd">
+    <div class="lcd-frame">
+        <div class="lcd-scanlines"></div>
+        
+        <div class="book-engine" id="bookEngine">
+            
+            <div class="page active">
+                <div class="page-visual bg-1">
+                    <div class="lcd-status">SYSTEM: RUNNING</div>
+                    <div class="page-data">
+                        <span class="page-tag">CORE MISSION</span>
+                        <h2 class="page-title">मिशन <b>2026</b></h2>
+                        <p class="page-text">संजय धाकड़ सर की रणनीति के साथ सामाजिक विज्ञान में 100% का लक्ष्य।</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page">
+                <div class="page-visual bg-2">
+                    <div class="lcd-status">DATABASE: SYNCED</div>
+                    <div class="page-data">
+                        <span class="page-tag">VVIP CLUB</span>
+                        <h2 class="page-title">किताब <b>दान</b></h2>
+                        <p class="page-text">पुरानी किताबें दान करें या अपनी जरूरत की किताब यहाँ से प्राप्त करें।</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page">
+                <div class="page-visual bg-3">
+                    <div class="lcd-status">FILES: SECURE</div>
+                    <div class="page-data">
+                        <span class="page-tag">PREMIUM ACCESS</span>
+                        <h2 class="page-title">हस्तलिखित <b>नोट्स</b></h2>
+                        <p class="page-text">कोचिंग के सबसे बेहतरीन और सटीक नोट्स अब डिजिटल फॉर्मेट में।</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page">
+                <div class="page-visual bg-4">
+                    <div class="lcd-status">TEST-MODE: ON</div>
+                    <div class="page-data">
+                        <span class="page-tag">EXAM ALERT</span>
+                        <h2 class="page-title">लाइव <b>टेस्ट</b></h2>
+                        <p class="page-text">अपनी तैयारी को परखें और राजस्थान लेवल पर अपनी रैंक जानें।</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page">
+                <div class="page-visual bg-5">
+                    <div class="lcd-status">SUPPORT: ACTIVE</div>
+                    <div class="page-data">
+                        <span class="page-tag">SST TEAM</span>
+                        <h2 class="page-title">ग्राउंड <b>सपोर्ट</b></h2>
+                        <p class="page-text">हमारी टीम से जुड़ें और अपनी समस्याओं का सीधा समाधान पाएं।</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="lcd-nav">
+            <div class="lcd-dot active"></div>
+            <div class="lcd-dot"></div>
+            <div class="lcd-dot"></div>
+            <div class="lcd-dot"></div>
+            <div class="lcd-dot"></div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Phase 2: Styling */
+    .phase-2-lcd {
+        padding: 20px;
+        perspective: 1200px;
+    }
+
+    .lcd-frame {
+        width: 100%;
+        height: 220px;
+        background: #000;
+        border-radius: 28px;
+        position: relative;
+        overflow: hidden;
+        border: 2px solid #334155;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    /* LCD Scanlines (Texture) */
+    .lcd-scanlines {
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.2) 50%), 
+                    linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.04));
+        background-size: 100% 3px, 3px 100%;
+        z-index: 10;
+        pointer-events: none;
+    }
+
+    .book-engine {
+        width: 100%; height: 100%;
+        position: relative;
+        transform-style: preserve-3d;
+    }
+
+    /* Flip Book Animation Logic */
+    .page {
+        position: absolute;
+        width: 100%; height: 100%;
+        top: 0; left: 0;
+        opacity: 0;
+        transform: rotateY(-90deg); /* किताब बंद होने जैसी स्थिति */
+        transition: all 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+        transform-origin: left center;
+    }
+
+    .page.active {
+        opacity: 1;
+        transform: rotateY(0deg); /* किताब खुलना */
+        z-index: 5;
+    }
+
+    .page-visual {
+        width: 100%; height: 100%;
+        display: flex; flex-direction: column;
+        justify-content: flex-end;
+        padding: 25px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    /* Background Images (Shandaar Visuals) */
+    .bg-1 { background: linear-gradient(to top, rgba(0,0,0,0.9), transparent), url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=600'); }
+    .bg-2 { background: linear-gradient(to top, rgba(0,0,0,0.9), transparent), url('https://images.unsplash.com/photo-1507738911748-9c743e8121bd?q=80&w=600'); }
+    .bg-3 { background: linear-gradient(to top, rgba(0,0,0,0.9), transparent), url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=600'); }
+    .bg-4 { background: linear-gradient(to top, rgba(0,0,0,0.9), transparent), url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=600'); }
+    .bg-5 { background: linear-gradient(to top, rgba(0,0,0,0.9), transparent), url('https://images.unsplash.com/photo-1521791136364-798a7bc0d262?q=80&w=600'); }
+
+    .lcd-status {
+        position: absolute; top: 15px; right: 20px;
+        font-family: monospace; font-size: 8px; color: #fbbf24;
+        letter-spacing: 2px;
+        opacity: 0.8;
+    }
+
+    .page-tag {
+        font-size: 8px; font-weight: 800; color: #fbbf24;
+        letter-spacing: 1.5px; text-transform: uppercase;
+        border: 1px solid #fbbf24; padding: 2px 8px; border-radius: 4px;
+    }
+
+    .page-title {
+        color: #fff; font-size: 24px; font-weight: 400;
+        font-family: 'Marcellus', serif; line-height: 1.2; margin: 8px 0 4px;
+    }
+
+    .page-title b { color: #fbbf24; font-weight: 400; }
+
+    .page-text {
+        color: rgba(255,255,255,0.7); font-size: 11px;
+        line-height: 1.4; max-width: 90%;
+    }
+
+    /* LCD Navigation */
+    .lcd-nav {
+        position: absolute; bottom: 15px; right: 25px;
+        z-index: 20; display: flex; gap: 5px;
+    }
+
+    .lcd-dot {
+        width: 12px; height: 3px; background: rgba(255,255,255,0.2);
+        border-radius: 10px; transition: 0.4s;
+    }
+
+    .lcd-dot.active {
+        background: #fbbf24; width: 25px;
+        box-shadow: 0 0 10px rgba(251, 191, 36, 0.4);
+    }
+</style>
+
+<script>
+    // Phase 2: Flip Engine Logic
+    (function() {
+        let current = 0;
+        const slides = document.querySelectorAll('.page');
+        const dots = document.querySelectorAll('.lcd-dot');
+
+        function flipPage() {
+            slides[current].classList.remove('active');
+            dots[current].classList.remove('active');
+            
+            current = (current + 1) % slides.length;
+            
+            slides[current].classList.add('active');
+            dots[current].classList.add('active');
+        }
+
+        // 5 सेकंड में पन्ना पलटेगा
+        setInterval(flipPage, 5000);
+    })();
+</script>
+
