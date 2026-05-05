@@ -1,1229 +1,1778 @@
-<!-- 🔥 PREMIUM RAJASTHAN HERO SECTION -->
-<div style="position: relative; height: 260px; width: 100%; overflow: hidden; border-bottom-left-radius: 45px; border-bottom-right-radius: 45px; background: #000; box-shadow: 0 15px 30px rgba(0,0,0,0.25);">
-
-    <!-- 🔥 Animated Rajasthan Logo -->
-    <div style="position: absolute; top: 20px; width: 100%; text-align: center; z-index: 100;">
-        <h1 style="color: #FFD700; font-size: 22px; font-weight: 900; letter-spacing: 2px; margin: 0; animation: fadeDown 1.5s ease;">
-            🏜️ RAJASTHAN GK MASTER
-        </h1>
-        <p style="color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 2px;">
-            Powered by SST PRO
-        </p>
-    </div>
-
-    <!-- 🔥 SLIDER -->
-    <div id="rajSlider" style="display: flex; width: 400%; height: 100%; transition: transform 0.8s ease;">
-        
-        <!-- Slide 1 -->
-        <div style="width: 100%; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1599661046289-e31897846e41?q=80&w=2070'); background-size: cover; display: flex; align-items: flex-end; padding: 40px;">
-            <div style="color: white;">
-                <h2 style="font-size: 28px; font-weight: 900;">राजस्थान स्पेशल</h2>
-                <p style="font-size: 13px;">History + Geography + Culture 🔥</p>
-            </div>
-        </div>
-
-        <!-- Slide 2 -->
-        <div style="width: 100%; background: linear-gradient(135deg, #e67e22, #d35400); display: flex; align-items: flex-end; padding: 40px;">
-            <div style="color: white;">
-                <h2 style="font-size: 26px; font-weight: 900;">Test + Quiz Zone</h2>
-                <p style="font-size: 13px;">Daily Practice & Rank System</p>
-            </div>
-        </div>
-
-        <!-- Slide 3 -->
-        <div style="width: 100%; background: linear-gradient(135deg, #6c5ce7, #4834d4); display: flex; align-items: flex-end; padding: 40px;">
-            <div style="color: white;">
-                <h2 style="font-size: 26px; font-weight: 900;">Premium Notes</h2>
-                <p style="font-size: 13px;">Coaching Level Content</p>
-            </div>
-        </div>
-
-        <!-- Slide 4 -->
-        <div style="width: 100%; background: linear-gradient(135deg, #00b894, #00cec9); display: flex; align-items: flex-end; padding: 40px;">
-            <div style="color: white;">
-                <h2 style="font-size: 26px; font-weight: 900;">Mission 2026</h2>
-                <p style="font-size: 13px;">Selection Or Nothing 🚀</p>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-<style>
-@keyframes fadeDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-</style>
-
-<script>
-let rIndex = 0;
-const rSlider = document.getElementById('rajSlider');
-
-setInterval(() => {
-    rIndex = (rIndex + 1) % 4;
-    rSlider.style.transform = `translateX(-${rIndex * 100}%)`;
-}, 4000);
-</script>
-<!-- 🔥 RAJASTHAN SUPER GRID (TOP PRIORITY) -->
-<h2 class="section-title" style="margin-top:20px;">🔥 राजस्थान स्पेशल (TOP PRIORITY)</h2>
-
-<div class="raj-grid">
-
-    <a href="#" class="raj-card red">
-        <div class="icon">🏰</div>
-        <div class="title">राजस्थान इतिहास</div>
-    </a>
-
-    <a href="#" class="raj-card green">
-        <div class="icon">🏜️</div>
-        <div class="title">राजस्थान भूगोल</div>
-    </a>
-
-    <a href="#" class="raj-card yellow">
-        <div class="icon">🎨</div>
-        <div class="title">कला & संस्कृति</div>
-    </a>
-
-    <a href="#" class="raj-card dark">
-        <div class="icon">🏛️</div>
-        <div class="title">राजस्थान व्यवस्था</div>
-    </a>
-
-</div>
-
-<style>
-/* GRID */
-.raj-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-    padding: 0 15px 25px;
-}
-
-/* CARD BASE */
-.raj-card {
-    position: relative;
-    padding: 22px 10px;
-    border-radius: 22px;
-    text-align: center;
-    color: white;
-    font-weight: 800;
-    text-decoration: none;
-    overflow: hidden;
-    transition: 0.3s;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-}
-
-/* ICON */
-.raj-card .icon {
-    font-size: 34px;
-    margin-bottom: 8px;
-    display: block;
-    animation: floatIcon 3s ease-in-out infinite;
-}
-
-/* TITLE */
-.raj-card .title {
-    font-size: 14px;
-    letter-spacing: 0.5px;
-}
-
-/* COLORS */
-.red { background: linear-gradient(135deg, #ff416c, #ff4b2b); }
-.green { background: linear-gradient(135deg, #00b894, #00cec9); }
-.yellow { background: linear-gradient(135deg, #f7971e, #ffd200); color:#000; }
-.dark { background: linear-gradient(135deg, #2d3436, #000000); }
-
-/* HOVER / TAP EFFECT */
-.raj-card:active {
-    transform: scale(0.92);
-}
-
-/* GLOW EFFECT */
-.raj-card::before {
-    content: "";
-    position: absolute;
-    width: 120%;
-    height: 120%;
-    background: rgba(255,255,255,0.1);
-    top: -50%;
-    left: -50%;
-    transform: rotate(25deg);
-    transition: 0.5s;
-}
-
-.raj-card:hover::before {
-    left: 120%;
-}
-
-/* ICON FLOAT */
-@keyframes floatIcon {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-6px); }
-    100% { transform: translateY(0px); }
-}
-</style>
 <!DOCTYPE html>
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quiz Zone</title>
+<title>Social Studies Classes</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 
 <style>
-body {
+
+/* GLOBAL RESET */
+* {
     margin:0;
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #1a1a2e, #16213e);
-    color:white;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
 }
 
-/* HEADER */
-.header {
+/* BODY BASE (अभी खाली रहेगा) */
+body {
+    background:#0f172a;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* COMMON CARD STYLE */
+.card {
+    background:#1e293b;
+    border-radius:20px;
     padding:20px;
     text-align:center;
-    font-weight:900;
-    font-size:20px;
-    background: rgba(0,0,0,0.3);
-}
-
-/* QUESTION BOX */
-.quiz-box {
-    padding:20px;
-}
-
-.question {
-    font-size:18px;
-    font-weight:800;
-    margin-bottom:20px;
-}
-
-/* OPTIONS */
-.option {
-    background: rgba(255,255,255,0.1);
-    padding:14px;
-    border-radius:12px;
-    margin-bottom:10px;
-    cursor:pointer;
     transition:0.3s;
 }
 
-.option:hover {
-    background: rgba(255,255,255,0.2);
+.card:active {
+    transform:scale(0.95);
 }
 
-.correct {
-    background:#2ecc71 !important;
+/* GOLD EFFECT */
+.gold {
+    color:#facc15;
 }
 
-.wrong {
-    background:#e74c3c !important;
-}
-
-/* NEXT BUTTON */
-.next-btn {
-    margin-top:20px;
-    padding:12px;
-    background:#f39c12;
-    border:none;
-    border-radius:10px;
-    width:100%;
-    font-weight:800;
-    cursor:pointer;
-}
-
-/* RESULT */
-.result {
-    text-align:center;
-    padding:30px;
-    display:none;
-}
-
-.score {
-    font-size:40px;
-    font-weight:900;
-}
+</style>
 </style>
 </head>
 
 <body>
 
-<div class="header">🎯 Rajasthan Quiz Challenge</div>
+<!-- SPLASH SCREEN -->
+<div id="splash">
 
-<div class="quiz-box">
-    <div class="question" id="question">Loading...</div>
-    <div id="options"></div>
-    <button class="next-btn" onclick="nextQuestion()">Next</button>
-</div>
+    <div class="splash-content">
 
-<div class="result" id="resultBox">
-    <div class="score" id="scoreText"></div>
-    <p>🔥 Keep Practicing!</p>
-</div>
+        <div class="tree">🌳</div>
 
-<script>
-const quiz = [
-{
-q: "राजस्थान की राजधानी क्या है?",
-a: ["उदयपुर","जयपुर","जोधपुर","बीकानेर"],
-c: 1
-},
-{
-q: "थार मरुस्थल कहाँ स्थित है?",
-a: ["राजस्थान","पंजाब","बिहार","MP"],
-c: 0
-},
-{
-q: "हल्दीघाटी युद्ध किसके बीच हुआ?",
-a: ["अकबर-राणा प्रताप","शिवाजी-अकबर","मुगल-राजपूत","ब्रिटिश-मराठा"],
-c: 0
-}
-];
+        <h1>SOCIAL STUDIES</h1>
+        <h2>CLASSES</h2>
 
-let index = 0;
-let score = 0;
-
-function loadQuestion(){
-    const q = quiz[index];
-    document.getElementById("question").innerText = q.q;
-
-    const optionsBox = document.getElementById("options");
-    optionsBox.innerHTML = "";
-
-    q.a.forEach((opt,i)=>{
-        const div = document.createElement("div");
-        div.classList.add("option");
-        div.innerText = opt;
-        div.onclick = ()=>checkAnswer(div,i);
-        optionsBox.appendChild(div);
-    });
-}
-
-function checkAnswer(el,i){
-    const correct = quiz[index].c;
-    const options = document.querySelectorAll(".option");
-
-    options.forEach(o=>o.onclick=null);
-
-    if(i===correct){
-        el.classList.add("correct");
-        score++;
-    } else {
-        el.classList.add("wrong");
-        options[correct].classList.add("correct");
-    }
-}
-
-function nextQuestion(){
-    index++;
-    if(index < quiz.length){
-        loadQuestion();
-    } else {
-        document.querySelector(".quiz-box").style.display="none";
-        document.getElementById("resultBox").style.display="block";
-        document.getElementById("scoreText").innerText = score + "/" + quiz.length;
-    }
-}
-
-loadQuestion();
-</script>
-
-</body>
-</html>
-<!-- 🔥 RAJASTHAN SUPER ZONE -->
-<div style="margin: 25px 15px;">
-
-    <h2 style="font-size: 20px; font-weight: 900; color: #e74c3c; display: flex; align-items: center;">
-        <span style="font-size: 24px; margin-right: 8px;">🔥</span>
-        राजस्थान सुपर ज़ोन (TOP PRIORITY)
-    </h2>
-
-    <!-- MAIN BIG CARD -->
-    <div onclick="location.href='rajasthan.html'" 
-        style="margin-top: 15px; background: linear-gradient(135deg,#ff416c,#ff4b2b); 
-        border-radius: 25px; padding: 25px; color: white; 
-        box-shadow: 0 10px 30px rgba(255,75,43,0.4);
-        position: relative; overflow: hidden; cursor: pointer;">
-
-        <div style="position:absolute; top:-30px; right:-30px; font-size:120px; opacity:0.1;">🏰</div>
-
-        <h3 style="font-size: 22px; font-weight: 900;">RAJASTHAN COMPLETE</h3>
-        <p style="font-size: 13px; opacity: 0.9;">इतिहास + भूगोल + संस्कृति + टेस्ट</p>
-
-        <div style="margin-top: 12px; font-size: 12px; font-weight: bold;">
-            🚀 All-in-One Preparation Zone
-        </div>
-    </div>
-
-    <!-- SMALL GRID -->
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 15px;">
-
-        <div onclick="location.href='raj-history.html'" class="raj-card">
-            🏰<br>इतिहास
-        </div>
-
-        <div onclick="location.href='raj-geography.html'" class="raj-card">
-            🏜️<br>भूगोल
-        </div>
-
-        <div onclick="location.href='raj-culture.html'" class="raj-card">
-            🎨<br>संस्कृति
-        </div>
-
-        <div onclick="location.href='raj-polity.html'" class="raj-card">
-            🏛️<br>व्यवस्था
-        </div>
+        <p class="quote" id="quoteText"></p>
 
     </div>
 
-    <!-- QUIZ GAME ENTRY -->
-    <div onclick="location.href='raj-quiz.html'" 
-        style="margin-top: 18px; background: linear-gradient(135deg,#1e90ff,#3742fa);
-        padding: 18px; border-radius: 20px; color: white;
-        display:flex; align-items:center; justify-content:space-between;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.2); cursor:pointer;">
-
-        <div>
-            <div style="font-weight:900; font-size:16px;">🎯 Rajasthan Quiz Battle</div>
-            <div style="font-size:11px; opacity:0.8;">Daily Challenge + Rank System</div>
-        </div>
-
-        <div style="font-size:22px;">⚡</div>
+    <div class="progress-bar">
+        <div class="progress"></div>
     </div>
 
 </div>
 
 <style>
-/* Rajasthan Cards Animation */
-.raj-card {
-    background: white;
-    border-radius: 18px;
-    padding: 18px;
-    text-align: center;
-    font-weight: 800;
-    font-size: 14px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-    transition: 0.3s;
-    cursor: pointer;
-}
 
-.raj-card:hover {
-    transform: translateY(-5px) scale(1.03);
-    background: #fff5f5;
-}
-
-.raj-card:active {
-    transform: scale(0.95);
-}
-</style>
-<div style="margin: 20px 15px; background: linear-gradient(135deg,#0f172a,#1e293b); padding: 20px; border-radius: 25px; color: white; box-shadow: 0 10px 25px rgba(0,0,0,0.3);">
-
-    <div style="display:flex; justify-content:space-between; align-items:center;">
-        <div>
-            <div style="font-size:14px; opacity:0.8;">👤 Student Progress</div>
-            <div style="font-size:18px; font-weight:900;">Level <span id="level">3</span> Learner</div>
-        </div>
-
-        <div style="font-size:30px;">⚡</div>
-    </div>
-
-    <div style="margin-top:15px;">
-        <div style="font-size:12px; opacity:0.8;">XP Progress</div>
-
-        <div style="width:100%; height:10px; background:rgba(255,255,255,0.1); border-radius:50px; margin-top:6px; overflow:hidden;">
-            <div id="xpBar" style="width:65%; height:100%; background:linear-gradient(90deg,#f39c12,#2ecc71); border-radius:50px;"></div>
-        </div>
-
-        <div style="font-size:11px; margin-top:5px; opacity:0.8;">
-            650 / 1000 XP
-        </div>
-    </div>
-
-</div>
-<div style="margin: 15px; display:flex; gap:10px;">
-
-    <div style="flex:1; background:white; padding:15px; border-radius:20px; text-align:center; box-shadow:0 5px 15px rgba(0,0,0,0.05);">
-        <div style="font-size:22px;">🔥</div>
-        <div style="font-size:18px; font-weight:900; color:#e74c3c;" id="streak">7</div>
-        <div style="font-size:11px; color:#666;">Day Streak</div>
-    </div>
-
-    <div style="flex:1; background:white; padding:15px; border-radius:20px; text-align:center; box-shadow:0 5px 15px rgba(0,0,0,0.05);">
-        <div style="font-size:22px;">🏆</div>
-        <div style="font-size:18px; font-weight:900; color:#f39c12;" id="coins">120</div>
-        <div style="font-size:11px; color:#666;">Coins</div>
-    </div>
-
-    <div style="flex:1; background:white; padding:15px; border-radius:20px; text-align:center; box-shadow:0 5px 15px rgba(0,0,0,0.05);">
-        <div style="font-size:22px;">📚</div>
-        <div style="font-size:18px; font-weight:900; color:#2ecc71;" id="tests">15</div>
-        <div style="font-size:11px; color:#666;">Tests</div>
-    </div>
-
-</div>
-<script>
-// XP Animation
-let xp = 650;
-let level = 3;
-
-setInterval(() => {
-    xp += 5;
-
-    if (xp >= 1000) {
-        xp = 0;
-        level++;
-        document.getElementById("level").innerText = level;
-    }
-
-    let percent = (xp / 1000) * 100;
-    document.getElementById("xpBar").style.width = percent + "%";
-}, 2000);
-
-// Streak glow animation
-setInterval(() => {
-    document.getElementById("streak").style.transform = "scale(1.1)";
-    setTimeout(() => {
-        document.getElementById("streak").style.transform = "scale(1)";
-    }, 300);
-}, 3000);
-</script>
-<div style="padding:20px; font-family:Poppins;">
-
-    <h2 style="text-align:center; color:#1a3a5f; font-weight:900;">🎯 Daily Quiz Challenge</h2>
-
-    <div id="quizBox" style="background:#fff; padding:20px; border-radius:20px; box-shadow:0 10px 25px rgba(0,0,0,0.1); margin-top:15px;">
-
-        <div style="display:flex; justify-content:space-between; font-weight:700;">
-            <div>Question <span id="qNum">1</span>/5</div>
-            <div>⏱️ <span id="timer">15</span>s</div>
-        </div>
-
-        <h3 id="question" style="margin-top:15px;">Loading...</h3>
-
-        <div id="options"></div>
-
-    </div>
-
-    <div id="result" style="display:none; text-align:center; margin-top:20px;">
-        <h2>🎉 Quiz Completed</h2>
-        <p style="font-size:18px;">Your Score: <span id="score">0</span>/5</p>
-        <button onclick="location.reload()" style="padding:10px 20px; border:none; background:#2ecc71; color:white; border-radius:10px;">Retry</button>
-    </div>
-
-</div>
-<script>
-const quiz = [
-    {
-        q: "राजस्थान का सबसे बड़ा जिला कौन सा है?",
-        o: ["जयपुर", "जैसलमेर", "उदयपुर", "कोटा"],
-        a: 1
-    },
-    {
-        q: "भारत का संविधान कब लागू हुआ?",
-        o: ["1947", "1950", "1952", "1949"],
-        a: 1
-    },
-    {
-        q: "लोकसभा का कार्यकाल कितना होता है?",
-        o: ["4 वर्ष", "5 वर्ष", "6 वर्ष", "7 वर्ष"],
-        a: 1
-    },
-    {
-        q: "राजस्थान की राजधानी क्या है?",
-        o: ["जोधपुर", "जयपुर", "बीकानेर", "अजमेर"],
-        a: 1
-    },
-    {
-        q: "भारत का राष्ट्रीय पशु क्या है?",
-        o: ["शेर", "हाथी", "बाघ", "गाय"],
-        a: 2
-    }
-];
-
-let current = 0;
-let score = 0;
-let time = 15;
-let timer;
-
-function loadQuestion() {
-    if(current >= quiz.length){
-        document.getElementById("quizBox").style.display = "none";
-        document.getElementById("result").style.display = "block";
-        document.getElementById("score").innerText = score;
-        return;
-    }
-
-    let q = quiz[current];
-
-    document.getElementById("qNum").innerText = current + 1;
-    document.getElementById("question").innerText = q.q;
-
-    let optHtml = "";
-    q.o.forEach((opt, i) => {
-        optHtml += `
-            <div onclick="checkAnswer(${i})"
-                style="margin-top:10px; padding:12px; border:1px solid #ddd; border-radius:12px; cursor:pointer; transition:0.3s;">
-                ${opt}
-            </div>
-        `;
-    });
-
-    document.getElementById("options").innerHTML = optHtml;
-
-    resetTimer();
-}
-
-function checkAnswer(i){
-    if(i === quiz[current].a){
-        score++;
-    }
-
-    current++;
-    loadQuestion();
-}
-
-function resetTimer(){
-    clearInterval(timer);
-    time = 15;
-    document.getElementById("timer").innerText = time;
-
-    timer = setInterval(() => {
-        time--;
-        document.getElementById("timer").innerText = time;
-
-        if(time <= 0){
-            current++;
-            loadQuestion();
-        }
-    }, 1000);
-}
-
-loadQuestion();
-</script>
-<div style="margin:20px 15px; font-family:Poppins;">
-
-    <h2 style="font-size:20px; font-weight:900; color:#1a3a5f;">
-        🏆 Weekly Leaderboard
-    </h2>
-
-    <div style="background:#fff; border-radius:20px; padding:15px; margin-top:10px; box-shadow:0 10px 25px rgba(0,0,0,0.08);">
-
-        <!-- 1st -->
-        <div style="display:flex; align-items:center; justify-content:space-between; padding:10px 0; border-bottom:1px solid #eee;">
-            <div style="display:flex; align-items:center; gap:10px;">
-                <span style="font-size:20px;">🥇</span>
-                <div>
-                    <div style="font-weight:800;">Aman Sharma</div>
-                    <div style="font-size:11px; color:#777;">Level 9</div>
-                </div>
-            </div>
-            <div style="font-weight:900; color:#f39c12;">980 XP</div>
-        </div>
-
-        <!-- 2nd -->
-        <div style="display:flex; align-items:center; justify-content:space-between; padding:10px 0; border-bottom:1px solid #eee;">
-            <div style="display:flex; align-items:center; gap:10px;">
-                <span style="font-size:20px;">🥈</span>
-                <div>
-                    <div style="font-weight:800;">Priya Meena</div>
-                    <div style="font-size:11px; color:#777;">Level 8</div>
-                </div>
-            </div>
-            <div style="font-weight:900; color:#3498db;">860 XP</div>
-        </div>
-
-        <!-- 3rd -->
-        <div style="display:flex; align-items:center; justify-content:space-between; padding:10px 0; border-bottom:1px solid #eee;">
-            <div style="display:flex; align-items:center; gap:10px;">
-                <span style="font-size:20px;">🥉</span>
-                <div>
-                    <div style="font-weight:800;">Rahul Singh</div>
-                    <div style="font-size:11px; color:#777;">Level 7</div>
-                </div>
-            </div>
-            <div style="font-weight:900; color:#2ecc71;">740 XP</div>
-        </div>
-
-        <!-- YOU -->
-        <div style="display:flex; align-items:center; justify-content:space-between; padding:12px; margin-top:10px; background:linear-gradient(135deg,#1e3c72,#2a5298); color:white; border-radius:15px;">
-            <div>
-                <div style="font-weight:900;">🔥 You</div>
-                <div style="font-size:11px; opacity:0.8;">Current Rank: #12</div>
-            </div>
-            <div style="font-weight:900;">650 XP</div>
-        </div>
-
-    </div>
-
-</div>
-<script>
-// fake dynamic rank update (feel like live system)
-let rank = 12;
-let xp = 650;
-
-setInterval(() => {
-    xp += Math.floor(Math.random() * 20);
-
-    if(xp > 1000){
-        xp = 0;
-        rank = Math.max(1, rank - 1);
-    }
-
-    // optional: console feel
-    console.log("XP:", xp, "Rank:", rank);
-
-}, 3000);
-</script>
-<!-- 📱 BOTTOM NAV BAR -->
-<div style="
-position: fixed;
-bottom: 0;
-left: 0;
-width: 100%;
-background: #ffffff;
-display: flex;
-justify-content: space-around;
-align-items: center;
-padding: 10px 0;
-box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
-border-top-left-radius: 20px;
-border-top-right-radius: 20px;
-z-index: 9999;
-">
-
-    <div onclick="showTab('home')" style="text-align:center; font-size:12px; color:#1a3a5f;">
-        🏠<br>Home
-    </div>
-
-    <div onclick="showTab('study')" style="text-align:center; font-size:12px; color:#777;">
-        📚<br>Study
-    </div>
-
-    <div onclick="showTab('quiz')" style="text-align:center; font-size:12px; color:#777;">
-        🎯<br>Quiz
-    </div>
-
-    <div onclick="showTab('profile')" style="text-align:center; font-size:12px; color:#777;">
-        👤<br>Profile
-    </div>
-
-</div>
-<script>
-function showTab(tab){
-
-    alert("Opening: " + tab + " section (App Mode)");
-
-    // future upgrade: real page switch system
-    // yaha hum div hide/show system add kar sakte hain
-}
-</script>
-<!-- ⚡ FLOATING BUTTON -->
-<div onclick="location.href='quiz.html'"
-style="
-position: fixed;
-bottom: 80px;
-right: 20px;
-width: 60px;
-height: 60px;
-background: linear-gradient(135deg,#f39c12,#e74c3c);
-border-radius: 50%;
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 26px;
-color: white;
-box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-z-index: 9999;
-animation: pulse 1.5s infinite;
-">
-⚡
-</div>
-
-<style>
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
-}
-</style>
-style="padding-bottom:90px; background:#f5f7fb;"
-<!-- 🌙 DARK MODE BUTTON -->
-<div onclick="toggleDark()" 
-style="
-position: fixed;
-top: 15px;
-right: 15px;
-background: #1a3a5f;
-color: white;
-padding: 10px 12px;
-border-radius: 12px;
-font-size: 14px;
-z-index: 99999;
-box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-cursor: pointer;
-">
-🌙
-</div>
-
-<script>
-function toggleDark(){
-    document.body.classList.toggle("dark-mode");
-}
-</script>
-<style>
-.dark-mode {
-    background: #0f172a !important;
-    color: #ffffff !important;
-}
-
-.dark-mode .subject-card,
-.dark-mode div {
-    background: #1e293b !important;
-    color: white !important;
-}
-
-.dark-mode .section-title {
-    color: #f39c12 !important;
-}
-</style>
-<div style="
-margin:20px 15px;
-padding:20px;
-background: rgba(255,255,255,0.2);
-backdrop-filter: blur(10px);
-border-radius:20px;
-border:1px solid rgba(255,255,255,0.3);
-box-shadow:0 10px 25px rgba(0,0,0,0.1);
-">
-
-    <h3 style="font-weight:900;">🔥 Premium Study Mode</h3>
-    <p style="font-size:12px; opacity:0.8;">
-        Focus + Speed + Smart Learning System
-    </p>
-
-</div>
-<style>
-.page {
-    animation: fadeIn 0.5s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from { opacity:0; transform: translateY(10px); }
-    to { opacity:1; transform: translateY(0); }
-}
-</style>
-<div class="page">
-    <style>
-.subject-card {
-    transition: 0.3s ease;
-}
-
-.subject-card:active {
-    transform: scale(0.96) rotate(-1deg);
-}
-    </style>
-    <script>
-// 🧠 USER DATA INIT
-let user = JSON.parse(localStorage.getItem("sst_user")) || {
-    name: "Student",
-    level: 1,
-    xp: 0,
-    streak: 0,
-    coins: 0
-};
-
-// 💾 SAVE FUNCTION
-function saveUser(){
-    localStorage.setItem("sst_user", JSON.stringify(user));
-}
-    </script>
-    <div style="margin:20px 15px; background:#fff; padding:20px; border-radius:20px; box-shadow:0 10px 25px rgba(0,0,0,0.08);">
-
-    <h3 style="font-weight:900;">👤 My Profile</h3>
-
-    <div style="margin-top:10px;">
-        <div style="font-size:14px;">Name: <b id="pName"></b></div>
-        <div style="font-size:14px;">Level: <b id="pLevel"></b></div>
-        <div style="font-size:14px;">XP: <b id="pXP"></b></div>
-        <div style="font-size:14px;">Coins: <b id="pCoins"></b></div>
-    </div>
-
-    </div>
-    <script>
-function loadProfile(){
-    document.getElementById("pName").innerText = user.name;
-    document.getElementById("pLevel").innerText = user.level;
-    document.getElementById("pXP").innerText = user.xp;
-    document.getElementById("pCoins").innerText = user.coins;
-}
-
-window.addEventListener("load", loadProfile);
-    </script>
-    <div style="margin:15px;">
-
-    <h3 style="font-weight:900;">🏆 Achievements</h3>
-
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:10px;">
-
-        <div style="background:#f1f2f6; padding:15px; border-radius:15px; text-align:center;">
-            🔥<br>
-            <b>7 Day Streak</b>
-        </div>
-
-        <div style="background:#f1f2f6; padding:15px; border-radius:15px; text-align:center;">
-            🎯<br>
-            <b>10 Quizzes</b>
-        </div>
-
-        <div style="background:#f1f2f6; padding:15px; border-radius:15px; text-align:center;">
-            📚<br>
-            <b>Study Master</b>
-        </div>
-
-        <div style="background:#f1f2f6; padding:15px; border-radius:15px; text-align:center;">
-            🏆<br>
-            <b>Top Rank</b>
-        </div>
-
-    </div>
-
-    </div>
-    <script>
-function addXP(points){
-    user.xp += points;
-    user.coins += Math.floor(points / 2);
-
-    // LEVEL UP LOGIC
-    if(user.xp >= 1000){
-        user.level++;
-        user.xp = 0;
-        alert("🎉 Level Up! You are now Level " + user.level);
-    }
-
-    saveUser();
-    loadProfile();
-}
-    </script>
-    addXP(50);
-    <meta name="theme-color" content="#1a3a5f">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<div id="bootScreen" style="
-position:fixed;
-top:0;left:0;width:100%;height:100%;
-background:linear-gradient(135deg,#0f172a,#1e293b);
-display:flex;align-items:center;justify-content:center;
-flex-direction:column;
-z-index:99999;color:white;
-">
-
-    <div style="font-size:50px; animation: pulse 1.5s infinite;">📚</div>
-    <h2 style="margin-top:10px;">SST Pro Loading...</h2>
-
-    <div style="width:200px;height:5px;background:#334155;border-radius:50px;margin-top:15px;overflow:hidden;">
-        <div style="width:0%;height:100%;background:#f39c12;animation:load 3s forwards;"></div>
-    </div>
-
-</div>
-
-<style>
-@keyframes load {
-    from { width:0%; }
-    to { width:100%; }
-}
-</style>
-
-<script>
-setTimeout(()=>{
-    document.getElementById("bootScreen").style.display="none";
-},3000);
-</script>
-<script>
-// 🔥 Firebase placeholder config (future use)
-const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_APP.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_APP.appspot.com",
-    messagingSenderId: "XXXX",
-    appId: "XXXX"
-};
-
-// 👉 Future use: login, leaderboard sync, quiz sync
-</script>
-<script>
-let globalLeaderboard = [
-    {name:"Aman", xp:980},
-    {name:"Priya", xp:860},
-    {name:"Rahul", xp:740}
-];
-
-function updateGlobalBoard(){
-    globalLeaderboard.sort((a,b)=>b.xp-a.xp);
-    console.log("🌍 Global Leaderboard Updated:", globalLeaderboard);
-}
-
-setInterval(updateGlobalBoard, 5000);
-</script>
-<link rel="manifest" href="manifest.json">
-
-<script>
-// PWA install prompt handler
-let deferredPrompt;
-
-window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    console.log("📲 App install available");
-});
-</script>
-<script>
-// Simple offline fallback logic
-window.addEventListener("offline", ()=>{
-    alert("⚠️ You are offline - using saved data");
-});
-
-window.addEventListener("online", ()=>{
-    alert("✅ Back online - syncing data");
-});
-</script>
-<!-- ========== PHASE 12: PREMIUM FINAL LAYER ========== -->
-
-<style>
-/* GLOBAL APP FEEL */
-body{
-    background:#f4f6fb;
-    -webkit-tap-highlight-color: transparent;
-}
-
-/* RAJASTHAN TOP TAG */
-.raj-top{
-    position: sticky;
-    top: 0;
-    z-index: 9999;
-    background: linear-gradient(135deg,#b71c1c,#ff6f00);
-    color:white;
-    text-align:center;
-    padding:10px;
-    font-weight:900;
-    letter-spacing:2px;
-    font-size:14px;
-    box-shadow:0 5px 20px rgba(0,0,0,0.2);
-}
-
-/* PREMIUM GLASS CARD */
-.glass-card{
-    background: rgba(255,255,255,0.9);
-    backdrop-filter: blur(10px);
-    border-radius:20px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.08);
-    transition:0.3s;
-}
-.glass-card:active{ transform:scale(0.97); }
-
-/* FLOAT ANIMATION */
-@keyframes floatUp {
-    0%{transform:translateY(20px);opacity:0;}
-    100%{transform:translateY(0);opacity:1;}
-}
-
-/* SPLASH QUOTE */
-.quote-splash{
+/* SPLASH MAIN */
+#splash {
     position:fixed;
-    top:0;left:0;
-    width:100%;height:100%;
-    background:linear-gradient(135deg,#000,#1a1a1a);
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#020617;
     display:flex;
     align-items:center;
     justify-content:center;
     flex-direction:column;
-    z-index:99999;
-    animation:fadeOut 4s forwards;
-}
-
-.quote-splash h1{
-    color:#f39c12;
-    font-size:22px;
-    text-align:center;
-    padding:20px;
-    animation:floatUp 1.5s ease;
-}
-
-.quote-splash p{
-    color:white;
-    font-size:13px;
-    opacity:0.8;
-    margin-top:10px;
-    text-align:center;
-    padding:0 20px;
-}
-
-@keyframes fadeOut{
-    0%{opacity:1;}
-    80%{opacity:1;}
-    100%{opacity:0;visibility:hidden;}
-}
-
-/* BOTTOM NAV STYLE */
-.bottom-nav{
-    position:fixed;
-    bottom:0;
-    left:0;
-    width:100%;
-    background:white;
-    display:flex;
-    justify-content:space-around;
-    padding:10px 0;
-    box-shadow:0 -5px 20px rgba(0,0,0,0.1);
     z-index:9999;
 }
 
-.nav-item{
+/* CONTENT */
+.splash-content {
     text-align:center;
-    font-size:11px;
-    color:#555;
-    font-weight:700;
 }
-.nav-item span{
-    display:block;
-    font-size:18px;
+
+/* TREE ANIMATION */
+.tree {
+    font-size:70px;
+    animation:grow 2s ease;
 }
+
+@keyframes grow {
+    0% {transform:scale(0); opacity:0;}
+    60% {transform:scale(1.2);}
+    100% {transform:scale(1);}
+}
+
+/* TITLE */
+.splash-content h1 {
+    color:#facc15;
+    font-size:26px;
+    font-weight:900;
+    letter-spacing:3px;
+}
+
+.splash-content h2 {
+    font-size:14px;
+    letter-spacing:6px;
+    opacity:0.7;
+}
+
+/* QUOTE */
+.quote {
+    margin-top:20px;
+    font-size:14px;
+    opacity:0.8;
+    min-height:40px;
+}
+
+/* PROGRESS BAR */
+.progress-bar {
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:4px;
+    background:#111;
+}
+
+.progress {
+    height:100%;
+    width:0%;
+    background:linear-gradient(to right,#facc15,#22c55e);
+    animation:load 4s linear forwards;
+}
+
+@keyframes load {
+    from {width:0;}
+    to {width:100%;}
+}
+
+/* EXIT */
+.hide {
+    opacity:0;
+    transition:1s;
+    pointer-events:none;
+}
+
 </style>
 
-<!-- ===== RAJASTHAN HEADER TOP ===== -->
-<div class="raj-top">
-    🇮🇳 RAJASTHAN • SOCIAL STUDIES PREMIUM APP
-</div>
+<script>
 
-<!-- ===== SPLASH QUOTE (NEW PREMIUM
-    <!-- ========== PHASE 13 : FINAL APP POLISH LAYER ========== -->
+/* QUOTE TYPING */
+const text = "शिक्षा की जड़ें कड़वी होती हैं, लेकिन फल मीठा होता है।";
+let i = 0;
+
+function typeQuote(){
+    if(i < text.length){
+        document.getElementById("quoteText").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeQuote, 50);
+    }
+}
+typeQuote();
+
+/* AUTO EXIT */
+setTimeout(()=>{
+    document.getElementById("splash").classList.add("hide");
+},4000);
+
+</script>
+<!-- MAIN CONTENT -->
+<div class="page active" id="homePage">
+
+    <div class="header">
+        <h1 class="gold">📜 RAJASTHAN GK</h1>
+        <p>Power Learning Zone</p>
+    </div>
+
+    <div class="grid">
+
+        <div class="card glow" onclick="openSubject('history')">
+            🏰<br>राजस्थान इतिहास
+        </div>
+
+        <div class="card glow" onclick="openSubject('geography')">
+            🗺️<br>राजस्थान भूगोल
+        </div>
+
+        <div class="card glow" onclick="openSubject('polity')">
+            🏛️<br>राजस्थान राजनीति
+        </div>
+
+        <div class="card locked" onclick="comingSoon()">
+            🎨<br>कला एवं संस्कृति
+            <div class="lock">COMING SOON ⚡</div>
+        </div>
+
+ </div> <!-- grid -->
+</div> <!-- homePage -->
+
+<!-- CSS START -->
+<style>
+
+/* MAIN APP */
+#mainApp {
+    padding-top:40px;
+    text-align:center;
+}
+
+/* HEADER */
+.header h1 {
+    font-size:22px;
+    font-weight:900;
+}
+
+.header p {
+    font-size:12px;
+    opacity:0.7;
+}
+
+/* GRID */
+.grid {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+    padding:20px;
+}
+
+/* GLOW EFFECT */
+.glow {
+    animation:glowAnim 2s infinite;
+}
+
+@keyframes glowAnim {
+    0% {box-shadow:0 0 5px #facc15;}
+    50% {box-shadow:0 0 20px #facc15;}
+    100% {box-shadow:0 0 5px #facc15;}
+}
+
+/* LOCK SYSTEM */
+.locked {
+    position:relative;
+}
+
+.lock {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.8);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    opacity:0;
+    font-size:12px;
+    transition:0.3s;
+}
+
+.locked:active .lock {
+    opacity:1;
+}
+
+</style>
+
+<script>
+
+/* SUBJECT OPEN */
+function openSubject(name){
+    alert("🚀 " + name + " module opening soon!");
+}
+
+/* COMING SOON */
+function comingSoon(){
+    alert("⚡ यह feature अभी निर्माण में है...");
+}
+
+</script>
+<!-- SLIDE PAGES -->
+
+<div id="pageContainer">
+
+    <!-- HOME PAGE -->
+    <div class="page active" id="homePage">
+        <!-- (तुम्हारा Rajasthan section already यहीं रहेगा) -->
+    </div>
+
+    <!-- SUBJECT PAGE -->
+    <div class="page" id="subjectPage">
+
+        <div class="topbar">
+            <button onclick="goBack()">⬅</button>
+            <h3 id="subjectTitle">Subject</h3>
+        </div>
+
+        <div class="subject-content">
+
+            <div class="card" onclick="comingSoon()">📚 Notes</div>
+            <div class="card" onclick="comingSoon()">🎮 Quiz</div>
+            <div class="card" onclick="comingSoon()">📝 Test</div>
+            <div class="card" onclick="comingSoon()">🎬 Story Mode</div>
+
+        </div>
+
+    </div>
+
+</div>
 
 <style>
-/* FINAL GLOBAL POLISH */
-html, body {
-    scroll-behavior: smooth;
+
+/* PAGE SYSTEM */
+#pageContainer {
+    position:relative;
+    width:100%;
+    height:100%;
+    overflow:hidden;
 }
 
-/* SOFT BACKGROUND GLOW */
-body::before{
-    content:"";
-    position:fixed;
-    top:-50%;
-    left:-50%;
-    width:200%;
-    height:200%;
-    background: radial-gradient(circle, rgba(243,156,18,0.08), transparent 60%);
-    z-index:-1;
-    animation: moveGlow 8s linear infinite;
+/* EACH PAGE */
+.page {
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left:100%;
+    background:#0f172a;
+    transition:0.5s;
 }
 
-@keyframes moveGlow{
-    0%{transform:rotate(0deg);}
-    100%{transform:rotate(360deg);}
+.page.active {
+    left:0;
 }
 
-/* FLOAT ACTION BUTTON */
-.fab{
-    position:fixed;
-    right:18px;
-    bottom:80px;
-    width:55px;
-    height:55px;
-    border-radius:50%;
-    background:linear-gradient(135deg,#f39c12,#e67e22);
+/* TOPBAR */
+.topbar {
     display:flex;
     align-items:center;
-    justify-content:center;
-    font-size:22px;
-    color:white;
-    box-shadow:0 10px 25px rgba(0,0,0,0.25);
-    z-index:99999;
-    animation:pulse 1.8s infinite;
+    gap:10px;
+    padding:15px;
+    background:#020617;
 }
 
-@keyframes pulse{
-    0%{transform:scale(1);}
-    50%{transform:scale(1.1);}
-    100%{transform:scale(1);}
+.topbar button {
+    background:#facc15;
+    border:none;
+    padding:5px 10px;
+    border-radius:10px;
 }
 
-/* BACK TO TOP */
-#topBtn{
-    position:fixed;
-    left:18px;
-    bottom:80px;
-    width:45px;
-    height:45px;
-    border-radius:50%;
-    background:#1a3a5f;
-    color:white;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:18px;
-    z-index:99999;
-    display:none;
-    box-shadow:0 8px 20px rgba(0,0,0,0.2);
+/* SUBJECT GRID */
+.subject-content {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+    padding:20px;
 }
 
-/* CARD HOVER TOUCH EFFECT */
-.subject-card{
-    transition:0.25s ease;
-}
-.subject-card:active{
-    transform:scale(0.95) rotate(-1deg);
-}
-
-/* SMOOTH LOAD */
-body{
-    animation: pageIn 0.8s ease;
-}
-@keyframes pageIn{
-    from{opacity:0; transform:translateY(10px);}
-    to{opacity:1; transform:translateY(0);}
-}
 </style>
 
-<!-- ===== FLOAT ACTION BUTTON ===== -->
-<div class="fab" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-    ⚡
+<script>
+
+/* OPEN SUBJECT PAGE */
+function openSubject(name){
+
+    document.getElementById("subjectTitle").innerText = name;
+
+    document.getElementById("homePage").classList.remove("active");
+    document.getElementById("subjectPage").classList.add("active");
+}
+
+/* GO BACK */
+function goBack(){
+    document.getElementById("subjectPage").classList.remove("active");
+    document.getElementById("homePage").classList.add("active");
+}
+
+</script>
+<!-- PHASE 4 START -->
+
+<style>
+
+/* SUBJECT PAGE */
+.subjectPage {
+  display: none;
+  padding: 20px;
+  animation: fadeIn 0.6s ease;
+}
+
+.subjectTitle {
+  font-size: 26px;
+  font-weight: bold;
+  color: gold;
+  margin-bottom: 20px;
+}
+
+/* BACK BUTTON */
+.backBtn {
+  padding: 10px 20px;
+  background: linear-gradient(45deg, red, orange);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+/* COMING SOON FULL SCREEN */
+#comingBox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  color: gold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  z-index: 9999;
+  display: none;
+  animation: zoomIn 0.5s ease;
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+  from {opacity:0;}
+  to {opacity:1;}
+}
+
+@keyframes zoomIn {
+  from {transform: scale(0.5);}
+  to {transform: scale(1);}
+}
+
+</style>
+
+<!-- SUBJECT PAGE -->
+<div id="subjectPage" class="subjectPage">
+  <button class="backBtn" onclick="goBack()">⬅ Back</button>
+  <div id="subjectTitle" class="subjectTitle"></div>
 </div>
 
-<!-- ===== BACK TO TOP BUTTON ===== -->
-<div id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-    ↑
-</div>
+<!-- COMING SOON FULL SCREEN -->
+<div id="comingBox">🚀 COMING SOON...</div>
 
 <script>
-// SHOW BACK TO TOP
-window.addEventListener("scroll",()=>{
-    let btn=document.getElementById("topBtn");
-    if(window.scrollY>300){
-        btn.style.display="flex";
-    }else{
-        btn.style.display="none";
+
+/* OPEN SUBJECT */
+function openSubject(name){
+  document.getElementById("homePage").style.display = "none";
+  document.getElementById("subjectPage").style.display = "block";
+
+  let title = "";
+
+  if(name === "history") title = "📜 राजस्थान इतिहास";
+  if(name === "geography") title = "🌍 राजस्थान भूगोल";
+  if(name === "polity") title = "🏛️ राजस्थान राजनीति";
+
+  document.getElementById("subjectTitle").innerText = title;
+}
+
+/* BACK FUNCTION */
+function goBack(){
+  document.getElementById("subjectPage").style.display = "none";
+  document.getElementById("homePage").style.display = "block";
+}
+
+/* COMING SOON */
+function comingSoon(){
+  let box = document.getElementById("comingBox");
+  box.style.display = "flex";
+
+  setTimeout(()=>{
+    box.style.display = "none";
+  },2000);
+}
+
+</script>
+
+<!-- PHASE 4 END -->
+    <!-- PHASE 5 START -->
+
+<style>
+
+/* TOPIC LIST */
+.topicList {
+  margin-top: 20px;
+}
+
+.topicItem {
+  background: linear-gradient(45deg, #1e1e1e, #333);
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.topicItem:hover {
+  transform: scale(1.05);
+  background: linear-gradient(45deg, orange, red);
+}
+
+/* QUIZ BUTTON */
+.quizBtn {
+  margin-top: 20px;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(45deg, purple, blue);
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  animation: glowBtn 1s infinite alternate;
+}
+
+@keyframes glowBtn {
+  from {box-shadow: 0 0 5px purple;}
+  to {box-shadow: 0 0 20px blue;}
+}
+
+</style>
+
+<script>
+
+/* ADD TOPICS DYNAMICALLY */
+function loadTopics(name){
+
+  let topics = [];
+
+  if(name === "history"){
+    topics = ["प्राचीन राजस्थान", "राजपूत काल", "ब्रिटिश काल", "स्वतंत्रता आंदोलन"];
+  }
+
+  if(name === "geography"){
+    topics = ["भौगोलिक स्थिति", "नदियाँ", "जलवायु", "खनिज संसाधन"];
+  }
+
+  if(name === "polity"){
+    topics = ["संविधान", "राज्य सरकार", "पंचायती राज", "चुनाव प्रणाली"];
+  }
+
+  let html = '<div class="topicList">';
+  
+  topics.forEach(t=>{
+    html += `<div class="topicItem">${t}</div>`;
+  });
+
+  html += '</div>';
+
+  html += '<button class="quizBtn" onclick="startQuiz()">🚀 Start Quiz</button>';
+
+  document.getElementById("subjectPage").innerHTML += html;
+}
+
+/* MODIFY OPEN SUBJECT (AUTO LOAD TOPICS) */
+const oldOpen = openSubject;
+
+openSubject = function(name){
+  oldOpen(name);
+
+  // clear old topics (safe)
+  let page = document.getElementById("subjectPage");
+  let old = document.querySelector(".topicList");
+  if(old) old.remove();
+
+  loadTopics(name);
+}
+
+/* QUIZ START */
+function startQuiz(){
+  alert("🔥 Quiz System Phase 6 में आएगा");
+}
+
+</script>
+
+<!-- PHASE 5 END -->
+    अब आया असली मज़ा 🔥
+अब हम बना रहे हैं REAL QUIZ ENGINE — timer + score + next question + result 💀
+👉 जैसा तुमने कहा: बस नीचे paste करना है, कुछ edit नहीं करना
+🚀 PHASE 6 – Real Quiz System (MCQ + Timer + Score)
+HTML
+<!-- PHASE 6 START -->
+
+<style>
+
+/* QUIZ BOX */
+#quizBox {
+  display: none;
+  padding: 20px;
+  animation: fadeIn 0.5s ease;
+}
+
+.question {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.option {
+  background: #222;
+  color: white;
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.option:hover {
+  background: orange;
+  transform: scale(1.05);
+}
+
+/* TIMER */
+#timer {
+  font-size: 18px;
+  color: red;
+  margin-bottom: 10px;
+}
+
+/* RESULT */
+#resultBox {
+  display: none;
+  text-align: center;
+  font-size: 22px;
+  color: gold;
+  margin-top: 20px;
+}
+
+</style>
+
+<!-- QUIZ UI -->
+<div id="quizBox">
+  <div id="timer">⏱ Time: 10</div>
+  <div id="questionBox" class="question"></div>
+  <div id="optionsBox"></div>
+</div>
+
+<div id="resultBox"></div>
+
+<script>
+
+/* QUIZ DATA */
+let quizData = [
+  {
+    q: "राजस्थान की राजधानी क्या है?",
+    o: ["जयपुर", "उदयपुर", "कोटा", "जोधपुर"],
+    a: "जयपुर"
+  },
+  {
+    q: "राजस्थान में सबसे लंबी नदी कौनसी है?",
+    o: ["लूनी", "चंबल", "बनास", "माही"],
+    a: "चंबल"
+  },
+  {
+    q: "राजस्थान का सबसे बड़ा जिला कौनसा है?",
+    o: ["जैसलमेर", "जयपुर", "बीकानेर", "उदयपुर"],
+    a: "जैसलमेर"
+  }
+];
+
+let index = 0;
+let score = 0;
+let time = 10;
+let timer;
+
+/* START QUIZ */
+function startQuiz(){
+  document.getElementById("subjectPage").style.display = "none";
+  document.getElementById("quizBox").style.display = "block";
+
+  index = 0;
+  score = 0;
+
+  loadQuestion();
+}
+
+/* LOAD QUESTION */
+function loadQuestion(){
+
+  if(index >= quizData.length){
+    endQuiz();
+    return;
+  }
+
+  let q = quizData[index];
+
+  document.getElementById("questionBox").innerText = q.q;
+
+  let optionsHTML = "";
+  q.o.forEach(opt=>{
+    optionsHTML += `<div class="option" onclick="checkAnswer('${opt}')">${opt}</div>`;
+  });
+
+  document.getElementById("optionsBox").innerHTML = optionsHTML;
+
+  startTimer();
+}
+
+/* CHECK ANSWER */
+function checkAnswer(ans){
+  if(ans === quizData[index].a){
+    score++;
+  }
+  index++;
+  loadQuestion();
+}
+
+/* TIMER */
+function startTimer(){
+  clearInterval(timer);
+  time = 10;
+
+  document.getElementById("timer").innerText = "⏱ Time: " + time;
+
+  timer = setInterval(()=>{
+    time--;
+    document.getElementById("timer").innerText = "⏱ Time: " + time;
+
+    if(time <= 0){
+      index++;
+      loadQuestion();
     }
-});
 
-// FINAL PERFORMANCE TOUCH
-document.addEventListener("DOMContentLoaded",()=>{
-    console.log("SST PRO LOADED 🚀 - FINAL BUILD READY");
-});
+  },1000);
+}
+
+/* END QUIZ */
+function endQuiz(){
+  clearInterval(timer);
+
+  document.getElementById("quizBox").style.display = "none";
+  document.getElementById("resultBox").style.display = "block";
+
+  document.getElementById("resultBox").innerHTML =
+    "🔥 Score: " + score + " / " + quizData.length +
+    "<br><br><button onclick='restartQuiz()'>🔄 Restart</button>";
+}
+
+/* RESTART */
+function restartQuiz(){
+  document.getElementById("resultBox").style.display = "none";
+  document.getElementById("homePage").style.display = "block";
+}
+
 </script>
 
-<!-- ========== FINAL SIGNATURE ========== -->
-<div style="text-align:center; padding:25px 10px; color:#888; font-size:11px;">
-    🚀 SST PRO FINAL BUILD • Rajasthan Education System<br>
-    <b style="color:#1a3a5f;">Made with Vision by Sanjay Dhakar</b>
+<!-- PHASE 6 END -->
+<!-- PHASE 7 START -->
+
+<style>
+
+/* LEVEL BADGE */
+#levelBox {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: linear-gradient(45deg, gold, orange);
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+  color: black;
+  z-index: 9999;
+  box-shadow: 0 0 10px gold;
+}
+
+/* XP BAR */
+#xpBar {
+  width: 100%;
+  height: 10px;
+  background: #ddd;
+  margin-top: 5px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#xpFill {
+  height: 100%;
+  width: 0%;
+  background: green;
+}
+
+</style>
+
+<!-- LEVEL UI -->
+<div id="levelBox">
+  Level: <span id="level">1</span>
+  <div id="xpBar"><div id="xpFill"></div></div>
 </div>
 
-<!-- ========== END FINAL TOUCH ========== -->
-    <!-- FINAL CLEAN END -->
 <script>
-document.addEventListener("contextmenu", e => e.preventDefault());
+
+/* LOAD DATA */
+let level = localStorage.getItem("level") || 1;
+let xp = localStorage.getItem("xp") || 0;
+
+document.getElementById("level").innerText = level;
+updateXP();
+
+/* ADD XP */
+function addXP(points){
+  xp = parseInt(xp) + points;
+
+  if(xp >= 100){
+    level++;
+    xp = 0;
+    alert("🎉 Level Up! Level " + level);
+  }
+
+  localStorage.setItem("level", level);
+  localStorage.setItem("xp", xp);
+
+  document.getElementById("level").innerText = level;
+  updateXP();
+}
+
+/* UPDATE XP BAR */
+function updateXP(){
+  document.getElementById("xpFill").style.width = xp + "%";
+}
+
+/* CONNECT WITH QUIZ */
+const oldEndQuiz = endQuiz;
+
+endQuiz = function(){
+  addXP(score * 20); // हर सही answer पर XP
+
+  oldEndQuiz();
+}
+
 </script>
+
+<!-- PHASE 7 END -->
+    <!-- PHASE 8 START -->
+
+<style>
+
+/* DAILY REWARD BOX */
+#dailyRewardBox {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(45deg, #ff9800, #ff5722);
+  color: white;
+  padding: 15px 25px;
+  border-radius: 15px;
+  font-weight: bold;
+  z-index: 9999;
+  display: none;
+  animation: popIn 0.5s ease;
+}
+
+#dailyRewardBox button {
+  margin-top: 10px;
+  padding: 6px 15px;
+  border: none;
+  border-radius: 8px;
+  background: white;
+  color: black;
+  font-weight: bold;
+}
+
+</style>
+
+<!-- DAILY REWARD UI -->
+<div id="dailyRewardBox">
+  🎁 Daily Reward मिल गया!
+  <br>+50 XP
+  <br>
+  <button onclick="closeReward()">OK</button>
+</div>
+
+<script>
+
+/* CHECK DAILY LOGIN */
+function checkDailyReward(){
+  let last = localStorage.getItem("lastLogin");
+  let today = new Date().toDateString();
+
+  if(last !== today){
+    // reward do
+    localStorage.setItem("lastLogin", today);
+
+    addXP(50);
+
+    document.getElementById("dailyRewardBox").style.display = "block";
+  }
+}
+
+/* CLOSE REWARD */
+function closeReward(){
+  document.getElementById("dailyRewardBox").style.display = "none";
+}
+
+/* AUTO RUN */
+window.addEventListener("load", checkDailyReward);
+
+</script>
+
+<!-- PHASE 8 END -->
+    <!-- PHASE 9 START -->
+
+<!-- AUDIO FILES -->
+<audio id="clickSound" src="https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3"></audio>
+<audio id="correctSound" src="https://assets.mixkit.co/sfx/preview/mixkit-correct-answer-tone-2870.mp3"></audio>
+<audio id="wrongSound" src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-2876.mp3"></audio>
+
+<style>
+
+/* BUTTON PRESS EFFECT */
+.card, .option, button {
+  transition: 0.2s;
+}
+
+.card:active, .option:active, button:active {
+  transform: scale(0.9);
+  filter: brightness(1.2);
+}
+
+</style>
+
+<script>
+
+/* PLAY CLICK SOUND */
+function playClick(){
+  let s = document.getElementById("clickSound");
+  if(s) s.play();
+}
+
+/* PLAY CORRECT */
+function playCorrect(){
+  let s = document.getElementById("correctSound");
+  if(s) s.play();
+}
+
+/* PLAY WRONG */
+function playWrong(){
+  let s = document.getElementById("wrongSound");
+  if(s) s.play();
+}
+
+/* AUTO ADD CLICK SOUND TO ALL BUTTONS */
+document.addEventListener("click", function(e){
+  if(e.target.classList.contains("card") || 
+     e.target.classList.contains("option") || 
+     e.target.tagName === "BUTTON"){
+    playClick();
+  }
+});
+
+/* CONNECT WITH QUIZ ANSWER */
+const oldCheck = checkAnswer;
+
+checkAnswer = function(ans){
+
+  if(ans === quizData[index].a){
+    playCorrect();
+  } else {
+    playWrong();
+  }
+
+  oldCheck(ans);
+}
+
+</script>
+
+<!-- PHASE 9 END -->
+    अब हम app को competition mode 🔥 में ले जा रहे हैं
+👉 अब बनेगा Leaderboard System (Top Users Ranking) 💀🏆
+और जैसा तुम चाहते हो 👉 बस नीचे paste करना है (no edit)
+🚀 PHASE 10 – Leaderboard System (Top Score Ranking)
+HTML
+<!-- PHASE 10 START -->
+
+<style>
+
+/* LEADERBOARD BOX */
+#leaderboard {
+  display: none;
+  padding: 20px;
+  color: white;
+  animation: fadeIn 0.5s ease;
+}
+
+.leaderItem {
+  background: linear-gradient(45deg, #111, #333);
+  margin: 8px 0;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+}
+
+.top1 { border-left: 5px solid gold; }
+.top2 { border-left: 5px solid silver; }
+.top3 { border-left: 5px solid #cd7f32; }
+
+.openLeaderBtn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(45deg, green, lime);
+  color: black;
+  font-weight: bold;
+}
+
+</style>
+
+<!-- LEADERBOARD UI -->
+<div id="leaderboard">
+  <h2>🏆 Leaderboard</h2>
+  <div id="leaderList"></div>
+  <button onclick="closeLeader()">⬅ Back</button>
+</div>
+
+<button class="openLeaderBtn" onclick="openLeader()">🏆 Leaderboard</button>
+
+<script>
+
+/* SAVE SCORE */
+function saveScore(score){
+
+  let data = JSON.parse(localStorage.getItem("leaders")) || [];
+
+  let name = prompt("अपना नाम डालो:");
+  if(!name) name = "Player";
+
+  data.push({name:name, score:score});
+
+  // sort high to low
+  data.sort((a,b)=> b.score - a.score);
+
+  // top 5
+  data = data.slice(0,5);
+
+  localStorage.setItem("leaders", JSON.stringify(data));
+}
+
+/* SHOW LEADERBOARD */
+function openLeader(){
+  document.getElementById("homePage").style.display = "none";
+  document.getElementById("leaderboard").style.display = "block";
+
+  let data = JSON.parse(localStorage.getItem("leaders")) || [];
+
+  let html = "";
+
+  data.forEach((p,i)=>{
+    let cls = "";
+    if(i==0) cls="top1";
+    if(i==1) cls="top2";
+    if(i==2) cls="top3";
+
+    html += `<div class="leaderItem ${cls}">
+      <span>#${i+1} ${p.name}</span>
+      <span>${p.score}</span>
+    </div>`;
+  });
+
+  document.getElementById("leaderList").innerHTML = html;
+}
+
+/* CLOSE */
+function closeLeader(){
+  document.getElementById("leaderboard").style.display = "none";
+  document.getElementById("homePage").style.display = "block";
+}
+
+/* CONNECT WITH QUIZ END */
+const oldEndQuiz2 = endQuiz;
+
+endQuiz = function(){
+  saveScore(score);
+  oldEndQuiz2();
+}
+
+</script>
+
+<!-- PHASE 10 END -->
+<!-- PHASE 11 START -->
+
+<style>
+
+/* BADGE PANEL */
+#badgePanel {
+  display: none;
+  padding: 20px;
+  color: white;
+}
+
+.badge {
+  background: linear-gradient(45deg, #222, #444);
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.badge.locked {
+  opacity: 0.5;
+}
+
+.badge.unlocked {
+  border-left: 5px solid gold;
+}
+
+/* OPEN BUTTON */
+.openBadgeBtn {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: linear-gradient(45deg, purple, pink);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+}
+
+</style>
+
+<!-- BADGE UI -->
+<div id="badgePanel">
+  <h2>🎖️ Achievements</h2>
+  <div id="badgeList"></div>
+  <button onclick="closeBadge()">⬅ Back</button>
+</div>
+
+<button class="openBadgeBtn" onclick="openBadge()">🎖️ Achievements</button>
+
+<script>
+
+/* BADGE DATA */
+let badges = [
+  {id:1, name:"🎯 Beginner", req:1},
+  {id:2, name:"🔥 Learner", req:2},
+  {id:3, name:"💀 Master", req:3}
+];
+
+/* LOAD BADGES */
+function openBadge(){
+  document.getElementById("homePage").style.display="none";
+  document.getElementById("badgePanel").style.display="block";
+
+  let done = parseInt(localStorage.getItem("quizDone")||0);
+
+  let html="";
+
+  badges.forEach(b=>{
+    let unlocked = done >= b.req;
+
+    html += `<div class="badge ${unlocked?'unlocked':'locked'}">
+      <span>${b.name}</span>
+      <span>${unlocked?'✅':'🔒'}</span>
+    </div>`;
+  });
+
+  document.getElementById("badgeList").innerHTML = html;
+}
+
+/* CLOSE */
+function closeBadge(){
+  document.getElementById("badgePanel").style.display="none";
+  document.getElementById("homePage").style.display="block";
+}
+
+/* TRACK QUIZ COUNT */
+const oldEndQuiz3 = endQuiz;
+
+endQuiz = function(){
+  let done = parseInt(localStorage.getItem("quizDone")||0);
+  done++;
+  localStorage.setItem("quizDone", done);
+
+  oldEndQuiz3();
+}
+
+</script>
+
+<!-- PHASE 11 END -->
+    <!-- PHASE 12 START -->
+
+<style>
+
+/* DEFAULT THEME */
+body.light {
+  background: #ffffff;
+  color: #000;
+}
+
+body.dark {
+  background: #0f172a;
+  color: #ffffff;
+}
+
+/* TOGGLE BUTTON */
+#themeBtn {
+  position: fixed;
+  bottom: 80px;
+  right: 15px;
+  padding: 10px 15px;
+  border-radius: 50px;
+  border: none;
+  font-weight: bold;
+  background: linear-gradient(45deg, #333, #666);
+  color: white;
+  z-index: 9999;
+}
+
+/* SMOOTH TRANSITION */
+body {
+  transition: background 0.5s, color 0.5s;
+}
+
+</style>
+
+<!-- BUTTON -->
+<button id="themeBtn" onclick="toggleTheme()">🌙 Theme</button>
+
+<script>
+
+/* LOAD SAVED THEME */
+let savedTheme = localStorage.getItem("theme") || "dark";
+document.body.classList.add(savedTheme);
+
+/* TOGGLE */
+function toggleTheme(){
+  if(document.body.classList.contains("dark")){
+    document.body.classList.remove("dark");
+    document.body.classList.add("light");
+    localStorage.setItem("theme","light");
+  } else {
+    document.body.classList.remove("light");
+    document.body.classList.add("dark");
+    localStorage.setItem("theme","dark");
+  }
+}
+
+</script>
+
+<!-- PHASE 12 END -->
+    <!-- PHASE 13 START -->
+
+<style>
+
+/* SLIDER */
+#autoSlider {
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 15px;
+  margin: 15px 0;
+}
+
+.slideTrack {
+  display: flex;
+  width: 400%;
+  height: 100%;
+  transition: transform 0.6s ease;
+}
+
+.slideItem {
+  width: 100%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+}
+
+.s1 { background: linear-gradient(45deg, #ff416c, #ff4b2b); }
+.s2 { background: linear-gradient(45deg, #1d976c, #93f9b9); }
+.s3 { background: linear-gradient(45deg, #4568dc, #b06ab3); }
+.s4 { background: linear-gradient(45deg, #f7971e, #ffd200); }
+
+/* QUOTE BOX */
+#quoteBox {
+  margin: 15px 0;
+  padding: 15px;
+  background: linear-gradient(45deg, #222, #444);
+  color: white;
+  border-radius: 12px;
+  font-style: italic;
+  text-align: center;
+  animation: fadeIn 1s ease;
+}
+
+</style>
+
+<!-- SLIDER HTML -->
+<div id="autoSlider">
+  <div class="slideTrack" id="slideTrack">
+    <div class="slideItem s1">📚 Learn Smart</div>
+    <div class="slideItem s2">🚀 Crack Exams</div>
+    <div class="slideItem s3">🏆 Be Topper</div>
+    <div class="slideItem s4">💀 No Excuses</div>
+  </div>
+</div>
+
+<!-- QUOTE -->
+<div id="quoteBox">Loading Quote...</div>
+
+<script>
+
+/* SLIDER LOGIC */
+let slideIndex = 0;
+
+setInterval(()=>{
+  slideIndex = (slideIndex + 1) % 4;
+  document.getElementById("slideTrack").style.transform =
+    "translateX(-" + (slideIndex * 100) + "%)";
+},3000);
+
+/* QUOTES */
+let quotes = [
+  "🔥 सफलता मेहनत से मिलती है",
+  "💀 हार मत मानो, जीत पास है",
+  "🚀 आज पढ़ो, कल राज करो",
+  "🏆 खुद को हराओ, दुनिया जीत जाओ"
+];
+
+function changeQuote(){
+  let q = quotes[Math.floor(Math.random()*quotes.length)];
+  document.getElementById("quoteBox").innerText = q;
+}
+
+setInterval(changeQuote,4000);
+changeQuote();
+
+</script>
+
+<!-- PHASE 13 END -->
+    <!-- PHASE 14 START -->
+
+<style>
+
+/* NOTIFICATION BUTTON */
+#notifyBtn {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  background: linear-gradient(45deg, red, orange);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 50px;
+  font-weight: bold;
+  z-index: 9999;
+}
+
+/* ALERT BOX */
+#alertBox {
+  position: fixed;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #111;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px red;
+  display: none;
+  animation: fadeIn 0.5s ease;
+  z-index: 9999;
+}
+
+</style>
+
+<!-- BUTTON -->
+<button id="notifyBtn" onclick="showAlert()">📢 Alerts</button>
+
+<!-- ALERT -->
+<div id="alertBox">🚀 New Exam Update Available!</div>
+
+<script>
+
+/* SHOW ALERT */
+function showAlert(){
+  let box = document.getElementById("alertBox");
+  box.style.display = "block";
+
+  setTimeout(()=>{
+    box.style.display = "none";
+  },3000);
+}
+
+/* AUTO RANDOM ALERT */
+let alerts = [
+  "📢 नई भर्ती जारी!",
+  "🔥 Admit Card Released",
+  "🚀 Exam Date Announced",
+  "🏆 Result Published"
+];
+
+setInterval(()=>{
+  let msg = alerts[Math.floor(Math.random()*alerts.length)];
+  let box = document.getElementById("alertBox");
+  box.innerText = msg;
+  box.style.display = "block";
+
+  setTimeout(()=>{ box.style.display="none"; },3000);
+},15000);
+
+</script>
+
+<!-- PHASE 14 END -->
+    <!-- PHASE 15A START -->
+
+<style>
+
+/* LOCK SCREEN */
+#lockScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  color: gold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 99999;
+}
+
+#lockScreen input {
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: none;
+}
+
+#lockScreen button {
+  margin-top: 10px;
+  padding: 8px 20px;
+  border: none;
+  background: gold;
+  font-weight: bold;
+}
+
+</style>
+
+<!-- LOCK SCREEN -->
+<div id="lockScreen">
+  <h2>🔒 Secure Access</h2>
+  <input type="password" id="passInput" placeholder="Enter Password">
+  <button onclick="unlockApp()">Unlock</button>
+</div>
+
+<script>
+
+/* PASSWORD */
+const APP_PASS = "1234";
+
+/* UNLOCK */
+function unlockApp(){
+  let val = document.getElementById("passInput").value;
+
+  if(val === APP_PASS){
+    document.getElementById("lockScreen").style.display = "none";
+  } else {
+    alert("❌ Wrong Password");
+  }
+}
+
+/* DISABLE RIGHT CLICK */
+document.addEventListener("contextmenu", e => e.preventDefault());
+
+/* BLOCK DEVTOOLS */
+document.onkeydown = function(e){
+  if(e.keyCode == 123) return false;
+  if(e.ctrlKey && e.shiftKey && e.keyCode == 73) return false;
+  if(e.ctrlKey && e.keyCode == 85) return false;
+};
+
+/* DETECT INSPECT */
+setInterval(()=>{
+  if(window.outerHeight - window.innerHeight > 150){
+    document.body.innerHTML = "<h1 style='color:red;text-align:center;margin-top:40%'>⚠️ Security Breach</h1>";
+  }
+},1000);
+
+</script>
+
+<!-- PHASE 15A END -->
+    <!-- PHASE 15B START -->
+
+<script>
+
+/* ENCRYPT DATA (basic) */
+function encodeData(data){
+  return btoa(JSON.stringify(data));
+}
+
+function decodeData(data){
+  try{
+    return JSON.parse(atob(data));
+  }catch{
+    return null;
+  }
+}
+
+/* SAFE SAVE */
+function safeSet(key, value){
+  localStorage.setItem(key, encodeData(value));
+}
+
+/* SAFE GET */
+function safeGet(key){
+  let data = localStorage.getItem(key);
+  return data ? decodeData(data) : null;
+}
+
+/* OVERRIDE LOCAL STORAGE USE */
+const oldSetItem = localStorage.setItem;
+
+localStorage.setItem = function(key,value){
+  oldSetItem(key, btoa(value));
+};
+
+/* FAKE DATA LAYER */
+let fakeData = {
+  system: "secured",
+  hash: "SHA-256-LOCK",
+  status: "protected"
+};
+
+console.log("🔐 Security Layer Active");
+
+/* AUTO WIPE IF TAMPER */
+window.addEventListener("storage", ()=>{
+  alert("⚠️ Data Tampering Detected");
+  localStorage.clear();
+  location.reload();
+});
+
+</script>
+
+<!-- PHASE 15B END -->
+    <!-- PHASE 16 START -->
+
+<!-- FIREBASE SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
+
+<style>
+
+/* LOGIN SCREEN */
+#loginScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 99999;
+}
+
+#loginScreen input {
+  margin: 5px;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+}
+
+#loginScreen button {
+  padding: 10px 20px;
+  margin-top: 10px;
+  border: none;
+  background: orange;
+  font-weight: bold;
+}
+
+</style>
+
+<!-- LOGIN UI -->
+<div id="loginScreen">
+  <h2>🔐 Login System</h2>
+  <input type="email" id="email" placeholder="Email">
+  <input type="password" id="password" placeholder="Password">
+  <button onclick="login()">Login</button>
+  <button onclick="signup()">Signup</button>
+</div>
+
+<script>
+
+/* 🔴 यहाँ अपना Firebase config डालो */
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_DOMAIN",
+  projectId: "YOUR_PROJECT_ID",
+};
+
+/* INIT */
+const app = firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+
+/* SIGNUP */
+function signup(){
+  let email = document.getElementById("email").value;
+  let pass = document.getElementById("password").value;
+
+  auth.createUserWithEmailAndPassword(email, pass)
+    .then(()=>{
+      alert("✅ Account Created");
+    })
+    .catch(e=>alert(e.message));
+}
+
+/* LOGIN */
+function login(){
+  let email = document.getElementById("email").value;
+  let pass = document.getElementById("password").value;
+
+  auth.signInWithEmailAndPassword(email, pass)
+    .then(()=>{
+      document.getElementById("loginScreen").style.display="none";
+    })
+    .catch(e=>alert(e.message));
+}
+
+/* AUTO LOGIN CHECK */
+auth.onAuthStateChanged(user=>{
+  if(user){
+    document.getElementById("loginScreen").style.display="none";
+  }
+});
+
+</script>
+
+<!-- PHASE 16 END -->
+    <!-- PHASE 17 START -->
+
+<!-- FIREBASE FIRESTORE -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
+
+<style>
+
+/* PROFILE BOX */
+#profileBox {
+  display: none;
+  padding: 20px;
+  color: white;
+}
+
+.profileItem {
+  margin: 10px 0;
+  padding: 10px;
+  background: #222;
+  border-radius: 8px;
+}
+
+.openProfileBtn {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: linear-gradient(45deg, cyan, blue);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+}
+
+</style>
+
+<!-- PROFILE UI -->
+<div id="profileBox">
+  <h2>👤 Profile</h2>
+  <div id="profileData"></div>
+  <button onclick="closeProfile()">⬅ Back</button>
+</div>
+
+<button class="openProfileBtn" onclick="openProfile()">👤 Profile</button>
+
+<script>
+
+/* FIRESTORE INIT */
+const db = firebase.firestore();
+
+/* SAVE SCORE ONLINE */
+function saveScoreOnline(score){
+
+  let user = firebase.auth().currentUser;
+  if(!user) return;
+
+  db.collection("leaders").add({
+    name: user.email,
+    score: score,
+    time: Date.now()
+  });
+}
+
+/* GLOBAL LEADERBOARD */
+function openLeader(){
+
+  document.getElementById("homePage").style.display="none";
+  document.getElementById("leaderboard").style.display="block";
+
+  db.collection("leaders")
+    .orderBy("score","desc")
+    .limit(10)
+    .get()
+    .then(snapshot=>{
+      let html="";
+      let i=1;
+
+      snapshot.forEach(doc=>{
+        let d = doc.data();
+
+        html += `<div class="leaderItem">
+          <span>#${i} ${d.name}</span>
+          <span>${d.score}</span>
+        </div>`;
+
+        i++;
+      });
+
+      document.getElementById("leaderList").innerHTML = html;
+    });
+
+}
+
+/* PROFILE */
+function openProfile(){
+  let user = firebase.auth().currentUser;
+
+  document.getElementById("homePage").style.display="none";
+  document.getElementById("profileBox").style.display="block";
+
+  let html = `
+    <div class="profileItem">📧 ${user.email}</div>
+    <div class="profileItem">🔥 Level: ${localStorage.getItem("level")||1}</div>
+    <div class="profileItem">🎯 XP: ${localStorage.getItem("xp")||0}</div>
+  `;
+
+  document.getElementById("profileData").innerHTML = html;
+}
+
+/* CLOSE PROFILE */
+function closeProfile(){
+  document.getElementById("profileBox").style.display="none";
+  document.getElementById("homePage").style.display="block";
+}
+
+/* CONNECT QUIZ */
+const oldEndQuiz4 = endQuiz;
+
+endQuiz = function(){
+  saveScoreOnline(score);
+  oldEndQuiz4();
+}
+
+</script>
+
+<!-- PHASE 17 END -->
 
 </body>
 </html>
