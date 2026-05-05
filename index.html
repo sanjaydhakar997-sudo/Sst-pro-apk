@@ -3,360 +3,485 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SST Classes - Premium Mission 2026</title>
+    <title>SST Classes - Premium</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --primary: #0f172a;    /* डार्क प्रीमियम नेवी */
-            --accent: #fbbf24;     /* वाइब्रेंट गोल्ड */
-            --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            --glass: rgba(255, 255, 255, 0.8);
+            --primary-dark: #0f172a;   /* गहरा नेवी - टेक्स्ट के लिए */
+            --accent-gold: #fbbf24;    /* चमकता सोना - हाइलाइट के लिए */
+            --brand-orange: #c2410c;   /* गहरा ऑरेंज */
+            --app-bg: #f1f5f9;         /* हल्का ग्रे बैकग्राउंड (ताकि सब कुछ साफ दिखे) */
+            --card-white: #ffffff;     /* शुद्ध सफेद कार्ड्स के लिए */
         }
 
         * {
             margin: 0; padding: 0; box-sizing: border-box;
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            background: var(--bg-gradient);
-            min-height: 100vh;
-            color: #1e293b;
-            overflow-x: hidden;
+            background-color: var(--app-bg);
+            color: var(--primary-dark);
+            /* बैकग्राउंड पर सूक्ष्म ग्रिड - जो खालीपन को भरता है */
+            background-image: radial-gradient(#cbd5e1 0.8px, transparent 0.8px);
+            background-size: 24px 24px;
         }
 
-        /*--- प्रीमियम एनिमेटेड हेडर ---*/
+        /*--- Authentic Premium Header ---*/
         header {
-            background: var(--glass);
-            backdrop-filter: blur(15px); /* कांच जैसा इफेक्ट */
-            -webkit-backdrop-filter: blur(15px);
-            padding: 12px 20px;
+            background: var(--card-white);
+            padding: 18px 20px;
             position: fixed;
             top: 0; width: 100%;
             z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+            /* हेडर को नीचे से अलग दिखाने के लिए डार्क बॉर्डर और शैडो */
+            border-bottom: 3px solid #e2e8f0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
 
-        .logo-area {
-            position: relative;
+        .brand-container {
+            display: flex;
+            flex-direction: column;
         }
 
-        .logo-area h1 {
-            color: var(--primary);
-            font-size: 20px;
-            font-weight: 900;
-            letter-spacing: -0.5px;
-            position: relative;
+        .brand-logo {
+            font-family: 'Marcellus', serif;
+            font-size: 22px;
+            font-weight: 400;
+            color: var(--primary-dark);
+            line-height: 1;
         }
 
-        .logo-area span {
-            background: linear-gradient(90deg, #f59e0b, #ef4444);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .brand-logo b {
+            color: var(--brand-orange);
+            font-weight: 400;
+        }
+
+        .brand-sub {
             font-size: 10px;
             font-weight: 800;
+            color: #64748b;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            margin-top: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        /* लाइव पल्स एनीमेशन (Notification Icon) */
-        .notification-btn {
+        .brand-line {
+            height: 2px;
+            width: 25px;
+            background: linear-gradient(90deg, var(--brand-orange), transparent);
+        }
+
+        /*--- Premium Notification (Live Icon) ---*/
+        .notif-box {
             position: relative;
-            background: white;
-            width: 40px; height: 40px;
-            border-radius: 12px;
+            background: #f8fafc;
+            width: 45px; height: 45px;
+            border-radius: 14px;
             display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            font-size: 20px;
+            border: 1px solid #e2e8f0;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+            font-size: 22px;
+            cursor: pointer;
         }
 
-        .pulse-dot {
+        .live-status {
             position: absolute;
-            top: 8px; right: 8px;
+            top: 10px; right: 10px;
             width: 8px; height: 8px;
             background: #ef4444;
             border-radius: 50%;
             border: 2px solid white;
-            animation: pulse-ring 1.5s infinite;
+            box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+            animation: pulse-red 2s infinite;
         }
 
-        @keyframes pulse-ring {
-            0% { transform: scale(0.7); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
-            100% { transform: scale(0.7); }
+        @keyframes pulse-red {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.5; }
+            100% { transform: scale(1); opacity: 1; }
         }
 
-        /*--- डैजलिंग कमिंग सून मोडल ---*/
-        #comingSoonModal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.4);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-            backdrop-filter: blur(12px);
+        /* स्पेसिंग */
+        .main-content {
+            padding-top: 100px; /* हेडर के नीचे से शुरू होगा */
         }
-
-        .modal-content {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 40px 30px;
-            border-radius: 35px;
-            text-align: center;
-            width: 88%;
-            max-width: 380px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            border: 1px solid white;
-            transform: translateY(0);
-            animation: modalSlideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        @keyframes modalSlideUp {
-            from { transform: translateY(100px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .lottie-placeholder {
-            font-size: 60px;
-            margin-bottom: 20px;
-            display: inline-block;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-
-        .modal-content h2 { color: var(--primary); font-size: 24px; font-weight: 900; }
-        .modal-content p { color: #475569; font-size: 15px; margin: 10px 0 25px; line-height: 1.5; }
-        
-        .close-btn {
-            background: var(--primary);
-            color: white; border: none;
-            padding: 15px 40px;
-            border-radius: 20px;
-            font-weight: 700;
-            font-size: 16px;
-            box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.3);
-            transition: 0.3s;
-        }
-
-        .close-btn:active { transform: scale(0.95); }
-
-        .content-wrapper {
-            padding-top: 85px;
-        }
-
     </style>
 </head>
 <body>
-    <div class="phase-2-lcd">
-    <div class="lcd-frame">
-        <div class="lcd-scanlines"></div>
+
+    <header>
+        <div class="brand-container">
+            <h1 class="brand-logo">Social Studies <b>Classes</b></h1>
+            <div class="brand-sub">
+                <span class="brand-line"></span>
+                BY SANJAY DHAKAR
+            </div>
+        </div>
         
-        <div class="book-engine" id="bookEngine">
+        <div class="notif-box">
+            <span>🔔</span>
+            <div class="live-status"></div>
+        </div>
+    </header>
+
+    <div class="main-content">
+        </div>
+
+</body>
+</html>
+<div class="phase-2-dynamic">
+    <div class="lcd-monitor-v3">
+        <div class="lcd-texture"></div>
+        
+        <div class="flip-engine" id="flipEngine">
             
-            <div class="page active">
-                <div class="page-visual bg-1">
-                    <div class="lcd-status">SYSTEM: RUNNING</div>
-                    <div class="page-data">
-                        <span class="page-tag">CORE MISSION</span>
-                        <h2 class="page-title">मिशन <b>2026</b></h2>
-                        <p class="page-text">संजय धाकड़ सर की रणनीति के साथ सामाजिक विज्ञान में 100% का लक्ष्य।</p>
+            <div class="flip-page active">
+                <div class="page-body bg-m1">
+                    <div class="sys-tag">SYSTEM: OPTIMAL</div>
+                    <div class="text-cluster">
+                        <span class="mini-badge">MISSION 2026</span>
+                        <h2 class="title-main">संजय धाकड़ <b>संकल्प</b></h2>
+                        <p class="desc-main">सामाजिक विज्ञान में 100/100 का लक्ष्य। गुणवत्तापूर्ण शिक्षा का वादा।</p>
                     </div>
                 </div>
             </div>
 
-            <div class="page">
-                <div class="page-visual bg-2">
-                    <div class="lcd-status">DATABASE: SYNCED</div>
-                    <div class="page-data">
-                        <span class="page-tag">VVIP CLUB</span>
-                        <h2 class="page-title">किताब <b>दान</b></h2>
-                        <p class="page-text">पुरानी किताबें दान करें या अपनी जरूरत की किताब यहाँ से प्राप्त करें।</p>
+            <div class="flip-page">
+                <div class="page-body bg-m2">
+                    <div class="sys-tag">DB: SYNCED</div>
+                    <div class="text-cluster">
+                        <span class="mini-badge">VVIP CLUB</span>
+                        <h2 class="title-main">किताबों का <b>महादान</b></h2>
+                        <p class="desc-main">पुरानी किताबें दान करें या अपनी जरूरत की बुक यहाँ से प्राप्त करें।</p>
                     </div>
                 </div>
             </div>
 
-            <div class="page">
-                <div class="page-visual bg-3">
-                    <div class="lcd-status">FILES: SECURE</div>
-                    <div class="page-data">
-                        <span class="page-tag">PREMIUM ACCESS</span>
-                        <h2 class="page-title">हस्तलिखित <b>नोट्स</b></h2>
-                        <p class="page-text">कोचिंग के सबसे बेहतरीन और सटीक नोट्स अब डिजिटल फॉर्मेट में।</p>
+            <div class="flip-page">
+                <div class="page-body bg-m3">
+                    <div class="sys-tag">ENCRYPTED: NOTES</div>
+                    <div class="text-cluster">
+                        <span class="mini-badge">PREMIUM</span>
+                        <h2 class="title-main">हस्तलिखित <b>नोट्स</b></h2>
+                        <p class="desc-main">कोचिंग के सबसे सटीक और बेहतरीन नोट्स अब आपके मोबाइल पर।</p>
                     </div>
                 </div>
             </div>
 
-            <div class="page">
-                <div class="page-visual bg-4">
-                    <div class="lcd-status">TEST-MODE: ON</div>
-                    <div class="page-data">
-                        <span class="page-tag">EXAM ALERT</span>
-                        <h2 class="page-title">लाइव <b>टेस्ट</b></h2>
-                        <p class="page-text">अपनी तैयारी को परखें और राजस्थान लेवल पर अपनी रैंक जानें।</p>
+            <div class="flip-page">
+                <div class="page-body bg-m4">
+                    <div class="sys-tag">TEST-MODE: ON</div>
+                    <div class="text-cluster">
+                        <span class="mini-badge">LEVEL UP</span>
+                        <h2 class="title-main">लाइव <b>टेस्ट सीरीज</b></h2>
+                        <p class="desc-main">अपनी तैयारी को परखें और राजस्थान के टॉपर्स के साथ मुकाबला करें।</p>
                     </div>
                 </div>
             </div>
 
-            <div class="page">
-                <div class="page-visual bg-5">
-                    <div class="lcd-status">SUPPORT: ACTIVE</div>
-                    <div class="page-data">
-                        <span class="page-tag">SST TEAM</span>
-                        <h2 class="page-title">ग्राउंड <b>सपोर्ट</b></h2>
-                        <p class="page-text">हमारी टीम से जुड़ें और अपनी समस्याओं का सीधा समाधान पाएं।</p>
+            <div class="flip-page">
+                <div class="page-body bg-m5">
+                    <div class="sys-tag">NETWORK: LIVE</div>
+                    <div class="text-cluster">
+                        <span class="mini-badge">SST TEAM</span>
+                        <h2 class="title-main">ग्राउंड <b>सपोर्ट</b></h2>
+                        <p class="desc-main">संजय धाकड़ सर की टीम से सीधा संवाद और हर समस्या का समाधान।</p>
                     </div>
                 </div>
             </div>
 
         </div>
 
-        <div class="lcd-nav">
-            <div class="lcd-dot active"></div>
-            <div class="lcd-dot"></div>
-            <div class="lcd-dot"></div>
-            <div class="lcd-dot"></div>
-            <div class="lcd-dot"></div>
+        <div class="lcd-indicators">
+            <div class="dot-v3 active"></div>
+            <div class="dot-v3"></div>
+            <div class="dot-v3"></div>
+            <div class="dot-v3"></div>
+            <div class="dot-v3"></div>
         </div>
     </div>
 </div>
 
 <style>
-    /* Phase 2: Styling */
-    .phase-2-lcd {
-        padding: 20px;
-        perspective: 1200px;
+    .phase-2-dynamic {
+        padding: 15px 20px;
+        perspective: 2000px;
     }
 
-    .lcd-frame {
+    .lcd-monitor-v3 {
         width: 100%;
         height: 220px;
         background: #000;
-        border-radius: 28px;
+        border-radius: 25px;
         position: relative;
         overflow: hidden;
-        border: 2px solid #334155;
-        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        border: 3px solid #1e293b;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.3);
     }
 
-    /* LCD Scanlines (Texture) */
-    .lcd-scanlines {
+    .lcd-texture {
         position: absolute;
         top: 0; left: 0; width: 100%; height: 100%;
-        background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.2) 50%), 
-                    linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.04));
-        background-size: 100% 3px, 3px 100%;
+        background: repeating-linear-gradient(rgba(0,0,0,0) 0px, rgba(0,0,0,0.1) 2px, rgba(0,0,0,0) 4px);
         z-index: 10;
         pointer-events: none;
+        opacity: 0.4;
     }
 
-    .book-engine {
-        width: 100%; height: 100%;
-        position: relative;
-        transform-style: preserve-3d;
-    }
+    .flip-engine { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; }
 
-    /* Flip Book Animation Logic */
-    .page {
+    .flip-page {
         position: absolute;
         width: 100%; height: 100%;
-        top: 0; left: 0;
         opacity: 0;
-        transform: rotateY(-90deg); /* किताब बंद होने जैसी स्थिति */
-        transition: all 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045);
-        transform-origin: left center;
+        transform-origin: left;
+        transform: rotateY(-80deg);
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        visibility: hidden;
     }
 
-    .page.active {
+    .flip-page.active {
         opacity: 1;
-        transform: rotateY(0deg); /* किताब खुलना */
+        transform: rotateY(0deg);
+        visibility: visible;
         z-index: 5;
     }
 
-    .page-visual {
+    .page-body {
         width: 100%; height: 100%;
-        display: flex; flex-direction: column;
-        justify-content: flex-end;
-        padding: 25px;
         background-size: cover;
         background-position: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 22px;
     }
 
-    /* Background Images (Shandaar Visuals) */
-    .bg-1 { background: linear-gradient(to top, rgba(0,0,0,0.9), transparent), url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=600'); }
-    .bg-2 { background: linear-gradient(to top, rgba(0,0,0,0.9), transparent), url('https://images.unsplash.com/photo-1507738911748-9c743e8121bd?q=80&w=600'); }
-    .bg-3 { background: linear-gradient(to top, rgba(0,0,0,0.9), transparent), url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=600'); }
-    .bg-4 { background: linear-gradient(to top, rgba(0,0,0,0.9), transparent), url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=600'); }
-    .bg-5 { background: linear-gradient(to top, rgba(0,0,0,0.9), transparent), url('https://images.unsplash.com/photo-1521791136364-798a7bc0d262?q=80&w=600'); }
+    /* Professional Gradients for Text Visibility */
+    .bg-m1 { background: linear-gradient(0deg, rgba(0,0,0,1) 10%, transparent), url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=600'); }
+    .bg-m2 { background: linear-gradient(0deg, rgba(0,0,0,1) 10%, transparent), url('https://images.unsplash.com/photo-1507738911748-9c743e8121bd?w=600'); }
+    .bg-m3 { background: linear-gradient(0deg, rgba(0,0,0,1) 10%, transparent), url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600'); }
+    .bg-m4 { background: linear-gradient(0deg, rgba(0,0,0,1) 10%, transparent), url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600'); }
+    .bg-m5 { background: linear-gradient(0deg, rgba(0,0,0,1) 10%, transparent), url('https://images.unsplash.com/photo-1521791136364-798a7bc0d262?w=600'); }
 
-    .lcd-status {
+    .sys-tag {
         position: absolute; top: 15px; right: 20px;
         font-family: monospace; font-size: 8px; color: #fbbf24;
         letter-spacing: 2px;
-        opacity: 0.8;
     }
 
-    .page-tag {
-        font-size: 8px; font-weight: 800; color: #fbbf24;
-        letter-spacing: 1.5px; text-transform: uppercase;
-        border: 1px solid #fbbf24; padding: 2px 8px; border-radius: 4px;
+    .mini-badge {
+        font-size: 9px; font-weight: 800; color: #fbbf24;
+        border: 1px solid rgba(251, 191, 36, 0.5);
+        padding: 2px 8px; border-radius: 4px;
+        background: rgba(0,0,0,0.5);
+        display: inline-block; margin-bottom: 8px;
     }
 
-    .page-title {
-        color: #fff; font-size: 24px; font-weight: 400;
-        font-family: 'Marcellus', serif; line-height: 1.2; margin: 8px 0 4px;
+    .title-main { color: #fff; font-size: 24px; font-weight: 400; line-height: 1.1; margin-bottom: 4px; }
+    .title-main b { color: #fbbf24; font-weight: 400; }
+    .desc-main { color: rgba(255,255,255,0.7); font-size: 11px; line-height: 1.4; max-width: 85%; }
+
+    .lcd-indicators {
+        position: absolute; bottom: 18px; right: 20px;
+        display: flex; gap: 5px; z-index: 20;
     }
 
-    .page-title b { color: #fbbf24; font-weight: 400; }
-
-    .page-text {
-        color: rgba(255,255,255,0.7); font-size: 11px;
-        line-height: 1.4; max-width: 90%;
+    .dot-v3 {
+        width: 15px; height: 3px; background: rgba(255,255,255,0.2);
+        border-radius: 10px; transition: 0.3s;
     }
 
-    /* LCD Navigation */
-    .lcd-nav {
-        position: absolute; bottom: 15px; right: 25px;
-        z-index: 20; display: flex; gap: 5px;
-    }
-
-    .lcd-dot {
-        width: 12px; height: 3px; background: rgba(255,255,255,0.2);
-        border-radius: 10px; transition: 0.4s;
-    }
-
-    .lcd-dot.active {
-        background: #fbbf24; width: 25px;
-        box-shadow: 0 0 10px rgba(251, 191, 36, 0.4);
+    .dot-v3.active {
+        background: #fbbf24;
+        box-shadow: 0 0 8px rgba(251, 191, 36, 0.6);
     }
 </style>
 
 <script>
-    // Phase 2: Flip Engine Logic
     (function() {
-        let current = 0;
-        const slides = document.querySelectorAll('.page');
-        const dots = document.querySelectorAll('.lcd-dot');
+        let idx = 0;
+        const slides = document.querySelectorAll('.flip-page');
+        const dots = document.querySelectorAll('.dot-v3');
 
-        function flipPage() {
-            slides[current].classList.remove('active');
-            dots[current].classList.remove('active');
+        function slideNext() {
+            slides[idx].classList.remove('active');
+            dots[idx].classList.remove('active');
             
-            current = (current + 1) % slides.length;
+            idx = (idx + 1) % slides.length;
             
-            slides[current].classList.add('active');
-            dots[current].classList.add('active');
+            slides[idx].classList.add('active');
+            dots[idx].classList.add('active');
         }
 
-        // 5 सेकंड में पन्ना पलटेगा
-        setInterval(flipPage, 5000);
+        // स्पीड 3 सेकंड पर सेट है (Fast & Smooth)
+        setInterval(slideNext, 3000); 
     })();
 </script>
+<div class="phase-3-rajasthan">
+    
+    <div class="section-header">
+        <h3 class="rajasthan-title">राजस्थान <b>साम्राज्य</b></h3>
+        <div class="live-count">1.2K Students Online</div>
+    </div>
 
+    <div class="map-explorer-card" onclick="openLink('#')">
+        <div class="map-overlay"></div>
+        <div class="map-content">
+            <span class="map-tag">INTERACTIVE MAP</span>
+            <h2>कला एवं <b>संस्कृति</b> Explorer</h2>
+            <p>नक्शे के जरिए समझें राजस्थान का कोना-कोना</p>
+            <div class="pulse-points">
+                <span class="point p1"></span>
+                <span class="point p2"></span>
+                <span class="point p3"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="arena-grid">
+        
+        <div class="arena-card quiz-battle" onclick="openLink('#')">
+            <div class="arena-icon">⚔️</div>
+            <h4>क्विज़ <b>बैटल</b></h4>
+            <div class="battle-live">LIVE</div>
+            <p>टॉपर्स को चुनौती दें</p>
+            <div class="arena-progress"><div class="bar" style="width: 75%"></div></div>
+        </div>
+
+        <div class="arena-card games-box" onclick="openLink('#')">
+            <div class="arena-icon">🎮</div>
+            <h4>ऐतिहासिक <b>खेल</b></h4>
+            <p>खेल-खेल में याद करें</p>
+            <div class="new-tag">NEW</div>
+        </div>
+
+    </div>
+
+    <div class="deep-dive-list">
+        
+        <div class="dive-item" onclick="openLink('#')">
+            <div class="dive-num">01</div>
+            <div class="dive-info">
+                <h4>मेवाड़ से मारवाड़ तक</h4>
+                <p>गहन इतिहास चर्चा एवं नोट्स</p>
+            </div>
+            <div class="dive-arrow">➜</div>
+        </div>
+
+        <div class="dive-item" onclick="openLink('#')">
+            <div class="dive-num">02</div>
+            <div class="dive-info">
+                <h4>अरावली एवं मरुस्थल</h4>
+                <p>3D नक्शों के साथ भूगोल</p>
+            </div>
+            <div class="dive-arrow">➜</div>
+        </div>
+
+        <div class="dive-item" onclick="openLink('#')">
+            <div class="dive-num">03</div>
+            <div class="dive-info">
+                <h4>राजस्थान सुजस सारांश</h4>
+                <p>दैनिक करंट अफेयर्स</p>
+            </div>
+            <div class="dive-arrow">➜</div>
+        </div>
+
+    </div>
+
+    <div class="test-sanctuary" onclick="openLink('#')">
+        <div class="sanctuary-glow"></div>
+        <div class="s-left">
+            <div class="timer-box">01:19:00</div>
+            <h3>मेगा <b>टेस्ट सीरीज</b></h3>
+            <p>मिशन 2026: रैंकिंग कल सुबह 10 बजे</p>
+        </div>
+        <div class="s-right">
+            <div class="trophy-anim">🏆</div>
+        </div>
+    </div>
+
+</div>
+
+<style>
+    .phase-3-rajasthan { padding: 10px 20px 40px; }
+
+    .section-header {
+        display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;
+    }
+
+    .rajasthan-title { font-family: 'Marcellus', serif; font-size: 20px; color: #0f172a; }
+    .rajasthan-title b { color: #c2410c; font-weight: 400; }
+    
+    .live-count { font-size: 9px; font-weight: 800; color: #059669; background: #ecfdf5; padding: 4px 10px; border-radius: 50px; }
+
+    /* 1. Map Card Styling */
+    .map-explorer-card {
+        height: 160px; border-radius: 25px; margin-bottom: 20px;
+        background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1590050857312-6f2963162791?w=600');
+        background-size: cover; background-position: center;
+        position: relative; display: flex; align-items: center; padding: 25px;
+        overflow: hidden; border: 1px solid #334155;
+    }
+
+    .map-tag { font-size: 8px; color: #fbbf24; font-weight: 900; letter-spacing: 1.5px; }
+    .map-content h2 { color: #fff; font-size: 20px; margin: 5px 0; }
+    .map-content h2 b { color: #fbbf24; }
+    .map-content p { color: rgba(255,255,255,0.7); font-size: 11px; }
+
+    /* Pulsing Points on Map */
+    .point { position: absolute; width: 8px; height: 8px; background: #fbbf24; border-radius: 50%; animation: p-glow 2s infinite; }
+    .p1 { top: 30%; right: 40%; }
+    .p2 { bottom: 40%; right: 20%; }
+    .p3 { top: 50%; right: 10%; }
+    @keyframes p-glow { 0% { box-shadow: 0 0 0 0 rgba(251,191,36,0.7); } 100% { box-shadow: 0 0 0 15px rgba(251,191,36,0); } }
+
+    /* 2. Arena Grid */
+    .arena-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px; }
+    .arena-card { background: white; border-radius: 24px; padding: 20px; position: relative; border: 1px solid #e2e8f0; overflow: hidden; }
+    .arena-icon { font-size: 28px; margin-bottom: 10px; }
+    .arena-card h4 { font-size: 15px; color: #1e293b; }
+    .arena-card p { font-size: 10px; color: #64748b; margin-top: 3px; }
+
+    .battle-live { position: absolute; top: 15px; right: 15px; background: #ef4444; color: white; font-size: 7px; font-weight: 900; padding: 2px 6px; border-radius: 4px; }
+    .new-tag { position: absolute; top: 15px; right: 15px; background: #c2410c; color: white; font-size: 7px; font-weight: 900; padding: 2px 6px; border-radius: 4px; }
+    
+    .arena-progress { height: 4px; background: #f1f5f9; border-radius: 10px; margin-top: 12px; }
+    .arena-progress .bar { height: 100%; background: #fbbf24; border-radius: 10px; }
+
+    /* 3. Deep Dive List */
+    .deep-dive-list { background: white; border-radius: 28px; padding: 10px; border: 1px solid #e2e8f0; margin-bottom: 25px; }
+    .dive-item { display: flex; align-items: center; padding: 15px; border-bottom: 1px solid #f1f5f9; transition: 0.3s; }
+    .dive-item:last-child { border-bottom: none; }
+    .dive-num { font-size: 12px; font-weight: 900; color: #cbd5e1; margin-right: 15px; font-family: monospace; }
+    .dive-info { flex: 1; }
+    .dive-info h4 { font-size: 14px; color: #1e293b; }
+    .dive-info p { font-size: 10px; color: #94a3b8; }
+    .dive-arrow { color: #cbd5e1; font-size: 12px; }
+    .dive-item:active { background: #f8fafc; transform: translateX(5px); }
+
+    /* 4. Test Sanctuary Styling */
+    .test-sanctuary {
+        background: #c2410c; border-radius: 28px; padding: 25px;
+        display: flex; justify-content: space-between; align-items: center;
+        color: white; position: relative; overflow: hidden;
+        box-shadow: 0 15px 30px rgba(194, 65, 12, 0.3);
+    }
+    .sanctuary-glow { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at top left, rgba(255,255,255,0.2), transparent); }
+    .timer-box { background: rgba(0,0,0,0.2); display: inline-block; padding: 4px 12px; border-radius: 8px; font-size: 10px; font-family: monospace; margin-bottom: 10px; }
+    .test-sanctuary h3 { font-size: 20px; }
+    .test-sanctuary h3 b { color: #fbbf24; }
+    .test-sanctuary p { font-size: 11px; opacity: 0.8; }
+    .trophy-anim { font-size: 45px; animation: t-float 3s infinite ease-in-out; }
+    @keyframes t-float { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-10px) rotate(10deg); } }
+            </style>
