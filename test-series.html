@@ -9,27 +9,38 @@
     <style>
         :root { --primary: #fbbf24; --bg: #0f172a; --card: #1e293b; }
         body { font-family: 'Hind', sans-serif; background: var(--bg); color: white; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; flex-direction: column; }
-        .card { background: var(--card); width: 100%; max-width: 400px; padding: 30px; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.6); text-align: center; border: 1px solid #334155; box-sizing: border-box; }
+        
+        .card { background: var(--card); width: 95%; max-width: 400px; padding: 30px; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.6); text-align: center; border: 1px solid #334155; box-sizing: border-box; animation: fadeIn 0.5s ease-in; }
+        
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
         .logo i { font-size: 3.5rem; color: var(--primary); margin-bottom: 10px; }
         h1 { font-family: 'Poppins', sans-serif; color: var(--primary); font-size: 1.6rem; margin: 0; }
+        
         .input-box { position: relative; margin: 20px 0; }
         .input-box i { position: absolute; left: 15px; top: 15px; color: #94a3b8; }
         input { width: 100%; padding: 15px 15px 15px 45px; background: #0f172a; border: 2px solid #334155; border-radius: 12px; color: white; font-size: 1rem; box-sizing: border-box; outline: none; }
         input:focus { border-color: var(--primary); }
-        .btn { background: var(--primary); color: #000; width: 100%; padding: 18px; border: none; border-radius: 12px; font-weight: bold; font-size: 1.1rem; cursor: pointer; transition: 0.3s; }
         
-        /* Rules & Test Specific */
+        .btn { background: var(--primary); color: #000; width: 100%; padding: 18px; border: none; border-radius: 12px; font-weight: bold; font-size: 1.1rem; cursor: pointer; transition: 0.3s; margin-top: 10px; }
+        .btn:hover { transform: scale(1.02); }
+
+        /* Sections Control */
         #waiting, #rulesCard, #exam-box { display: none; }
-        .rules-list { text-align: left; margin-bottom: 30px; }
+
+        /* Rules Page Styles */
+        .motivation-quote { background: #0f172a; padding: 15px; border-left: 5px solid var(--primary); font-style: italic; margin: 20px 0; color: #fbbf24; font-size: 1.1rem; text-align: left; }
+        .rules-list { text-align: left; margin-bottom: 25px; }
         .rules-list div { margin: 12px 0; display: flex; align-items: flex-start; gap: 10px; font-size: 1rem; }
-        .motivation-quote { background: #0f172a; padding: 15px; border-left: 5px solid var(--primary); font-style: italic; margin-bottom: 25px; color: #fbbf24; font-size: 1.1rem; text-align: left; }
+
+        /* Exam Styles */
+        .q-tag { background: #3b82f6; padding: 4px 12px; border-radius: 4px; font-size: 0.8rem; margin-bottom: 15px; display: inline-block; }
+        .q-text { font-size: 1.2rem; line-height: 1.6; margin-bottom: 25px; text-align: left; font-weight: bold; }
+        .option { background: #334155; padding: 16px; margin: 12px 0; border-radius: 12px; cursor: pointer; text-align: left; border: 2px solid transparent; transition: 0.2s; }
+        .option.selected { border-color: var(--primary); background: #1e40af; }
+
         .loader { border: 4px solid #334155; border-top: 4px solid var(--primary); border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: auto; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        
-        .q-tag { background: #3b82f6; padding: 4px 12px; border-radius: 4px; font-size: 0.8rem; margin-bottom: 15px; display: inline-block; }
-        .q-text { font-size: 1.2rem; line-height: 1.6; margin-bottom: 25px; text-align: left; }
-        .option { background: #334155; padding: 16px; margin: 12px 0; border-radius: 12px; cursor: pointer; text-align: left; border: 2px solid transparent; }
-        .option.selected { border-color: var(--primary); background: #1e40af; }
     </style>
 </head>
 <body>
@@ -38,6 +49,7 @@
     <div class="logo"><i class="fas fa-university"></i></div>
     <h1>SOCIAL STUDIES CLASSES</h1>
     <p style="color: #94a3b8;">अपनी जानकारी भरें</p>
+
     <div id="mainForm">
         <div class="input-box">
             <i class="fas fa-user"></i>
@@ -49,38 +61,48 @@
         </div>
         <button class="btn" onclick="sendRegistration()">परीक्षा शुरू करें</button>
     </div>
+
     <div id="waiting">
         <div class="loader"></div>
-        <p style="color: var(--primary); margin-top: 15px;">टेस्ट सर्वर से कनेक्ट हो रहा है...</p>
+        <p style="color: var(--primary); margin-top: 15px;">आपका टेस्ट सर्वर से कनेक्ट हो रहा है...</p>
+        <p style="font-size: 0.8rem; color: #94a3b8;">कृपया प्रतीक्षा करें (3-5 Seconds)</p>
     </div>
 </div>
 
 <div class="card" id="rulesCard">
-    <h2 style="color: var(--primary); margin: 0;">परीक्षा के निर्देश</h2>
+    <div style="text-align: center;">
+        <i class="fas fa-lightbulb" style="font-size: 2.5rem; color: #fbbf24; margin-bottom: 10px;"></i>
+        <h2 style="color: var(--primary); margin: 0;">परीक्षा के निर्देश</h2>
+    </div>
+
     <div class="motivation-quote">
-        "आज का यह टेस्ट आपकी मेहनत का आईना है!" <br>
+        "जीतने वाले कभी हार नहीं मानते और हार मानने वाले कभी जीतते नहीं।" <br>
         <span style="font-size: 0.8rem; float: right;">- संजय सर</span>
     </div>
+
     <div class="rules-list">
         <div><i class="fas fa-check-circle" style="color:var(--primary)"></i> <span>कुल 10 प्रश्न | समय 30 मिनट</span></div>
         <div><i class="fas fa-check-circle" style="color:var(--primary)"></i> <span>5वां विकल्प (E) अनिवार्य है।</span></div>
+        <div><i class="fas fa-check-circle" style="color:var(--primary)"></i> <span>Next और Back बटन का प्रयोग कर सकते हैं।</span></div>
     </div>
-    <button class="btn" onclick="startRealTest()">मैं तैयार हूँ, शुरू करें!</button>
+
+    <button class="btn" onclick="startRealTest()">मैं तैयार हूँ, शुरू करें! <i class="fas fa-rocket"></i></button>
 </div>
 
 <div class="card" id="exam-box">
-    <div id="timer" style="color:#ef4444; font-weight:bold; margin-bottom:10px;">30:00</div>
+    <div id="timer" style="color:#ef4444; font-weight:bold; margin-bottom:15px; font-size: 1.2rem;">30:00</div>
     <div id="q-content"></div>
-    <div style="display:flex; justify-content:space-between; margin-top:20px;">
-        <button class="btn" id="prevBtn" onclick="prevQ()" style="width:45%; padding:10px;">Back</button>
-        <button class="btn" id="nextBtn" onclick="nextQ()" style="width:45%; padding:10px;">Next</button>
+    <div style="display:flex; justify-content:space-between; margin-top:20px; gap: 10px;">
+        <button class="btn" id="prevBtn" onclick="prevQ()" style="padding: 12px;">Back</button>
+        <button class="btn" id="nextBtn" onclick="nextQ()" style="padding: 12px;">Next</button>
     </div>
 </div>
 
 <script>
+    // --- अपनी जानकारी यहाँ भरें ---
     const scriptURL = 'https://script.google.com/macros/s/AKfycbzNH2pP22r60L31zJSi-M1zro33Toodi3-Yo3LX0HQ2RXdMwLhpYmax1DW8wVNUC4/exec'; 
     const waPhone = "919529812784";
-    const waAPIKey = "YOUR_API_KEY"; // अपनी Key यहाँ डालें
+    const waAPIKey = "YOUR_API_KEY"; // CallMeBot API Key यहाँ डालें
 
     const questions = [
         { q: "मानचित्र के स्केल के संदर्भ में '1 cm = 500 m' का क्या अर्थ है?", a: ["यह वृहद क्षेत्र को दर्शाता है", "धरातल और मानचित्र की दूरी का अनुपात है", "यह केवल दिशा बताता है", "यह प्रतीकात्मक नहीं है"], cor: 1 },
@@ -107,13 +129,13 @@
         document.getElementById('mainForm').style.display = 'none';
         document.getElementById('waiting').style.display = 'block';
 
-        fetch(`${scriptURL}?name=${encodeURIComponent(name)}&village=${encodeURIComponent(loc)}&topic=Reg&score=Login&time=Now`)
-        .then(() => {
-            setTimeout(() => {
-                document.getElementById('formCard').style.display = 'none';
-                document.getElementById('rulesCard').style.display = 'block';
-            }, 2000);
-        });
+        // Force Jump logic
+        setTimeout(() => {
+            document.getElementById('formCard').style.display = 'none';
+            document.getElementById('rulesCard').style.display = 'block';
+        }, 2500);
+
+        fetch(`${scriptURL}?name=${encodeURIComponent(name)}&village=${encodeURIComponent(loc)}&topic=Reg&score=Login&time=Now`, { mode: 'no-cors' });
     }
 
     function startRealTest() {
@@ -127,19 +149,24 @@
         const qData = questions[currentQ];
         const container = document.getElementById('q-content');
         let optionsHtml = qData.a.map((opt, i) => `
-            <div class="option ${userAnswers[currentQ] === i ? 'selected' : ''}" onclick="selectOption(${i})">${opt}</div>
+            <div class="option ${userAnswers[currentQ] === i ? 'selected' : ''}" onclick="selectOption(${i})">
+                <i class="${userAnswers[currentQ] === i ? 'fas fa-check-circle' : 'far fa-circle'}"></i> ${opt}
+            </div>
         `).join('');
-        optionsHtml += `<div class="option ${userAnswers[currentQ] === 4 ? 'selected' : ''}" onclick="selectOption(4)" style="border-style:dashed;">(E) नहीं आता</div>`;
+        optionsHtml += `
+            <div class="option ${userAnswers[currentQ] === 4 ? 'selected' : ''}" onclick="selectOption(4)" style="border-style:dashed;">
+                <i class="${userAnswers[currentQ] === 4 ? 'fas fa-times-circle' : 'far fa-circle'}"></i> (E) प्रश्न अनुत्तरित (नहीं आता)
+            </div>`;
         
-        container.innerHTML = `<span class="q-tag">Q${currentQ + 1}</span><div class="q-text">${qData.q}</div>${optionsHtml}`;
+        container.innerHTML = `<span class="q-tag">प्रश्न ${currentQ + 1} / 10</span><div class="q-text">${qData.q}</div>${optionsHtml}`;
         document.getElementById('prevBtn').style.visibility = currentQ > 0 ? 'visible' : 'hidden';
-        document.getElementById('nextBtn').innerText = currentQ === questions.length - 1 ? 'Submit' : 'Next';
+        document.getElementById('nextBtn').innerText = currentQ === questions.length - 1 ? 'Final Submit' : 'Next';
     }
 
     function selectOption(idx) { userAnswers[currentQ] = idx; renderQuestion(); }
 
     function nextQ() {
-        if(userAnswers[currentQ] === null) return alert("कृपया उत्तर चुनें!");
+        if(userAnswers[currentQ] === null) return alert("⚠️ चेतावनी: कृपया 5 में से एक विकल्प चुनें।");
         if(currentQ < questions.length - 1) { currentQ++; renderQuestion(); } 
         else { submitFinal(); }
     }
@@ -150,7 +177,7 @@
         let sec = min * 60;
         timerInterval = setInterval(() => {
             let m = Math.floor(sec / 60), s = sec % 60;
-            document.getElementById('timer').innerText = `${m}:${s < 10 ? '0' : ''}${s}`;
+            document.getElementById('timer').innerText = `समय शेष: ${m}:${s < 10 ? '0' : ''}${s}`;
             if (--sec < 0) { clearInterval(timerInterval); submitFinal(); }
         }, 1000);
     }
@@ -161,12 +188,17 @@
         userAnswers.forEach((ans, i) => { if(ans === questions[i].cor) correct++; if(ans === 4) skipped++; });
         
         const name = document.getElementById('sName').value, loc = document.getElementById('sVillage').value;
-        const waMsg = `*SST PRO RESULT*\nName: ${name}\nScore: ${correct}/10\nSkip: ${skipped}`;
+        const waMsg = `*SST PRO RESULTCODE*\nName: ${name}\nVillage: ${loc}\nScore: ${correct}/10\nSkip: ${skipped}`;
         const waURL = `https://api.callmebot.com/whatsapp.php?phone=${waPhone}&text=${encodeURIComponent(waMsg)}&apikey=${waAPIKey}`;
 
-        fetch(`${scriptURL}?name=${encodeURIComponent(name)}&village=${encodeURIComponent(loc)}&topic=Final&score=${correct}&time=Done`)
+        fetch(`${scriptURL}?name=${encodeURIComponent(name)}&village=${encodeURIComponent(loc)}&topic=Geo-Ch1&score=${correct}&time=Done`, { mode: 'no-cors' })
         .then(() => {
-            document.getElementById('exam-box').innerHTML = `<h2 style="color:var(--primary)">उत्तर पुस्तिका जमा हो गई है!</h2><p>संजय सर परिणाम प्रोसेस कर रहे हैं।</p>`;
+            document.getElementById('exam-box').innerHTML = `
+                <div style="text-align:center; padding:30px;">
+                    <i class="fas fa-check-circle" style="font-size:3rem; color:#fbbf24;"></i>
+                    <h2 style="color:#fbbf24; margin-top:20px;">उत्तर पुस्तिका जमा हो गई है!</h2>
+                    <p>संजय सर परिणाम प्रोसेस कर रहे हैं। रिजल्ट पोर्टल पर जल्द अपलोड किया जाएगा।</p>
+                </div>`;
         });
         fetch(waURL, { mode: 'no-cors' });
     }
