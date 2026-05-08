@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SST Pro - Digital Marksheet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { background: #f1f5f9; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; font-family: 'Hind', sans-serif; }
+        
+        .certificate { 
+            background: white; 
+            width: 90%; 
+            max-width: 600px; 
+            padding: 40px; 
+            border: 15px double #fbbf24; 
+            position: relative; 
+            text-align: center; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1); 
+        }
+
+        .brand-name { color: #fbbf24; font-weight: bold; font-size: 1.5rem; margin-bottom: 5px; }
+        .sub-text { font-size: 0.8rem; color: #64748b; text-transform: uppercase; letter-spacing: 2px; }
+        
+        .title { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: #1e293b; margin: 20px 0; }
+        .award-text { font-size: 1.1rem; color: #475569; margin-bottom: 10px; }
+        
+        .student-name { font-size: 2.2rem; color: #1e40af; border-bottom: 2px solid #e2e8f0; display: inline-block; padding: 0 30px; margin: 10px 0; font-weight: bold; }
+        
+        .score-circle { 
+            width: 120px; height: 120px; border: 5px solid #fbbf24; border-radius: 50%; 
+            margin: 30px auto; display: flex; flex-direction: column; justify-content: center; 
+            background: #fffbeb; box-shadow: 0 5px 15px rgba(251,191,36,0.2); 
+        }
+        .score-num { font-size: 2.5rem; font-weight: bold; color: #1e40af; line-height: 1; }
+        .score-total { font-size: 1rem; color: #64748b; }
+
+        .footer { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 50px; }
+        .sign-box { border-top: 2px solid #1e293b; width: 150px; padding-top: 5px; }
+        .sign-text { font-family: 'Great Vibes', cursive; font-size: 1.8rem; color: #1e293b; margin: 0; }
+
+        /* Watermark */
+        .watermark { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 8rem; opacity: 0.03; z-index: 0; pointer-events: none; }
+    </style>
+</head>
+<body>
+
+<div class="certificate">
+    <div class="watermark"><i class="fas fa-university"></i></div>
+    
+    <div class="brand-name">SOCIAL STUDIES CLASSES</div>
+    <div class="sub-text">Chittorgarh - Digital Education Portal</div>
+    
+    <div class="title">Certificate of Merit</div>
+    
+    <div class="award-text">यह प्रमाणित किया जाता है कि</div>
+    <div class="student-name">संजय कुमावत</div> 
+    
+    <div class="award-text" style="margin-top: 15px;">निवासी <b>सेंती, चित्तौड़गढ़</b> ने</div>
+    <div class="award-text"><b>भूगोल अध्याय-1 (NCERT 2026-27)</b> परीक्षा में</div>
+    
+    <div class="score-circle">
+        <span class="score-num">09</span>
+        <span class="score-total">Score / 10</span>
+    </div>
+    
+    <div class="award-text">अंक प्राप्त कर श्रेष्ठता का परिचय दिया है।</div>
+
+    <div class="footer">
+        <div style="text-align: left;">
+            <p style="font-size: 0.8rem; color: #64748b; margin: 0;">दिनांक: 08/05/2026</p>
+            <p style="font-size: 0.8rem; color: #64748b; margin: 0;">ID: SST-PRO-001</p>
+        </div>
+        <div class="sign-box">
+            <p class="sign-text">Sanjay Sir</p>
+            <p style="font-size: 0.7rem; font-weight: bold; margin: 0; text-transform: uppercase;">परीक्षा नियंत्रक</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
