@@ -3,116 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SST Pro - Exam Entry</title>
+    <title>SST Pro - Exam Portal</title>
     <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root { --primary: #fbbf24; --bg: #0f172a; --card: #1e293b; }
-        body { font-family: 'Hind', sans-serif; background: var(--bg); color: white; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; flex-direction: column; }
-        .card { background: var(--card); width: 95%; max-width: 400px; padding: 30px; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.6); text-align: center; border: 1px solid #334155; box-sizing: border-box; }
-        .logo i { font-size: 3.5rem; color: var(--primary); margin-bottom: 10px; }
-        h1 { font-family: 'Poppins', sans-serif; color: var(--primary); font-size: 1.6rem; margin: 0; }
-        .input-box { position: relative; margin: 20px 0; }
-        .input-box i { position: absolute; left: 15px; top: 15px; color: #94a3b8; }
-        input { width: 100%; padding: 15px 15px 15px 45px; background: #0f172a; border: 2px solid #334155; border-radius: 12px; color: white; font-size: 1rem; box-sizing: border-box; outline: none; }
-        input:focus { border-color: var(--primary); }
-        .btn { background: var(--primary); color: #000; width: 100%; padding: 18px; border: none; border-radius: 12px; font-weight: bold; font-size: 1.1rem; cursor: pointer; transition: 0.3s; margin-top: 10px; }
+        body { font-family: 'Hind', sans-serif; background: var(--bg); color: white; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; flex-direction: column; overflow-x: hidden; }
         
+        .card { background: var(--card); width: 95%; max-width: 450px; padding: 30px; border-radius: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.6); text-align: center; border: 1px solid #334155; box-sizing: border-box; transition: 0.4s; }
+        
+        .logo i { font-size: 4rem; color: var(--primary); margin-bottom: 10px; text-shadow: 0 0 20px rgba(251, 191, 36, 0.4); }
+        h1 { font-family: 'Poppins', sans-serif; color: var(--primary); font-size: 1.8rem; margin: 0; letter-spacing: 1px; }
+        
+        .input-box { position: relative; margin: 20px 0; }
+        .input-box i { position: absolute; left: 18px; top: 18px; color: #94a3b8; font-size: 1.1rem; }
+        input { width: 100%; padding: 18px 18px 18px 50px; background: #0f172a; border: 2px solid #334155; border-radius: 14px; color: white; font-size: 1rem; box-sizing: border-box; outline: none; transition: 0.3s; }
+        input:focus { border-color: var(--primary); box-shadow: 0 0 15px rgba(251, 191, 36, 0.2); }
+        
+        .btn { background: var(--primary); color: #000; width: 100%; padding: 18px; border: none; border-radius: 14px; font-weight: bold; font-size: 1.1rem; cursor: pointer; transition: 0.3s; margin-top: 10px; display: flex; justify-content: center; align-items: center; gap: 10px; }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(251, 191, 36, 0.3); }
+        .btn-back { background: transparent; color: #94a3b8; border: 1px solid #334155; margin-top: 15px; }
+
         #waiting, #rulesCard, #exam-box { display: none; }
-        .rules-list { text-align: left; margin-bottom: 30px; }
-        .rules-list div { margin: 12px 0; display: flex; align-items: flex-start; gap: 10px; font-size: 1rem; }
-        .motivation-quote { background: #0f172a; padding: 15px; border-left: 5px solid var(--primary); font-style: italic; margin-bottom: 25px; color: #fbbf24; font-size: 1.1rem; text-align: left; }
-        .loader { border: 4px solid #334155; border-top: 4px solid var(--primary); border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: auto; }
+
+        .motivation-quote { background: #0f172a; padding: 20px; border-left: 6px solid var(--primary); font-style: italic; margin: 25px 0; color: #fbbf24; font-size: 1.1rem; text-align: left; border-radius: 0 12px 12px 0; }
+        .rules-list { text-align: left; margin-bottom: 25px; }
+        .rules-list div { margin: 15px 0; display: flex; align-items: flex-start; gap: 12px; font-size: 1.05rem; }
+
+        .q-tag { background: #3b82f6; padding: 5px 15px; border-radius: 6px; font-size: 0.85rem; margin-bottom: 15px; display: inline-block; font-weight: bold; }
+        .q-text { font-size: 1.2rem; line-height: 1.6; margin-bottom: 25px; text-align: left; font-weight: bold; color: #f8fafc; }
+        .option { background: #334155; padding: 18px; margin: 12px 0; border-radius: 14px; cursor: pointer; text-align: left; border: 2px solid transparent; transition: 0.2s; font-size: 1rem; }
+        .option.selected { border-color: var(--primary); background: #1e40af; box-shadow: 0 5px 15px rgba(30, 64, 175, 0.4); }
+
+        .loader { border: 5px solid #334155; border-top: 5px solid var(--primary); border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin: auto; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         
-        .q-tag { background: #3b82f6; padding: 4px 12px; border-radius: 4px; font-size: 0.8rem; margin-bottom: 15px; display: inline-block; }
-        .q-text { font-size: 1.1rem; line-height: 1.5; margin-bottom: 25px; text-align: left; font-weight: bold; }
-        .option { background: #334155; padding: 14px; margin: 10px 0; border-radius: 10px; cursor: pointer; text-align: left; border: 2px solid transparent; font-size: 0.95rem; }
-        .option.selected { border-color: var(--primary); background: #1e40af; }
+        #timer { font-family: 'Poppins'; font-size: 1.4rem; letter-spacing: 2px; text-shadow: 0 0 10px rgba(239, 68, 68, 0.3); }
     </style>
 </head>
 <body>
 
 <div class="card" id="formCard">
     <div class="logo"><i class="fas fa-university"></i></div>
-    <h1>SOCIAL STUDIES CLASSES</h1>
-    <p style="color: #94a3b8;">अपनी जानकारी भरें</p>
+    <h1>SOCIAL STUDIES</h1>
+    <p style="color: #94a3b8; margin-top: 5px;">NCERT Special Test Series</p>
     <div id="mainForm">
         <div class="input-box"><i class="fas fa-user"></i><input type="text" id="sName" placeholder="आपका पूरा नाम" required></div>
         <div class="input-box"><i class="fas fa-map-marker-alt"></i><input type="text" id="sVillage" placeholder="गाँव / जिला" required></div>
-        <button class="btn" onclick="sendRegistration()">परीक्षा शुरू करें</button>
+        <button class="btn" onclick="sendRegistration()">परीक्षा शुरू करें <i class="fas fa-arrow-right"></i></button>
     </div>
     <div id="waiting">
         <div class="loader"></div>
-        <p style="color: var(--primary); margin-top: 15px;">सर्वर से जुड़ रहे हैं...</p>
+        <p style="color: var(--primary); margin-top: 20px; font-weight: bold;">डेटा सुरक्षित किया जा रहा है...</p>
     </div>
 </div>
 
 <div class="card" id="rulesCard">
-    <h2 style="color: var(--primary); margin: 0;">परीक्षा के निर्देश</h2>
-    <div class="motivation-quote">"आज का यह टेस्ट आपकी मेहनत का आईना है!" <br><span style="font-size: 0.8rem; float: right;">- संजय सर</span></div>
+    <h2 style="color: var(--primary); margin: 0;"><i class="fas fa-clipboard-list"></i> महत्वपूर्ण निर्देश</h2>
+    <div class="motivation-quote">"जीतने का जुनून आपके डर से बड़ा होना चाहिए।" <br><span style="font-size: 0.8rem; float: right;">- संजय सर</span></div>
     <div class="rules-list">
-        <div><i class="fas fa-check-circle" style="color:var(--primary)"></i> <span>कुल 10 गहन प्रश्न | समय 30 मिनट</span></div>
-        <div><i class="fas fa-check-circle" style="color:var(--primary)"></i> <span>विकल्प (E) चुनना अनिवार्य है।</span></div>
+        <div><i class="fas fa-check-circle" style="color:var(--primary)"></i> <span>10 कठिन प्रश्न - 30 मिनट का समय।</span></div>
+        <div><i class="fas fa-exclamation-triangle" style="color:var(--primary)"></i> <span>विकल्प (E) चुनना अनिवार्य है।</span></div>
     </div>
-    <button class="btn" onclick="startRealTest()">मैं तैयार हूँ, शुरू करें!</button>
+    <button class="btn" onclick="startRealTest()">Test Start <i class="fas fa-rocket"></i></button>
+    <button class="btn btn-back" onclick="goHome()"><i class="fas fa-home"></i> होम पेज पर जाएँ</button>
 </div>
 
 <div class="card" id="exam-box">
-    <div id="timer" style="color:#ef4444; font-weight:bold; margin-bottom:10px;">30:00</div>
+    <div id="timer" style="color:#ef4444; font-weight:bold; margin-bottom:15px;">30:00</div>
     <div id="q-content"></div>
-    <div style="display:flex; justify-content:space-between; margin-top:20px;">
-        <button class="btn" id="prevBtn" onclick="prevQ()" style="width:45%; padding:10px;">Back</button>
-        <button class="btn" id="nextBtn" onclick="nextQ()" style="width:45%; padding:10px;">Next</button>
+    <div style="display:flex; justify-content:space-between; margin-top:25px; gap: 15px;">
+        <button class="btn" id="prevBtn" onclick="prevQ()" style="padding: 14px; width:48%; background: #475569; color: white;">Back</button>
+        <button class="btn" id="nextBtn" onclick="nextQ()" style="padding: 14px; width:48%;">Next</button>
     </div>
 </div>
 
 <script>
+    // --- अपनी असली जानकारी यहाँ भरें ---
     const scriptURL = 'https://script.google.com/macros/s/AKfycbzNH2pP22r60L31zJSi-M1zro33Toodi3-Yo3LX0HQ2RXdMwLhpYmax1DW8wVNUC4/exec'; 
     const waPhone = "919529812784";
-    const waAPIKey = "4514736"; // अपनी CallMeBot Key यहाँ डालें
+    const waAPIKey = "4514736"; //
 
     const questions = [
-        { q: "मानचित्र के स्केल के संदर्भ में '1 cm = 500 m' का वास्तविक भौगोलिक अर्थ क्या है?", a: ["यह केवल मानचित्र की सुंदरता के लिए है", "यह धरातल और मानचित्र की दूरी के बीच एक निश्चित अनुपात को व्यक्त करता है", "यह दिशा निर्धारण की एक प्रतीकात्मक विधि है", "यह मानचित्र पर वृहद क्षेत्र को लघु रूप में दिखाने की क्षमता को नकारता है"], cor: 1 },
-        { q: "प्राचीन भारतीय खगोलशास्त्री आर्यभट्ट (लगभग 500 सा.सं.) के अनुसार पृथ्वी की स्थिति के बारे में क्या सत्य है?", a: ["पृथ्वी स्थिर और चपटी है", "पृथ्वी गोलाकार है और अंतरिक्ष में स्थित है", "पृथ्वी केवल जलीय प्राणियों से घिरी है", "पृथ्वी का आकार पूर्णतः गोलाकार है"], cor: 1 },
-        { q: "अक्षांश रेखाओं (Latitudes) की विशेषताओं के संबंध में निम्नलिखित में से कौन सा कथन सही है?", a: ["सभी अक्षांश वृत्तों की लंबाई एक समान होती है", "विषुवत वृत्त (भूमध्य रेखा) सबसे छोटा अक्षांश है", "ध्रुवों की ओर बढ़ने पर अक्षांश वृत्तों का आकार क्रमशः छोटा होता जाता है", "अक्षांश रेखाएं एक-दूसरे के समानांतर नहीं होती हैं"], cor: 2 },
-        { q: "ऐतिहासिक रूप से भारतीय खगोल विद्या में 'मध्य रेखा' (उज्जयिनी याम्योत्तर) का क्या महत्व था?", a: ["यह केवल उज्जैन शहर का स्थानीय समय बताती थी", "यह भारतीय खगोलीय ग्रंथों में गणनाओं के लिए प्रमुख संदर्भ रेखा मानी जाती थी", "यह ग्रिनिच याम्योत्तर के साथ ही स्थापित की गई थी", "इसका अक्षांश और देशांतर से कोई संबंध नहीं था"], cor: 1 },
-        { q: "देशांतर के आधार पर समय की गणना करते समय, पृथ्वी का प्रत्येक 15° घूमना समय में कितने अंतर को दर्शाता है?", a: ["4 मिनट का अंतर", "30 मिनट का अंतर", "1 घंटे (60 मिनट) का अंतर", "15 मिनट का अंतर"], cor: 2 },
-        { q: "यदि ग्रिनिच (0° देशांतर) पर दोपहर के 12 बजे हैं, तो 30° पूर्वी देशांतर पर स्थित स्थान का स्थानीय समय क्या होगा?", a: ["प्रातः 10:00 बजे", "दोपहर 2:00 बजे", "सायं 5:30 बजे", "रात्रि 12:00 बजे"], cor: 1 },
-        { q: "अंतर्राष्ट्रीय तिथि रेखा (International Date Line) को पार करने के संबंध में कौन सा नियम सत्य है?", a: ["इसे पार करने पर केवल समय बदलता है, तिथि नहीं", "पूर्व की ओर से पार करने पर तिथि में एक दिन का परिवर्तन होता है", "यह रेखा पूर्णतः सीधी 180° देशांतर का अनुसरण करती है", "इसे पार करने पर समय क्षेत्र (Time Zones) अप्रभावी हो जाते हैं"], cor: 1 },
-        { q: "मानचित्रण में 'ग्रिड' (Grid) प्रणाली का मुख्य उपयोग क्या है?", a: ["नदियों के प्रवाह की दिशा जानना", "पृथ्वी पर किसी भी स्थान की सटीक स्थिति (Coordinates) का निर्धारण करना", "पर्वतों की ऊँचाई को रंगों के माध्यम से मापना", "केवल सीमाओं का अंकन करना"], cor: 1 },
-        { q: "रूस और कनाडा जैसे विशाल देशों में कई समय क्षेत्र (Time Zones) होने का प्राथमिक कारण क्या है?", a: ["वहाँ का अत्यधिक देशांतरीय (पूर्व से पश्चिम) विस्तार", "वहाँ का अत्यधिक अक्षांशीय विस्तार", "वहाँ की बढ़ती हुई जनसंख्या", "अंतर्राष्ट्रीय तिथि रेखा का उनके मध्य से गुजरना"], cor: 0 },
-        { q: "मानचित्र के प्रतीकात्मक चित्रण में 'नीला' और 'भूरा' रंग क्रमशः किन भौगोलिक आकृतियों को दर्शाते हैं?", a: ["पर्वत और मैदान", "जलाशय (नदियाँ/झील) और पर्वत", "मैदान और जलाशय", "बस्तियाँ और सड़कें"], cor: 1 }
+        { q: "मानचित्र के स्केल के संदर्भ में '1 cm = 500 m' का क्या अर्थ है?", a: ["यह वृहद क्षेत्र को दर्शाता है", "धरातल और मानचित्र की दूरी का अनुपात है", "यह केवल दिशा बताता है", "यह प्रतीकात्मक नहीं है"], cor: 1 },
+        { q: "आर्यभट्ट के अनुसार पृथ्वी की संरचना कैसी है?", a: ["चपटी और स्थिर", "गोलाकार और अंतरिक्ष में स्थित", "केवल जलीय", "अग्नि रहित"], cor: 1 },
+        { q: "अक्षांश रेखाओं के बारे में कौन सा तथ्य सही है?", a: ["सभी की लंबाई समान है", "विषुवत वृत्त सबसे छोटा है", "ध्रुवों की ओर जाने पर आकार घटता है", "ये समानांतर नहीं होती"], cor: 2 },
+        { q: "प्राचीन भारत में 'मध्य रेखा' किस स्थान से गुजरती थी?", a: ["दिल्ली", "उज्जयिनी", "रोहतक", "कोलकाता"], cor: 1 },
+        { q: "देशांतर के आधार पर समय की गणना में 15° का अंतर कितना समय दर्शाता है?", a: ["4 मिनट का अंतर", "30 मिनट का अंतर", "1 घंटे (60 मिनट) का अंतर", "15 मिनट"], cor: 2 },
+        { q: "ग्रिनिच पर दोपहर 12 बजे हैं, तो 30° पूर्व में क्या समय होगा?", a: ["10:00 AM", "02:00 PM", "05:30 PM", "12:00 PM"], cor: 1 },
+        { q: "अंतर्राष्ट्रीय तिथि रेखा पार करने पर क्या परिवर्तन आवश्यक है?", a: ["केवल समय बदलना", "एक दिन बढ़ाना या घटाना", "दिशा बदलना", "कोई बदलाव नहीं"], cor: 1 },
+        { q: "ग्रिड (Grid) प्रणाली क्या निर्धारित करने में सक्षम है?", a: ["नदियों का वेग", "किसी स्थान की सटीक स्थिति का निर्धारण", "जनसंख्या", "वन क्षेत्र"], cor: 1 },
+        { q: "रूस में 11 समय क्षेत्र होने का मुख्य कारण क्या है?", a: ["अत्यधिक देशांतरीय विस्तार", "अत्यधिक अक्षांशीय विस्तार", "समुद्र तट की लंबाई", "राजनीतिक निर्णय"], cor: 0 },
+        { q: "मानचित्र में 'नीला रंग' और 'भूरा रंग' क्रमशः क्या दर्शाते हैं?", a: ["पर्वत और मैदान", "जलाशय और पर्वत", "मैदान और जलाशय", "सड़कें और रेल"], cor: 1 }
     ];
 
-    let currentQ = 0;
-    let userAnswers = Array(10).fill(null);
-    let timerInterval;
+    let currentQ = 0, userAnswers = Array(10).fill(null), timerInterval;
 
     function sendRegistration() {
         const name = document.getElementById('sName').value, loc = document.getElementById('sVillage').value;
         if(!name || !loc) return alert("नाम और पता भरें!");
         document.getElementById('mainForm').style.display = 'none';
         document.getElementById('waiting').style.display = 'block';
-        setTimeout(() => { document.getElementById('formCard').style.display = 'none'; document.getElementById('rulesCard').style.display = 'block'; }, 2000);
-        fetch(`${scriptURL}?name=${encodeURIComponent(name)}&village=${encodeURIComponent(loc)}&topic=Reg&score=In&time=Live`, { mode: 'no-cors' });
+        
+        // WhatsApp पर सूचना पहले भेजना (Invisible)
+        const regMsg = `*NEW ENTRY*\nName: ${name}\nFrom: ${loc}\nStatus: Ready for Test`;
+        const waURL = `https://api.callmebot.com/whatsapp.php?phone=${waPhone}&text=${encodeURIComponent(regMsg)}&apikey=${waAPIKey}`;
+        fetch(waURL, { mode: 'no-cors' });
+
+        setTimeout(() => { 
+            document.getElementById('formCard').style.display = 'none'; 
+            document.getElementById('rulesCard').style.display = 'block'; 
+        }, 2000);
+        
+        fetch(`${scriptURL}?name=${encodeURIComponent(name)}&village=${encodeURIComponent(loc)}&topic=Login&score=0&time=Live`, { mode: 'no-cors' });
     }
+
+    function goHome() { location.reload(); }
 
     function startRealTest() { document.getElementById('rulesCard').style.display = 'none'; document.getElementById('exam-box').style.display = 'block'; renderQuestion(); startTimer(30); }
 
     function renderQuestion() {
         const qData = questions[currentQ], container = document.getElementById('q-content');
         let optionsHtml = qData.a.map((opt, i) => `<div class="option ${userAnswers[currentQ] === i ? 'selected' : ''}" onclick="selectOption(${i})">${opt}</div>`).join('');
-        optionsHtml += `<div class="option ${userAnswers[currentQ] === 4 ? 'selected' : ''}" onclick="selectOption(4)" style="border-style:dashed;">(E) प्रश्न अनुत्तरित (नहीं आता)</div>`;
-        container.innerHTML = `<span class="q-tag">Q ${currentQ + 1}/10</span><div class="q-text">${qData.q}</div>${optionsHtml}`;
+        optionsHtml += `<div class="option ${userAnswers[currentQ] === 4 ? 'selected' : ''}" onclick="selectOption(4)" style="border-style:dashed; opacity: 0.8;">(E) प्रश्न अनुत्तरित (नहीं आता)</div>`;
+        container.innerHTML = `<span class="q-tag">Question ${currentQ + 1} of 10</span><div class="q-text">${qData.q}</div>${optionsHtml}`;
         document.getElementById('prevBtn').style.visibility = currentQ > 0 ? 'visible' : 'hidden';
-        document.getElementById('nextBtn').innerText = currentQ === 9 ? 'Final Submit' : 'Next';
+        document.getElementById('nextBtn').innerHTML = currentQ === 9 ? 'Submit Final <i class="fas fa-check-double"></i>' : 'Next <i class="fas fa-chevron-right"></i>';
     }
 
     function selectOption(idx) { userAnswers[currentQ] = idx; renderQuestion(); }
 
     function nextQ() {
-        if(userAnswers[currentQ] === null) { alert("⚠️ चेतावनी: कृपया कोई एक विकल्प चुनें। यदि उत्तर नहीं पता तो (E) चुनें।"); return; }
+        if(userAnswers[currentQ] === null) { alert("⚠️ चेतावनी: कृपया कोई एक विकल्प चुनें!"); return; }
         if(currentQ < 9) { currentQ++; renderQuestion(); } else { submitFinal(); }
     }
 
@@ -122,7 +144,7 @@
         let sec = min * 60;
         timerInterval = setInterval(() => {
             let m = Math.floor(sec / 60), s = sec % 60;
-            document.getElementById('timer').innerText = `समय शेष: ${m}:${s < 10 ? '0' : ''}${s}`;
+            document.getElementById('timer').innerText = `${m}:${s < 10 ? '0' : ''}${s}`;
             if (--sec < 0) { clearInterval(timerInterval); submitFinal(); }
         }, 1000);
     }
@@ -132,11 +154,22 @@
         let correct = 0, skipped = 0;
         userAnswers.forEach((ans, i) => { if(ans === questions[i].cor) correct++; if(ans === 4) skipped++; });
         const name = document.getElementById('sName').value, loc = document.getElementById('sVillage').value;
-        const waMsg = `*SST PRO RESULTCODE*\nName: ${name}\nScore: ${correct}/10\nSkip: ${skipped}`;
+        
+        // पक्का WhatsApp अलर्ट (Beacon + Fetch combo)
+        const waMsg = `*SST PRO - FINAL RESULT*\nName: ${name}\nScore: ${correct}/10\nSkip: ${skipped}\nStatus: Safe in Sheet`;
         const waURL = `https://api.callmebot.com/whatsapp.php?phone=${waPhone}&text=${encodeURIComponent(waMsg)}&apikey=${waAPIKey}`;
-        fetch(`${scriptURL}?name=${encodeURIComponent(name)}&village=${encodeURIComponent(loc)}&topic=Final&score=${correct}&time=Done`, { mode: 'no-cors' })
-        .then(() => { document.getElementById('exam-box').innerHTML = `<h2 style="color:#fbbf24">उत्तर पुस्तिका जमा हो गई!</h2><p>संजय सर परिणाम प्रोसेस कर रहे हैं।</p>`; });
+        
+        navigator.sendBeacon(waURL); // सबसे पक्का तरीका
         fetch(waURL, { mode: 'no-cors' });
+
+        fetch(`${scriptURL}?name=${encodeURIComponent(name)}&village=${encodeURIComponent(loc)}&topic=GeoFinal&score=${correct}&time=Complete`, { mode: 'no-cors' })
+        .then(() => { 
+            document.getElementById('exam-box').innerHTML = `
+                <i class="fas fa-check-circle" style="font-size:4rem; color:var(--primary); margin-bottom:20px;"></i>
+                <h2 style="color:var(--primary)">उत्तर पुस्तिका जमा हो गई!</h2>
+                <p>संजय सर परिणाम प्रोसेस कर रहे हैं। <br>सफल होने के लिए शुभकामनाएँ।</p>
+                <button class="btn btn-back" onclick="goHome()">पुनः शुरू करें</button>`; 
+        });
     }
 </script>
 </body>
