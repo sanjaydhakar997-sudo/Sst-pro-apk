@@ -3,111 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SST Pro - टेस्ट सीरीज़</title>
-    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;600&display=swap" rel="stylesheet">
-    
+    <title>SST Pro Exam Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { 
-            font-family: 'Hind', sans-serif; 
-            background-color: #f8f9fa; 
-            margin: 0; 
-            padding: 15px; 
-            color: #2f3542; 
-        }
+        :root { --primary: #fbbf24; --bg: #0f172a; --card: #1e293b; }
+        body { font-family: 'Hind', sans-serif; background: var(--bg); color: white; margin: 0; overflow-x: hidden; }
+        
+        /* Brand Tag Style */
+        .brand-tag { background: var(--card); padding: 10px; text-align: center; border-bottom: 3px solid var(--primary); position: sticky; top: 0; z-index: 100; }
+        .brand-tag span { color: var(--primary); font-weight: bold; font-size: 1.2rem; }
 
-        .header { 
-            text-align: center; 
-            padding: 20px; 
-            background: #fff; 
-            border-radius: 15px; 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
-            margin-bottom: 20px;
-        }
+        .container { max-width: 600px; margin: 20px auto; padding: 20px; }
+        .card { background: var(--card); border-radius: 15px; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); position: relative; }
+        
+        /* Timer Style */
+        .timer-box { font-family: 'Poppins', sans-serif; background: #ef4444; color: white; padding: 8px 15px; border-radius: 50px; font-weight: bold; margin-bottom: 20px; display: inline-block; }
 
-        .header h1 { margin: 0; color: #1a237e; font-size: 22px; }
+        /* Animation */
+        .fade-in { animation: fadeIn 0.5s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
 
-        #test-list { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
-            gap: 15px; 
-        }
+        .q-text { font-size: 1.3rem; margin-bottom: 20px; color: var(--primary); }
+        .option { background: #334155; padding: 15px; margin: 10px 0; border-radius: 10px; cursor: pointer; transition: 0.3s; border: 1px solid transparent; }
+        .option:hover { background: #475569; }
+        .option.selected { border-color: var(--primary); background: #1e40af; }
 
-        .test-card { 
-            background: #fff; 
-            border-radius: 12px; 
-            padding: 15px; 
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            border-bottom: 4px solid #1a237e; 
-            transition: 0.3s;
-            position: relative;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .test-card:active { transform: scale(0.95); }
-        .icon { font-size: 30px; display: block; margin-bottom: 10px; }
-        .label { font-weight: 600; font-size: 14px; color: #1a237e; }
-        .meta { font-size: 11px; color: #747d8c; margin-top: 5px; }
-        .new-tag {
-            position: absolute; top: 5px; right: 5px;
-            background: #ff4757; color: white;
-            font-size: 9px; padding: 2px 6px;
-            border-radius: 4px; font-weight: bold;
-        }
+        .nav-btns { display: flex; justify-content: space-between; margin-top: 30px; }
+        .btn { padding: 12px 25px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1rem; }
+        .btn-next { background: var(--primary); color: #000; }
+        .btn-prev { background: #64748b; color: white; }
+        
+        #marksheet { display: none; text-align: center; color: #000; background: white; padding: 40px; border-radius: 15px; }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <h1>तैयारी को परखें (Test Series)</h1>
+<div class="brand-tag">
+    <i class="fas fa-graduation-cap"></i> <span>SOCIAL STUDIES CLASSES</span>
+</div>
+
+<div class="container">
+    <div id="reg-box" class="card fade-in">
+        <h2>REET/UPSC भूगोल टेस्ट</h2>
+        <p>विषय: पृथ्वी पर स्थानों की स्थिति (Chapter 1)</p>
+        <hr border="0.1" color="#334155">
+        <input type="text" id="sName" placeholder="आपका पूरा नाम" style="width:100%; padding:15px; margin:15px 0; border-radius:8px; border:none;">
+        <input type="text" id="sVillage" placeholder="गाँव / जिला" style="width:100%; padding:15px; margin:15px 0; border-radius:8px; border:none;">
+        <button class="btn btn-next" style="width:100%" onclick="startExam()">परीक्षा शुरू करें</button>
     </div>
 
-    <div id="test-list"></div>
+    <div id="exam-box" style="display:none;" class="card">
+        <div class="timer-box"><i class="fas fa-clock"></i> <span id="timer">30:00</span></div>
+        <div id="question-container" class="fade-in">
+            </div>
+        <div class="nav-btns">
+            <button class="btn btn-prev" id="prevBtn" onclick="prevQ()" style="display:none;">Back</button>
+            <button class="btn btn-next" id="nextBtn" onclick="nextQ()">Next</button>
+        </div>
+    </div>
 
-    <script>
-        // --- यहाँ नया टेस्ट जोड़ें ---
-        const myTests = [
-            {
-                title: "भारतीय मानसून",
-                icon: "🌍",
-                questions: "100 Q",
-                link: "mtest.html?type=mansoon", // एनीमेशन वाली फाइल का नया नाम
-                isNew: true
-            },
-            {
-                title: "राजस्थान इतिहास",
-                icon: "🏰",
-                questions: "20 Q",
-                link: "mtest.html?type=raj_history", 
-                isNew: false
-            },
-            {
-                title: "दर्शनशास्त्र",
-                icon: "🧘",
-                questions: "10 Q",
-                link: "mtest.html?type=philosophy", 
-                isNew: false
-            }
-        ];
+    <div id="marksheet" class="fade-in">
+        <h2 style="color: #1e293b;">SST PRO मार्कशीट</h2>
+        <hr>
+        <div id="resData" style="text-align: left; font-size: 1.1rem; margin: 20px 0;"></div>
+        <h1 id="scoreDisplay" style="font-size: 4rem; margin: 0;"></h1>
+        <p id="statusMsg" style="font-weight: bold;"></p>
+        <p style="font-size: 0.8rem; color: #64748b;">डेटा संजय सर (9529812784) की शीट में जमा हो गया है।</p>
+    </div>
+</div>
+<script>
+    const questions = [
+        { q: "मानचित्र के स्केल के संदर्भ में '1 cm = 500 m' क्या दर्शाता है?", a: ["वृहद क्षेत्र का प्रदर्शन", "धरातल और मानचित्र की दूरी का अनुपात"], cor: 1 },
+        { q: "पृथ्वी की आकृति के संबंध में 'आर्यभट्ट' (500 सा.सं.) ने क्या कहा था?", a: ["पृथ्वी चपटी है", "पृथ्वी गोलाकार है और आकाश में स्थित है"], cor: 1 },
+        { q: "इनमें से कौन-सा मानचित्र का मुख्य घटक नहीं है?", a: ["दूरी और दिशा", "जनसंख्या घनत्व"], cor: 1 },
+        { q: "यदि आप '0° देशांतर' से पूर्व की ओर 15° यात्रा करते हैं, तो समय में क्या परिवर्तन होगा?", a: ["1 घंटा बढ़ेगा", "1 घंटा घटेगा"], cor: 0 },
+        { q: "प्राचीन भारतीय भूगोल में 'मध्य रेखा' किस शहर से गुजरती थी?", a: ["दिल्ली", "उज्जयिनी (उज्जैन)"], cor: 1 },
+        { q: "भूमध्य रेखा (विषुवत वृत्त) का अक्षांश मान कितना होता है?", a: ["0° अक्षांश", "90° अक्षांश"], cor: 0 },
+        { q: "दो देशांतरों के बीच की दूरी कहाँ पर सर्वाधिक होती है?", a: ["ध्रुवों पर", "भूमध्य रेखा पर"], cor: 1 },
+        { q: "भारतीय मानक समय (IST), GMT से कितना आगे है?", a: ["5 घंटे 30 मिनट", "6 घंटे"], cor: 0 },
+        { q: "अंतर्राष्ट्रीय तिथि रेखा लगभग किस देशांतर का अनुसरण करती है?", a: ["0° देशांतर", "180° देशांतर"], cor: 1 },
+        { q: "मानचित्र पर 'नीला रंग' आमतौर पर क्या दर्शाने के लिए उपयोग किया जाता है?", a: ["पर्वत", "जलाशय (नदी/झील)"], cor: 1 }
+    ];
+        let currentQ = 0;
+    let score = 0;
+    let userAnswers = Array(questions.length).fill(null);
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzNH2pP22r60L31zJSi-M1zro33Toodi3-Yo3LX0HQ2RXdMwLhpYmax1DW8wVNUC4/exec'; 
 
-        // --- ऑटोमेशन कोड ---
-        const listContainer = document.getElementById('test-list');
+    function startExam() {
+        if(document.getElementById('sName').value == "") return alert("नाम भरें");
+        document.getElementById('reg-box').style.display = 'none';
+        document.getElementById('exam-box').style.display = 'block';
+        loadQuestion();
+        startTimer(30);
+    }
 
-        myTests.forEach(test => {
-            const card = document.createElement('a');
-            card.href = test.link;
-            card.className = 'test-card';
-            
-            card.innerHTML = `
-                ${test.isNew ? '<span class="new-tag">NEW</span>' : ''}
-                <span class="icon">${test.icon}</span>
-                <div class="label">${test.title}</div>
-                <div class="meta">${test.questions} | 10 Min</div>
-            `;
-            
-            listContainer.appendChild(card);
+    function loadQuestion() {
+        let q = questions[currentQ];
+        let html = `<div class='q-text'>Q${currentQ+1}. ${q.q}</div>`;
+        q.a.forEach((opt, index) => {
+            let selectedClass = userAnswers[currentQ] === index ? 'selected' : '';
+            html += `<div class='option ${selectedClass}' onclick='selectOpt(${index})'>${opt}</div>`;
         });
-    </script>
+        document.getElementById('question-container').innerHTML = html;
+        document.getElementById('prevBtn').style.display = currentQ > 0 ? 'block' : 'none';
+        document.getElementById('nextBtn').innerText = currentQ === questions.length - 1 ? 'सबमिट करें' : 'अगला प्रश्न';
+    }
+
+    function selectOpt(idx) {
+        userAnswers[currentQ] = idx;
+        loadQuestion();
+    }
+
+    function nextQ() {
+        if (userAnswers[currentQ] === null) return alert("कृपया उत्तर चुनें");
+        if (currentQ < questions.length - 1) {
+            currentQ++;
+            loadQuestion();
+        } else {
+            submitExam();
+        }
+    }
+
+    function prevQ() {
+        if (currentQ > 0) {
+            currentQ--;
+            loadQuestion();
+        }
+    }
+
+    function submitExam() {
+        score = userAnswers.reduce((acc, ans, i) => acc + (ans === questions[i].cor ? 1 : 0), 0);
+        let name = document.getElementById('sName').value;
+        let village = document.getElementById('sVillage').value;
+
+        // Google Sheet Automation
+        fetch(`${scriptURL}?name=${name}&village=${village}&topic=Geography-Ch1&score=${score}&time=30Mins`)
+        .then(() => {
+            document.getElementById('exam-box').style.display = 'none';
+            document.getElementById('marksheet').style.display = 'block';
+            document.getElementById('resData').innerHTML = `<b>परीक्षार्थी:</b> ${name}<br><b>स्थान:</b> ${village}`;
+            document.getElementById('scoreDisplay').innerText = `${score}/${questions.length}`;
+            document.getElementById('statusMsg').innerText = score >= 7 ? "बेहतरीन!" : "प्रयास जारी रखें।";
+        });
+    }
+
+    function startTimer(min) {
+        let sec = min * 60;
+        let timer = setInterval(() => {
+            let m = Math.floor(sec / 60);
+            let s = sec % 60;
+            document.getElementById('timer').innerText = `${m}:${s < 10 ? '0' : ''}${s}`;
+            if (sec <= 0) { clearInterval(timer); submitExam(); }
+            sec--;
+        }, 1000);
+    }
+</script>
 </body>
 </html>
