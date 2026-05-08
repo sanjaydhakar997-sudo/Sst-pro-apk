@@ -3,160 +3,197 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SST Pro Exam Portal</title>
-    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <title>SST Pro - Exam Entry</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root { --primary: #fbbf24; --bg: #0f172a; --card: #1e293b; }
-        body { font-family: 'Hind', sans-serif; background: var(--bg); color: white; margin: 0; overflow-x: hidden; }
-        
-        /* Brand Tag Style */
-        .brand-tag { background: var(--card); padding: 10px; text-align: center; border-bottom: 3px solid var(--primary); position: sticky; top: 0; z-index: 100; }
-        .brand-tag span { color: var(--primary); font-weight: bold; font-size: 1.2rem; }
-
-        .container { max-width: 600px; margin: 20px auto; padding: 20px; }
-        .card { background: var(--card); border-radius: 15px; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); position: relative; }
-        
-        /* Timer Style */
-        .timer-box { font-family: 'Poppins', sans-serif; background: #ef4444; color: white; padding: 8px 15px; border-radius: 50px; font-weight: bold; margin-bottom: 20px; display: inline-block; }
-
-        /* Animation */
-        .fade-in { animation: fadeIn 0.5s ease-in-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
-
-        .q-text { font-size: 1.3rem; margin-bottom: 20px; color: var(--primary); }
-        .option { background: #334155; padding: 15px; margin: 10px 0; border-radius: 10px; cursor: pointer; transition: 0.3s; border: 1px solid transparent; }
-        .option:hover { background: #475569; }
-        .option.selected { border-color: var(--primary); background: #1e40af; }
-
-        .nav-btns { display: flex; justify-content: space-between; margin-top: 30px; }
-        .btn { padding: 12px 25px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1rem; }
-        .btn-next { background: var(--primary); color: #000; }
-        .btn-prev { background: #64748b; color: white; }
-        
-        #marksheet { display: none; text-align: center; color: #000; background: white; padding: 40px; border-radius: 15px; }
+        body { font-family: 'Hind', sans-serif; background: var(--bg); color: white; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .card { background: var(--card); width: 100%; max-width: 400px; padding: 30px; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.6); text-align: center; border: 1px solid #334155; }
+        .logo i { font-size: 3.5rem; color: var(--primary); margin-bottom: 10px; }
+        h1 { font-family: 'Poppins', sans-serif; color: var(--primary); font-size: 1.6rem; margin: 0; }
+        .input-box { position: relative; margin: 20px 0; }
+        .input-box i { position: absolute; left: 15px; top: 15px; color: #94a3b8; }
+        input { width: 100%; padding: 15px 15px 15px 45px; background: #0f172a; border: 2px solid #334155; border-radius: 12px; color: white; font-size: 1rem; box-sizing: border-box; outline: none; }
+        input:focus { border-color: var(--primary); }
+        .btn { background: var(--primary); color: #000; width: 100%; padding: 18px; border: none; border-radius: 12px; font-weight: bold; font-size: 1.1rem; cursor: pointer; transition: 0.3s; }
+        /* Waiting Animation */
+        #waiting { display: none; margin-top: 20px; }
+        .loader { border: 4px solid #334155; border-top: 4px solid var(--primary); border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: auto; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
 
-<div class="brand-tag">
-    <i class="fas fa-graduation-cap"></i> <span>SOCIAL STUDIES CLASSES</span>
-</div>
+<div class="card" id="formCard">
+    <div class="logo"><i class="fas fa-university"></i></div>
+    <h1>SOCIAL STUDIES CLASSES</h1>
+    <p style="color: #94a3b8;">अपनी जानकारी भरें</p>
 
-<div class="container">
-    <div id="reg-box" class="card fade-in">
-        <h2>REET/UPSC भूगोल टेस्ट</h2>
-        <p>विषय: पृथ्वी पर स्थानों की स्थिति (Chapter 1)</p>
-        <hr border="0.1" color="#334155">
-        <input type="text" id="sName" placeholder="आपका पूरा नाम" style="width:100%; padding:15px; margin:15px 0; border-radius:8px; border:none;">
-        <input type="text" id="sVillage" placeholder="गाँव / जिला" style="width:100%; padding:15px; margin:15px 0; border-radius:8px; border:none;">
-        <button class="btn btn-next" style="width:100%" onclick="startExam()">परीक्षा शुरू करें</button>
-    </div>
-
-    <div id="exam-box" style="display:none;" class="card">
-        <div class="timer-box"><i class="fas fa-clock"></i> <span id="timer">30:00</span></div>
-        <div id="question-container" class="fade-in">
-            </div>
-        <div class="nav-btns">
-            <button class="btn btn-prev" id="prevBtn" onclick="prevQ()" style="display:none;">Back</button>
-            <button class="btn btn-next" id="nextBtn" onclick="nextQ()">Next</button>
+    <div id="mainForm">
+        <div class="input-box">
+            <i class="fas fa-user"></i>
+            <input type="text" id="name" placeholder="आपका पूरा नाम" required>
         </div>
+        <div class="input-box">
+            <i class="fas fa-map-marker-alt"></i>
+            <input type="text" id="location" placeholder="गाँव / जिला" required>
+        </div>
+        <button class="btn" onclick="sendData()">परीक्षा शुरू करें</button>
     </div>
 
-    <div id="marksheet" class="fade-in">
-        <h2 style="color: #1e293b;">SST PRO मार्कशीट</h2>
-        <hr>
-        <div id="resData" style="text-align: left; font-size: 1.1rem; margin: 20px 0;"></div>
-        <h1 id="scoreDisplay" style="font-size: 4rem; margin: 0;"></h1>
-        <p id="statusMsg" style="font-weight: bold;"></p>
-        <p style="font-size: 0.8rem; color: #64748b;">डेटा संजय सर (9529812784) की शीट में जमा हो गया है।</p>
+    <div id="waiting">
+        <div class="loader"></div>
+        <p style="color: var(--primary); margin-top: 15px;">आपका टेस्ट सर्वर से कनेक्ट हो रहा है...</p>
+        <p style="font-size: 0.8rem; color: #94a3b8;">कृपया प्रतीक्षा करें (3-5 Seconds)</p>
     </div>
 </div>
+<style>
+    /* Rules Page का खास स्टाइल */
+    .rules-card { display: none; background: var(--card); width: 95%; max-width: 500px; padding: 30px; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.6); animation: fadeIn 0.5s ease-in; border: 1px solid #334155; }
+    
+    .motivation-quote { background: #0f172a; padding: 15px; border-left: 5px solid var(--primary); font-style: italic; margin-bottom: 25px; color: #fbbf24; font-size: 1.1rem; }
+    
+    .rules-list { text-align: left; margin-bottom: 30px; }
+    .rules-list div { margin: 12px 0; display: flex; align-items: flex-start; gap: 10px; font-size: 1rem; }
+    .rules-list i { color: var(--primary); margin-top: 4px; }
+
+    .ready-btn { background: var(--primary); color: #000; width: 100%; padding: 18px; border: none; border-radius: 12px; font-weight: bold; font-size: 1.2rem; cursor: pointer; box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3); }
+</style>
+
+<div class="rules-card" id="rulesCard">
+    <div style="text-align: center;">
+        <i class="fas fa-lightbulb" style="font-size: 2.5rem; color: #fbbf24; margin-bottom: 10px;"></i>
+        <h2 style="color: var(--primary); margin: 0;">परीक्षा के निर्देश</h2>
+        <p style="color: #94a3b8; font-size: 0.9rem;">SST Pro - NCERT Special Series</p>
+    </div>
+
+    <div class="motivation-quote">
+        "जीतने वाले कभी हार नहीं मानते और हार मानने वाले कभी जीतते नहीं। आज का यह टेस्ट आपकी मेहनत का आईना है!" <br>
+        <span style="font-size: 0.8rem; color: #94a3b8; float: right;">- संजय सर</span>
+    </div>
+
+    <div class="rules-list">
+        <div><i class="fas fa-check-circle"></i> <span>इस टेस्ट में कुल <b>10 महत्वपूर्ण प्रश्न</b> हैं।</span></div>
+        <div><i class="fas fa-check-circle"></i> <span>पूरा टेस्ट हल करने के लिए आपको <b>30 मिनट</b> का समय मिलेगा।</span></div>
+        <div><i class="fas fa-check-circle"></i> <span>प्रत्येक प्रश्न के लिए 'Next' और 'Back' बटन का उपयोग कर सकते हैं।</span></div>
+        <div><i class="fas fa-check-circle"></i> <span>एक बार 'Final Submit' करने के बाद उत्तर बदले नहीं जा सकेंगे।</span></div>
+        <div><i class="fas fa-check-circle"></i> <span>आपका स्कोर सीधा <b>संजय सर की मास्टर शीट</b> में दर्ज होगा।</span></div>
+    </div>
+
+    <button class="ready-btn" onclick="showRealTest()">
+        मैं तैयार हूँ, शुरू करें! <i class="fas fa-rocket"></i>
+    </button>
+</div>
+
 <script>
+    function showRealTest() {
+        // यहाँ से असली 10 सवालों वाला टेस्ट शुरू होगा
+        alert("शुभकामनाएं! टेस्ट शुरू हो रहा है...");
+        // अगले स्टेप में यहाँ Questions वाला कोड आएगा
+    }
+</script>
+<script>
+    // NCERT 2026-27 के गहन प्रश्न_260508_121427.pdf]
     const questions = [
-        { q: "मानचित्र के स्केल के संदर्भ में '1 cm = 500 m' क्या दर्शाता है?", a: ["वृहद क्षेत्र का प्रदर्शन", "धरातल और मानचित्र की दूरी का अनुपात"], cor: 1 },
-        { q: "पृथ्वी की आकृति के संबंध में 'आर्यभट्ट' (500 सा.सं.) ने क्या कहा था?", a: ["पृथ्वी चपटी है", "पृथ्वी गोलाकार है और आकाश में स्थित है"], cor: 1 },
-        { q: "इनमें से कौन-सा मानचित्र का मुख्य घटक नहीं है?", a: ["दूरी और दिशा", "जनसंख्या घनत्व"], cor: 1 },
-        { q: "यदि आप '0° देशांतर' से पूर्व की ओर 15° यात्रा करते हैं, तो समय में क्या परिवर्तन होगा?", a: ["1 घंटा बढ़ेगा", "1 घंटा घटेगा"], cor: 0 },
-        { q: "प्राचीन भारतीय भूगोल में 'मध्य रेखा' किस शहर से गुजरती थी?", a: ["दिल्ली", "उज्जयिनी (उज्जैन)"], cor: 1 },
-        { q: "भूमध्य रेखा (विषुवत वृत्त) का अक्षांश मान कितना होता है?", a: ["0° अक्षांश", "90° अक्षांश"], cor: 0 },
-        { q: "दो देशांतरों के बीच की दूरी कहाँ पर सर्वाधिक होती है?", a: ["ध्रुवों पर", "भूमध्य रेखा पर"], cor: 1 },
-        { q: "भारतीय मानक समय (IST), GMT से कितना आगे है?", a: ["5 घंटे 30 मिनट", "6 घंटे"], cor: 0 },
-        { q: "अंतर्राष्ट्रीय तिथि रेखा लगभग किस देशांतर का अनुसरण करती है?", a: ["0° देशांतर", "180° देशांतर"], cor: 1 },
-        { q: "मानचित्र पर 'नीला रंग' आमतौर पर क्या दर्शाने के लिए उपयोग किया जाता है?", a: ["पर्वत", "जलाशय (नदी/झील)"], cor: 1 }
+        { q: "मानचित्र के स्केल के संदर्भ में '1 cm = 500 m' का क्या अर्थ है?", a: ["यह वृहद क्षेत्र को दर्शाता है", "धरातल और मानचित्र की दूरी का अनुपात है", "यह केवल दिशा बताता है", "यह प्रतीकात्मक नहीं है"], cor: 1 },
+        { q: "आर्यभट्ट के अनुसार पृथ्वी की संरचना कैसी है?", a: ["चपटी और स्थिर", "गोलाकार और अंतरिक्ष में स्थित", "केवल जलीय", "अग्नि रहित"], cor: 1 },
+        { q: "अक्षांश रेखाओं के बारे में कौन सा तथ्य सही है?", a: ["सभी की लंबाई समान है", "विषुवत वृत्त सबसे छोटा है", "ध्रुवों की ओर जाने पर आकार घटता है", "ये समानांतर नहीं होती"], cor: 2 },
+        { q: "प्राचीन भारत में 'मध्य रेखा' किस स्थान से गुजरती थी?", a: ["दिल्ली", "उज्जयिनी", "रोहतक", "कोलकाता"], cor: 1 },
+        { q: "देशांतर के आधार पर समय की गणना में 15° का अंतर कितना समय दर्शाता है?", a: ["4 मिनट", "30 मिनट", "1 घंटा", "15 मिनट"], cor: 2 },
+        { q: "ग्रिनिच पर दोपहर 12 बजे हैं, तो 30° पूर्व में क्या समय होगा?", a: ["10:00 AM", "02:00 PM", "05:30 PM", "12:00 PM"], cor: 1 },
+        { q: "अंतर्राष्ट्रीय तिथि रेखा पार करने पर क्या परिवर्तन आवश्यक है?", a: ["केवल समय बदलना", "एक दिन बढ़ाना या घटाना", "दिशा बदलना", "कोई बदलाव नहीं"], cor: 1 },
+        { q: "ग्रिड (Grid) प्रणाली क्या निर्धारित करने में सक्षम है?", a: ["नदियों का वेग", "किसी स्थान की सटीक स्थिति", "जनसंख्या", "वन क्षेत्र"], cor: 1 },
+        { q: "रूस में 11 समय क्षेत्र होने का मुख्य कारण क्या है?", a: ["अत्यधिक देशांतरीय विस्तार", "अत्यधिक अक्षांशीय विस्तार", "समुद्र तट की लंबाई", "राजनीतिक निर्णय"], cor: 0 },
+        { q: "मानचित्र में 'नीला रंग' और 'भूरा रंग' क्रमशः क्या दर्शाते हैं?", a: ["पर्वत और मैदान", "जलाशय और पर्वत", "मैदान और जलाशय", "सड़कें और रेल"], cor: 1 }
     ];
-        let currentQ = 0;
-    let score = 0;
+
+    let currentQ = 0;
     let userAnswers = Array(questions.length).fill(null);
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzNH2pP22r60L31zJSi-M1zro33Toodi3-Yo3LX0HQ2RXdMwLhpYmax1DW8wVNUC4/exec'; 
 
-    function startExam() {
-        if(document.getElementById('sName').value == "") return alert("नाम भरें");
-        document.getElementById('reg-box').style.display = 'none';
-        document.getElementById('exam-box').style.display = 'block';
-        loadQuestion();
-        startTimer(30);
+    function renderQuestion() {
+        const qData = questions[currentQ];
+        const container = document.getElementById('q-content');
+        
+        // 4 मुख्य विकल्प + 1 विशेष 5वाँ विकल्प
+        let optionsHtml = qData.a.map((opt, i) => `
+            <div class="option ${userAnswers[currentQ] === i ? 'selected' : ''}" onclick="selectOption(${i})">
+                <i class="${userAnswers[currentQ] === i ? 'fas fa-check-circle' : 'far fa-circle'}"></i> ${opt}
+            </div>
+        `).join('');
+
+        // 5th Option Logic
+        optionsHtml += `
+            <div class="option ${userAnswers[currentQ] === 4 ? 'selected' : ''}" onclick="selectOption(4)" style="border-style: dashed; background: #1e293b;">
+                <i class="${userAnswers[currentQ] === 4 ? 'fas fa-times-circle' : 'far fa-circle'}"></i> 
+                <b>(E) प्रश्न अनुत्तरित (नहीं आता)</b>
+            </div>
+        `;
+
+        container.innerHTML = `
+            <span class="q-tag">प्रश्न ${currentQ + 1} / ${questions.length}</span>
+            <div class="q-text">${qData.q}</div>
+            ${optionsHtml}
+        `;
     }
 
-    function loadQuestion() {
-        let q = questions[currentQ];
-        let html = `<div class='q-text'>Q${currentQ+1}. ${q.q}</div>`;
-        q.a.forEach((opt, index) => {
-            let selectedClass = userAnswers[currentQ] === index ? 'selected' : '';
-            html += `<div class='option ${selectedClass}' onclick='selectOpt(${index})'>${opt}</div>`;
-        });
-        document.getElementById('question-container').innerHTML = html;
-        document.getElementById('prevBtn').style.display = currentQ > 0 ? 'block' : 'none';
-        document.getElementById('nextBtn').innerText = currentQ === questions.length - 1 ? 'सबमिट करें' : 'अगला प्रश्न';
-    }
-
-    function selectOpt(idx) {
+    function selectOption(idx) {
         userAnswers[currentQ] = idx;
-        loadQuestion();
+        renderQuestion();
     }
 
-    function nextQ() {
-        if (userAnswers[currentQ] === null) return alert("कृपया उत्तर चुनें");
-        if (currentQ < questions.length - 1) {
+        function nextQ() {
+        // चेतावनी: बिना उत्तर दिए आगे नहीं जा सकते
+        if(userAnswers[currentQ] === null) {
+            alert("⚠️ चेतावनी: कृपया 5 में से किसी एक विकल्प का चयन करें।");
+            return;
+        }
+
+        if(currentQ < questions.length - 1) {
             currentQ++;
-            loadQuestion();
+            renderQuestion();
         } else {
-            submitExam();
+            // --- यहाँ से Step 3 शुरू होता है ---
+            submitFinal(); 
         }
     }
 
-    function prevQ() {
-        if (currentQ > 0) {
-            currentQ--;
-            loadQuestion();
-        }
-    }
-
-    function submitExam() {
-        score = userAnswers.reduce((acc, ans, i) => acc + (ans === questions[i].cor ? 1 : 0), 0);
-        let name = document.getElementById('sName').value;
-        let village = document.getElementById('sVillage').value;
-
-        // Google Sheet Automation
-        fetch(`${scriptURL}?name=${name}&village=${village}&topic=Geography-Ch1&score=${score}&time=30Mins`)
-        .then(() => {
-            document.getElementById('exam-box').style.display = 'none';
-            document.getElementById('marksheet').style.display = 'block';
-            document.getElementById('resData').innerHTML = `<b>परीक्षार्थी:</b> ${name}<br><b>स्थान:</b> ${village}`;
-            document.getElementById('scoreDisplay').innerText = `${score}/${questions.length}`;
-            document.getElementById('statusMsg').innerText = score >= 7 ? "बेहतरीन!" : "प्रयास जारी रखें।";
+    function submitFinal() {
+        clearInterval(timerInterval); // टाइमर रोकें
+        
+        // स्कोर और खाली छोड़े गए (Option E) सवालों की गणना
+        let correct = 0;
+        let unattempted = 0;
+        userAnswers.forEach((ans, i) => {
+            if(ans === questions[i].cor) correct++;
+            if(ans === 4) unattempted++; 
         });
-    }
 
-    function startTimer(min) {
-        let sec = min * 60;
-        let timer = setInterval(() => {
-            let m = Math.floor(sec / 60);
-            let s = sec % 60;
-            document.getElementById('timer').innerText = `${m}:${s < 10 ? '0' : ''}${s}`;
-            if (sec <= 0) { clearInterval(timer); submitExam(); }
-            sec--;
-        }, 1000);
+        const name = document.getElementById('sName').value;
+        const village = document.getElementById('sVillage').value;
+
+        // 1. WhatsApp के लिए मार्कशीट कोड (बैकग्राउंड में)
+        const waMsg = `*SST PRO RESULTCODE*\nName: ${name}\nVillage: ${village}\nScore: ${correct}/10\nSkip: ${unattempted}`;
+        const waURL = `https://api.callmebot.com/whatsapp.php?phone=919529812784&text=${encodeURIComponent(waMsg)}&apikey=YOUR_API_KEY`;
+
+        // 2. Google Sheet में डेटा भेजना
+        fetch(`${scriptURL}?name=${encodeURIComponent(name)}&village=${encodeURIComponent(village)}&topic=Geo-Ch1&score=${correct}&time=30Min`)
+        .then(() => {
+            // छात्र को मार्कशीट नहीं, सिर्फ 'Processing' मैसेज दिखेगा
+            document.getElementById('exam-box').innerHTML = `
+                <div style="text-align:center; padding:50px;">
+                    <i class="fas fa-sync fa-spin" style="font-size:3rem; color:#fbbf24;"></i>
+                    <h2 style="color:#fbbf24; margin-top:20px;">परिणाम प्रोसेस हो रहा है...</h2>
+                    <p>संजय सर द्वारा कॉपी चेक होने के बाद रिजल्ट पोर्टल पर अपलोड किया जाएगा।</p>
+                    <div style="background:#1e293b; padding:15px; border-radius:10px; margin-top:20px; color:white;">
+                       <b>Status:</b> उत्तर पुस्तिका जमा हो गई है।
+                    </div>
+                </div>
+            `;
+        });
+
+        // बैकग्राउंड में व्हाट्सएप नोटिफिकेशन ट्रिगर करना
+        fetch(waURL, { mode: 'no-cors' });
     }
 </script>
 </body>
