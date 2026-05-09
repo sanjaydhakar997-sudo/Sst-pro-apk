@@ -1,10 +1,11 @@
+HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Advanced Test Series</title>
+<title>Official Test Series</title>
 
 <style>
 
@@ -27,8 +28,8 @@ margin:auto;
 background:#1e293b;
 padding:20px;
 border-radius:20px;
-box-shadow:0 0 20px rgba(0,0,0,0.4);
 margin-top:20px;
+box-shadow:0 0 20px rgba(0,0,0,0.4);
 }
 
 h1,h2,h3{
@@ -69,6 +70,10 @@ text-align:center;
 font-size:18px;
 font-weight:bold;
 cursor:pointer;
+}
+
+.topic:hover{
+background:#475569;
 }
 
 .timer{
@@ -140,11 +145,13 @@ font-weight:bold;
 
 <input type="text" id="village" placeholder="Enter District / Village">
 
-<button onclick="continueToTopics()">Continue</button>
+<button id="continueBtn">
+Continue
+</button>
 
 </div>
 
-<!-- TOPICS PAGE -->
+<!-- TOPIC PAGE -->
 
 <div class="container" id="topicsPage" style="display:none;">
 
@@ -160,11 +167,14 @@ font-weight:bold;
 
 <h2 id="testTitle"></h2>
 
-<div class="timer" id="timer">30:00</div>
+<div class="timer" id="timer">
+30:00
+</div>
 
 <div id="questionsContainer"></div>
 
-<button class="submitBtn" onclick="submitTest()">
+<button class="submitBtn"
+onclick="submitTest()">
 Final Submit
 </button>
 
@@ -193,34 +203,452 @@ questions:[
 
 {
 q:"भारत की सबसे लंबी नदी कौन सी है?",
-options:["गंगा","यमुना","गोदावरी","नर्मदा","ब्रह्मपुत्र"],
+options:[
+"गंगा",
+"यमुना",
+"गोदावरी",
+"नर्मदा",
+"ब्रह्मपुत्र"
+],
 answer:"गंगा"
 },
 
 {
-q:"भारत का सबसे बड़ा राज्य कौन सा है?",
-options:["राजस्थान","मध्यप्रदेश","उत्तरप्रदेश","बिहार","गुजरात"],
-answer:"राजस्थान"
-},
-
-{
 q:"भारत की राजधानी क्या है?",
-options:["दिल्ली","मुंबई","कोलकाता","चेन्नई","जयपुर"],
+options:[
+"दिल्ली",
+"मुंबई",
+"कोलकाता",
+"चेन्नई",
+"जयपुर"
+],
 answer:"दिल्ली"
 },
 
 {
 q:"भारत का राष्ट्रीय पशु कौन है?",
-options:["शेर","बाघ","हाथी","भालू","घोड़ा"],
+options:[
+"शेर",
+"बाघ",
+"हाथी",
+"भालू",
+"घोड़ा"
+],
 answer:"बाघ"
 },
 
 {
-q:"भारत का राष्ट्रीय पक्षी कौन है?",
-options:["तोता","कबूतर","मोर","हंस","गरुड़"],
-answer:"मोर"
+q:"भारत में कुल कितने राज्य हैं?",
+options:[
+"28",
+"29",
+"30",
+"27",
+"31"
+],
+answer:"28"
 },
 
 {
 q:"थार मरुस्थल कहाँ स्थित है?",
-options:["राजस्थान","बिहार","पंजाब","गुजरात","हरिय
+options:[
+"राजस्थान",
+"बिहार",
+"पंजाब",
+"गुजरात",
+"हरियाणा"
+],
+answer:"राजस्थान"
+}
+
+]
+
+}
+
+};
+
+// ======================
+// CONTINUE BUTTON
+// ======================
+
+document
+.getElementById("continueBtn")
+.addEventListener("click",function(){
+
+let name =
+document
+.getElementById("name")
+.value
+.trim();
+
+let village =
+document
+.getElementById("village")
+.value
+.trim();
+
+if(name === ""){
+alert("Enter Name");
+return;
+}
+
+if(village === ""){
+alert("Enter Village");
+return;
+}
+
+document
+.getElementById("registerPage")
+.style.display = "none";
+
+document
+.getElementById("topicsPage")
+.style.display = "block";
+
+renderTopics();
+
+});
+
+// ======================
+// RENDER TOPICS
+// ======================
+
+function renderTopics(){
+
+let html = "";
+
+for(let code in tests){
+
+html += `
+<div class="topic"
+onclick="startTest('${code}')">
+
+${tests[code].name}
+
+</div>
+`;
+
+}
+
+document
+.getElementById("topicsList")
+.innerHTML = html;
+
+}
+
+// ======================
+// START TEST
+// ======================
+
+let currentTest;
+let currentQuestionIndex = 0;
+let selectedAnswers = {};
+let timer;
+let timeLeft = 1800;
+
+function startTest(code){
+
+currentTest = tests[code];
+
+currentQuestionIndex = 0;
+
+selectedAnswers = {};
+
+document
+.getElementById("topicsPage")
+.style.display = "none";
+
+document
+.getElementById("testPage")
+.style.display = "block";
+
+document
+.getElementById("testTitle")
+.innerText = currentTest.name;
+
+renderQuestion();
+
+startTimer();
+
+}
+
+// ======================
+// RENDER QUESTION
+// ======================
+
+function renderQuestion(){
+
+let q =
+currentTest.questions[currentQuestionIndex];
+
+let html = `
+
+<div class="questionBox">
+
+<h3>
+Question
+${currentQuestionIndex + 1}
+of
+${currentTest.questions.length}
+</h3>
+
+<h2>${q.q}</h2>
+
+`;
+
+q.options.forEach(op=>{
+
+let selected =
+selectedAnswers[currentQuestionIndex]
+=== op
+? "selected"
+: "";
+
+html += `
+
+<div class="option ${selected}"
+onclick="selectAnswer('${op}')">
+
+${op}
+
+</div>
+
+`;
+
+});
+
+html += `
+
+<div class="navBtns">
+
+<button onclick="prevQuestion()">
+Previous
+</button>
+
+<button onclick="skipQuestion()">
+Skip
+</button>
+
+<button onclick="nextQuestion()">
+Next
+</button>
+
+</div>
+
+`;
+
+html += `</div>`;
+
+document
+.getElementById("questionsContainer")
+.innerHTML = html;
+
+}
+
+// ======================
+// SELECT ANSWER
+// ======================
+
+function selectAnswer(answer){
+
+selectedAnswers[currentQuestionIndex]
+= answer;
+
+renderQuestion();
+
+}
+
+// ======================
+// NEXT
+// ======================
+
+function nextQuestion(){
+
+if(
+currentQuestionIndex <
+currentTest.questions.length - 1
+){
+
+currentQuestionIndex++;
+
+renderQuestion();
+
+}
+
+}
+
+// ======================
+// PREVIOUS
+// ======================
+
+function prevQuestion(){
+
+if(currentQuestionIndex > 0){
+
+currentQuestionIndex--;
+
+renderQuestion();
+
+}
+
+}
+
+// ======================
+// SKIP
+// ======================
+
+function skipQuestion(){
+
+nextQuestion();
+
+}
+
+// ======================
+// TIMER
+// ======================
+
+function startTimer(){
+
+clearInterval(timer);
+
+timeLeft = 1800;
+
+timer = setInterval(()=>{
+
+let min =
+Math.floor(timeLeft / 60);
+
+let sec =
+timeLeft % 60;
+
+if(sec < 10){
+sec = "0" + sec;
+}
+
+document
+.getElementById("timer")
+.innerText = `${min}:${sec}`;
+
+timeLeft--;
+
+if(timeLeft < 0){
+
+submitTest();
+
+}
+
+},1000);
+
+}
+
+// ======================
+// SUBMIT TEST
+// ======================
+
+async function submitTest(){
+
+clearInterval(timer);
+
+let score = 0;
+
+currentTest.questions.forEach((q,index)=>{
+
+if(
+selectedAnswers[index]
+=== q.answer
+){
+score++;
+}
+
+});
+
+const payload = {
+
+name:
+document
+.getElementById("name")
+.value,
+
+village:
+document
+.getElementById("village")
+.value,
+
+topic:
+currentTest.name,
+
+score:
+score + "/" +
+currentTest.questions.length,
+
+timeTaken:
+document
+.getElementById("timer")
+.innerText,
+
+answers:
+JSON.stringify(selectedAnswers)
+
+};
+
+try{
+
+await fetch(SHEET_API,{
+
+method:"POST",
+
+body:JSON.stringify(payload)
+
+});
+
+document.body.innerHTML = `
+
+<div class="successPage">
+
+<div>
+
+✅ Test Submitted Successfully
+
+<br><br>
+
+Your response has been recorded.
+
+</div>
+
+</div>
+
+`;
+
+}catch(error){
+
+alert("Submission Failed");
+
+}
+
+}
+
+// ======================
+// NEW TOPIC ADD
+// ======================
+
+function addNewTopic(
+code,
+name,
+questions
+){
+
+tests[code] = {
+
+name:name,
+questions:questions
+
+};
+
+renderTopics();
+
+}
+
+</script>
+
+</body>
+</html>
