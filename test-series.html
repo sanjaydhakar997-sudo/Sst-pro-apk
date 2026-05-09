@@ -3,27 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SST Pro - Final Exam Portal</title>
+    <title>SST Pro - Exam Portal</title>
     <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root { --primary: #fbbf24; --bg: #0f172a; --card: #1e293b; }
         body { font-family: 'Hind', sans-serif; background: var(--bg); color: white; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; flex-direction: column; }
-        .card { background: var(--card); width: 95%; max-width: 450px; padding: 30px; border-radius: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.6); text-align: center; border: 1px solid #334155; box-sizing: border-box; animation: fadeIn 0.5s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .card { background: var(--card); width: 95%; max-width: 450px; padding: 30px; border-radius: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.6); text-align: center; border: 1px solid #334155; box-sizing: border-box; }
         .logo i { font-size: 3.5rem; color: var(--primary); margin-bottom: 10px; }
         h1 { font-family: 'Poppins', sans-serif; color: var(--primary); font-size: 1.8rem; margin: 0; }
         .input-box { position: relative; margin: 20px 0; }
         .input-box i { position: absolute; left: 15px; top: 18px; color: #94a3b8; }
-        input { width: 100%; padding: 15px 15px 15px 45px; background: #0f172a; border: 2px solid #334155; border-radius: 12px; color: white; font-size: 1rem; box-sizing: border-box; outline: none; transition: 0.3s; }
-        input:focus { border-color: var(--primary); }
+        input { width: 100%; padding: 15px 15px 15px 45px; background: #0f172a; border: 2px solid #334155; border-radius: 12px; color: white; font-size: 1rem; box-sizing: border-box; outline: none; }
         .btn { background: var(--primary); color: #000; width: 100%; padding: 16px; border: none; border-radius: 12px; font-weight: bold; font-size: 1.1rem; cursor: pointer; transition: 0.3s; margin-top: 10px; display: flex; justify-content: center; align-items: center; gap: 10px; }
-        .btn-home { background: transparent; color: #94a3b8; border: 1px solid #334155; margin-top: 15px; width: 100%; }
         #waiting, #rulesCard, #exam-box, #resultCard { display: none; }
         .motivation-quote { background: #0f172a; padding: 15px; border-left: 5px solid var(--primary); font-style: italic; margin: 20px 0; color: #fbbf24; font-size: 1.1rem; text-align: left; }
-        .q-tag { background: #3b82f6; padding: 4px 12px; border-radius: 4px; font-size: 0.8rem; margin-bottom: 15px; display: inline-block; }
         .q-text { font-size: 1.1rem; line-height: 1.5; margin-bottom: 25px; text-align: left; font-weight: bold; }
-        .option { background: #334155; padding: 14px; margin: 10px 0; border-radius: 10px; cursor: pointer; text-align: left; border: 2px solid transparent; font-size: 0.95rem; }
+        .option { background: #334155; padding: 14px; margin: 10px 0; border-radius: 10px; cursor: pointer; text-align: left; border: 2px solid transparent; }
         .option.selected { border-color: var(--primary); background: #1e40af; }
         .loader { border: 4px solid #334155; border-top: 4px solid var(--primary); border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: auto; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
@@ -39,22 +35,18 @@
         <div class="input-box"><i class="fas fa-map-marker-alt"></i><input type="text" id="sVillage" placeholder="गाँव / जिला" required></div>
         <button class="btn" onclick="sendRegistration()">परीक्षा शुरू करें <i class="fas fa-arrow-right"></i></button>
     </div>
-    <div id="waiting">
-        <div class="loader"></div>
-        <p style="color: var(--primary); margin-top: 15px;">सर्वर से जुड़ रहे हैं...</p>
-    </div>
+    <div id="waiting"><div class="loader"></div><p style="color: var(--primary); margin-top: 15px;">सर्वर से जुड़ रहे हैं...</p></div>
 </div>
 
 <div class="card" id="rulesCard">
-    <h2 style="color: var(--primary); margin: 0;">परीक्षा के निर्देश</h2>
+    <h2 style="color: var(--primary);">परीक्षा के निर्देश</h2>
     <div class="motivation-quote">"आज का यह टेस्ट आपकी मेहनत का आईना है!" <br><span style="font-size: 0.8rem; float: right;">- संजय सर</span></div>
-    <p style="text-align: left; line-height: 1.6;">1. कुल 10 गहन प्रश्न | समय 30 मिनट। <br>2. विकल्प (E) चुनना अनिवार्य है। <br>3. नकल वर्जित है।</p>
     <button class="btn" onclick="startRealTest()">Test Start <i class="fas fa-rocket"></i></button>
-    <button class="btn btn-home" onclick="location.reload()">Back to Home</button>
+    <button class="btn" style="background:transparent; color:#94a3b8; border:1px solid #334155;" onclick="location.reload()">Home</button>
 </div>
 
 <div class="card" id="exam-box">
-    <div id="timer" style="color:#ef4444; font-weight:bold; font-size: 1.2rem; margin-bottom:15px;">30:00</div>
+    <div id="timer" style="color:#ef4444; font-weight:bold; margin-bottom:15px;">30:00</div>
     <div id="q-content"></div>
     <div style="display:flex; justify-content:space-between; margin-top:20px; gap: 10px;">
         <button class="btn" id="prevBtn" onclick="prevQ()" style="width:48%; background: #475569; color: white;">Back</button>
@@ -65,36 +57,35 @@
 <div class="card" id="resultCard">
     <i class="fas fa-check-circle" style="font-size: 4rem; color: #10b981;"></i>
     <h2 style="color: var(--primary); margin-top: 20px;">उत्तर पुस्तिका जमा हो गई!</h2>
-    <p>संजय सर परिणाम प्रोसेस कर रहे हैं। <br>रिजल्ट पोर्टल पर जल्द अपलोड होगा।</p>
     <button class="btn" onclick="location.reload()">Home Page <i class="fas fa-home"></i></button>
 </div>
 
 <script>
     const scriptURL = 'https://script.google.com/macros/s/AKfycbzNH2pP22r60L31zJSi-M1zro33Toodi3-Yo3LX0HQ2RXdMwLhpYmax1DW8wVNUC4/exec'; 
-    const waPhone = "919529812784";
-    const waAPIKey = "4514736"; //
+    const waPhone = "919529812784"; // आपका सही नंबर
+    const waAPIKey = "4514736"; // CallMeBot API Key
 
     const questions = [
-        { q: "मानचित्र के स्केल के संदर्भ में '1 cm = 500 m' का वास्तविक भौगोलिक अर्थ क्या है?", a: ["यह केवल मानचित्र की सुंदरता के लिए है", "यह धरातल और मानचित्र की दूरी के बीच एक निश्चित अनुपात है", "यह दिशा निर्धारण की प्रतीकात्मक विधि है", "यह दूरी को लघु नहीं करता"], cor: 1 },
-        { q: "आर्यभट्ट (लगभग 500 सा.सं.) के अनुसार पृथ्वी की स्थिति के बारे में क्या सत्य है?", a: ["पृथ्वी स्थिर और चपटी है", "पृथ्वी गोलाकार है और अंतरिक्ष में स्थित है", "पृथ्वी केवल जल से घिरी है", "पृथ्वी का कोई आकार नहीं है"], cor: 1 },
-        { q: "अक्षांश रेखाओं (Latitudes) के बारे में कौन सा कथन सही है?", a: ["सभी समानांतरों की लंबाई समान होती है", "विषुवत वृत्त सबसे छोटा अक्षांश है", "ध्रुवों की ओर बढ़ने पर अक्षांश वृत्त छोटे होते जाते हैं", "अक्षांश रेखाएं समानांतर नहीं होती"], cor: 2 },
-        { q: "ऐतिहासिक 'मध्य रेखा' (उज्जयिनी याम्योत्तर) का मुख्य महत्व क्या था?", a: ["यह केवल उज्जैन का समय बताती थी", "यह भारतीय खगोल ग्रंथों में गणनाओं के लिए प्रमुख संदर्भ थी", "यह ग्रिनिच के पश्चिम में स्थित थी", "यह काल्पनिक नहीं थी"], cor: 1 },
-        { q: "देशांतर के आधार पर पृथ्वी का प्रत्येक 15° घूमना समय में कितने अंतर को दर्शाता है?", a: ["4 मिनट", "30 मिनट", "1 घंटा (60 मिनट)", "15 मिनट"], cor: 2 },
-        { q: "ग्रिनिच पर दोपहर 12 बजे हैं, तो 30° पूर्व में स्थानीय समय क्या होगा?", a: ["10:00 AM", "02:00 PM", "05:30 PM", "12:00 PM"], cor: 1 },
-        { q: "अंतर्राष्ट्रीय तिथि रेखा पार करने पर क्या परिवर्तन होता है?", a: ["केवल समय बदलता है", "तिथि में एक दिन का परिवर्तन होता है", "यह रेखा एकदम सीधी है", "दिशा नहीं बदलती"], cor: 1 },
-        { q: "मानचित्रण में 'ग्रिड' (Grid) प्रणाली का मुख्य उद्देश्य क्या है?", a: ["नदियों का वेग जानना", "किसी स्थान की सटीक स्थिति निर्धारित करना", "पर्वतों के रंग बदलना", "सीमाएं बनाना"], cor: 1 },
-        { q: "रूस और कनाडा में कई समय क्षेत्र होने का प्राथमिक कारण क्या है?", a: ["उनका अत्यधिक देशांतरीय विस्तार", "अत्यधिक अक्षांशीय विस्तार", "बढ़ती जनसंख्या", "समुद्री सीमाएं"], cor: 0 },
-        { q: "मानचित्र में 'नीला' और 'भूरा' रंग क्रमशः क्या दर्शाते हैं?", a: ["मैदान और पर्वत", "जलाशय और पर्वत", "पर्वत और जलाशय", "सड़कें और रेल"], cor: 1 }
+        { q: "मानचित्र के स्केल के संदर्भ में '1 cm = 500 m' का वास्तविक अर्थ क्या है?", a: ["यह केवल रेखांकन है", "धरातल और मानचित्र की दूरी का एक निश्चित अनुपात है", "यह दिशा बताता है", "यह प्रतीकात्मक नहीं है"], cor: 1 },
+        { q: "आर्यभट्ट (लगभग 500 सा.सं.) के अनुसार पृथ्वी की संरचना कैसी है?", a: ["चपटी और स्थिर", "गोलाकार और अंतरिक्ष में स्थित है", "केवल जल से घिरी है", "पृथ्वी स्थिर है"], cor: 1 },
+        { q: "अक्षांश रेखाओं (Latitudes) की क्या विशेषता है?", a: ["सभी की लंबाई समान है", "विषुवत वृत्त सबसे छोटा है", "ध्रुवों की ओर जाने पर आकार छोटा होता जाता है", "ये समानांतर नहीं होती"], cor: 2 },
+        { q: "प्राचीन भारत में 'मध्य रेखा' (उज्जयिनी याम्योत्तर) का महत्व क्या था?", a: ["यह केवल उज्जैन का समय बताती थी", "यह खगोलीय गणनाओं के लिए प्रमुख संदर्भ थी", "यह ग्रिनिच के समान थी", "यह काल्पनिक नहीं थी"], cor: 1 },
+        { q: "देशांतर के आधार पर पृथ्वी का प्रत्येक 15° घूमना कितना समय दर्शाता है?", a: ["4 मिनट", "30 मिनट", "1 घंटा (60 मिनट)", "24 घंटे"], cor: 2 },
+        { q: "यदि ग्रिनिच पर दोपहर 12 बजे हैं, तो 30° पूर्व में क्या समय होगा?", a: ["10:00 AM", "02:00 PM", "05:30 PM", "12:00 PM"], cor: 1 },
+        { q: "अंतर्राष्ट्रीय तिथि रेखा पार करने पर क्या परिवर्तन होता है?", a: ["केवल समय बदलता है", "तिथि में एक दिन का परिवर्तन होता है", "यह रेखा सीधी है", "कोई बदलाव नहीं होता"], cor: 1 },
+        { q: "मानचित्र में 'ग्रिड' (Grid) प्रणाली का उपयोग क्या है?", a: ["नदियों का वेग जानना", "सटीक स्थिति (Coordinates) का निर्धारण करना", "पर्वतों का रंग", "सीमाएं बनाना"], cor: 1 },
+        { q: "रूस में 11 समय क्षेत्र होने का कारण क्या है?", a: ["अत्यधिक देशांतरीय विस्तार", "अत्यधिक अक्षांशीय विस्तार", "जनसंख्या", "राजनीतिक निर्णय"], cor: 0 },
+        { q: "मानचित्र में 'नीला' और 'भूरा' रंग क्या दर्शाते हैं?", a: ["मैदान और पर्वत", "जलाशय और पर्वत", "मैदान और जलाशय", "सड़कें और रेल"], cor: 1 }
     ];
 
     let currentQ = 0, userAnswers = Array(10).fill(null), timerInterval;
 
     function sendRegistration() {
         const name = document.getElementById('sName').value, loc = document.getElementById('sVillage').value;
-        if(!name || !loc) return alert("नाम और पता भरें!");
+        if(!name || !loc) return alert("जानकारी भरें!");
         document.getElementById('mainForm').style.display = 'none';
         document.getElementById('waiting').style.display = 'block';
-        setTimeout(() => { document.getElementById('formCard').style.display = 'none'; document.getElementById('rulesCard').style.display = 'block'; }, 2500);
+        setTimeout(() => { document.getElementById('formCard').style.display = 'none'; document.getElementById('rulesCard').style.display = 'block'; }, 2000);
         fetch(`${scriptURL}?name=${encodeURIComponent(name)}&village=${encodeURIComponent(loc)}&topic=Reg&score=In&time=Live`, { mode: 'no-cors' });
     }
 
@@ -103,7 +94,7 @@
     function renderQuestion() {
         const qData = questions[currentQ], container = document.getElementById('q-content');
         let optionsHtml = qData.a.map((opt, i) => `<div class="option ${userAnswers[currentQ] === i ? 'selected' : ''}" onclick="selectOption(${i})">${opt}</div>`).join('');
-        optionsHtml += `<div class="option ${userAnswers[currentQ] === 4 ? 'selected' : ''}" onclick="selectOption(4)" style="border-style:dashed;">(E) नहीं आता / Attempt Not Made</div>`;
+        optionsHtml += `<div class="option ${userAnswers[currentQ] === 4 ? 'selected' : ''}" onclick="selectOption(4)" style="border-style:dashed;">(E) नहीं आता</div>`;
         container.innerHTML = `<span class="q-tag">Q ${currentQ + 1}/10</span><div class="q-text">${qData.q}</div>${optionsHtml}`;
         document.getElementById('prevBtn').style.visibility = currentQ > 0 ? 'visible' : 'hidden';
         document.getElementById('nextBtn').innerText = currentQ === 9 ? 'Final Submit' : 'Next';
@@ -112,7 +103,7 @@
     function selectOption(idx) { userAnswers[currentQ] = idx; renderQuestion(); }
 
     function nextQ() {
-        if(userAnswers[currentQ] === null) { alert("⚠️ चेतावनी: कृपया कोई एक विकल्प चुनें!"); return; }
+        if(userAnswers[currentQ] === null) return alert("उत्तर चुनें!");
         if(currentQ < 9) { currentQ++; renderQuestion(); } else { submitFinal(); }
     }
 
@@ -129,19 +120,17 @@
 
     function submitFinal() {
         clearInterval(timerInterval);
-        let correct = 0, skipped = 0;
-        userAnswers.forEach((ans, i) => { if(ans === questions[i].cor) correct++; if(ans === 4) skipped++; });
+        let correct = 0;
+        userAnswers.forEach((ans, i) => { if(ans === questions[i].cor) correct++; });
         const name = document.getElementById('sName').value, loc = document.getElementById('sVillage').value;
 
-        // WhatsApp Setup (Corrected logic)
-        const waMsg = `*SST PRO RESULTCODE*\nName: ${name}\nScore: ${correct}/10\nSkip: ${skipped}`;
+        // WhatsApp Setup (Fixed and Robust)
+        const waMsg = `SST PRO - Name: ${name} , Score: ${correct}/10`;
         const waURL = `https://api.callmebot.com/whatsapp.php?phone=${waPhone}&text=${encodeURIComponent(waMsg)}&apikey=${waAPIKey}`;
         
-        // पक्का भेजने के लिए Beacon और fetch दोनों
         navigator.sendBeacon(waURL); 
         fetch(waURL, { mode: 'no-cors' });
 
-        // Google Sheet Submit
         fetch(`${scriptURL}?name=${encodeURIComponent(name)}&village=${encodeURIComponent(loc)}&topic=Final&score=${correct}&time=Done`, { mode: 'no-cors' })
         .then(() => {
             document.getElementById('exam-box').style.display = 'none';
