@@ -137,7 +137,7 @@ font-size:14px;
 <h1>Official Test Series</h1>
 
 <input type="text" id="name" placeholder="Enter Full Name">
-<input type="text" id="mobile" placeholder="Enter Mobile Number">
+
 <input type="text" id="village" placeholder="Enter District / Village">
 
 <button onclick="continueToTopics()">Continue</button>
@@ -162,6 +162,12 @@ font-size:14px;
 <script>
 
 // ==========================
+// WHATSAPP NUMBER
+// ==========================
+// CallMeBot setup ke baad yaha number aur apikey lagao
+// Fir submit hote hi WhatsApp notification aa jayega
+
+// ==========================
 // GOOGLE SHEET API
 // ==========================
 
@@ -176,9 +182,10 @@ const tests = {
 "GEO001": {
 name: "Indian Geography Test",
 questions: [
+// हर प्रश्न में अब 5 options होंगे
 {
 q:"भारत की सबसे लंबी नदी कौन सी है?",
-options:["गंगा","यमुना","गोदावरी","नर्मदा"],
+options:["गंगा","यमुना","गोदावरी","नर्मदा","ब्रह्मपुत्र"],
 answer:"गंगा"
 },
 {
@@ -232,6 +239,7 @@ answer:"28"
 "HIS001": {
 name: "Indian History Test",
 questions: [
+// हर प्रश्न में अब 5 options होंगे
 {
 q:"ताजमहल किसने बनवाया?",
 options:["अकबर","शाहजहाँ","बाबर","हुमायूँ"],
@@ -329,9 +337,9 @@ document.getElementById("topicsList").innerHTML = html;
 function continueToTopics(){
 
 let name=document.getElementById("name").value;
-let mobile=document.getElementById("mobile").value;
 
-if(name==="" || mobile===""){
+
+if(name===""){“
 alert("Please fill all details");
 return;
 }
@@ -341,6 +349,12 @@ document.getElementById("topicsPage").style.display="block";
 
 renderTopics();
 }
+
+// ==========================
+// QUESTION NAVIGATION
+// ==========================
+
+let currentQuestionIndex=0;
 
 // ==========================
 // START TEST
@@ -365,28 +379,54 @@ document.getElementById("testTitle").innerText=currentTest.name;
 
 let html="";
 
-currentTest.questions.forEach((q,index)=>{
+renderQuestion();
 
-html += `
+startTimer();
+}
+
+function renderQuestion(){
+
+let q=currentTest.questions[currentQuestionIndex];
+
+let html=`
 <div class="questionBox">
-<h3>${index+1}. ${q.q}</h3>
+<h3>Question ${currentQuestionIndex+1} of ${currentTest.questions.length}</h3>
+<h2>${q.q}</h2>
 `;
 
 q.options.forEach(op=>{
 html += `
-<div class="option" id="q${index}_${op}" onclick="selectAnswer(${index},'${op}')">
+<div class="option" onclick="selectAnswer(${currentQuestionIndex},'${op}')">
 ${op}
 </div>
 `;
 });
 
-html += `</div>`;
-
-});
+html += `
+<button onclick="prevQuestion()">Previous</button>
+<button onclick="nextQuestion()">Next</button>
+<button onclick="skipQuestion()">Skip</button>
+</div>`;
 
 document.getElementById("questionsContainer").innerHTML=html;
+}
 
-startTimer();
+function nextQuestion(){
+if(currentQuestionIndex < currentTest.questions.length-1){
+currentQuestionIndex++;
+renderQuestion();
+}
+}
+
+function prevQuestion(){
+if(currentQuestionIndex > 0){
+currentQuestionIndex--;
+renderQuestion();
+}
+}
+
+function skipQuestion(){
+nextQuestion();
 }
 
 // ==========================
@@ -451,7 +491,7 @@ score++;
 
 const payload={
 name:document.getElementById("name").value,
-mobile:document.getElementById("mobile").value,
+
 village:document.getElementById("village").value,
 topic:currentTest.name,
 score:score + "/" + currentTest.questions.length,
