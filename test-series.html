@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Advanced Test Series</title>
 
 <style>
@@ -68,11 +69,6 @@ text-align:center;
 font-size:18px;
 font-weight:bold;
 cursor:pointer;
-transition:0.3s;
-}
-
-.topic:hover{
-background:#475569;
 }
 
 .timer{
@@ -96,7 +92,6 @@ padding:12px;
 border-radius:10px;
 margin-top:10px;
 cursor:pointer;
-transition:0.3s;
 }
 
 .option:hover{
@@ -105,6 +100,16 @@ background:#64748b;
 
 .selected{
 background:#22c55e !important;
+}
+
+.navBtns{
+display:flex;
+gap:10px;
+margin-top:20px;
+}
+
+.navBtns button{
+flex:1;
 }
 
 .submitBtn{
@@ -121,19 +126,14 @@ font-size:25px;
 font-weight:bold;
 }
 
-.small{
-text-align:center;
-margin-top:10px;
-opacity:0.7;
-font-size:14px;
-}
-
 </style>
 </head>
 <body>
 
-<!-- REGISTER -->
+<!-- REGISTER PAGE -->
+
 <div class="container" id="registerPage">
+
 <h1>Official Test Series</h1>
 
 <input type="text" id="name" placeholder="Enter Full Name">
@@ -142,410 +142,85 @@ font-size:14px;
 
 <button onclick="continueToTopics()">Continue</button>
 
-<p class="small">Powered By Advanced Test System</p>
 </div>
 
-<!-- TOPICS -->
+<!-- TOPICS PAGE -->
+
 <div class="container" id="topicsPage" style="display:none;">
+
 <h2>Select Test Topic</h2>
+
 <div id="topicsList"></div>
+
 </div>
 
-<!-- TEST -->
+<!-- TEST PAGE -->
+
 <div class="container" id="testPage" style="display:none;">
+
 <h2 id="testTitle"></h2>
+
 <div class="timer" id="timer">30:00</div>
+
 <div id="questionsContainer"></div>
-<button class="submitBtn" onclick="submitTest()">Final Submit</button>
+
+<button class="submitBtn" onclick="submitTest()">
+Final Submit
+</button>
+
 </div>
 
 <script>
 
-// ==========================
-// WHATSAPP NUMBER
-// ==========================
-// CallMeBot setup ke baad yaha number aur apikey lagao
-// Fir submit hote hi WhatsApp notification aa jayega
-
-// ==========================
+// ======================
 // GOOGLE SHEET API
-// ==========================
+// ======================
 
-const SHEET_API = "https://script.google.com/macros/s/AKfycbwlm6tsiETTQ-mo4oIZRadvIgF5AmFeV0PlcYfTfcWBT6uhtjZTUe4ZNNCRjfx6olS7/exec";
+const SHEET_API =
+"https://script.google.com/macros/s/AKfycbwlm6tsiETTQ-mo4oIZRadvIgF5AmFeV0PlcYfTfcWBT6uhtjZTUe4ZNNCRjfx6olS7/exec";
 
-// ==========================
+// ======================
 // TEST DATABASE
-// ==========================
+// ======================
 
 const tests = {
 
-"GEO001": {
-name: "Indian Geography Test",
-questions: [
-// हर प्रश्न में अब 5 options होंगे
+"GEO001":{
+
+name:"Indian Geography Test",
+
+questions:[
+
 {
 q:"भारत की सबसे लंबी नदी कौन सी है?",
 options:["गंगा","यमुना","गोदावरी","नर्मदा","ब्रह्मपुत्र"],
 answer:"गंगा"
 },
+
 {
 q:"भारत का सबसे बड़ा राज्य कौन सा है?",
-options:["राजस्थान","मध्यप्रदेश","उत्तरप्रदेश","बिहार"],
+options:["राजस्थान","मध्यप्रदेश","उत्तरप्रदेश","बिहार","गुजरात"],
 answer:"राजस्थान"
 },
+
 {
 q:"भारत की राजधानी क्या है?",
-options:["मुंबई","दिल्ली","कोलकाता","चेन्नई"],
+options:["दिल्ली","मुंबई","कोलकाता","चेन्नई","जयपुर"],
 answer:"दिल्ली"
 },
-{
-q:"थार मरुस्थल कहाँ स्थित है?",
-options:["राजस्थान","बिहार","पंजाब","गुजरात"],
-answer:"राजस्थान"
-},
+
 {
 q:"भारत का राष्ट्रीय पशु कौन है?",
-options:["शेर","बाघ","हाथी","भालू"],
+options:["शेर","बाघ","हाथी","भालू","घोड़ा"],
 answer:"बाघ"
 },
+
 {
 q:"भारत का राष्ट्रीय पक्षी कौन है?",
-options:["तोता","मोर","कबूतर","हंस"],
+options:["तोता","कबूतर","मोर","हंस","गरुड़"],
 answer:"मोर"
 },
+
 {
-q:"भारत की सबसे ऊँची पर्वत चोटी कौन सी है?",
-options:["K2","एवरेस्ट","कंचनजंगा","नंदा देवी"],
-answer:"कंचनजंगा"
-},
-{
-q:"गंगा नदी कहाँ से निकलती है?",
-options:["गंगोत्री","यमुनोत्री","केदारनाथ","बद्रीनाथ"],
-answer:"गंगोत्री"
-},
-{
-q:"भारत का सबसे बड़ा राज्य जनसंख्या में कौन सा है?",
-options:["राजस्थान","उत्तरप्रदेश","बिहार","महाराष्ट्र"],
-answer:"उत्तरप्रदेश"
-},
-{
-q:"भारत में कुल कितने राज्य हैं?",
-options:["28","29","30","27"],
-answer:"28"
-}
-]
-},
-
-"HIS001": {
-name: "Indian History Test",
-questions: [
-// हर प्रश्न में अब 5 options होंगे
-{
-q:"ताजमहल किसने बनवाया?",
-options:["अकबर","शाहजहाँ","बाबर","हुमायूँ"],
-answer:"शाहजहाँ"
-},
-{
-q:"भारत को आजादी कब मिली?",
-options:["1945","1946","1947","1950"],
-answer:"1947"
-},
-{
-q:"महात्मा गांधी का पूरा नाम क्या था?",
-options:["मोहनदास करमचंद गांधी","जवाहर गांधी","मोहन गांधी","करमचंद गांधी"],
-answer:"मोहनदास करमचंद गांधी"
-},
-{
-q:"जलियांवाला बाग हत्याकांड कब हुआ था?",
-options:["1919","1920","1930","1942"],
-answer:"1919"
-},
-{
-q:"भारत का संविधान कब लागू हुआ?",
-options:["1947","1948","1950","1952"],
-answer:"1950"
-},
-{
-q:"लाल किला किसने बनवाया?",
-options:["अकबर","शाहजहाँ","औरंगजेब","बाबर"],
-answer:"शाहजहाँ"
-},
-{
-q:"चंद्रगुप्त मौर्य किसके शिष्य थे?",
-options:["आर्यभट्ट","चाणक्य","कालिदास","वराहमिहिर"],
-answer:"चाणक्य"
-},
-{
-q:"भारत छोड़ो आंदोलन कब शुरू हुआ?",
-options:["1940","1941","1942","1945"],
-answer:"1942"
-},
-{
-q:"सुभाष चंद्र बोस ने कौन सी सेना बनाई?",
-options:["आजाद हिंद फौज","भारतीय सेना","गोरखा सेना","राष्ट्रीय सेना"],
-answer:"आजाद हिंद फौज"
-},
-{
-q:"अशोक किस वंश का राजा था?",
-options:["मौर्य","गुप्त","मुगल","नंद"],
-answer:"मौर्य"
-}
-]
-}
-
-};
-
-// ==========================
-// NEW TOPIC FUNCTION
-// ==========================
-
-function addNewTopic(code,name,questions){
-
-tests[code]={
-name:name,
-questions:questions
-};
-
-renderTopics();
-}
-
-// ==========================
-// RENDER TOPICS
-// ==========================
-
-function renderTopics(){
-
-let html="";
-
-for(let code in tests){
-
-html += `
-<div class="topic" onclick="startTest('${code}')">
-${tests[code].name}
-</div>
-`;
-
-}
-
-document.getElementById("topicsList").innerHTML = html;
-}
-
-// ==========================
-// CONTINUE
-// ==========================
-
-function continueToTopics(){
-
-let name=document.getElementById("name").value;
-
-
-if(name===""){“
-alert("Please fill all details");
-return;
-}
-
-document.getElementById("registerPage").style.display="none";
-document.getElementById("topicsPage").style.display="block";
-
-renderTopics();
-}
-
-// ==========================
-// QUESTION NAVIGATION
-// ==========================
-
-let currentQuestionIndex=0;
-
-// ==========================
-// START TEST
-// ==========================
-
-let currentTest;
-let currentCode;
-let selectedAnswers={};
-let timeLeft=1800;
-let timer;
-
-function startTest(code){
-
-currentCode=code;
-currentTest=tests[code];
-selectedAnswers={};
-
-document.getElementById("topicsPage").style.display="none";
-document.getElementById("testPage").style.display="block";
-
-document.getElementById("testTitle").innerText=currentTest.name;
-
-let html="";
-
-renderQuestion();
-
-startTimer();
-}
-
-function renderQuestion(){
-
-let q=currentTest.questions[currentQuestionIndex];
-
-let html=`
-<div class="questionBox">
-<h3>Question ${currentQuestionIndex+1} of ${currentTest.questions.length}</h3>
-<h2>${q.q}</h2>
-`;
-
-q.options.forEach(op=>{
-html += `
-<div class="option" onclick="selectAnswer(${currentQuestionIndex},'${op}')">
-${op}
-</div>
-`;
-});
-
-html += `
-<button onclick="prevQuestion()">Previous</button>
-<button onclick="nextQuestion()">Next</button>
-<button onclick="skipQuestion()">Skip</button>
-</div>`;
-
-document.getElementById("questionsContainer").innerHTML=html;
-}
-
-function nextQuestion(){
-if(currentQuestionIndex < currentTest.questions.length-1){
-currentQuestionIndex++;
-renderQuestion();
-}
-}
-
-function prevQuestion(){
-if(currentQuestionIndex > 0){
-currentQuestionIndex--;
-renderQuestion();
-}
-}
-
-function skipQuestion(){
-nextQuestion();
-}
-
-// ==========================
-// SELECT ANSWER
-// ==========================
-
-function selectAnswer(index,answer){
-
-selectedAnswers[index]=answer;
-
-const options=document.querySelectorAll(`[id^='q${index}_']`);
-options.forEach(el=>el.classList.remove("selected"));
-
-document.getElementById(`q${index}_${answer}`).classList.add("selected");
-}
-
-// ==========================
-// TIMER
-// ==========================
-
-function startTimer(){
-
-clearInterval(timer);
-
-timeLeft=1800;
-
-timer=setInterval(()=>{
-
-let min=Math.floor(timeLeft/60);
-let sec=timeLeft%60;
-
-if(sec<10){
-sec='0'+sec;
-}
-
-document.getElementById("timer").innerText=`${min}:${sec}`;
-
-timeLeft--;
-
-if(timeLeft<0){
-submitTest();
-}
-
-},1000);
-}
-
-// ==========================
-// SUBMIT TEST
-// ==========================
-
-async function submitTest(){
-
-clearInterval(timer);
-
-let score=0;
-
-currentTest.questions.forEach((q,index)=>{
-if(selectedAnswers[index]===q.answer){
-score++;
-}
-});
-
-const payload={
-name:document.getElementById("name").value,
-
-village:document.getElementById("village").value,
-topic:currentTest.name,
-score:score + "/" + currentTest.questions.length,
-timeTaken:document.getElementById("timer").innerText,
-answers:JSON.stringify(selectedAnswers)
-};
-
-try{
-
-await fetch(SHEET_API,{
-method:"POST",
-body:JSON.stringify(payload)
-});
-
-document.body.innerHTML=`
-<div class="successPage">
-<div>
-Test Submitted Successfully ✅<br><br>
-Your response has been recorded.
-</div>
-</div>
-`;
-
-}catch(error){
-alert("Submission Failed");
-}
-}
-
-// ==========================
-// ANTI CHEAT
-// ==========================
-
-window.oncontextmenu=function(){
-return false;
-}
-
-document.addEventListener("copy",e=>{
-e.preventDefault();
-});
-
-// ==========================
-// AUTO FULLSCREEN
-// ==========================
-
-document.addEventListener("click",()=>{
-
-let elem=document.documentElement;
-
-if(elem.requestFullscreen){
-elem.requestFullscreen();
-}
-
-},{once:true});
-
-</script>
-</body>
-</html>
+q:"थार मरुस्थल कहाँ स्थित है?",
+options:["राजस्थान","बिहार","पंजाब","गुजरात","हरिय
