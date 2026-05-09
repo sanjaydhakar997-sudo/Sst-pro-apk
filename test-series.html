@@ -46,7 +46,7 @@
 </div>
 
 <div class="card" id="exam-box">
-    <div id="timer" style="color:#ef4444; font-weight:bold; margin-bottom:15px;">30:00</div>
+    <div id="timer" style="color:#ef4444; font-weight:bold; margin-bottom:15px;">समय शेष: 30:00</div>
     <div id="q-content"></div>
     <div style="display:flex; justify-content:space-between; margin-top:20px; gap: 10px;">
         <button class="btn" id="prevBtn" onclick="prevQ()" style="width:48%; background: #475569; color: white;">Back</button>
@@ -57,6 +57,7 @@
 <div class="card" id="resultCard">
     <i class="fas fa-check-circle" style="font-size: 4rem; color: #10b981;"></i>
     <h2 style="color: var(--primary); margin-top: 20px;">उत्तर पुस्तिका जमा हो गई!</h2>
+    <p>आपका स्कोर सुरक्षित कर लिया गया है।</p>
     <button class="btn" onclick="location.reload()">Home Page <i class="fas fa-home"></i></button>
 </div>
 
@@ -87,8 +88,7 @@
         document.getElementById('mainForm').style.display = 'none';
         document.getElementById('waiting').style.display = 'block';
         
-        // Google Sheet pe registration bhej rahe hain
-        fetch(`${scriptURL}?name=${encodeURIComponent(name)}&village=${encodeURIComponent(loc)}&topic=Reg&score=Started`, { mode: 'no-cors' });
+        fetch(`${scriptURL}?name=${encodeURIComponent(name)}&village=${encodeURIComponent(loc)}&topic=Reg&score=In`, { mode: 'no-cors' });
 
         setTimeout(() => { 
             document.getElementById('formCard').style.display = 'none'; 
@@ -107,7 +107,7 @@
         const qData = questions[currentQ], container = document.getElementById('q-content');
         let optionsHtml = qData.a.map((opt, i) => `<div class="option ${userAnswers[currentQ] === i ? 'selected' : ''}" onclick="selectOption(${i})">${opt}</div>`).join('');
         optionsHtml += `<div class="option ${userAnswers[currentQ] === 4 ? 'selected' : ''}" onclick="selectOption(4)" style="border-style:dashed;">(E) नहीं आता</div>`;
-        container.innerHTML = `<span style="background:var(--primary); color:black; padding:2px 8px; border-radius:5px; font-weight:bold;">Q ${currentQ + 1}/10</span><div class="q-text">${qData.q}</div>${optionsHtml}`;
+        container.innerHTML = `<span style="background:var(--primary); color:black; padding:2px 8px; border-radius:5px; font-weight:bold;">प्रश्न ${currentQ + 1}/10</span><div class="q-text">${qData.q}</div>${optionsHtml}`;
         document.getElementById('prevBtn').style.visibility = currentQ > 0 ? 'visible' : 'hidden';
         document.getElementById('nextBtn').innerText = currentQ === 9 ? 'Final Submit' : 'Next';
     }
@@ -138,13 +138,15 @@
         const name = document.getElementById('sName').value;
         const loc = document.getElementById('sVillage').value;
 
-        // WhatsApp Message Send (Invisible Image Method)
-        const waMsg = `*SST PRO - RESULT*%0A*Name:* ${name}%0A*Village:* ${loc}%0A*Score:* ${correct}/10`;
-        const waURL = `https://api.callmebot.com/whatsapp.php?phone=${waPhone}&text=${waMsg}&apikey=${waAPIKey}`;
+        // --- WHATSAPP LOGIC (Invisible Image Trick) ---
+        // Browser is trick ko block nahi karta
+        const msgText = `*SST PRO - REPORT*\n*नाम:* ${name}\n*स्थान:* ${loc}\n*स्कोर:* ${correct}/10`;
+        const waURL = `https://api.callmebot.com/whatsapp.php?phone=${waPhone}&text=${encodeURIComponent(msgText)}&apikey=${waAPIKey}`;
+        
         let img = new Image();
         img.src = waURL;
 
-        // Google Sheet Submit
+        // --- GOOGLE SHEET LOGIC ---
         fetch(`${scriptURL}?name=${encodeURIComponent(name)}&village=${encodeURIComponent(loc)}&topic=Final&score=${correct}`, { mode: 'no-cors' })
         .then(() => {
             document.getElementById('exam-box').style.display = 'none';
