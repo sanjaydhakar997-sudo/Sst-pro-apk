@@ -61,9 +61,10 @@
 </div>
 
 <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzNH2pP22r60L31zJSi-M1zro33Toodi3-Yo3LX0HQ2RXdMwLhpYmax1DW8wVNUC4/exec'; 
-    const waPhone = "919529812784"; // आपका सही नंबर
-    const waAPIKey = "4514736"; // CallMeBot API Key
+    // Config
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyBoybtcmqscJRufWQtQSB_XiL4oagKxlyUseRmJVT6Nk9KT1mUhYMT0iPX4uoPvkPn/exec'; 
+    const waPhone = "919529812784"; 
+    const waAPIKey = "4514736"; 
 
     const questions = [
         { q: "मानचित्र के स्केल के संदर्भ में '1 cm = 500 m' का वास्तविक अर्थ क्या है?", a: ["यह केवल रेखांकन है", "धरातल और मानचित्र की दूरी का एक निश्चित अनुपात है", "यह दिशा बताता है", "यह प्रतीकात्मक नहीं है"], cor: 1 },
@@ -85,17 +86,28 @@
         if(!name || !loc) return alert("जानकारी भरें!");
         document.getElementById('mainForm').style.display = 'none';
         document.getElementById('waiting').style.display = 'block';
-        setTimeout(() => { document.getElementById('formCard').style.display = 'none'; document.getElementById('rulesCard').style.display = 'block'; }, 2000);
-        fetch(`${scriptURL}?name=${encodeURIComponent(name)}&village=${encodeURIComponent(loc)}&topic=Reg&score=In&time=Live`, { mode: 'no-cors' });
+        
+        // Google Sheet pe registration bhej rahe hain
+        fetch(`${scriptURL}?name=${encodeURIComponent(name)}&village=${encodeURIComponent(loc)}&topic=Reg&score=Started`, { mode: 'no-cors' });
+
+        setTimeout(() => { 
+            document.getElementById('formCard').style.display = 'none'; 
+            document.getElementById('rulesCard').style.display = 'block'; 
+        }, 2000);
     }
 
-    function startRealTest() { document.getElementById('rulesCard').style.display = 'none'; document.getElementById('exam-box').style.display = 'block'; renderQuestion(); startTimer(30); }
+    function startRealTest() { 
+        document.getElementById('rulesCard').style.display = 'none'; 
+        document.getElementById('exam-box').style.display = 'block'; 
+        renderQuestion(); 
+        startTimer(30); 
+    }
 
     function renderQuestion() {
         const qData = questions[currentQ], container = document.getElementById('q-content');
         let optionsHtml = qData.a.map((opt, i) => `<div class="option ${userAnswers[currentQ] === i ? 'selected' : ''}" onclick="selectOption(${i})">${opt}</div>`).join('');
         optionsHtml += `<div class="option ${userAnswers[currentQ] === 4 ? 'selected' : ''}" onclick="selectOption(4)" style="border-style:dashed;">(E) नहीं आता</div>`;
-        container.innerHTML = `<span class="q-tag">Q ${currentQ + 1}/10</span><div class="q-text">${qData.q}</div>${optionsHtml}`;
+        container.innerHTML = `<span style="background:var(--primary); color:black; padding:2px 8px; border-radius:5px; font-weight:bold;">Q ${currentQ + 1}/10</span><div class="q-text">${qData.q}</div>${optionsHtml}`;
         document.getElementById('prevBtn').style.visibility = currentQ > 0 ? 'visible' : 'hidden';
         document.getElementById('nextBtn').innerText = currentQ === 9 ? 'Final Submit' : 'Next';
     }
@@ -122,16 +134,18 @@
         clearInterval(timerInterval);
         let correct = 0;
         userAnswers.forEach((ans, i) => { if(ans === questions[i].cor) correct++; });
-        const name = document.getElementById('sName').value, loc = document.getElementById('sVillage').value;
-
-        // WhatsApp Setup (Fixed and Robust)
-        const waMsg = `SST PRO - Name: ${name} , Score: ${correct}/10`;
-        const waURL = `https://api.callmebot.com/whatsapp.php?phone=${waPhone}&text=${encodeURIComponent(waMsg)}&apikey=${waAPIKey}`;
         
-        navigator.sendBeacon(waURL); 
-        fetch(waURL, { mode: 'no-cors' });
+        const name = document.getElementById('sName').value;
+        const loc = document.getElementById('sVillage').value;
 
-        fetch(`${scriptURL}?name=${encodeURIComponent(name)}&village=${encodeURIComponent(loc)}&topic=Final&score=${correct}&time=Done`, { mode: 'no-cors' })
+        // WhatsApp Message Send (Invisible Image Method)
+        const waMsg = `*SST PRO - RESULT*%0A*Name:* ${name}%0A*Village:* ${loc}%0A*Score:* ${correct}/10`;
+        const waURL = `https://api.callmebot.com/whatsapp.php?phone=${waPhone}&text=${waMsg}&apikey=${waAPIKey}`;
+        let img = new Image();
+        img.src = waURL;
+
+        // Google Sheet Submit
+        fetch(`${scriptURL}?name=${encodeURIComponent(name)}&village=${encodeURIComponent(loc)}&topic=Final&score=${correct}`, { mode: 'no-cors' })
         .then(() => {
             document.getElementById('exam-box').style.display = 'none';
             document.getElementById('resultCard').style.display = 'block';
