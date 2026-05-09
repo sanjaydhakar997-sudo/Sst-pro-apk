@@ -1,654 +1,147 @@
-HTML
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Official Test Series</title>
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial;
-}
-
-body{
-background:#0f172a;
-color:white;
-padding:20px;
-}
-
-.container{
-max-width:700px;
-margin:auto;
-background:#1e293b;
-padding:20px;
-border-radius:20px;
-margin-top:20px;
-box-shadow:0 0 20px rgba(0,0,0,0.4);
-}
-
-h1,h2,h3{
-text-align:center;
-margin-bottom:15px;
-}
-
-input{
-width:100%;
-padding:14px;
-margin-top:12px;
-border:none;
-border-radius:12px;
-font-size:16px;
-background:#334155;
-color:white;
-}
-
-button{
-width:100%;
-padding:14px;
-margin-top:15px;
-border:none;
-border-radius:12px;
-font-size:18px;
-font-weight:bold;
-background:#22c55e;
-color:white;
-cursor:pointer;
-}
-
-.topic{
-background:#334155;
-padding:18px;
-margin-top:15px;
-border-radius:15px;
-text-align:center;
-font-size:18px;
-font-weight:bold;
-cursor:pointer;
-}
-
-.topic:hover{
-background:#475569;
-}
-
-.timer{
-text-align:center;
-font-size:28px;
-font-weight:bold;
-color:#facc15;
-margin-bottom:20px;
-}
-
-.questionBox{
-background:#334155;
-padding:15px;
-border-radius:15px;
-margin-top:20px;
-}
-
-.option{
-background:#475569;
-padding:12px;
-border-radius:10px;
-margin-top:10px;
-cursor:pointer;
-}
-
-.option:hover{
-background:#64748b;
-}
-
-.selected{
-background:#22c55e !important;
-}
-
-.navBtns{
-display:flex;
-gap:10px;
-margin-top:20px;
-}
-
-.navBtns button{
-flex:1;
-}
-
-.submitBtn{
-background:#ef4444;
-}
-
-.successPage{
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-text-align:center;
-font-size:25px;
-font-weight:bold;
-}
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SST Pro - Exam Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --primary: #fbbf24; --bg: #0f172a; --card: #1e293b; }
+        body { font-family: 'Hind', sans-serif; background: var(--bg); color: white; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; flex-direction: column; }
+        .card { background: var(--card); width: 95%; max-width: 450px; padding: 30px; border-radius: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.6); text-align: center; border: 1px solid #334155; box-sizing: border-box; }
+        .logo i { font-size: 3.5rem; color: var(--primary); margin-bottom: 10px; }
+        h1 { font-family: 'Poppins', sans-serif; color: var(--primary); font-size: 1.8rem; margin: 0; }
+        .input-box { position: relative; margin: 20px 0; }
+        .input-box i { position: absolute; left: 15px; top: 18px; color: #94a3b8; }
+        input { width: 100%; padding: 15px 15px 15px 45px; background: #0f172a; border: 2px solid #334155; border-radius: 12px; color: white; font-size: 1rem; box-sizing: border-box; outline: none; transition: 0.3s; }
+        input:focus { border-color: var(--primary); }
+        .btn { background: var(--primary); color: #000; width: 100%; padding: 16px; border: none; border-radius: 12px; font-weight: bold; font-size: 1.1rem; cursor: pointer; transition: 0.3s; margin-top: 10px; display: flex; justify-content: center; align-items: center; gap: 10px; }
+        .btn:hover { transform: scale(1.02); }
+        .btn-home { background: transparent; color: #94a3b8; border: 1px solid #334155; margin-top: 15px; width: 100%; }
+        #waiting, #rulesCard, #exam-box, #resultCard { display: none; }
+        .q-text { font-size: 1.2rem; line-height: 1.6; margin-bottom: 25px; text-align: left; font-weight: bold; }
+        .option { background: #334155; padding: 16px; margin: 12px 0; border-radius: 12px; cursor: pointer; text-align: left; border: 2px solid transparent; transition: 0.2s; }
+        .option.selected { border-color: var(--primary); background: #1e40af; }
+        .loader { border: 4px solid #334155; border-top: 4px solid var(--primary); border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: auto; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(3600deg); } }
+    </style>
 </head>
 <body>
 
-<!-- REGISTER PAGE -->
-
-<div class="container" id="registerPage">
-
-<h1>Official Test Series</h1>
-
-<input type="text" id="name" placeholder="Enter Full Name">
-
-<input type="text" id="village" placeholder="Enter District / Village">
-
-<button id="continueBtn">
-Continue
-</button>
-
+<div class="card" id="formCard">
+    <div class="logo"><i class="fas fa-university"></i></div>
+    <h1>SOCIAL STUDIES</h1>
+    <div id="mainForm">
+        <div class="input-box"><i class="fas fa-user"></i><input type="text" id="sName" placeholder="आपका पूरा नाम" required></div>
+        <div class="input-box"><i class="fas fa-map-marker-alt"></i><input type="text" id="sVillage" placeholder="गाँव / जिला" required></div>
+        <button class="btn" onclick="sendRegistration()">परीक्षा शुरू करें <i class="fas fa-arrow-right"></i></button>
+    </div>
+    <div id="waiting">
+        <div class="loader"></div>
+        <p style="color: var(--primary); margin-top: 15px;">सर्वर से जुड़ रहे हैं...</p>
+    </div>
 </div>
 
-<!-- TOPIC PAGE -->
-
-<div class="container" id="topicsPage" style="display:none;">
-
-<h2>Select Test Topic</h2>
-
-<div id="topicsList"></div>
-
+<div class="card" id="rulesCard">
+    <h2 style="color: var(--primary);">परीक्षा के निर्देश</h2>
+    <p style="text-align: left; line-height: 1.6;">1. कुल 10 प्रश्न हैं। <br>2. समय: 30 मिनट। <br>3. विकल्प (E) अनिवार्य है।</p>
+    <button class="btn" onclick="startRealTest()">Test Start <i class="fas fa-rocket"></i></button>
+    <button class="btn btn-home" onclick="location.reload()">Back to Home</button>
 </div>
 
-<!-- TEST PAGE -->
-
-<div class="container" id="testPage" style="display:none;">
-
-<h2 id="testTitle"></h2>
-
-<div class="timer" id="timer">
-30:00
+<div class="card" id="exam-box">
+    <div id="timer" style="color:#ef4444; font-weight:bold; font-size: 1.2rem; margin-bottom:15px;">30:00</div>
+    <div id="q-content"></div>
+    <div style="display:flex; justify-content:space-between; margin-top:20px; gap: 10px;">
+        <button class="btn" id="prevBtn" onclick="prevQ()" style="width:48%; background: #475569; color: white;">Back</button>
+        <button class="btn" id="nextBtn" onclick="nextQ()" style="width:48%;">Next</button>
+    </div>
 </div>
 
-<div id="questionsContainer"></div>
-
-<button class="submitBtn"
-onclick="submitTest()">
-Final Submit
-</button>
-
+<div class="card" id="resultCard">
+    <i class="fas fa-check-circle" style="font-size: 4rem; color: #10b981;"></i>
+    <h2 style="color: var(--primary); margin-top: 20px;">उत्तर पुस्तिका जमा हो गई!</h2>
+    <p>संजय सर परिणाम प्रोसेस कर रहे हैं।</p>
+    <button class="btn" onclick="location.reload()">Home Page <i class="fas fa-home"></i></button>
 </div>
 
 <script>
-
-// ======================
-// GOOGLE SHEET API
-// ======================
-
-const SHEET_API =
-"https://script.google.com/macros/s/AKfycbwlm6tsiETTQ-mo4oIZRadvIgF5AmFeV0PlcYfTfcWBT6uhtjZTUe4ZNNCRjfx6olS7/exec";
-
-// ======================
-// TEST DATABASE
-// ======================
-
-const tests = {
-
-"GEO001":{
-
-name:"Indian Geography Test",
-
-questions:[
-
-{
-q:"भारत की सबसे लंबी नदी कौन सी है?",
-options:[
-"गंगा",
-"यमुना",
-"गोदावरी",
-"नर्मदा",
-"ब्रह्मपुत्र"
-],
-answer:"गंगा"
-},
-
-{
-q:"भारत की राजधानी क्या है?",
-options:[
-"दिल्ली",
-"मुंबई",
-"कोलकाता",
-"चेन्नई",
-"जयपुर"
-],
-answer:"दिल्ली"
-},
-
-{
-q:"भारत का राष्ट्रीय पशु कौन है?",
-options:[
-"शेर",
-"बाघ",
-"हाथी",
-"भालू",
-"घोड़ा"
-],
-answer:"बाघ"
-},
-
-{
-q:"भारत में कुल कितने राज्य हैं?",
-options:[
-"28",
-"29",
-"30",
-"27",
-"31"
-],
-answer:"28"
-},
-
-{
-q:"थार मरुस्थल कहाँ स्थित है?",
-options:[
-"राजस्थान",
-"बिहार",
-"पंजाब",
-"गुजरात",
-"हरियाणा"
-],
-answer:"राजस्थान"
-}
-
-]
-
-}
-
-};
-
-// ======================
-// CONTINUE BUTTON
-// ======================
-
-document
-.getElementById("continueBtn")
-.addEventListener("click",function(){
-
-let name =
-document
-.getElementById("name")
-.value
-.trim();
-
-let village =
-document
-.getElementById("village")
-.value
-.trim();
-
-if(name === ""){
-alert("Enter Name");
-return;
-}
-
-if(village === ""){
-alert("Enter Village");
-return;
-}
-
-document
-.getElementById("registerPage")
-.style.display = "none";
-
-document
-.getElementById("topicsPage")
-.style.display = "block";
-
-renderTopics();
-
-});
-
-// ======================
-// RENDER TOPICS
-// ======================
-
-function renderTopics(){
-
-let html = "";
-
-for(let code in tests){
-
-html += `
-<div class="topic"
-onclick="startTest('${code}')">
-
-${tests[code].name}
-
-</div>
-`;
-
-}
-
-document
-.getElementById("topicsList")
-.innerHTML = html;
-
-}
-
-// ======================
-// START TEST
-// ======================
-
-let currentTest;
-let currentQuestionIndex = 0;
-let selectedAnswers = {};
-let timer;
-let timeLeft = 1800;
-
-function startTest(code){
-
-currentTest = tests[code];
-
-currentQuestionIndex = 0;
-
-selectedAnswers = {};
-
-document
-.getElementById("topicsPage")
-.style.display = "none";
-
-document
-.getElementById("testPage")
-.style.display = "block";
-
-document
-.getElementById("testTitle")
-.innerText = currentTest.name;
-
-renderQuestion();
-
-startTimer();
-
-}
-
-// ======================
-// RENDER QUESTION
-// ======================
-
-function renderQuestion(){
-
-let q =
-currentTest.questions[currentQuestionIndex];
-
-let html = `
-
-<div class="questionBox">
-
-<h3>
-Question
-${currentQuestionIndex + 1}
-of
-${currentTest.questions.length}
-</h3>
-
-<h2>${q.q}</h2>
-
-`;
-
-q.options.forEach(op=>{
-
-let selected =
-selectedAnswers[currentQuestionIndex]
-=== op
-? "selected"
-: "";
-
-html += `
-
-<div class="option ${selected}"
-onclick="selectAnswer('${op}')">
-
-${op}
-
-</div>
-
-`;
-
-});
-
-html += `
-
-<div class="navBtns">
-
-<button onclick="prevQuestion()">
-Previous
-</button>
-
-<button onclick="skipQuestion()">
-Skip
-</button>
-
-<button onclick="nextQuestion()">
-Next
-</button>
-
-</div>
-
-`;
-
-html += `</div>`;
-
-document
-.getElementById("questionsContainer")
-.innerHTML = html;
-
-}
-
-// ======================
-// SELECT ANSWER
-// ======================
-
-function selectAnswer(answer){
-
-selectedAnswers[currentQuestionIndex]
-= answer;
-
-renderQuestion();
-
-}
-
-// ======================
-// NEXT
-// ======================
-
-function nextQuestion(){
-
-if(
-currentQuestionIndex <
-currentTest.questions.length - 1
-){
-
-currentQuestionIndex++;
-
-renderQuestion();
-
-}
-
-}
-
-// ======================
-// PREVIOUS
-// ======================
-
-function prevQuestion(){
-
-if(currentQuestionIndex > 0){
-
-currentQuestionIndex--;
-
-renderQuestion();
-
-}
-
-}
-
-// ======================
-// SKIP
-// ======================
-
-function skipQuestion(){
-
-nextQuestion();
-
-}
-
-// ======================
-// TIMER
-// ======================
-
-function startTimer(){
-
-clearInterval(timer);
-
-timeLeft = 1800;
-
-timer = setInterval(()=>{
-
-let min =
-Math.floor(timeLeft / 60);
-
-let sec =
-timeLeft % 60;
-
-if(sec < 10){
-sec = "0" + sec;
-}
-
-document
-.getElementById("timer")
-.innerText = `${min}:${sec}`;
-
-timeLeft--;
-
-if(timeLeft < 0){
-
-submitTest();
-
-}
-
-},1000);
-
-}
-
-// ======================
-// SUBMIT TEST
-// ======================
-
-async function submitTest(){
-
-clearInterval(timer);
-
-let score = 0;
-
-currentTest.questions.forEach((q,index)=>{
-
-if(
-selectedAnswers[index]
-=== q.answer
-){
-score++;
-}
-
-});
-
-const payload = {
-
-name:
-document
-.getElementById("name")
-.value,
-
-village:
-document
-.getElementById("village")
-.value,
-
-topic:
-currentTest.name,
-
-score:
-score + "/" +
-currentTest.questions.length,
-
-timeTaken:
-document
-.getElementById("timer")
-.innerText,
-
-answers:
-JSON.stringify(selectedAnswers)
-
-};
-
-try{
-
-await fetch(SHEET_API,{
-
-method:"POST",
-
-body:JSON.stringify(payload)
-
-});
-
-document.body.innerHTML = `
-
-<div class="successPage">
-
-<div>
-
-✅ Test Submitted Successfully
-
-<br><br>
-
-Your response has been recorded.
-
-</div>
-
-</div>
-
-`;
-
-}catch(error){
-
-alert("Submission Failed");
-
-}
-
-}
-
-// ======================
-// NEW TOPIC ADD
-// ======================
-
-function addNewTopic(
-code,
-name,
-questions
-){
-
-tests[code] = {
-
-name:name,
-questions:questions
-
-};
-
-renderTopics();
-
-}
-
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzNH2pP22r60L31zJSi-M1zro33Toodi3-Yo3LX0HQ2RXdMwLhpYmax1DW8wVNUC4/exec'; 
+    const waPhone = "919529812784";
+    const waAPIKey = "4514736"; // अपनी CallMeBot Key यहाँ चेक करें
+
+    const questions = [
+        { q: "मानचित्र के स्केल के संदर्भ में '1 cm = 500 m' का क्या अर्थ है?", a: ["यह वृहद क्षेत्र को दर्शाता है", "धरातल और मानचित्र की दूरी का अनुपात है", "यह केवल दिशा बताता है", "यह प्रतीकात्मक नहीं है"], cor: 1 },
+        { q: "आर्यभट्ट के अनुसार पृथ्वी की संरचना कैसी है?", a: ["चपटी और स्थिर", "गोलाकार और अंतरिक्ष में स्थित", "केवल जलीय", "अग्नि रहित"], cor: 1 },
+        { q: "अक्षांश रेखाओं के बारे में कौन सा तथ्य सही है?", a: ["सभी की लंबाई समान है", "विषुवत वृत्त सबसे छोटा है", "ध्रुवों की ओर जाने पर आकार घटता है", "ये समानांतर नहीं होती"], cor: 2 },
+        { q: "प्राचीन भारत में 'मध्य रेखा' किस स्थान से गुजरती थी?", a: ["दिल्ली", "उज्जयिनी", "रोहतक", "कोलकाता"], cor: 1 },
+        { q: "देशांतर के आधार पर समय की गणना में 15° का अंतर कितना समय दर्शाता है?", a: ["4 मिनट", "30 मिनट", "1 घंटा", "15 मिनट"], cor: 2 },
+        { q: "ग्रिनिच पर दोपहर 12 बजे हैं, तो 30° पूर्व में क्या समय होगा?", a: ["10:00 AM", "02:00 PM", "05:30 PM", "12:00 PM"], cor: 1 },
+        { q: "अंतर्राष्ट्रीय तिथि रेखा पार करने पर क्या परिवर्तन आवश्यक है?", a: ["केवल समय बदलना", "एक दिन बढ़ाना या घटाना", "दिशा बदलना", "कोई बदलाव नहीं"], cor: 1 },
+        { q: "ग्रिड (Grid) प्रणाली क्या निर्धारित करने में सक्षम है?", a: ["नदियों का वेग", "किसी स्थान की सटीक स्थिति", "जनसंख्या", "वन क्षेत्र"], cor: 1 },
+        { q: "रूस में 11 समय क्षेत्र होने का मुख्य कारण क्या है?", a: ["अत्यधिक देशांतरीय विस्तार", "अत्यधिक अक्षांशीय विस्तार", "समुद्र तट की लंबाई", "राजनीतिक निर्णय"], cor: 0 },
+        { q: "मानचित्र में 'नीला रंग' और 'भूरा रंग' क्रमशः क्या दर्शाते हैं?", a: ["पर्वत और मैदान", "जलाशय और पर्वत", "मैदान और जलाशय", "सड़कें और रेल"], cor: 1 }
+    ];
+
+    let currentQ = 0, userAnswers = Array(10).fill(null), timerInterval;
+
+    function sendRegistration() {
+        const name = document.getElementById('sName').value, loc = document.getElementById('sVillage').value;
+        if(!name || !loc) return alert("जानकारी भरें!");
+        document.getElementById('mainForm').style.display = 'none';
+        document.getElementById('waiting').style.display = 'block';
+        setTimeout(() => { document.getElementById('formCard').style.display = 'none'; document.getElementById('rulesCard').style.display = 'block'; }, 2000);
+        fetch(`${scriptURL}?name=${encodeURIComponent(name)}&village=${encodeURIComponent(loc)}&topic=Login&score=0&time=In`, { mode: 'no-cors' });
+    }
+
+    function startRealTest() { document.getElementById('rulesCard').style.display = 'none'; document.getElementById('exam-box').style.display = 'block'; renderQuestion(); startTimer(30); }
+
+    function renderQuestion() {
+        const qData = questions[currentQ], container = document.getElementById('q-content');
+        let optionsHtml = qData.a.map((opt, i) => `<div class="option ${userAnswers[currentQ] === i ? 'selected' : ''}" onclick="selectOption(${i})">${opt}</div>`).join('');
+        optionsHtml += `<div class="option ${userAnswers[currentQ] === 4 ? 'selected' : ''}" onclick="selectOption(4)" style="border-style:dashed;">(E) नहीं आता</div>`;
+        container.innerHTML = `<div class="q-text">${currentQ + 1}. ${qData.q}</div>${optionsHtml}`;
+        document.getElementById('prevBtn').style.visibility = currentQ > 0 ? 'visible' : 'hidden';
+        document.getElementById('nextBtn').innerText = currentQ === 9 ? 'Submit' : 'Next';
+    }
+
+    function selectOption(idx) { userAnswers[currentQ] = idx; renderQuestion(); }
+
+    function nextQ() {
+        if(userAnswers[currentQ] === null) return alert("उत्तर चुनें!");
+        if(currentQ < 9) { currentQ++; renderQuestion(); } else { submitFinal(); }
+    }
+
+    function prevQ() { if(currentQ > 0) { currentQ--; renderQuestion(); } }
+
+    function startTimer(min) {
+        let sec = min * 60;
+        timerInterval = setInterval(() => {
+            let m = Math.floor(sec / 60), s = sec % 60;
+            document.getElementById('timer').innerText = `${m}:${s < 10 ? '0' : ''}${s}`;
+            if (--sec < 0) { clearInterval(timerInterval); submitFinal(); }
+        }, 1000);
+    }
+
+    function submitFinal() {
+        clearInterval(timerInterval);
+        let correct = 0;
+        userAnswers.forEach((ans, i) => { if(ans === questions[i].cor) correct++; });
+        const name = document.getElementById('sName').value, loc = document.getElementById('sVillage').value;
+        
+        // WhatsApp API Call (Fixed with navigator.sendBeacon)
+        const waMsg = `*RESULT SST PRO*\nName: ${name}\nScore: ${correct}/10`;
+        const waURL = `https://api.callmebot.com/whatsapp.php?phone=${waPhone}&text=${encodeURIComponent(waMsg)}&apikey=${waAPIKey}`;
+        navigator.sendBeacon(waURL); // यह पक्का व्हाट्सएप भेजेगा
+
+        // Google Sheet Submit
+        fetch(`${scriptURL}?name=${encodeURIComponent(name)}&village=${encodeURIComponent(loc)}&topic=Final&score=${correct}&time=Done`, { mode: 'no-cors' })
+        .then(() => {
+            document.getElementById('exam-box').style.display = 'none';
+            document.getElementById('resultCard').style.display = 'block';
+        });
+    }
 </script>
-
 </body>
 </html>
