@@ -2,24 +2,130 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Social Studies Classes</title>
     <style>
-        /* iPhone (iOS) जैसा प्रीमियम लुक और फॉन्ट */
+        /* --- आईफोन (iOS) थीम और बेसिक सेटिंग्स --- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            -webkit-tap-highlight-color: transparent; /* टच करने पर ब्लैक बॉक्स नहीं बनेगा */
         }
 
         body {
-            background-color: #f2f2f7; /* iOS का सिग्नेचर लाइट ग्रे बैकग्राउंड */
+            background-color: #f2f2f7;
             color: #1c1c1e;
-            padding-bottom: 30px;
+            overflow: hidden; /* शुरुआत में स्क्रॉल बंद रहेगा */
         }
 
-        /* ऊपर का हेडर (चैनल का नाम) */
+        /* --- 1. शानदार PLANTATION SPLASH SCREEN --- */
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); /* प्रीमियम डार्क ब्लू बैकग्राउंड */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+
+        /* पौधा उगने का एनिमेटेड ढांचा */
+        .plant-container {
+            width: 100px;
+            height: 120px;
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        /* गमला/मिट्टी */
+        .pot {
+            width: 60px;
+            height: 20px;
+            background: #e0a96d;
+            border-radius: 0 0 10px 10px;
+            position: absolute;
+            bottom: 0;
+            left: 20px;
+        }
+
+        /* तना (Stem) जो नीचे से ऊपर उगेगा */
+        .stem {
+            width: 6px;
+            height: 0px;
+            background: #4caf50;
+            position: absolute;
+            bottom: 20px;
+            left: 47px;
+            border-radius: 3px;
+            animation: growStem 1.5s forwards ease-in-out;
+        }
+
+        /* पत्तियाँ जो तने के साथ खुलेंगी */
+        .leaf {
+            width: 25px;
+            height: 15px;
+            background: #81c784;
+            border-radius: 20px 0 20px 0;
+            position: absolute;
+            opacity: 0;
+            transform: scale(0);
+        }
+
+        .leaf.left {
+            left: -22px;
+            top: 30px;
+            transform-origin: right bottom;
+            animation: growLeafLeft 0.5s 0.8s forwards ease-in-out;
+        }
+
+        .leaf.right {
+            right: -22px;
+            top: 15px;
+            border-radius: 0 20px 0 20px;
+            transform-origin: left bottom;
+            animation: growLeafRight 0.5s 1.2s forwards ease-in-out;
+        }
+
+        /* चैनल का नाम (Splash Screen पर) */
+        .splash-title {
+            color: #ffffff;
+            font-size: 22px;
+            font-weight: 700;
+            text-align: center;
+            padding: 0 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s 0.5s forwards ease-out;
+        }
+
+        /* --- SPLASH SCREEN ANIMATIONS --- */
+        @keyframes growStem {
+            to { height: 70px; }
+        }
+        @keyframes growLeafLeft {
+            to { opacity: 1; transform: scale(1) rotate(-15deg); }
+        }
+        @keyframes growLeafRight {
+            to { opacity: 1; transform: scale(1) rotate(15deg); }
+        }
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- 2. MAIN APP INDEX PAGE (iPhone Look) --- */
+        #main-content {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.6s cubic-bezier(0.1, 1, 0.1, 1), transform 0.6s cubic-bezier(0.1, 1, 0.1, 1);
+        }
+
         .header {
             background-color: #ffffff;
             padding: 20px;
@@ -27,15 +133,13 @@
             border-bottom: 1px solid #d1d1d6;
             position: sticky;
             top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
         }
 
         .header h1 {
-            font-size: 20px;
+            font-size: 19px;
             font-weight: 700;
-            color: #007aff; /* iOS का क्लासिक ब्लू कलर */
-            letter-spacing: -0.5px;
+            color: #007aff; /* iOS Blue */
         }
 
         .container {
@@ -45,40 +149,40 @@
         }
 
         .section-title {
-            font-size: 14px;
+            font-size: 13px;
             text-transform: uppercase;
             color: #8e8e93;
             margin-bottom: 10px;
             margin-left: 5px;
             font-weight: 600;
+            letter-spacing: 0.5px;
         }
 
-        /* सब्जेक्ट लिस्ट (iPhone स्टाइल राउंडेड कार्ड्स) */
+        /* सब्जेक्ट्स का फोल्डर/लिस्ट */
         .subject-list {
             background-color: #ffffff;
-            border-radius: 12px; /* गोल कोने */
+            border-radius: 14px;
             overflow: hidden;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
         }
 
-        /* हर एक सब्जेक्ट की रो (Row) */
+        /* हर एक सब्जेक्ट की रो */
         .subject-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px 20px;
+            padding: 18px 20px;
             border-bottom: 1px solid #e5e5ea;
             text-decoration: none;
             color: #1c1c1e;
             transition: background-color 0.2s;
         }
 
-        /* आखरी आइटम की बॉर्डर हटा दी */
         .subject-item:last-child {
             border-bottom: none;
         }
 
-        /* उंगली रखने पर हल्का सा फीडबैक (iOS टच इफेक्ट) */
+        /* आईफोन जैसा क्लिक इफेक्ट */
         .subject-item:active {
             background-color: #e5e5ea;
         }
@@ -94,80 +198,114 @@
         }
 
         .subject-status {
-            font-size: 13px;
-            color: #34c759; /* चालू सब्जेक्ट के लिए हरा रंग */
-            margin-top: 2px;
+            font-size: 12px;
+            color: #34c759; /* Green */
+            margin-top: 3px;
+            font-weight: 500;
         }
 
-        /* जो सब्जेक्ट अभी तैयार नहीं है उसका स्टाइल */
+        /* लॉक सब्जेक्ट का लुक */
         .subject-item.locked {
-            pointer-events: none; /* क्लिक नहीं होगा */
-            opacity: 0.6;
+            pointer-events: none;
+            opacity: 0.5;
         }
 
         .subject-item.locked .subject-status {
-            color: #ff9500; /* आने वाले सब्जेक्ट के लिए संतरा रंग */
+            color: #ff9500; /* Orange */
         }
 
-        /* iPhone का तीर का निशान (Chevron) */
         .arrow {
             color: #c7c7cc;
-            font-size: 18px;
-            font-weight: 300;
+            font-size: 16px;
         }
     </style>
 </head>
 <body>
 
-    <!-- ऊपर का शानदार हेडर -->
-    <div class="header">
-        <h1>Social Studies Classes by Sanjay Dhakar</h1>
+    <!-- 1. एनिमेटेड स्प्लैश स्क्रीन (2 सेकंड का शानदार प्लांटेशन) -->
+    <div id="splash-screen">
+        <div class="plant-container">
+            <div class="pot"></div>
+            <div class="stem">
+                <div class="leaf left"></div>
+                <div class="leaf right"></div>
+            </div>
+        </div>
+        <div class="splash-title">Social Studies Classes<br>by Sanjay Dhakar</div>
     </div>
 
-    <div class="container">
-        <p class="section-title">विषय सूची (Subjects Index)</p>
-        
-        <!-- सब्जेक्ट्स की लिस्ट -->
-        <div class="subject-list" id="indexList">
+    <!-- 2. आईफोन स्टाइल मेन इंडेक्स पेज -->
+    <div id="main-content">
+        <div class="header">
+            <h1>Social Studies Classes by Sanjay Dhakar</h1>
+        </div>
+
+        <div class="container">
+            <p class="section-title">विषय सूची (Subjects Index)</p>
             
-            <!-- पहला सब्जेक्ट (यह तैयार है) -->
-            <a href="history.html" class="subject-item">
-                <div class="subject-info">
-                    <span class="subject-name">History (इतिहास)</span>
-                    <span class="subject-status">✅ तैयार है - पढ़ना शुरू करें</span>
-                </div>
-                <span class="arrow">❯</span>
-            </a>
+            <div class="subject-list">
+                
+                <!-- सब्जेक्ट 1: एक्टिव -->
+                <a href="history.html" class="subject-item">
+                    <div class="subject-info">
+                        <span class="subject-name">History (इतिहास)</span>
+                        <span class="subject-status">✅ तैयार है - पढ़ना शुरू करें</span>
+                    </div>
+                    <span class="arrow">❯</span>
+                </a>
 
-            <!-- दूसरा सब्जेक्ट (यह भी तैयार है) -->
-            <a href="geography.html" class="subject-item">
-                <div class="subject-info">
-                    <span class="subject-name">Geography (भूगोल)</span>
-                    <span class="subject-status">✅ तैयार है - पढ़ना शुरू करें</span>
-                </div>
-                <span class="arrow">❯</span>
-            </a>
+                <!-- सब्जेक्ट 2: एक्टिव -->
+                <a href="geography.html" class="subject-item">
+                    <div class="subject-info">
+                        <span class="subject-name">Geography (भूगोल)</span>
+                        <span class="subject-status">✅ तैयार है - पढ़ना शुरू करें</span>
+                    </div>
+                    <span class="arrow">❯</span>
+                </a>
 
-            <!-- तीसरा सब्जेक्ट (इसे आप आगे भविष्य में खोलेंगे - अभी बंद है) -->
-            <a href="#" class="subject-item locked">
-                <div class="subject-info">
-                    <span class="subject-name">Polity (राजव्यवस्था)</span>
-                    <span class="subject-status">⏳ जल्द आ रहा है (Locked)</span>
-                </div>
-                <span class="arrow">🔒</span>
-            </a>
+                <!-- सब्जेक्ट 3: लॉक (भविष्य के लिए) -->
+                <a href="#" class="subject-item locked">
+                    <div class="subject-info">
+                        <span class="subject-name">Polity (राजव्यवस्था)</span>
+                        <span class="subject-status">⏳ जल्द आ रहा है (Locked)</span>
+                    </div>
+                    <span class="arrow">🔒</span>
+                </a>
 
-            <!-- चौथा सब्जेक्ट (यह भी अभी बंद है) -->
-            <a href="#" class="subject-item locked">
-                <div class="subject-info">
-                    <span class="subject-name">Economics (अर्थशास्त्र)</span>
-                    <span class="subject-status">⏳ जल्द आ रहा है (Locked)</span>
-                </div>
-                <span class="arrow">🔒</span>
-            </a>
+                <!-- सब्जेक्ट 4: लॉक (भविष्य के लिए) -->
+                <a href="#" class="subject-item locked">
+                    <div class="subject-info">
+                        <span class="subject-name">Economics (अर्थशास्त्र)</span>
+                        <span class="subject-status">⏳ जल्द आ रहा है (Locked)</span>
+                    </div>
+                    <span class="arrow">🔒</span>
+                </a>
 
+            </div>
         </div>
     </div>
 
+    <script>
+        // ठीक 2 सेकंड (2000ms) बाद स्प्लैश स्क्रीन हटाकर इंडेक्स पेज लाने का लॉजिक
+        setTimeout(() => {
+            const splash = document.getElementById('splash-screen');
+            const mainContent = document.getElementById('main-content');
+            
+            // स्प्लैश स्क्रीन को छुपाओ
+            splash.style.opacity = '0';
+            splash.style.transform = 'scale(1.1)';
+            
+            // मेन कंटेंट को नीचे से ऊपर तैरते हुए लाओ (Smooth Slide Up)
+            mainContent.style.opacity = '1';
+            mainContent.style.transform = 'translateY(0)';
+            
+            // स्क्रॉलिंग चालू करो और स्प्लैश को स्क्रीन से पूरी तरह हटा दो
+            setTimeout(() => {
+                splash.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }, 500);
+            
+        }, 2000);
+    </script>
 </body>
 </html>
