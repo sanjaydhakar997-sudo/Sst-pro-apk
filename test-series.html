@@ -239,7 +239,8 @@ function submitTest() {
     textMessage += `━━━━━━━━━━━━━━━━━━%0A`;
     textMessage += `⚖️ _SST Pro Live System Verified_`;
 
-    let finalURL = `https://wa.me/${whatsappNumber}?text=${textMessage}`;
+    let finalURL = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${textMessage}`;
+
     
     document.getElementById('testSection').style.display = 'none';
     document.getElementById('successBox').style.display = 'block';
