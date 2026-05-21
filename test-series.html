@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SST Pro - Master Test Series</title>
+    <title>SST Pro - Live Test Series</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
@@ -14,22 +14,31 @@
         .header h1 { color: #1a3a5f; font-size: 22px; font-weight: 800; }
         .header p { color: #f39c12; font-size: 13px; font-weight: 600; }
 
+        /* सब्जेक्ट सिलेक्शन स्क्रीन की डिज़ाइन */
+        .grid-container { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
+        .subject-card { background: #ffffff; padding: 25px 15px; border-radius: 20px; cursor: pointer; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 2px solid #eee; border-bottom: 5px solid #eee; transition: 0.2s; }
+        .subject-card:active { transform: scale(0.95); }
+        .icon { font-size: 35px; margin-bottom: 10px; display: block; }
+        .label { font-weight: 700; font-size: 15px; color: #1a3a5f; }
+
+        /* टेस्ट फॉर्म की डिज़ाइन (शुरुआत में छिपी रहेगी) */
+        #testSection { display: none; }
         .input-group { margin-bottom: 15px; }
         .input-group label { display: block; font-weight: 700; font-size: 14px; margin-bottom: 6px; color: #333; }
-        .input-group input, .input-group select { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 12px; font-size: 14px; background: white; }
+        .input-group input { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 12px; font-size: 14px; }
 
-        .question-box { background: #fdfdfd; border: 1px solid #eef2f5; padding: 15px; border-radius: 15px; margin-bottom: 20px; border-left: 5px solid #f39c12; }
+        .question-box { background: #fdfdfd; border: 1px solid #eef2f5; padding: 15px; border-radius: 15px; margin-bottom: 20px; border-left: 5px solid #1a3a5f; }
         .question-text { font-weight: 700; font-size: 15px; margin-bottom: 12px; color: #1a3a5f; }
-        
         .options-group { display: flex; flex-direction: column; gap: 8px; }
         .option-label { display: flex; align-items: center; gap: 10px; background: #f8fafc; padding: 10px 15px; border-radius: 10px; cursor: pointer; font-size: 14px; font-weight: 500; transition: 0.2s; }
         .option-label:hover { background: #f1f5f9; }
         
+        /* बटन्स */
         .submit-btn { width: 100%; background: linear-gradient(135deg, #1a3a5f, #0c243d); color: white; border: none; padding: 15px; border-radius: 15px; font-size: 16px; font-weight: 800; cursor: pointer; box-shadow: 0 5px 15px rgba(26, 58, 95, 0.3); margin-top: 10px; }
-        .submit-btn:active { transform: scale(0.98); }
+        .back-btn { background: #e74c3c; color: white; border: none; padding: 8px 15px; border-radius: 10px; font-size: 12px; font-weight: 700; cursor: pointer; margin-bottom: 15px; display: inline-block; }
 
         .success-box { display: none; text-align: center; padding: 40px 20px; }
-        .success-box .icon { font-size: 50px; margin-bottom: 15px; }
+        .success-box .icon-check { font-size: 50px; margin-bottom: 15px; }
         .success-box h2 { color: #2ecc71; font-size: 20px; font-weight: 800; margin-bottom: 10px; }
         .success-box p { color: #666; font-size: 14px; line-height: 1.6; }
     </style>
@@ -37,80 +46,104 @@
 <body>
 
 <div class="container">
-    <div id="testForm">
+    
+    <!-- 🌟 स्क्रीन 1: सब्जेक्ट चुनने का पोर्टल -->
+    <div id="portalSection">
         <div class="header">
-            <h1>SST PRO - ऑल सब्जेक्ट टेस्ट</h1>
+            <h1>SST PRO - टेस्ट सीरीज़</h1>
             <p>By Sanjay Dhakar | मिशन 2026</p>
+        </div>
+        <p style="text-align: center; font-weight: 600; color: #666; font-size: 14px;">कृपया टेस्ट देने के लिए अपना विषय चुनें:</p>
+        
+        <div class="grid-container">
+            <div class="subject-card" style="border-bottom-color: #2d3436;" onclick="startTest('इतिहास')">
+                <span class="icon">📜</span>
+                <div class="label">इतिहास (History)</div>
+            </div>
+            <div class="subject-card" style="border-bottom-color: #2ecc71;" onclick="startTest('भूगोल')">
+                <span class="icon">🌍</span>
+                <div class="label">भूगोल (Geography)</div>
+            </div>
+            <div class="subject-card" style="border-bottom-color: #e67e22;" onclick="startTest('राजनीति')">
+                <span class="icon">⚖️</span>
+                <div class="label">राजनीति (Polity)</div>
+            </div>
+            <div class="subject-card" style="border-bottom-color: #9b59b6;" onclick="startTest('अर्थशास्त्र')">
+                <span class="icon">💰</span>
+                <div class="label">अर्थशास्त्र (Economy)</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🌟 स्क्रीन 2: लाइव टेस्ट एरिया (यह सब्जेक्ट क्लिक करने पर खुलेगा) -->
+    <div id="testSection">
+        <button type="button" class="back-btn" onclick="goBackToPortal()">⬅️ विषय बदलें</button>
+        
+        <div class="header" style="margin-bottom: 15px;">
+            <h1 id="dynamicTitle">विषय लाइव टेस्ट</h1>
+            <p>सभी प्रश्न करने अनिवार्य हैं</p>
         </div>
 
         <!-- छात्र का विवरण -->
         <div class="input-group">
             <label>आपका नाम (Full Name):</label>
-            <input type="text" id="studentName" placeholder="यहाँ अपना नाम लिखें..." required>
+            <input type="text" id="studentName" placeholder="यहाँ अपना पूरा नाम लिखें..." required>
         </div>
         <div class="input-group">
             <label>मोबाइल नंबर (WhatsApp No.):</label>
-            <input type="tel" id="studentPhone" placeholder="यहाँ अपना मोबाइल नंबर लिखें..." required>
-        </div>
-
-        <!-- विषय चुनने का ड्रॉपडाउन -->
-        <div class="input-group">
-            <label>टेस्ट का विषय चुनें (Select Subject):</label>
-            <select id="subjectSelect" onchange="loadQuestions()">
-                <option value="इतिहास">📜 इतिहास (History)</option>
-                <option value="भूगोल">🌍 भूगोल (Geography)</option>
-                <option value="राजनीति">⚖️ राजनीति (Polity)</option>
-                <option value="अर्थशास्त्र">💰 अर्थशास्त्र (Economy)</option>
-            </select>
+            <input type="tel" id="studentPhone" placeholder="यहाँ अपना व्हाट्सएप नंबर लिखें..." required>
         </div>
 
         <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
 
-        <!-- यहाँ जावास्क्रिप्ट के जरिए प्रश्न अपने आप लोड होंगे -->
+        <!-- यहाँ जावास्क्रिप्ट से प्रश्न लोड होंगे -->
         <div id="questionsContainer"></div>
 
         <button type="button" class="submit-btn" onclick="submitTest()">टेस्ट सबमिट करें</button>
     </div>
 
-    <!-- सफलता का संदेश (रिजल्ट छिपा रहेगा) -->
+    <!-- 🌟 स्क्रीन 3: सफलता का संदेश (रिजल्ट छिपा रहेगा) -->
     <div id="successBox" class="success-box">
-        <div class="icon">✅</div>
+        <div class="icon-check">✅</div>
         <h2>टेस्ट सफलतापूर्वक सबमिट हुआ!</h2>
-        <p>आपका डेटा सुरक्षित रूप से सर्वर पर सिंक कर दिया गया है। आपका परिणाम (Result) संजय सर द्वारा समीक्षा के बाद आपके व्हाट्सएप पर सीधे भेजा जाएगा।</p>
+        <p>आपका डेटा सुरक्षित रूप से सिंक कर दिया गया है। आपका विस्तृत रिजल्ट संजय सर द्वारा समीक्षा के बाद आपके व्हाट्सएप पर सीधे भेजा जाएगा।</p>
         <p style="margin-top: 15px; font-weight: bold; color: #1a3a5f;">पढ़ते रहें, आगे बढ़ते रहें! 📚</p>
     </div>
+
 </div>
 
 <script>
-// यहाँ आपके सभी सब्जेक्ट के प्रश्न सेव रहेंगे (आप इन्हें कभी भी बदल सकते हैं)
+// ==========================================
+// 🛠️ रोज़ प्रश्न बदलने का मास्टर बॉक्स (यहाँ बदलाव करें)
+// ==========================================
 const testDatabase = {
     "इतिहास": [
         { q: "सिंधु घाटी सभ्यता के अंतर्गत 'हड़प्पा' की खोज किसने की थी?", short: "हड़प्पा की खोज?", a: "दयाराम साहनी", b: "आर. डी. बनर्जी", c: "वी. ए. स्मिथ", d: "एम. एस. वत्स", correct: "A" },
         { q: "महान शहीद भगत सिंह जी को फांसी कब दी गई थी?", short: "भगत सिंह फांसी तिथि?", a: "26 जनवरी 1930", b: "23 मार्च 1931", c: "15 अगस्त 1947", d: "30 जनवरी 1948", correct: "B" }
+        // आप यहाँ कॉमा (,) लगाकर 10 प्रश्न पूरे कर सकते हैं...
     ],
     "भूगोल": [
-        { q: "राजस्थान के किस शहर को 'किले का गढ़' (चित्तौड़गढ़) कहा जाता है?", short: "किले का गढ़?", a: "चित्तौड़गढ़", b: "जयपुर", c: "जोधपुर", d: "उदयपुर", correct: "A" },
-        { q: "विश्व का सबसे बड़ा मरुस्थल कौन सा है?", short: "सबसे बड़ा मरुस्थल?", a: "थार मरुस्थल", b: "गोबी मरुस्थल", c: "सहारा मरुस्थल", d: "कालाहारी", correct: "C" }
+        { q: "किस शहर को राजस्थान का 'किले का गढ़' कहा जाता है?", short: "किले का गढ़?", a: "चित्तौड़गढ़", b: "जयपुर", c: "जोधपुर", d: "उदयपुर", correct: "A" },
+        { q: "विश्व का सबसे बड़ा ममरुस्थल कौन सा है?", short: "सबसे बड़ा मरुस्थल?", a: "थार", b: "गोबी", c: "सहारा", d: "कालाहारी", correct: "C" }
     ],
     "राजनीति": [
-        { q: "भारतीय संविधान का जनक किसे कहा जाता है?", short: "संविधान का जनक?", a: "महात्मा गांधी", b: "डॉ. बी.आर. अम्बेडकर", c: "जवाहरलाल नेहरू", d: "डॉ. राजेन्द्र प्रसाद", correct: "B" },
-        { q: "भारतीय संविधान को बनाने में कुल कितना समय लगा?", short: "संविधान निर्माण समय?", a: "2 वर्ष 11 माह 18 दिन", b: "3 वर्ष 5 माह 12 दिन", c: "1 वर्ष 8 माह 10 दिन", d: "4 वर्ष 2 माह", correct: "A" }
+        { q: "भारतीय संविधान का जनक किसे कहा जाता है?", short: "संविधान का जनक?", a: "महात्मा गांधी", b: "डॉ. बी.आर. अम्बेडकर", c: "जवाहरलाल नेहरू", d: "सुभाष चंद्र बोस", correct: "B" }
     ],
     "अर्थशास्त्र": [
-        { q: "भारत में करेंसी नोट (कागजी मुद्रा) कौन जारी करता है?", short: "करेंसी नोट जारीकर्ता?", a: "स्टेट बैंक ऑफ़ इंडिया", b: "भारत सरकार", c: "भारतीय रिजर्व बैंक (RBI)", d: "वित्त मंत्रालय", correct: "C" },
-        { q: "मिश्रित अर्थव्यवस्था का क्या अर्थ होता है?", short: "मिश्रित अर्थव्यवस्था?", a: "केवल सरकारी नियंत्रण", b: "केवल निजी नियंत्रण", c: "सार्वजनिक और निजी दोनों का सह-अस्तित्व", d: "इनमें से कोई नहीं", correct: "C" }
+        { q: "भारत में करेंसी नोट कौन जारी करता है?", short: "करेंसी नोट जारीकर्ता?", a: "SBI", b: "भारत सरकार", c: "RBI (रिजर्व बैंक)", d: "वित्त मंत्रालय", correct: "C" }
     ]
 };
 
-// पेज लोड होते ही पहले सब्जेक्ट के प्रश्न दिखाने के लिए
-window.onload = function() {
-    loadQuestions();
-};
+let currentSubject = ""; // छात्र ने कौन सा सब्जेक्ट चुना है, ट्रैक करने के लिए
 
-// सब्जेक्ट बदलने पर प्रश्न बदलने का फंक्शन
-function loadQuestions() {
-    const selectedSubject = document.getElementById('subjectSelect').value;
-    const questions = testDatabase[selectedSubject];
+// सब्जेक्ट पर क्लिक करते ही टेस्ट लोड करने का फंक्शन
+function startTest(subject) {
+    currentSubject = subject;
+    document.getElementById('portalSection').style.display = 'none';
+    document.getElementById('testSection').style.display = 'block';
+    document.getElementById('dynamicTitle').innerText = `📜 ${subject} लाइव टेस्ट`;
+
+    const questions = testDatabase[subject];
     const container = document.getElementById('questionsContainer');
     container.innerHTML = ""; // पुराना डेटा साफ करना
 
@@ -130,11 +163,16 @@ function loadQuestions() {
     });
 }
 
-// टेस्ट सबमिट करने और व्हाट्सएप पर विस्तृत रिजल्ट भेजने का फंक्शन
+// वापस सब्जेक्ट लिस्ट पर जाने के लिए बटन
+function goBackToPortal() {
+    document.getElementById('testSection').style.display = 'none';
+    document.getElementById('portalSection').style.display = 'block';
+}
+
+// टेस्ट सबमिट करने और व्हाट्सएप पर भेजने का फंक्शन
 function submitTest() {
     const name = document.getElementById('studentName').value.trim();
     const phone = document.getElementById('studentPhone').value.trim();
-    const subject = document.getElementById('subjectSelect').value;
 
     if(!name || !phone) {
         alert("कृपया अपना नाम और मोबाइल नंबर सही-सही भरें!");
@@ -170,12 +208,11 @@ function submitTest() {
 
     let scorePercentage = ((correctCount / totalQuestions) * 100).toFixed(2);
 
-    // व्हाट्सएप संदेश की रूपरेखा
     let whatsappNumber = "919529812784"; 
     let textMessage = `🚩 *SST Pro - विस्तृत टेस्ट रिजल्ट* %0A%0A`;
     textMessage += `👤 *छात्र:* ${encodeURIComponent(name)} %0A`;
     textMessage += `📞 *नंबर:* ${encodeURIComponent(phone)} %0A`;
-    textMessage += `📚 *विषय:* ${encodeURIComponent(subject)} %0A`;
+    textMessage += `📚 *विषय:* ${encodeURIComponent(currentSubject)} %0A`;
     textMessage += `🏆 *स्कोर:* ${scorePercentage}%25 (${correctCount}/${totalQuestions}) %0A`;
     textMessage += `━━━━━━━━━━━━━━━━━━%0A`;
     textMessage += `📋 *प्रश्नों का पूरा विवरण:*%0A%0A`;
@@ -185,11 +222,9 @@ function submitTest() {
 
     let finalURL = `https://wa.me/${whatsappNumber}?text=${textMessage}`;
     
-    // स्क्रीन बदलना
-    document.getElementById('testForm').style.display = 'none';
+    document.getElementById('testSection').style.display = 'none';
     document.getElementById('successBox').style.display = 'block';
 
-    // व्हाट्सएप पर भेजना
     window.open(finalURL, '_blank');
 }
 </script>
