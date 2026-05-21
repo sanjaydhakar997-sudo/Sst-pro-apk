@@ -3,81 +3,318 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SST Pro - Digital Marksheet</title>
-    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>SST Pro - डिजिटल मार्कशीट</title>
+    <!-- Canvas Confetti Library for Celebration Animation -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
-        body { background: #f1f5f9; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; font-family: 'Hind', sans-serif; }
-        
-        .certificate { 
-            background: white; 
-            width: 90%; 
-            max-width: 600px; 
-            padding: 40px; 
-            border: 15px double #fbbf24; 
-            position: relative; 
-            text-align: center; 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1); 
+        :root {
+            --primary-color: #4f46e5;
+            --success-color: #10b981;
+            --danger-color: #ef4444;
+            --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
 
-        .brand-name { color: #fbbf24; font-weight: bold; font-size: 1.5rem; margin-bottom: 5px; }
-        .sub-text { font-size: 0.8rem; color: #64748b; text-transform: uppercase; letter-spacing: 2px; }
-        
-        .title { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: #1e293b; margin: 20px 0; }
-        .award-text { font-size: 1.1rem; color: #475569; margin-bottom: 10px; }
-        
-        .student-name { font-size: 2.2rem; color: #1e40af; border-bottom: 2px solid #e2e8f0; display: inline-block; padding: 0 30px; margin: 10px 0; font-weight: bold; }
-        
-        .score-circle { 
-            width: 120px; height: 120px; border: 5px solid #fbbf24; border-radius: 50%; 
-            margin: 30px auto; display: flex; flex-direction: column; justify-content: center; 
-            background: #fffbeb; box-shadow: 0 5px 15px rgba(251,191,36,0.2); 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        .score-num { font-size: 2.5rem; font-weight: bold; color: #1e40af; line-height: 1; }
-        .score-total { font-size: 1rem; color: #64748b; }
 
-        .footer { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 50px; }
-        .sign-box { border-top: 2px solid #1e293b; width: 150px; padding-top: 5px; }
-        .sign-text { font-family: 'Great Vibes', cursive; font-size: 1.8rem; color: #1e293b; margin: 0; }
+        body {
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #333;
+        }
 
-        /* Watermark */
-        .watermark { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 8rem; opacity: 0.03; z-index: 0; pointer-events: none; }
+        /* Marksheet Card Container with Animation */
+        .marksheet-card {
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 550px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Header Styling */
+        .header {
+            text-align: center;
+            border-bottom: 2px dashed #e2e8f0;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            color: var(--primary-color);
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            color: #64748b;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* Student Details */
+        .student-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+
+        .info-item span {
+            display: block;
+            font-size: 12px;
+            color: #64748b;
+        }
+
+        .info-item strong {
+            font-size: 16px;
+            color: #1e293b;
+        }
+
+        /* Score Section */
+        .score-section {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .circular-progress {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: conic-gradient(var(--success-color) 0deg, #e2e8f0 0deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 15px;
+            position: relative;
+            transition: background 1s ease-in-out;
+        }
+
+        .circular-progress::before {
+            content: "";
+            position: absolute;
+            width: 110px;
+            height: 110px;
+            background: #fff;
+            border-radius: 50%;
+        }
+
+        .score-text {
+            position: relative;
+            font-size: 24px;
+            font-weight: bold;
+            color: #1e293b;
+        }
+
+        .stats-badge {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .badge.correct { background: #d1fae5; color: #065f46; }
+        .badge.wrong { background: #fee2e2; color: #991b1b; }
+
+        /* Dynamic Quote Styling */
+        .quote-box {
+            background: #f1f5f9;
+            border-left: 5px solid var(--primary-color);
+            padding: 15px;
+            border-radius: 4px 12px 12px 4px;
+            font-style: italic;
+            margin-bottom: 40px;
+            text-align: center;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        /* Footer Branding (Bottom Right) */
+        .footer-branding {
+            position: absolute;
+            bottom: 12px;
+            right: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #94a3b8;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
     </style>
 </head>
 <body>
 
-<div class="certificate">
-    <div class="watermark"><i class="fas fa-university"></i></div>
-    
-    <div class="brand-name">SOCIAL STUDIES CLASSES</div>
-    <div class="sub-text">Chittorgarh - Digital Education Portal</div>
-    
-    <div class="title">Certificate of Merit</div>
-    
-    <div class="award-text">यह प्रमाणित किया जाता है कि</div>
-    <div class="student-name">संजय कुमावत</div> 
-    
-    <div class="award-text" style="margin-top: 15px;">निवासी <b>सेंती, चित्तौड़गढ़</b> ने</div>
-    <div class="award-text"><b>भूगोल अध्याय-1 (NCERT 2026-27)</b> परीक्षा में</div>
-    
-    <div class="score-circle">
-        <span class="score-num">09</span>
-        <span class="score-total">Score / 10</span>
-    </div>
-    
-    <div class="award-text">अंक प्राप्त कर श्रेष्ठता का परिचय दिया है।</div>
-
-    <div class="footer">
-        <div style="text-align: left;">
-            <p style="font-size: 0.8rem; color: #64748b; margin: 0;">दिनांक: 08/05/2026</p>
-            <p style="font-size: 0.8rem; color: #64748b; margin: 0;">ID: SST-PRO-001</p>
+    <div class="marksheet-card">
+        <!-- Header -->
+        <div class="header">
+            <h1>🚩 SST Pro</h1>
+            <p>लाइव टेस्ट विस्तृत परिणाम</p>
         </div>
-        <div class="sign-box">
-            <p class="sign-text">Sanjay Sir</p>
-            <p style="font-size: 0.7rem; font-weight: bold; margin: 0; text-transform: uppercase;">परीक्षा नियंत्रक</p>
+
+        <!-- Student Info -->
+        <div class="student-info">
+            <div class="info-item">
+                <span>छात्र का नाम</span>
+                <strong id="student-name">-</strong>
+            </div>
+            <div class="info-item">
+                <span>विषय</span>
+                <strong id="subject-name">-</strong>
+            </div>
+            <div class="info-item">
+                <span>मोबाइल नंबर</span>
+                <strong id="student-phone">-</strong>
+            </div>
+            <div class="info-item">
+                <span>कुल प्रश्न</span>
+                <strong id="total-questions">-</strong>
+            </div>
+        </div>
+
+        <!-- Score & Progress -->
+        <div class="score-section">
+            <div class="circular-progress" id="progress-bar">
+                <div class="score-text" id="score-percentage">0%</div>
+            </div>
+            <div class="stats-badge">
+                <span class="badge correct" id="correct-count">सही: 0</span>
+                <span class="badge wrong" id="wrong-count">गलत: 0</span>
+            </div>
+        </div>
+
+        <!-- Quote Area -->
+        <div class="quote-box" id="quote-container">
+            "-"
+        </div>
+
+        <!-- Branding -->
+        <div class="footer-branding">
+            By Social Studies Classes
         </div>
     </div>
-</div>
 
+    <script>
+        // 1. यह आपका डायनेमिक डेटा ऑब्जेक्ट है। भविष्य में सिर्फ इसे ही बदलना होगा।
+        const testResult = {
+            studentName: "Sonu kanwar",
+            phone: "7878026535",
+            subject: "भूगोल",
+            totalQuestions: 20,
+            correctAnswers: 17,
+            wrongAnswers: 3,
+            percentage: 85.00
+        };
+
+        // 2. अच्छे और खराब स्कोर के लिए कोट्स (Quotes) की लिस्ट
+        const motivationalQuotes = [
+            "शानदार प्रदर्शन! आपकी मेहनत रंग ला रही है। ऐसे ही आगे बढ़ते रहिए! 🏆",
+            "अद्भुत! आपने साबित कर दिया कि निरंतर प्रयास ही सफलता की कुंजी है। ⭐",
+            "बेहतरीन स्कोर! आपकी तैयारी सही दिशा में है, इसे बरकरार रखें। 🚀"
+        ];
+
+        const strictQuotes = [
+            "स्कोर काफी कम है! सिर्फ सपने देखने से काम नहीं चलेगा, किताबों से दोस्ती बढ़ाइए। 📖",
+            "मेहनत में कमी साफ दिख रही है। अगर आज नहीं संभले, तो परिणाम भुगतने के लिए तैयार रहें। ⏳",
+            "यह प्रदर्शन आपकी क्षमता के अनुकूल नहीं है। बहाने छोड़िए और दुगुनी मेहनत शुरू कीजिए! ⚠"
+        ];
+
+        // 3. डेटा को मार्कशीट में लोड करने का फंक्शन
+        function generateMarksheet(data) {
+            document.getElementById('student-name').innerText = data.studentName;
+            document.getElementById('student-phone').innerText = data.phone;
+            document.getElementById('subject-name').innerText = data.subject;
+            document.getElementById('total-questions').innerText = data.totalQuestions;
+            document.getElementById('correct-count').innerText = `सही: ${data.correctAnswers}`;
+            document.getElementById('wrong-count').innerText = `गलत: ${data.wrongAnswers}`;
+            document.getElementById('score-percentage').innerText = `${data.percentage}%`;
+
+            // सर्कुलर प्रोग्रेस बार एनीमेशन
+            const progressBar = document.getElementById('progress-bar');
+            const degree = (data.percentage / 100) * 360;
+            
+            // स्कोर के हिसाब से कलर तय करना (60% से कम पर लाल, अधिक पर हरा)
+            const progressColor = data.percentage >= 60 ? '#10b981' : '#ef4444';
+            progressBar.style.background = `conic-gradient(${progressColor} ${degree}deg, #e2e8f0 ${degree}deg)`;
+
+            // स्कोर के आधार पर कोट (Quote) और एनीमेशन तय करना
+            const quoteContainer = document.getElementById('quote-container');
+            
+            if (data.percentage >= 60) {
+                // अच्छा स्कोर: रैंडम तारीफ वाला कोट + कन्फेटी ब्लास्ट
+                const randomGoodQuote = motivationalQuotes[Math.floor(Math.random() * motivationalQuotes.length)];
+                quoteContainer.innerText = randomGoodQuote;
+                quoteContainer.style.borderLeftColor = '#10b981';
+                
+                // सेलिब्रेशन एनीमेशन ट्रिगर करें
+                triggerConfetti();
+            } else {
+                // खराब स्कोर: कड़वे शब्द वाला कोट
+                const randomBadQuote = strictQuotes[Math.floor(Math.random() * strictQuotes.length)];
+                quoteContainer.innerText = randomBadQuote;
+                quoteContainer.style.borderLeftColor = '#ef4444';
+            }
+        }
+
+        // 4. शानदार एनीमेशन (Confetti Blast) के लिए फंक्शन
+        function triggerConfetti() {
+            var duration = 3 * 1000;
+            var end = Date.now() + duration;
+
+            (function frame() {
+                confetti({
+                    particleCount: 3,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0, y: 0.8 }
+                });
+                confetti({
+                    particleCount: 3,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1, y: 0.8 }
+                });
+
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            }());
+        }
+
+        // पेज लोड होते ही मार्कशीट जनरेट करें
+        window.onload = function() {
+            generateMarksheet(testResult);
+        };
+    </script>
 </body>
 </html>
