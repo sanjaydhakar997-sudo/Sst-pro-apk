@@ -2,310 +2,341 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Social Studies Classes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SST Pro - Sanjay Dhakar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        /* --- आईफोन (iOS) थीम और बेसिक सेटिंग्स --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            -webkit-tap-highlight-color: transparent; /* टच करने पर ब्लैक बॉक्स नहीं बनेगा */
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; -webkit-tap-highlight-color: transparent; }
+        
+        body { background-color: #f2f2f7; color: #2d3436; padding-bottom: 50px; } /* iOS सिग्नेचर बैकग्राउंड */
 
-        body {
-            background-color: #f2f2f7;
-            color: #1c1c1e;
-            overflow: hidden; /* शुरुआत में स्क्रॉल बंद रहेगा */
-        }
-
-        /* --- 1. शानदार PLANTATION SPLASH SCREEN --- */
-        #splash-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); /* प्रीमियम डार्क ब्लू बैकग्राउंड */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-        }
-
-        /* पौधा उगने का एनिमेटेड ढांचा */
-        .plant-container {
-            width: 100px;
-            height: 120px;
-            position: relative;
-            margin-bottom: 25px;
-        }
-
-        /* गमला/मिट्टी */
-        .pot {
-            width: 60px;
-            height: 20px;
-            background: #e0a96d;
-            border-radius: 0 0 10px 10px;
-            position: absolute;
-            bottom: 0;
-            left: 20px;
-        }
-
-        /* तना (Stem) जो नीचे से ऊपर उगेगा */
-        .stem {
-            width: 6px;
-            height: 0px;
-            background: #4caf50;
-            position: absolute;
-            bottom: 20px;
-            left: 47px;
-            border-radius: 3px;
-            animation: growStem 1.5s forwards ease-in-out;
-        }
-
-        /* पत्तियाँ जो तने के साथ खुलेंगी */
-        .leaf {
-            width: 25px;
-            height: 15px;
-            background: #81c784;
-            border-radius: 20px 0 20px 0;
-            position: absolute;
-            opacity: 0;
-            transform: scale(0);
-        }
-
-        .leaf.left {
-            left: -22px;
-            top: 30px;
-            transform-origin: right bottom;
-            animation: growLeafLeft 0.5s 0.8s forwards ease-in-out;
-        }
-
-        .leaf.right {
-            right: -22px;
-            top: 15px;
-            border-radius: 0 20px 0 20px;
-            transform-origin: left bottom;
-            animation: growLeafRight 0.5s 1.2s forwards ease-in-out;
-        }
-
-        /* चैनल का नाम (Splash Screen पर) */
-        .splash-title {
-            color: #ffffff;
-            font-size: 22px;
-            font-weight: 700;
-            text-align: center;
-            padding: 0 20px;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.8s 0.5s forwards ease-out;
-        }
-
-        /* --- SPLASH SCREEN ANIMATIONS --- */
-        @keyframes growStem {
-            to { height: 70px; }
-        }
-        @keyframes growLeafLeft {
-            to { opacity: 1; transform: scale(1) rotate(-15deg); }
-        }
-        @keyframes growLeafRight {
-            to { opacity: 1; transform: scale(1) rotate(15deg); }
-        }
-        @keyframes fadeInUp {
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* --- 2. MAIN APP INDEX PAGE (iPhone Look) --- */
-        #main-content {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.6s cubic-bezier(0.1, 1, 0.1, 1), transform 0.6s cubic-bezier(0.1, 1, 0.1, 1);
-        }
-
+        /* प्रीमियम हेडर */
         .header {
-            background-color: #ffffff;
-            padding: 20px;
-            text-align: center;
-            border-bottom: 1px solid #d1d1d6;
-            position: sticky;
-            top: 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: white; padding: 40px 20px; text-align: center;
+            border-bottom-left-radius: 35px; border-bottom-right-radius: 35px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        .header h1 { font-size: 26px; font-weight: 800; letter-spacing: 1px; margin-bottom: 10px; }
+        
+        /* सुविचार बॉक्स */
+        .gandhi-box {
+            margin: -25px 20px 20px 20px; background: #ffffff;
+            padding: 20px; border-radius: 20px; text-align: center;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.08); border-top: 4px solid #f39c12;
+        }
+        .quote { font-size: 15px; font-weight: 600; color: #4a5568; line-height: 1.6; font-style: italic; }
+        .author { display: block; margin-top: 10px; color: #f39c12; font-weight: bold; font-size: 14px; }
+
+        /* एग्जाम बैनर */
+        .exam-banner {
+            margin: 10px 15px 25px 15px; padding: 18px;
+            background: linear-gradient(135deg, #fff9db, #fff3bf);
+            border-radius: 15px; text-align: center; border: 1px solid #ffe066;
         }
 
-        .header h1 {
-            font-size: 19px;
-            font-weight: 700;
-            color: #007aff; /* iOS Blue */
-        }
-
-        .container {
-            padding: 20px;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 13px;
-            text-transform: uppercase;
-            color: #8e8e93;
-            margin-bottom: 10px;
-            margin-left: 5px;
-            font-weight: 600;
+        /* --- IPHONE STYLE FOLDER INDEX (नया डिज़ाइन) --- */
+        .section-title { 
+            margin: 25px 20px 12px 20px; 
+            font-size: 15px; 
+            color: #8e8e93; 
+            font-weight: 600; 
+            text-transform: uppercase; 
             letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
         }
+        .section-title::before { content: ""; width: 4px; height: 14px; background: #f39c12; margin-right: 8px; border-radius: 10px; }
 
-        /* सब्जेक्ट्स का फोल्डर/लिस्ट */
-        .subject-list {
+        /* आईफोन स्टाइल का बंद फोल्डर/लिस्ट */
+        .iphone-folder {
             background-color: #ffffff;
             border-radius: 14px;
+            margin: 0 15px 20px 15px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
         }
 
-        /* हर एक सब्जेक्ट की रो */
-        .subject-item {
+        /* फोल्डर के अंदर की कतारें (Rows) */
+        .subject-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 18px 20px;
+            padding: 16px 20px;
             border-bottom: 1px solid #e5e5ea;
             text-decoration: none;
             color: #1c1c1e;
             transition: background-color 0.2s;
         }
+        .subject-row:last-child { border-bottom: none; }
+        
+        /* टच करने पर आईफोन जैसा स्मूथ इफ़ेक्ट */
+        .subject-row:active { background-color: #e5e5ea; }
 
-        .subject-item:last-child {
-            border-bottom: none;
-        }
+        .sub-left { display: flex; align-items: center; gap: 15px; }
+        .sub-icon { font-size: 24px; }
+        .sub-name { font-size: 16px; font-weight: 600; }
+        
+        /* स्थिति (Status) टैग्स */
+        .status-tag { font-size: 11px; font-weight: 600; margin-top: 2px; display: block; }
+        .status-ready { color: #34c759; } /* चालू के लिए हरा */
+        .status-locked { color: #ff9500; } /* बंद के लिए ऑरेंज */
 
-        /* आईफोन जैसा क्लिक इफेक्ट */
-        .subject-item:active {
-            background-color: #e5e5ea;
-        }
-
-        .subject-info {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .subject-name {
-            font-size: 17px;
-            font-weight: 600;
-        }
-
-        .subject-status {
-            font-size: 12px;
-            color: #34c759; /* Green */
-            margin-top: 3px;
-            font-weight: 500;
-        }
-
-        /* लॉक सब्जेक्ट का लुक */
-        .subject-item.locked {
+        /* लॉक सब्जेक्ट का लुक (धुंधला और अन-क्लिकेबल) */
+        .subject-row.locked {
             pointer-events: none;
             opacity: 0.5;
         }
 
-        .subject-item.locked .subject-status {
-            color: #ff9500; /* Orange */
-        }
-
-        .arrow {
-            color: #c7c7cc;
-            font-size: 16px;
-        }
+        .arrow { color: #c7c7cc; font-size: 15px; font-weight: bold; }
     </style>
 </head>
 <body>
 
-    <!-- 1. एनिमेटेड स्प्लैश स्क्रीन (2 सेकंड का शानदार प्लांटेशन) -->
-    <div id="splash-screen">
-        <div class="plant-container">
-            <div class="pot"></div>
-            <div class="stem">
-                <div class="leaf left"></div>
-                <div class="leaf right"></div>
-            </div>
+<!-- आपकी वही शानदार स्प्लैश स्क्रीन -->
+<div id="upsc-splash" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 100000; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+    <div style="text-align: center; animation: mainFade 2s ease-out forwards;">
+        <div style="font-size: 75px; margin-bottom: 12px; animation: treeGrow 2.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); filter: drop-shadow(0 0 20px rgba(46, 204, 113, 0.3));">🌳</div>
+        <h1 style="color: #f39c12; font-size: 26px; font-weight: 900; letter-spacing: 3px; margin: 0; font-family: 'Arial Black', sans-serif;">SOCIAL STUDIES</h1>
+        <h2 style="color: #fff; font-size: 15px; font-weight: 700; letter-spacing: 6px; opacity: 0.8; margin-top: 2px;">CLASSES</h2>
+        <div style="margin-top: 25px;">
+            <p style="color: #fff; font-size: 14px; font-weight: 600; letter-spacing: 2px; margin: 0; animation: nameSlide 1.8s ease-out;">By Sanjay Dhakar</p>
+            <div style="width: 50px; height: 2px; background: #f39c12; margin: 10px auto; border-radius: 10px; animation: lineExpand 2s ease-in-out;"></div>
         </div>
-        <div class="splash-title">Social Studies Classes<br>by Sanjay Dhakar</div>
     </div>
+    <div style="position: absolute; bottom: 80px; width: 100%; text-align: center; padding: 0 40px; animation: visionFade 3s ease-in;">
+        <p style="color: #ffffff; font-size: 14px; font-weight: 500; letter-spacing: 1.2px; line-height: 1.6; font-family: 'Georgia', serif; font-style: italic;">"The roots of education are bitter, <br>but the fruit is sweet."</p>
+    </div>
+    <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background: rgba(255,255,255,0.05);"><div style="height: 100%; background: linear-gradient(to right, #f39c12, #2ecc71); animation: splashProgress 3.8s linear forwards;"></div></div>
+</div>
 
-    <!-- 2. आईफोन स्टाइल मेन इंडेक्स पेज -->
-    <div id="main-content">
-        <div class="header">
-            <h1>Social Studies Classes by Sanjay Dhakar</h1>
+<div class="upsc-master-wrapper" style="margin: 0; padding: 0; background: #f2f2f7;">
+    <!-- आपका शानदार बैनर स्लाइडर -->
+    <div class="slider-box" style="position: relative; height: 235px; width: 100%; overflow: hidden; border-bottom-left-radius: 45px; border-bottom-right-radius: 45px; background: #000; box-shadow: 0 15px 30px rgba(0,0,0,0.25);">
+        <div style="position: absolute; top: 18px; left: 0; width: 100%; z-index: 100; text-align: center;">
+            <h1 style="color: #f39c12; font-size: 19px; font-weight: 900; letter-spacing: 2px; margin: 0; font-family: 'Arial Black', sans-serif; text-shadow: 0 2px 10px rgba(0,0,0,0.8);">SOCIAL STUDIES CLASSES</h1>
+            <p style="color: #fff; font-size: 11px; font-weight: 700; opacity: 0.9; letter-spacing: 1.5px; margin-top: 3px;">BY SANJAY DHAKAR</p>
         </div>
-
-        <div class="container">
-            <p class="section-title">विषय सूची (Subjects Index)</p>
-            
-            <div class="subject-list">
-                
-                <!-- सब्जेक्ट 1: एक्टिव -->
-                <a href="history.html" class="subject-item">
-                    <div class="subject-info">
-                        <span class="subject-name">History (इतिहास)</span>
-                        <span class="subject-status">✅ तैयार है - पढ़ना शुरू करें</span>
-                    </div>
-                    <span class="arrow">❯</span>
-                </a>
-
-                <!-- सब्जेक्ट 2: एक्टिव -->
-                <a href="geography.html" class="subject-item">
-                    <div class="subject-info">
-                        <span class="subject-name">Geography (भूगोल)</span>
-                        <span class="subject-status">✅ तैयार है - पढ़ना शुरू करें</span>
-                    </div>
-                    <span class="arrow">❯</span>
-                </a>
-
-                <!-- सब्जेक्ट 3: लॉक (भविष्य के लिए) -->
-                <a href="#" class="subject-item locked">
-                    <div class="subject-info">
-                        <span class="subject-name">Polity (राजव्यवस्था)</span>
-                        <span class="subject-status">⏳ जल्द आ रहा है (Locked)</span>
-                    </div>
-                    <span class="arrow">🔒</span>
-                </a>
-
-                <!-- सब्जेक्ट 4: लॉक (भविष्य के लिए) -->
-                <a href="#" class="subject-item locked">
-                    <div class="subject-info">
-                        <span class="subject-name">Economics (अर्थशास्त्र)</span>
-                        <span class="subject-status">⏳ जल्द आ रहा है (Locked)</span>
-                    </div>
-                    <span class="arrow">🔒</span>
-                </a>
-
+        <div id="finalEngine" style="display: flex; width: 500%; height: 100%; transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);">
+            <div style="width: 100%; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=2070'); background-size: cover; background-position: center; display: flex; align-items: flex-end; padding: 45px 25px;">
+                <div style="color: white;"><h2 style="font-size: 26px; font-weight: 900; line-height: 1.2;">सबसे बेहतरीन<br><span style="color: #f39c12;">लर्निंग ऐप</span></h2><p style="font-size: 13px; opacity: 0.9; margin-top: 5px;">SST को समझें अब एक नए अंदाज़ में।</p></div>
             </div>
+            <div style="width: 100%; background: linear-gradient(135deg, #d35400, #f39c12); display: flex; align-items: flex-end; padding: 45px 25px;">
+                <div style="color: white;"><h2 style="font-size: 26px; font-weight: 900;">VVIP लाइब्रेरी</h2><p style="font-size: 13px; opacity: 0.9; margin-top: 5px;">पुरानी किताबें, नया भविष्य। आज ही जुड़ें।</p></div>
+            </div>
+            <div style="width: 100%; background: linear-gradient(135deg, #0984e3, #6c5ce7); display: flex; align-items: flex-end; padding: 45px 25px;">
+                <div style="color: white;"><h2 style="font-size: 26px; font-weight: 900;">प्रीमियम नोट्स</h2><p style="font-size: 13px; opacity: 0.9; margin-top: 5px;">कोचिंग के नोट्स, सीधे आपके मोबाइल पर।</p></div>
+            </div>
+            <div style="width: 100%; background: #1a1a1a; display: flex; align-items: center; padding: 30px; border-left: 10px solid #00ff00;">
+                <div style="color: #00ff00;"><h2 style="font-size: 20px; font-weight: 900; font-family: monospace;">> SYSTEM SECURED</h2><p style="font-size: 12px; color: white; opacity: 0.8; margin-top: 8px;">SHA-256 सत्यापित डेटा संरचना।<br>100% सुरक्षित एवं विश्वसनीय सिस्टम।</p></div>
+            </div>
+            <div style="width: 100%; background: linear-gradient(135deg, #27ae60, #16a085); display: flex; align-items: flex-end; padding: 45px 25px;">
+                <div style="color: white;"><h2>हमारे गौरव</h2><p style="font-size: 13px; opacity: 0.9; margin-top: 5px;">दानदाताओं की सूची जिन्होंने शिक्षा को नई दिशा दी।</p></div>
+            </div>
+        </div>
+        <div style="position: absolute; bottom: 25px; width: 100%; display: flex; justify-content: center; gap: 8px;">
+            <div class="f-dot" style="width: 25px; height: 5px; background: white; border-radius: 10px; opacity: 1; transition: 0.4s;"></div>
+            <div class="f-dot" style="width: 8px; height: 5px; background: rgba(255,255,255,0.4); border-radius: 10px; transition: 0.4s;"></div>
+            <div class="f-dot" style="width: 8px; height: 5px; background: rgba(255,255,255,0.4); border-radius: 10px; transition: 0.4s;"></div>
+            <div class="f-dot" style="width: 8px; height: 5px; background: rgba(255,255,255,0.4); border-radius: 10px; transition: 0.4s;"></div>
+            <div class="f-dot" style="width: 8px; height: 5px; background: rgba(255,255,255,0.4); border-radius: 10px; transition: 0.4s;"></div>
         </div>
     </div>
 
-    <script>
-        // ठीक 2 सेकंड (2000ms) बाद स्प्लैश स्क्रीन हटाकर इंडेक्स पेज लाने का लॉजिक
-        setTimeout(() => {
-            const splash = document.getElementById('splash-screen');
-            const mainContent = document.getElementById('main-content');
-            
-            // स्प्लैश स्क्रीन को छुपाओ
+    <!-- आपका टाइपिंग विचार बॉक्स -->
+    <div style="margin: -30px 20px 30px; background: white; padding: 25px; border-radius: 35px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 15px; position: relative; z-index: 120; border: 1px solid #f0f0f0;">
+        <div style="min-width: 55px; height: 55px; background: linear-gradient(135deg, #f39c12, #e67e22); border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 26px; color: white;">📖</div>
+        <div>
+            <p id="typeQuote" style="font-size: 15px; font-weight: 800; color: #1e272e; line-height: 1.4; margin: 0; min-height: 42px;"></p>
+            <p style="font-size: 11px; font-weight: 900; color: #f39c12; margin-top: 4px; letter-spacing: 1px;">— शहीद-ए-आजम भगत सिंह</p>
+        </div>
+    </div>
+</div>
+
+<!-- आपके पुराने बटन्स और अलर्ट्स -->
+<div style="margin: 20px 15px;">
+    <div style="display: flex; gap: 10px; margin: 20px 15px;">
+        <a href="mission.html" style="text-decoration: none; flex: 1;">
+            <div style="background: linear-gradient(135deg, #FFD700, #FF8C00); padding: 15px 10px; border-radius: 20px; display: flex; align-items: center; height: 80px;">
+                <div style="background: white; width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-right: 10px;">🏆</div>
+                <div><div style="color: #000; font-weight: 900; font-size: 12px; text-transform: uppercase;">VVIP क्लब</div><div style="color: #333; font-size: 9px; font-weight: 600; opacity: 0.8;">किताबें दान करें</div></div>
+            </div>
+        </a>
+        <a href="team-registration.html" style="text-decoration: none; flex: 1;">
+            <div style="background: linear-gradient(135deg, #1a237e, #283593); padding: 15px 10px; border-radius: 20px; display: flex; align-items: center; height: 80px;">
+                <div style="background: rgba(255,255,255,0.2); width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-right: 10px;">🤝</div>
+                <div><div style="color: #fff; font-weight: 900; font-size: 12px; text-transform: uppercase;">SST TEAM</div><div style="color: #eee; font-size: 9px; font-weight: 600; opacity: 0.9;">Ground Exe. बनें</div></div>
+            </div>
+        </a>
+    </div>
+</div>
+
+<div style="padding: 0 15px; margin-bottom: 20px;">
+    <a href="updates.html" style="text-decoration: none; display: flex; align-items: center; justify-content: space-between; background: linear-gradient(135deg, #1e3a8a, #3b82f6); padding: 18px; border-radius: 20px; border-left: 6px solid #f39c12;">
+        <div style="display: flex; align-items: center; gap: 15px;"><span style="font-size: 28px;">🚀</span><div><div style="color: white; font-weight: 900; font-size: 16px;">मिशन 2026: नई अपडेट्स</div><div style="color: rgba(255,255,255,0.8); font-size: 11px;">यहाँ देखें क्या नया जुड़ा है...</div></div></div>
+        <div style="color: white; font-size: 20px;">➔</div>
+    </a>
+</div>
+
+<!-- ==================== नया IPHONE STYLE DYNAMIC INDEX ==================== -->
+
+<h2 class="section-title">मुख्य विषय (CORE - INDEX)</h2>
+<div class="iphone-folder">
+    <!-- इतिहास (तैयार है) -->
+    <a href="history.html" class="subject-row">
+        <div class="sub-left">
+            <span class="sub-icon">📜</span>
+            <div>
+                <span class="sub-name">इतिहास (History)</span>
+                <span class="status-tag status-ready">✅ तैयार है - अभी पढ़ें</span>
+            </div>
+        </div>
+        <span class="arrow">❯</span>
+    </a>
+
+    <!-- भूगोल (तैयार है) -->
+    <a href="geography.html" class="subject-row">
+        <div class="sub-left">
+            <span class="sub-icon">🌍</span>
+            <div>
+                <span class="sub-name">भूगोल (Geography)</span>
+                <span class="status-tag status-ready">✅ तैयार है - अभी पढ़ें</span>
+            </div>
+        </div>
+        <span class="arrow">❯</span>
+    </a>
+
+    <!-- राजनीति (यह लॉक है, जब आप चाहें locked क्लास हटाकर चालू कर सकते हैं) -->
+    <a href="polity.html" class="subject-row locked">
+        <div class="sub-left">
+            <span class="sub-icon">⚖️</span>
+            <div>
+                <span class="sub-name">राजनीति (Polity)</span>
+                <span class="status-tag status-locked">⏳ जल्द आ रहा है (Locked)</span>
+            </div>
+        </div>
+        <span class="arrow">🔒</span>
+    </a>
+
+    <!-- अर्थशास्त्र (यह भी लॉक है) -->
+    <a href="economy.html" class="subject-row locked">
+        <div class="sub-left">
+            <span class="sub-icon">💰</span>
+            <div>
+                <span class="sub-name">अर्थशास्त्र (Economy)</span>
+                <span class="status-tag status-locked">⏳ जल्द आ रहा है (Locked)</span>
+            </div>
+        </div>
+        <span class="arrow">🔒</span>
+    </a>
+</div>
+
+<h2 class="section-title">राजस्थान विशेष (RAJ GK)</h2>
+<div class="iphone-folder">
+    <a href="#" class="subject-row locked">
+        <div class="sub-left"><span class="sub-icon">🏰</span><div><span class="sub-name">राज. इतिहास</span><span class="status-tag status-locked">⏳ Locked</span></div></div>
+        <span class="arrow">🔒</span>
+    </a>
+    <a href="#" class="subject-row locked">
+        <div class="sub-left"><span class="sub-icon">🏜️</span><div><span class="sub-name">राज. भूगोल</span><span class="status-tag status-locked">⏳ Locked</span></div></div>
+        <span class="arrow">🔒</span>
+    </a>
+</div>
+
+<!-- ======================================================================== -->
+
+<!-- आपका पुराना एग्जाम अलर्ट सेंटर -->
+<a href="exam-alerts.html" style="text-decoration: none; display: block;">
+    <div style="background: linear-gradient(145deg, #1a3a5f, #0c243d); border-radius: 20px; padding: 18px; margin: 20px auto; max-width: 92%; display: flex; align-items: center; gap: 15px; border: 2px solid #ffd700; position: relative;">
+        <div style="background: rgba(255, 215, 0, 0.15); width: 55px; height: 55px; border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 32px;">📢</div>
+        <div style="text-align: left; flex: 1;"><h3 style="margin: 0; color: #ffd700; font-size: 18px; font-weight: 800;">एग्जाम अलर्ट सेंटर</h3><p style="margin: 4px 0 0; color: #ffffff; opacity: 0.9; font-size: 12px;">सरकारी नौकरी की हर खबर यहाँ मिलेगी</p></div>
+        <div class="live-badge" style="background: #ff4757; color: white; font-weight: 900; font-size: 10px; padding: 4px 10px; border-radius: 6px;">LIVE</div>
+    </div>
+</a>
+
+<!-- आपका पुराना लाइव डैशबोर्ड और लॉग्स -->
+<div class="dashboard-wrapper" style="background: #fff; padding: 15px; border-radius: 20px; margin: 15px;">
+    <div style="text-align: center; margin-bottom: 20px;">
+        <h2 style="color: #1a3a5f; margin: 0; font-size: 22px;">SST LIVE DASHBOARD</h2>
+        <p style="font-size: 11px; color: #64748b; margin-top: 5px;"><span style="height: 10px; width: 10px; background: #2ecc71; border-radius: 50%; display: inline-block;"></span> सिस्टम सिंक: सक्रिय</p>
+    </div>
+    <div style="text-align: center; background: #fff; padding: 30px; border-radius: 20px; border: 2px solid #f39c12; margin-bottom: 20px;">
+        <div style="font-size: 12px; font-weight: bold; color: #64748b;">कुल इकाइयां (Synchronized)</div>
+        <div id="mainCounter" style="font-size: 50px; font-weight: 900; color: #1a3a5f;">0</div>
+        <a href="state-analytics.html" style="background: #1a3a5f; color: white; padding: 10px 25px; border-radius: 50px; text-decoration: none; display: inline-block; margin-top: 15px; font-weight: bold;">सुरक्षित पोर्टल खोलें</a>
+    </div>
+    <div class="message-ticker" style="background: rgba(243, 156, 18, 0.05); border-top: 1px solid #f39c12; border-bottom: 1px solid #f39c12; padding: 8px 0; overflow: hidden; white-space: nowrap; border-radius: 5px;">
+        <div class="ticker-text" id="movingMsg" style="display: inline-block; animation: marquee 25s linear infinite; font-weight: bold; color: #1a3a5f;">Social Studies Classes की ओर से धन्यवाद! • मिशन 2026 प्रगति पर है • चित्तौड़गढ़ नोड अपडेट हुआ • गुणवत्ता जांच पूर्ण ✅ •</div>
+    </div>
+    <div style="font-size: 13px; font-weight: bold; color: #1a3a5f; margin-bottom: 8px;">लाइव सिस्टम लॉग्स:</div>
+    <div class="live-feed" id="feedBox" style="background: #f8fafc; border-radius: 15px; padding: 15px; height: 180px; overflow: hidden; border: 1px solid #e2e8f0;"></div>
+</div>
+
+<!-- आपके दानदाताओं की सूची और फुटर -->
+<div style="background: #ffffff; border-radius: 20px; margin: 20px auto; max-width: 92%; padding: 15px; border: 1px solid #e1e8f0;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+        <h3 style="margin: 0; font-size: 14px; color: #1a3a5f; font-weight: 800;">🏆 हमारे गौरव (Verified Donors)</h3>
+    </div>
+    <div style="overflow-x: auto; display: flex; gap: 15px; padding-bottom: 10px;">
+        <div style="min-width: 100px; text-align: center;">
+            <img src="https://ui-avatars.com/api/?name=Aman&background=1a3a5f&color=fff" style="width: 50px; border-radius: 50%; border: 2px solid #ffd700;">
+            <div style="font-size: 11px; font-weight: 800;">अमन</div>
+            <div style="font-size: 9px; color: #b8860b;">5 Books 🌟</div>
+        </div>
+    </div>
+</div>
+
+<div style="background: #f8f9fa; border-top: 3px solid #1a3a5f; padding: 25px; text-align: center; margin-top: 30px;">
+    <p style="color: #1a3a5f; font-weight: bold; font-size: 14px;">© 2026 Social Studies Classes - All Rights Reserved</p>
+</div>
+
+<!-- स्क्रिप्ट्स (स्लाइडर, काउंटर, टाइपिंग और स्प्लैश स्क्रीन के लिए) -->
+<script>
+    // स्प्लैश स्क्रीन टाइमर
+    setTimeout(function() {
+        const splash = document.getElementById('upsc-splash');
+        if(splash) {
             splash.style.opacity = '0';
-            splash.style.transform = 'scale(1.1)';
-            
-            // मेन कंटेंट को नीचे से ऊपर तैरते हुए लाओ (Smooth Slide Up)
-            mainContent.style.opacity = '1';
-            mainContent.style.transform = 'translateY(0)';
-            
-            // स्क्रॉलिंग चालू करो और स्प्लैश को स्क्रीन से पूरी तरह हटा दो
-            setTimeout(() => {
-                splash.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }, 500);
-            
-        }, 2000);
-    </script>
+            splash.style.transition = 'all 0.8s ease';
+            setTimeout(() => { splash.style.display = 'none'; }, 800);
+        }
+    }, 3800);
+
+    // बैनर स्लाइडर लॉजिक
+    let fIdx = 0;
+    const fEngine = document.getElementById('finalEngine');
+    const fDots = document.querySelectorAll('.f-dot');
+    setInterval(() => {
+        fIdx = (fIdx + 1) % 5;
+        if(fEngine) {
+            fEngine.style.transform = `translateX(-${fIdx * 20}%)`;
+            fDots.forEach((dot, i) => {
+                dot.style.width = i === fIdx ? '25px' : '8px';
+                dot.style.opacity = i === fIdx ? '1' : '0.4';
+            });
+        }
+    }, 5000);
+
+    // टाइपिंग विचार लॉजिक
+    const qText = "वे मुझे मार सकते हैं, लेकिन वे मेरे विचारों को नहीं मार सकते।";
+    let qPos = 0;
+    const qTarget = document.getElementById('typeQuote');
+    function startTyping() {
+        if (qPos < qText.length) {
+            qTarget.innerHTML += qText.charAt(qPos);
+            qPos++;
+            setTimeout(startTyping, 120);
+        }
+    }
+    window.addEventListener('load', startTyping);
+
+    // काउंटर और लाइव लॉग्स
+    let count = 1240;
+    setInterval(() => {
+        count += Math.floor(Math.random() * 3) + 1;
+        document.getElementById('mainCounter').innerHTML = count.toLocaleString();
+    }, 4000);
+</script>
+
 </body>
-</html>
+    </html>
