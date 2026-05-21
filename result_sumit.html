@@ -3,171 +3,240 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SST Pro - डिजिटल मार्कशीट</title>
-    <!-- Canvas Confetti Library for Celebration Animation -->
+    <title>SST Pro - विस्तृत डिजिटल मार्कशीट</title>
+    <!-- Canvas Confetti Library for Celebration -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
         :root {
-            --primary-color: #4f46e5;
-            --success-color: #10b981;
-            --danger-color: #ef4444;
-            --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --primary: #4f46e5;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --dark: #1e293b;
+            --light-bg: #f8fafc;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', system-ui, sans-serif;
         }
 
         body {
-            background: var(--bg-gradient);
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
-            color: #333;
         }
 
-        /* Marksheet Card Container with Animation */
-        .marksheet-card {
+        /* Main Card */
+        .marksheet-container {
             background: #ffffff;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
             width: 100%;
-            max-width: 550px;
-            padding: 30px;
+            max-width: 650px;
+            padding: 35px;
             position: relative;
             overflow: hidden;
             opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.8s ease forwards;
+            transform: translateY(40px);
+            animation: fadeInSheet 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        @keyframes fadeInSheet {
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Header Styling */
+        /* Branding Header */
         .header {
             text-align: center;
             border-bottom: 2px dashed #e2e8f0;
             padding-bottom: 20px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .header h1 {
-            color: var(--primary-color);
-            font-size: 28px;
-            margin-bottom: 5px;
+            color: var(--primary);
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
         }
 
         .header p {
             color: #64748b;
             font-size: 14px;
             font-weight: 600;
+            margin-top: 4px;
         }
 
-        /* Student Details */
-        .student-info {
+        /* Profile Details Grid */
+        .profile-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            background: #f8fafc;
-            padding: 15px;
-            border-radius: 12px;
-            margin-bottom: 25px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            background: var(--light-bg);
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            border: 1px solid #e2e8f0;
         }
 
-        .info-item span {
+        .profile-item span {
             display: block;
             font-size: 12px;
             color: #64748b;
+            font-weight: 600;
+            margin-bottom: 2px;
         }
 
-        .info-item strong {
+        .profile-item strong {
             font-size: 16px;
-            color: #1e293b;
+            color: var(--dark);
         }
 
-        /* Score Section */
-        .score-section {
-            text-align: center;
-            margin-bottom: 25px;
+        /* Score Wheel & Summary */
+        .score-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 35px;
         }
 
-        .circular-progress {
-            width: 130px;
-            height: 130px;
+        .progress-wheel {
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
-            background: conic-gradient(var(--success-color) 0deg, #e2e8f0 0deg);
+            background: conic-gradient(var(--success) 0deg, #e2e8f0 0deg);
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: 0 auto 15px;
             position: relative;
-            transition: background 1s ease-in-out;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
         }
 
-        .circular-progress::before {
+        .progress-wheel::before {
             content: "";
             position: absolute;
-            width: 110px;
-            height: 110px;
-            background: #fff;
+            width: 124px;
+            height: 124px;
+            background: #ffffff;
             border-radius: 50%;
         }
 
-        .score-text {
+        .wheel-text {
             position: relative;
-            font-size: 24px;
-            font-weight: bold;
-            color: #1e293b;
+            text-align: center;
         }
 
-        .stats-badge {
+        .wheel-text .percent {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--dark);
+            display: block;
+            line-height: 1;
+        }
+
+        .wheel-text .grade {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-top: 4px;
+            display: block;
+        }
+
+        .stats-row {
             display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 15px;
+            gap: 12px;
+            margin-top: 20px;
         }
 
-        .badge {
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
+        .stat-tag {
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+        .stat-tag.t-correct { background: #d1fae5; color: #065f46; }
+        .stat-tag.t-wrong { background: #fee2e2; color: #991b1b; }
+
+        /* Detailed Analysis Section */
+        .analysis-section {
+            margin-bottom: 35px;
         }
 
-        .badge.correct { background: #d1fae5; color: #065f46; }
-        .badge.wrong { background: #fee2e2; color: #991b1b; }
+        .analysis-title {
+            font-size: 18px;
+            color: var(--dark);
+            margin-bottom: 15px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-        /* Dynamic Quote Styling */
-        .quote-box {
-            background: #f1f5f9;
-            border-left: 5px solid var(--primary-color);
+        .wrong-question-card {
+            background: #fff5f5;
+            border-left: 4px solid var(--danger);
             padding: 15px;
             border-radius: 4px 12px 12px 4px;
-            font-style: italic;
-            margin-bottom: 40px;
-            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .wrong-question-card h4 {
+            color: var(--dark);
             font-size: 15px;
+            margin-bottom: 8px;
+        }
+
+        .wrong-question-card .opt-diff {
+            font-size: 13px;
+            color: #475569;
+            margin-bottom: 6px;
+        }
+
+        .wrong-question-card .tip {
+            font-size: 13px;
+            color: #b91c1c;
+            background: #fef2f2;
+            padding: 6px 10px;
+            border-radius: 6px;
             font-weight: 500;
         }
 
-        /* Footer Branding (Bottom Right) */
-        .footer-branding {
+        .no-wrong-msg {
+            background: #f0fdf4;
+            color: #166534;
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 600;
+            border: 1px dashed var(--success);
+        }
+
+        /* Dynamic Quote Box */
+        .quote-panel {
+            padding: 20px;
+            border-radius: 16px;
+            font-size: 15px;
+            line-height: 1.6;
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        /* Footer Branding */
+        .footer-brand {
             position: absolute;
-            bottom: 12px;
-            right: 20px;
-            font-size: 12px;
-            font-weight: bold;
-            color: #94a3b8;
+            bottom: 15px;
+            right: 25px;
+            font-size: 13px;
+            font-weight: 800;
+            color: #cbd5e1;
             letter-spacing: 0.5px;
             text-transform: uppercase;
         }
@@ -175,145 +244,190 @@
 </head>
 <body>
 
-    <div class="marksheet-card">
+    <div class="marksheet-container">
         <!-- Header -->
         <div class="header">
             <h1>🚩 SST Pro</h1>
-            <p>लाइव टेस्ट विस्तृत परिणाम</p>
+            <p>लाइव टेस्ट विस्तृत परिणाम एवं विश्लेषण</p>
         </div>
 
-        <!-- Student Info -->
-        <div class="student-info">
-            <div class="info-item">
+        <!-- Profile Details -->
+        <div class="profile-grid">
+            <div class="profile-item">
                 <span>छात्र का नाम</span>
-                <strong id="student-name">-</strong>
+                <strong id="st-name">-</strong>
             </div>
-            <div class="info-item">
+            <div class="profile-item">
                 <span>विषय</span>
-                <strong id="subject-name">-</strong>
+                <strong id="st-subject">-</strong>
             </div>
-            <div class="info-item">
+            <div class="profile-item">
                 <span>मोबाइल नंबर</span>
-                <strong id="student-phone">-</strong>
+                <strong id="st-phone">-</strong>
             </div>
-            <div class="info-item">
+            <div class="profile-item">
                 <span>कुल प्रश्न</span>
-                <strong id="total-questions">-</strong>
+                <strong id="st-total">-</strong>
             </div>
         </div>
 
-        <!-- Score & Progress -->
-        <div class="score-section">
-            <div class="circular-progress" id="progress-bar">
-                <div class="score-text" id="score-percentage">0%</div>
+        <!-- Score Presentation -->
+        <div class="score-box">
+            <div class="progress-wheel" id="wheel-bar">
+                <div class="wheel-text">
+                    <span class="percent" id="wheel-percent">0%</span>
+                    <span class="grade" id="wheel-grade">-</span>
+                </div>
             </div>
-            <div class="stats-badge">
-                <span class="badge correct" id="correct-count">सही: 0</span>
-                <span class="badge wrong" id="wrong-count">गलत: 0</span>
+            <div class="stats-row">
+                <span class="stat-tag t-correct" id="lbl-correct">सही: 0</span>
+                <span class="stat-tag t-wrong" id="lbl-wrong">गलत: 0</span>
             </div>
         </div>
 
-        <!-- Quote Area -->
-        <div class="quote-box" id="quote-container">
+        <!-- Detailed Analysis (Dynamic Wrong Questions) -->
+        <div class="analysis-section">
+            <div class="analysis-title">🔍 गलत प्रश्नों का विश्लेषण (सुधार क्षेत्र)</div>
+            <div id="analysis-list">
+                <!-- प्रश्न यहाँ डायनेमिकली जुड़ेंगे -->
+            </div>
+        </div>
+
+        <!-- Dynamic Feedback Quote -->
+        <div class="quote-panel" id="quote-panel">
             "-"
         </div>
 
-        <!-- Branding -->
-        <div class="footer-branding">
+        <!-- Brand Footer -->
+        <div class="footer-brand">
             By Social Studies Classes
         </div>
     </div>
 
     <script>
-        // 1. यह आपका डायनेमिक डेटा ऑब्जेक्ट है। भविष्य में सिर्फ इसे ही बदलना होगा।
-        const testResult = {
+        // ==========================================
+        // 1. डायनेमिक डेटा इनपुट (यहाँ बदलें भविष्य में)
+        // ==========================================
+        const testData = {
             studentName: "Sonu kanwar",
             phone: "7878026535",
             subject: "भूगोल",
             totalQuestions: 20,
             correctAnswers: 17,
             wrongAnswers: 3,
-            percentage: 85.00
+            percentage: 85.00,
+            
+            // गलत हुए प्रश्नों की सूची और विश्लेषण सलाह
+            wrongDetails: [
+                {
+                    qNo: 11,
+                    question: "कर्क रेखा राज्य?",
+                    chosen: "A",
+                    correct: "C",
+                    advice: "भारत के उन 8 राज्यों के नाम दोबारा याद करें जहाँ से कर्क रेखा गुजरती है।"
+                },
+                {
+                    qNo: 14,
+                    question: "सबसे अधिक वर्षा?",
+                    chosen: "A",
+                    correct: "B",
+                    advice: "ध्यान रखें कि भारत और दुनिया में सबसे अधिक वर्षा मेघालय के मासिनराम में होती है।"
+                },
+                {
+                    qNo: 18,
+                    question: "पुराना नेशनल पार्क?",
+                    chosen: "A",
+                    correct: "B",
+                    advice: "भारत का सबसे पुराना राष्ट्रीय उद्यान जिम कॉर्बेट नेशनल पार्क (1936, उत्तराखंड) है।"
+                }
+            ]
         };
 
-        // 2. अच्छे और खराब स्कोर के लिए कोट्स (Quotes) की लिस्ट
-        const motivationalQuotes = [
-            "शानदार प्रदर्शन! आपकी मेहनत रंग ला रही है। ऐसे ही आगे बढ़ते रहिए! 🏆",
-            "अद्भुत! आपने साबित कर दिया कि निरंतर प्रयास ही सफलता की कुंजी है। ⭐",
-            "बेहतरीन स्कोर! आपकी तैयारी सही दिशा में है, इसे बरकरार रखें। 🚀"
+        // कोट्स का कलेक्शन
+        const goodQuotes = [
+            "🏆 शानदार प्रदर्शन सोनू! आपकी मेहनत और लगन इस रिजल्ट में साफ दिखाई दे रही है। आपने भूगोल पर बहुत अच्छी पकड़ बनाई है। बस इन छोटी गलतियों को सुधारें और अगली बार 100% का लक्ष्य रखें। विजय भवः।"
         ];
 
-        const strictQuotes = [
-            "स्कोर काफी कम है! सिर्फ सपने देखने से काम नहीं चलेगा, किताबों से दोस्ती बढ़ाइए। 📖",
-            "मेहनत में कमी साफ दिख रही है। अगर आज नहीं संभले, तो परिणाम भुगतने के लिए तैयार रहें। ⏳",
-            "यह प्रदर्शन आपकी क्षमता के अनुकूल नहीं है। बहाने छोड़िए और दुगुनी मेहनत शुरू कीजिए! ⚠"
+        const badQuotes = [
+            "⚠️ बेहद निराशाजनक प्रदर्शन! पढ़ाई को मजाक समझना बंद कीजिए। अगर आज किताबों से जी चुराओगे, तो कल अपनी असफलताओं के बहाने ढूंढते रह जाओगे। तुरंत अपनी कमियों को सुधारो!"
         ];
 
-        // 3. डेटा को मार्कशीट में लोड करने का फंक्शन
-        function generateMarksheet(data) {
-            document.getElementById('student-name').innerText = data.studentName;
-            document.getElementById('student-phone').innerText = data.phone;
-            document.getElementById('subject-name').innerText = data.subject;
-            document.getElementById('total-questions').innerText = data.totalQuestions;
-            document.getElementById('correct-count').innerText = `सही: ${data.correctAnswers}`;
-            document.getElementById('wrong-count').innerText = `गलत: ${data.wrongAnswers}`;
-            document.getElementById('score-percentage').innerText = `${data.percentage}%`;
+        // ==========================================
+        // 2. मार्कशीट जनरेट करने का मुख्य लॉजिक
+        // ==========================================
+        function buildDetailedMarksheet(data) {
+            // बेसिक डिटेल्स डालना
+            document.getElementById('st-name').innerText = data.studentName;
+            document.getElementById('st-phone').innerText = data.phone;
+            document.getElementById('st-subject').innerText = data.subject;
+            document.getElementById('st-total').innerText = data.totalQuestions;
+            document.getElementById('lbl-correct').innerText = `सही: ${data.correctAnswers}`;
+            document.getElementById('lbl-wrong').innerText = `गलत: ${data.wrongAnswers}`;
+            document.getElementById('wheel-percent').innerText = `${data.percentage}%`;
 
-            // सर्कुलर प्रोग्रेस बार एनीमेशन
-            const progressBar = document.getElementById('progress-bar');
-            const degree = (data.percentage / 100) * 360;
-            
-            // स्कोर के हिसाब से कलर तय करना (60% से कम पर लाल, अधिक पर हरा)
-            const progressColor = data.percentage >= 60 ? '#10b981' : '#ef4444';
-            progressBar.style.background = `conic-gradient(${progressColor} ${degree}deg, #e2e8f0 ${degree}deg)`;
+            // ग्रेड तय करना
+            let grade = "C";
+            if(data.percentage >= 90) grade = "A+";
+            else if(data.percentage >= 75) grade = "A";
+            else if(data.percentage >= 60) grade = "B";
+            document.getElementById('wheel-grade').innerText = `ग्रेड: ${grade}`;
 
-            // स्कोर के आधार पर कोट (Quote) और एनीमेशन तय करना
-            const quoteContainer = document.getElementById('quote-container');
-            
-            if (data.percentage >= 60) {
-                // अच्छा स्कोर: रैंडम तारीफ वाला कोट + कन्फेटी ब्लास्ट
-                const randomGoodQuote = motivationalQuotes[Math.floor(Math.random() * motivationalQuotes.length)];
-                quoteContainer.innerText = randomGoodQuote;
-                quoteContainer.style.borderLeftColor = '#10b981';
-                
-                // सेलिब्रेशन एनीमेशन ट्रिगर करें
-                triggerConfetti();
+            // प्रोग्रेस व्हील एनीमेशन रंग और डिग्री सेट करना
+            const wheel = document.getElementById('wheel-bar');
+            const deg = (data.percentage / 100) * 360;
+            const themeColor = data.percentage >= 60 ? '#10b981' : '#ef4444';
+            wheel.style.background = `conic-gradient(${themeColor} ${deg}deg, #e2e8f0 ${deg}deg)`;
+
+            // गलत प्रश्नों का विश्लेषण बॉक्स बनाना
+            const listContainer = document.getElementById('analysis-list');
+            listContainer.innerHTML = ""; // पुराना साफ़ करना
+
+            if(data.wrongAnswers > 0 && data.wrongDetails.length > 0) {
+                data.wrongDetails.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = "wrong-question-card";
+                    card.innerHTML = `
+                        <h4>Q${item.qNo}. ${item.question}</h4>
+                        <div class="opt-diff">❌ आपका विकल्प: <b>${item.chosen}</b> | ✅ सही विकल्प: <b>${item.correct}</b></div>
+                        <div class="tip">💡 सुधार सलाह: ${item.advice}</div>
+                    `;
+                    listContainer.appendChild(card);
+                });
             } else {
-                // खराब स्कोर: कड़वे शब्द वाला कोट
-                const randomBadQuote = strictQuotes[Math.floor(Math.random() * strictQuotes.length)];
-                quoteContainer.innerText = randomBadQuote;
-                quoteContainer.style.borderLeftColor = '#ef4444';
+                listContainer.innerHTML = `<div class="no-wrong-msg">🎉 अद्भुत! आपने सभी प्रश्नों के उत्तर सही दिए हैं। कोई भी प्रश्न गलत नहीं है।</div>`;
+            }
+
+            // कोट और बैकग्राउंड पैनल तय करना
+            const qPanel = document.getElementById('quote-panel');
+            if(data.percentage >= 60) {
+                qPanel.innerText = goodQuotes[0];
+                qPanel.style.background = "#f0fdf4";
+                qPanel.style.color = "#166534";
+                qPanel.style.border = "1px solid #bbf7d0";
+                
+                // कॉन्फेटी धमाका एनीमेशन लोड करना
+                triggerCelebration();
+            } else {
+                qPanel.innerText = badQuotes[0];
+                qPanel.style.background = "#fef2f2";
+                qPanel.style.color = "#991b1b";
+                qPanel.style.border = "1px solid #fecaca";
             }
         }
 
-        // 4. शानदार एनीमेशन (Confetti Blast) के लिए फंक्शन
-        function triggerConfetti() {
-            var duration = 3 * 1000;
-            var end = Date.now() + duration;
-
+        // उत्सव (Confetti) एनीमेशन फंक्शन
+        function triggerCelebration() {
+            var end = Date.now() + (2.5 * 1000);
             (function frame() {
-                confetti({
-                    particleCount: 3,
-                    angle: 60,
-                    spread: 55,
-                    origin: { x: 0, y: 0.8 }
-                });
-                confetti({
-                    particleCount: 3,
-                    angle: 120,
-                    spread: 55,
-                    origin: { x: 1, y: 0.8 }
-                });
-
-                if (Date.now() < end) {
-                    requestAnimationFrame(frame);
-                }
+                confetti({ particleCount: 3, angle: 60, spread: 55, origin: { x: 0, y: 0.85 } });
+                confetti({ particleCount: 3, angle: 120, spread: 55, origin: { x: 1, y: 0.85 } });
+                if (Date.now() < end) { requestAnimationFrame(frame); }
             }());
         }
 
-        // पेज लोड होते ही मार्कशीट जनरेट करें
+        // पेज खुलते ही लोड करें
         window.onload = function() {
-            generateMarksheet(testResult);
+            buildDetailedMarksheet(testData);
         };
     </script>
 </body>
