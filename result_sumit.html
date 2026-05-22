@@ -3,431 +3,424 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SST Pro - विस्तृत डिजिटल मार्कशीट</title>
-    <!-- Canvas Confetti Library for Celebration -->
+    <title>SST Pro - डिजिटल मार्कशीट (Sonu Kanwar)</title>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
         :root {
-            --primary: #4f46e5;
-            --success: #10b981;
-            --danger: #ef4444;
-            --warning: #f59e0b;
-            --dark: #1e293b;
-            --light-bg: #f8fafc;
+            --primary-color: #4f46e5;
+            --success-color: #10b981;
+            --danger-color: #ef4444;
+            --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', system-ui, sans-serif;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            background: var(--bg-gradient);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 15px;
+            color: #333;
         }
 
-        /* Main Card */
-        .marksheet-container {
+        .marksheet-card {
             background: #ffffff;
             border-radius: 24px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.25);
             width: 100%;
-            max-width: 650px;
-            padding: 35px;
+            max-width: 580px;
+            padding: 25px;
             position: relative;
             overflow: hidden;
             opacity: 0;
-            transform: translateY(40px);
-            animation: fadeInSheet 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
         }
 
-        @keyframes fadeInSheet {
+        @keyframes fadeInUp {
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Branding Header */
         .header {
             text-align: center;
             border-bottom: 2px dashed #e2e8f0;
-            padding-bottom: 20px;
-            margin-bottom: 25px;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .header h1 {
-            color: var(--primary);
-            font-size: 32px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
+            color: var(--primary-color);
+            font-size: 28px;
+            margin-bottom: 5px;
         }
 
         .header p {
             color: #64748b;
             font-size: 14px;
             font-weight: 600;
-            margin-top: 4px;
         }
 
-        /* Profile Details Grid */
-        .profile-grid {
+        .student-details {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            background: var(--light-bg);
-            padding: 20px;
-            border-radius: 16px;
-            margin-bottom: 30px;
+            gap: 12px;
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 12px;
             border: 1px solid #e2e8f0;
+            margin-bottom: 20px;
         }
 
-        .profile-item span {
+        .detail-item span {
             display: block;
-            font-size: 12px;
+            font-size: 11px;
             color: #64748b;
-            font-weight: 600;
-            margin-bottom: 2px;
+            font-weight: bold;
+            text-transform: uppercase;
         }
 
-        .profile-item strong {
-            font-size: 16px;
-            color: var(--dark);
+        .detail-item strong {
+            font-size: 15px;
+            color: #1e293b;
         }
 
-        /* Score Wheel & Summary */
-        .score-box {
+        .score-section {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: 35px;
+            margin-bottom: 25px;
         }
 
-        .progress-wheel {
-            width: 150px;
-            height: 150px;
+        .circle-progress {
+            width: 130px;
+            height: 130px;
             border-radius: 50%;
-            background: conic-gradient(var(--success) 0deg, #e2e8f0 0deg);
+            background: conic-gradient(var(--success-color) 306deg, #e2e8f0 306deg);
             display: flex;
             justify-content: center;
             align-items: center;
-            position: relative;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
         }
 
-        .progress-wheel::before {
-            content: "";
-            position: absolute;
-            width: 124px;
-            height: 124px;
+        .circle-inner {
+            width: 106px;
+            height: 106px;
             background: #ffffff;
             border-radius: 50%;
-        }
-
-        .wheel-text {
-            position: relative;
-            text-align: center;
-        }
-
-        .wheel-text .percent {
-            font-size: 32px;
-            font-weight: 800;
-            color: var(--dark);
-            display: block;
-            line-height: 1;
-        }
-
-        .wheel-text .grade {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-top: 4px;
-            display: block;
-        }
-
-        .stats-row {
             display: flex;
-            gap: 12px;
-            margin-top: 20px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
-        .stat-tag {
-            padding: 6px 16px;
-            border-radius: 30px;
-            font-size: 14px;
+        .circle-inner .score-percent {
+            font-size: 26px;
+            font-weight: 800;
+            color: #1e293b;
+        }
+
+        .circle-inner .score-grade {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-top: 2px;
+        }
+
+        .tags-container {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .tag {
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 12px;
             font-weight: 700;
         }
-        .stat-tag.t-correct { background: #d1fae5; color: #065f46; }
-        .stat-tag.t-wrong { background: #fee2e2; color: #991b1b; }
+        .tag.correct { background: #d1fae5; color: #065f46; }
+        .tag.wrong { background: #fee2e2; color: #991b1b; }
 
-        /* Detailed Analysis Section */
         .analysis-section {
-            margin-bottom: 35px;
+            margin-bottom: 25px;
         }
 
         .analysis-title {
-            font-size: 18px;
-            color: var(--dark);
-            margin-bottom: 15px;
+            font-size: 16px;
             font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 5px;
+        }
+
+        /* 20 प्रश्नों की लिस्ट की स्टाइल */
+        .question-row {
             display: flex;
-            align-items: center;
-            gap: 8px;
+            align-items: flex-start;
+            justify-content: space-between;
+            padding: 10px 8px;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 14px;
         }
 
-        .wrong-question-card {
+        .question-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .question-name {
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .chosen-badge {
+            font-size: 12px;
+            color: #64748b;
+        }
+
+        .status-indicator {
+            font-weight: bold;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        .status-success { color: var(--success-color); }
+        .status-danger { color: var(--danger-color); }
+
+        /* गलत प्रश्नों का स्पेशल समीक्षा कार्ड */
+        .wrong-review-box {
+            margin-top: 25px;
             background: #fff5f5;
-            border-left: 4px solid var(--danger);
+            border: 1px solid #fecaca;
+            border-radius: 12px;
             padding: 15px;
-            border-radius: 4px 12px 12px 4px;
-            margin-bottom: 12px;
         }
 
-        .wrong-question-card h4 {
-            color: var(--dark);
-            font-size: 15px;
-            margin-bottom: 8px;
+        .wrong-review-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #991b1b;
+            margin-bottom: 10px;
         }
 
-        .wrong-question-card .opt-diff {
+        .wrong-card {
+            background: #ffffff;
+            border-left: 4px solid var(--danger-color);
+            padding: 10px 12px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .wrong-card:last-child { margin-bottom: 0; }
+
+        .wrong-card h4 {
             font-size: 13px;
+            color: #1e293b;
+            margin-bottom: 3px;
+        }
+
+        .wrong-card p {
+            font-size: 12px;
             color: #475569;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
 
-        .wrong-question-card .tip {
-            font-size: 13px;
+        .wrong-card .tip-box {
+            font-size: 11px;
             color: #b91c1c;
             background: #fef2f2;
-            padding: 6px 10px;
-            border-radius: 6px;
+            padding: 4px 8px;
+            border-radius: 4px;
             font-weight: 500;
         }
 
-        .no-wrong-msg {
+        .motivation-box {
             background: #f0fdf4;
             color: #166534;
+            border: 1px solid #bbf7d0;
             padding: 15px;
             border-radius: 12px;
-            text-align: center;
-            font-weight: 600;
-            border: 1px dashed var(--success);
-        }
-
-        /* Dynamic Quote Box */
-        .quote-panel {
-            padding: 20px;
-            border-radius: 16px;
-            font-size: 15px;
-            line-height: 1.6;
-            font-weight: 500;
-            text-align: center;
-            margin-bottom: 50px;
-            position: relative;
-        }
-
-        /* Footer Branding */
-        .footer-brand {
-            position: absolute;
-            bottom: 15px;
-            right: 25px;
             font-size: 13px;
-            font-weight: 800;
+            line-height: 1.5;
+            text-align: center;
+            font-weight: 500;
+            margin-top: 20px;
+        }
+
+        .footer-text {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 11px;
+            font-weight: 700;
             color: #cbd5e1;
-            letter-spacing: 0.5px;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
     </style>
 </head>
 <body>
 
-    <div class="marksheet-container">
-        <!-- Header -->
+    <div class="marksheet-card">
         <div class="header">
             <h1>🚩 SST Pro</h1>
-            <p>लाइव टेस्ट विस्तृत परिणाम एवं विश्लेषण</p>
+            <p>लाइव टेस्ट परिणाम एवं विश्लेषण</p>
         </div>
 
-        <!-- Profile Details -->
-        <div class="profile-grid">
-            <div class="profile-item">
-                <span>छात्र का नाम</span>
-                <strong id="st-name">-</strong>
-            </div>
-            <div class="profile-item">
-                <span>विषय</span>
-                <strong id="st-subject">-</strong>
-            </div>
-            <div class="profile-item">
-                <span>मोबाइल नंबर</span>
-                <strong id="st-phone">-</strong>
-            </div>
-            <div class="profile-item">
-                <span>कुल प्रश्न</span>
-                <strong id="st-total">-</strong>
-            </div>
+        <div class="student-details">
+            <div class="detail-item"><span>छात्र का नाम</span><strong>Sonu kanwar</strong></div>
+            <div class="detail-item"><span>विषय</span><strong>भूगोल</strong></div>
+            <div class="detail-item"><span>मोबाइल नंबर</span><strong>7878026535</strong></div>
+            <div class="detail-item"><span>कुल प्रश्न</span><strong>20</strong></div>
         </div>
 
-        <!-- Score Presentation -->
-        <div class="score-box">
-            <div class="progress-wheel" id="wheel-bar">
-                <div class="wheel-text">
-                    <span class="percent" id="wheel-percent">0%</span>
-                    <span class="grade" id="wheel-grade">-</span>
+        <div class="score-section">
+            <div class="circle-progress">
+                <div class="circle-inner">
+                    <span class="score-percent">85.00%</span>
+                    <span class="score-grade">ग्रेड: A</span>
                 </div>
             </div>
-            <div class="stats-row">
-                <span class="stat-tag t-correct" id="lbl-correct">सही: 0</span>
-                <span class="stat-tag t-wrong" id="lbl-wrong">गलत: 0</span>
+            <div class="tags-container">
+                <span class="tag correct">सही: 17</span>
+                <span class="tag wrong">गलत: 3</span>
             </div>
         </div>
 
-        <!-- Detailed Analysis (Dynamic Wrong Questions) -->
         <div class="analysis-section">
-            <div class="analysis-title">🔍 गलत प्रश्नों का विश्लेषण (सुधार क्षेत्र)</div>
-            <div id="analysis-list">
-                <!-- प्रश्न यहाँ डायनेमिकली जुड़ेंगे -->
+            <div class="analysis-title">📋 प्रश्नों का पूरा विवरण</div>
+            
+            <div class="question-row">
+                <div class="question-info"><span class="question-name">Q1. अक्षांशीय विस्तार?</span><span class="chosen-badge">चुना: A</span></div>
+                <div class="status-indicator status-success">✅ सही किया</div>
+            </div>
+            <div class="question-row">
+                <div class="question-info"><span class="question-name">Q2. भारत का गोलार्ध?</span><span class="chosen-badge">चुना: A</span></div>
+                <div class="status-indicator status-success">✅ सही किया</div>
+            </div>
+            <div class="question-row">
+                <div class="question-info"><span class="question-name">Q3. समय का अंतर?</span><span class="chosen-badge">चुना: B</span></div>
+                <div class="status-indicator status-success">✅ सही किया</div>
+            </div>
+            <div class="question-row">
+                <div class="question-info"><span class="question-name">Q4. मानक समय रेखा क्यों?</span><span class="chosen-badge">चुना: A</span></div>
+                <div class="status-indicator status-success">✅ सही किया</div>
+            </div>
+            <div class="question-row">
+                <div class="question-info"><span class="question-name">Q5. कर्क रेखा की स्थिति?</span><span class="chosen-badge">चुना: B</span></div>
+                <div class="status-indicator status-success">✅ सही किया</div>
+            </div>
+            <div class="question-row">
+                <div class="question-info"><span class="question-name">Q6. भारत का क्षेत्रफल %?</span><span class="chosen-badge">चुना: A</span></div>
+                <div class="status-indicator status-success">✅ सही किया</div>
+            </div>
+            <div class="question-row">
+                <div class="question-info"><span class="question-name">Q7. स्थलीय व तटीय सीमा?</span><span class="chosen-badge">चुना: A</span></div>
+                <div class="status-indicator status-success">✅ सही किया</div>
+            </div>
+            <div class="question-row">
+                <div class="question-info"><span class="question-name">Q8. भारत-श्रीलंका संधि?</span><span class="chosen-badge">चुना: B</span></div>
+                <div class="status-indicator status-success">✅ सही किया</div>
+            </div>
+            <div class="question-row">
+                <div class="question-info"><span class="question-name">Q9. प्रायद्वीप का अर्थ?</span><span class="chosen-badge">चुना: B</span></div>
+                <div class="status-indicator status-success">✅ सही किया</div>
+            </div>
+            <div class="question-row">
+                <div class="question-info"><span class="question-name" style="color:var(--danger-color);">Q10. सबसे दक्षिणी बिंदु?</span><span class="chosen-badge">चुना: A | सही: B</span></div>
+                <div class="status-indicator status-danger">❌ गलत किया</div>
+            </div>
+            <div class="question-row">
+                <div class="question-info"><span class="question-name">Q11. उत्तर-दक्षिण लंबाई?</span><span class="chosen-badge">चुना: B</span></div>
+                <div class="status-indicator status-success">✅ सही किया</div>
+            </div>
+            <div class="question-row">
+                <div class="question-info"><span class="question-name">Q12. पूर्व-पश्चिम चौड़ाई?</span><span class="chosen-badge">चुना: B</span></div>
+                <div class="status-indicator status-success">✅ सही किया</div>
+            </div>
+            <div class="question-row">
+                <div class="question-info"><span class="question-name">Q13. लंबी तटरेखा वाला राज्य?</span><span class="chosen-badge">चुना: C</span></div>
+                <div class="status-indicator status-success">✅ सही किया</div>
+            </div>
+            <div class="question-row">
+                <div class="question-info"><span class="question-name">Q14. मानक समय कहाँ से नहीं गुजरती?</span><span class="chosen-badge">चुना: D</span></div>
+                <div class="status-indicator status-success">✅ सही किया</div>
+            </div>
+            <div class="question-row">
+                <div class="question-info"><span class="question-name">Q15. कर्क रेखा के राज्य?</span><span class="chosen-badge">चुना: C</span></div>
+                <div class="status-indicator status-success">✅ सही किया</div>
+            </div>
+            <div class="question-row">
+                <div class="question-info"><span class="question-name">Q16. लंबी अंतर्राष्ट्रीय सीमा?</span><span class="chosen-badge">चुना: C</span></div>
+                <div class="status-indicator status-success">✅ सही किया</div>
+            </div>
+            <div class="question-row">
+                <div class="question-info"><span class="question-name" style="color:var(--danger-color);">Q17. सबसे पूर्वी बिंदु?</span><span class="chosen-badge">चुना: A | सही: B</span></div>
+                <div class="status-indicator status-danger">❌ गलत किया</div>
+            </div>
+            <div class="question-row">
+                <div class="question-info"><span class="question-name">Q18. सबसे पश्चिमी बिंदु?</span><span class="chosen-badge">चुना: B</span></div>
+                <div class="status-indicator status-success">✅ सही किया</div>
+            </div>
+            <div class="question-row">
+                <div class="question-info"><span class="question-name" style="color:var(--danger-color);">Q19. मुख्य भूमि का दक्षिण छोर?</span><span class="chosen-badge">चुना: A | सही: B</span></div>
+                <div class="status-indicator status-danger">❌ गलत किया</div>
+            </div>
+            <div class="question-row">
+                <div class="question-info"><span class="question-name">Q20. IST बनाम GMT समय?</span><span class="chosen-badge">चुना: B</span></div>
+                <div class="status-indicator status-success">✅ सही किया</div>
             </div>
         </div>
 
-        <!-- Dynamic Feedback Quote -->
-        <div class="quote-panel" id="quote-panel">
-            "-"
+        <div class="wrong-review-box">
+            <div class="wrong-review-title">🔍 गलत प्रश्नों की समीक्षा (सुधार क्षेत्र):</div>
+            
+            <div class="wrong-card">
+                <h4>Q10. भारत का सबसे दक्षिणी बिंदु कौन सा है और यह कहाँ स्थित है?</h4>
+                <p>❌ आपका विकल्प: <b>A (कन्याकुमारी)</b> | ✅ सही विकल्प: <b>B (इंदिरा पॉइंट)</b></p>
+                <div class="tip-box">💡 सुधार सलाह: भारत का सबसे दक्षिणी बिंदु 'इंदिरा पॉइंट' है जो ग्रेट निकोबार में है। कन्याकुमारी मुख्य भूमि का सबसे दक्षिणी बिंदु है। दोनों में अंतर समझें।</div>
+            </div>
+
+            <div class="wrong-card">
+                <h4>Q17. भारत का सबसे पूर्वी बिंदु (Easternmost Point) कौन सा है?</h4>
+                <p>❌ आपका विकल्प: <b>A (गुहार मोती)</b> | ✅ सही विकल्प: <b>B (किबिथू)</b></p>
+                <div class="tip-box">💡 सुधार सलाह: भारत का सबसे पूर्वी बिंदु अरुणाचल प्रदेश में स्थित 'किबिथू' है। गुहार मोती गुजरात में सबसे पश्चिमी छोर है।</div>
+            </div>
+
+            <div class="wrong-card">
+                <h4>Q19. भारत की मुख्य भूमि का दक्षिणतम किनारा कौन सा है?</h4>
+                <p>❌ आपका विकल्प: <b>A (इंदिरा पॉइंट)</b> | ✅ सही विकल्प: <b>B (केप कैमोरिन - कन्याकुमारी)</b></p>
+                <div class="tip-box">💡 सुधार सलाह: जब सवाल में 'मुख्य भूमि' (Mainland) शब्द आए, तब उत्तर कन्याकुमारी होगा। सम्पूर्ण भारत का क्षेत्र पूछने पर इंदिरा पॉइंट होता है।</div>
+            </div>
         </div>
 
-        <!-- Brand Footer -->
-        <div class="footer-brand">
-            By Social Studies Classes
+        <div class="motivation-box">
+            🏆 शानदार प्रदर्शन सोनू! आपकी मेहनत और लगन इस रिजल्ट में साफ दिखाई दे रही है। आपने भूगोल पर बहुत अच्छी पकड़ बनाई है। बस इन मुख्य भूमि और द्वीपों के अंतर वाली बारीक गलतियों को सुधारें और अगली बार 100% का लक्ष्य रखें। विजय भवः।
         </div>
+
+        <div class="footer-text">⚖️ SST Pro Live System Verified</div>
     </div>
 
     <script>
-        // ==========================================
-        // 1. डायनेमिक डेटा इनपुट (यहाँ बदलें भविष्य में)
-        // ==========================================
-        const testData = {
-            studentName: "Sonu kanwar",
-            phone: "7878026535",
-            subject: "भूगोल",
-            totalQuestions: 20,
-            correctAnswers: 17,
-            wrongAnswers: 3,
-            percentage: 85.00,
-            
-            // गलत हुए प्रश्नों की सूची और विश्लेषण सलाह
-            wrongDetails: [
-                {
-                    qNo: 11,
-                    question: "कर्क रेखा राज्य?",
-                    chosen: "A",
-                    correct: "C",
-                    advice: "भारत के उन 8 राज्यों के नाम दोबारा याद करें जहाँ से कर्क रेखा गुजरती है।"
-                },
-                {
-                    qNo: 14,
-                    question: "सबसे अधिक वर्षा?",
-                    chosen: "A",
-                    correct: "B",
-                    advice: "ध्यान रखें कि भारत और दुनिया में सबसे अधिक वर्षा मेघालय के मासिनराम में होती है।"
-                },
-                {
-                    qNo: 18,
-                    question: "पुराना नेशनल पार्क?",
-                    chosen: "A",
-                    correct: "B",
-                    advice: "भारत का सबसे पुराना राष्ट्रीय उद्यान जिम कॉर्बेट नेशनल पार्क (1936, उत्तराखंड) है।"
-                }
-            ]
-        };
+        // Automatic Confetti Celebration Blast on Page Load
+        window.onload = function() {
+            var duration = 2.5 * 1000;
+            var end = Date.now() + duration;
 
-        // कोट्स का कलेक्शन
-        const goodQuotes = [
-            "🏆 शानदार प्रदर्शन सोनू! आपकी मेहनत और लगन इस रिजल्ट में साफ दिखाई दे रही है। आपने भूगोल पर बहुत अच्छी पकड़ बनाई है। बस इन छोटी गलतियों को सुधारें और अगली बार 100% का लक्ष्य रखें। विजय भवः।"
-        ];
-
-        const badQuotes = [
-            "⚠️ बेहद निराशाजनक प्रदर्शन! पढ़ाई को मजाक समझना बंद कीजिए। अगर आज किताबों से जी चुराओगे, तो कल अपनी असफलताओं के बहाने ढूंढते रह जाओगे। तुरंत अपनी कमियों को सुधारो!"
-        ];
-
-        // ==========================================
-        // 2. मार्कशीट जनरेट करने का मुख्य लॉजिक
-        // ==========================================
-        function buildDetailedMarksheet(data) {
-            // बेसिक डिटेल्स डालना
-            document.getElementById('st-name').innerText = data.studentName;
-            document.getElementById('st-phone').innerText = data.phone;
-            document.getElementById('st-subject').innerText = data.subject;
-            document.getElementById('st-total').innerText = data.totalQuestions;
-            document.getElementById('lbl-correct').innerText = `सही: ${data.correctAnswers}`;
-            document.getElementById('lbl-wrong').innerText = `गलत: ${data.wrongAnswers}`;
-            document.getElementById('wheel-percent').innerText = `${data.percentage}%`;
-
-            // ग्रेड तय करना
-            let grade = "C";
-            if(data.percentage >= 90) grade = "A+";
-            else if(data.percentage >= 75) grade = "A";
-            else if(data.percentage >= 60) grade = "B";
-            document.getElementById('wheel-grade').innerText = `ग्रेड: ${grade}`;
-
-            // प्रोग्रेस व्हील एनीमेशन रंग और डिग्री सेट करना
-            const wheel = document.getElementById('wheel-bar');
-            const deg = (data.percentage / 100) * 360;
-            const themeColor = data.percentage >= 60 ? '#10b981' : '#ef4444';
-            wheel.style.background = `conic-gradient(${themeColor} ${deg}deg, #e2e8f0 ${deg}deg)`;
-
-            // गलत प्रश्नों का विश्लेषण बॉक्स बनाना
-            const listContainer = document.getElementById('analysis-list');
-            listContainer.innerHTML = ""; // पुराना साफ़ करना
-
-            if(data.wrongAnswers > 0 && data.wrongDetails.length > 0) {
-                data.wrongDetails.forEach(item => {
-                    const card = document.createElement('div');
-                    card.className = "wrong-question-card";
-                    card.innerHTML = `
-                        <h4>Q${item.qNo}. ${item.question}</h4>
-                        <div class="opt-diff">❌ आपका विकल्प: <b>${item.chosen}</b> | ✅ सही विकल्प: <b>${item.correct}</b></div>
-                        <div class="tip">💡 सुधार सलाह: ${item.advice}</div>
-                    `;
-                    listContainer.appendChild(card);
-                });
-            } else {
-                listContainer.innerHTML = `<div class="no-wrong-msg">🎉 अद्भुत! आपने सभी प्रश्नों के उत्तर सही दिए हैं। कोई भी प्रश्न गलत नहीं है।</div>`;
-            }
-
-            // कोट और बैकग्राउंड पैनल तय करना
-            const qPanel = document.getElementById('quote-panel');
-            if(data.percentage >= 60) {
-                qPanel.innerText = goodQuotes[0];
-                qPanel.style.background = "#f0fdf4";
-                qPanel.style.color = "#166534";
-                qPanel.style.border = "1px solid #bbf7d0";
-                
-                // कॉन्फेटी धमाका एनीमेशन लोड करना
-                triggerCelebration();
-            } else {
-                qPanel.innerText = badQuotes[0];
-                qPanel.style.background = "#fef2f2";
-                qPanel.style.color = "#991b1b";
-                qPanel.style.border = "1px solid #fecaca";
-            }
-        }
-
-        // उत्सव (Confetti) एनीमेशन फंक्शन
-        function triggerCelebration() {
-            var end = Date.now() + (2.5 * 1000);
             (function frame() {
                 confetti({ particleCount: 3, angle: 60, spread: 55, origin: { x: 0, y: 0.85 } });
                 confetti({ particleCount: 3, angle: 120, spread: 55, origin: { x: 1, y: 0.85 } });
                 if (Date.now() < end) { requestAnimationFrame(frame); }
             }());
-        }
-
-        // पेज खुलते ही लोड करें
-        window.onload = function() {
-            buildDetailedMarksheet(testData);
         };
     </script>
 </body>
