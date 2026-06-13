@@ -12,11 +12,12 @@
             background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%); 
             color: #1e293b; 
             padding-bottom: 80px; 
-            user-select: none; 
+            user-select: none; /* बच्चों के लिए टेक्स्ट कॉपी प्रोटेक्शन */
         }
         
         .container { max-width: 600px; margin: 0 auto; padding: 15px; }
         
+        /* प्रीमियम गहरा ब्लू हेडर जो ग्रामर डैशबोर्ड से अलग और आकर्षक दिखे */
         .app-header {
             background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
             padding: 25px 20px; border-radius: 32px; text-align: center;
@@ -39,6 +40,7 @@
         }
         .section-title::after { content: ''; flex: 1; height: 2px; background: linear-gradient(to right, #1e1b4b, transparent); }
         
+        /* क्लास कार्ड स्टाइल */
         .topics-list { display: flex; flex-direction: column; gap: 15px; }
         
         .topic-card { 
@@ -56,6 +58,7 @@
         .topic-card h3 { font-size: 16px; font-weight: 800; color: #1e1b4b; padding-right: 50px; }
         .topic-card p { font-size: 12px; color: #64748b; font-weight: 600; margin-top: 2px; }
         
+        /* प्रीमियम कस्टमाइज्ड बटन */
         .btn-study { 
             width: 100%; margin-top: 15px; padding: 14px; border-radius: 16px; 
             background: linear-gradient(135deg, #312e81, #1e1b4b); color: white; 
@@ -64,7 +67,7 @@
         }
         .btn-study:active { transform: scale(0.97); }
         
-        /* 📺 थियेटर मोड पॉपअप */
+        /* 📺 थियेटर मोड प्लेयर (स्प्लिट स्क्रीन - वीडियो + नोट्स साथ में) */
         .theater-modal { 
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
             background: rgba(15, 23, 42, 0.95); z-index: 2000; flex-direction: column; 
@@ -74,15 +77,7 @@
             background: #0f172a; padding: 12px 15px; display: flex; 
             justify-content: space-between; align-items: center; border-bottom: 1px solid #1e293b; 
         }
-        .theater-title { color: #ffffff; font-size: 13px; font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 50%; }
-        
-        /* 📥 डाउनलोड बटन की स्टाइल */
-        .btn-download-pdf {
-            background: #10b981; color: white; padding: 6px 12px; border-radius: 10px;
-            font-size: 11px; font-weight: 800; text-decoration: none; margin-right: 10px;
-            display: inline-block; cursor: pointer;
-        }
-        
+        .theater-title { color: #ffffff; font-size: 13px; font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 70%; }
         .btn-close-theater { background: #ef4444; color: white; padding: 6px 14px; border-radius: 10px; font-size: 11px; font-weight: 800; cursor: pointer; }
         
         .theater-video-box { background: #000000; width: 100%; position: relative; padding-bottom: 56.25%; height: 0; }
@@ -112,10 +107,7 @@
     <div class="theater-modal" id="theaterModal">
         <div class="theater-control">
             <div class="theater-title" id="currentTitle">Class Topic</div>
-            <div style="display: flex; align-items: center;">
-                <a id="downloadButton" href="" download class="btn-download-pdf">📥 नोट्स डाउनलोड करें</a>
-                <div class="btn-close-theater" onclick="closeTheater()">✖️ बंद करें</div>
-            </div>
+            <div class="btn-close-theater" onclick="closeTheater()">✖️ बंद करें</div>
         </div>
         <div class="theater-video-box">
             <iframe id="theaterVideo" src="" allowfullscreen></iframe>
@@ -124,25 +116,25 @@
     </div>
 
     <script>
-        // 🎯 डेटा बैंक: तीनों क्लासेस के लिए अलग-अलग पीडीएफ नाम सेट कर दिए हैं
+        // 🎯 डेटा बैंक: गिटहब फोल्डर स्ट्रक्चर के हिसाब से PDF का रास्ता सही कर दिया गया है (../)
         const myClassesData = [
             {
                 title: "Noun (संज्ञा) - Part 1: Definition & Types",
                 desc: "Noun किसे कहते हैं? Person, Place, Animal और Thing को बिल्कुल जीरो लेवल से समझें।",
                 ytId: "_yeltWMnQQY", 
-                pdfUrl: "../noun_notes_part1.pdf" // क्लास 1 की पीडीएफ का नाम
+                pdfUrl: "../noun_notes.pdf"
             },
             {
                 title: "Noun (संज्ञा) - Part 2: Exercise & Sorting Game",
                 desc: "मज़ेदार बोर्ड गेम के साथ शब्दों में से Person, Place, Animal और Thing छांटना सीखें।",
                 ytId: "rgt9ohZt6cs", 
-                pdfUrl: "../noun_notes_part2.pdf" // क्लास 2 की पीडीएफ का नाम
+                pdfUrl: "../noun_notes.pdf"
             },
             {
                 title: "Noun (संज्ञा) - Part 3: Sentence Identification Test",
                 desc: "वाक्यों में नाउन की पहचान करना और नाउन व वर्ब (क्रिया) के अंतर को समझें।",
                 ytId: "1KCoQHR__oo", 
-                pdfUrl: "../noun_notes_part3.pdf" // क्लास 3 की पीडीएफ का नाम
+                pdfUrl: "../noun_notes.pdf"
             }
         ];
 
@@ -151,4 +143,37 @@
             let html = '';
             myClassesData.forEach((item, index) => {
                 let classNum = String(index + 1).padStart(2, '0');
-                let clickAction = `openTheater('${item.title}', '${item.ytId}',
+                let clickAction = `openTheater('${item.title}', '${item.ytId}', '${item.pdfUrl}')`;
+                html += `
+                    <div class="topic-card">
+                        <div class="class-badge">Class ${classNum}</div>
+                        <h3>${item.title}</h3>
+                        <p>${item.desc}</p>
+                        <button class="btn-study" onclick="${clickAction}">📖 क्लास देखें + नोट्स पढ़ें</button>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        function openTheater(title, ytId, pdfUrl) {
+            document.getElementById('currentTitle').innerText = title;
+            document.getElementById('theaterVideo').src = "https://www.youtube.com/embed/" + ytId + "?autoplay=1&rel=0";
+            // #toolbar=0&navpanes=0 से पीडीएफ के फालतू बटन्स छुप जाते हैं और नोट्स शानदार दिखते हैं
+            document.getElementById('pdfWrapper').innerHTML = `<iframe src="${pdfUrl}#toolbar=0&navpanes=0"></iframe>`;
+            document.getElementById('theaterModal').style.display = "flex";
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeTheater() {
+            document.getElementById('theaterModal').style.display = "none";
+            document.getElementById('theaterVideo').src = "";
+            document.getElementById('pdfWrapper').innerHTML = "";
+            document.body.style.overflow = "auto";
+        }
+
+        window.onload = loadGrammarClasses;
+        document.addEventListener('contextmenu', e => e.preventDefault());
+    </script>
+</body>
+</html>
