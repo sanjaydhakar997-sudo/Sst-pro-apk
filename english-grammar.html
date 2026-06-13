@@ -12,12 +12,12 @@
             background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%); 
             color: #1e293b; 
             padding-bottom: 80px;
-            user-select: none; /* टेक्स्ट कॉपी बंद */
+            user-select: none; /* Text Copy Protection */
         }
 
         .container { max-width: 600px; margin: 0 auto; padding: 15px; }
 
-        /* प्रीमियम डिजिटल हेडर */
+        /* Premium Header */
         .app-header {
             background: linear-gradient(135deg, #4c1d95 0%, #6d28d9 100%);
             padding: 30px 20px; border-radius: 32px; text-align: center;
@@ -40,7 +40,7 @@
         }
         .section-title::after { content: ''; flex: 1; height: 2px; background: linear-gradient(to right, #5b21b6, transparent); }
 
-        /* 📋 क्लासेस की लिस्ट */
+        /* Topic Card Lists */
         .topics-list { display: flex; flex-direction: column; gap: 15px; }
 
         .topic-card {
@@ -59,7 +59,7 @@
         .topic-card h3 { font-size: 16px; font-weight: 800; color: #1e1b4b; padding-right: 50px; }
         .topic-card p { font-size: 12px; color: #64748b; font-weight: 600; margin-top: 2px; }
 
-        /* सिंगल बड़ा स्टडी बटन */
+        /* Unified Study Button */
         .btn-study {
             width: 100%; margin-top: 15px; padding: 14px;
             border-radius: 16px; background: linear-gradient(135deg, #6d28d9, #4c1d95);
@@ -69,13 +69,12 @@
         }
         .btn-study:active { transform: scale(0.97); }
 
-        /* 📺 थियेटर मोड पॉपअप (वीडियो + PDF एक साथ) */
+        /* 📺 Theater Mode Popup (Split Screen Video + PDF Together) */
         .theater-modal {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(15, 23, 42, 0.95); z-index: 2000; flex-direction: column;
         }
 
-        /* पॉपअप का कंट्रोल बार */
         .theater-control {
             background: #0f172a; padding: 12px 15px; display: flex;
             justify-content: space-between; align-items: center; border-bottom: 1px solid #1e293b;
@@ -83,13 +82,18 @@
         .theater-title { color: #ffffff; font-size: 13px; font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 70%; }
         .btn-close-theater { background: #ef4444; color: white; padding: 6px 14px; border-radius: 10px; font-size: 11px; font-weight: 800; cursor: pointer; }
 
-        /* वीडियो वाला ऊपरी हिस्सा */
+        /* Upper Half: YouTube Video */
         .theater-video-box { background: #000000; width: 100%; position: relative; padding-bottom: 56.25%; height: 0; }
         .theater-video-box iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
 
-        /* PDF वाला नीचे का हिस्सा */
-        .theater-pdf-box { flex: 1; background: #64748b; width: 100%; position: relative; }
+        /* Lower Half: Notes PDF Viewer */
+        .theater-pdf-box { flex: 1; background: #1e293b; width: 100%; position: relative; }
         .theater-pdf-box iframe { width: 100%; height: 100%; border: none; }
+        
+        .no-pdf-message {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            color: #94a3b8; font-weight: 700; font-size: 14px; text-align: center; width: 90%;
+        }
 
         .back-menu-link { display: block; text-align: center; margin-top: 40px; color: #64748b; font-size: 13px; font-weight: 700; text-decoration: none; }
     </style>
@@ -118,35 +122,83 @@
         <div class="theater-video-box">
             <iframe id="theaterVideo" src="" allowfullscreen></iframe>
         </div>
-        <div class="theater-pdf-box">
-            <iframe id="theaterPdf" src=""></iframe>
-        </div>
+        <div class="theater-pdf-box" id="pdfWrapper"></div>
     </div>
 
     <script>
         // ====================================================================
-        // 🔥 संजय भाई का डेटा बैंक (यहाँ अपनी वीडियो ID और PDF का लिंक डालें)
+        // 🔥 Live Data Bank with Dedicated PDF URL Paths
         // ====================================================================
         const myClassesData = [
             {
-                title: "Tenses & Correct Form of Verbs (Part 1)",
-                desc: "Present Tense के सभी नियम और बोर्ड परीक्षा के महत्वपूर्ण प्रश्न।",
-                ytId: "dQw4w9WgXcQ", // वीडियो ID डालें
-                pdfUrl: "https://documents.techcommuters.com/test.pdf" // अपनी ड्राइव या गिटहब पीडीएफ लिंक डालें
+                title: "Noun (संज्ञा) - Part 1: Definition & Types",
+                desc: "Noun kise kehte hain? Person, Place, Animal aur Thing ko bilkul zero level se samjhein.",
+                ytId: "_yeltWMnQQY", 
+                pdfUrl: "pdfs/noun_notes.pdf" // GitHub par is path par pdf daal dein
             },
             {
-                title: "Tenses Complete Exercise (Part 2)",
-                desc: "Past और Future Tense के नियम तथा पिछले सालों के प्रश्न।",
-                ytId: "dQw4w9WgXcQ",
-                pdfUrl: "https://documents.techcommuters.com/test.pdf"
+                title: "Noun (संज्ञा) - Part 2: Exercise & Sorting Game",
+                desc: "Mazedaar board game ke sath shabdon mein se Person, Place, Animal aur Thing chhantna sikhein.",
+                ytId: "rgt9ohZt6cs", 
+                pdfUrl: "pdfs/noun_notes.pdf"
             },
             {
-                title: "Active and Passive Voice (Part 1)",
-                desc: "सिर्फ 10 मिनट में सीखें एक्टिव से पैसिव बनाना, जादुई ट्रिक के साथ।",
-                ytId: "dQw4w9WgXcQ",
-                pdfUrl: "https://documents.techcommuters.com/test.pdf"
-            },
-            {
-                title: "Direct and Indirect Speech (Introduction)",
-                desc: "नरेशन बदलने के सबसे आसान और सटीक नियम।",
-                ytId: "dQw4
+                title: "Noun (संज्ञा) - Part 3: Sentence Identification Test",
+                desc: "Vakyon mein noun ki pehchan karna aur noun va verb (kriya) ke antar ko samjhein.",
+                ytId: "1KCoQHR__oo", 
+                pdfUrl: "pdfs/noun_notes.pdf" // Isme poore 3 parts ka master note khulega
+            }
+        ];
+        // ====================================================================
+
+        function loadGrammarClasses() {
+            const container = document.getElementById('grammar-container');
+            let html = '';
+
+            myClassesData.forEach((item, index) => {
+                let classNum = String(index + 1).padStart(2, '0');
+                let clickAction = `openTheater('${item.title}', '${item.ytId}', '${item.pdfUrl}')`;
+                let btnText = `📖 क्लास देखें + नोट्स पढ़ें`;
+
+                html += `
+                    <div class="topic-card">
+                        <div class="class-badge">Class ${classNum}</div>
+                        <h3>${item.title}</h3>
+                        <p>${item.desc}</p>
+                        <button class="btn-study" onclick="${clickAction}">
+                            ${btnText}
+                        </button>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        function openTheater(title, ytId, pdfUrl) {
+            document.getElementById('currentTitle').innerText = title;
+            document.getElementById('theaterVideo').src = "https://www.youtube.com/embed/" + ytId + "?autoplay=1&rel=0";
+            
+            const pdfWrapper = document.getElementById('pdfWrapper');
+            if(pdfUrl === "" || pdfUrl.includes("your-pdf-link")) {
+                pdfWrapper.innerHTML = `<div class="no-pdf-message">📝 Is class ke notes PDF jald hi upload kiye jayenge. Tab tak video se padhai karein! ⏳</div>`;
+            } else {
+                // PDF display inside the interactive app panel
+                pdfWrapper.innerHTML = `<iframe src="${pdfUrl}#toolbar=0&navpanes=0"></iframe>`;
+            }
+
+            document.getElementById('theaterModal').style.display = "flex";
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeTheater() {
+            document.getElementById('theaterModal').style.display = "none";
+            document.getElementById('theaterVideo').src = "";
+            document.getElementById('pdfWrapper').innerHTML = "";
+            document.body.style.overflow = "auto";
+        }
+
+        window.onload = loadGrammarClasses;
+        document.addEventListener('contextmenu', e => e.preventDefault());
+    </script>
+</body>
+</html>
