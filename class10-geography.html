@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SST Pro | Class 10 Geography Notes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f172a;     /* प्रीमियम डार्क */
+            --accent: #f39c12;      /* गोल्डन टच */
+            --bg: #f1f5f9;          /* बैकग्राउंड */
+            --text: #1e293b;        /* डार्क टेक्स्ट */
+            --card-bg: #ffffff;     /* कार्ड का रंग */
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        
+        body { 
+            background: var(--bg); 
+            color: var(--text); 
+            padding-bottom: 50px; 
+            overflow-x: hidden; 
+        }
+
+        /* टॉप पर छोटा एनिमेटेड लेबल (जो स्क्रीनशॉट में था) */
+        .top-label {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            background: linear-gradient(90deg, #1e3a8a, #1e293b);
+            color: #ffffff;
+            font-size: 11px; font-weight: 800; text-align: center;
+            padding: 6px 0; letter-spacing: 1.5px; z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        /* मुख्य कंटेनर */
+        .main-wrapper {
+            max-width: 650px;
+            margin: 50px auto 20px auto;
+            padding: 15px;
+        }
+
+        /* 🌳 ब्रांडिंग हेडर */
+        .branding {
+            text-align: center;
+            margin-bottom: 25px;
+            background: var(--primary);
+            padding: 30px 20px;
+            border-radius: 25px;
+            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.2);
+        }
+        .branding h2 {
+            font-size: 24px;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+        .branding p {
+            font-size: 12px;
+            color: #94a3b8;
+            font-weight: 700;
+        }
+
+        /* चैप्टर हेडर स्टाइल */
+        .chapter-header {
+            background: #fffbeb;
+            border: 2px solid var(--accent);
+            padding: 15px;
+            border-radius: 18px;
+            text-align: center;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(243, 156, 18, 0.1);
+        }
+        .chapter-header h1 {
+            font-size: 18px;
+            color: #1e3a8a;
+            font-weight: 900;
+        }
+
+        /* 📚 चैप्टर्स की 3D लिस्ट */
+        .chapter-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .chapter-card {
+            background: var(--card-bg);
+            padding: 20px 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: var(--text);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #e2e8f0;
+            border-bottom: 5px solid #cbd5e1; /* 3D इफ़ेक्ट */
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .chapter-card:active {
+            transform: translateY(3px);
+            border-bottom-width: 2px;
+        }
+
+        .chapter-info h3 {
+            font-size: 15px;
+            font-weight: 800;
+            color: #0f172a;
+        }
+        .chapter-info p {
+            font-size: 11px;
+            color: #64748b;
+            font-weight: 600;
+            margin-top: 3px;
+        }
+
+        .read-badge {
+            background: linear-gradient(135deg, #1e3a8a, #2563eb);
+            color: white;
+            font-size: 11px;
+            font-weight: 800;
+            padding: 6px 14px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
+        }
+
+        /* वापस जाने का बटन */
+        .back-home {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            color: #64748b;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-label">🎯 लक्ष्य: बोर्ड परीक्षा 2026 — 100% सफलता</div>
+
+    <div class="main-wrapper">
+        
+        <div class="branding">
+            <h2>कक्षा 10 — समकालीन भारत (भूगोल)</h2>
+            <p>BY SANJAY DHAKAR SIR</p>
+        </div>
+
+        <div class="chapter-header">
+            <h1>📝 बेस्ट हैंडरिटन नोट्स एवं महत्वपूर्ण प्रश्न</h1>
+        </div>
+
+        <div class="chapter-list">
+            
+            <a href="geo-ch1.html" class="chapter-card">
+                <div class="chapter-info">
+                    <h3>पाठ 1: संसाधन एवं विकास</h3>
+                    <p>Resources and Development</p>
+                </div>
+                <div class="read-badge">पढ़ें 📖</div>
+            </a>
+
+            <a href="geo-ch2.html" class="chapter-card">
+                <div class="chapter-info">
+                    <h3>पाठ 2: वन एवं वन्य जीव संसाधन</h3>
+                    <p>Forest and Wildlife Resources</p>
+                </div>
+                <div class="read-badge">पढ़ें 📖</div>
+            </a>
+
+            <a href="geo-ch3.html" class="chapter-card">
+                <div class="chapter-info">
+                    <h3>पाठ 3: जल संसाधन</h3>
+                    <p>Water Resources</p>
+                </div>
+                <div class="read-badge">पढ़ें 📖</div>
+            </a>
+
+            <a href="geo-ch4.html" class="chapter-card">
+                <div class="chapter-info">
+                    <h3>पाठ 4: कृषि</h3>
+                    <p>Agriculture</p>
+                </div>
+                <div class="read-badge">पढ़ें 📖</div>
+            </a>
+
+            <a href="geo-ch5.html" class="chapter-card">
+                <div class="chapter-info">
+                    <h3>पाठ 5: खनिज तथा ऊर्जा संसाधन</h3>
+                    <p>Minerals and Energy Resources</p>
+                </div>
+                <div class="read-badge">पढ़ें 📖</div>
+            </a>
+
+            <a href="geo-ch6.html" class="chapter-card">
+                <div class="chapter-info">
+                    <h3>पाठ 6: विनिर्माण उद्योग</h3>
+                    <p>Manufacturing Industries</p>
+                </div>
+                <div class="read-badge">पढ़ें 📖</div>
+            </a>
+
+            <a href="geo-ch7.html" class="chapter-card">
+                <div class="chapter-info">
+                    <h3>पाठ 7: राष्ट्रीय अर्थव्यवस्था की जीवन रेखाएं</h3>
+                    <p>Lifelines of National Economy</p>
+                </div>
+                <div class="read-badge">पढ़ें 📖</div>
+            </a>
+
+        </div>
+
+        <a href="index.html" class="back-home">⬅️ मुख्य मेनू पर वापस जाएं</a>
+    </div>
+
+    <script>
+        // सुरक्षा: राइट क्लिक लॉक ताकि कोई कोड चोरी न कर सके
+        document.addEventListener('contextmenu', e => e.preventDefault());
+    </script>
+</body>
+</html>
