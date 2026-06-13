@@ -8,9 +8,8 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         
-        /* लाइट और प्रीमियम बैकग्राउंड */
         body { 
-            background: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%); 
+            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%); 
             color: #0f172a; 
             padding-bottom: 60px; 
             overflow-x: hidden; 
@@ -19,67 +18,55 @@
         /* ऐप की एंट्री का जादुई एनिमेशन */
         .app-container {
             opacity: 0;
-            transform: translateY(40px) scale(0.97);
-            transition: all 1.5s cubic-bezier(0.1, 1, 0.1, 1);
+            transform: translateY(30px) scale(0.98);
+            transition: all 1.2s cubic-bezier(0.15, 0.85, 0.35, 1);
         }
         .app-loaded { opacity: 1; transform: translateY(0) scale(1); }
 
-        /* हेडर डिज़ाइन */
-        .header-container {
-            background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
-            color: white;
-            padding: 45px 20px;
+        /* शुरुआत वाला प्रीमियम डार्क हेडर */
+        .header-glow {
             text-align: center;
+            padding: 45px 20px;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             border-bottom-left-radius: 40px;
             border-bottom-right-radius: 40px;
-            box-shadow: 0 15px 35px rgba(30, 58, 138, 0.2);
-            position: relative;
+            box-shadow: 0 15px 35px rgba(15, 23, 42, 0.25);
         }
 
-        .glow-title {
+        /* चमकता हुआ टेक्स्ट */
+        .glow-text {
             font-size: 28px;
             font-weight: 900;
             letter-spacing: 1.5px;
             color: #ffffff;
-            text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            text-shadow: 0 0 12px rgba(243, 156, 18, 0.6);
+            animation: textPulse 2s infinite alternate;
+        }
+        @keyframes textPulse {
+            0% { text-shadow: 0 0 8px #f39c12; }
+            100% { text-shadow: 0 0 20px #f39c12; }
         }
 
-        /* 3D टेक्स्ट स्लाइडर (बिना किसी इमेज के - बेहद खूबसूरत कलर्स) */
+        /* 3D टेक्स्ट स्लाइडर */
         .slider-wrapper {
             margin: -25px auto 25px auto;
             max-width: 92%;
             position: relative;
-            height: 200px;
+            height: 190px;
             overflow: hidden;
             border-radius: 28px;
             box-shadow: 0 20px 40px rgba(15, 23, 42, 0.15);
             border: 4px solid #ffffff;
         }
-        .slide-track { display: flex; width: 400%; height: 100%; transition: transform 0.9s cubic-bezier(0.6, -0.28, 0.735, 0.045); }
+        .slide-track { display: flex; width: 400%; height: 100%; transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
         
         .slide-page {
             width: 100%; height: 100%; display: flex; flex-direction: column; 
-            justify-content: center; padding: 30px; color: white;
+            justify-content: center; padding: 25px; color: white;
             position: relative;
         }
 
-        /* धमाका एनिमेटेड बैनर - रंग बदलने वाला */
-        .live-banner {
-            margin: 25px auto; max-width: 92%; padding: 22px;
-            background: linear-gradient(135deg, #4f46e5, #ec4899, #f59e0b, #4f46e5);
-            background-size: 400% 400%;
-            border-radius: 24px; color: white; text-align: center;
-            box-shadow: 0 12px 25px rgba(79, 70, 229, 0.3);
-            animation: moveGradient 8s ease infinite;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-        }
-        @keyframes moveGradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* क्लास ग्रिड और टाइटल्स */
+        /* टाइटल्स स्टाइल */
         .title-style { 
             margin: 30px 5% 15px 5%; 
             font-size: 19px; 
@@ -91,108 +78,107 @@
         }
         .title-style::after { content: ''; flex: 1; height: 3px; background: linear-gradient(to right, #1e3a8a, transparent); border-radius: 2px; }
 
-        .grid-box { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; padding: 0 5%; }
+        .grid-box { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; padding: 0 5%; }
         
-        /* 3D तैरते हुए क्लास बटन्स */
+        /* 3D एनिमेटेड क्लास बटन्स */
         .card-btn {
-            background: #ffffff; padding: 24px 16px; border-radius: 22px;
+            background: #ffffff; padding: 22px 16px; border-radius: 22px;
             text-align: center; text-decoration: none; color: #1e293b;
             border: 1px solid #e2e8f0; font-weight: 800; font-size: 16px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        /* एनिमेटेड होवर और टच इफ़ेक्ट */
         .card-btn:active, .card-btn:hover {
-            transform: translateY(-6px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(30, 58, 138, 0.12);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(30, 58, 138, 0.1);
             border-color: #1e3a8a;
             background: #f8fafc;
         }
-        .card-btn span { display: block; font-size: 11px; color: #64748b; font-weight: 600; margin-top: 5px; }
+        .card-btn span { display: block; font-size: 11px; color: #64748b; font-weight: 600; margin-top: 4px; }
 
-        /* कक्षा 10 को सबसे वीआईपी लुक दिया है */
+        /* कक्षा 10 स्पेशल फोकस */
         .vip-10th {
             grid-column: span 2;
             background: linear-gradient(135deg, #fffbeb 0%, #ffffff 100%);
             border: 2px solid #f59e0b;
-            box-shadow: 0 10px 25px rgba(245, 158, 11, 0.1);
-        }
-        .vip-10th:active, .vip-10th:hover {
-            background: #fff9e6;
-            border-color: #d97706;
         }
 
-        /* बच्चों के लिए इंटरएक्टिव क्विज़ गेम */
-        .game-zone {
-            margin: 30px 5%; background: #ffffff; padding: 25px; 
-            border-radius: 26px; border: 2px dashed #cbd5e1;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.02);
+        /* 🎮 न्यू गेम ज़ोन बॉक्स स्टाइल */
+        .game-container {
+            margin: 30px 5%; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); padding: 25px; 
+            border-radius: 28px; color: white; box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            border: 2px solid #334155;
         }
+        .game-nav { display: flex; gap: 10px; margin-bottom: 15px; }
+        .game-tab { 
+            flex: 1; padding: 8px; text-align: center; background: #334155; 
+            font-size: 11px; font-weight: 800; border-radius: 10px; cursor: pointer; transition: 0.2s;
+        }
+        .active-tab { background: #f39c12; color: #0f172a; }
+        
+        .game-card { background: #1e293b; padding: 15px; border-radius: 16px; border: 1px solid #475569; display: none; }
+        .show-game { display: block; animation: fadeIn 0.4s ease; }
+        
         .game-option {
-            background: #f1f5f9; padding: 14px; border-radius: 14px; 
-            margin-top: 12px; cursor: pointer; font-size: 14px; font-weight: 700;
-            transition: all 0.2s ease; border: 1px solid #e2e8f0; color: #334155;
+            background: #0f172a; padding: 12px; border-radius: 12px; 
+            margin-top: 10px; cursor: pointer; font-size: 13px; font-weight: 700;
+            transition: 0.2s; border: 1px solid #334155;
         }
-        .game-option:active { transform: scale(0.98); background: #e2e8f0; }
+        .game-option:active { background: #2563eb; transform: scale(0.98); }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         /* बॉटम बटन्स */
         .btn-flex { display: flex; gap: 15px; padding: 0 5%; margin-top: 30px; }
         .bottom-action {
             flex: 1; padding: 18px; border-radius: 20px; text-align: center;
             text-decoration: none; font-weight: 800; font-size: 14px; color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1); transition: 0.3s;
         }
     </style>
 </head>
 <body>
 
-<div id="loading-screen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%); z-index: 99999; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+<div id="loading-screen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #090d16; z-index: 99999; display: flex; flex-direction: column; align-items: center; justify-content: center;">
     <div style="text-align: center;">
         <div id="pop-logo" style="font-size: 75px; transform: scale(0); transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);">🌳</div>
-        <h1 style="color: #ffffff; font-size: 26px; font-weight: 900; margin-top: 15px; letter-spacing: 2px;">SOCIAL STUDIES</h1>
-        <p style="color: #f59e0b; font-size: 13px; margin-top: 5px; font-weight: 700; letter-spacing: 4px;">SANJAY DHAKAR</p>
+        <h1 style="color: #f39c12; font-size: 26px; font-weight: 900; margin-top: 15px; letter-spacing: 2px;">SOCIAL STUDIES</h1>
+        <p style="color: #ffffff; font-size: 13px; margin-top: 5px; font-weight: 600; opacity: 0.7;">BY SANJAY DHAKAR</p>
     </div>
 </div>
 
 <div class="app-container" id="appBody">
     
-    <div class="header-container">
-        <h1 class="glow-title">SST PRO CLASSES</h1>
-        <p style="color: #93c5fd; font-size: 12px; margin-top: 6px; font-weight: 700; letter-spacing: 2px;">ज्ञान ही शक्ति है • SANJAY SIR</p>
+    <div class="header-glow">
+        <h1 class="glow-text">SOCIAL STUDIES CLASSES</h1>
+        <p style="color: #94a3b8; font-size: 12px; margin-top: 5px; font-weight: 700; letter-spacing: 1px;">BY SANJAY DHAKAR</p>
     </div>
 
     <div class="slider-wrapper">
         <div class="slide-track" id="sliderTrack">
             <div class="slide-page" style="background: linear-gradient(135deg, #1e3a8a, #2563eb);">
                 <span style="position: absolute; top: 15px; right: 20px; background: red; padding: 2px 10px; border-radius: 10px; font-size: 10px; font-weight: 900; animation: flash 1s infinite;">LIVE 🔥</span>
-                <h2 style="font-size: 24px; font-weight: 900; color: #f59e0b;">🎯 लक्ष्य: बोर्ड परीक्षा 2026</h2>
-                <p style="font-size: 13px; margin-top: 8px; opacity: 0.95; font-weight: 600;">10th और 12th के बोर्ड स्टूडेंट्स के लिए विशेष रूप से डिज़ाइन किए गए प्रामाणिक लेक्चर्स और पेपर्स।</p>
+                <h2 style="font-size: 23px; font-weight: 900; color: #f59e0b;">🎯 लक्ष्य: बोर्ड परीक्षा 2026</h2>
+                <p style="font-size: 13px; margin-top: 6px; opacity: 0.95; font-weight: 600;">10th और 12th के बोर्ड स्टूडेंट्स के लिए विशेष रूप से डिज़ाइन किए गए प्रामाणिक लेक्चर्स और पेपर्स।</p>
             </div>
             <div class="slide-page" style="background: linear-gradient(135deg, #ea580c, #f97316);">
-                <h2 style="font-size: 24px; font-weight: 900;">🗺️ विजुअल मैप्स और कहानियां</h2>
-                <p style="font-size: 13px; margin-top: 8px; opacity: 0.95; font-weight: 600;">इतिहास की कठिन तारीखें और भूगोल के पेचीदा नक्शे अब कहानियों के ज़रिए सीधे आपके दिमाग में छपेंगे।</p>
+                <h2 style="font-size: 23px; font-weight: 900;">🗺️ विजुअल मैप्स और कहानियां</h2>
+                <p style="font-size: 13px; margin-top: 6px; opacity: 0.95; font-weight: 600;">इतिहास की कठिन तारीखें और भूगोल के पेचीदा नक्शे अब कहानियों के ज़रिए सीधे आपके दिमाग में छपेंगे।</p>
             </div>
             <div class="slide-page" style="background: linear-gradient(135deg, #16a34a, #22c55e);">
-                <h2 style="font-size: 24px; font-weight: 900;">📝 आसान एवं सटीक हैंडरिटन नोट्स</h2>
-                <p style="font-size: 13px; margin-top: 8px; opacity: 0.95; font-weight: 600;">किताबों की भारी और मुश्किल परिभाषाओं की छुट्टी! अब अपनी खुद की सरल और देसी भाषा में समझें हर टॉपिक।</p>
+                <h2 style="font-size: 23px; font-weight: 900;">📝 आसान एवं सटीक हैंडरिटन नोट्स</h2>
+                <p style="font-size: 13px; margin-top: 6px; opacity: 0.95; font-weight: 600;">किताबों की भारी और मुश्किल परिभाषाओं की छुट्टी! अब अपनी खुद की सरल और देसी भाषा में समझें हर टॉपिक।</p>
             </div>
             <div class="slide-page" style="background: linear-gradient(135deg, #7c3aed, #8b5cf6);">
-                <h2 style="font-size: 24px; font-weight: 900;">🏆 हर संडे लाइव टेस्ट सीरीज़</h2>
-                <p style="font-size: 13px; margin-top: 8px; opacity: 0.95; font-weight: 600;">अपनी प्रोग्रेस को ट्रैक करें। खुद टेस्ट दें, अपनी गलतियाँ सुधारें और टॉपर्स की लिस्ट में जगह बनाएं।</p>
+                <h2 style="font-size: 23px; font-weight: 900;">🏆 हर संडे लाइव टेस्ट सीरीज़</h2>
+                <p style="font-size: 13px; margin-top: 6px; opacity: 0.95; font-weight: 600;">अपनी प्रोग्रेस को ट्रैक करें। खुद टेस्ट दें, अपनी गलतियाँ सुधारें और टॉपर्स की लिस्ट में जगह बनाएं।</p>
             </div>
         </div>
-    </div>
-
-    <div class="live-banner">
-        <h3 style="font-size: 18px; font-weight: 900;">🚀 महा-धमाका: बस 2 दिन का इंतज़ार!</h3>
-        <p style="font-size: 12px; margin-top: 4px; font-weight: 600;">सभी कक्षाओं के लिए बिल्कुल नया ऐप इंटरफेस और प्रीमियम फ्री पीडीएफ नोट्स लाइव होने वाले हैं!</p>
     </div>
 
     <h2 class="title-style">अपनी कक्षा चुनें और पढ़ाई शुरू करें</h2>
     <div class="grid-box">
         <a href="class10.html" class="card-btn vip-10th">
-            <span style="color: #d97706; font-size: 11px; font-weight: 900; letter-spacing: 1px;">MOST POPULAR ⭐</span>
+            <span style="color: #d97706; font-size: 11px; font-weight: 900; letter-spacing: 1px;">BOARD TOPPER BATCH ⭐</span>
             <p style="font-size: 22px; font-weight: 900; color: #1e3a8a; margin-top: 2px;">कक्षा 10 (SST)</p>
             <span style="color: #4b5563; font-weight: 700;">बोर्ड स्पेशल संकल्प बैच 2026</span>
         </a>
@@ -222,23 +208,40 @@
         </a>
     </div>
 
-    <div class="game-zone">
-        <h4 style="color: #1e3a8a; font-size: 15px; font-weight: 900; display: flex; align-items: center; gap: 8px;">💡 आज का दिमागी सवाल (Challenge)</h4>
-        <p style="font-size: 14px; margin-top: 6px; font-weight: 700; color: #334155;" id="gameQuest">इनमें से किसे 'भारतीय संविधान का जनक' कहा जाता है?</p>
+    <div class="game-container">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+            <h4 style="color: #f39c12; font-size: 15px; font-weight: 900;">🕹️ पढ़ाई वाले खेल (SST Game Zone)</h4>
+            <span style="background: #22c55e; color: white; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 800;" id="scoreBoard">स्कोर: 0</span>
+        </div>
         
-        <div class="game-option" onclick="verifyAns(this, false)">A) महात्मा गांधी</div>
-        <div class="game-option" onclick="verifyAns(this, true)">B) डॉ. बी. आर. अम्बेडकर</div>
-        <div class="game-option" onclick="verifyAns(this, false)">C) पंडित जवाहरलाल नेहरू</div>
+        <div class="game-nav">
+            <div class="game-tab active-tab" id="tab1" onclick="switchGame(1)">🗺️ गेम 1: मैप मास्टर</div>
+            <div class="game-tab" id="tab2" onclick="switchGame(2)">⏳ गेम 2: समय चक्र</div>
+        </div>
 
-        <p id="gameFeedback" style="margin-top: 15px; font-size: 13px; font-weight: 900; text-align: center; transition: 0.3s;"></p>
+        <div class="game-card show-game" id="game1">
+            <p style="font-size: 13px; font-weight: 600; color: #cbd5e1;">सवाल: "थार का मरुस्थल" (Desert) मुख्य रूप से भारत के किस राज्य में स्थित है?</p>
+            <div class="game-option" onclick="playGame(this, true, 10)">A) राजस्थान (Rajasthan)</div>
+            <div class="game-option" onclick="playGame(this, false, 0)">B) मध्य प्रदेश (Madhya Pradesh)</div>
+            <div class="game-option" onclick="playGame(this, false, 0)">C) उत्तर प्रदेश (Uttar Pradesh)</div>
+        </div>
+
+        <div class="game-card" id="game2">
+            <p style="font-size: 13px; font-weight: 600; color: #cbd5e1;">सवाल: भारत को ब्रिटिश शासन से किस वर्ष आज़ादी मिली थी?</p>
+            <div class="game-option" onclick="playGame(this, false, 0)">A) वर्ष 1950</div>
+            <div class="game-option" onclick="playGame(this, true, 10)">B) वर्ष 1947</div>
+            <div class="game-option" onclick="playGame(this, false, 0)">C) वर्ष 1930</div>
+        </div>
+
+        <p id="gameResult" style="margin-top: 15px; font-size: 13px; font-weight: 900; text-align: center; min-height: 20px;"></p>
     </div>
 
     <div class="btn-flex">
-        <a href="https://drive.google.com/uc?export=download&id=1O9Qg5AEV-3g5SVlVFuqa1O0KhFSZzze1" class="bottom-action" style="background: linear-gradient(135deg, #1e3a8a, #1e40af);">
+        <a href="https://drive.google.com/uc?export=download&id=1O9Qg5AEV-3g5SVlVFuqa1O0KhFSZzze1" class="bottom-action" style="background: linear-gradient(135deg, #0f172a, #1e293b); border: 1px solid #334155;">
             📥 Download App APK
         </a>
-        <a href="https://wa.me/919529812784" class="bottom-action" style="background: #ffffff; color: #1e3a8a; border: 2px solid #1e3a8a;">
-            💬 Help & Support
+        <a href="https://wa.me/919529812784" class="bottom-action" style="background: #25d366; box-shadow: 0 8px 20px rgba(37, 211, 102, 0.2);">
+            💬 Join WhatsApp Chat
         </a>
     </div>
 
@@ -248,6 +251,8 @@
 </div>
 
 <script>
+    let totalScore = 0;
+
     // 1. स्प्लैश स्क्रीन एनिमेशन कंट्रोल
     window.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
@@ -261,7 +266,7 @@
             if(screen) screen.style.opacity = '0';
             setTimeout(() => { if(screen) screen.style.display = 'none'; }, 500);
             if(body) body.classList.add('app-loaded');
-        }, 2000); // 2 सेकंड बाद स्मूथली बंद होगा
+        }, 2000);
     });
 
     // 2. ऑटोमैटिक स्मूथ स्लाइडर लॉजिक
@@ -272,23 +277,45 @@
         if(track) track.style.transform = `translateX(-${step * 25}%)`;
     }, 4500);
 
-    // 3. गेम ज़ोन आंसर वेरिफिकेशन
-    function verifyAns(btn, isRight) {
-        const fb = document.getElementById('gameFeedback');
-        if(isRight) {
-            fb.style.color = '#16a34a';
-            fb.innerHTML = "बिल्कुल सही जवाब! 🥳 आपकी तैयारी एकदम शानदार है।";
-            btn.style.background = '#dcfce7';
-            btn.style.borderColor = '#16a34a';
+    // 3. गेम स्विचिंग लॉजिक
+    function switchGame(gameNum) {
+        document.getElementById('game1').classList.remove('show-game');
+        document.getElementById('game2').classList.remove('show-game');
+        document.getElementById('tab1').classList.remove('active-tab');
+        document.getElementById('tab2').classList.remove('active-tab');
+        
+        document.getElementById('game' + gameNum).classList.add('show-game');
+        document.getElementById('tab' + gameNum).classList.add('active-tab');
+        document.getElementById('gameResult').innerHTML = "";
+    }
+
+    // 4. गेम खेलने और स्कोर बढ़ाने का लॉजिक
+    function playGame(element, isCorrect, points) {
+        const resultText = document.getElementById('gameResult');
+        
+        // उस प्रश्न के सभी ऑप्शंस का बैकग्राउंड रीसेट करना
+        const options = element.parentElement.getElementsByClassName('game-option');
+        for(let opt of options) {
+            opt.style.background = '#0f172a';
+            opt.style.borderColor = '#334155';
+        }
+
+        if(isCorrect) {
+            totalScore += points;
+            document.getElementById('scoreBoard').innerHTML = "स्कोर: " + totalScore;
+            resultText.style.color = '#2ecc71';
+            resultText.innerHTML = "🎯 सही जवाब! आपको मिले +10 पॉइंट्स! 🥳";
+            element.style.background = '#15803d';
+            element.style.borderColor = '#22c55e';
         } else {
-            fb.style.color = '#dc2626';
-            fb.innerHTML = "गलत जवाब! 🤓 कोई बात नहीं, संजय सर के नोट्स पढ़कर फिर प्रयास करें।";
-            btn.style.background = '#fee2e2';
-            btn.style.borderColor = '#dc2626';
+            resultText.style.color = '#ef4444';
+            resultText.innerHTML = "❌ गलत जवाब! थोड़ा सोचें और फिर से कोशिश करें।";
+            element.style.background = '#991b1b';
+            element.style.borderColor = '#ef4444';
         }
     }
 
-    // सिक्योरिटी: राइट क्लिक लॉक
+    // सुरक्षा: राइट क्लिक लॉक
     document.addEventListener('contextmenu', event => event.preventDefault());
 </script>
 
