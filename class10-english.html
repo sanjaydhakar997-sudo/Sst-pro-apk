@@ -24,12 +24,11 @@
             text-align: center;
             margin-top: 15px;
             margin-bottom: 25px;
-            border-bottom: 6px solid #1e1e2f;
+            border-bottom: 6px solid #1a1a2e;
             box-shadow: 0 15px 35px rgba(49, 46, 129, 0.25);
             position: relative;
         }
         
-        /* ⬅️ हेडर के अंदर सुंदर बैक बटन जो class10.html पर ले जाएगा */
         .header-back-btn {
             position: absolute;
             top: 15px;
@@ -43,7 +42,6 @@
             border-radius: 12px;
             transition: 0.2s;
         }
-        .header-back-btn:active { transform: scale(0.9); background: rgba(255, 255, 255, 0.2); }
 
         .app-header h1 { font-size: 24px; font-weight: 900; color: #ffffff; }
         .app-header p { font-size: 11px; color: #c7d2fe; font-weight: 700; margin-top: 4px; letter-spacing: 1px; }
@@ -52,15 +50,33 @@
             font-size: 16px;
             font-weight: 900;
             color: #312e81;
-            margin: 10px 0 20px 0;
+            margin: 25px 0 15px 0;
             display: flex;
             align-items: center;
             gap: 10px;
         }
         .section-title::after { content: ''; flex: 1; height: 2px; background: linear-gradient(to right, #312e81, transparent); }
 
-        /* 📑 2-कॉलम फोल्डर ग्रिड */
-        .english-grid {
+        /* 🔥 Grammar Section - इसे ऊपर और खास बनाया है */
+        .grammar-focus {
+            display: block;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 26px;
+            text-decoration: none;
+            text-align: center;
+            border: 2px solid #e2e8f0;
+            border-bottom: 8px solid #8b5cf6; /* मोटा 3D इफ़ेक्ट */
+            box-shadow: 0 10px 25px rgba(139, 92, 246, 0.15);
+            transition: 0.3s;
+            margin-bottom: 20px;
+        }
+        .grammar-focus:active { transform: translateY(5px); border-bottom-width: 2px; }
+        .grammar-focus h2 { color: #6d28d9; font-size: 22px; font-weight: 900; }
+        .grammar-focus p { color: #64748b; font-size: 12px; font-weight: 700; margin-top: 5px; }
+
+        /* 📑 Chapters Grid (2 columns) */
+        .chapters-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 14px;
@@ -68,7 +84,7 @@
 
         .folder-card {
             background: #ffffff;
-            padding: 25px 15px;
+            padding: 22px 10px;
             border-radius: 24px;
             text-decoration: none;
             color: #0f172a;
@@ -81,11 +97,10 @@
             transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        /* 3D बॉर्डर्स और थीम्स */
+        /* 3D बॉर्डर्स */
         .f-prose { border-bottom: 6px solid #6366f1; }
         .f-poetry { border-bottom: 6px solid #ec4899; }
         .f-footprints { border-bottom: 6px solid #10b981; }
-        .f-grammar { border-bottom: 6px solid #8b5cf6; }
 
         .folder-card:active {
             transform: translateY(5px);
@@ -93,7 +108,7 @@
         }
 
         .folder-card h3 { font-size: 16px; font-weight: 900; margin-bottom: 4px; }
-        .folder-card p { font-size: 11px; color: #64748b; font-weight: 700; line-height: 1.3; }
+        .folder-card p { font-size: 11px; color: #64748b; font-weight: 700; }
 
         .back-menu-link {
             display: block; text-align: center; margin-top: 40px;
@@ -107,32 +122,33 @@
         
         <div class="app-header">
             <a href="class10.html" class="header-back-btn">⬅</a>
-            <h1>Class 10th - English</h1>
-            <p>COMPLETE COURSE BY SANJAY SIR</p>
+            <h1>English Hub</h1>
+            <p>COMPLETE COURSE • BY SANJAY SIR</p>
         </div>
 
-        <h2 class="section-title">📖 Select Section</h2>
+        <h2 class="section-title">✍️ Most Important</h2>
+        <a href="english-grammar.html" class="grammar-focus">
+            <h2>English Grammar</h2>
+            <p>Tense, Passive, Narration & Writing Skills</p>
+            <div style="margin-top: 10px; background: #f3f4f6; display: inline-block; padding: 4px 15px; border-radius: 10px; font-size: 11px; font-weight: 800; color: #4b5563;">पूरी व्याकरण यहाँ है 🔓</div>
+        </a>
 
-        <div class="english-grid">
+        <h2 class="section-title">📖 Literature Chapters</h2>
+        <div class="chapters-grid">
             
             <a href="english-prose.html" class="folder-card f-prose">
                 <h3 style="color: #4338ca;">📝 Prose</h3>
-                <p>First Flight (Chapters)</p>
+                <p>First Flight बुक</p>
             </a>
 
             <a href="english-poetry.html" class="folder-card f-poetry">
                 <h3 style="color: #be185d;">🌸 Poetry</h3>
-                <p>All Important Poems</p>
+                <p>महत्वपूर्ण कविताएँ</p>
             </a>
 
             <a href="english-footprints.html" class="folder-card f-footprints">
                 <h3 style="color: #047857;">👣 Footprints</h3>
-                <p>Supplementary Reader</p>
-            </a>
-
-            <a href="english-grammar.html" class="folder-card f-grammar">
-                <h3 style="color: #6d28d9;">✍️ Grammar</h3>
-                <p>व्याकरण एवं Writing Skills</p>
+                <p>सप्लीमेंट्री बुक</p>
             </a>
 
         </div>
