@@ -111,7 +111,7 @@
             border-top: 3px solid #f39c12;
             border-left: 1px solid #f39c12;
             border-right: 1px solid #f39c12;
-            border-bottom: 6px solid #b3740b; /* 3D गहराई प्रभाव */
+            border-bottom: 6px solid #b3740b;
             box-shadow: 0 15px 30px rgba(243, 156, 18, 0.25), inset 0 1px 3px rgba(255,255,255,0.2);
             transition: all 0.2s ease;
         }
@@ -121,7 +121,7 @@
             box-shadow: 0 5px 15px rgba(243, 156, 18, 0.15);
         }
 
-        /* 🎮 3D एनिमेटेड इन-ऐप गेमिंग फोल्डर पैनल */
+        /* 🎮 इन-ऐप गेमिंग फोल्डर पैनल */
         .game-panel {
             margin: 15px 5% 25px 5%; 
             background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); 
@@ -146,13 +146,13 @@
         .active-civ { background: #eab308; color: white; border-bottom-color: #a16207; }
         .active-eco { background: #10b981; color: white; border-bottom-color: #047857; }
         
-        .game-card { background: #1e293b; padding: 18px; border-radius: 18px; border: 1px solid #475569; display: none; box-shadow: inset 0 2px 4px rgba(0,0,0,0.3); }
+        .game-card { background: #1e293b; padding: 18px; border-radius: 18px; border: 1px solid #475569; display: none; }
         .show-game { display: block; }
         
         .game-option {
             background: #0f172a; padding: 14px; border-radius: 12px; 
             margin-top: 12px; cursor: pointer; font-size: 13px; font-weight: 700;
-            transition: 0.2s; border: 1px solid #334155; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: 0.2s; border: 1px solid #334155;
         }
         .game-option:active { background: #2563eb; transform: scale(0.98); }
 
@@ -187,23 +187,27 @@
 
     <div class="slider-wrapper">
         <div class="slide-track" id="sliderTrack">
-            <div class="slide-page" style="background: linear-gradient(135deg, #1e3a8a, #2563eb);">
-                <span style="position: absolute; top: 15px; right: 20px; background: red; padding: 2px 10px; border-radius: 10px; font-size: 10px; font-weight: 900; animation: flash 1s infinite;">LIVE 🔥</span>
-                <h2 style="font-size: 23px; font-weight: 900; color: #f59e0b;">🎯 लक्ष्य: बोर्ड परीक्षा 2026</h2>
-                <p style="font-size: 13px; margin-top: 6px; opacity: 0.95; font-weight: 600;">10th और 12th के बोर्ड स्टूडेंट्स के लिए विशेष रूप से डिज़ाइन किए गए प्रामाणिक लेक्चर्स और पेपर्स।</p>
+            
+            <div class="slide-page" style="background: linear-gradient(135deg, #0f172a, #1e293b); padding: 0; position: relative;">
+                <img src="179267.png" alt="Sanjay Sir Live Demo" style="width: 100%; height: 100%; object-fit: cover;">
+                <span style="position: absolute; top: 15px; right: 20px; background: #ef4444; color: white; padding: 4px 12px; border-radius: 12px; font-size: 11px; font-weight: 900; box-shadow: 0 0 10px rgba(239,68,68,0.6); animation: flash 1s infinite;">NEW LIVE 🔥</span>
             </div>
+
             <div class="slide-page" style="background: linear-gradient(135deg, #ea580c, #f97316);">
                 <h2 style="font-size: 23px; font-weight: 900;">🗺️ विजुअल मैप्स और कहानियां</h2>
                 <p style="font-size: 13px; margin-top: 6px; opacity: 0.95; font-weight: 600;">इतिहास की कठिन तारीखें और भूगोल के पेचीदा नक्शे अब कहानियों के ज़रिए सीधे आपके दिमाग में छपेंगे।</p>
             </div>
+
             <div class="slide-page" style="background: linear-gradient(135deg, #16a34a, #22c55e);">
                 <h2 style="font-size: 23px; font-weight: 900;">📝 आसान एवं सटीक हैंडरिटन नोट्स</h2>
-                <p style="font-size: 13px; margin-top: 6px; opacity: 0.95; font-weight: 600;">किताबों की भारी और मुश्किल परिभाषाओं की छुट्टी! अब अपनी खुद की सरल और देसी भाषा में समझें हर topic।</p>
+                <p style="font-size: 13px; margin-top: 6px; opacity: 0.95; font-weight: 600;">किताबों की भारी और मुश्किल परिभाषाओं की छुट्टी! अब अपनी खुद की सरल और देसी भाषा में समझें हर टॉपिक।</p>
             </div>
+
             <div class="slide-page" style="background: linear-gradient(135deg, #7c3aed, #8b5cf6);">
                 <h2 style="font-size: 23px; font-weight: 900;">🏆 हर संडे लाइव टेस्ट सीरीज़</h2>
                 <p style="font-size: 13px; margin-top: 6px; opacity: 0.95; font-weight: 600;">अपनी प्रोग्रेस को ट्रैक करें। खुद टेस्ट दें, अपनी गलतियाँ सुधारें और टॉपर्स की लिस्ट में जगह बनाएं।</p>
             </div>
+
         </div>
     </div>
 
@@ -248,7 +252,7 @@
     <div class="game-panel" id="megaGameZone">
         <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #334155; padding-bottom: 10px;">
             <h4 style="color: #f39c12; font-size: 15px; font-weight: 900;">🎮 फोल्डर के अंदर के खेल:</h4>
-            <span style="background: linear-gradient(135deg, #22c55e, #15803d); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 800; box-shadow: 0 4px 10px rgba(34,197,94,0.3);" id="scoreLive">स्कोर: 0</span>
+            <span style="background: linear-gradient(135deg, #22c55e, #15803d); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 800;" id="scoreLive">स्कोर: 0</span>
         </div>
         
         <div class="game-nav">
@@ -286,10 +290,10 @@
     </div>
 
     <div class="btn-flex">
-        <a href="https://drive.google.com/uc?export=download&id=1O9Qg5AEV-3g5SVlVFuqa1O0KhFSZzze1" target="_blank" class="bottom-action" style="background: linear-gradient(135deg, #1e3a8a, #2563eb); border: 1px solid #3b82f6; box-shadow: 0 6px 15px rgba(37,99,235,0.3);">
+        <a href="https://drive.google.com/uc?export=download&id=1O9Qg5AEV-3g5SVlVFuqa1O0KhFSZzze1" target="_blank" class="bottom-action" style="background: linear-gradient(135deg, #1e3a8a, #2563eb); border: 1px solid #3b82f6;">
             📥 Download App APK
         </a>
-        <a href="https://wa.me/919529812784" class="bottom-action" style="background: #25d366; box-shadow: 0 6px 15px rgba(37,211,102,0.3);">
+        <a href="https://wa.me/919529812784" class="bottom-action" style="background: #25d366;">
             💬 Join WhatsApp Chat
         </a>
     </div>
@@ -352,7 +356,6 @@
     function scoreUp(element, isRight) {
         const txt = document.getElementById('gameStatus');
         
-        // पुराने कलर्स को साफ़ करना
         const siblingOptions = element.parentElement.getElementsByClassName('game-option');
         for(let option of siblingOptions) {
             option.style.background = '#0f172a';
@@ -377,6 +380,5 @@
 <style>
 @keyframes flash { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 </style>
-
 </body>
 </html>
