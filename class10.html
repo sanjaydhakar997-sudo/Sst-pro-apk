@@ -3,30 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Class 10th Subjects Hub | Sanjay Dhakar Sir</title>
+    <title>Class 10th Premium Hub | Sanjay Dhakar Sir</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-dark: #0f172a;
-            --accent-gold: #f39c12;
-            --bg-color: #f1f5f9;
+            --primary: #0f172a;
+            --accent: #f39c12;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --bg-grad: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         
         body { 
-            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%); 
-            color: #1e293b; 
-            padding-bottom: 60px; 
+            background: var(--bg-grad); 
+            color: var(--text-main); 
+            padding-bottom: 80px; 
             overflow-x: hidden; 
         }
 
-        /* 🚀 टॉप लाइव पट्टी */
-        .top-ticker {
-            background: linear-gradient(90deg, #1e3a8a, #0f172a);
+        /* 📡 टॉप रनिंग नोटिफिकेशन बार */
+        .live-ticker {
+            background: linear-gradient(90deg, #1e3a8a, #ef4444);
             color: #ffffff;
             font-size: 11px; font-weight: 800; text-align: center;
             padding: 8px 10px; letter-spacing: 0.5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         .container { max-width: 600px; margin: 0 auto; padding: 15px; }
@@ -34,42 +37,57 @@
         /* 🔥 प्रीमियम 3D डिजिटल बोर्ड हेडर */
         .app-header {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            padding: 35px 20px;
+            padding: 30px 20px;
             border-radius: 32px;
             text-align: center;
             margin-top: 15px;
-            margin-bottom: 25px;
-            border-top: 3px solid var(--accent-gold);
+            margin-bottom: 20px;
+            border-top: 3px solid var(--accent);
             border-bottom: 6px solid #090d16;
             box-shadow: 0 15px 35px rgba(15, 23, 42, 0.3);
         }
-        .app-header h1 { font-size: 26px; font-weight: 900; color: #ffffff; }
+        .app-header h1 { font-size: 26px; font-weight: 900; color: #ffffff; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
         .app-header p { font-size: 12px; color: #94a3b8; font-weight: 700; margin-top: 4px; letter-spacing: 1px; }
 
-        .section-title { 
-            font-size: 16px; 
-            font-weight: 900; 
-            color: #1e3a8a; 
-            margin: 20px 0 15px 0; 
-            display: flex; 
-            align-items: center; 
-            gap: 10px; 
+        /* 📊 थॉट ऑफ़ द डे / मोटिवेशनल बॉक्स */
+        .quote-box {
+            background: #fffbeb;
+            border-left: 5px solid var(--accent);
+            padding: 12px 16px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #b45309;
+            box-shadow: 0 4px 12px rgba(243, 156, 18, 0.08);
+        }
+
+        /* 🔍 स्मार्ट लाइव सर्च बार */
+        .search-wrapper { position: relative; margin-bottom: 25px; }
+        .search-bar {
+            width: 100%; padding: 16px 20px; border-radius: 20px;
+            border: 2px solid #cbd5e1; background: #ffffff;
+            font-size: 14px; font-weight: 700; color: var(--primary);
+            outline: none; box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+            transition: all 0.3s ease;
+        }
+        .search-bar:focus { border-color: #1e3a8a; box-shadow: 0 8px 25px rgba(30, 58, 138, 0.15); }
+
+        .section-title {
+            font-size: 16px; font-weight: 900; color: #1e3a8a;
+            margin-bottom: 15px; display: flex; align-items: center; gap: 10px;
         }
         .section-title::after { content: ''; flex: 1; height: 2px; background: linear-gradient(to right, #1e3a8a, transparent); }
 
-        /* 📑 विषयों की शानदार 3D लिस्ट */
-        .subject-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
+        /* 📑 विषयों की अल्ट्रा-प्रीमियम 3D ग्रिड */
+        .subject-grid { display: flex; flex-direction: column; gap: 15px; }
 
         .subject-card {
-            background: #ffffff;
+            background: var(--card-bg);
             padding: 22px 20px;
             border-radius: 24px;
             text-decoration: none;
-            color: #0f172a;
+            color: var(--text-main);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -77,30 +95,24 @@
             transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        /* विषय के हिसाब से अलग-अलग रंगीन 3D बॉर्डर्स */
-        .border-english { border-bottom: 6px solid #6366f1; }  /* इंडिगो */
-        .border-grammar { border-bottom: 6px solid #a855f7; }  /* पर्पल */
-        .border-sst { border-bottom: 6px solid #ef4444; }      /* रेड */
-        .border-science { border-bottom: 6px solid #10b981; }  /* ग्रीन */
-        .border-maths { border-bottom: 6px solid #ec4899; }    /* पिंक */
+        /* विषय के हिसाब से शानदार निओन और 3D बेस कलर्स */
+        .b-eng { border-bottom: 6px solid #6366f1; }
+        .b-sst { border-bottom: 6px solid #ef4444; }
+        .b-sci { border-bottom: 6px solid #10b981; }
+        .b-mat { border-bottom: 6px solid #ec4899; }
+        .b-hin { border-bottom: 6px solid #f59e0b; }
+        .b-san { border-bottom: 6px solid #14b8a6; }
 
         .subject-card:active {
             transform: translateY(4px);
             border-bottom-width: 2px;
         }
 
-        .sub-info h3 {
-            font-size: 16px;
-            font-weight: 800;
-        }
-        .sub-info p {
-            font-size: 11px;
-            color: #64748b;
-            font-weight: 600;
-            margin-top: 3px;
-        }
+        .sub-meta h3 { font-size: 16px; font-weight: 800; display: flex; align-items: center; gap: 8px; }
+        .sub-meta p { font-size: 12px; color: #64748b; font-weight: 600; margin-top: 4px; }
 
-        .open-badge {
+        /* इंटरएक्टिव 'खोलें' बटन */
+        .action-indicator {
             background: #f1f5f9;
             color: #0f172a;
             font-size: 12px;
@@ -110,80 +122,139 @@
             border: 1px solid #cbd5e1;
             transition: 0.2s;
         }
-        .subject-card:active .open-badge {
-            background: var(--primary-dark);
+        .subject-card:active .action-indicator {
+            background: #1e3a8a;
             color: white;
-            border-color: var(--primary-dark);
+            border-color: #1e3a8a;
         }
 
-        .back-home-link {
-            display: block; text-align: center; margin-top: 40px;
+        /* 💬 क्विक हेल्प डेस्क और व्हाट्सएप सपोर्ट */
+        .help-desk {
+            margin-top: 35px;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            padding: 20px;
+            border-radius: 26px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 5px solid #090d16;
+        }
+        .help-btn {
+            background: #25d366; color: white; text-decoration: none;
+            padding: 10px 16px; border-radius: 14px; font-size: 12px; font-weight: 800;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+        }
+
+        .footer-back {
+            display: block; text-align: center; margin-top: 30px;
             color: #64748b; font-size: 13px; font-weight: 700; text-decoration: none;
         }
     </style>
 </head>
 <body>
 
-    <div class="top-ticker">🔥 बोर्ड परीक्षा 2026 स्पेशल: टॉपर बनने का संकल्प बैच ⭐</div>
+    <div class="live-ticker">🎯 बोर्ड परीक्षा संकल्प बैच 2026: हर कदम पर आपके साथ, धाकड़ सर! 🔥</div>
 
     <div class="container">
         
         <div class="app-header">
-            <h1>कक्षा 10 - विषय चयन</h1>
-            <p>BY SANJAY DHAKAR SIR</p>
+            <h1>कक्षा 10 - डिजिटल स्टडी हब</h1>
+            <p>GUIDE BY SANJAY DHAKAR SIR</p>
         </div>
 
-        <h2 class="section-title">📚 अपने विषय पर क्लिक करें</h2>
+        <div class="quote-box">
+            💡 <b>आज का विचार:</b> "कठिन परिश्रम का कोई विकल्प नहीं है, आपकी आज की मेहनत कल का परिणाम बदलेगी!"
+        </div>
 
-        <div class="subject-list">
+        <div class="search-wrapper">
+            <input type="text" id="subjectSearch" class="search-bar" placeholder="🔍 अपना विषय खोजें (उदा. English, विज्ञान)..." onkeyup="searchSubjects()">
+        </div>
+
+        <h2 class="section-title">📚 अपने पसंदीदा विषय का चयन करें</h2>
+
+        <div class="subject-grid" id="mainGrid">
             
-            <a href="class10-english.html" class="subject-card border-english">
-                <div class="sub-info">
-                    <h3 style="color: #4338ca;">🇬🇧 English (First Flight & Footprints)</h3>
-                    <p>Prose, Poetry & Supplementary Reader</p>
+            <a href="class10-english.html" class="subject-card b-eng">
+                <div class="sub-meta">
+                    <h3 style="color: #4338ca;">🇬🇧 English (अंग्रेजी कोर्स)</h3>
+                    <p>First Flight, Footprints & Complete Grammar</p>
                 </div>
-                <div class="open-badge">खोलें 🔓</div>
+                <div class="action-indicator">पढ़ें 🔓</div>
             </a>
 
-            <a href="class10-grammar.html" class="subject-card border-grammar">
-                <div class="sub-info">
-                    <h3 style="color: #7c3aed;">📝 English Grammar & Composition</h3>
-                    <p>Tense, Passive, Narration & Writing Skills</p>
-                </div>
-                <div class="open-badge">खोलें 🔓</div>
-            </a>
-
-            <a href="class10-sst.html" class="subject-card border-sst">
-                <div class="sub-info">
+            <a href="class10-sst.html" class="subject-card b-sst">
+                <div class="sub-meta">
                     <h3 style="color: #b91c1c;">🌳 Social Studies (सामाजिक विज्ञान)</h3>
-                    <p>इतिहास, भूगोल, राजनीति एवं अर्थशास्त्र</p>
+                    <p>इतिहास, भूगोल, नागरिक शास्त्र एवं अर्थशास्त्र</p>
                 </div>
-                <div class="open-badge">खोलें 🔓</div>
+                <div class="action-indicator">पढ़ें 🔓</div>
             </a>
 
-            <a href="class10-science.html" class="subject-card border-science">
-                <div class="sub-info">
-                    <h3 style="color: #047857;">🔬 Science (विज्ञान)</h3>
-                    <p>Physics, Chemistry & Biology Notes</p>
+            <a href="class10-science.html" class="subject-card b-sci">
+                <div class="sub-meta">
+                    <h3 style="color: #047857;">🔬 Science (विज्ञान हब)</h3>
+                    <p>भौतिक, रसायन और जीव विज्ञान के बेस्ट नोट्स</p>
                 </div>
-                <div class="open-badge">खोलें 🔓</div>
+                <div class="action-indicator">पढ़ें 🔓</div>
             </a>
 
-            <a href="class10-maths.html" class="subject-card border-maths">
-                <div class="sub-info">
-                    <h3 style="color: #be185d;">📐 Mathematics (गणित सूत्र)</h3>
-                    <p>Complete Formula Cheat Sheet 2026</p>
+            <a href="class10-maths.html" class="subject-card b-mat">
+                <div class="sub-meta">
+                    <h3 style="color: #be185d;">📐 Mathematics (गणित ज़ोन)</h3>
+                    <p>अध्यायवार हल, सूत्र शीट्स एवं महत्वपूर्ण सवाल</p>
                 </div>
-                <div class="open-badge">खोलें 🔓</div>
+                <div class="action-indicator">पढ़ें 🔓</div>
+            </a>
+
+            <a href="class10-hindi.html" class="subject-card b-hin">
+                <div class="sub-meta">
+                    <h3 style="color: #d97706;">✍️ Hindi (हिंदी माला)</h3>
+                    <p>क्षितिज भाग-2, कृतिका एवं सम्पूर्ण व्याकरण बोध</p>
+                </div>
+                <div class="action-indicator">पढ़ें 🔓</div>
+            </a>
+
+            <a href="class10-sanskrit.html" class="subject-card b-san">
+                <div class="sub-meta">
+                    <h3 style="color: #0f766e;">🕉️ Sanskrit (संस्कृतम्)</h3>
+                    <p>शेमुषी व्याख्या, सूक्तियां एवं धातु-रूप व्याकरण</p>
+                </div>
+                <div class="action-indicator">पढ़ें 🔓</div>
             </a>
 
         </div>
 
-        <a href="index.html" class="back-home-link">⬅️ मुख्य मेनू पर वापस जाएं</a>
+        <div class="help-desk">
+            <div>
+                <h4 style="font-size: 14px; font-weight: 800;">❓ कोई सवाल या समस्या है?</h4>
+                <p style="font-size: 11px; color: #94a3b8; margin-top: 2px; font-weight: 600;">सीधे धाकड़ सर से व्हाट्सएप पर सहायता लें।</p>
+            </div>
+            <a href="https://wa.me/919529812784" target="_blank" class="help-btn">Ask Sir 💬</a>
+        </div>
+
+        <a href="index.html" class="footer-back">⬅️ मुख्य होम पेज पर वापस जाएं</a>
     </div>
 
     <script>
-        // सुरक्षा लॉक (राइट क्लिक डिसेबल ताकि कोई कोड कॉपी न करे)
+        // 🔍 लाइव सर्च बार का जादुई लॉजिक
+        function searchSubjects() {
+            let input = document.getElementById('subjectSearch').value.toLowerCase();
+            let cards = document.getElementsByClassName('subject-card');
+            
+            for (let i = 0; i < cards.length; i++) {
+                let title = cards[i].querySelector('.sub-meta h3').innerText.toLowerCase();
+                let desc = cards[i].querySelector('.sub-meta p').innerText.toLowerCase();
+                
+                if (title.includes(input) || desc.includes(input)) {
+                    cards[i].style.display = "flex";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
+
+        // राइट क्लिक लॉक (सुरक्षा फीचर)
         document.addEventListener('contextmenu', e => e.preventDefault());
     </script>
 </body>
