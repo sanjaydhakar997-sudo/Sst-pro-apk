@@ -1,62 +1,8 @@
-<!DOCTYPE html>
-<html lang="hi">
-<head>
-    <meta charset="UTF-8">
-    <title>Sanjay Sir - 500 Level Master Mission</title>
-    <style>
-        body { background: #070a13; color: white; text-align: center; font-family: sans-serif; padding: 20px; }
-        .game-box { background: #1e1b4b; padding: 30px; border-radius: 20px; border: 2px solid #8b5cf6; }
-        #level-display { font-size: 24px; color: #fbbf24; font-weight: bold; }
-        .btn { background: #10b981; padding: 15px 30px; border: none; border-radius: 10px; color: white; font-weight: bold; cursor: pointer; margin-top: 20px; }
-    </style>
-</head>
-<body>
-
-    <div class="game-box">
-        <h1>🚀 500 LEVEL MASTER MISSION</h1>
-        <div id="level-display">Level: 1</div>
-        <p id="task-text">Mission: Noun (नाम) पहचानो!</p>
-        <div id="options"></div>
-        <button class="btn" onclick="nextLevel()">अगला मिशन (Next Level)</button>
+    <div id="coming-soon-box" style="text-align: center; margin-top: 50px; padding: 40px; border: 4px dashed #8b5cf6; border-radius: 20px;">
+        <h2 style="color: #fbbf24; font-size: 28px;">🚀 COMING SOON...</h2>
+        <p style="color: #a78bfa; font-size: 18px; margin-top: 10px;">
+            Sanjay Sir ka 500 Level ka Maha-Mission taiyaar ho raha hai!<br>
+            Ab padhai hogi ek nayi shaan se. <br>
+            <b>Stay Tuned, Toppers!</b>
+        </p>
     </div>
-
-        <script>
-        let level = 1;
-        // मिशन का डेटा (Noun से शुरुआत)
-        const missions = [
-            { q: "इनमें से Noun (नाम) कौन सा है?", o: ["दौड़ना", "सुंदर", "चित्तौड़गढ़", "खाना"], a: 2 },
-            { q: "बिल्ली कौन सा Noun है?", o: ["Proper", "Common", "Verb", "Adjective"], a: 1 }
-        ];
-
-        function updateMission() {
-            if (level <= 2) {
-                let m = missions[level-1];
-                document.getElementById('task-text').innerText = "Level " + level + ": " + m.q;
-                let optDiv = document.getElementById('options');
-                optDiv.innerHTML = '';
-                m.o.forEach((val, i) => {
-                    let btn = document.createElement('button');
-                    btn.innerText = val;
-                    btn.onclick = () => checkAnswer(i, m.a);
-                    optDiv.appendChild(btn);
-                });
-            }
-        }
-
-        function checkAnswer(selected, correct) {
-            if(selected === correct) {
-                alert("सही जवाब! अगले लेवल के लिए तैयार रहें।");
-                level++;
-                document.getElementById('level-display').innerText = "Level: " + level;
-                updateMission();
-            } else {
-                alert("गलत जवाब! फिर से कोशिश करें।");
-            }
-        }
-        
-        // शुरू करें
-        updateMission();
-    </script>
-
-</body>
-</html>
