@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SST 3D Arena - Sanjay Dhakar</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #090d16;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 15px;
+        }
+
+        .game-container {
+            width: 100%;
+            max-width: 450px;
+            background: linear-gradient(135deg, #1e1b4b 0%, #311042 100%);
+            border-radius: 24px;
+            padding: 20px;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.5);
+            text-align: center;
+            border: 2px solid #5b21b6;
+        }
+
+        .game-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .game-tag {
+            background: #e11d48;
+            color: white;
+            font-size: 11px;
+            font-weight: 800;
+            padding: 4px 12px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .score-board {
+            font-size: 14px;
+            font-weight: 800;
+            color: #fbbf24;
+            background: rgba(251, 191, 36, 0.1);
+            padding: 4px 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(251, 191, 36, 0.2);
+        }
+
+        /* 3D ग्रिड व्यू पोर्ट */
+        .game-viewport {
+            width: 100%;
+            height: 250px;
+            background: #020617;
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            perspective: 500px;
+        }
+
+        /* 3D झुका हुआ मैदान */
+        .floor-3d {
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, #2e1065 20%, #0f172a 80%);
+            background-size: 20px 20px;
+            background-image: linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+            transform: rotateX(45deg);
+            transform-origin: bottom;
+            position: absolute;
+            bottom: 0;
+        }
+
+        /* 3D सिक्का */
+        .coin-3d {
+            position: absolute;
+            width: 26px;
+            height: 26px;
+            background: #fbbf24;
+            border-radius: 50%;
+            top: 30%;
+            left: 45%;
+            box-shadow: 0 0 20px #fbbf24;
+            animation: spinCoin 1.2s linear infinite;
+            border: 2px solid #fff;
+        }
+
+        /* 3D प्लेयर */
+        .player-3d {
+            position: absolute;
+            width: 22px;
+            height: 38px;
+            background: #38bdf8;
+            border-radius: 6px 6px 2px 2px;
+            bottom: 15%;
+            left: 47%;
+            box-shadow: 0 0 15px #38bdf8;
+            transition: all 0.15s ease;
+            border: 2px solid #fff;
+        }
+
+        .player-eyes {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 6px;
+            padding: 0 2px;
+        }
+
+        .eye {
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+        }
+
+        /* लाइव प्रश्न बॉक्स */
+        .quiz-box {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.98);
+            padding: 20px;
+            box-sizing: border-box;
+            flex-direction: column;
+            justify-content: center;
+            z-index: 10;
+            border-radius: 16px;
+        }
+
+        .quiz-question {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+        .option-btn {
+            background: #1e293b;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: left;
+            transition: 0.2s;
+        }
+
+        .option-btn:active {
+            background: #334155;
+            transform: scale(0.98);
+        }
+
+        /* विनर स्क्रीन */
+        .win-screen {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(2, 6, 23, 0.95);
+            padding: 20px;
+            box-sizing: border-box;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 11;
+            border-radius: 16px;
+        }
+
+        .win-title {
+            color: #4ade80;
+            font-size: 26px;
+            margin-bottom: 8px;
+            font-weight: 900;
+            animation: bounce 1s infinite;
+        }
+
+        .retry-btn {
+            background: #4ade80;
+            color: #020617;
+            border: none;
+            padding: 10px 24px;
+            font-weight: 800;
+            border-radius: 10px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-top: 15px;
+            box-shadow: 0 4px 15px rgba(74, 222, 128, 0.4);
+        }
+
+        /* मोबाइल कंट्रोल्स */
+        .controls-wrapper {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-btn {
+            background: #334155;
+            border: none;
+            color: white;
+            width: 50px;
+            height: 45px;
+            border-radius: 12px;
+            font-weight: 900;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            border-bottom: 3px solid #1e293b;
+        }
+
+        .nav-btn:active {
+            transform: translateY(2px);
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .vertical-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* एनिमेशन */
+        @keyframes spinCoin {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(360deg); }
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="game-container">
+        <div class="game-header">
+            <span class="game-tag">SST 3D Arena</span>
+            <div class="score-board">Coins: <span id="game-score">0</span>/5 🪙</div>
+        </div>
+
+        <div class="game-viewport">
+            <div class="floor-3d">
+                <div id="3d-coin" class="coin-3d"></div>
+                <div id="3d-player" class="player-3d">
+                    <div class="player-eyes">
+                        <div class="eye"></div>
+                        <div class="eye"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="game-quiz-box" class="quiz-box">
+                <p id="game-question" class="quiz-question"></p>
+                <div id="game-options-container" class="options-grid"></div>
+            </div>
+
+            <div id="game-win-screen" class="win-screen">
+                <h3 class="win-title">🎉 YOU WIN! 🎉</h3>
+                <p style="font-size: 13px; color: #94a3b8;">Aapne SST 3D Arena ko फतेह kar liya hai!</p>
+                <button onclick="resetSstGame()" class="retry-btn">Play Again</button>
+            </div>
+        </div>
+
+        <div class="controls-wrapper">
+            <button onclick="movePlayer('left')" class="nav-btn">◀</button>
+            <div class="vertical-buttons">
+                <button onclick="movePlayer('up')" class="nav-btn">▲</button>
+                <button onclick="movePlayer('down')" class="nav-btn">▼</button>
+            </div>
+            <button onclick="movePlayer('right')" class="nav-btn">▶</button>
+        </div>
+    </div>
+
+    <script>
+        const sstQuestions = [
+            { q: "चित्तौड़गढ़ का प्रसिद्ध कीर्ति स्तम्भ किसने बनवाया था?", o: ["राणा सांगा", "राणा कुम्भा", "महाराणा प्रताप", "राव जोधा"], a: 1 },
+            { q: "हमारे भारतीय संविधान को बनने में कुल कितना समय लगा?", o: ["2 वर्ष 11 माह 18 दिन", "3 वर्ष", "1 वर्ष 5 माह", "2 वर्ष 5 माह"], a: 0 },
+            { q: "राजस्थान का राज्य नृत्य कौन सा है?", o: ["कालबेलिया", "कत्थक", "घूमर", "गैर"], a: 2 },
+            { q: "हल्दीघाटी का ऐतिहासिक युद्ध किस वर्ष लड़ा गया था?", o: ["1556", "1576", "1761", "1526"], a: 1 },
+            { q: "सौरमंडल का सबसे बड़ा ग्रह कौन सा है?", o: ["शनि", "पृथ्वी", "मंगल", "बृहस्पति (Jupiter)"], a: 3 },
+            { q: "भारत में प्रथम स्वतंत्रता संग्राम (क्रांति) कब शुरू हुई थी?", o: ["1947", "1857", "1920", "1942"], a: 1 }
+        ];
+
+        let score = 0;
+        let playerX = 47; 
+        let playerY = 15; 
+        let coinX = 35;
+        let coinY = 60;
+        let currentQuestionIndex = 0;
+
+        function movePlayer(direction) {
+            const step = 8;
+            if (direction === 'left' && playerX > 5) playerX -= step;
+            if (direction === 'right' && playerX < 90) playerX += step;
+            if (direction === 'up' && playerY < 85) playerY += step;
+            if (direction === 'down' && playerY > 10) playerY -= step;
+
+            const player = document.getElementById('3d-player');
+            player.style.left = playerX + '%';
+            player.style.bottom = playerY + '%';
+
+            checkCollision();
+        }
+
+        function checkCollision() {
+            let distanceX = Math.abs(playerX - coinX);
+            let distanceY = Math.abs(playerY - coinY);
+
+            if (distanceX < 10 && distanceY < 10) {
+                openGameQuiz();
+            }
+        }
+
+        function openGameQuiz() {
+            document.getElementById('3d-coin').style.display = 'none';
+            currentQuestionIndex = Math.floor(Math.random() * sstQuestions.length);
+            const currentQ = sstQuestions[currentQuestionIndex];
+
+            document.getElementById('game-question').innerText = currentQ.q;
+            const container = document.getElementById('game-options-container');
+            container.innerHTML = '';
+
+            currentQ.o.forEach((opt, idx) => {
+                let btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerText = (idx + 1) + ". " + opt;
+                btn.onclick = () => checkGameAnswer(idx);
+                container.appendChild(btn);
+            });
+
+            document.getElementById('game-quiz-box').style.display = 'flex';
+        }
+
+        function checkGameAnswer(selectedIdx) {
+            const currentQ = sstQuestions[currentQuestionIndex];
+            document.getElementById('game-quiz-box').style.display = 'none';
+
+            if (selectedIdx === currentQ.a) {
+                score++;
+                document.getElementById('game-score').innerText = score;
+                alert("बिल्कुल सही जवाब! 🪙 1 सिक्का मिला।");
+            } else {
+                alert("गलत जवाब! सही उत्तर था: " + currentQ.o[currentQ.a]);
+            }
+
+            if (score >= 5) {
+                document.getElementById('game-win-screen').style.display = 'flex';
+            } else {
+                generateNewCoin();
+            }
+        }
+
+        function generateNewCoin() {
+            coinX = Math.floor(Math.random() * 65) + 15;
+            coinY = Math.floor(Math.random() * 50) + 25;
+            const coinDiv = document.getElementById('3d-coin');
+            coinDiv.style.left = coinX + '%';
+            coinDiv.style.top = (100 - coinY - 20) + '%'; 
+            coinDiv.style.display = 'block';
+        }
+
+        function resetSstGame() {
+            score = 0;
+            playerX = 47;
+            playerY = 15;
+            document.getElementById('game-score').innerText = score;
+            document.getElementById('game-win-screen').style.display = 'none';
+            
+            const player = document.getElementById('3d-player');
+            player.style.left = playerX + '%';
+            player.style.bottom = playerY + '%';
+
+            const coinDiv = document.getElementById('3d-coin');
+            coinDiv.style.left = '45%';
+            coinDiv.style.top = '30%';
+            coinDiv.style.display = 'block';
+            coinX = 45;
+            coinY = 50;
+        }
+    </script>
+</body>
+</html>
+
