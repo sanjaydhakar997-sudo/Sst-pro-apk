@@ -20,30 +20,43 @@
         <button class="btn" onclick="nextLevel()">अगला मिशन (Next Level)</button>
     </div>
 
-    <script>
+        <script>
         let level = 1;
+        // मिशन का डेटा (Noun से शुरुआत)
+        const missions = [
+            { q: "इनमें से Noun (नाम) कौन सा है?", o: ["दौड़ना", "सुंदर", "चित्तौड़गढ़", "खाना"], a: 2 },
+            { q: "बिल्ली कौन सा Noun है?", o: ["Proper", "Common", "Verb", "Adjective"], a: 1 }
+        ];
 
-        function nextLevel() {
-            if(level < 500) {
+        function updateMission() {
+            if (level <= 2) {
+                let m = missions[level-1];
+                document.getElementById('task-text').innerText = "Level " + level + ": " + m.q;
+                let optDiv = document.getElementById('options');
+                optDiv.innerHTML = '';
+                m.o.forEach((val, i) => {
+                    let btn = document.createElement('button');
+                    btn.innerText = val;
+                    btn.onclick = () => checkAnswer(i, m.a);
+                    optDiv.appendChild(btn);
+                });
+            }
+        }
+
+        function checkAnswer(selected, correct) {
+            if(selected === correct) {
+                alert("सही जवाब! अगले लेवल के लिए तैयार रहें।");
                 level++;
                 document.getElementById('level-display').innerText = "Level: " + level;
                 updateMission();
             } else {
-                alert("बधाई हो! आपने 500 लेवल का इतिहास रच दिया है!");
+                alert("गलत जवाब! फिर से कोशिश करें।");
             }
         }
-
-        function updateMission() {
-            const task = document.getElementById('task-text');
-            // यहाँ 500 लेवल का लॉजिक काम करेगा
-            if(level <= 50) {
-                task.innerText = "Level " + level + ": बेसिक Noun और नाम पहचानें।";
-            } else if(level <= 200) {
-                task.innerText = "Level " + level + ": अब विज्ञान और गणित के पहेलियाँ सुलझाएं।";
-            } else {
-                task.innerText = "Level " + level + ": एडवांस कोडिंग और सोशल स्ट्रैटेजी मिशन।";
-            }
-        }
+        
+        // शुरू करें
+        updateMission();
     </script>
+
 </body>
 </html>
