@@ -56,7 +56,7 @@
         .topic-card h3 { font-size: 16px; font-weight: 800; color: #1e1b4b; padding-right: 50px; }
         .topic-card p { font-size: 12px; color: #64748b; font-weight: 600; margin-top: 2px; }
         
-        /* बटन कंटेनर ताकि दोनों बटन आस-पास आ सकें */
+        /* 🌟 Dono button ko aaspas lane ke liye container */
         .btn-group { display: flex; gap: 10px; margin-top: 15px; }
         
         .btn-video { 
@@ -75,7 +75,7 @@
         
         .btn-video:active, .btn-pdf:active { transform: scale(0.97); }
         
-        /* 📺 सिर्फ वीडियो के लिए नॉर्मल पॉपअप */
+        /* 📺 Sirf video chalane ke liye clean popup window */
         .video-modal { 
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
             background: rgba(15, 23, 42, 0.98); z-index: 2000; flex-direction: column; justify-content: center;
@@ -120,13 +120,13 @@
     </div>
 
     <script>
-        // 🎯 डेटा बैंक: वीडियो लिंक और आपकी वही पीडीएफ
+        // 🎯 Data Bank: Ismein pdfUrl ko 'noun_notes.pdf' kiya hai jo usi folder mein padi hai
         const myClassesData = [
             {
                 title: "Noun (संज्ञा) - Part 1: Definition & Types",
                 desc: "Noun किसे कहते हैं? Person, Place, Animal और Thing को बिल्कुल जीरो लेवल से समझें।",
                 ytId: "_yeltWMnQQY", 
-                pdfUrl: "noun_notes.pdf" // आपके फोल्डर स्ट्रक्चर के हिसाब से सही रास्ता
+                pdfUrl: "noun_notes.pdf" 
             },
             {
                 title: "Noun (संज्ञा) - Part 2: Exercise & Sorting Game",
@@ -154,7 +154,7 @@
                         <p>${item.desc}</p>
                         <div class="btn-group">
                             <button class="btn-video" onclick="openVideo('${item.title}', '${item.ytId}')">📺 क्लास देखें</button>
-                            <a class="btn-pdf" href="${item.pdfUrl}" target="_blank">📥 नोट्स डाउनलोड / देखें</a>
+                            <a class="btn-pdf" href="${item.pdfUrl}" target="_blank">📥 नोट्स डाउनलोड करें</a>
                         </div>
                     </div>
                 `;
