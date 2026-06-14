@@ -7,30 +7,90 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%); color: #1e293b; padding-bottom: 80px; user-select: none; }
+        
+        body { 
+            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%); 
+            color: #1e293b; 
+            padding-bottom: 80px; 
+            user-select: none; 
+        }
+        
         .container { max-width: 600px; margin: 0 auto; padding: 15px; }
-        .app-header { background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%); padding: 25px 20px; border-radius: 32px; text-align: center; margin-top: 15px; margin-bottom: 25px; border-bottom: 6px solid #1e1b4b; box-shadow: 0 15px 35px rgba(49, 46, 129, 0.2); position: relative; }
-        .header-back-btn { position: absolute; top: 15px; left: 20px; color: #ffffff; text-decoration: none; font-size: 18px; font-weight: 900; background: rgba(255, 255, 255, 0.1); padding: 4px 12px; border-radius: 12px; }
+        
+        .app-header {
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+            padding: 25px 20px; border-radius: 32px; text-align: center;
+            margin-top: 15px; margin-bottom: 25px; border-bottom: 6px solid #1e1b4b;
+            box-shadow: 0 15px 35px rgba(49, 46, 129, 0.2); position: relative;
+        }
+        
+        .header-back-btn { 
+            position: absolute; top: 15px; left: 20px; color: #ffffff; 
+            text-decoration: none; font-size: 18px; font-weight: 900; 
+            background: rgba(255, 255, 255, 0.1); padding: 4px 12px; border-radius: 12px; 
+        }
+        
         .app-header h1 { font-size: 22px; font-weight: 900; color: #ffffff; }
         .app-header p { font-size: 11px; color: #c7d2fe; font-weight: 700; margin-top: 4px; letter-spacing: 1px; }
-        .section-title { font-size: 16px; font-weight: 900; color: #1e1b4b; margin: 25px 0 15px 0; display: flex; align-items: center; gap: 10px; }
+        
+        .section-title { 
+            font-size: 16px; font-weight: 900; color: #1e1b4b; 
+            margin: 25px 0 15px 0; display: flex; align-items: center; gap: 10px; 
+        }
         .section-title::after { content: ''; flex: 1; height: 2px; background: linear-gradient(to right, #1e1b4b, transparent); }
+        
         .topics-list { display: flex; flex-direction: column; gap: 15px; }
-        .topic-card { background: #ffffff; padding: 20px; border-radius: 24px; border: 1px solid #e2e8f0; border-bottom: 6px solid #cbd5e1; box-shadow: 0 8px 20px rgba(0,0,0,0.02); position: relative; overflow: hidden; }
-        .class-badge { position: absolute; top: 0; right: 0; background: #e0e7ff; color: #312e81; font-size: 10px; font-weight: 800; padding: 4px 12px; border-radius: 0 0 0 14px; }
+        
+        .topic-card { 
+            background: #ffffff; padding: 20px; border-radius: 24px; 
+            border: 1px solid #e2e8f0; border-bottom: 6px solid #cbd5e1; 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.02); position: relative; overflow: hidden; 
+        }
+        
+        .class-badge { 
+            position: absolute; top: 0; right: 0; background: #e0e7ff; 
+            color: #312e81; font-size: 10px; font-weight: 800; 
+            padding: 4px 12px; border-radius: 0 0 0 14px; 
+        }
+        
         .topic-card h3 { font-size: 16px; font-weight: 800; color: #1e1b4b; padding-right: 50px; }
         .topic-card p { font-size: 12px; color: #64748b; font-weight: 600; margin-top: 2px; }
-        .btn-study { width: 100%; margin-top: 15px; padding: 14px; border-radius: 16px; background: linear-gradient(135deg, #312e81, #1e1b4b); color: white; font-size: 13px; font-weight: 800; text-align: center; cursor: pointer; transition: 0.2s; border: none; box-shadow: 0 4px 15px rgba(49, 46, 129, 0.2); }
-        .btn-study:active { transform: scale(0.97); }
-        .theater-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.95); z-index: 2000; flex-direction: column; }
-        .theater-control { background: #0f172a; padding: 12px 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1e293b; }
-        .theater-title { color: #ffffff; font-size: 13px; font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 50%; }
-        .btn-download-pdf { background: #10b981; color: white; padding: 6px 12px; border-radius: 10px; font-size: 11px; font-weight: 800; text-decoration: none; margin-right: 10px; display: inline-block; cursor: pointer; }
-        .btn-close-theater { background: #ef4444; color: white; padding: 6px 14px; border-radius: 10px; font-size: 11px; font-weight: 800; cursor: pointer; }
-        .theater-video-box { background: #000000; width: 100%; position: relative; padding-bottom: 56.25%; height: 0; }
-        .theater-video-box iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
-        .theater-pdf-box { flex: 1; background: #1e293b; width: 100%; position: relative; }
-        .theater-pdf-box iframe { width: 100%; height: 100%; border: none; }
+        
+        /* बटन कंटेनर ताकि दोनों बटन आस-पास आ सकें */
+        .btn-group { display: flex; gap: 10px; margin-top: 15px; }
+        
+        .btn-video { 
+            flex: 1; padding: 12px; border-radius: 14px; 
+            background: linear-gradient(135deg, #312e81, #1e1b4b); color: white; 
+            font-size: 12px; font-weight: 800; text-align: center; cursor: pointer; 
+            border: none; box-shadow: 0 4px 15px rgba(49, 46, 129, 0.2); text-decoration: none;
+        }
+        
+        .btn-pdf { 
+            flex: 1; padding: 12px; border-radius: 14px; 
+            background: linear-gradient(135deg, #10b981, #059669); color: white; 
+            font-size: 12px; font-weight: 800; text-align: center; cursor: pointer; 
+            border: none; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2); text-decoration: none;
+        }
+        
+        .btn-video:active, .btn-pdf:active { transform: scale(0.97); }
+        
+        /* 📺 सिर्फ वीडियो के लिए नॉर्मल पॉपअप */
+        .video-modal { 
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(15, 23, 42, 0.98); z-index: 2000; flex-direction: column; justify-content: center;
+        }
+        
+        .video-control { 
+            background: #0f172a; padding: 15px; display: flex; 
+            justify-content: space-between; align-items: center; width: 100%; position: absolute; top: 0; left: 0;
+        }
+        .video-title { color: #ffffff; font-size: 13px; font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 70%; }
+        .btn-close-video { background: #ef4444; color: white; padding: 6px 14px; border-radius: 10px; font-size: 11px; font-weight: 800; cursor: pointer; }
+        
+        .video-container-box { background: #000000; width: 100%; position: relative; padding-bottom: 56.25%; height: 0; }
+        .video-container-box iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+        
         .back-menu-link { display: block; text-align: center; margin-top: 40px; color: #64748b; font-size: 13px; font-weight: 700; text-decoration: none; }
     </style>
 </head>
@@ -41,45 +101,44 @@
             <h1>Noun (संज्ञा) Full Course</h1>
             <p>SMART STUDY ZONE • BY SANJAY SIR</p>
         </div>
+
         <h2 class="section-title">📝 सभी लाइव क्लासेस और डिजिटल नोट्स</h2>
+
         <div class="topics-list" id="grammar-container"></div>
+
         <a href="../english-grammar.html" class="back-menu-link">⬅️ ग्रामर मेनू पर वापस जाएं</a>
     </div>
 
-    <div class="theater-modal" id="theaterModal">
-        <div class="theater-control">
-            <div class="theater-title" id="currentTitle">Class Topic</div>
-            <div style="display: flex; align-items: center;">
-                <a id="downloadButton" href="" download class="btn-download-pdf">📥 नोट्स डाउनलोड करें</a>
-                <div class="btn-close-theater" onclick="closeTheater()">✖️ बंद करें</div>
-            </div>
+    <div class="video-modal" id="videoModal">
+        <div class="video-control">
+            <div class="video-title" id="currentVideoTitle">Class Topic</div>
+            <div class="btn-close-video" onclick="closeVideo()">✖️ बंद करें</div>
         </div>
-        <div class="theater-video-box">
-            <iframe id="theaterVideo" src="" allowfullscreen></iframe>
+        <div class="video-container-box">
+            <iframe id="mainVideoFrame" src="" allowfullscreen></iframe>
         </div>
-        <div class="theater-pdf-box" id="pdfWrapper"></div>
     </div>
 
     <script>
-        // 🎯 अब तीनों क्लासेस के लिए सिर्फ एक ही मास्टर पीडीएफ फाइल (noun_notes.pdf) लिंक है
+        // 🎯 डेटा बैंक: वीडियो लिंक और आपकी वही पीडीएफ
         const myClassesData = [
             {
                 title: "Noun (संज्ञा) - Part 1: Definition & Types",
                 desc: "Noun किसे कहते हैं? Person, Place, Animal और Thing को बिल्कुल जीरो लेवल से समझें।",
                 ytId: "_yeltWMnQQY", 
-                pdfUrl: "../noun_notes.pdf"
+                pdfUrl: "noun_notes.pdf" // आपके फोल्डर स्ट्रक्चर के हिसाब से सही रास्ता
             },
             {
                 title: "Noun (संज्ञा) - Part 2: Exercise & Sorting Game",
-                desc: "मज़ेदार board game के साथ शब्दों में से Person, Place, Animal और Thing छांटना सीखें।",
+                desc: "मज़ेदार बोर्ड गेम के साथ शब्दों में से Person, Place, Animal और Thing छांटना सीखें।",
                 ytId: "rgt9ohZt6cs", 
-                pdfUrl: "../noun_notes.pdf"
+                pdfUrl: "noun_notes.pdf"
             },
             {
                 title: "Noun (संज्ञा) - Part 3: Sentence Identification Test",
-                desc: "वाक्यों में noun की पहचान करना और noun va verb (kriya) के अंतर को समझें।",
+                desc: "वाक्यों में नाउन की पहचान करना और नाउन व वर्ब (क्रिया) के अंतर को समझें।",
                 ytId: "1KCoQHR__oo", 
-                pdfUrl: "../noun_notes.pdf"
+                pdfUrl: "noun_notes.pdf"
             }
         ];
 
@@ -88,32 +147,31 @@
             let html = '';
             myClassesData.forEach((item, index) => {
                 let classNum = String(index + 1).padStart(2, '0');
-                let clickAction = `openTheater('${item.title}', '${item.ytId}', '${item.pdfUrl}')`;
                 html += `
                     <div class="topic-card">
                         <div class="class-badge">Class ${classNum}</div>
                         <h3>${item.title}</h3>
                         <p>${item.desc}</p>
-                        <button class="btn-study" onclick="${clickAction}">📖 क्लास देखें + नोट्स पढ़ें</button>
+                        <div class="btn-group">
+                            <button class="btn-video" onclick="openVideo('${item.title}', '${item.ytId}')">📺 क्लास देखें</button>
+                            <a class="btn-pdf" href="${item.pdfUrl}" target="_blank">📥 नोट्स डाउनलोड / देखें</a>
+                        </div>
                     </div>
                 `;
             });
             container.innerHTML = html;
         }
 
-        function openTheater(title, ytId, pdfUrl) {
-            document.getElementById('currentTitle').innerText = title;
-            document.getElementById('theaterVideo').src = "https://www.youtube.com/embed/" + ytId + "?autoplay=1&rel=0";
-            document.getElementById('pdfWrapper').innerHTML = `<iframe src="${pdfUrl}#toolbar=0&navpanes=0"></iframe>`;
-            document.getElementById('downloadButton').href = pdfUrl;
-            document.getElementById('theaterModal').style.display = "flex";
+        function openVideo(title, ytId) {
+            document.getElementById('currentVideoTitle').innerText = title;
+            document.getElementById('mainVideoFrame').src = "https://www.youtube.com/embed/" + ytId + "?autoplay=1&rel=0";
+            document.getElementById('videoModal').style.display = "flex";
             document.body.style.overflow = "hidden";
         }
 
-        function closeTheater() {
-            document.getElementById('theaterModal').style.display = "none";
-            document.getElementById('theaterVideo').src = "";
-            document.getElementById('pdfWrapper').innerHTML = "";
+        function closeVideo() {
+            document.getElementById('videoModal').style.display = "none";
+            document.getElementById('mainVideoFrame').src = "";
             document.body.style.overflow = "auto";
         }
 
