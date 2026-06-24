@@ -3,143 +3,246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Civics Detailed Classes - Class 10</title>
+    <title>Civics Premium Course - Class 10</title>
     <style>
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        body { font-family: 'Segoe UI', Roboto, sans-serif; background-color: #f1f5f9; margin: 0; padding: 0; padding-bottom: 40px; }
+        body { 
+            font-family: 'Segoe UI', Roboto, Helvetica, sans-serif; 
+            background-color: #f8fafc; /* Ultra clean off-white background */
+            margin: 0; 
+            padding: 0; 
+            padding-bottom: 50px; 
+        }
         .container { max-width: 600px; margin: 0 auto; }
-        .app-header { background: linear-gradient(135deg, #e11d48, #9f1239); color: white; padding: 35px 20px; text-align: center; border-bottom-left-radius: 25px; border-bottom-right-radius: 25px; box-shadow: 0 4px 15px rgba(225,29,72,0.2); }
-        .app-header h1 { font-size: 24px; margin: 0; font-weight: 900; }
-        .app-header p { font-size: 14px; margin: 6px 0 0 0; opacity: 0.9; font-weight: 600; }
-        .content-area { padding: 15px; }
         
-        /* Premium Detailed Card */
-        .chapter-card { background: #ffffff; border-radius: 18px; padding: 20px; margin-bottom: 20px; box-shadow: 0 6px 15px rgba(0,0,0,0.04); border-left: 6px solid #e11d48; display: flex; flex-direction: column; gap: 14px; }
-        .chapter-info h3 { font-size: 18px; font-weight: 800; color: #0f172a; margin: 0 0 6px 0; }
-        .chapter-info p { font-size: 13px; color: #475569; margin: 0; font-weight: 600; line-height: 1.5; }
+        /* Modern App Header with Deep Mesh Gradient */
+        .app-header { 
+            background: linear-gradient(135deg, #1e1b4b, #311042, #701a2f); /* Ultra Premium Dark Gradient */
+            color: white; 
+            padding: 45px 24px; 
+            text-align: center; 
+            border-bottom-left-radius: 35px; 
+            border-bottom-right-radius: 35px; 
+            box-shadow: 0 10px 25px rgba(30, 27, 75, 0.25); 
+        }
+        .app-header h1 { font-size: 26px; margin: 0; font-weight: 900; letter-spacing: 0.5px; }
+        .app-header p { font-size: 14px; margin: 8px 0 0 0; opacity: 0.85; font-weight: 600; letter-spacing: 0.3px; }
         
-        /* Topics Covered List Style */
-        .topics-list { background: #fff1f2; padding: 12px 15px; border-radius: 10px; margin: 5px 0; }
-        .topics-list span { display: block; font-size: 12px; color: #9f1239; font-weight: 800; margin-bottom: 5px; text-transform: uppercase; }
+        .content-area { padding: 20px 15px; }
+        
+        /* Modern Minimalist Card Styling */
+        .chapter-card { 
+            background: #ffffff; 
+            border-radius: 24px; 
+            padding: 22px; 
+            margin-bottom: 24px; 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.03); 
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            position: relative;
+            transition: transform 0.2s ease;
+        }
+        
+        .chapter-info h3 { font-size: 19px; font-weight: 800; color: #0f172a; margin: 0 0 8px 0; line-height: 1.3; }
+        .chapter-info p { font-size: 13.5px; color: #64748b; margin: 0; font-weight: 600; line-height: 1.5; }
+        
+        /* Compact Capsule Topic List */
+        .topics-list { 
+            background: #f8fafc; 
+            padding: 14px 16px; 
+            border-radius: 16px; 
+            margin: 16px 0; 
+            border: 1px inset rgba(0,0,0,0.01);
+        }
+        .topics-list span { display: block; font-size: 12px; color: #475569; font-weight: 800; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
         .topics-list ul { margin: 0; padding-left: 18px; font-size: 13px; color: #334155; font-weight: 600; }
-        .topics-list li { margin-bottom: 4px; }
+        .topics-list li { margin-bottom: 6px; line-height: 1.4; }
 
-        /* Premium Play Button */
-        .play-btn { display: flex; align-items: center; justify-content: center; gap: 8px; background: #e11d48; color: white; padding: 14px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 15px; box-shadow: 0 4px 12px rgba(225, 29, 72, 0.2); transition: 0.2s; }
-        .play-btn:active { transform: scale(0.97); background: #be123c; }
+        /* Row Layout For Action Buttons */
+        .btn-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px; }
+
+        /* Premium Application Interactive Buttons */
+        .action-btn { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 8px; 
+            padding: 14px 10px; 
+            border-radius: 16px; 
+            text-decoration: none; 
+            font-weight: 800; 
+            font-size: 14px; 
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); 
+            text-align: center; 
+        }
+        .action-btn:active { transform: scale(0.95); }
+
+        /* Video Button Style */
+        .btn-video { 
+            background: linear-gradient(135deg, #ff2e55, #dc2626); 
+            color: white; 
+            box-shadow: 0 6px 16px rgba(220, 38, 38, 0.25); 
+        }
+        .btn-video:active { background: #be123c; }
+
+        /* Notes Button Style */
+        .btn-notes { 
+            background: linear-gradient(135deg, #0284c7, #0369a1); 
+            color: white; 
+            box-shadow: 0 6px 16px rgba(2, 132, 199, 0.25); 
+        }
+        .btn-notes:active { background: #075985; }
         
-        .back-btn { display: flex; align-items: center; justify-content: center; background: #ffffff; color: #475569; padding: 15px; border-radius: 30px; font-size: 15px; font-weight: 700; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.05); width: 80%; margin: 25px auto 0 auto; }
-        .back-btn:active { transform: scale(0.97); }
+        /* Modern Back Button (Floating Capsule) */
+        .back-btn { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            background: #ffffff; 
+            color: #475569; 
+            padding: 16px; 
+            border-radius: 30px; 
+            font-size: 15px; 
+            font-weight: 700; 
+            text-decoration: none; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+            width: 90%; 
+            max-width: 320px; 
+            margin: 40px auto 0 auto; 
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s;
+        }
+        .back-btn:active { transform: scale(0.97); background: #f1f5f9; }
     </style>
 </head>
 <body>
 
 <div class="container">
+    <!-- Premium Mesh Header -->
     <div class="app-header">
-        <h1>📺 अध्यायवार वीडियो लेक्चर्स</h1>
-        <p>राजनीति विज्ञान • सम्पूर्ण डिजिटल क्लासेज</p>
+        <h1>📺 अध्यायवार डिजिटल कोर्स</h1>
+        <p>लोकतांत्रिक राजनीति-II • Smart Learning Suite</p>
     </div>
 
     <div class="content-area">
 
-        <!-- Chapter 1 -->
+        <!-- CHAPTER 1 CARD -->
         <div class="chapter-card">
             <div class="chapter-info">
                 <h3>अध्याय 1: सत्ता की साझेदारी (Power Sharing)</h3>
-                <p>इस लेक्चर में बेल्जियम और श्रीलंका के उदाहरण से यह समझाया गया है कि लोकतंत्र में शक्तियों का बँटवारा क्यों आवश्यक है।</p>
+                <p>लोकतंत्र की आत्मा और शक्तियों के विकेंद्रीकरण की बुनियादी समझ।</p>
             </div>
             <div class="topics-list">
-                <span>📚 मुख्य टॉपिक्स जो कवर्ड हैं:</span>
+                <span>📚 कवर्ड मुख्य टॉपिक्स:</span>
                 <ul>
-                    <li>बेल्जियम की जातीय बुनावट और समझदारी का आदेश</li>
-                    <li>श्रीलंका में बहुसंख्यकवाद और गृहयुद्ध के कारण</li>
-                    <li>सत्ता की साझेदारी की युक्तिपरक और नैतिक आवश्यकता</li>
-                    <li>शक्तियों के वितरण के रूप (क्षैतिज, ऊर्ध्वाधर, सामुदायिक सरकार)</li>
+                    <li>बेल्जियम मॉडल और भाषाई विविधता का समाधान</li>
+                    <li>श्रीलंका में बहुसंख्यकवाद के दुष्परिणाम</li>
+                    <li>साझेदारी की युक्तिपरक एवं नैतिक अनिवार्यता</li>
+                    <li>सत्ता के क्षैतिज और ऊर्ध्वाधर वितरण का वर्गीकरण</li>
                 </ul>
             </div>
-            <!-- Ekdum clean link bina kisi target="_blank" ke -->
-            <a href="civics-chapter1.html" class="play-btn">▶ पूरा वीडियो लेक्चर देखें</a>
+            
+            <div class="btn-row">
+                <!-- Seedhe YouTube ki Video open hogi -->
+                <a href="https://youtu.be/tOVZv8yHFN0?si=jOMwM1sdyEYbXba7" class="action-btn btn-video" target="_blank">📺 वीडियो क्लास</a>
+                <!-- Hamari banayi hui detailed content file open hogi -->
+                <a href="civics-chapter1.html" class="action-btn btn-notes">✍️ चैप्टर नोट्स</a>
+            </div>
         </div>
 
-        <!-- Chapter 2 -->
+        <!-- CHAPTER 2 CARD -->
         <div class="chapter-card">
             <div class="chapter-info">
                 <h3>अध्याय 2: संघवाद (Federalism)</h3>
-                <p>भारत की संघीय व्यवस्था की संरचना, केंद्र-राज्य संबंधों का इतिहास और विकेंद्रीकरण की पूरी प्रक्रिया पर गहरी चर्चा।</p>
+                <p>भारत की त्रि-स्तरीय शासन प्रणाली और केंद्र-राज्य संबंधों का ढांचा।</p>
             </div>
             <div class="topics-list">
-                <span>📚 मुख्य टॉपिक्स जो कवर्ड हैं:</span>
+                <span>📚 कवर्ड मुख्य टॉपिक्स:</span>
                 <ul>
-                    <li>संघवाद क्या है और इसकी प्रमुख विशेषताएं</li>
-                    <li>'साथ आकर संघ बनाना' बनाम 'साथ रखकर संघ बनाना'</li>
-                    <li>भारत की तीन सूचियाँ (संघ सूची, राज्य सूची, समवर्ती सूची)</li>
-                    <li>भाषाई राज्य और भारत की भाषा नीति</li>
-                    <li>1992 का ऐतिहासिक संशोधन और पंचायती राज व्यवस्था</li>
+                    <li>संघीय शासन व्यवस्था की बुनियादी विशेषताएं</li>
+                    <li>संविधान की तीन सूचियाँ (संघ, राज्य, समवर्ती)</li>
+                    <li>भारत की भाषाई नीति और राज्यों का गठन</li>
+                    <li>1992 का संशोधन एवं स्थानीय स्वशासन (पंचायती राज)</li>
                 </ul>
             </div>
-            <a href="civics-chapter2.html" class="play-btn">▶ पूरा वीडियो लेक्चर देखें</a>
+            
+            <div class="btn-row">
+                <a href="#" class="action-btn btn-video" target="_blank">📺 वीडियो क्लास</a>
+                <a href="#" class="action-btn btn-notes">✍️ चैप्टर नोट्स</a>
+            </div>
         </div>
 
-        <!-- Chapter 3 -->
+        <!-- CHAPTER 3 CARD -->
         <div class="chapter-card">
             <div class="chapter-info">
                 <h3>अध्याय 3: जाति, धर्म और लैंगिक मसले</h3>
-                <p>राजनीति में सामाजिक विभिन्नताओं, भेदभाव और उनके लोकतंत्र पर पड़ने वाले अच्छे व बुरे प्रभावों का गहन विश्लेषण।</p>
+                <p>राजनीति में सामाजिक अंतर, साम्प्रदायिकता और महिला प्रतिनिधित्व।</p>
             </div>
             <div class="topics-list">
-                <span>📚 मुख्य टॉपिक्स जो कवर्ड हैं:</span>
+                <span>📚 कवर्ड मुख्य टॉपिक्स:</span>
                 <ul>
-                    <li>श्रम का लैंगिक विभाजन और नारीवादी आंदोलन</li>
-                    <li>महिला प्रतिनिधित्व की स्थिति (संसद और विधानसभाओं में)</li>
-                    <li>धर्म, साम्प्रदायिकता और राजनीति में साम्प्रदायिक रूप</li>
-                    <li>धर्मनिरपेक्ष शासन का भारतीय मॉडल</li>
-                    <li>जातिवाद की राजनीति और राजनीति में जाति का प्रभाव</li>
+                    <li>नारीवादी आंदोलन एवं श्रम का लैंगिक विभाजन</li>
+                    <li>साम्प्रदायिकता का स्वरूप और धर्मनिरपेक्ष राज्य का आधार</li>
+                    <li>जातिवाद का राजनीति पर प्रभाव एवं राजनीतिक हिस्सेदारी</li>
                 </ul>
             </div>
-            <a href="civics-chapter3.html" class="play-btn">▶ पूरा वीडियो लेक्चर देखें</a>
+            
+            <div class="btn-row">
+                <a href="#" class="action-btn btn-video" target="_blank">📺 वीडियो क्लास</a>
+                <a href="#" class="action-btn btn-notes">✍️ चैप्टर नोट्स</a>
+            </div>
         </div>
 
-        <!-- Chapter 4 -->
+        <!-- CHAPTER 4 CARD -->
         <div class="chapter-card">
             <div class="chapter-info">
                 <h3>अध्याय 4: राजनीतिक दल (Political Parties)</h3>
-                <p>लोकतांत्रिक व्यवस्था में राजनीतिक दलों का महत्व, उनकी कार्यप्रणाली और दलों के सामने आने वाली चुनौतियों का पूरा निचोड़।</p>
+                <p>चुनावी लोकतंत्र के पहिये—दलों की आवश्यकता और चुनौतियाँ।</p>
             </div>
             <div class="topics-list">
-                <span>📚 मुख्य टॉपिक्स जो कवर्ड हैं:</span>
+                <span>📚 कवर्ड मुख्य टॉपिक्स:</span>
                 <ul>
-                    <li>राजनीतिक दल का अर्थ, कार्य और उनकी अनिवार्यता</li>
-                    <li>दलीय व्यवस्था (एक-दलीय, द्विदलीय और बहुदलीय व्यवस्था)</li>
-                    <li>राष्ट्रीय दल और क्षेत्रीय/प्रान्तीय दल बनने की शर्तें</li>
-                    <li>भारत के प्रमुख दल (BJP, INC, BSP, AAP आदि) की विचारधारा</li>
-                    <li>राजनीतिक दलों की चुनौतियाँ और उनमें सुधार के कानूनी उपाय</li>
+                    <li>राजनीतिक दलों के प्रमुख कार्य और उनकी अनिवार्यता</li>
+                    <li>एकदलीय, द्विदलीय और बहुदलीय प्रणालियों का विश्लेषण</li>
+                    <li>राष्ट्रीय और क्षेत्रीय दलों की मान्यता के कड़े नियम</li>
+                    <li>वंशवाद, धनबल की चुनौती और दल-बदल कानून में सुधार</li>
                 </ul>
             </div>
-            <a href="civics-chapter4.html" class="play-btn">▶ पूरा वीडियो लेक्चर देखें</a>
+            
+            <div class="btn-row">
+                <a href="#" class="action-btn btn-video" target="_blank">📺 वीडियो क्लास</a>
+                <a href="#" class="action-btn btn-notes">✍️ चैप्टर नोट्स</a>
+            </div>
         </div>
 
-        <!-- Chapter 5 -->
+        <!-- CHAPTER 5 CARD -->
         <div class="chapter-card">
             <div class="chapter-info">
-                <h3>अध्याय 5: लोकतंत्र के परिणाम (Outcomes of Democracy)</h3>
-                <p>बोर्ड परीक्षा के दृष्टिकोण से सबसे महत्वपूर्ण अध्याय, जो सिखाता है कि लोकतंत्र अन्य शासन प्रणालियों से बेहतर परिणाम कैसे देता है।</p>
+                <h3>अध्याय 5: लोकतंत्र के परिणाम (Outcomes)</h3>
+                <p>लोकतांत्रिक व्यवस्थाओं की सफलता, आर्थिक विकास और नागरिक गरिमा।</p>
             </div>
             <div class="topics-list">
-                <span>📚 मुख्य टॉपिक्स जो कवर्ड हैं:</span>
+                <span>📚 कवर्ड मुख्य टॉपिक्स:</span>
                 <ul>
-                    <li>लोकतंत्र का मूल्यांकन (उत्तरदायी, जिम्मेदार और वैध शासन)</li>
-                    <li>आर्थिक समृद्धि, विकास और तानाशाही से तुलना</li>
-                    <li>असमानता और गरीबी में कमी लाने में लोकतंत्र की भूमिका</li>
-                    <li>सामाजिक विविधताओं में सामंजस्य और नागरिकों की गरिमा</li>
+                    <li>उत्तरदायी, जिम्मेदार और वैध शासन की कसौटी</li>
+                    <li>तानाशाही बनाम लोकतंत्र: आर्थिक समृद्धि की वास्तविक तुलना</li>
+                    <li>सामाजिक विविधताओं में शांतिपूर्ण सामंजस्य का जरिया</li>
                 </ul>
             </div>
-            <a href="civics-chapter5.html" class="play-btn">▶ पूरा वीडियो लेक्चर देखें</a>
+            
+            <div class="btn-row">
+                <a href="#" class="action-btn btn-video" target="_blank">📺 वीडियो क्लास</a>
+                <a href="#" class="action-btn btn-notes">✍️ चैप्टर नोट्स</a>
+            </div>
         </div>
 
-        <a href="class10-sst.html" class="back-btn">🔙 पीछे मुख्य मेनू पर जाएं</a>
+        <!-- Floating Back Button -->
+        <a href="class10-sst.html" class="back-btn">🔙 मुख्य मेनू पर वापस जाएं</a>
     </div>
 </div>
 
-<script>document.addEventListener('contextmenu', e => e.preventDefault());</script>
+<script>
+    // Premium security block
+    document.addEventListener('contextmenu', e => e.preventDefault());
+</script>
 </body>
 </html>
