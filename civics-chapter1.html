@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>अध्याय 1: सत्ता की साझेदारी</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            background-color: #f1f5f9;
+            margin: 0;
+            padding: 0;
+            padding-bottom: 40px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Shandar Gradient Header */
+        .app-header {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: white;
+            padding: 35px 20px 45px 20px;
+            text-align: center;
+            border-bottom-left-radius: 25px;
+            border-bottom-right-radius: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+        .app-header h1 {
+            font-size: 22px;
+            margin: 0;
+            font-weight: 900;
+        }
+        .app-header p {
+            font-size: 13px;
+            margin: 6px 0 0 0;
+            opacity: 0.8;
+            font-weight: 600;
+        }
+
+        /* Main Content Area */
+        .content-area {
+            padding: 0 15px;
+            margin-top: -20px;
+        }
+
+        /* Notes Quick Link Button */
+        .notes-quick-btn {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 14px;
+            text-align: center;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 15px;
+            font-weight: 800;
+            color: #0284c7;
+            border-bottom: 5px solid #0284c7;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+        .notes-quick-btn:active { transform: scale(0.97); }
+
+        /* Video Section Label */
+        .section-label {
+            font-size: 14px;
+            color: #475569;
+            font-weight: 800;
+            margin: 15px 0 10px 5px;
+            text-transform: uppercase;
+        }
+
+        /* Video Classes Stack */
+        .video-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .video-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            border-left: 6px solid #e11d48;
+            transition: all 0.2s;
+        }
+        .video-card:active { transform: scale(0.97); }
+
+        /* Coming Soon Card Style */
+        .coming-soon {
+            border-left: 6px solid #94a3b8;
+            opacity: 0.7;
+        }
+        .coming-soon .play-icon {
+            background: #e2e8f0;
+            color: #64748b;
+        }
+
+        .video-info { display: flex; flex-direction: column; gap: 4px; }
+        .video-info h3 { font-size: 15px; font-weight: 800; color: #1e293b; margin: 0; }
+        .video-info p { font-size: 12px; color: #64748b; margin: 0; font-weight: 600; }
+
+        .play-icon {
+            background: #fecdd3;
+            color: #e11d48;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        /* Full Details Notes Section */
+        .notes-section {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 22px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.04);
+            border-top: 6px solid #0284c7;
+        }
+        .notes-section h2 {
+            font-size: 18px;
+            color: #0369a1;
+            margin: 0 0 15px 0;
+            font-weight: 800;
+            border-bottom: 2px dashed #cbd5e1;
+            padding-bottom: 8px;
+        }
+        
+        .sub-topic {
+            font-size: 14px;
+            color: #0f172a;
+            font-weight: 800;
+            margin: 15px 0 6px 0;
+            background: #e0f2fe;
+            padding: 4px 10px;
+            border-radius: 6px;
+            display: inline-block;
+        }
+        
+        .notes-content {
+            font-size: 14px;
+            color: #334155;
+            line-height: 1.6;
+            font-weight: 600;
+        }
+        .notes-content ul {
+            margin: 5px 0 10px 0;
+            padding-left: 20px;
+        }
+        .notes-content li {
+            margin-bottom: 8px;
+        }
+        .hl { color: #0284c7; font-weight: 800; }
+        .danger-hl { color: #b91c1c; font-weight: 800; }
+
+        /* Back Button */
+        .back-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #ffffff;
+            color: #475569;
+            padding: 14px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            width: 70%;
+            margin: 30px auto 0 auto;
+        }
+        .back-btn:active { transform: scale(0.97); }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Top Header -->
+    <div class="app-header">
+        <h1>अध्याय 1: सत्ता की साझेदारी</h1>
+        <p>लोकतांत्रिक राजनीति-II • स्पेशल डिजिटल कोर्स</p>
+    </div>
+
+    <div class="content-area">
+        
+        <!-- Quick Notes Link -->
+        <a href="#written-notes" class="notes-quick-btn">
+            <span>✍️ हस्तलिखित चैप्टर नोट्स पर जाएं</span>
+        </a>
+
+        <div class="section-label">📺 ऑनलाइन वीडियो क्लासेस (Part Wise)</div>
+
+        <!-- Video Classes List -->
+        <div class="video-stack">
+            
+            <!-- Class 1 -->
+            <a href="https://youtu.be/tOVZv8yHFN0?si=jOMwM1sdyEYbXba7" class="video-card" target="_blank">
+                <div class="video-info">
+                    <h3>Class 1: सत्ता की साझेदारी (Introduction)</h3>
+                    <p>बेल्जियम की कहानी, जातीय बनावट और तनाव के कारण</p>
+                </div>
+                <div class="play-icon">▶</div>
+            </a>
+
+            <!-- Class 2 -->
+            <a href="https://youtu.be/iD-zbgL22cc?si=2e45KQjUZQjQQ1Xd" class="video-card" target="_blank">
+                <div class="video-info">
+                    <h3>Class 2: श्रीलंका में बहुसंख्यकवाद</h3>
+                    <p>सिंहली वर्चस्व, 1956 का कानून और तमिलों का संघर्ष</p>
+                </div>
+                <div class="play-icon">▶</div>
+            </a>
+
+            <!-- Class 3 (Coming Soon) -->
+            <!-- Link aane par href="#" me apna video link daal dena aur class="video-card coming-soon" me se coming-soon hata dena -->
+            <a href="AAGE_WALI_VIDEO_LINK_3" class="video-card coming-soon" target="_blank">
+                <div class="video-info">
+                    <h3>Class 3: सत्ता की साझेदारी की आवश्यकता</h3>
+                    <p>युक्तिपरक और नैतिक कारण (जल्द आ रहा है...)</p>
+                </div>
+                <div class="play-icon">⏳</div>
+            </a>
+
+            <!-- Class 4 (Coming Soon) -->
+            <a href="AAGE_WALI_VIDEO_LINK_4" class="video-card coming-soon" target="_blank">
+                <div class="video-info">
+                    <h3>Class 4: सत्ता की साझेदारी के रूप</h3>
+                    <p>क्षैतिज, ऊर्ध्वाधर और सामुदायिक सरकार (जल्द आ रहा है...)</p>
+                </div>
+                <div class="play-icon">⏳</div>
+            </a>
+
+        </div>
+
+        <!-- Detailed Notes Box In-Code -->
+        <div id="written-notes" class="notes-section">
+            <h2>📌 कम्पलीट चैप्टर नोट्स (Full Details)</h2>
+            <div class="notes-content">
+                
+                <div class="sub-topic">1. बेल्जियम की कहानी और जातीय बनावट</div>
+                <ul>
+                    <li><span class="hl">भौगोलिक स्थिति:</span> बेल्जियम यूरोप का एक छोटा सा देश है, जिसकी आबादी हमारे हरियाणा राज्य से भी आधी है। इसकी सीमाएं फ्रांस, नीदरलैंड, जर्मनी और लक्ज़मबर्ग से लगती हैं।</li>
+                    <li><span class="hl">भाषाई अनुपात:</span> देश की कुल आबादी का <span class="hl">59% हिस्सा डच</span> बोलता है और फ्लेमिश इलाके में रहता है। <span class="hl">40% लोग फ्रेंच</span> बोलते हैं और वेलोनिया क्षेत्र में रहते हैं। बाकी 1% लोग जर्मन बोलते हैं।</li>
+                    <li><span class="danger-hl">तनाव का कारण:</span> राजधानी ब्रсеल्स में स्थिति उल्टी थी, वहाँ 80% लोग फ्रेंच बोलते थे और 20% डच। फ्रेंचभाषी लोग तुलनात्मक रूप से ज्यादा समृद्ध और ताकतवर थे, जिससे डच लोगों में नाराजगी थी।</li>
+                </ul>
+
+                <div class="sub-topic">2. श्रीलंका में बहुसंख्यकवाद</div>
+                <ul>
+                    <li><span class="danger-hl">सिंहली वर्चस्व:</span> 1948 में आज़ाद होने के बाद, श्रीलंका में सिंहली समुदाय (74%) के नेताओं ने अपनी बहुसंख्या के बल पर शासन पर कब्ज़ा जमाना चाहा।</li>
+                    <li><span class="danger-hl">1956 का कानून:</span> इस कानून के तहत तमिलों को नजरअंदाज करके <span class="danger-hl">सिंहली को एकमात्र राजभाषा</span> घोषित कर दिया गया। विश्वविद्यालयों और सरकारी नौकरियों में भी सिंहलियों को प्राथमिकता दी गई, जिससे तमिल अलग-थलग पड़ गए और देश में गृहयुद्ध (Civil War) शुरू हो गया।</li>
+                </ul>
+
+                <div class="sub-topic">3. सत्ता की साझेदारी क्यों आवश्यक है?</div>
+                <ul>
+                    <li><span class="hl">युक्तिपरक (Prudential) कारण:</span> यह विभिन्न सामाजिक समूहों के बीच आपसी टकराव और हिंसा की संभावना को कम करता है। यह राजनीतिक व्यवस्था के स्थायित्व के लिए अच्छा है।</li>
+                    <li><span class="hl">नैतिक (Moral) कारण:</span> सत्ता की साझेदारी लोकतंत्र की आत्मा है। लोकतंत्र का सीधा मतलब होता है कि जिन लोगों पर शासन किया जा रहा है, उनके बीच शक्तियों को बांटा जाए।</li>
+                </ul>
+
+            </div>
+        </div>
+
+        <!-- Back Link to Main Subject List -->
+        <a href="civics-classes.html" class="back-btn">🔙 अध्याय लिस्ट पर वापस जाएं</a>
+
+    </div>
+
+</div>
+
+<script>
+    // App security (Right click disabled)
+    document.addEventListener('contextmenu', e => e.preventDefault());
+</script>
+
+</body>
+</html>
