@@ -10,21 +10,54 @@
         body { font-family: 'Poppins', 'Segoe UI', Roboto, sans-serif; background-color: #f1f5f9; margin: 0; padding: 0; padding-bottom: 40px; }
         .container { max-width: 600px; margin: 0 auto; background: #ffffff; min-height: 100vh; box-shadow: 0 0 20px rgba(0,0,0,0.05); }
         
+        /* Premium Sapphire Blue REET Header */
         .app-header { background: linear-gradient(135deg, #1e3a8a, #3b82f6); color: white; padding: 45px 20px 55px 20px; text-align: center; border-bottom-left-radius: 35px; border-bottom-right-radius: 35px; box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3); }
         .app-header h1 { font-size: 24px; margin: 0; font-weight: 900; letter-spacing: 0.5px; }
         .app-header p { font-size: 13px; margin: 10px 0 0 0; opacity: 0.9; font-weight: 600; background: rgba(255,255,255,0.15); display: inline-block; padding: 4px 15px; border-radius: 20px; text-transform: uppercase; letter-spacing: 1px; }
         
         .content-area { padding: 0 20px; margin-top: -25px; }
+        
+        /* Intro Card */
         .intro-card { background: #ffffff; border-radius: 20px; padding: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border-left: 6px solid #3b82f6; margin-bottom: 25px; }
         .intro-card p { font-size: 14.5px; color: #334155; line-height: 1.6; margin: 0; font-weight: 600; }
         
         .section-label { font-size: 14px; color: #475569; font-weight: 800; margin: 25px 0 12px 5px; text-transform: uppercase; }
         
-        .mega-notes-box { background: #ffffff; border-radius: 22px; padding: 22px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); border: 1px solid #e2e8f0; }
-        .part-badge { background: #3b82f6; color: white; font-size: 11px; font-weight: 900; padding: 4px 12px; border-radius: 30px; display: inline-block; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 0.5px; }
+        /* 🕹️ Master Syllabus Button Design */
+        .syllabus-master-btn {
+            background: linear-gradient(145deg, #1e3a8a, #1d4ed8);
+            padding: 18px 20px; border-radius: 20px; text-align: center; color: white;
+            cursor: pointer; font-weight: 800; font-size: 15px; margin: 20px 0;
+            border-bottom: 5px solid #1e3a8a; box-shadow: 0 8px 20px rgba(59, 130, 246, 0.2);
+            transition: all 0.2s ease;
+        }
+        .syllabus-master-btn:active { transform: translateY(3px); border-bottom-width: 2px; }
         
-        .main-topic-title { font-size: 20px; color: #1e3a8a; margin: 0 0 18px 0; font-weight: 800; line-height: 1.4; border-bottom: 2px dashed #cbd5e1; padding-bottom: 10px; }
-        .kids-sub-heading { font-size: 15px; color: #0f172a; font-weight: 800; margin: 22px 0 10px 0; background: #eff6ff; padding: 8px 14px; border-radius: 10px; border-left: 4px solid #3b82f6; display: block; }
+        /* 📜 Master Syllabus Panel */
+        .syllabus-panel {
+            background: #fdfefe; border: 2px solid #eff6ff; padding: 20px;
+            border-radius: 20px; display: none; margin-bottom: 25px;
+            animation: slideDown 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+        }
+        
+        /* 📁 Folder Stack Design */
+        .folder-stack { display: flex; flex-direction: column; gap: 15px; margin-bottom: 30px; }
+        .folder-card { background: #ffffff; border-radius: 20px; padding: 20px; border: 1px solid #e2e8f0; box-shadow: 0 6px 15px rgba(0,0,0,0.03); }
+        .folder-active { border-left: 6px solid #3b82f6; }
+        .folder-locked { border-left: 6px solid #94a3b8; opacity: 0.8; }
+        
+        .folder-header { display: flex; align-items: center; justify-content: space-between; cursor: pointer; }
+        .folder-header h3 { font-size: 15.5px; font-weight: 800; color: #1e293b; margin: 0; }
+        .folder-header p { font-size: 12px; margin: 4px 0 0 0; font-weight: 600; }
+        
+        .folder-icon { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; flex-shrink: 0; }
+        .icon-active { background: #eff6ff; color: #2563eb; }
+        .icon-locked { background: #e2e8f0; color: #64748b; }
+        
+        /* 📑 Folder Content Area */
+        .folder-content { display: none; margin-top: 20px; padding-top: 15px; border-top: 2px dashed #e2e8f0; }
+        .kids-sub-heading { font-size: 14.5px; color: #0f172a; font-weight: 800; margin: 20px 0 10px 0; background: #eff6ff; padding: 8px 14px; border-radius: 10px; border-left: 4px solid #3b82f6; display: block; }
         .easy-text { font-size: 14px; color: #334155; line-height: 1.7; font-weight: 600; text-align: justify; margin-bottom: 12px; }
         
         .visual-list { list-style: none; padding: 0; margin: 12px 0; }
@@ -39,25 +72,7 @@
         .danger-hl { color: #b91c1c; font-weight: 800; }
         .tip-box { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 12px; border-radius: 6px; font-size: 13px; margin-top: 15px; color: #1e3a8a; font-weight: 600; }
         
-        /* 🕹️ Syllabus Trigger Button Design */
-        .syllabus-btn {
-            background: linear-gradient(145deg, #1e3a8a, #1d4ed8);
-            padding: 18px 20px; border-radius: 20px; text-align: center; color: white;
-            cursor: pointer; font-weight: 800; font-size: 15px; margin: 20px 0;
-            border-bottom: 5px solid #1e3a8a; box-shadow: 0 8px 20px rgba(59, 130, 246, 0.2);
-            transition: all 0.2s ease;
-        }
-        .syllabus-btn:active { transform: translateY(3px); border-bottom-width: 2px; }
-        
-        /* 📜 Syllabus Details Panel */
-        .syllabus-panel {
-            background: #fdfefe; border: 2px solid #eff6ff; padding: 20px;
-            border-radius: 20px; display: none; margin-bottom: 25px;
-            animation: slideDown 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
-        }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
-
         .back-btn { display: flex; align-items: center; justify-content: center; background: #ffffff; color: #475569; padding: 15px; border-radius: 30px; font-size: 14px; font-weight: 700; text-decoration: none; box-shadow: 0 4px 12px rgba(0,0,0,0.05); width: 100%; max-width: 280px; margin: 35px auto 0 auto; border: 1px solid #e2e8f0; }
     </style>
 </head>
@@ -65,72 +80,143 @@
 <div class="container">
     <div class="app-header">
         <h1>REET Pre Special Batch</h1>
-        <p>🎯 शिक्षाशास्त्र (CDP) • भाग 1</p>
+        <p>🎯 शिक्षाशास्त्र (CDP) • स्तर-II</p>
     </div>
     
     <div class="content-area">
         <div class="intro-card" style="margin-top: 20px;">
-            <p>👋 <b>भावी शिक्षकों को नमस्कार!</b> REET Pre 2026 परीक्षा को पास करने के लिए शिक्षण विधियों और मनोविज्ञान का बेस मजबूत होना सबसे जरूरी है। आइए पहले टॉपिक को समझते हैं!</p>
+            <p>👋 <b>भावी शिक्षकों को नमस्कार!</b> REET Level-2 परीक्षा के लिए बाल विकास एवं शिक्षण विधियों को व्यवस्थित रूप से पढ़ने के लिए नीचे दिए गए फोल्डर्स का उपयोग करें। समझने में आसानी रहेगी!</p>
         </div>
 
-        <!-- 🕹️ SYLLABUS TOGGLE BUTTON -->
-        <div class="syllabus-btn" onclick="toggleSyllabus()">
-            📂 REET Pre बाल विकास (CDP) का सिलेबस देखें
+        <!-- 🕹️ 1ST FOLDER: MASTER SYLLABUS -->
+        <div class="syllabus-master-btn" onclick="toggleMasterSyllabus()">
+            📋 REET का ऑफिशियल पाठ्यक्रम (Syllabus) देखें
         </div>
 
-        <!-- 📜 SYLLABUS PANEL (OPEN ON CLICK) -->
+        <!-- 📜 MASTER SYLLABUS PANEL (ACCORDING TO PROVIDED REET SYLLABUS) -->
         <div class="syllabus-panel" id="reetSyllabus">
-            <h3 style="color: #1e3a8a; margin-top: 0; font-weight: 900; font-size: 16px; border-bottom: 2px solid #eff6ff; padding-bottom: 8px;">📋 REET CDP Course Syllabus</h3>
-            <ul class="visual-list" style="margin-top: 12px;">
-                <li><b class="hl">1. बाल विकास की रूपरेखा:</b> वृद्धि व विकास की अवधारणा, आयाम एवं विकास के सिद्धांत।</li>
-                <li><b class="hl">2. वंशागति व वातावरण:</b> बालक के विकास पर आनुवंशिकता और सामाजिक परिवेश का प्रभाव।</li>
-                <li><b class="hl">3. व्यक्तिगत भिन्नताएं:</b> बुद्धि मापन, व्यक्तित्व निर्माण एवं विविध अधिगमकर्ताओं की समझ।</li>
-                <li><b class="hl">4. अधिगम (Learning):</b> सीखने की प्रक्रिया, अर्थ, संकल्पना और विभिन्न मनोवैज्ञानिकों के सिद्धांत।</li>
-                <li><b class="hl">5. शिक्षण-अधिगम प्रक्रियाएं:</b> NCF और शिक्षा का अधिकार अधिनियम (RTE 2009) की विशेष समझ।</li>
+            <h3 style="color: #1e3a8a; margin-top: 0; font-weight: 900; font-size: 15px; border-bottom: 2px solid #eff6ff; padding-bottom: 8px;">📑 परीक्षा संरचना (Level-II, 6 to 8)</h3>
+            <p class="easy-text" style="font-size: 13px; color: #64748b;">कुल प्रश्न: 30 | कुल अंक: 30 | खण्ड का शीर्षक: बाल विकास एवं शिक्षण विधियाँ</p>
+            <ul class="visual-list" style="margin-top: 10px;">
+                <li><b class="hl">बाल विकास:</b> वृद्धि व विकास की संकल्पना, आयाम, सिद्धान्त, प्रभावित करने वाले कारक एवं अधिगम से संबंध। वंशानुक्रम व वातावरण की भूमिका।</li>
+                <li><b class="hl">व्यक्तिगत विभिन्नताएँ व व्यक्तित्व:</b> अर्थ, प्रकार, प्रभावित करने वाले कारक। व्यक्तित्व की संकल्पना, प्रकार, मापन।</li>
+                <li><b class="hl">बुद्धि:</b> संकल्पना, सिद्धान्त, मापन एवं बहुबुद्धि सिद्धान्त।</li>
+                <li><b class="hl">विविध अधिगमकर्ता व कठिनाइयाँ:</b> पिछड़े, विमंदित, प्रतिभाशाली, सृजनशील, वंचित, CWSN एवं समायोजन की संकल्पना।</li>
+                <li><b class="hl">अधिगम (Learning):</b> संकल्पना, प्रभावित करने वाले कारक, अधिगम के सिद्धान्त (व्यवहारवाद, गैस्टाल्टवाद, संज्ञानवाद, निर्मितिवाद), अभिप्रेरणा।</li>
+                <li><b class="hl">शिक्षण अधिगम प्रक्रियाएँ:</b> NCF 2005 के संदर्भ में व्यूह रचना, मापन, मूल्यांकन (CCE), क्रियात्मक अनुसन्धान, RTE-2009, NEP 2020।</li>
             </ul>
         </div>
 
-        <div class="section-label">📚 REET स्पेशल डिजिटल क्लास नोट्स</div>
+        <div class="section-label">📂 विषय अनुसार स्टडी फोल्डर</div>
 
-        <div class="mega-notes-box">
-            <div class="part-badge">Part 1: बाल विकास की अवधारणा</div>
-            <h2 class="main-topic-title">1. बाल विकास का अर्थ और परिभाषाएं</h2>
+        <div class="folder-stack">
             
-            <p class="easy-text">शिक्षकों, बाल विकास का सीधा मतलब होता है बालक का जन्म से लेकर किशोरावस्था तक होने वाला क्रमिक परिवर्तन। सबसे पहले अभिवृद्धि और विकास का अंतर समझना जरूरी है:</p>
+            <!-- 📁 TOPIC 1 FOLDER (LIVE AND OPEN) -->
+            <div class="folder-card folder-active">
+                <div class="folder-header" onclick="toggleFolder('folder1')">
+                    <div>
+                        <h3>Topic 1: बाल विकास एवं वंशानुक्रम</h3>
+                        <p style="color: #2563eb;">🟢 नोट्स लाइव हैं • पढ़ने के लिए क्लिक करें</p>
+                    </div>
+                    <div class="folder-icon icon-active">📂</div>
+                </div>
+                
+                <!-- CONTENT INSIDE TOPIC 1 -->
+                <div class="folder-content" id="folder1" style="display: block;">
+                    <span class="kids-sub-heading">⚖️ अभिवृद्धि (Growth) बनाम विकास (Development)</span>
+                    <p class="easy-text">मनोविज्ञान में अभिवृद्धि और विकास दो अलग-अलग संकल्पनाएं हैं, जिनका अंतर समझना बेहद जरूरी है:</p>
 
-            <span class="kids-sub-heading">⚖️ अभिवृद्धि (Growth) बनाम विकास (Development)</span>
-            <table class="notes-table">
-                <thead>
-                    <tr>
-                        <th>अभिवृद्धि (Growth)</th>
-                        <th>विकास (Development)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>यह केवल <span class="danger-hl">शारीरिक या मात्रात्मक</span> बदलाव है, जैसे—लंबाई, वजन बढ़ना।</td>
-                        <td>यह शारीरिक के साथ-साथ <span class="hl">गुणात्मक</span> भी होता है, जैसे—कार्यकुशलता।</td>
-                    </tr>
-                    <tr>
-                        <td>यह एक निश्चित उम्र के बाद <b>रुक जाती है</b>।</td>
-                        <td>विकास <b>जीवनपर्यंत (गर्भ से मृत्यु तक)</b> लगातार चलता रहता है।</td>
-                    </tr>
-                    <tr>
-                        <td>इसे मापा और तौला जा सकता है।</td>
-                        <td>इसका व्यवहार से मूल्यांकन किया जा सकता है।</td>
-                    </tr>
-                </tbody>
-            </table>
+                    <table class="notes-table">
+                        <thead>
+                            <tr>
+                                <th>अभिवृद्धि (Growth)</th>
+                                <th>विकास (Development)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>यह शारीरिक या मात्रात्मक (Quantitative) बदलाव है।</td>
+                                <td>यह शारीरिक के साथ-साथ गुणात्मक (Qualitative) भी होता है।</td>
+                            </tr>
+                            <tr>
+                                <td>एक निश्चित उम्र (परिपक्वता) के बाद रुक जाती है।</td>
+                                <td>जीवनपर्यंत (गर्भ से मृत्यु तक) लगातार चलता रहता है।</td>
+                            </tr>
+                            <tr>
+                                <td>इसे मापा और तौला जा सकता है।</td>
+                                <td>इसका अवलोकन और व्यवहार से मूल्यांकन होता है।</td>
+                            </tr>
+                        </tbody>
+                    </table>
 
-            <span class="kids-sub-heading">📜 प्रमुख मनोवैज्ञानिकों के अनुसार परिभाषाएं</span>
-            <ul class="visual-list">
-                <li><b>क्रो एवं क्रो:</b> "बाल विकास वह वैज्ञानिक अध्ययन है जो गर्भावस्था से किशोरावस्था तक अध्ययन करता है।"</li>
-                <li><b>हरलॉक:</b> "विकास का अर्थ व्यवस्थित और प्रगतिशील क्रम है जो परिपक्वता के लक्ष्य की ओर अग्रसर होता है।"</li>
-            </ul>
+                    <span class="kids-sub-heading">📜 प्रमुख मनोवैज्ञानिकों के अनुसार परिभाषाएं</span>
+                    <ul class="visual-list">
+                        <li><b>क्रो एवं क्रो (Crow & Crow):</b> "बाल विकास वह वैज्ञानिक अध्ययन है जो गर्भावस्था के प्रारंभ से किशोरावस्था के प्रारंभ तक बालक के विकास का अध्ययन करता है।"</li>
+                        <li><b>हरलॉक (Hurlock):</b> "विकास का अर्थ केवल बढ़ने से नहीं है, बल्कि इसमें प्रगतिशील क्रम निहित है जो परिपक्वता के लक्ष्य की ओर अग्रसर होता है।"</li>
+                    </ul>
 
-            <div class="tip-box">
-                📌 <b>REET एग्जाम कैप्सूल:</b> विकास के अंदर ही अभिवृद्धि समाहित होती है। विकास व्यापक प्रक्रिया है।
+                    <div class="tip-box">
+                        📌 <b>REET कैप्सूल:</b> विकास एक व्यापक प्रक्रिया है जिसके अंतर्गत अभिवृद्धि, वंशानुक्रम एवं वातावरण की अंतःक्रिया शामिल होती है।
+                    </div>
+                </div>
             </div>
+
+            <!-- 📁 TOPIC 2 FOLDER (COMING SOON) -->
+            <div class="folder-card folder-locked">
+                <div class="folder-header" onclick="toggleFolder('folder2')">
+                    <div>
+                        <h3>Topic 2: व्यक्तिगत विभिन्नताएँ, व्यक्तित्व व बुद्धि</h3>
+                        <p style="color: #64748b;">⏳ जल्द आ रहा है... (Under Processing)</p>
+                    </div>
+                    <div class="folder-icon icon-locked">🔒</div>
+                </div>
+                <div class="folder-content" id="folder2">
+                    <p class="easy-text" style="color:#64748b; font-style: italic;">संजय सर के स्पेशल नोट्स (व्यक्तित्व मापन एवं बहुबुद्धि सिद्धान्त) जल्द ही इस फोल्डर में अपडेट किए जाएंगे।</p>
+                </div>
+            </div>
+
+            <!-- 📁 TOPIC 3 FOLDER (COMING SOON) -->
+            <div class="folder-card folder-locked">
+                <div class="folder-header" onclick="toggleFolder('folder3')">
+                    <div>
+                        <h3>Topic 3: विविध अधिगमकर्ता व समायोजन</h3>
+                        <p style="color: #64748b;">⏳ जल्द आ रहा है...</p>
+                    </div>
+                    <div class="folder-icon icon-locked">🔒</div>
+                </div>
+                <div class="folder-content" id="folder3">
+                    <p class="easy-text" style="color:#64748b; font-style: italic;">पिछड़े, सृजनशील, अलाभान्वित बच्चे एवं अधिगम अक्षमता युक्त बच्चों के नोट्स जल्द लाइव होंगे।</p>
+                </div>
+            </div>
+
+            <!-- 📁 TOPIC 4 FOLDER (COMING SOON) -->
+            <div class="folder-card folder-locked">
+                <div class="folder-header" onclick="toggleFolder('folder4')">
+                    <div>
+                        <h3>Topic 4: अधिगम की संकल्पना व सिद्धान्त</h3>
+                        <p style="color: #64748b;">⏳ जल्द आ रहा है...</p>
+                    </div>
+                    <div class="folder-icon icon-locked">🔒</div>
+                </div>
+                <div class="folder-content" id="folder4">
+                    <p class="easy-text" style="color:#64748b; font-style: italic;">व्यवहारवाद, गैस्टाल्टवाद, संज्ञानवाद व निर्मितिवाद के शानदार इज़ी नोट्स की तैयारी चल रही है।</p>
+                </div>
+            </div>
+
+            <!-- 📁 TOPIC 5 FOLDER (COMING SOON) -->
+            <div class="folder-card folder-locked">
+                <div class="folder-header" onclick="toggleFolder('folder5')">
+                    <div>
+                        <h3>Topic 5: शिक्षण अधिगम प्रक्रियाएँ, RTE, NCF व NEP</h3>
+                        <p style="color: #64748b;">⏳ जल्द आ रहा है...</p>
+                    </div>
+                    <div class="folder-icon icon-locked">🔒</div>
+                </div>
+                <div class="folder-content" id="folder5">
+                    <p class="easy-text" style="color:#64748b; font-style: italic;">NCF 2005, RTE 2009, NEP 2020 एवं सतत व समग्र मूल्यांकन (CCE) के विशेष नोट्स यहाँ मिलेंगे।</p>
+                </div>
+            </div>
+
         </div>
 
         <a href="index.html" class="back-btn">🔙 मुख्य डैशबोर्ड पर वापस जाएं</a>
@@ -138,10 +224,22 @@
 </div>
 
 <script>
-    function toggleSyllabus() {
+    // 1. मास्टर सिलेबस टोगल
+    function toggleMasterSyllabus() {
         const panel = document.getElementById('reetSyllabus');
         panel.style.display = (panel.style.display === 'block') ? 'none' : 'block';
     }
+
+    // 2. विषय फोल्डर्स ओपन/क्लोज टोगल
+    function toggleFolder(folderId) {
+        const content = document.getElementById(folderId);
+        if (content.style.display === 'block') {
+            content.style.display = 'none';
+        } else {
+            content.style.display = 'block';
+        }
+    }
+    
     document.addEventListener('contextmenu', e => e.preventDefault());
 </script>
 </body>
