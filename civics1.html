@@ -3,98 +3,341 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>अध्याय 1: सत्ता की साझेदारी</title>
+    <title>अध्याय 1: सत्ता की साझेदारी - फुल एक्सप्लेनेशन नोट्स</title>
     <style>
-        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        body { font-family: 'Segoe UI', Roboto, sans-serif; background-color: #f1f5f9; margin: 0; padding: 0; padding-bottom: 40px; }
-        .container { max-width: 600px; margin: 0 auto; }
-        .app-header { background: linear-gradient(135deg, #0f172a, #1e293b); color: white; padding: 40px 20px 50px 20px; text-align: center; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
-        .app-header h1 { font-size: 24px; margin: 0; font-weight: 900; }
-        .app-header p { font-size: 14px; margin: 8px 0 0 0; opacity: 0.8; font-weight: 600; }
-        .content-area { padding: 0 15px; margin-top: -25px; }
-        .notes-quick-btn { background: #ffffff; border-radius: 16px; padding: 16px; text-align: center; text-decoration: none; box-shadow: 0 10px 25px rgba(0,0,0,0.05); display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 15px; font-weight: 800; color: #0284c7; border-left: 6px solid #0284c7; margin-bottom: 25px; cursor: pointer; transition: all 0.2s; }
-        .notes-quick-btn:active { transform: scale(0.96); }
-        .section-label { font-size: 14px; color: #475569; font-weight: 800; margin: 20px 0 12px 5px; text-transform: uppercase; }
-        .video-stack { display: flex; flex-direction: column; gap: 14px; margin-bottom: 30px; }
-        .video-card { background: #ffffff; border-radius: 18px; padding: 18px; display: flex; align-items: center; justify-content: space-between; text-decoration: none; box-shadow: 0 6px 15px rgba(0,0,0,0.04); border-left: 6px solid #e11d48; transition: all 0.2s ease-in-out; }
-        .video-card:active { transform: scale(0.96); }
-        .coming-soon { border-left: 6px solid #94a3b8; opacity: 0.7; }
-        .coming-soon .play-icon { background: #e2e8f0; color: #64748b; }
-        .video-info { display: flex; flex-direction: column; gap: 4px; }
-        .video-info h3 { font-size: 16px; font-weight: 800; color: #1e293b; margin: 0; }
-        .video-info p { font-size: 12.5px; color: #64748b; margin: 0; font-weight: 600; }
-        .play-icon { background: #fecdd3; color: #e11d48; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
-        .notes-section { background: #ffffff; border-radius: 20px; padding: 24px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border-top: 6px solid #0284c7; }
-        .notes-section h2 { font-size: 19px; color: #0369a1; margin: 0 0 15px 0; font-weight: 800; border-bottom: 2px dashed #cbd5e1; padding-bottom: 10px; }
-        .sub-topic { font-size: 14px; color: #0f172a; font-weight: 800; margin: 18px 0 8px 0; background: #e0f2fe; padding: 5px 12px; border-radius: 8px; display: inline-block; }
-        .notes-content { font-size: 14px; color: #334155; line-height: 1.6; font-weight: 600; }
-        .notes-content ul { margin: 5px 0 10px 0; padding-left: 20px; }
-        .notes-content li { margin-bottom: 10px; }
-        .hl { color: #0284c7; font-weight: 800; }
-        .danger-hl { color: #b91c1c; font-weight: 800; }
-        .back-btn { display: flex; align-items: center; justify-content: center; background: #ffffff; color: #475569; padding: 15px; border-radius: 30px; font-size: 15px; font-weight: 700; text-decoration: none; box-shadow: 0 4px 12px rgba(0,0,0,0.05); width: 100%; max-width: 300px; margin: 35px auto 0 auto; }
+        * { box-shadow: border-box; -webkit-tap-highlight-color: transparent; }
+        body { font-family: 'Segoe UI', Roboto, sans-serif; background-color: #f8fafc; margin: 0; padding: 0; padding-bottom: 40px; }
+        .container { max-width: 650px; margin: 0 auto; background: #ffffff; min-height: 100vh; box-shadow: 0 0 20px rgba(0,0,0,0.05); }
+        
+        /* Premium App Dashboard Header */
+        .app-header { background: linear-gradient(135deg, #1e3a8a, #3b82f6); color: white; padding: 45px 20px 55px 20px; text-align: center; border-bottom-left-radius: 35px; border-bottom-right-radius: 35px; box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3); }
+        .app-header h1 { font-size: 26px; margin: 0; font-weight: 900; letter-spacing: 0.5px; }
+        .app-header p { font-size: 14px; margin: 10px 0 0 0; opacity: 0.9; font-weight: 600; background: rgba(255,255,255,0.2); display: inline-block; padding: 4px 15px; border-radius: 20px; }
+        
+        .content-area { padding: 0 20px; margin-top: -25px; }
+        
+        /* Chapter Intro Card */
+        .intro-card { background: #ffffff; border-radius: 20px; padding: 22px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border-left: 6px solid #3b82f6; margin-bottom: 30px; }
+        .intro-card p { font-size: 15px; color: #334155; line-height: 1.7; margin: 0; font-weight: 600; }
+        
+        .section-title { font-size: 16px; color: #1e293b; font-weight: 800; margin: 25px 0 15px 5px; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
+        
+        /* Mega Notes Box Styling */
+        .mega-notes-box { background: #ffffff; border-radius: 22px; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); border: 1px solid #e2e8f0; }
+        
+        /* Part Badges */
+        .part-badge { background: #ef4444; color: white; font-size: 12px; font-weight: 900; padding: 4px 12px; border-radius: 30px; display: inline-block; margin-bottom: 15px; text-transform: uppercase; }
+        
+        .main-topic-title { font-size: 21px; color: #1e3a8a; margin: 0 0 20px 0; font-weight: 800; line-height: 1.4; border-bottom: 2px dashed #cbd5e1; padding-bottom: 12px; }
+        
+        /* Kids Easy Explanation Sub-topics */
+        .kids-sub-heading { font-size: 16px; color: #0f172a; font-weight: 800; margin: 25px 0 10px 0; background: #eff6ff; padding: 8px 14px; border-radius: 10px; border-left: 4px solid #2563eb; display: block; }
+        
+        .easy-text { font-size: 14.5px; color: #334155; line-height: 1.7; font-weight: 600; text-align: justify; margin-bottom: 15px; }
+        
+        /* Visual Data List */
+        .visual-list { list-style: none; padding: 0; margin: 15px 0; }
+        .visual-list li { position: relative; padding-left: 28px; margin-bottom: 12px; font-size: 14.5px; color: #334155; font-weight: 600; line-height: 1.6; }
+        .visual-list li::before { content: "🎯"; position: absolute; left: 0; top: 2px; font-size: 14px; }
+        
+        /* Data Badges inside text */
+        .badge-delhi { background: #fee2e2; color: #991b1b; padding: 2px 6px; border-radius: 4px; font-weight: 800; }
+        .badge-mumbai { background: #dcfce7; color: #166534; padding: 2px 6px; border-radius: 4px; font-weight: 800; }
+        .badge-special { background: #fef9c3; color: #854d0e; padding: 2px 6px; border-radius: 4px; font-weight: 800; }
+        
+        /* Live Example Box */
+        .example-container { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 18px; margin: 20px 0; }
+        .example-title { font-size: 14px; color: #0284c7; font-weight: 800; margin: 0 0 8px 0; display: flex; align-items: center; gap: 6px; }
+        
+        /* Stats Visualizer Box */
+        .stats-visualizer { background: #fff1f2; border: 1px dashed #fca5a5; border-radius: 14px; padding: 15px; margin: 15px 0; }
+        .stats-title { font-size: 13.5px; color: #991b1b; font-weight: 800; margin: 0 0 10px 0; text-align: center; }
+        .stats-bar-wrapper { display: flex; flex-direction: column; gap: 10px; }
+        .stats-bar-line { display: flex; align-items: center; gap: 10px; font-size: 12.5px; font-weight: 700; color: #475569; }
+        .bar-name { width: 80px; text-align: right; }
+        .bar-track { flex-grow: 1; background: #e2e8f0; height: 12px; border-radius: 6px; overflow: hidden; }
+        .bar-fill-dutch { background: #ef4444; height: 100%; width: 59%; }
+        .bar-fill-french { background: #3b82f6; height: 100%; width: 40%; }
+        .bar-fill-german { background: #10b981; height: 100%; width: 1%; }
     </style>
 </head>
 <body>
 <div class="container">
     <div class="app-header">
         <h1>अध्याय 1: सत्ता की साझेदारी</h1>
-        <p>लोकतांत्रिक राजनीति-II • वीडियो एवं लिखित नोट्स</p>
+        <p>💡 बोर्ड परीक्षा स्पेशल • सुपर इज़ी नोट्स</p>
     </div>
+    
     <div class="content-area">
-        <a href="#written-notes" class="notes-quick-btn">
-            <span>✍️ हस्तलिखित चैप्टर नोट्स पर जाएं</span>
-        </a>
-
-        <div class="section-label">📺 ऑनलाइन वीडियो क्लासेस (Part Wise)</div>
-
-        <div class="video-stack">
-            <!-- Class 1 -->
-            <a href="https://youtu.be/tOVZv8yHFN0?si=jOMwM1sdyEYbXba7" class="video-card" target="_blank">
-                <div class="video-info">
-                    <h3>Class 1: सत्ता की साझेदारी (Introduction)</h3>
-                    <p>बेल्जियम की कहानी, जातीय बनावट और तनाव के कारण</p>
-                </div>
-                <div class="play-icon">▶</div>
-            </a>
-
-            <!-- Class 2 -->
-            <a href="https://youtu.be/iD-zbgL22cc?si=2e45KQjUZQjQQ1Xd" class="video-card" target="_blank">
-                <div class="video-info">
-                    <h3>Class 2: श्रीलंका में बहुसंख्यकवाद</h3>
-                    <p>सिंहली वर्चस्व, 1956 का कानून और तमिलों का संघर्ष</p>
-                </div>
-                <div class="play-icon">▶</div>
-            </a>
-
-            <!-- Class 3 (Coming Soon) -->
-            <a href="#" class="video-card coming-soon">
-                <div class="video-info">
-                    <h3>Class 3: सत्ता की साझेदारी की आवश्यकता</h3>
-                    <p>युक्तिपरक और नैतिक कारण (जल्द आ रहा है...)</p>
-                </div>
-                <div class="play-icon">⏳</div>
-            </a>
+        <!-- Introduction Card for Kids -->
+        <div class="intro-card" style="margin-top: 20px;">
+            <p>👋 <b>प्यारे बच्चों!</b> इस चैप्टर को हम कहानियों और मज़ेदार उदाहरणों के साथ इतना आसान बना देंगे कि आपको रटने की बिल्कुल ज़रूरत नहीं पड़ेगी। एग्जाम में पूरे नंबर लाने के लिए नोट्स को ध्यान से समझें!</p>
         </div>
 
-        <!-- Detailed Notes Box In-Code -->
-        <div id="written-notes" class="notes-section">
-            <h2>📌 कम्पलीट चैप्टर नोट्स (Full Details)</h2>
-            <div class="notes-content">
-                <div class="sub-topic">1. बेल्जियम की कहानी और जातीय बनावट</div>
-                <ul>
-                    <li><span class="hl">भौगोलिक स्थिति:</span> बेल्जियम का क्षेत्रफल हमारे हरियाणा राज्य से भी छोटा है, जिसकी सीमाएं फ्रांस, नीदरलैंड और जर्मनी से लगती हैं।</li>
-                    <li><span class="hl">भाषाई अनुपात:</span> 59% आबादी डच बोलती है और 40% आबादी फ्रेंच बोलती है। राजधानी ब्रसेल्स में 80% लोग फ्रेंचभाषी हैं।</li>
-                </ul>
-                <div class="sub-topic">2. श्रीलंका में बहुसंख्यकवाद</div>
-                <ul>
-                    <li><span class="danger-hl">सिंहली वर्चस्व:</span> 1956 के कानून द्वारा सिंहली को एकमात्र राजभाषा बनाया गया, जिससे तमिलों में नाराजगी बढ़ी और देश गृहयुद्ध की ओर चला गया।</li>
-                </ul>
+        <div class="section-title">📝 डिजिटल क्लासरूम नोट्स</div>
+
+        <div class="mega-notes-box">
+            <!-- PART 1 BADGE -->
+            <div class="part-badge">Part 1: बेल्जियम की पूरी कहानी</div>
+            
+            <h2 class="main-topic-title">1. बेल्जियम: एक छोटा देश, बड़ी उलझन</h2>
+            
+            <p class="easy-text">बच्चों, सबसे पहले हम यूरोप महाद्वीप के एक बहुत छोटे से देश <b>बेल्जियम (Belgium)</b> की सैर पर चलते हैं। यह देश इतना छोटा है कि अगर हम अपने भारत के <span class="badge-delhi">हरियाणा राज्य</span> को देखें, तो यह क्षेत्रफल और आबादी दोनों में हमारे हरियाणा से भी छोटा है! इसकी सीमाएं (Borders) फ्रांस, नीदरलैंड, जर्मनी और लक्ज़मबर्ग जैसे देशों से मिलती हैं।</p>
+
+            <div class="example-container">
+                <div class="example-title">💡 चलो एक आसान उदाहरण से समझें:</div>
+                <p class="easy-text" style="margin: 0; font-size: 13.5px; color: #475569;">सोचो, आपकी क्लास में दो अलग-अलग भाषा बोलने वाले बच्चे हैं। एक ग्रुप बड़ा है और दूसरा ग्रुप छोटा है, लेकिन छोटे ग्रुप के पास ज़्यादा पैसे और महँगे खिलौने हैं। ऐसी स्थिति में क्लास में लड़ाई होगी या नहीं? बिल्कुल ऐसी ही उलझन बेल्जियम में भी थी!</p>
+            </div>
+
+            <span class="kids-sub-heading">📊 बेल्जियम का जातीय समीकरण (पूरी आबादी का गणित)</span>
+            <p class="easy-text">बेल्जियम में रहने वाले लोग अलग-अलग भाषाएँ बोलते थे। पूरे देश की आबादी का हिसाब कुछ इस प्रकार था:</p>
+            
+            <ul class="visual-list">
+                <li><b>डच भाषी (Dutch Speakers) - <span class="badge-delhi">59 प्रतिशत</span>:</b> यह देश की बहुसंख्या थी। ये लोग देश के उत्तरी हिस्से में रहते थे, जिसे <b>'फ्लेमिश' (Flemish)</b> इलाका कहा जाता है।</li>
+                <li><b>फ्रेंच भाषी (French Speakers) - <span class="badge-mumbai">40 प्रतिशत</span>:</b> यह देश की अल्पसंख्यक (कम संख्या वाली) आबादी थी। ये लोग दक्षिणी हिस्से में रहते थे, जिसे <b>'वेलोनिया' (Wallonia)</b> क्षेत्र कहा जाता है।</li>
+                <li><b>जर्मन भाषी (German Speakers) - <span class="badge-special">1 प्रतिशत</span>:</b> ये लोग देश के बाकी हिस्सों में बिखरे हुए थे और जर्मन भाषा बोलते थे।</li>
+            </ul>
+
+            <!-- Visual Graph for Kids -->
+            <div class="stats-visualizer">
+                <div class="stats-title">🗺️ पूरे बेल्जियम में भाषाओं का प्रतिशत</div>
+                <div class="stats-bar-wrapper">
+                    <div class="stats-bar-line">
+                        <span class="bar-name">डच (59%)</span>
+                        <div class="bar-track"><div class="bar-fill-dutch"></div></div>
+                    </div>
+                    <div class="stats-bar-line">
+                        <span class="bar-name">फ्रेंच (40%)</span>
+                        <div class="bar-track"><div class="bar-fill-french"></div></div>
+                    </div>
+                    <div class="stats-bar-line">
+                        <span class="bar-name">जर्मन (1%)</span>
+                        <div class="bar-track"><div class="bar-fill-german"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <span class="kids-sub-heading">🏙️ राजधानी ब्रुसेल्स (Brussels) का अनोखा ट्विस्ट</span>
+            <p class="easy-text">अब कहानी में एक बहुत बड़ा मोड़ आता है! बेल्जियम की राजधानी का नाम है <b>ब्रुसेल्स (Brussels)</b>। यहाँ का माहौल पूरे देश से बिल्कुल उल्टा था:</p>
+            
+            <ul class="visual-list">
+                <li>राजधानी ब्रुसेल्स में अकेले <span class="badge-mumbai">80 प्रतिशत लोग फ्रेंच</span> बोलते थे।</li>
+                <li>जबकि सिर्फ <span class="badge-delhi">20 प्रतिशत लोग डच</span> बोलने वाले थे।</li>
+            </ul>
+            
+            <p class="easy-text"><b>झगड़े की असली जड़ क्या थी?</b><br>जो लोग फ्रेंच बोलते थे (<span class="badge-mumbai">अल्पसंख्यक</span>), वे संख्या में कम होने के बावजूद बहुत अमीर, पढ़े-लिखे और ताकतवर थे। दूसरी तरफ, डच बोलने वाले लोगों (<span class="badge-delhi">बहुसंख्यक</span>) को आर्थिक विकास और शिक्षा का लाभ बहुत बाद में मिला। इसी बात को लेकर 1950 और 1960 के दशक में डच और फ्रेंच समुदायों के बीच तनाव और कड़वाहट बढ़ने लगी।</p>
+            
+            <div class="tip-box">
+                📌 <b>याद रखने वाली बात (Exam Short Note):</b> पूरे देश में डच ज़्यादा थे, लेकिन राजधानी ब्रुसेल्स में फ्रेंच लोगों का बोलबाला था। यही इस देश की सबसे बड़ी समस्या थी।
             </div>
         </div>
+        <!-- ==================== PART 1 END ==================== -->
+        <!-- ==================== PART 2 START ==================== -->
+        <div class="mega-notes-box" style="margin-top: 30px;">
+            <!-- PART 2 BADGE -->
+            <div class="part-badge" style="background: #f97316;">Part 2: श्रीलंका की कहानी और बहुसंख्यकवाद</div>
+            
+            <h2 class="main-topic-title" style="color: #c2410c; border-bottom-color: #fed7aa;">2. श्रीलंका: बहुसंख्या का घमंड और बर्बादी</h2>
+            
+            <p class="easy-text">बच्चों, बेल्जियम की उलझन को समझने के बाद अब हम चलते हैं अपने पड़ोसी देश <b>श्रीलंका (Sri Lanka)</b> की सैर पर। श्रीलंका हमारे भारत के <span class="badge-special">तमिलनाडु</span> के दक्षिणी तट से कुछ किलोमीटर की दूरी पर स्थित एक छोटा सा सुंदर द्वीपीय देश (Island) है। इसकी आबादी करीब दो करोड़ है, यानी हमारे राजस्थान के एक या दो बड़े संभागों के बराबर!</p>
+
+            <span class="kids-sub-heading" style="background: #fff7ed; border-left-color: #f97316;">📊 श्रीलंका की आबादी का गणित (जातीय बुनावट)</span>
+            <p class="easy-text">जैसे बेल्जियम में भाषाओं को लेकर उलझन थी, वैसे ही श्रीलंका में भी लोग अलग-अलग समूहों में बंटे हुए थे। आइए इसे बहुत ही आसान तरीके से समझते हैं:</p>
+            
+            <ul class="visual-list">
+                <li><b>सिंहली समुदाय (Sinhala Speakers) - <span class="badge-mumbai">74 प्रतिशत</span>:</b> यह श्रीलंका का सबसे बड़ा ग्रुप (बहुसंख्यक) था। ये लोग मुख्य रूप से <b>बौद्ध धर्म</b> को मानते हैं और देश की राजकाज की भाषा पर अपना कब्जा चाहते थे।</li>
+                <li><b>तमिल समुदाय (Tamil Speakers) - <span class="badge-delhi">18 प्रतिशत</span>:</b> यह यहाँ का दूसरा बड़ा ग्रुप था। लेकिन तमिलों में भी दो तरह के लोग थे:
+                    <ul>
+                        <li><span class="hl">श्रीलंकाई तमिल (13%):</span> जो वहीं के पुराने रहने वाले मूल निवासी थे।</li>
+                        <li><span class="hl">हिन्दुस्तानी तमिल (5%):</span> ये वो लोग थे जिनके पूर्वज औपनिवेशिक काल (अंग्रेजों के समय) में भारत से चाय के बागानों में काम करने के लिए श्रीलंका ले जाए गए थे और फिर वहीं बस गए।</li>
+                    </ul>
+                </li>
+                <li><b>ईसाई और मुस्लिम समुदाय - <span class="badge-special">7 प्रतिशत</span>:</b> देश में लगभग 7% ईसाई लोग थे जो सिंहली और तमिल दोनों भाषाएँ बोलते थे, और कुछ प्रतिशत मुस्लिम भी थे।</li>
+            </ul>
+
+            <div class="example-container" style="background: #fff7ed; border-color: #ffedd5;">
+                <div class="example-title" style="color: #ea580c;">💡 चलो एक और घरेलू उदाहरण से समझें:</div>
+                <p class="easy-text" style="margin: 0; font-size: 13.5px; color: #475569;">मान लो एक घर में 4 भाई हैं। उनमें से 3 भाई बड़े हैं और 1 भाई छोटा है। अब वो 3 बड़े भाई मिलकर नियम बना दें कि घर में सिर्फ उनकी पसंद का खाना बनेगा, टीवी पर सिर्फ उनका कार्टून चलेगा और छोटे भाई की कोई बात नहीं सुनी जाएगी। छोटे भाई को कैसा लगेगा? वो दुखी होगा और एक दिन घर में झगड़ा शुरू हो जाएगा। श्रीलंका में भी बिल्कुल ऐसा ही हुआ!</p>
+            </div>
+
+            <span class="kids-sub-heading" style="background: #fff7ed; border-left-color: #f97316;">👑 बहुसंख्यकवाद (Majoritarianism) क्या है?</span>
+            <p class="easy-text">बोर्ड परीक्षा में यह परिभाषा 2 नंबर में पक्का पूछी जाती है। इसे आसान भाषा में समझो: <b>"जब कोई बड़ा समुदाय अपनी ज़्यादा संख्या के घमंड में आकर देश पर मनमाने ढंग से राज करना चाहता है और छोटे समुदायों की ज़रूरतों को लात मार देता है, तो उसे बहुसंख्यकवाद कहते हैं।"</b></p>
+
+            <span class="kids-sub-heading" style="background: #fff7ed; border-left-color: #f97316;">📜 1956 का काला कानून (सिंहली सरकार की मनमानी)</span>
+            <p class="easy-text">श्रीलंका को <span class="badge-mumbai">सन् 1948 में आजादी मिली</span> (भारत की आज़ादी के ठीक एक साल बाद)। आज़ादी मिलते ही सिंहली समुदाय के नेताओं ने सोचा कि हम तो गिनती में 74% हैं, तो सरकार पर सिर्फ हमारा ही कब्ज़ा होना चाहिए। उन्होंने तमिलों को दबाने के लिए <b>1956 में एक कानून</b> पास किया, जिसके तहत 3 बड़े पक्षपात किए गए:</p>
+            
+            <ol>
+                <li><b>तमिल भाषा की बेइज्जती:</b> तमिल भाषा को पूरी तरह अनदेखा करके <b>सिंहली को देश की एकमात्र राजभाषा</b> (Official Language) घोषित कर दिया गया।</li>
+                <li><b>नौकरियों में पक्षपात:</b> यूनिवर्सिटीज में एडमिशन लेना हो या सरकारी नौकरी पानी हो, हर जगह सिर्फ सिंहली लोगों को प्राथमिकता (Reservation जैसी सहूलियत) दी जाने लगी।</li>
+                <li><b>धर्म का प्रचार:</b> नए संविधान में साफ-साफ लिख दिया गया कि सरकार सिर्फ <b>बौद्ध धर्म</b> को बढ़ावा देगी और उसका संरक्षण करेगी। बाकी धर्मों को छोड़ दिया गया।</li>
+            </ol>
+
+            <span class="kids-sub-heading" style="background: #fff7ed; border-left-color: #f97316;">💥 भयंकर नतीजा: श्रीलंका का गृहयुद्ध (Civil War)</span>
+            <p class="easy-text">इन भेदभाव वाले नियमों के कारण श्रीलंकाई तमिलों का दिल टूट गया। उन्हें लगा कि इस देश की सरकार और पार्टियां हमारे साथ परायों जैसा बर्ताव कर रही हैं। इसके बाद तमिलों ने भी अपनी आवाज उठाई:</p>
+            
+            <ul class="visual-list">
+                <li>तमिलों ने अपने हक के लिए अपनी खुद की राजनीतिक पार्टियाँ बनाईं और संघर्ष शुरू किया।</li>
+                <li>उन्होंने मांग की कि तमिल भाषा को भी सम्मान मिले और श्रीलंका के उत्तर-पूर्वी हिस्से में उन्हें अपनी सरकार चलाने की स्वायत्तता दी जाए।</li>
+                <li>जब सिंहली सरकार ने उनकी मांगें नहीं मानी, तो तमिलों ने एक अलग देश <b>'तमिल इलम' (Tamil Eelam)</b> बनाने की जिद पकड़ ली।</li>
+                <li><b>गृहयुद्ध की आग:</b> दोनों समुदायों के बीच अविश्वास इतना भयंकर बढ़ गया कि देश में <span class="danger-hl">गृहयुद्ध (Civil War)</span> छिड़ गया। गृहयुद्ध का मतलब होता है जब एक ही देश के लोग आपस में सेना की तरह लड़ने लगें।</li>
+                <li><b>बर्बादी:</b> इस लड़ाई में दोनों तरफ के हजारों लोग मारे गए, लाखों परिवारों के घर उजड़ गए, उन्हें शरणार्थी बनना पड़ा और जो श्रीलंका विकास के मामले में बहुत आगे था, उसकी पूरी अर्थव्यवस्था मटियामेट हो गई।</li>
+            </ul>
+            
+            <div class="tip-box" style="background: #fff5f5; border-left-color: #ef4444; color: #991b1b;">
+                📌 <b>Exam Key Point:</b> श्रीलंका की कहानी हमें सिखाती है कि अगर बहुसंख्यक समुदाय अपनी मनमानी करेगा और अल्पसंख्यकों को हिस्सेदारी नहीं देगा, तो देश में एकता कभी नहीं रह सकती और देश बर्बाद हो जाएगा।
+            </div>
+        </div>
+        <!-- ==================== PART 2 END ==================== -->
+        <!-- ==================== PART 3 START ==================== -->
+        <div class="mega-notes-box" style="margin-top: 30px;">
+            <!-- PART 3 BADGE -->
+            <div class="part-badge" style="background: #22c55e;">Part 3: बेल्जियम की समझदारी (The Belgian Model)</div>
+            
+            <h2 class="main-topic-title" style="color: #15803d; border-bottom-color: #bbf7d0;">3. बेल्जियम की समझदारी: सबको सम्मान, देश खुशहाल</h2>
+            
+            <p class="easy-text">बच्चों, जहाँ श्रीलंका ने अपनी मनमानी से देश को गृहयुद्ध की आग में झोंक दिया, वहीं बेल्जियम के नेताओं ने बिल्कुल इसके उलट रास्ता चुना। उन्होंने समझदारी दिखाई और यह माना कि देश में शांति तभी रह सकती है जब हर संस्कृति और भाषा के लोगों को सरकार में बराबर का सम्मान और हिस्सा मिले।</p>
+
+            <div class="example-container" style="background: #f0fdf4; border-color: #dcfce7;">
+                <div class="example-title" style="color: #16a34a;">💡 चलो एक बहुत ही इज़ी स्कूल के उदाहरण से समझें:</div>
+                <p class="easy-text" style="margin: 0; font-size: 13.5px; color: #475569;">मान लो स्कूल में दो बड़े ग्रुप्स हैं। एक ग्रुप कहता है कि सारे गेम्स हमारे हिसाब से चलेंगे, दूसरा ग्रुप कहता है कि कैंटीन हमारे हिसाब से चलेगी। प्रिंसिपल सर ने दोनों ग्रुप्स के लीडर्स को बुलाया और कहा—"लड़ने की कोई ज़रूरत नहीं है, आधी कमेटी पहले ग्रुप की होगी और आधी कमेटी दूसरे ग्रुप की, दोनों मिलकर फैसला लो!" बस यही तरीका बेल्जियम ने अपनाया।</p>
+            </div>
+
+            <span class="kids-sub-heading" style="background: #f0fdf4; border-left-color: #22c55e;">🛠️ संविधान में 4 बड़े बदलाव (1970 से 1993)</span>
+            <p class="easy-text">बेल्जियम के नेताओं ने अपने देश को टूटने से बचाने के लिए 1970 से 1993 के बीच अपने संविधान में <span class="badge-mumbai">4 बार संशोधन (बदलाव)</span> किए ताकि कोई भी नागरिक अपने ही देश में पराया महसूस न करे। इन संशोधनों से जो मॉडल तैयार हुआ, उसे हम <b>'बेल्जियम मॉडल'</b> कहते हैं।</p>
+
+            <span class="kids-sub-heading" style="background: #f0fdf4; border-left-color: #22c55e;">🌟 बेल्जियम मॉडल के 4 सबसे अनोखे और जादुई नियम:</span>
+            <p class="easy-text">बोर्ड परीक्षा में यह प्रश्न 5 नंबर में सीधा पूछा जाता है। इसे याद रखने के लिए ये चार पॉइंट्स ध्यान से समझें:</p>
+            
+            <ol>
+                <li><b>केंद्र सरकार में मंत्रियों की आधी-आधी हिस्सेदारी (50-50 Rule):</b><br>
+                संविधान में यह साफ लिख दिया गया कि देश की केंद्रीय सरकार में डच भाषी और फ्रेंच भाषी मंत्रियों की संख्या <b>बिल्कुल बराबर (समान)</b> होगी। इसका फायदा यह हुआ कि कोई भी एक समुदाय अपने दम पर अकेले कोई भी भेदभाव वाला कानून नहीं बना सकता था।</li>
+                
+                <li><b>राज्य सरकारों को मिली पूरी आज़ादी:</b><br>
+                केंद्र सरकार की बहुत सी महत्वपूर्ण शक्तियाँ देश के दो अलग-अलग इलाकों (फ्लेमिश और वेलोनिया) की क्षेत्रीय (राज्य) सरकारों को सौंप दी गईं। यानी राज्य सरकारें अब केंद्र सरकार की गुलाम या उसके अधीन नहीं रहीं, वे अपने फैसले खुद ले सकती थीं।</li>
+                
+                <li><b>राजधानी ब्रुसेल्स में अलग और बराबर की सरकार:</b><br>
+                राजधानी ब्रुसेल्स के लिए एक अलग सरकार बनाई गई। चूँकि ब्रुसेल्स में 80% फ्रेंच लोग थे, फिर भी उन्होंने डच लोगों को सरकार में 50% यानी <b>बराबर का हिस्सा</b> दिया। ऐसा इसलिए हुआ क्योंकि पूरे देश में बहुसंख्यक डच लोगों ने भी फ्रेंच लोगों को केंद्र सरकार में बराबर का हिस्सा देना स्वीकार किया था। इसे कहते हैं आपसी तालमेल!</li>
+                
+                <li><b>एक अनोखी 'सामुदायिक सरकार' (Community Government):</b><br>
+                केंद्र और राज्य सरकार के अलावा बेल्जियम में एक तीसरे स्तर की सरकार बनाई गई, जिसे <b>सामुदायिक सरकार</b> कहा जाता है। इस सरकार का चुनाव एक ही भाषा बोलने वाले लोग (डच, फ्रेंच या जर्मन) करते थे, चाहे वे देश के किसी भी कोने में रहते हों। इस सरकार को देश के <span class="badge-special">संस्कृति, शिक्षा और भाषा</span> से जुड़े मामलों पर कानून बनाने का पूरा अधिकार दिया गया।</li>
+            </ol>
+
+            <span class="kids-sub-heading" style="background: #f0fdf4; border-left-color: #22c55e;">🏆 इस समझदारी का क्या शानदार नतीजा निकला?</span>
+            <ul class="visual-list">
+                <li>बेल्जियम में समुदायों के बीच होने वाला लड़ाई-झगड़ा हमेशा के लिए खत्म हो गया।</li>
+                <li>देश भाषाई आधार पर दो टुकड़ों में टूटने से बाल-बाल बच गया।</li>
+                <li><b>यूरोपीय संघ का मुख्यालय:</b> जब यूरोप के देशों ने मिलकर 'यूरोपीय संघ' (European Union) बनाने का फैसला किया, तो उन्होंने बेल्जियम की इस समझदारी को देखकर इसकी राजधानी <b>ब्रुसेल्स</b> को अपना मुख्यालय (Headquarters) चुना। यह बेल्जियम के लिए बहुत बड़े गर्व की बात थी!</li>
+            </ul>
+            
+            <div class="tip-box" style="background: #f0fdf4; border-left-color: #16a34a; color: #14532d;">
+                📌 <b>Exam Key Point:</b> "सामुदायिक सरकार क्या है और इसे कौन चुनता है?" यह प्रश्न 2 नंबर के लघु उत्तरीय प्रश्नों में अलग से भी पूछा जाता है। इसे अच्छे से याद कर लें कि इसे एक ही भाषा बोलने वाले लोग चुनते हैं।
+            </div>
+        </div>
+        <!-- ==================== PART 3 END ==================== -->
+        <!-- ==================== PART 4 START ==================== -->
+        <div class="mega-notes-box" style="margin-top: 30px;">
+            <!-- PART 4 BADGE -->
+            <div class="part-badge" style="background: #a855f7;">Part 4: सत्ता की साझेदारी क्यों ज़रूरी है?</div>
+            
+            <h2 class="main-topic-title" style="color: #6b21a8; border-bottom-color: #e9d5ff;">4. साझेदारी क्यों ज़रूरी? दो जादुई तर्क</h2>
+            
+            <p class="easy-text">बच्चों, बेल्जियम और श्रीलंका की दोनों कहानियों को देखने के बाद हमें यह तो समझ आ गया कि सत्ता को आपस में बाँटना बहुत अच्छी बात है और इससे देश मज़बूत होता है। लेकिन अगर बोर्ड परीक्षा में सीधे प्रश्न आ जाए कि <b>"सत्ता की साझेदारी क्यों आवश्यक है? इसके पीछे के कारणों को समझाइए"</b>, तो हमें पूरे नंबर लाने के लिए दो बड़े तर्क देने होंगे।</p>
+
+            <span class="kids-sub-heading" style="background: #faf5ff; border-left-color: #a855f7;">🤝 युक्तिपरक तर्क बनाम नैतिक तर्क</span>
+            <p class="easy-text">इन दोनों कारणों को हम बहुत ही आसान भाषा में और एक सुंदर टेबल के माध्यम से समझेंगे ताकि आपको याद रखने में कोई दिक्कत न हो:</p>
+
+            <table class="notes-table">
+                <thead>
+                    <tr style="background-color: #f3e8ff;">
+                        <th style="color: #6b21a8; font-size: 14px; width: 50%;">1. युक्तिपरक तर्क (Prudential Reason) <br><span style="font-size: 11px; font-weight: 600; color: #701a75;">[घाटे और मुनाफे का हिसाब]</span></th>
+                        <th style="color: #6b21a8; font-size: 14px; width: 50%;">2. नैतिक तर्क (Moral Reason) <br><span style="font-size: 11px; font-weight: 600; color: #701a75;">[दिल और अंतरात्मा की बात]</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="easy-text" style="font-size: 13.5px; padding: 12px; vertical-align: top;">
+                            • यह तर्क कहता है कि समाज के अलग-अलग ग्रुप्स में <b>लड़ाई-झगड़े और हिंसा के अंदेशे को कम करने के लिए</b> सत्ता का बँटवारा ज़रूरी है।<br><br>
+                            • क्योंकि जब समाज में आपसी टकराव होता है, तो देश में अशांति और राजनीतिक अस्थिरता (Instability) पैदा होती है।<br><br>
+                            • <b>सरल शब्दों में:</b> यह समझदारी का सौदा है, जो देश की एकता बनाए रखने और <b>अच्छे परिणामों (Profits)</b> पर ज़ोर देता है।
+                        </td>
+                        <td class="easy-text" style="font-size: 13.5px; padding: 12px; vertical-align: top;">
+                            • यह तर्क कहता है कि सत्ता की साझेदारी करना <b>लोकतंत्र की आत्मा (Spirit of Democracy) है</b>। इसके बिना लोकतंत्र का कोई वजूद ही नहीं है।<br><br>
+                            • लोकतंत्र का सीधा मतलब ही यही होता है कि जिन लोगों के ऊपर शासन किया जा रहा है, उनके साथ सत्ता को साझा किया जाए और उनकी राय ली जाए।<br><br>
+                            • <b>सरल शब्दों में:</b> यह किसी फायदे के लिए नहीं, बल्कि इसके <b>अंतर्भूत महत्व (Moral Value)</b> पर ज़ora देता है कि ऐसा करना सही और न्यायसंगत है।
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="example-container" style="background: #faf5ff; border-color: #f3e8ff;">
+                <div class="example-title" style="color: #7e22ce;">💡 चलो इसे एक बहुत ही मज़ेदार घरेलू उदाहरण से समझें:</div>
+                <p class="easy-text" style="margin: 0; font-size: 13.5px; color: #475569;">मान लो आपके घर में एक रिमोट वाली खिलौना कार आती है। <br>
+                <b>पहला तरीका (युक्तिपरक):</b> मम्मी ने आपसे कहा कि दोनों भाई आधे-आधे घंटे कार से खेलो, नहीं तो तुम दोनों आपस में लड़ोगे और खिलौना तोड़ दोगे (यह नुकसान से बचने का युक्तिपरक तर्क है)।<br>
+                <b>दूसरा तरीका (नैतिक):</b> मम्मी ने कहा कि बेटा, तुम दोनों भाई हो और दोनों का इस पर बराबर का हक है, मिलकर खेलना ही अच्छी बात है (यह दिल की बात यानी नैतिक तर्क है)।</p>
+            </div>
+
+            <span class="kids-sub-heading" style="background: #faf5ff; border-left-color: #a855f7;">⚠️ बहुसंख्यकों का आतंक देश के लिए ख़तरा क्यों?</span>
+            <p class="easy-text">कई बार हमें लगता है कि जो समुदाय संख्या में बड़ा है, उसकी बात मान लेने में क्या बुराई है? लेकिन बच्चों, ध्यान रखना कि बहुसंख्यक समुदाय की मर्जी को बाकी सभी पर थोपना कुछ समय के लिए तो अच्छा लग सकता है, लेकिन आगे चलकर यह <b>देश की अखंडता और एकता को छिन्न-भिन्न</b> कर देता है। श्रीलंका इसका जीता-जागता उदाहरण है। सत्ता की साझेदारी सिर्फ अल्पसंख्यकों के लिए ही नहीं, बल्कि बहुसंख्यकों की भलाई के लिए भी उतनी ही ज़रूरी है।</p>
+            
+            <div class="tip-box" style="background: #faf5ff; border-left-color: #a855f7; color: #6b21a8;">
+                📌 <b>Exam Key Point:</b> "सत्ता की साझेदारी लोकतंत्र की आत्मा है"—यह कथन किस तर्क के अंतर्गत आता है? यह प्रश्न 1 नंबर के ऑब्जेक्टिव में बहुत बार पूछा गया है। याद रखना, यह <b>नैतिक तर्क (Moral Reason)</b> है!
+            </div>
+        </div>
+        <!-- ==================== PART 4 END ==================== -->
+        <!-- ==================== PART 5 START ==================== -->
+        <div class="mega-notes-box" style="margin-top: 30px;">
+            <!-- PART 5 BADGE -->
+            <div class="part-badge" style="background: #06b6d4;">Part 5: सत्ता की साझेदारी के रूप</div>
+            
+            <h2 class="main-topic-title" style="color: #0891b2; border-bottom-color: #cffafe;">5. आधुनिक लोकतंत्र में साझेदारी के 4 बड़े तरीके</h2>
+            
+            <p class="easy-text">प्यारे बच्चों, पुराने जमाने में लोग सोचते थे कि सरकार की सारी ताकत किसी एक राजा या एक जगह बैठे कुछ लोगों के हाथ में होनी चाहिए, नहीं तो फैसले लेने में बहुत समय लगेगा और देश चलाना मुश्किल हो जाएगा। लेकिन लोकतंत्र (Democracy) आने के बाद यह सोच पूरी तरह बदल गई। आज के समय में सत्ता का बँटवारा मुख्य रूप से <b>चार अलग-अलग रूपों (Ways)</b> में किया जाता है, जो बोर्ड परीक्षा में 5 नंबर का सीधा बड़ा सवाल बनता है:</p>
+
+            <span class="kids-sub-heading" style="background: #ecfeff; border-left-color: #06b6d4;">🏢 1. शासन के विभिन्न अंगों के बीच (क्षैतिज वितरण - Horizontal Sharing)</span>
+            <p class="easy-text">इसमें सरकार के तीन सबसे बड़े भाइयों के बीच शक्तियों को बराबर स्तर पर बाँट दिया जाता है, ताकि कोई भी एक भाई अपनी मनमर्जी न चला सके:</p>
+            <ul class="visual-list">
+                <li><b>विधायिका (Legislature):</b> जिसका काम देश के लिए कानून बनाना है (जैसे संसद)।</li>
+                <li><b>कार्यपालिका (Executive):</b> जिसका काम उन कानूनों को देश में लागू करना है (जैसे प्रधानमंत्री, मंत्री और पुलिस)।</li>
+                <li><b>न्यायपालिका (Judiciary):</b> जिसका काम यह देखना है कि सब कानून के हिसाब से चल रहा है या नहीं, और झगड़ों का निपटारा करना (जैसे कोर्ट)।</li>
+            </ul>
+            <p class="easy-text"><b>नियंत्रण और संतुलन की व्यवस्था (Checks and Balances):</b> चूँकि ये तीनों एक ही लेवल पर रहकर काम करते हैं, इसलिए ये एक-दूसरे पर नजर रखते हैं और शक्तियों का संतुलन बनाए रखते हैं। इसे ही शासन का <b>क्षैतिज वितरण</b> कहते हैं।</p>
+
+            <span class="kids-sub-heading" style="background: #ecfeff; border-left-color: #06b6d4;">🗺️ 2. सरकार के विभिन्न स्तरों के बीच (ऊर्ध्वाधर वितरण - Vertical Sharing)</span>
+            <p class="easy-text">इसमें शक्तियों का बँटवारा ऊपर से नीचे की तरफ अलग-अलग लेवल की सरकारों के बीच होता है:</p>
+            <ul class="visual-list">
+                <li><b>केंद्रीय सरकार (Central Government):</b> जो पूरे देश के बड़े फैसले लेती है (जैसे दिल्ली की सरकार)।</li>
+                <li><b>राज्य सरकार (State Government):</b> जो अपने-अपने राज्य के फैसले लेती है (जैसे राजस्थान या उत्तर प्रदेश की सरकार)।</li>
+                <li><b>स्थानीय सरकार (Local Government):</b> जो गाँव और शहरों के लेवल पर काम करती है (जैसे पंचायत और नगरपालिका)।</li>
+            </ul>
+            <p class="easy-text"><b>संघीय विभाजन (Federal Division):</b> जब बड़ी सरकार अपनी कुछ शक्तियां नीचे की सरकारों को सौंप देती है, तो इसे सत्ता का <b>ऊर्ध्वाधर (Vertical) या संघीय वितरण</b> कहा जाता है।</p>
+
+            <span class="kids-sub-heading" style="background: #ecfeff; border-left-color: #06b6d4;">👥 3. विभिन्न सामाजिक समूहों के बीच (Social Groups)</span>
+            <p class="easy-text">समाज में रहने वाले अलग-अलग धार्मिक और भाषाई समूहों को भी सरकार में हिस्सा दिया जाता है ताकि कोई खुद को पराया न समझे:</p>
+            <ul class="visual-list">
+                <li>इसका सबसे अच्छा उदाहरण हमने बेल्जियम की <b>'सामुदायिक सरकार'</b> के रूप में देखा।</li>
+                <li>हमारे भारत देश में समाज के पिछड़े वर्गों, अनुसूचित जातियों (SC), जनजातियों (ST) और महिलाओं को संसद और विधानसभाओं में <b>आरक्षित चुनाव क्षेत्र (Reserved Constituencies)</b> की सहूलियत दी जाती है ताकि उनकी आवाज़ भी सरकार तक पहुँच सके।</li>
+            </ul>
+
+            <span class="kids-sub-heading" style="background: #ecfeff; border-left-color: #06b6d4;">📢 4. राजनीतिक दलों, दबाव समूहों और आंदोलनों के बीच</span>
+            <p class="easy-text">लोकतंत्र में जनता के पास यह पूरी आज़ादी होती है कि वे अपनी पसंद की सरकार चुन सकें। इसके कारण सत्ता का बँटवारा इस प्रकार होता है:</p>
+            <ul class="visual-list">
+                <li><b>गठबंधन सरकार (Coalition Government):</b> जब चुनाव में किसी एक पार्टी को बहुमत नहीं मिलता, तो दो या दो से अधिक पार्टियां मिलकर सरकार बना लेती हैं। यह सत्ता की साझेदारी का सबसे बड़ा और प्रत्यक्ष उदाहरण है।</li>
+                <li><b>दबाव समूह (Pressure Groups):</b> बड़े-बड़े व्यापारी, किसान, और मजदूर संगठन भी अपनी मांगों को लेकर सरकार की नीतियों पर दबाव डालते हैं और अप्रत्यक्ष रूप से सत्ता में अपनी हिस्सेदारी तय करते हैं।</li>
+            </ul>
+            
+            <div class="tip-box" style="background: #ecfeff; border-left-color: #0891b2; color: #164e63;">
+                🎓 <b>चैप्टर का अंत (Final Summary):</b> बच्चों, 'सत्ता की साझेदारी' का मतलब सिर्फ ताक़त को बाँटना नहीं है, बल्कि देश को सुरक्षित, सुखी और अखंड बनाए रखने का यह सबसे बेहतरीन लोकतांत्रिक रास्ता है!
+            </div>
+        </div>
+        <!-- ==================== PART 5 END ==================== -->
+
+        <!-- Back Button Dashboard Menu -->
         <a href="sst-civics.html" class="back-btn">🔙 अध्याय लिस्ट पर वापस जाएं</a>
     </div>
 </div>
+
+<!-- Right Click Disable protection for App Notes -->
 <script>document.addEventListener('contextmenu', e => e.preventDefault());</script>
+
 </body>
 </html>
