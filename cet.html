@@ -1,55 +1,275 @@
-        <!-- ==================== PART 2 START ==================== -->
-        <!-- Syllabus Index with Coming Soon Status -->
-        <div class="section-label">📋 राजस्थान भूगोल - कम्पलीट सिलेबस ट्रैकर</div>
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CET Special Master Hub 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { font-family: 'Poppins', 'Segoe UI', Roboto, sans-serif; background-color: #f8fafc; margin: 0; padding: 0; padding-bottom: 40px; }
+        .container { max-width: 600px; margin: 0 auto; background: #ffffff; min-height: 100vh; box-shadow: 0 0 20px rgba(0,0,0,0.05); }
         
-        <div style="display: flex; flex-direction: column; gap: 14px; margin-bottom: 30px;">
-            
-            <!-- Topic 1: Currently Live Section -->
-            <div style="background: #ffffff; border-radius: 18px; padding: 18px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 6px 15px rgba(0,0,0,0.04); border-left: 6px solid #14b8a6;">
-                <div style="display: flex; flex-direction: column; gap: 4px;">
-                    <h3 style="font-size: 15.5px; font-weight: 800; color: #1e293b; margin: 0;">Topic 1: राजस्थान की स्थिति और विस्तार</h3>
-                    <p style="font-size: 12px; color: #14b8a6; margin: 0; font-weight: 700;">🟢 नोट्स लाइव हैं • पढ़ना शुरू करें</p>
-                </div>
-                <div style="background: #ccfbf1; color: #0d9488; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; flex-shrink: 0;">✓</div>
-            </div>
+        /* Premium Live Green CET Header Theme */
+        .app-header { background: linear-gradient(135deg, #115e59, #14b8a6); color: white; padding: 45px 20px 55px 20px; text-align: center; border-bottom-left-radius: 35px; border-bottom-right-radius: 35px; box-shadow: 0 6px 20px rgba(20, 184, 166, 0.3); }
+        .app-header h1 { font-size: 24px; margin: 0; font-weight: 900; letter-spacing: 0.5px; }
+        .app-header p { font-size: 13px; margin: 10px 0 0 0; opacity: 0.9; font-weight: 600; background: rgba(255,255,255,0.15); display: inline-block; padding: 4px 15px; border-radius: 20px; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .content-area { padding: 0 20px; margin-top: -25px; }
+        
+        /* Intro Alert */
+        .intro-card { background: #ffffff; border-radius: 20px; padding: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border-left: 6px solid #14b8a6; margin-bottom: 25px; }
+        .intro-card p { font-size: 14.5px; color: #334155; line-height: 1.6; margin: 0; font-weight: 600; }
+        
+        .section-label { font-size: 14px; color: #475569; font-weight: 800; margin: 25px 0 12px 5px; text-transform: uppercase; }
+        
+        /* 📂 Premium CET Master Folders */
+        .master-folder { background: #ffffff; border-radius: 20px; padding: 20px; border: 1px solid #e2e8f0; box-shadow: 0 6px 15px rgba(0,0,0,0.03); margin-bottom: 15px; transition: all 0.2s; }
+        .folder-syllabus-style { border-left: 6px solid #f59e0b; background: linear-gradient(135deg, #fffde7 0%, #ffffff 100%); }
+        .folder-geo-style { border-left: 6px solid #14b8a6; }
+        .folder-history-style { border-left: 6px solid #f97316; }
+        .folder-polity-style { border-left: 6px solid #3b82f6; }
+        .folder-math-style { border-left: 6px solid #06b6d4; }
+        .folder-hindi-style { border-left: 6px solid #ef4444; }
+        .folder-english-style { border-left: 6px solid #a855f7; }
 
-            <!-- Topic 2: Coming Soon -->
-            <div style="background: #ffffff; border-radius: 18px; padding: 18px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 6px 15px rgba(0,0,0,0.04); border-left: 6px solid #94a3b8; opacity: 0.75;">
-                <div style="display: flex; flex-direction: column; gap: 4px;">
-                    <h3 style="font-size: 15px; font-weight: 800; color: #1e293b; margin: 0;">Topic 2: राजस्थान के भौतिक प्रदेश</h3>
-                    <p style="font-size: 12px; color: #64748b; margin: 0; font-weight: 600;">⏳ जल्द आ रहा है... (Under Production)</p>
-                </div>
-                <div style="background: #e2e8f0; color: #64748b; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0;">⏳</div>
-            </div>
+        .folder-header { display: flex; align-items: center; justify-content: space-between; cursor: pointer; }
+        .folder-header h3 { font-size: 16px; font-weight: 800; color: #1e293b; margin: 0; }
+        .folder-header p { font-size: 12px; margin: 4px 0 0 0; font-weight: 600; color: #64748b; }
+        
+        .folder-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 800; flex-shrink: 0; }
+        .icon-syllabus { background: #fef9c3; color: #b45309; }
+        .icon-geo { background: #ccfbf1; color: #0d9488; }
+        .icon-history { background: #ffedd5; color: #ea580c; }
+        .icon-polity { background: #eff6ff; color: #2563eb; }
+        .icon-math { background: #cffafe; color: #0891b2; }
+        .icon-hindi { background: #fee2e2; color: #dc2626; }
+        .icon-english { background: #f3e8ff; color: #9333ea; }
+        
+        /* 📑 Expandable Inner Content */
+        .folder-content { display: none; margin-top: 20px; padding-top: 15px; border-top: 2px dashed #e2e8f0; }
+        .easy-text { font-size: 14px; color: #334155; line-height: 1.7; font-weight: 600; text-align: justify; margin-bottom: 12px; }
+        
+        .visual-list { list-style: none; padding: 0; margin: 12px 0; }
+        .visual-list li { position: relative; padding-left: 26px; margin-bottom: 12px; font-size: 14px; color: #334155; font-weight: 600; line-height: 1.6; }
+        .visual-list li::before { content: "🎯"; position: absolute; left: 0; top: 1px; font-size: 13px; }
+        
+        /* Inside Syllabus Sub Toggles */
+        .inner-syllabus-toggle { background: #f8fafc; border: 1px dashed #cbd5e1; padding: 12px 15px; border-radius: 12px; margin-bottom: 10px; cursor: pointer; font-size: 13.5px; font-weight: 700; color: #334155; display: flex; align-items: center; justify-content: space-between; }
+        .inner-syllabus-box { display: none; padding: 10px 5px 5px 5px; }
 
-            <!-- Topic 3: Coming Soon -->
-            <div style="background: #ffffff; border-radius: 18px; padding: 18px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 6px 15px rgba(0,0,0,0.04); border-left: 6px solid #94a3b8; opacity: 0.75;">
-                <div style="display: flex; flex-direction: column; gap: 4px;">
-                    <h3 style="font-size: 15px; font-weight: 800; color: #1e293b; margin: 0;">Topic 3: राजस्थान का अपवाह तंत्र (नदियां व झीलें)</h3>
-                    <p style="font-size: 12px; color: #64748b; margin: 0; font-weight: 600;">⏳ जल्द आ रहा है... (Sanjay Sir Special)</p>
-                </div>
-                <div style="background: #e2e8f0; color: #64748b; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0;">⏳</div>
-            </div>
+        /* Sub-topic buttons inside folder */
+        .sub-file-link { display: flex; align-items: center; justify-content: space-between; background: #f8fafc; border: 1px solid #e2e8f0; padding: 14px 16px; border-radius: 12px; text-decoration: none; margin-bottom: 10px; transition: 0.2s; }
+        .sub-file-link:active { background: #f1f5f9; transform: scale(0.98); }
+        .sub-file-link span { font-size: 13.5px; font-weight: 700; color: #334155; }
+        .sub-file-link em { font-size: 11px; font-style: normal; font-weight: 800; text-transform: uppercase; background: #e2e8f0; padding: 3px 8px; border-radius: 6px; color: #475569; }
+        .live-tag { background: #dcfce7 !important; color: #16a34a !important; }
 
-            <!-- Topic 4: Coming Soon -->
-            <div style="background: #ffffff; border-radius: 18px; padding: 18px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 6px 15px rgba(0,0,0,0.04); border-left: 6px solid #94a3b8; opacity: 0.75;">
-                <div style="display: flex; flex-direction: column; gap: 4px;">
-                    <h3 style="font-size: 15px; font-weight: 800; color: #1e293b; margin: 0;">Topic 4: राजस्थान की जलवायु और मृदा</h3>
-                    <p style="font-size: 12px; color: #64748b; margin: 0; font-weight: 600;">⏳ जल्द आ रहा है... (CET 2026 Special)</p>
-                </div>
-                <div style="background: #e2e8f0; color: #64748b; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0;">⏳</div>
-            </div>
+        /* Custom Table for Stats */
+        .notes-table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 13px; font-weight: 600; }
+        .notes-table th, .notes-table td { border: 1px solid #cbd5e1; padding: 10px; text-align: left; }
+        .notes-table th { background-color: #f0fdfa; color: #115e59; font-weight: 800; }
+        .kids-sub-heading { font-size: 14.5px; color: #0f172a; font-weight: 800; margin: 20px 0 10px 0; background: #ccfbf1; padding: 8px 14px; border-radius: 10px; border-left: 4px solid #14b8a6; display: block; }
+        .danger-hl { color: #b91c1c; font-weight: 800; }
+        .hl { color: #0d9488; font-weight: 800; }
+        .badge-info { background: #e0f2fe; color: #0369a1; padding: 2px 6px; border-radius: 4px; font-weight: 800; }
+        .badge-warn { background: #fef3c7; color: #b45309; padding: 2px 6px; border-radius: 4px; font-weight: 800; }
+        .tip-box { background: #f0fdfa; border-left: 4px solid #14b8a6; padding: 12px; border-radius: 6px; font-size: 13px; margin-top: 15px; color: #115e59; font-weight: 600; }
 
+        .back-btn { display: flex; align-items: center; justify-content: center; background: #ffffff; color: #475569; padding: 15px; border-radius: 30px; font-size: 14px; font-weight: 700; text-decoration: none; box-shadow: 0 4px 12px rgba(0,0,0,0.05); width: 100%; max-width: 280px; margin: 35px auto 0 auto; border: 1px solid #e2e8f0; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="app-header">
+        <h1>CET स्पेशल 2026 Batch</h1>
+        <p>🏆 समान पात्रता परीक्षा • मास्टर हब</p>
+    </div>
+    
+    <div class="content-area">
+        <div class="intro-card" style="margin-top: 20px;">
+            <p>👋 <b>राम-राम दोस्तों!</b> राजस्थान CET परीक्षा के सभी विषयों का कंप्लीट सिलेबस और स्टडी फोल्डर्स का सेट यहाँ है। किसी भी फोल्डर को टैप करके अंदर की क्लासेस देख सकते हैं।</p>
         </div>
 
-        <!-- Back Button to Main Dashboard -->
+        <div class="section-label">📁 कोर्स डायरेक्टरी (Click Folders)</div>
+
+        <!-- ════════════ FOLDER 0: MASTER SYLLABUS DIRECTORY ════════════ -->
+        <div class="master-folder folder-syllabus-style">
+            <div class="folder-header" onclick="toggleFolder('syllabusContent')">
+                <div>
+                    <h3>📋 CET ऑफिशियल पाठ्यक्रम (Syllabus)</h3>
+                    <p style="color: #b45309;">सभी विषयों का कंपलीट सिलेबस यहाँ देखें</p>
+                </div>
+                <div class="folder-icon icon-syllabus">📂</div>
+            </div>
+            
+            <div class="folder-content" id="syllabusContent">
+                <p class="easy-text" style="font-size: 13px; color:#64748b; margin-bottom: 15px;">जिस सब्जेक्ट का सिलेबस देखना है, उस पर क्लिक करें:</p>
+                
+                <!-- Inner Toggle 1: Geography -->
+                <div class="inner-syllabus-toggle" onclick="toggleInnerSyllabus('sylGeo')">
+                    <span>🌍 1. राजस्थान का भूगोल</span> <span>▼</span>
+                </div>
+                <div class="inner-syllabus-box" id="sylGeo">
+                    <ul class="visual-list">
+                        <li>स्थिति, विस्तार, आकार, भौतिक स्वरूप व मुख्य भौतिक विभाग।</li>
+                        <li>अपवाह तंत्र, नदियां, झीलें, बांध व जल संरक्षण तकनीकें।</li>
+                        <li>जलवायु प्रदेश, वर्गीकरण, मृदा व्यवस्था एवं वनों के प्रकार।</li>
+                        <li>खनिज संसाधन, ऊर्जा प्रोजेक्ट्स, नहरें व नदी घाटी परियोजनाएं।</li>
+                    </ul>
+                </div>
+
+                <!-- Inner Toggle 2: History & Culture -->
+                <div class="inner-syllabus-toggle" onclick="toggleInnerSyllabus('sylHist')">
+                    <span>🏯 2. इतिहास, कला व संस्कृति</span> <span>▼</span>
+                </div>
+                <div class="inner-syllabus-box" id="sylHist">
+                    <ul class="visual-list">
+                        <li>राजस्थान की प्राचीन सभ्यताएं (कालीबंगा, आहड़), प्रमुख राजवंश।</li>
+                        <li>1857 की क्रांति, प्रजामंडल आंदोलन, किसान व जनजातीय आंदोलन, एकीकरण।</li>
+                        <li>राजस्थान की विरासत (दुर्ग, महल, स्मारक), चित्रकला शैलियां, मेले व त्यौहार।</li>
+                        <li>लोक देवता, लोक संत, लोक संगीत, लोक नाट्य, वेशभूषा, आभूषण व साहित्य।</li>
+                    </ul>
+                </div>
+
+                <!-- Inner Toggle 3: Polity -->
+                <div class="inner-syllabus-toggle" onclick="toggleInnerSyllabus('sylPolity')">
+                    <span>⚖️ 3. भारतीय संविधान व राजव्यवस्था</span> <span>▼</span>
+                </div>
+                <div class="inner-syllabus-box" id="sylPolity">
+                    <ul class="visual-list">
+                        <li>भारतीय संविधान की प्रस्तावना, मुख्य विशेषताएं, मूल अधिकार व कर्तव्य।</li>
+                        <li>संसद, राष्ट्रपति, प्रधानमंत्री व मंत्रिपरिषद की कार्यप्रणाली।</li>
+                        <li>राजव्यवस्था (राज्यपाल, मुख्यमंत्री, विधानसभा, उच्च न्यायालय, जिला प्रशासन)।</li>
+                        <li>पंचायती राज व्यवस्था व नगरीय स्व-शासन (राजस्थान के संदर्भ में)।</li>
+                    </ul>
+                </div>
+
+                <!-- Inner Toggle 4: Maths & Reasoning -->
+                <div class="inner-syllabus-toggle" onclick="toggleInnerSyllabus('sylMath')">
+                    <span>📐 4. तार्किक शक्ति व मानसिक योग्यता (Maths)</span> <span>▼</span>
+                </div>
+                <div class="inner-syllabus-box" id="sylMath">
+                    <ul class="visual-list">
+                        <li>वैदिक गणित, संख्या पद्धति, गुणनखंड, अनुपात-समानुपात, प्रतिशत, लाभ-हानि।</li>
+                        <li>साधारण व चक्रवृद्धि ब्याज, समय-काम-दूरी, औसत, सांकेतिक भाषा (Coding-Decoding)।</li>
+                        <li>रक्त संबंध, दिशा ज्ञान, सिटिंग अरेंजमेंट, आकृतियों की गणना।</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ════════════ FOLDER 1: RAJASTHAN GEOGRAPHY ════════════ -->
+        <div class="master-folder folder-geo-style">
+            <div class="folder-header" onclick="toggleFolder('geoContent')">
+                <div>
+                    <h3>🌍 1. राजस्थान का भूगोल</h3>
+                    <p style="color: #0d9488;">Sanjay Sir Special Notes • Live</p>
+                </div>
+                <div class="folder-icon icon-geo">📂</div>
+            </div>
+            <div class="folder-content" id="geoContent">
+                
+                <!-- Topic 1 Live Content Included -->
+                <div style="background: #f0fdfa; border: 1px solid #cbd5e1; padding: 15px; border-radius: 12px; margin-bottom: 12px;">
+                    <span style="color: #0d9488; font-size: 11px; font-weight: 800; display: block; margin-bottom: 5px;">TOPIC 1 LIVE NOTES 🟢</span>
+                    <h4 style="font-size: 15px; font-weight: 800; color: #1e293b; margin: 0 0 10px 0;">राजस्थान की स्थिति और विस्तार</h4>
+                    
+                    <span class="kids-sub-heading">🌐 अक्षांश और देशांतर विस्तार</span>
+                    <ul class="visual-list" style="margin-bottom: 10px;">
+                        <li><b>उत्तरी अक्षांश:</b> <span class="badge-info">23°03'</span> से <span class="badge-info">30°12'</span> तक।</li>
+                        <li><b>पूर्वी देशांतर:</b> <span class="badge-warn">69°30'</span> से <span class="badge-warn">78°17'</span> तक।</li>
+                        <li><b>कर्क रेखा (23½° N):</b> बांसवाड़ा के मध्य से तथा डूंगरपुर को छूती हुई निकलती है।</li>
+                    </ul>
+                    
+                    <span class="kids-sub-heading">📐 आकार, लंबाई और चौड़ाई</span>
+                    <table class="notes-table">
+                        <thead>
+                            <tr><th>पैमाना</th><th>विवरण</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>आकृति</td><td>विषमकोणीय चतुर्भुज या पतंगाकार (Rhombus)</td></tr>
+                            <tr><td>उत्तर-दक्षिण लंबाई</td><td>826 किमी (कोणा गाँव से बोरकुंडा तक)</td></tr>
+                            <tr><td>पूर्व-पश्चिम चौड़ाई</td><td>869 किमी (कटरा गाँव से सिलावट तक)</td></tr>
+                            <tr><td>कुल क्षेत्रफल</td><td>3,42,239 वर्ग किमी (भारत का 10.41%)</td></tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="tip-box">
+                        📌 <b>CET फैक्ट:</b> पूर्व-से-पश्चिम चौड़ाई (869 किमी), उत्तर-से-दक्षिण लंबाई (826 किमी) से <b>43 किलोमीटर ज़्यादा</b> है।
+                    </div>
+                </div>
+
+                <!-- Coming Soon Links -->
+                <a href="#" class="sub-file-link"><span>Topic 2: राजस्थान के भौतिक प्रदेश व मृदा प्रणाली</span> <em>COMING SOON</em></a>
+                <a href="#" class="sub-file-link"><span>Topic 3: राजस्थान का अपवाह तंत्र (नदियां व झीलें)</span> <em>COMING SOON</em></a>
+            </div>
+        </div>
+
+        <!-- ════════════ FOLDER 2: HISTORY & CULTURE ════════════ -->
+        <div class="master-folder folder-history-style">
+            <div class="folder-header" onclick="toggleFolder('historyContent')">
+                <div>
+                    <h3>🏯 2. राजस्थान का इतिहास व कला-संस्कृति</h3>
+                    <p style="color: #ea580c;">मेले, त्यौहार, राजवंश व प्रजामंडल</p>
+                </div>
+                <div class="folder-icon icon-history">📂</div>
+            </div>
+            <div class="folder-content" id="historyContent">
+                <a href="cet-history-t1.html" class="sub-file-link"><span>Topic 1: राजस्थान की प्राचीन सभ्यताएं (कालीबंगा व आहड़)</span> <em class="live-tag">LIVE NOTES</em></a>
+                <a href="#" class="sub-file-link"><span>Topic 2: राजस्थान के प्रमुख राजवंश व 1857 की क्रांति</span> <em>COMING SOON</em></a>
+                <a href="#" class="sub-file-link"><span>Topic 3: राजस्थान की विरासत (दुर्ग, महल, मेले व लोक देवता)</span> <em>COMING SOON</em></a>
+            </div>
+        </div>
+
+        <!-- ════════════ FOLDER 3: POLITY ════════════ -->
+        <div class="master-folder folder-polity-style">
+            <div class="folder-header" onclick="toggleFolder('polityContent')">
+                <div>
+                    <h3>⚖️ 3. भारतीय संविधान व राजव्यवस्था</h3>
+                    <p style="color: #2563eb;">संविधान सभा, राज्यपाल व पंचायती राज</p>
+                </div>
+                <div class="folder-icon icon-polity">📂</div>
+            </div>
+            <div class="folder-content" id="polityContent">
+                <a href="#" class="sub-file-link"><span>Topic 1: भारतीय संविधान का निर्माण, प्रस्तावना व विशेषताएं</span> <em>COMING SOON</em></a>
+                <a href="#" class="sub-file-link"><span>Topic 2: राज्य कार्यपालिका (राज्यपाल, मुख्यमंत्री व जिला प्रशासन)</span> <em>COMING SOON</em></a>
+            </div>
+        </div>
+
+        <!-- ════════════ FOLDER 4: MATHS & REASONING ════════════ -->
+        <div class="master-folder folder-math-style">
+            <div class="folder-header" onclick="toggleFolder('mathContent')">
+                <div>
+                    <h3>📐 4. तार्किक शक्ति व मानसिक योग्यता</h3>
+                    <p style="color: #0891b2;">वैदिक गणित, लाभ-हानि व कोडिंग</p>
+                </div>
+                <div class="folder-icon icon-math">📂</div>
+            </div>
+            <div class="folder-content" id="mathContent">
+                <a href="#" class="sub-file-link"><span>Topic 1: वैदिक गणित, गुणनखंड व वर्गमूल-घनमूल</span> <em>COMING SOON</em></a>
+                <a href="#" class="sub-file-link"><span>Topic 2: प्रतिशतता, लाभ-हानि, अनुपात व ब्याज गणना</span> <em>COMING SOON</em></a>
+            </div>
+        </div>
+
         <a href="index.html" class="back-btn">🔙 मुख्य डैशबोर्ड पर वापस जाएं</a>
     </div>
 </div>
 
-<!-- Protection Script for Competitive Exam Content -->
-<script>document.addEventListener('contextmenu', e => e.preventDefault());</script>
-
+<script>
+    // 1. मुख्य विषय फोल्डर टोगल फंक्शन
+    function toggleFolder(folderId) {
+        const content = document.getElementById(folderId);
+        content.style.display = (content.style.display === 'block') ? 'none' : 'block';
+    }
+    
+    // 2. सिलेबस डायरेक्टरी के अंदर का सब-टोगल फंक्शन
+    function toggleInnerSyllabus(innerId) {
+        const innerBox = document.getElementById(innerId);
+        innerBox.style.display = (innerBox.style.display === 'block') ? 'none' : 'block';
+    }
+    
+    document.addEventListener('contextmenu', e => e.preventDefault());
+</script>
 </body>
 </html>
-<!-- ==================== PART 2 END ==================== -->
