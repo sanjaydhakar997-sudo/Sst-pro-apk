@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>अध्याय 1: सत्ता की साझेदारी - मास्टर प्रो एडिशन | SOCIAL STUDIES CLASSES</title>
+    <title>अध्याय 1: सत्ता की साझेदारी - कस्टमाइज्ड मास्टर एडिशन | SOCIAL STUDIES CLASSES</title>
     <style>
         /* --- CORE ARCHITECTURE & ACCESSIBILITY GUARD --- */
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f4f8; color: #1e293b; padding-bottom: 60px; line-height: 1.6; }
         .container { max-width: 680px; margin: 0 auto; background: #ffffff; min-height: 100vh; box-shadow: 0 0 30px rgba(0,0,0,0.08); border-left: 3px solid #1e3a8a; border-right: 3px solid #1e3a8a; }
         
-        /* Premium Textbook Header Board */
+        /* Premium Textbook Header Layout */
         .premium-header { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); color: #ffffff; padding: 45px 25px; text-align: center; border-bottom: 6px solid #facc15; position: relative; }
         .premium-header h1 { font-size: 28px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; color: #ffffff; }
         .premium-header p { font-size: 14px; margin-top: 12px; font-weight: 700; background: #facc15; color: #0f172a; display: inline-block; padding: 6px 20px; border: 2px solid #0f172a; border-radius: 4px; }
@@ -35,34 +35,39 @@
         .highlight-core { background: #fef08a; color: #0f172a; padding: 2px 6px; font-weight: 700; border-radius: 3px; border-bottom: 2px solid #ca8a04; }
         .easy-narration { font-size: 15.5px; color: #334155; font-weight: 600; text-align: justify; margin-bottom: 20px; }
         
+        /* 📖 KAHANI CORNER STYLE BOX */
+        .kahani-box { background: #fdf4ff; border: 2px dashed #c084fc; border-left: 8px solid #a855f7; padding: 20px; margin: 25px 0; border-radius: 6px; }
+        .kahani-title { font-size: 16px; font-weight: 800; color: #6b21a8; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+
+        /* 🎮 INTERACTIVE MICRO GAMES STYLE */
+        .game-panel { background: #f0fdf4; border: 2px solid #22c55e; padding: 20px; margin: 25px 0; border-radius: 8px; box-shadow: 4px 4px 0px #22c55e; }
+        .game-title { font-size: 15px; font-weight: 800; color: #166534; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+        .game-options { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .game-btn { background: #ffffff; border: 2px solid #0f172a; padding: 10px 15px; font-size: 13.5px; font-weight: 700; text-align: left; cursor: pointer; border-radius: 4px; transition: 0.1s; color: #1e293b; }
+        .game-btn:hover { background: #f8fafc; }
+        .game-feedback { margin-top: 12px; font-size: 13.5px; font-weight: 700; display: none; padding: 8px; border-radius: 4px; }
+
         /* 🖼️ HIGH-GRADE INTERACTIVE/DYNAMIC SVG LAYOUTS & GEOMETRIC CANVAS */
         .visual-canvas-container { background: #f8fafc; border: 2px solid #0f172a; border-radius: 6px; padding: 20px; margin: 25px 0; text-align: center; }
         .canvas-label { display: inline-block; font-size: 12px; font-weight: 800; color: #ffffff; background: #1e293b; padding: 4px 12px; border-radius: 3px; margin-bottom: 20px; text-transform: uppercase; }
         
-        /* Concept 1: Advanced Interactive Map Grid (Belgium) */
         .belgium-svg-layout { width: 100%; max-width: 300px; height: auto; margin: 0 auto; display: block; filter: drop-shadow(4px 4px 0px #0f172a); }
-        .map-region { transition: all 0.2s ease; cursor: pointer; stroke: #0f172a; stroke-width: 3; }
-        .map-region:hover { filter: brightness(0.9); }
+        .map-region { stroke: #0f172a; stroke-width: 3; }
         
-        /* Concept 2: Advanced Shape Layout (Sri Lanka) */
         .srilanka-shape-canvas { width: 220px; height: 280px; margin: 0 auto; position: relative; background: #fff7ed; border: 3px solid #0f172a; border-radius: 45% 45% 50% 50% / 35% 35% 65% 65%; overflow: hidden; box-shadow: 4px 4px 0px #0f172a; }
         .sinhala-bulk-zone { width: 100%; height: 100%; background: #ffedd5; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; color: #c2410c; padding-top: 60px; }
         .tamil-north-strip { position: absolute; top: 0; left: 20%; width: 60%; height: 65px; background: #fee2e2; border-bottom: 3px dashed #0f172a; border-left: 3px solid #0f172a; border-right: 3px solid #0f172a; border-radius: 0 0 15px 15px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 11px; color: #991b1b; }
         .tamil-east-strip { position: absolute; top: 65px; right: 0; width: 55px; height: 130px; background: #fee2e2; border-left: 3px dashed #0f172a; border-bottom: 3px dashed #0f172a; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 11px; color: #991b1b; writing-mode: vertical-rl; text-orientation: mixed; }
         
-        /* Concept 3: Horizontal Seesaw Balance (Checks & Balances) */
         .seesaw-framework { width: 100%; padding: 25px 10px; background: #ffffff; border: 2px dashed #64748b; margin-top: 15px; position: relative; }
         .seesaw-plank { width: 90%; height: 8px; background: #0f172a; margin: 20px auto; position: relative; display: flex; justify-content: space-between; align-items: center; }
         .seesaw-pivot { width: 0; height: 0; border-left: 15px solid transparent; border-right: 15px solid transparent; border-bottom: 25px solid #0f172a; margin: -10px auto 0 auto; }
         .seesaw-weight { background: #ffffff; border: 2px solid #0f172a; padding: 8px 12px; font-size: 12px; font-weight: 800; position: relative; top: -20px; box-shadow: 2px 2px 0px #0f172a; }
 
-        /* Concept 4: Vertical Government Stack Blocks */
         .stack-container { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 15px; }
-        .stack-block { width: 85%; padding: 12px; border: 2px solid #0f172a; font-weight: 800; font-size: 14px; text-align: center; position: relative; box-shadow: 4px 4px 0px #0f172a; transition: transform 0.1s; }
-        .stack-block:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0px #0f172a; }
+        .stack-block { width: 85%; padding: 12px; border: 2px solid #0f172a; font-weight: 800; font-size: 14px; text-align: center; position: relative; box-shadow: 4px 4px 0px #0f172a; }
         .stack-arrow { font-size: 16px; font-weight: 900; color: #0f172a; }
 
-        /* Concept 5: Prudential vs Moral Tarazu Framework */
         .tarazu-container { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px; }
         .tarazu-pan { background: #ffffff; border: 2px solid #0f172a; padding: 15px; border-radius: 6px; position: relative; box-shadow: 3px 3px 0px #0f172a; }
         .tarazu-title { font-size: 13px; font-weight: 800; color: #ffffff; background: #0f172a; padding: 2px 8px; display: inline-block; margin-bottom: 10px; }
@@ -72,14 +77,12 @@
         .matrix-box { border: 2px solid #0f172a; padding: 15px; text-align: center; border-radius: 4px; background: #ffffff; }
         .matrix-num { font-size: 32px; font-weight: 900; margin: 5px 0; }
 
-        /* Micro-Interaction Highlight Alert Panels */
         .danger-alert-zone { background: #fff5f5; border: 2px solid #ef4444; border-left: 8px solid #ef4444; padding: 18px; margin: 25px 0; border-radius: 4px; box-shadow: 4px 4px 0px #ef4444; }
         .danger-title { font-size: 14px; font-weight: 800; color: #991b1b; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
 
-        /* GuruJi Interactive Pointer */
         .guruji-spotlight { background: #f0f9ff; border: 2px solid #0ea5e9; padding: 16px; margin: 25px 0; border-radius: 6px; font-size: 14px; font-weight: 600; color: #0369a1; }
 
-        /* Bullet Structures */
+        /* Bullet & Table Structures */
         .bullet-list { list-style: none; margin: 15px 0; }
         .bullet-list li { position: relative; padding-left: 24px; margin-bottom: 12px; font-size: 14.5px; font-weight: 600; color: #334155; }
         .bullet-list li::before { content: "⚡"; position: absolute; left: 0; top: 1px; font-size: 14px; }
@@ -88,9 +91,12 @@
         .master-table th, .master-table td { border: 2px solid #0f172a; padding: 12px; text-align: left; }
         .master-table th { background: #f1f5f9; color: #1e3a8a; font-weight: 800; }
 
+        /* 🚀 SPECIAL FACT CAPSULE TABLE STYLE */
+        .fact-capsule-section { background: #f8fafc; border: 3px solid #1e3a8a; border-radius: 8px; padding: 20px; margin-top: 35px; box-shadow: 6px 6px 0px #1e3a8a; }
+        .capsule-title { font-size: 18px; font-weight: 900; color: #1e3a8a; margin-bottom: 15px; text-align: center; border-bottom: 2px solid #1e3a8a; padding-bottom: 8px; }
+
         .exam-booster-note { background: #f0fdf4; border: 2px dashed #22c55e; padding: 15px; font-size: 13.5px; color: #14532d; font-weight: 700; margin-top: 25px; border-radius: 4px; }
-        .action-footer-btn { display: block; text-align: center; text-decoration: none; background: #ffffff; color: #0f172a; padding: 16px; font-weight: 800; margin-top: 40px; border: 3px solid #0f172a; box-shadow: 5px 5px 0px #0f172a; border-radius: 6px; font-size: 15px; transition: 0.1s; }
-        .action-footer-btn:active { transform: translate(3px, 3px); box-shadow: 2px 2px 0px #0f172a; }
+        .action-footer-btn { display: block; text-align: center; text-decoration: none; background: #ffffff; color: #0f172a; padding: 16px; font-weight: 800; margin-top: 40px; border: 3px solid #0f172a; box-shadow: 5px 5px 0px #0f172a; border-radius: 6px; font-size: 15px; }
     </style>
 </head>
 <body>
@@ -151,7 +157,17 @@
 
             <div class="guruji-spotlight">
                 <b>🏙️ राजधानी ब्रुसेल्स का उल्टा खेल (विशेष ध्यान दें):</b><br>
-                पूरे देश में जो फ्रेंच बोलने वाले लोग सिर्फ 40% (अल्पसंख्यक) थे, वे अकेले <b>राजधानी ब्रुसेल्स में 80% (भारी बहुसंख्यक)</b> बन कर बैठे थे! इसके विपरीत, पूरे देश में राज करने वाले 59% डच लोग राजधानी में सिर्फ 20% बनकर कोने में आ गए थे। इसी उल्टे गणित के कारण 1950 और 1960 के दशक में डच और फ्रेंच समूहों के बीच तनाव की चिंगारी भड़क उठी।
+                पूरे देश में जो फ्रेंच बोलने वाले लोग सिर्फ 40% (अल्पसंख्यक) थे, वे अकेले <b>राजधानी ब्रुसेल्स में 80% (भारी बहुसंख्यक)</b> बन कर बैठे थे! इसके विपरीत, पूरे देश में राज करने वाले 59% डच लोग राजधानी में सिर्फ 20% बनकर कोने में आ गए थे। इसी उल्टे गणित के कारण 1950 और 1960 के दशक में डच tobacco और फ्रेंच समूहों के बीच तनाव की चिंगारी भड़क उठी।
+            </div>
+
+            <div class="game-panel">
+                <div class="game-title">🎮 गेम 1: ब्रुसेल्स का चक्रव्यूह (दिमाग चलाओ!)</div>
+                <p style="font-size:13.5px; font-weight:600; color:#1e293b;">मान लो आप डच बोलने वाले छात्र हो। पूरे देश में आप 59% बहुसंख्यक हो, पर राजधानी ब्रुसेल्स में घुसते ही आप सिर्फ 20% अल्पसंख्यक रह जाते हो। यहाँ फ्रेंच मंत्री भारी पड़ रहे हैं। इस परिस्थिति में तनाव क्यों बढ़ा?</p>
+                <div class="game-options">
+                    <button class="game-btn" onclick="showFeedback('g1-wrong')">A) क्योंकि डच लोग बहुत अमीर थे और फ्रेंच गरीब थे।</button>
+                    <button class="game-btn" onclick="showFeedback('g1-right')">B) क्योंकि फ्रेंच कम होकर भी अमीर-ताकतवर थे और राजधानी में उनका भारी दबदबा (80%) था।</button>
+                </div>
+                <div id="g1-feedback" class="game-feedback"></div>
             </div>
         </div>
 
@@ -169,6 +185,14 @@
                     <div class="tamil-east-strip">🎯 तमिल (पूर्व)</div>
                 </div>
                 <p style="font-size:11.5px; font-weight:700; color:#475569; margin-top:15px;">[मानचित्र विश्लेषण: देश के उत्तरी और पूर्वी तटीय पट्टियों पर तमिल आबादी जमी थी, जबकि पूरे मध्य और दक्षिणी बड़े हिस्से पर सिंहली समुदाय का पूरा घेरा था]</p>
+            </div>
+
+            <div class="kahani-box">
+                <div class="kahani-title">📖 गुरुजी की मजेदार कहानी: "बेल्जियम का केक और श्रीलंका की चाय"</div>
+                <p style="font-size:14px; font-weight:600; color:#581c87; text-align:justify; line-height:1.7;">
+                    बच्चो, इसे एक घरेलू कहानी से समझो! मान लो एक घर में एक बड़ा <b>'बेल्जियम केक'</b> आया। आधा केक डच का था और आधा फ्रेंच का। दोनों भाइयों में लड़ाई होने लगी। समझदार माता-पिता (नेताओं) ने चाकू उठाया और केक को बिल्कुल बराबर-बराबर हिस्सों में बांट दिया। दोनों भाई खुश हो गए और प्यार से रहने लगे। <br><br>
+                    अब दूसरे घर चलते हैं, वहाँ <b>'श्रीलंका की चाय'</b> बन रही थी। घर में 74% बड़े भाई (सिंहली) थे और 18% छोटे भाई (तमिल)। बड़े भाई ने चाय पर पूरा कब्जा कर लिया और कहा—"पूरी मलाई मैं खाऊंगा, तुम्हें एक बूंद भी नहीं दूंगा!" छोटा भाई नाराज हो गया, उसने गुस्से में चाय का सस्पैन ही पलट दिया। पूरा घर जल गया! यही श्रीलंका का <b>गृहयुद्ध</b> था। समझ आया ना बेटा, साझेदारी क्यों जरूरी है!
+                </p>
             </div>
 
             <p class="easy-narration">यहाँ के समाज में दो मुख्य ग्रुप्स का सीधा टकराव था:</p>
@@ -210,6 +234,16 @@
             </table>
 
             <p class="easy-narration"><b>💥 विनाशकारी अंत (गृहयुद्ध - Civil War):</b> इन काली नीतियों के कारण तमिलों को लगा कि वे अपने ही देश में पराये हो गए हैं। उनके आत्मसम्मान को इतनी गहरी चोट लगी कि उन्होंने आंदोलन शुरू कर दिया और अंत में एक अलग स्वायत्त राज्य <span class="highlight-core">'तमिल इलम'</span> बनाने की मांग रख दी। नतीजा यह हुआ बेटा कि देश में भयानक <b>गृहयुद्ध</b> छिड़ गया, हजारों लोग मारे गए, घर उजड़ गए और सुंदर श्रीलंका सामाजिक व आर्थिक रूप से पूरी तरह बर्बाद हो गया।</p>
+
+            <div class="game-panel" style="border-color:#ea580c; background:#fff7ed;">
+                <div class="game-title" style="color:#c2410c;">🎮 गेम 2: 1956 का ब्लैक बॉक्स (जल्दी बताओ!)</div>
+                <p style="font-size:13.5px; font-weight:600; color:#1e293b;">श्रीलंका की सरकार ने 1956 में तमिलों के अधिकारों को कुचलने के लिए किस धर्म को राजकीय संरक्षण दिया था?</p>
+                <div class="game-options">
+                    <button class="game-btn" onclick="showFeedback('g2-wrong')">A) हिंदू धर्म और इस्लाम धर्म को</button>
+                    <button class="game-btn" onclick="showFeedback('g2-right')">B) केवल बौद्ध धर्म (Buddhism) को</button>
+                </div>
+                <div id="g2-feedback" class="game-feedback"></div>
+            </div>
         </div>
 
         <div class="section-master-card" style="border-color: #22c55e;">
@@ -283,11 +317,79 @@
             </div>
         </div>
 
+        <div class="fact-capsule-section">
+            <div class="capsule-title">🔥 त्वरित रिवीज़न कैप्सूल: पूरे पाठ के मुख्य फैक्ट्स एक साथ</div>
+            <table class="master-table" style="margin: 0;">
+                <thead>
+                    <tr>
+                        <th style="background:#1e3a8a; color:white;">विषय / देश</th>
+                        <th style="background:#1e3a8a; color:white;">मुख्य सांख्यिकी (Data)</th>
+                        <th style="background:#1e3a8a; color:white;">शासन का मॉडल / परिणाम</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>बेल्जियम (देश)</b></td>
+                        <td>डच = 59% (फ्लेमिश)<br>फ्रेंच = 40% (वेलोनिया)<br>जर्मन = 1%</td>
+                        <td><b>समझदारी मॉडल:</b> केंद्र में 50-50 मंत्री हिस्सेदारी, सामुदायिक सरकार। परिणाम = पूर्ण शांति और अखंडता।</td>
+                    </tr>
+                    <tr>
+                        <td><b>ब्रुसेल्स (राजधानी)</b></td>
+                        <td>फ्रेंच = 80% (बहुसंख्यक)<br>डच = 20% (अल्पसंख्यक)</td>
+                        <td>देश का बिल्कुल उल्टा समीकरण, जिसे समान प्रतिनिधित्व देकर सुलझाया गया।</td>
+                    </tr>
+                    <tr>
+                        <td><b>श्रीलंका (देश)</b></td>
+                        <td>सिंहली = 74% (बौद्ध)<br>तमिल = 18% (हिंदू/मुस्लिम)</td>
+                        <td><b>बहुसंख्यकवाद (1956 कानून):</b> सिंहली एकमात्र राजभाषा। परिणाम = भयानक गृहयुद्ध और बर्बादी।</td>
+                    </tr>
+                    <tr>
+                        <td><b>क्षैतिज वितरण</b></td>
+                        <td>विधायिका + कार्यपालिका + न्यायपालिका</td>
+                        <td><b>नियंत्रण और संतुलन:</b> सभी अंग एक ही स्तर पर रहकर एक-दूसरे को चेक करते हैं।</td>
+                    </tr>
+                    <tr>
+                        <td><b>ऊर्ध्वाधर वितरण</b></td>
+                        <td>केंद्र सरकार ➔ राज्य सरकार ➔ स्थानीय निकाय</td>
+                        <td><b>संघीय ढांचा:</b> शक्तियाँ ऊपर से नीचे के स्तरों में विभाजित होती हैं।</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
         <a href="sst-civics.html" class="action-footer-btn">🔙 मुख्य अध्याय लिस्ट पर वापस जाएं</a>
     </div>
 </div>
 
 <script>
+    // Interaction logic for mini-games without altering text content
+    function showFeedback(type) {
+        var g1Fb = document.getElementById('g1-feedback');
+        var g2Fb = document.getElementById('g2-feedback');
+        
+        if(type === 'g1-wrong') {
+            g1Fb.style.display = 'block';
+            g1Fb.style.background = '#fef2f2';
+            g1Fb.style.color = '#991b1b';
+            g1Fb.innerHTML = '❌ गलत जवाब बेटा! डच लोग अमीर नहीं थे, फ्रेंच अमीर थे। फिर से सोचो!';
+        } else if(type === 'g1-right') {
+            g1Fb.style.display = 'block';
+            g1Fb.style.background = '#f0fdf4';
+            g1Fb.style.color = '#166534';
+            g1Fb.innerHTML = '🎉 शाबाश बेटा! एकदम सही पहचाना। राजधानी में फ्रेंच का भारी बहुमत और अमीरी ही तनाव का असली कारण थी। 1 नंबर पक्का!';
+        } else if(type === 'g2-wrong') {
+            g2Fb.style.display = 'block';
+            g2Fb.style.background = '#fef2f2';
+            g2Fb.style.color = '#991b1b';
+            g2Fb.innerHTML = '❌ गलत प्रयास बेटा! तमिलों के धर्म को तो पूरी तरह कुचला गया था। दोबारा कोशिश करो।';
+        } else if(type === 'g2-right') {
+            g2Fb.style.display = 'block';
+            g2Fb.style.background = '#f0fdf4';
+            g2Fb.style.color = '#166534';
+            g2Fb.innerHTML = '🎉 अरे वाह! बिल्कुल सही जवाब। 1956 के कानून ने बौद्ध धर्म को राजकीय संरक्षण दिया था, जिससे गृहयुद्ध की नींव पड़ी। शानदार!';
+        }
+    }
+
     // Security layer for application interface usage
     document.addEventListener('contextmenu', event => event.preventDefault());
 </script>
