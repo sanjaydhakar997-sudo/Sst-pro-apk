@@ -3,336 +3,345 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>अध्याय 1: सत्ता की साझेदारी - एनिमेटेड कार्टून नोट्स</title>
+    <title>अध्याय 1: सत्ता की साझेदारी - सोशल स्टडीज स्पेशल नोट्स</title>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         body { font-family: 'Poppins', sans-serif; background-color: #f7fee7; margin: 0; padding: 0; padding-bottom: 40px; }
-        .container { max-width: 650px; margin: 0 auto; background: #ffffff; min-height: 100vh; box-shadow: 0 0 35px rgba(132,204,22,0.15); overflow: hidden; }
+        .container { max-width: 650px; margin: 0 auto; background: #ffffff; min-height: 100vh; box-shadow: 0 0 35px rgba(132,204,22,0.2); overflow: hidden; border: 4px solid #1e293b; }
         
-        /* Premium Kids Style Header */
-        .app-header { background: linear-gradient(135deg, #0284c7 0%, #3b82f6 100%); color: white; padding: 55px 20px 65px 20px; text-align: center; border-bottom-left-radius: 45px; border-bottom-right-radius: 45px; box-shadow: 0 12px 30px rgba(59, 130, 246, 0.3); position: relative; }
-        .app-header h1 { font-family: 'Fredoka One', 'Poppins', sans-serif; font-size: 30px; margin: 0; font-weight: 900; letter-spacing: 0.5px; text-shadow: 0 4px 8px rgba(0,0,0,0.15); }
-        .app-header p { font-size: 13px; margin: 12px 0 0 0; font-weight: 800; background: #facc15; color: #1e3a8a; display: inline-block; padding: 6px 20px; border-radius: 25px; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 10px rgba(250,204,21,0.3); }
+        /* Social Studies Premium Custom Brand Header */
+        .app-header { background: linear-gradient(135deg, #1e3a8a 0%, #0284c7 100%); color: white; padding: 55px 20px 65px 20px; text-align: center; border-bottom: 4px solid #1e293b; position: relative; }
+        .app-header h1 { font-family: 'Fredoka One', sans-serif; font-size: 32px; margin: 0; font-weight: 900; text-shadow: 4px 4px 0px #1e293b; }
+        .app-header p { font-size: 13px; margin: 12px 0 0 0; font-weight: 800; background: #facc15; color: #1e3a8a; display: inline-block; padding: 6px 22px; border-radius: 0px; border: 3px solid #1e293b; box-shadow: 3px 3px 0px #1e293b; font-weight: 900; text-transform: uppercase; }
         
-        .content-area { padding: 0 20px; margin-top: -35px; }
+        .content-area { padding: 0 20px; margin-top: -25px; }
         
-        /* Interactive Cartoon Character Alert Box */
-        .welcome-avatar-box { background: #ffffff; border-radius: 28px; padding: 22px; box-shadow: 0 15px 35px rgba(0,0,0,0.06); border: 3px solid #3b82f6; margin-bottom: 30px; display: flex; align-items: center; gap: 15px; position: relative; }
-        .avatar-pic { background: #dbeafe; font-size: 35px; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 3px solid #3b82f6; flex-shrink: 0; animation: bounce 2s infinite; }
-        .welcome-avatar-box p { font-size: 14.5px; color: #334155; line-height: 1.7; margin: 0; font-weight: 700; }
+        /* Social Studies Special Greeting Box */
+        .welcome-avatar-box { background: #fffbeb; border-radius: 0px; padding: 22px; box-shadow: 5px 5px 0px #1e293b; border: 3px solid #1e293b; margin-bottom: 35px; display: flex; align-items: center; gap: 18px; position: relative; }
+        .avatar-pic { background: #fef08a; font-size: 38px; width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 3px solid #1e293b; flex-shrink: 0; animation: superBounce 2s infinite; box-shadow: 2px 2px 0px #1e293b; }
+        .welcome-avatar-box p { font-size: 15px; color: #1e293b; line-height: 1.7; margin: 0; font-weight: 800; }
         
-        .section-label { font-size: 15px; color: #1e293b; font-weight: 900; margin: 30px 0 15px 5px; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
+        .section-label { font-size: 16px; color: #1e293b; font-weight: 900; margin: 35px 0 15px 5px; text-transform: uppercase; display: flex; align-items: center; gap: 8px; letter-spacing: 0.5px; }
         
-        /* Mega Box Comic Style Setup */
-        .comic-notes-box { background: #ffffff; border-radius: 28px; padding: 25px; box-shadow: 0 15px 40px rgba(0,0,0,0.04); border: 3px solid #cbd5e1; margin-bottom: 35px; position: relative; }
-        .part-tag { background: #ef4444; color: white; font-family: 'Fredoka One', sans-serif; font-size: 11px; padding: 6px 16px; border-radius: 30px; display: inline-block; margin-bottom: 18px; border: 2px solid #1e293b; box-shadow: 3px 3px 0px #1e293b; }
-        .main-comic-title { font-size: 23px; color: #1e3a8a; margin: 0 0 20px 0; font-weight: 900; line-height: 1.4; border-bottom: 3px dashed #e2e8f0; padding-bottom: 12px; }
+        /* Comic Box Edition Layout */
+        .comic-notes-box { background: #ffffff; border-radius: 0px; padding: 25px; box-shadow: 6px 6px 0px rgba(0,0,0,0.05); border: 3px solid #1e293b; margin-bottom: 40px; position: relative; }
+        .part-tag { background: #ef4444; color: white; font-family: 'Fredoka One', sans-serif; font-size: 12px; padding: 6px 18px; border-radius: 0px; display: inline-block; margin-bottom: 20px; border: 3px solid #1e293b; box-shadow: 3px 3px 0px #1e293b; font-weight: 900; }
+        .main-comic-title { font-size: 24px; color: #1e3a8a; margin: 0 0 22px 0; font-weight: 900; line-height: 1.4; border-bottom: 3px dashed #1e293b; padding-bottom: 12px; }
         
-        .kids-sub-heading { font-size: 16px; color: #0f172a; font-weight: 800; margin: 28px 0 15px 0; background: #f0fdf4; padding: 10px 16px; border-radius: 14px; border: 2px solid #22c55e; display: inline-block; box-shadow: 3px 3px 0px #22c55e; }
-        .easy-text { font-size: 14.5px; color: #334155; line-height: 1.8; font-weight: 600; text-align: justify; margin-bottom: 15px; }
+        .kids-sub-heading { font-size: 16.5px; color: #1e293b; font-weight: 900; margin: 30px 0 15px 0; background: #e0f2fe; padding: 10px 18px; border-radius: 0px; border: 3px solid #0284c7; display: inline-block; box-shadow: 4px 4px 0px #0284c7; }
+        .easy-text { font-size: 15px; color: #1e293b; line-height: 1.85; font-weight: 600; text-align: justify; margin-bottom: 18px; }
         
-        /* 🎨 PURE CSS CARTOON DRAWING: BELGIUM MAP MAP & SYSTEM */
-        .cartoon-art-frame { background: linear-gradient(to bottom, #e0f2fe, #f0f9ff); border: 3px solid #1e293b; border-radius: 24px; padding: 20px; margin: 25px 0; text-align: center; box-shadow: 5px 5px 0px #1e293b; position: relative; }
-        .art-title { font-size: 12px; font-weight: 900; color: #ffffff; background: #1e293b; padding: 3px 12px; border-radius: 20px; display: inline-block; margin-bottom: 15px; }
+        /* 🖼️ INTERACTIVE CARTOON FRAMES (NO EXTERNAL LINKS) */
+        .cartoon-art-frame { background: linear-gradient(to bottom, #f0f9ff, #e0f2fe); border: 3px solid #1e293b; border-radius: 0px; padding: 22px; margin: 30px 0; text-align: center; box-shadow: 6px 6px 0px #1e293b; position: relative; }
+        .art-title { font-size: 13px; font-weight: 900; color: #ffffff; background: #1e293b; padding: 4px 15px; display: inline-block; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
         
-        /* Cartoon Map Visualizer */
-        .cartoon-map { display: flex; flex-direction: column; gap: 10px; background: #ffffff; border: 3px dashed #0284c7; border-radius: 18px; padding: 15px; max-width: 320px; margin: 0 auto; }
-        .map-zone { padding: 12px; border-radius: 12px; font-weight: 800; font-size: 13px; color: white; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: inset 0 -4px 0 rgba(0,0,0,0.15); }
-        .zone-north { background: #ef4444; border: 2px solid #b91c1c; }
-        .zone-south { background: #3b82f6; border: 2px solid #1d4ed8; }
-        .zone-capital { background: #facc15; color: #1e3a8a; border: 2px solid #ca8a04; font-size: 12px; padding: 6px; }
+        /* Hand-Drawn Style CSS Map Box */
+        .cartoon-map-box { display: flex; flex-direction: column; gap: 12px; background: #ffffff; border: 3px dashed #0284c7; padding: 18px; max-width: 340px; margin: 0 auto; box-shadow: inset 0 0 10px rgba(0,0,0,0.02); }
+        .map-zone { padding: 14px; font-weight: 900; font-size: 13.5px; color: white; display: flex; align-items: center; justify-content: center; gap: 10px; border: 3px solid #1e293b; box-shadow: 3px 3px 0px #1e293b; }
+        .zone-north { background: #ef4444; }
+        .zone-south { background: #3b82f6; }
+        .zone-capital { background: #facc15; color: #1e3a8a; font-size: 12.5px; padding: 8px; border-style: dotted; }
 
-        /* Jibli Teacher Bubble */
-        .teacher-bubble-box { background: #fff7ed; border: 2px solid #f97316; border-radius: 20px; padding: 18px; margin: 22px 0; position: relative; box-shadow: 4px 4px 0px #f97316; }
-        .bubble-title { font-size: 14px; color: #c2410c; font-weight: 900; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+        /* Social Studies Special Discussion Bubble */
+        .discussion-bubble { background: #fef2f2; border: 3px solid #ef4444; border-radius: 0px; padding: 20px; margin: 25px 0; position: relative; box-shadow: 5px 5px 0px #ef4444; }
+        .bubble-header { font-size: 15px; color: #991b1b; font-weight: 900; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
 
-        /* Percent Counter Blocks */
-        .percent-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0; }
-        .percent-card { background: white; border: 3px solid #1e293b; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 4px 4px 0px #1e293b; }
-        .num-big { font-size: 28px; font-weight: 900; margin: 5px 0; font-family: 'Fredoka One', sans-serif; }
+        /* Percent Visualizer Blocks */
+        .percent-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 25px 0; }
+        .percent-card { background: white; border: 3px solid #1e293b; padding: 18px; text-align: center; box-shadow: 5px 5px 0px #1e293b; }
+        .num-big { font-size: 32px; font-weight: 900; margin: 5px 0; font-family: 'Fredoka One', sans-serif; color: #1e293b; }
 
-        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-        .tip-box { background: #fdf2f8; border: 2px solid #db2777; padding: 15px; border-radius: 16px; font-size: 13.5px; margin-top: 20px; color: #9d174d; font-weight: 700; box-shadow: 3px 3px 0px #db2777; }
+        /* Multi-box comparison cartoon view */
+        .cartoon-vs-box { display: flex; justify-content: space-around; align-items: center; background: #ffffff; border: 3px dashed #ca8a04; padding: 20px; margin-top: 10px; }
+        .vs-side { text-align: center; padding: 10px; border: 2px solid #1e293b; background: #fffdf5; box-shadow: 3px 3px 0px #1e293b; min-width: 110px; }
+
+        @keyframes superBounce { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-10px) scale(1.03); } }
+        .tip-box { background: #fdf2f8; border: 3px solid #db2777; padding: 18px; font-size: 14px; margin-top: 25px; color: #9d174d; font-weight: 800; box-shadow: 4px 4px 0px #db2777; }
     </style>
 </head>
 <body>
 <div class="container">
+    <!-- Custom Social Studies Brand Header -->
     <div class="app-header">
-        <h1>अध्याय 1: सत्ता की साझेदारी</h1>
-        <p>🎨 फुल कॉमिक्स चित्र चित्र शैली नोट्स</p>
+        <h1>SOCIAL STUDIES CLASSES</h1>
+        <p>📚 अध्याय 1: सत्ता की साझेदारी • स्पेशल कॉमिक्स एडिशन</p>
     </div>
     
     <div class="content-area">
-        <!-- Interactive Character Intro Box -->
-        <div class="welcome-avatar-box" style="margin-top: 20px;">
-            <div class="avatar-pic">🐼</div>
+        <!-- Social Studies Special Greeting Box -->
+        <div class="welcome-avatar-box" style="margin-top: 25px;">
+            <div class="avatar-pic">👨‍व</div>
             <div>
-                <p><b>राम-राम बच्चों!</b> मैं हूँ आपका स्टडी पार्टनर। इस पूरे चैप्टर को हम बिना रटे, मजेदार कार्टून चित्रों और कहानियों से सीधे आपके दिमाग में फिट कर देंगे। अपनी रफ कॉपी पास रख लो और ध्यान से देखो!</p>
+                <p><b>प्यारे बच्चों! Welcome to Social Studies Classes!</b> इस पूरे चैप्टर को हम बिना रटे, मजेदार कार्टून चित्रों और कहानियों से सीधे आपके दिमाग में फिट कर देंगे। अपनी रफ कॉपी पास रख लो और ध्यान से देखो!</p>
             </div>
         </div>
 
-        <div class="section-label">🎬 दृश्य 1: दो देशों की अनोखी कहानी</div>
+        <div class="section-label">🎬 दृश्य 1: बेल्जियम की पूरी कहानी</div>
 
         <!-- ==================== PART 1 START ==================== -->
-        <div class="comic-notes-box" style="border-color: #3b82f6;">
-            <div class="part-tag">Part 1: बेल्जियम का अजब ताना-बाना</div>
-            <h2 class="main-topic-title">1. बेल्जियम: एक छोटा देश, अनोखी उलझन</h2>
+        <div class="comic-notes-box" style="border-color: #1e293b;">
+            <div class="part-tag" style="background: #3b82f6;">भाग 1: बेल्जियम का अनोखा ताना-बाना</div>
+            <h2 class="main-topic-title">1. बेल्जियम: एक छोटा देश, बड़ी उलझन</h2>
             
-            <p class="easy-text">बच्चों, सबसे पहले हमारी ट्रेन चलती है यूरोप महाद्वीप के एक बहुत छोटे और प्यारे से देश <b>बेल्जियम (Belgium)</b> की सैर पर। यह देश इतना छोटा है कि हमारे भारत के <b>हरियाणा राज्य</b> से भी कम इसकी आबादी है! लेकिन इस छोटे से देश में भाषाओं को लेकर बहुत बड़ी उलझन (Confusions) थी।</p>
+            <p class="easy-text">बच्चों, सबसे पहले हमारी सोशल स्टडीज एक्सप्रेस चलती है यूरोप महाद्वीप के एक बहुत छोटे और प्यारे से देश <b>बेल्जियम (Belgium)</b> की सैर पर। यह देश इतना छोटा है कि हमारे भारत के <b>हरियाणा राज्य</b> से भी कम इसकी आबादी है! लेकिन इस छोटे से देश में भाषाओं को लेकर बहुत बड़ी उलझन (Confusions) थी।</p>
 
-            <!-- 🎨 CARTOON ART WORK 1: BELGIUM GEOGRAPHY -->
+            <!-- 🖼️ CARTOON ART WORK 1: GEOGRAPHICAL LAYOUT -->
             <div class="cartoon-art-frame">
-                <span class="art-title">🎨 कार्टून मानचित्र चित्र: बेल्जियम की बसावट</span>
-                <div class="cartoon-map">
-                    <div class="map-zone zone-north">🔴 फ्लेमिश इलाका (उत्तरी भाग)</div>
-                    <div class="map-zone zone-capital">👑 ब्रुसेल्स (राजधानी ट्विस्ट)</div>
-                    <div class="map-zone zone-south">🔵 वेलोनिया इलाका (दक्षिणी भाग)</div>
+                <span class="art-title">🖼️ चित्र 1.1: बेल्जियम का कार्टून मानचित्र</span>
+                <div class="cartoon-map-box">
+                    <div class="map-zone zone-north">🇳🇱 डच ज़ोन: फ्लेमिश भाग (उत्तरी सिरा)</div>
+                    <div class="map-zone zone-capital">👑 ब्रुसेल्स ज़ोन (राजधानी ट्विस्ट)</div>
+                    <div class="map-zone zone-south">🇫🇷 फ्रेंच ज़ोन: वेलोनिया भाग (दक्षिणी सिरा)</div>
                 </div>
-                <p style="font-size:11px; font-weight:700; margin:10px 0 0 0; color:#475569;">[चित्र 1.1: देश के उत्तरी हिस्से में लाल ज़ोन और दक्षिणी हिस्से में नीला ज़ोन है]</p>
+                <p style="font-size:12px; font-weight:800; margin:15px 0 0 0; color:#1e293b;">[मानचित्र विश्लेषण: ऊपर उत्तर दिशा में लाल डच बेल्ट है और नीचे दक्षिण में नीली फ्रेंच बेल्ट है]</p>
             </div>
 
-            <p class="easy-text">इस देश में रहने वाले लोग अलग-अलग भाषाएं बोलते थे। आइए पूरे देश की आबादी का गणित बहुत ही मजेदार तरीके से कॉमिक्स कार्ड्स के माध्यम से समझते हैं:</p>
+            <p class="easy-text">इस देश में रहने वाले लोग अलग-अलग भाषाएं बोलते थे। आइए पूरे देश की आबादी का गणित बहुत ही मजेदार तरीके से कॉमिक्स कार्ड्स के माध्यम से समझते हैं कि देश में किसका कितना दबदबा था:</p>
 
             <!-- Percent Data Cards -->
             <div class="percent-grid">
-                <div class="percent-card" style="border-color:#ef4444;">
-                    <h4 style="margin:0;color:#b91c1c;font-size:14px;">🇳🇱 डच भाषी ग्रुप</h4>
+                <div class="percent-card" style="border-color:#ef4444; background: #fff5f5;">
+                    <h4 style="margin:0;color:#b91c1c;font-size:14px;font-weight:900;">🇳🇱 डच भाषी लोग</h4>
                     <p class="num-big" style="color:#ef4444;">59%</p>
-                    <p style="margin:0;font-size:12px;font-weight:700;color:#475569;">उत्तरी भाग (फ्लेमिश) में रहते थे। ये संख्या में ज़्यादा थे।</p>
+                    <p style="margin:0;font-size:12.5px;font-weight:800;color:#334155;">ये लोग उत्तरी फ्लेमिश इलाके में रहते थे और पूरे देश में बहुसंख्यक (गिनती में ज़्यादा) थे।</p>
                 </div>
-                <div class="percent-card" style="border-color:#3b82f6;">
-                    <h4 style="margin:0;color:#1d4ed8;font-size:14px;">🇫🇷 फ्रेंच भाषी ग्रुप</h4>
+                <div class="percent-card" style="border-color:#3b82f6; background: #f0f9ff;">
+                    <h4 style="margin:0;color:#1d4ed8;font-size:14px;font-weight:900;">🇫🇷 फ्रेंच भाषी लोग</h4>
                     <p class="num-big" style="color:#3b82f6;">40%</p>
-                    <p style="margin:0;font-size:12px;font-weight:700;color:#475569;">दक्षिणी भाग (वेलोनिया) में रहते थे। ये अमीर लोग थे।</p>
+                    <p style="margin:0;font-size:12.5px;font-weight:800;color:#334155;">ये लोग दक्षिणी वेलोनिया इलाके में रहते थे। ये संख्या में कम थे लेकिन अमीर थे।</p>
                 </div>
             </div>
 
-            <p class="easy-text">बाकी बचा <span style="background:#dcfce7;color:#15803d;padding:2px 6px;border-radius:6px;font-weight:700;">1% हिस्सा</span> जर्मन भाषा बोलता था। अब यहाँ तक तो बात ठीक थी, लेकिन असली धमाका और ट्विस्ट इसकी राजधानी में छुपा था!</p>
+            <p class="easy-text">बाकी बचा हुआ जो <span style="background:#fef9c3;color:#854d0e;padding:2px 6px;border:1px solid #eab308;font-weight:800;">1% हिस्सा</span> था, वे लोग जर्मन भाषा बोलते थे। यहाँ तक तो बात ठीक थी, लेकिन असली धमाका और ट्विस्ट इसकी राजधानी में छुपा था जिसने सबको हैरान कर दिया!</p>
 
             <span class="kids-sub-heading">🏙️ राजधानी ब्रुसेल्स (Brussels) का गजब का उल्टा खेल!</span>
-            <p class="easy-text">बेल्जियम की राजधानी का नाम है <b>ब्रुसेल्स</b>। यहाँ का माहौल पूरे देश के गणित से बिल्कुल उल्टा था! पूरे देश में जो कम थे, वो राजधानी में राजा थे:</p>
+            <p class="easy-text">बेल्जियम की राजधानी का नाम है <b>ब्रुसेल्स</b>। यहाँ का माहौल पूरे देश के गणित से बिल्कुल उल्टा था! पूरे देश में जो कम थे, वो राजधानी में राजा थे और जो देश में राजा थे, वो यहाँ कमजोर थे:</p>
 
-            <!-- 🎨 CARTOON ART WORK 2: CAPITAL COMPARISON -->
-            <div class="cartoon-art-frame" style="background:linear-gradient(to bottom, #fffbeb, #fff7ed); border-color:#ca8a04;">
-                <span class="art-title" style="background:#ca8a04;">👑 कार्टून चित्र 1.2: राजधानी ब्रुसेल्स की स्थिति</span>
-                <div style="display:flex; justify-content:space-around; align-items:center; margin-top:10px;">
-                    <div style="text-align:center;">
-                        <span style="font-size:40px;">🔊</span>
-                        <p style="margin:3px 0;font-weight:900;color:#1d4ed8;font-size:18px;">80% फ्रेंच</p>
-                        <p style="margin:0;font-size:11px;font-weight:700;color:#64748b;">(भारी बहुमत)</p>
+            <!-- 🖼️ CARTOON ART WORK 2: BRUSSELS VS NATION VISUAL -->
+            <div class="cartoon-art-frame" style="background: linear-gradient(to bottom, #fffdf5, #fef9c3); border-color: #ca8a04;">
+                <span class="art-title" style="background: #ca8a04;">👑 चित्र 1.2: राजधानी ब्रुसेल्स का कॉमिक्स कार्टून</span>
+                <div class="cartoon-vs-box">
+                    <div class="vs-side" style="border-color: #3b82f6;">
+                        <span style="font-size:35px;">📢</span>
+                        <p style="margin:5px 0; font-weight:900; color:#1d4ed8; font-size:19px;">80% फ्रेंच</p>
+                        <p style="margin:0; font-size:11px; font-weight:800; color:#64748b;">(राजधानी में भारी बहुमत)</p>
                     </div>
-                    <div style="font-size:24px;font-weight:900;color:#ca8a04;">VS</div>
-                    <div style="text-align:center;">
+                    <div style="font-family: 'Fredoka One', sans-serif; font-size:22px; color:#1e293b;">बनाम</div>
+                    <div class="vs-side" style="border-color: #ef4444;">
                         <span style="font-size:25px; opacity:0.6;">🔈</span>
-                        <p style="margin:3px 0;font-weight:900;color:#dc2626;font-size:18px;">20% डच</p>
-                        <p style="margin:0;font-size:11px;font-weight:700;color:#64748b;">(अल्पसंख्यक)</p>
+                        <p style="margin:5px 0; font-weight:900; color:#dc2626; font-size:19px;">20% डच</p>
+                        <p style="margin:0; font-size:11px; font-weight:800; color:#64748b;">(राजधानी में अल्पसंख्यक)</p>
                     </div>
                 </div>
+                <p style="font-size:12px; font-weight:800; margin:15px 0 0 0; color:#854d0e;">[तुलना चित्र: राजधानी के भीतर फ्रेंचों का भारी बोलबाला था]</p>
             </div>
 
-            <!-- Jibli Style Explanation Bubble -->
-            <div class="teacher-bubble-box">
-                <div class="bubble-title">💡 बात समझो (झगड़े की असली जड़):</div>
-                <p class="easy-text" style="margin: 0; font-size: 13.5px; color: #7c2d12;">फ्रेंच बोलने वाले लोग गिनती में कम (40%) थे, लेकिन वे बहुत ज़्यादा अमीर, पढ़े-लिखे और ताकतवर थे। डच बोलने वालों को तरक्की का लाभ बहुत बाद में मिला। इसलिए 1950 से 1960 के बीच दोनों भाई आपस में लड़ने लगे। इसी को सुलझाने के लिए पावर शेयरिंग की ज़रूरत पड़ी!</p>
+            <!-- Social Studies Interactive Discussion Bubble -->
+            <div class="discussion-bubble">
+                <div class="bubble-header">💡 संजय सर की स्पेशल क्लासरूम चर्चा:</div>
+                <p class="easy-text" style="margin: 0; font-size: 14px; color: #991b1b;">बच्चों, झगड़े की असली वजह समझो! फ्रेंच बोलने वाले लोग गिनती में कम (40%) थे, लेकिन वे बहुत ज़्यादा अमीर, पढ़े-लिखे और ताकतवर थे। डच बोलने वालों को आर्थिक विकास और पढ़ाई का फायदा बहुत देर से मिला। इसी बात से दोनों भाइयों में अनबन हुई।</p>
             </div>
 
             <div class="tip-box">
-                📌  <b>परीक्षा के लिए याद रखो:</b> पूरे बेल्जियम देश में डच लोग बहुसंख्यक थे, लेकिन राजधानी ब्रुसेल्स के अंदर फ्रेंच लोग भारी बहुसंख्यक थे। यही इस देश का मुख्य जातीय पेच था।
+                📌  <b>सोशल स्टडीज एग्जाम मंत्र:</b> पूरे बेल्जियम देश में डच लोग बहुसंख्यक थे, लेकिन राजधानी ब्रुसेल्स के अंदर फ्रेंच लोग भारी बहुसंख्यक थे। यही इस देश का मुख्य जातीय पेच था जिसे सुलझाना जरूरी था।
             </div>
         </div>
-        <!-- ==================== PART 1 END ==================== -->
-        <!-- ==================== PART 2 START ==================== -->
-        <div class="comic-notes-box" style="border-color: #f97316; margin-top: 30px;">
-            <div class="part-tag" style="background: #f97316; box-shadow: 3px 3px 0px #7c2d12;">Part 2: श्रीलंका का घमंड और गृहयुद्ध</div>
+        <!-- ==================== PART 1 END ==================== -->        <!-- ==================== PART 2 START ==================== -->
+        <div class="comic-notes-box" style="border-color: #1e293b; margin-top: 35px;">
+            <div class="part-tag" style="background: #f97316;">भाग 2: श्रीलंका का घमंड और भयंकर गृहयुद्ध</div>
             <h2 class="main-topic-title" style="color: #c2410c; border-bottom-color: #fed7aa;">2. श्रीलंका: बहुसंख्या का घमंड और बर्बादी</h2>
             
-            <p class="easy-text">बच्चों, बेल्जियम की उलझन को समझने के बाद अब हम चलते हैं अपने पड़ोसी देश <b>श्रीलंका (Sri Lanka)</b> की सैर पर[span_1](start_span)[span_1](end_span)। श्रीलंका हमारे भारत के तमिलनाडु के दक्षिणी तट से कुछ किलोमीटर की दूरी पर स्थित एक छोटा सा सुंदर द्वीपीय देश (Island) है[span_2](start_span)[span_2](end_span)। इसकी आबादी करीब दो करोड़ है, यानी हमारे हरियाणा के लगभग बराबर[span_3](start_span)[span_3](end_span)!</p>
+            <p class="easy-text">बच्चों, बेल्जियम की उलझन को समझने के बाद अब हमारी सोशल स्टडीज एक्सप्रेस चलती है अपने पड़ोसी देश <b>श्रीलंका (Sri Lanka)</b> की सैर पर[span_1](start_span)[span_1](end_span)। श्रीलंका हमारे भारत के तमिलनाडु के दक्षिणी तट से कुछ किलोमीटर की दूरी पर स्थित एक छोटा सा सुंदर द्वीपीय देश (Island) है[span_2](start_span)[span_2](end_span)। इसकी आबादी करीब दो करोड़ है, यानी हमारे हरियाणा राज्य के लगभग बराबर[span_3](start_span)[span_3](end_span)!</p>
 
-            <!-- 🎨 CARTOON ART WORK 3: THE FOUR BROTHERS STORY -->
-            <div class="cartoon-art-frame" style="background: #fff7ed; border-color: #f97316; box-shadow: 5px 5px 0px #7c2d12;">
-                <span class="art-title" style="background: #f97316;">🎨 कॉमिक स्ट्रिप चित्र 1.3: चार भाइयों की कहानी</span>
-                <div style="display: flex; justify-content: center; gap: 15px; margin: 15px 0;">
-                    <div style="font-size: 35px; filter: drop-shadow(2px 2px 0px #7c2d12);">👦👦👦<br><span style="font-size:10px; font-weight:900; color:#c2410c; background:#ffedd5; padding:2px 5px; border-radius:5px;">3 बड़े भाई</span></div>
-                    <div style="font-size: 25px; align-self: center; color: #f97316;">⚡</div>
-                    <div style="font-size: 35px; filter: drop-shadow(2px 2px 0px #64748b);">👶<br><span style="font-size:10px; font-weight:900; color:#475569; background:#f1f5f9; padding:2px 5px; border-radius:5px;">1 छोटा भाई</span></div>
+            <!-- 🖼️ CARTOON ART WORK 3: THE FOUR BROTHERS COMIC STRIP -->
+            <div class="cartoon-art-frame" style="background: #fff7ed; border-color: #f97316; box-shadow: 6px 6px 0px #1e293b;">
+                <span class="art-title" style="background: #f97316;">🖼️ चित्र 1.3: कॉमिक स्ट्रिप - चार भाइयों की कहानी</span>
+                <div style="display: flex; justify-content: center; gap: 20px; margin: 20px 0;">
+                    <div style="font-size: 38px; filter: drop-shadow(2px 2px 0px #1e293b);">👦👦👦<br><span style="font-size:11px; font-weight:900; color:#c2410c; background:#ffedd5; padding:3px 6px; border:2px solid #1e293b; box-shadow:2px 2px 0px #1e293b;">3 बड़े भाई</span></div>
+                    <div style="font-size: 28px; align-self: center; color: #f97316; animation: superBounce 1s infinite;">⚡</div>
+                    <div style="font-size: 38px; filter: drop-shadow(2px 2px 0px #1e293b);">👶<br><span style="font-size:11px; font-weight:900; color:#475569; background:#f1f5f9; border:2px solid #1e293b; box-shadow:2px 2px 0px #1e293b;">1 छोटा भाई</span></div>
                 </div>
-                <p class="easy-text" style="font-size: 13px; text-align: center; margin: 0; color: #7c2d12;"><b>संजय सर का कॉमिक्स उदाहरण:</b> मान लो एक घर में 4 भाई हैं[span_4](start_span)[span_4](end_span)। उनमें से 3 बड़े भाई मिलकर नियम बना दें कि टीवी पर सिर्फ उनका कार्टून चलेगा और छोटे भाई की कोई बात नहीं सुनी जाएगी[span_5](start_span)[span_5](end_span)। छोटा भाई दुखी होगा और घर में भयंकर झगड़ा शुरू हो जाएगा[span_6](start_span)[span_6](end_span)। श्रीलंका में बिल्कुल यही हुआ[span_7](start_span)[span_7](end_span)!</p>
+                <p class="easy-text" style="font-size: 13.5px; text-align: center; margin: 0; color: #7c2d12; background: white; padding: 12px; border: 2px dashed #f97316;"><b>क्लास का मजेदार उदाहरण:</b> मान लो एक घर में 4 भाई हैं[span_4](start_span)[span_4](end_span)। उनमें से 3 बड़े भाई मिलकर नियम बना दें कि घर में सिर्फ उनकी पसंद का खाना बनेगा, टीवी पर सिर्फ उनका कार्टून चलेगा और छोटे भाई की कोई बात नहीं सुनी जाएगी[span_5](start_span)[span_5](end_span)। छोटा भाई दुखी होगा और घर में भयंकर झगड़ा शुरू हो जाएगा[span_6](start_span)[span_6](end_span)। श्रीलंका में बिल्कुल यही हुआ[span_7](start_span)[span_7](end_span)!</p>
             </div>
 
-            <span class="kids-sub-heading" style="background: #fff7ed; border-left-color: #f97316; box-shadow: 3px 3px 0px #f97316;">📊 श्रीलंका की आबादी का गणित (जातीय बुनावट)</span>
+            <span class="kids-sub-heading" style="background: #fff7ed; border-left-color: #f97316; box-shadow: 4px 4px 0px #f97316;">📊 श्रीलंका की आबादी का गणित (जातीय बुनावट)</span>
             <p class="easy-text">जैसे बेल्जियम में भाषाओं को लेकर उलझन थी, वैसे ही श्रीलंका में भी लोग दो बड़े समूहों में बंटे हुए थे[span_8](start_span)[span_8](end_span)। आइए इसे बहुत ही आसान तरीके से समझते हैं[span_9](start_span)[span_9](end_span):</p>
             
-            <!-- 🎨 CARTOON ART WORK 4: SRI LANKA POPULATION CHARTS -->
+            <!-- 🖼️ CARTOON ART WORK 4: SRI LANKA DYNAMIC GROUP CARDS -->
             <div class="cartoon-art-frame" style="background: #fafaf9; border-color: #1e293b;">
-                <span class="art-title" style="background: #1e293b;">🎨 कार्टून ग्राफ़ चित्र 1.4: सिंहली VS तमिल</span>
+                <span class="art-title" style="background: #1e293b;">🖼️ चित्र 1.4: सिंहली बनाम तमिल आबादी विश्लेषण</span>
                 
-                <div style="background: #fff7ed; border: 2px solid #ea580c; border-radius: 16px; padding: 12px; margin-bottom: 12px; text-align: left; display: flex; align-items: center; gap: 12px;">
-                    <span style="font-size: 30px;">🦁</span>
+                <div style="background: #fff7ed; border: 3px solid #ea580c; padding: 14px; margin-bottom: 15px; text-align: left; display: flex; align-items: center; gap: 15px; box-shadow: 4px 4px 0px #ea580c;">
+                    <span style="font-size: 35px;">🦁</span>
                     <div style="flex-grow: 1;">
-                        <h5 style="margin:0; font-size:14px; color:#c2410c; font-weight:800;">सिंहली समुदाय (Sinhala) — 74%</h5>
-                        <p style="margin:2px 0 0 0; font-size:11px; font-weight:700; color:#7c2d12;">यह सबसे बड़ा ग्रुप था, जो मुख्य रूप से बौद्ध धर्म को मानता था[span_10](start_span)[span_10](end_span)।</p>
+                        <h5 style="margin:0; font-size:15px; color:#c2410c; font-weight:900;">सिंहली समुदाय (Sinhala Speakers) — 74%</h5>
+                        <p style="margin:4px 0 0 0; font-size:12px; font-weight:800; color:#7c2d12;">यह देश का सबसे बड़ा बहुसंख्यक ग्रुप था, जो मुख्य रूप से बौद्ध धर्म को मानता था[span_10](start_span)[span_10](end_span)ं।</p>
                     </div>
                 </div>
 
-                <div style="background: #f8fafc; border: 2px solid #3b82f6; border-radius: 16px; padding: 12px; text-align: left; display: flex; align-items: center; gap: 12px;">
-                    <span style="font-size: 30px;">🎯</span>
+                <div style="background: #f0f9ff; border: 3px solid #3b82f6; padding: 14px; text-align: left; display: flex; align-items: center; gap: 15px; box-shadow: 4px 4px 0px #3b82f6;">
+                    <span style="font-size: 35px;">🎯</span>
                     <div style="flex-grow: 1;">
-                        <h5 style="margin:0; font-size:14px; color:#1d4ed8; font-weight:800;">तमिल समुदाय (Tamil) — 18%</h5>
-                        <p style="margin:2px 0 0 0; font-size:11px; font-weight:700; color:#1e3a8a;">इसमें 13% श्रीलंकाई तमिल और 5% हिंदुस्तानी तमिल (चाय बागान वाले) थे[span_11](start_span)[span_11](end_span)।</p>
+                        <h5 style="margin:0; font-size:15px; color:#1d4ed8; font-weight:900;">तमिल भाषी समुदाय (Tamil Speakers) — 18%</h5>
+                        <p style="margin:4px 0 0 0; font-size:12px; font-weight:800; color:#1e3a8a;">इसमें 13% श्रीलंकाई तमिल और 5% हिंदुस्तानी तमिल (अंग्रेजों के समय भारत से आए बागान मजदूर) शामिल थे[span_11](start_span)[span_11](end_span)ं।</p>
                     </div>
                 </div>
             </div>
 
-            <span class="kids-sub-heading" style="background: #fff7ed; border-left-color: #f97316; box-shadow: 3px 3px 0px #f97316;">👑 बहुसंख्यकवाद (Majoritarianism) क्या है?</span>
+            <span class="kids-sub-heading" style="background: #fff7ed; border-left-color: #f97316; box-shadow: 4px 4px 0px #f97316;">👑 बहुसंख्यकवाद (Majoritarianism) क्या है?</span>
             <p class="easy-text">बोर्ड परीक्षा में यह परिभाषा 2 नंबर में पक्का पूछी जाती है[span_12](start_span)[span_12](end_span)। इसे आसान भाषा में समझो: <b>"जब कोई बड़ा समुदाय अपनी ज़्यादा संख्या के घमंड में आकर देश पर मनमाने ढंग से राज करना चाहता है और छोटे समुदायों की ज़रूरतों को लात मार देता है, तो उसे बहुसंख्यकवाद कहते हैं[span_13](start_span)[span_13](end_span)।"</b></p>
 
-            <span class="kids-sub-heading" style="background: #fff7ed; border-left-color: #f97316; box-shadow: 3px 3px 0px #f97316;">📜 1956 का काला कानून (सिंहली सरकार की मनमानी)</span>
+            <span class="kids-sub-heading" style="background: #fff7ed; border-left-color: #f97316; box-shadow: 4px 4px 0px #f97316;">📜 1956 का काला कानून (सिंहली सरकार की मनमानी)</span>
             <p class="easy-text">श्रीलंका को सन् 1948 में आजादी मिली[span_14](start_span)[span_14](end_span)। आज़ादी मिलते ही सिंहली नेताओं ने सोचा कि हम तो गिनती में 74% हैं, तो देश पर सिर्फ हमारा ही कब्ज़ा होना चाहिए[span_15](start_span)[span_15](end_span)। उन्होंने तमिलों को दबाने के लिए <b>1956 में एक कानून</b> पास किया, जिसके तहत 3 बड़े पक्षपात किए गए[span_16](start_span)[span_16](end_span):</p>
             
-            <div style="background: #fff1f2; border: 3px dashed #ef4444; border-radius: 20px; padding: 15px; margin: 15px 0; position: relative;">
-                <span style="position: absolute; right: 15px; top: -15px; background: #ef4444; color: white; padding: 2px 10px; border-radius: 10px; font-size: 10px; font-weight: 900; border: 2px solid #1e293b;">⚠️ WARNING</span>
-                <ul class="visual-list" style="margin: 0;">
-                    <li><b>तमिल भाषा की बेइज्जती:</b> तमिल भाषा को पूरी तरह अनदेखा करके <b>सिंहली को देश की एकमात्र राजभाषा</b> घोषित कर दिया गया[span_17](start_span)[span_17](end_span)।</li>
-                    <li><b>नौकरियों में पक्षपात:</b> यूनिवर्सिटीज में एडमिशन हो या सरकारी नौकरी, हर जगह सिर्फ सिंहली लोगों को प्राथमिकता दी जाने लगी[span_18](start_span)[span_18](end_span)।</li>
-                    <li><b>धर्म की मनमानी:</b> नए संविधान में लिख दिया गया कि सरकार सिर्फ <b>बौद्ध धर्म</b> को बढ़ावा देगी और उसका संरक्षण करेगी[span_19](start_span)[span_19](end_span)।</li>
+            <!-- Comic Warning Sign Box -->
+            <div style="background: #fff1f2; border: 3px dashed #ef4444; padding: 18px; margin: 25px 0; position: relative; box-shadow: 5px 5px 0px #ef4444;">
+                <span style="position: absolute; right: 15px; top: -15px; background: #ef4444; color: white; padding: 3px 12px; font-size: 11px; font-weight: 900; border: 3px solid #1e293b; box-shadow: 2px 2px 0px #1e293b;">⚠️ सिंहली सरकार की मनमानी</span>
+                <ul class="visual-list" style="margin: 5px 0 0 0; padding-left: 5px;">
+                    <li style="margin-bottom: 10px;"><b>तमिल भाषा की बेइज्जती:</b> तमिल भाषा को पूरी तरह अनदेखा करके <b>सिंहली को देश की एकमात्र राजभाषा</b> घोषित कर दिया गया[span_17](start_span)[span_17](end_span)।</li>
+                    <li style="margin-bottom: 10px;"><b>नौकरियों में पक्षपात:</b> यूनिवर्सिटीज में एडमिशन हो या सरकारी नौकरी, हर जगह सिर्फ सिंहली लोगों को प्राथमिकता (सहूलियत) दी जाने लगी[span_18](start_span)[span_18](end_span)।</li>
+                    <li style="margin-bottom: 0;"><b>धर्म की तानाशाही:</b> नए संविधान में साफ-साफ लिख दिया गया कि सरकार सिर्फ <b>बौद्ध धर्म</b> को बढ़ावा देगी और उसका संरक्षण करेगी[span_19](start_span)[span_19](end_span)।</li>
                 </ul>
             </div>
 
-            <span class="kids-sub-heading" style="background: #fff7ed; border-left-color: #f97316; box-shadow: 3px 3px 0px #f97316;">💥 भयंकर नतीजा: श्रीलंका का गृहयुद्ध (Civil War)</span>
-            <p class="easy-text">इन भेदभाव वाले नियमों के कारण श्रीलंकाई तमिलों का दिल टूट गया[span_20](start_span)[span_20](end_span)। उन्हें लगा कि सरकार हमारे साथ परायों जैसा बर्ताव कर रही है[span_21](start_span)[span_21](end_span)। इसके बाद तमिलों ने अपने हक के लिए राजनीतिक पार्टियाँ बनाईं और आंदोलन शुरू किया[span_22](start_span)[span_22](end_span)। उन्होंने एक अलग देश <b>'तमिल इलम' (Tamil Eelam)</b> बनाने की मांग रख दी[span_23](start_span)[span_23](end_span)।</p>
+            <span class="kids-sub-heading" style="background: #fff7ed; border-left-color: #f97316; box-shadow: 4px 4px 0px #f97316;">💥 भयंकर नतीजा: श्रीलंका का गृहयुद्ध (Civil War)</span>
+            <p class="easy-text">इन भेदभाव वाले नियमों के कारण श्रीलंकाई तमिलों का दिल टूट गया[span_20](start_span)[span_20](end_span)। उन्हें लगा कि सरकार हमारे साथ परायों जैसा बर्ताव कर रही है[span_21](start_span)[span_21](end_span)। इसके बाद तमिलों ने अपने हक के लिए राजनीतिक पार्टियाँ बनाईं और आंदोलन शुरू किया[span_22](start_span)[span_22](end_span)। जब सिंहली सरकार ने उनकी बातें नहीं मानी, तो उन्होंने एक अलग देश <b>'तमिल इलम' (Tamil Eelam)</b> बनाने की मांग रख दी[span_23](start_span)[span_23](end_span)ं।</p>
             
-            <p class="easy-text"><b>गृहयुद्ध की आग:</b> दोनों समुदायों के बीच अविश्वास इतना भयंकर बढ़ गया कि देश में <b>गृहयुद्ध (Civil War)</b> छिड़ गया (जब एक ही देश के लोग आपस में सेना की तरह लड़ने लगें)[span_24](start_span)[span_24](end_span)। इस लड़ाई में दोनों तरफ के हजारों लोग मारे गए, लाखों परिवारों के घर उजड़ गए और जो श्रीलंका विकास में सबसे आगे था, उसकी पूरी अर्थव्यवस्था मटियामेट हो गई[span_25](start_span)[span_25](end_span)।</p>
+            <p class="easy-text"><b>गृहयुद्ध की आग:</b> दोनों समुदायों के बीच अविश्वास इतना भयंकर बढ़ गया कि देश में <b>गृहयुद्ध (Civil War)</b> छिड़ गया[span_24](start_span)[span_24](end_span)। गृहयुद्ध का मतलब होता है जब एक ही देश के लोग आपस में सेना की तरह लड़ने लगें[span_25](start_span)[span_25](end_span)। इस लड़ाई में दोनों तरफ के हजारों लोग मारे गए, लाखों परिवारों के घर उजड़ गए और जो श्रीलंका विकास में सबसे आगे था, उसकी पूरी अर्थव्यवस्था मटियामेट हो गई[span_26](start_span)[span_26](end_span)।</p>
             
-            <div class="tip-box" style="background: #fff5f5; border-left-color: #ef4444; color: #991b1b;">
-                📌 <b>संजय सर का एग्जाम कैप्सूल:</b> श्रीलंका की कहानी हमें सिखाती है कि अगर बहुसंख्यक समुदाय अपनी मनमानी करेगा और अल्पसंख्यकों को पावर में हिस्सेदारी नहीं देगा, तो देश तबाह हो जाएगा[span_26](start_span)[span_26](end_span)।
+            <div class="tip-box" style="background: #fff5f5; border-left-color: #ef4444; color: #991b1b; border: 3px solid #ef4444; box-shadow: 4px 4px 0px #ef4444;">
+                📌 <b>सोशल स्टडीज एग्जाम मंत्र:</b> श्रीलंका की कहानी हमें सिखाती है कि अगर बहुसंख्यक समुदाय अपनी मनमानी करेगा और अल्पसंख्यकों को पावर में हिस्सेदारी नहीं देगा, तो देश तबाह हो जाएगा[span_27](start_span)[span_27](end_span)।
             </div>
         </div>
         <!-- ==================== PART 2 END ==================== -->
         <!-- ==================== PART 3 START ==================== -->
-        <div class="comic-notes-box" style="border-color: #22c55e; margin-top: 30px;">
-            <div class="part-tag" style="background: #22c55e; box-shadow: 3px 3px 0px #14532d;">Part 3: बेल्जियम की गजब समझदारी</div>
+        <div class="comic-notes-box" style="border-color: #1e293b; margin-top: 35px;">
+            <div class="part-tag" style="background: #22c55e;">भाग 3: बेल्जियम की गजब समझदारी और आपसी तालमेल</div>
             <h2 class="main-topic-title" style="color: #15803d; border-bottom-color: #bbf7d0;">3. बेल्जियम की समझदारी: सबको सम्मान, देश खुशहाल</h2>
             
-            <p class="easy-text">बच्चों, जहाँ श्रीलंका ने अपने घमंड में देश को गृहयुद्ध की आग में झोंक दिया, वहीं बेल्जियम के नेताओं ने बिल्कुल इसके उलट रास्ता चुना। उन्होंने समझदारी दिखाई और यह माना कि देश में शांति तभी रह सकती है जब हर संस्कृति और भाषा के लोगों को सरकार में बराबर का सम्मान और हिस्सा मिले।</p>
+            <p class="easy-text">बच्चों, जहाँ श्रीलंका ने अपने घमंड में पूरे देश को गृहयुद्ध (Civil War) की आग में झोंक दिया, वहीं बेल्जियम के नेताओं ने बिल्कुल इसके उलट रास्ता चुना। उन्होंने बहुत बड़ी समझदारी दिखाई! उन्होंने यह माना कि देश में शांति और एकता तभी रह सकती है जब हर संस्कृति, भाषा और क्षेत्र के लोगों को सरकार में बराबर का सम्मान और हिस्सा मिले।</p>
 
-            <!-- Jibli Style Fun Example for Belgium -->
-            <div class="teacher-bubble-box" style="background: #f0fdf4; border-color: #22c55e; box-shadow: 4px 4px 0px #22c55e;">
-                <div class="bubble-title" style="color: #15803d;">🤝 संजय सर का तीसरा देसी उदाहरण:</div>
-                <p class="easy-text" style="margin: 0; font-size: 13.5px; color: #14532d;">मान लो स्कूल में दो बड़े ग्रुप्स हैं। एक ग्रुप कहता है कि सारे गेम्स हमारे हिसाब से चलेंगे, दूसरा ग्रुप कहता है कि कैंटीन हमारे हिसाब से चलेगी। प्रिंसिपल सर ने दोनों ग्रुप्स के लीडर्स को बुलाया और कहा—"लड़ने की कोई ज़रूरत नहीं है, आधी कमेटी पहले ग्रुप की होगी और आधी कमेटी दूसरे ग्रुप की, दोनों मिलकर फैसला लो!" बस यही तरीका बेल्जियम ने अपनाया।</p>
+            <!-- Social Studies Interactive Discussion Bubble -->
+            <div class="discussion-bubble" style="background: #f0fdf4; border-color: #22c55e; box-shadow: 5px 5px 0px #22c55e;">
+                <div class="bubble-header" style="color: #15803d;">🤝 संजय सर की स्पेशल क्लासरूम चर्चा:</div>
+                <p class="easy-text" style="margin: 0; font-size: 14px; color: #14532d;">मान लो स्कूल में दो बड़े ग्रुप्स हैं। एक ग्रुप कहता है कि सारे गेम्स हमारे हिसाब से चलेंगे, दूसरा ग्रुप कहता है कि कैंटीन हमारे हिसाब से चलेगी। प्रिंसिपल सर ने दोनों ग्रुप्स के लीडर्स को बुलाया और कहा—"लड़ने की कोई ज़रूरत नहीं है, आधी कमेटी पहले ग्रुप की होगी और आधी कमेटी दूसरे ग्रुप की, दोनों मिलकर फैसला लो!" बस यही तरीका बेल्जियम ने अपनाया।</p>
             </div>
 
-            <span class="kids-sub-heading" style="background: #f0fdf4; border-left-color: #22c55e; box-shadow: 3px 3px 0px #22c55e;">🛠️ संविधान में 4 बड़े बदलाव (1970 से 1993)</span>
-            <p class="easy-text">बेल्जियम के नेताओं ने अपने देश को टूटने से बचाने के लिए 1970 से 1993 के बीच अपने संविधान में <b>4 बार संशोधन (बदलाव)</b> किए ताकि कोई भी नागरिक पराया महसूस न करे। इन संशोधनों से जो मॉडल तैयार हुआ, उसे हम <b>'बेल्जियम मॉडल'</b> कहते हैं।</p>
+            <span class="kids-sub-heading" style="background: #f0fdf4; border-left-color: #22c55e; box-shadow: 4px 4px 0px #22c55e;">🛠️ संविधान में 4 बड़े बदलाव (1970 से 1993)</span>
+            <p class="easy-text">बेल्जियम के नेताओं ने अपने देश को भाषाई आधार पर टूटने से बचाने के लिए 1970 से 1993 के बीच अपने संविधान में <b>4 बार संशोधन (बदलाव)</b> किए ताकि कोई भी नागरिक अपने ही देश में पराया महसूस न करे। इन संशोधनों से जो ढांचा तैयार हुआ, उसे हम <b>'बेल्जियम मॉडल'</b> कहते हैं।</p>
 
-            <span class="kids-sub-heading" style="background: #f0fdf4; border-left-color: #22c55e; box-shadow: 3px 3px 0px #22c55e;">🌟 बेल्जियम मॉडल के 4 जादुई नियम (5 नंबर पक्के):</span>
+            <span class="kids-sub-heading" style="background: #f0fdf4; border-left-color: #22c55e; box-shadow: 4px 4px 0px #22c55e;">🌟 बेल्जियम मॉडल के 4 जादुई नियम (5 नंबर का बड़ा सवाल):</span>
             
-            <!-- 🎨 CARTOON ART WORK 5: THE 4 RULES NODES -->
-            <div class="cartoon-art-frame" style="background: #f0fdf4; border-color: #22c55e; box-shadow: 5px 5px 0px #14532d;">
-                <span class="art-title" style="background: #22c55e;">🎨 कॉमिक्स रूल्स चित्र 1.5: बेल्जियम के 4 नियम</span>
+            <!-- 🖼️ CARTOON ART WORK 5: THE 4 RULES NODES -->
+            <div class="cartoon-art-frame" style="background: #f0fdf4; border-color: #22c55e; box-shadow: 6px 6px 0px #14532d;">
+                <span class="art-title" style="background: #22c55e;">🖼️ चित्र 1.5: बेल्जियम के 4 जादुई नियम</span>
                 
-                <div style="display:grid; grid-template-columns: 1fr; gap:12px; text-align:left; margin-top:10px;">
-                    <div style="background:white; border:2px solid #1e3a8a; padding:10px; border-radius:12px;">
-                        <b style="color:#1e3a8a; font-size:13px;">1. 50-50 का नियम:</b> केंद्र सरकार में डच और फ्रेंच मंत्रियों की संख्या बिल्कुल बराबर होगी।
+                <div style="display:grid; grid-template-columns: 1fr; gap:14px; text-align:left; margin-top:10px;">
+                    <div style="background:white; border:3px solid #1e293b; padding:12px; box-shadow: 3px 3px 0px #1e293b;">
+                        <b style="color:#1e3a8a; font-size:14px; display:block; margin-bottom:4px;">1. केंद्र में 50-50 का नियम:</b> कानून के मुताबिक, देश की केंद्रीय सरकार में डच भाषी और फ्रेंच भाषी मंत्रियों की संख्या बिल्कुल बराबर होगी। कोई भी एक समुदाय अकेले फैसला नहीं ले सकता।
                     </div>
-                    <div style="background:white; border:2px solid #1e3a8a; padding:10px; border-radius:12px;">
-                        <b style="color:#1e3a8a; font-size:13px;">2. राज्य सरकारें आज़ाद:</b> क्षेत्रीय सरकारों को अपनी शक्तियाँ मिलीं, वे केंद्र की गुलाम नहीं रहीं.
+                    <div style="background:white; border:3px solid #1e293b; padding:12px; box-shadow: 3px 3px 0px #1e293b;">
+                        <b style="color:#1e3a8a; font-size:14px; display:block; margin-bottom:4px;">2. राज्य सरकारें हुईं आज़ाद:</b> केंद्र सरकार की बहुत सी शक्तियाँ देश के दोनों इलाकों की क्षेत्रीय (राज्य) सरकारों को सौंप दी गईं। राज्य सरकारें अब केंद्र की गुलाम नहीं रहीं।
                     </div>
-                    <div style="background:white; border:2px solid #1e3a8a; padding:10px; border-radius:12px;">
-                        <b style="color:#1e3a8a; font-size:13px;">3. ब्रुसेल्स में स्पेशल सेटअप:</b> राजधानी में अलग सरकार बनी, जहाँ दोनों को बराबर का हिस्सा मिला.
+                    <div style="background:white; border:3px solid #1e293b; padding:12px; box-shadow: 3px 3px 0px #1e293b;">
+                        <b style="color:#1e3a8a; font-size:14px; display:block; margin-bottom:4px;">3. राजधानी में बराबर का हिस्सा:</b> ब्रुसेल्स के लिए एक अलग सरकार बनाई गई जिसमें दोनों समुदायों को बराबर का प्रतिनिधित्व मिला। फ्रेंच लोगों ने यहाँ बराबरी इसलिए मानी क्योंकि पूरे देश में डच लोगों ने बराबरी का नियम स्वीकारा था।
                     </div>
-                    <div style="background:white; border:2px solid #1e3a8a; padding:10px; border-radius:12px;">
-                        <b style="color:#1e3a8a; font-size:13px;">4. सामुदायिक सरकार:</b> संस्कृति, शिक्षा और भाषा के मामलों के लिए एक तीसरे स्तर की सरकार बनी.
+                    <div style="background:white; border:3px solid #1e293b; padding:12px; box-shadow: 3px 3px 0px #1e293b;">
+                        <b style="color:#1e3a8a; font-size:14px; display:block; margin-bottom:4px;">4. अनोखी 'सामुदायिक सरकार':</b> संस्कृति, शिक्षा और भाषा के मामलों के लिए एक तीसरे स्तर की 'सामुदायिक सरकार' (Community Government) बनी, जिसे एक ही भाषा बोलने वाले लोग चुनते हैं।
                     </div>
                 </div>
+                <p style="font-size:12px; font-weight:800; margin:15px 0 0 0; color:#14532d;">[डायग्राम नोट्स: इन चार नियमों की वजह से बेल्जियम टूटने से बच गया]</p>
             </div>
 
-            <p class="easy-text"><b>इस समझदारी का क्या शानदार नतीजा निकला?</b> बेल्जियम में होने वाला लड़ाई-झगड़ा हमेशा के लिए खत्म हो गया और देश टूटने से बच गया। जब पूरे यूरोप के देशों ने मिलकर 'यूरोपीय संघ' (European Union) बनाया, तो उन्होंने इसकी राजधानी <b>ब्रुसेल्स</b> को अपना हेडक्वार्टर चुना!</p>
+            <p class="easy-text"><b>इस समझदारी का क्या शानदार नतीजा निकला?</b> बेल्जियम में समुदायों के बीच होने वाला लड़ाई-झगड़ा हमेशा के लिए खत्म हो गया और देश भाषाई आधार पर दो टुकड़ों में टूटने से बाल-बाल बच गया। जब पूरे यूरोप के देशों ने मिलकर 'यूरोपीय संघ' (European Union) बनाने का फैसला किया, तो उन्होंने बेल्जियम की इस समझदारी को देखकर इसकी राजधानी <b>ब्रुसेल्स</b> को अपना मुख्यालय (Headquarters) चुना!</p>
         </div>
 
         <!-- ==================== PART 4 START ==================== -->
-        <div class="comic-notes-box" style="border-color: #a855f7;">
-            <div class="part-tag" style="background: #a855f7; box-shadow: 3px 3px 0px #581c87;">Part 4: साझेदारी क्यों ज़रूरी है?</div>
+        <div class="comic-notes-box" style="border-color: #1e293b;">
+            <div class="part-tag" style="background: #a855f7;">भाग 4: सत्ता की साझेदारी क्यों ज़रूरी है?</div>
             <h2 class="main-topic-title" style="color: #6b21a8; border-bottom-color: #e9d5ff;">4. साझेदारी क्यों आवश्यक है? दो बड़े जादुई तर्क</h2>
             
-            <p class="easy-text">बच्चों, बेल्जियम और श्रीलंका की दोनों कहानियों को देखने के बाद हमें यह तो समझ आ गया कि पावर को आपस में बाँटना बहुत अच्छी बात है। लेकिन अगर बोर्ड परीक्षा में सीधे प्रश्न आ जाए कि इसके पीछे के कारणों को समझाइए, तो हमें पूरे नंबर लाने के लिए दो बड़े तर्क देने होंगे:</p>
+            <p class="easy-text">बच्चों, बेल्जियम और श्रीलंका की दोनों कहानियों को देखने के बाद हमें यह तो समझ आ गया कि पावर को आपस में बाँटना बहुत अच्छी बात है और इससे देश मज़बूत होता है। लेकिन अगर बोर्ड परीक्षा में सीधे प्रश्न आ जाए कि इसके पीछे के कारणों को समझाइए, तो हमें पूरे नंबर लाने के लिए दो बड़े तर्क देने होंगे:</p>
 
-            <table class="notes-table">
+            <table class="notes-table" style="border: 3px solid #1e293b;">
                 <thead>
-                    <tr style="background-color: #f3e8ff;">
-                        <th style="color: #6b21a8; font-size: 14px; width: 50%;">1. युक्तिपरक तर्क (Prudential)<br><span style="font-size: 11px; font-weight: 600; color: #701a75;">[लाभ-हानि का गणित]</span></th>
-                        <th style="color: #6b21a8; font-size: 14px; width: 50%;">2. नैतिक तर्क (Moral Reason)<br><span style="font-size: 11px; font-weight: 600; color: #701a75;">[लोकतंत्र की आत्मा]</span></th>
+                    <tr style="background-color: #f3e8ff; border-bottom: 3px solid #1e293b;">
+                        <th style="color: #6b21a8; font-size: 14.5px; width: 50%; padding:12px; border-right: 3px solid #1e293b;">1. युक्तिपरक तर्क (Prudential)<br><span style="font-size: 11.5px; font-weight: 600; color: #701a75;">[लाभ-हानि और नुकसान का गणित]</span></th>
+                        <th style="color: #6b21a8; font-size: 14.5px; width: 50%; padding:12px;">2. नैतिक तर्क (Moral Reason)<br><span style="font-size: 11.5px; font-weight: 600; color: #701a75;">[दिल की बात और लोकतंत्र की आत्मा]</span></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="easy-text" style="font-size: 13px; padding: 12px; vertical-align: top;">
-                            • यह तर्क कहता है कि अलग-अलग सामाजिक समूहों में <b>लड़ाई-झगड़े और हिंसा को कम करने के लिए</b> साझेदारी ज़रूरी है।<br><br>
-                            • क्योंकि आपसी टकराव से देश में अशांति और राजनीतिक अस्थिरता पैदा होती है। यह देश की एकता के लिए अच्छा परिणाम देता है।
+                        <td class="easy-text" style="font-size: 13.5px; padding: 14px; vertical-align: top; border-right: 3px solid #1e293b;">
+                            • यह तर्क कहता है कि अलग-अलग सामाजिक समूहों में <b>लड़ाई-झगड़े और हिंसा के अंदेशे को कम करने के लिए</b> साझेदारी ज़रूरी है।<br><br>
+                            • क्योंकि आपसी टकराव से देश में अशांति और राजनीतिक अस्थिरता पैदा होती है। यह देश की एकता बनाए रखने के लिए अच्छे परिणामों पर ज़ोर देता है।
                         </td>
-                        <td class="easy-text" style="font-size: 13px; padding: 12px; vertical-align: top;">
-                            • यह तर्क कहता है कि सत्ता की साझेदारी करना <b>लोकतंत्र की आत्मा (Spirit of Democracy) है</b>। इसके बिना लोकतंत्र का कोई मतलब ही नहीं है।<br><br>
-                            • लोकतंत्र का नियम ही यही है कि जिन लोगों के ऊपर शासन किया जा रहा है, सरकार चलाने में उनकी राय और हिस्सेदारी ली जाए।
+                        <td class="easy-text" style="font-size: 13.5px; padding: 14px; vertical-align: top;">
+                            • यह तर्क कहता है कि सत्ता की साझेदारी करना <b>लोकतंत्र की आत्मा (Spirit of Democracy) है</b>। इसके बिना लोकतंत्र का कोई वजूद ही नहीं है।<br><br>
+                            • लोकतंत्र का सीधा नियम ही यही है कि जिन लोगों के ऊपर शासन किया जा रहा है, सरकार चलाने और नीतियां बनाने में उनकी राय और हिस्सेदारी ली जाए।
                         </td>
                     </tr>
                 </tbody>
             </table>
 
-            <div class="example-container" style="background: #faf5ff; border-color: #e9d5ff;">
+            <div class="example-container" style="background: #faf5ff; border-color: #e9d5ff; border: 3px solid #1e293b; box-shadow: 4px 4px 0px #1e293b;">
                 <div class="example-title" style="color: #7e22ce;">💡 रिमोट वाली कार का आसान उदाहरण:</div>
-                <p class="easy-text" style="margin: 0; font-size: 13.5px; color: #475569;"><b>पहला तरीका (युक्तिपरक):</b> मम्मी ने कहा कि दोनों भाई आधे-आधे घंटे कार से खेलो, नहीं तो तुम दोनों आपस में लड़ोगे और खिलौना तोड़ दोगे (नुकसान से बचने का तर्क)।<br><b>दूसरा तरीका (नैतिक):</b> मम्मी ने कहा कि बेटा, तुम दोनों भाई हो और दोनों का इस पर बराबर का हक है, मिलकर खेलना ही अच्छी बात है (दिल की बात यानी नैतिक तर्क)।</p>
+                <p class="easy-text" style="margin: 0; font-size: 14px; color: #475569;"><b>पहला तरीका (युक्तिपरक):</b> मम्मी ने कहा कि दोनों भाई आधे-आधे घंटे कार से खेलो, नहीं तो तुम दोनों आपस में लड़ोगे और खिलौना तोड़ दोगे (नुकसान से बचने का तर्क)।<br><b>दूसरा तरीका (नैतिक):</b> मम्मी ने कहा कि बेटा, तुम दोनों भाई हो और दोनों का इस पर बराबर का हक है, मिलकर खेलना ही अच्छी बात है (दिल की बात यानी नैतिक तर्क)।</p>
             </div>
         </div>
 
         <!-- ==================== PART 5 START ==================== -->
-        <div class="comic-notes-box" style="border-color: #06b6d4;">
-            <div class="part-tag" style="background: #06b6d4; box-shadow: 3px 3px 0px #083344;">Part 5: सत्ता की साझेदारी के रूप</div>
+        <div class="comic-notes-box" style="border-color: #1e293b;">
+            <div class="part-tag" style="background: #06b6d4;">भाग 5: आधुनिक लोकतंत्र में सत्ता की साझेदारी के रूप</div>
             <h2 class="main-topic-title" style="color: #0891b2; border-bottom-color: #cffafe;">5. आधुनिक लोकतंत्र में साझेदारी के 4 बड़े तरीके</h2>
             
-            <p class="easy-text">प्यारे बच्चों, पुराने जमाने में लोग सोचते थे कि सरकार की सारी ताकत किसी एक राजा के हाथ में होनी चाहिए। लेकिन आज के समय में लोकतंत्र में सत्ता का बँटवारा मुख्य रूप से <b>चार अलग-अलग रूपों (Ways)</b> में किया जाता है, जो बोर्ड परीक्षा में 5 नंबर का सीधा बड़ा सवाल बनता है:</p>
+            <p class="easy-text">प्यारे बच्चों, पुराने जमाने में लोग सोचते थे कि सरकार की सारी ताकत किसी एक राजा के हाथ में होनी चाहिए, नहीं तो फैसले लेने में समय लगेगा। लेकिन आज के समय में लोकतंत्र में सत्ता का बँटवारा मुख्य रूप से <b>चार अलग-अलग रूपों (Ways)</b> में किया जाता है, जो बोर्ड परीक्षा में 5 नंबर का सीधा बड़ा सवाल बनता है:</p>
 
-            <span class="kids-sub-heading" style="background: #ecfeff; border-left-color: #06b6d4; color: #0891b2;">🏢 1. शासन के विभिन्न अंगों के बीच (क्षैतिज वितरण - Horizontal Sharing)</span>
+            <span class="kids-sub-heading" style="background: #ecfeff; border-left-color: #06b6d4; color: #1e293b;">🏢 1. शासन के विभिन्न अंगों के बीच (क्षैतिज वितरण - Horizontal Sharing)</span>
             <p class="easy-text">इसमें सरकार के तीन सबसे बड़े भाइयों के बीच शक्तियों को बराबर स्तर पर बाँट दिया जाता है, ताकि कोई भी अपनी मनमर्जी न चला सके। इसे <b>'नियंत्रण और संतुलन की व्यवस्था' (Checks and Balances)</b> भी कहते हैं।</p>
 
             <!-- 📊 3D CSS DIAGRAM: HORIZONTAL DISTRIBUTION -->
-            <div class="cartoon-art-frame" style="background: #ecfeff; border-color: #06b6d4; box-shadow: 5px 5px 0px #083344;">
-                <span class="art-title" style="background: #06b6d4;">↔️ कार्टून फ्लोचार्ट चित्र 1.6: क्षैतिज वितरण</span>
+            <div class="cartoon-art-frame" style="background: #ecfeff; border-color: #06b6d4; box-shadow: 6px 6px 0px #083344;">
+                <span class="art-title" style="background: #06b6d4;">↔️ चित्र 1.6: क्षैतिज वितरण (Horizontal Flowchart)</span>
                 <div style="display: flex; justify-content: space-around; align-items: center; position: relative; margin-top: 15px;">
-                    <div style="position: absolute; left: 10%; right: 10%; top: 50%; height: 3px; background: #06b6d4; z-index: 1;"></div>
-                    <div style="background: white; border: 3px solid #1e293b; padding: 8px; border-radius: 12px; font-size: 11px; font-weight: 800; color: #0891b2; z-index: 2; box-shadow: 3px 3px 0px #1e293b;">🏛️ विधायिका<br><span style="font-size:8px;color:#64748b;">(कानून बनाना)</span></div>
-                    <div style="background: white; border: 3px solid #1e293b; padding: 8px; border-radius: 12px; font-size: 11px; font-weight: 800; color: #0891b2; z-index: 2; box-shadow: 3px 3px 0px #1e293b;">🤝 कार्यपालिका<br><span style="font-size:8px;color:#64748b;">(कानून लागू करना)</span></div>
-                    <div style="background: white; border: 3px solid #1e293b; padding: 8px; border-radius: 12px; font-size: 11px; font-weight: 800; color: #0891b2; z-index: 2; box-shadow: 3px 3px 0px #1e293b;">⚖️ न्यायपालिका<br><span style="font-size:8px;color:#64748b;">(न्याय करना)</span></div>
+                    <div style="position: absolute; left: 10%; right: 10%; top: 50%; height: 4px; background: #06b6d4; z-index: 1;"></div>
+                    <div style="background: white; border: 3px solid #1e293b; padding: 10px; font-size: 11.5px; font-weight: 900; color: #0891b2; z-index: 2; box-shadow: 3px 3px 0px #1e293b;">🏛️ विधायिका<br><span style="font-size:9px;color:#64748b;">(कानून बनाना)</span></div>
+                    <div style="background: white; border: 3px solid #1e293b; padding: 10px; font-size: 11.5px; font-weight: 900; color: #0891b2; z-index: 2; box-shadow: 3px 3px 0px #1e293b;">🤝 कार्यपालिका<br><span style="font-size:9px;color:#64748b;">(कानून लागू करना)</span></div>
+                    <div style="background: white; border: 3px solid #1e293b; padding: 10px; font-size: 11.5px; font-weight: 900; color: #0891b2; z-index: 2; box-shadow: 3px 3px 0px #1e293b;">⚖️ न्यायपालिका<br><span style="font-size:9px;color:#64748b;">(न्याय करना)</span></div>
                 </div>
+                <p style="font-size:12px; font-weight:800; margin:15px 0 0 0; color:#083344;">[फ्लोचार्ट: तीनों का स्तर समान है और तीनों एक दूसरे को कंट्रोल करते हैं]</p>
             </div>
 
-            <span class="kids-sub-heading" style="background: #ecfeff; border-left-color: #06b6d4; color: #0891b2;">🗺️ 2. सरकार के विभिन्न स्तरों के बीच (ऊर्ध्वाधर वितरण - Vertical Sharing)</span>
+            <span class="kids-sub-heading" style="background: #ecfeff; border-left-color: #06b6d4; color: #1e293b;">🗺️ 2. सरकार के विभिन्न स्तरों के बीच (ऊर्ध्वाधर वितरण - Vertical Sharing)</span>
             <p class="easy-text">इसमें शक्तियों का बँटवारा ऊपर से नीचे की तरफ अलग-अलग लेवल की सरकारों के बीच होता है। इसे सत्ता का <b>ऊर्ध्वाधर वितरण या संघीय विभाजन (Federal Division)</b> कहा जाता है।</p>
 
             <!-- 📊 3D CSS DIAGRAM: VERTICAL DISTRIBUTION -->
-            <div class="cartoon-art-frame" style="background: #f0fdfa; border-color: #cbd5e1; box-shadow: 5px 5px 0px #1e293b;">
-                <span class="art-title" style="background: #1e293b;">↕️ कार्टून स्टैक चित्र 1.7: ऊर्ध्वाधर वितरण</span>
-                <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; margin-top: 15px;">
-                    <div style="background: #1e3a8a; color: white; border: 2px solid #1e293b; padding: 8px; border-radius: 10px; font-size: 12px; font-weight: 800; width: 75%; box-shadow: 3px 3px 0px #1e293b;">👑 केंद्र सरकार <span style="font-size:9px; opacity:0.8;">(पूरे देश के लिए)</span></div>
-                    <div style="font-size: 12px; color: #94a3b8; font-weight:900;">▼</div>
-                    <div style="background: #3b82f6; color: white; border: 2px solid #1e293b; padding: 8px; border-radius: 10px; font-size: 12px; font-weight: 800; width: 75%; box-shadow: 3px 3px 0px #1e293b;">📍 राज्य सरकार <span style="font-size:9px; opacity:0.8;">(अपने राज्य के लिए)</span></div>
-                    <div style="font-size: 12px; color: #94a3b8; font-weight:900;">▼</div>
-                    <div style="background: #60a5fa; color: #1e293b; border: 2px solid #1e293b; padding: 8px; border-radius: 10px; font-size: 12px; font-weight: 800; width: 75%; box-shadow: 3px 3px 0px #1e293b;">🏡 स्थानीय सरकार <span style="font-size:9px; font-weight:700;">(पंचायत / नगरपालिका)</span></div>
+            <div class="cartoon-art-frame" style="background: #f0fdfa; border-color: #cbd5e1; box-shadow: 6px 6px 0px #1e293b;">
+                <span class="art-title" style="background: #1e293b;">↕️ चित्र 1.7: ऊर्ध्वाधर वितरण (Vertical Stack Layout)</span>
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 15px;">
+                    <div style="background: #1e3a8a; color: white; border: 3px solid #1e293b; padding: 10px; font-size: 13px; font-weight: 900; width: 75%; box-shadow: 4px 4px 0px #1e293b;">👑 केंद्र सरकार <span style="font-size:9px; opacity:0.8; display:block;">(पूरे देश के बड़े मुद्दों के लिए)</span></div>
+                    <div style="font-size: 14px; color: #1e293b; font-weight:900; line-height:1;">▼</div>
+                    <div style="background: #3b82f6; color: white; border: 3px solid #1e293b; padding: 10px; font-size: 13px; font-weight: 900; width: 75%; box-shadow: 4px 4px 0px #1e293b;">📍 राज्य सरकार <span style="font-size:9px; opacity:0.8; display:block;">(अपने-अपने राज्य को संभालने के लिए)</span></div>
+                    <div style="font-size: 14px; color: #1e293b; font-weight:900; line-height:1;">▼</div>
+                    <div style="background: #60a5fa; color: #1e293b; border: 3px solid #1e293b; padding: 10px; font-size: 13px; font-weight: 900; width: 75%; box-shadow: 4px 4px 0px #1e293b;">🏡 स्थानीय सरकार <span style="font-size:9px; font-weight:800; display:block;">(गाँव की पंचायत / शहरों की नगरपालिका)</span></div>
                 </div>
+                <p style="font-size:12px; font-weight:800; margin:15px 0 0 0; color:#1e293b;">[स्टैक व्यू: ऊपर से नीचे की तरफ शक्तियों का ट्रांसफर होता है]</p>
             </div>
 
-            <span class="kids-sub-heading" style="background: #ecfeff; border-left-color: #06b6d4; color: #0891b2;">👥 3. विभिन्न सामाजिक समूहों के बीच (Social Groups)</span>
-            <p class="easy-text">इसमें समाज के अलग-अलग धार्मिक और भाषाई समूहों को भी सरकार में हिस्सा दिया जाता है, जैसे बेल्जियम की सामुदायिक सरकार या भारत में अनुसूचित जातियों (SC), जनजातियों (ST) और महिलाओं के लिए <b>आरक्षित चुनाव क्षेत्र (Reserved Constituencies)</b> की व्यवस्था।</p>
+            <span class="kids-sub-heading" style="background: #ecfeff; border-left-color: #06b6d4; color: #1e293b;">👥 3. विभिन्न सामाजिक समूहों के बीच (Social Groups)</span>
+            <p class="easy-text">इसमें समाज के अलग-अलग धार्मिक और भाषाई समूहों को भी सरकार में हिस्सा दिया जाता है, जैसे बेल्जियम की सामुदायिक सरकार या हमारे भारत में समाज के पिछड़े वर्गों, अनुसूचित जातियों (SC), जनजातियों (ST) और महिलाओं के लिए संसद व विधानसभाओं में <b>आरक्षित चुनाव क्षेत्र (Reserved Constituencies)</b> की विशेष व्यवस्था।</p>
 
-            <span class="kids-sub-heading" style="background: #ecfeff; border-left-color: #06b6d4; color: #0891b2;">📢 4. राजनीतिक दलों, दबाव समूहों और आंदोलनों के बीच</span>
-            <p class="easy-text">जब चुनाव में किसी एक पार्टी को बहुमत नहीं मिलता, तो दो या दो से अधिक पार्टियां मिलकर **गठबंधन सरकार (Coalition Government)** बना लेती हैं। यह सत्ता की साझेदारी का सबसे बड़ा प्रत्यक्ष उदाहरण है।</p>
+            <span class="kids-sub-heading" style="background: #ecfeff; border-left-color: #06b6d4; color: #1e293b;">📢 4. राजनीतिक दलों, दबाव समूहों और आंदोलनों के बीच</span>
+            <p class="easy-text">जब चुनाव में किसी एक पार्टी को बहुमत नहीं मिलता, तो दो या दो से अधिक पार्टियां मिलकर **गठबंधन सरकार (Coalition Government)** बना लेती हैं। इसके अलावा दबाव समूह (जैसे किसान और मजदूर संगठन) भी अपनी मांगों को लेकर सरकार की नीतियों पर दबाव डालते हैं। यह सत्ता की साझेदारी का सबसे बड़ा और प्रत्यक्ष उदाहरण है।</p>
             
-            <div class="tip-box" style="background: #ecfeff; border-left-color: #0891b2; color: #164e63;">
-                🎓 <b>संजय सर स्पेशल समरी:</b> 'सत्ता की साझेदारी' का मतलब सिर्फ ताक़त को बाँटना नहीं है, बल्कि देश को सुरक्षित, सुखी और अखंड बनाए रखने का यह सबसे बेहतरीन लोकतांत्रिक रास्ता है!
+            <div class="tip-box" style="background: #ecfeff; border-left-color: #0891b2; color: #164e63; border: 3px solid #06b6d4;">
+                🎓  <b>सोशल स्टडीज स्पेशल समरी:</b> 'सत्ता की साझेदारी' का मतलब सिर्फ ताक़त को बाँटना नहीं है, बल्कि देश को सुरक्षित, सुखी और अखंड बनाए रखने का यह सबसे बेहतरीन लोकतांत्रिक रास्ता है!
             </div>
         </div>
 
         <!-- Back Button Dashboard Menu -->
-        <a href="sst-civics.html" style="display: block; text-align: center; text-decoration: none; background: #1e3a8a; color: white; padding: 15px; border-radius: 25px; font-weight: 800; margin-top: 25px; border: 2px solid #1e293b; box-shadow: 4px 4px 0px #1e293b;">🔙 अध्याय लिस्ट पर वापस जाएं</a>
+        <a href="sst-civics.html" style="display: block; text-align: center; text-decoration: none; background: #1e3a8a; color: white; padding: 15px; border-radius: 0px; font-weight: 900; margin-top: 25px; border: 3px solid #1e293b; box-shadow: 5px 5px 0px #1e293b;">🔙 अध्याय लिस्ट पर वापस जाएं</a>
     </div>
 </div>
 
