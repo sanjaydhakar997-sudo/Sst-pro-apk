@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>अध्याय 5: लोकतंत्र के परिणाम - डिजिटल पाठशाला | SOCIAL STUDIES CLASSES</title>
+    <style>
+        /* --- CORE BOOK ARCHITECTURE & ACCESSIBILITY GUARD --- */
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f7ff; color: #1e293b; padding-bottom: 60px; line-height: 1.6; }
+        .container { max-width: 680px; margin: 0 auto; background: #ffffff; min-height: 100vh; box-shadow: 0 0 30px rgba(29,78,216,0.1); border-left: 3px solid #1d4ed8; border-right: 3px solid #1d4ed8; }
+        
+        /* Premium Textbook Header Layout */
+        .premium-header { background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 100%); color: #ffffff; padding: 45px 25px; text-align: center; border-bottom: 6px solid #eab308; }
+        .premium-header h1 { font-size: 26px; font-weight: 900; letter-spacing: 0.5px; text-transform: uppercase; }
+        .premium-header p { font-size: 13.5px; margin-top: 12px; font-weight: 700; background: #eab308; color: #1e3a8a; display: inline-block; padding: 6px 20px; border: 2px solid #1e3a8a; border-radius: 4px; }
+        
+        .main-content { padding: 25px 20px; }
+        
+        /* Progress Train Tracker Layout */
+        .progress-tracker { display: flex; justify-content: space-between; background: #f8fafc; border: 2px solid #cbd5e1; padding: 10px; margin-bottom: 25px; border-radius: 6px; font-size: 11px; font-weight: 700; color: #64748b; }
+        .progress-step { display: flex; align-items: center; gap: 4px; }
+        .progress-step.active { color: #1d4ed8; }
+
+        /* Pathshala Greeting Card */
+        .guruji-welcome { background: #fffdf5; border: 2px solid #eab308; border-left: 10px solid #eab308; padding: 20px; margin-bottom: 35px; border-radius: 4px; }
+        .guruji-welcome p { font-size: 15px; font-weight: 600; color: #451a03; text-align: justify; }
+
+        /* Master Section Box Formatting */
+        .section-master-card { background: #ffffff; border: 2px solid #1d4ed8; padding: 25px; margin-bottom: 40px; border-radius: 8px; box-shadow: 5px 5px 0px #1d4ed8; position: relative; }
+        .section-badge { position: absolute; top: -14px; left: 20px; background: #1d4ed8; color: white; font-size: 11px; font-weight: 800; padding: 4px 14px; border: 2px solid #1d4ed8; border-radius: 4px; text-transform: uppercase; }
+        .section-title { font-size: 21px; color: #1e3a8a; font-weight: 800; margin: 10px 0 20px 0; border-bottom: 3px double #cbd5e1; padding-bottom: 10px; }
+        
+        /* Desi Concept Highlighter Tags */
+        .highlight-core { background: #fef08a; color: #0f172a; padding: 2px 6px; font-weight: 700; border-radius: 3px; border-bottom: 2px solid #ca8a04; }
+        .easy-narration { font-size: 15.5px; color: #334155; font-weight: 600; text-align: justify; margin-bottom: 20px; }
+        
+        /* Kahani Corner Style Box */
+        .kahani-box { background: #fff7ed; border: 2px dashed #f97316; border-left: 8px solid #ea580c; padding: 20px; margin: 25px 0; border-radius: 6px; }
+        .kahani-title { font-size: 16px; font-weight: 800; color: #9a3412; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+
+        /* Interactive Micro Games Style */
+        .game-panel { background: #f0fdf4; border: 2px solid #22c55e; padding: 20px; margin: 25px 0; border-radius: 8px; box-shadow: 4px 4px 0px #22c55e; }
+        .game-title { font-size: 15px; font-weight: 800; color: #166534; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+        .game-options { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .game-btn { background: #ffffff; border: 2px solid #1e3a8a; padding: 10px 15px; font-size: 13.5px; font-weight: 700; text-align: left; cursor: pointer; border-radius: 4px; transition: 0.1s; color: #1e293b; }
+        .game-btn:hover { background: #f8fafc; }
+        .game-feedback { margin-top: 12px; font-size: 13.5px; font-weight: 700; display: none; padding: 8px; border-radius: 4px; }
+
+        /* High-Grade Geometrics Canvas */
+        .visual-canvas-container { background: #f8fafc; border: 2px solid #1e3a8a; border-radius: 6px; padding: 20px; margin: 25px 0; text-align: center; }
+        .canvas-label { display: inline-block; font-size: 12px; font-weight: 800; color: #ffffff; background: #1e3a8a; padding: 4px 12px; border-radius: 3px; margin-bottom: 20px; text-transform: uppercase; }
+        
+        .stack-container { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 15px; }
+        .stack-block { width: 85%; padding: 12px; border: 2px solid #1e3a8a; font-weight: 800; font-size: 14px; text-align: center; position: relative; box-shadow: 4px 4px 0px #1e3a8a; background: #ffffff; }
+
+        .system-scale-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px; }
+        .scale-box-card { background: #ffffff; border: 2px solid #1e3a8a; padding: 15px; border-radius: 6px; box-shadow: 4px 4px 0px #1e3a8a; text-align: left; }
+        .scale-badge-title { font-size: 13px; font-weight: 800; color: #ffffff; background: #1e3a8a; padding: 2px 8px; display: inline-block; margin-bottom: 10px; }
+
+        .danger-alert-zone { background: #fff5f5; border: 2px solid #ef4444; border-left: 8px solid #ef4444; padding: 18px; margin: 25px 0; border-radius: 4px; box-shadow: 4px 4px 0px #ef4444; }
+        .danger-title { font-size: 14px; font-weight: 800; color: #991b1b; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+
+        .guruji-spotlight { background: #f0f9ff; border: 2px solid #0ea5e9; padding: 16px; margin: 25px 0; border-radius: 6px; font-size: 14px; font-weight: 600; color: #0369a1; }
+
+        .bullet-list { list-style: none; margin: 15px 0; }
+        .bullet-list li { position: relative; padding-left: 24px; margin-bottom: 12px; font-size: 14.5px; font-weight: 600; color: #334155; line-height: 1.7; }
+        .bullet-list li::before { content: "💎"; position: absolute; left: 0; top: 1px; font-size: 14px; }
+
+        .master-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 13px; font-weight: 600; }
+        .master-table th, .master-table td { border: 2px solid #1e3a8a; padding: 12px; text-align: left; }
+        .master-table th { background: #f1f5f9; color: #1e3a8a; font-weight: 800; }
+
+        .fact-capsule-section { background: #f8fafc; border: 3px solid #1e3a8a; border-radius: 8px; padding: 20px; margin-top: 35px; box-shadow: 6px 6px 0px #1e3a8a; }
+        .capsule-title { font-size: 18px; font-weight: 900; color: #1e3a8a; margin-bottom: 15px; text-align: center; border-bottom: 2px solid #1e3a8a; padding-bottom: 8px; }
+
+        .action-footer-btn { display: block; text-align: center; text-decoration: none; background: #ffffff; color: #1e3a8a; padding: 16px; font-weight: 800; margin-top: 40px; border: 3px solid #1e3a8a; box-shadow: 5px 5px 0px #1e3a8a; border-radius: 6px; font-size: 15px; transition: 0.1s; }
+        .action-footer-btn:active { transform: translate(3px, 3px); box-shadow: 2px 2px 0px #1e3a8a; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="premium-header">
+        <h1>SOCIAL STUDIES CLASSES</h1>
+        <p>📚 कक्षा 10 नागरिक शास्त्र • अध्याय 5: लोकतंत्र के परिणाम (फुल डिजिटल नोट्स)</p>
+    </div>
+    
+    <div class="main-content">
+        <div class="progress-tracker">
+            <div class="progress-step active">🚂 परिणामों का मूल्यांकन 🟩</div>
+            <div class="progress-step active">➡ उत्तरदायी व वैध शासन 🟧</div>
+            <div class="progress-step active">➡ आर्थिक समृद्धि व समानता 🟦</div>
+            <div class="progress-step active">➡ गरिमा और आज़ादी 🏁</div>
+        </div>
+
+        <div class="guruji-welcome">
+            <p>👋 <b>नमस्ते प्यारे बच्चो!</b> हमारी सोशल स्टडीज की ऑनलाइन डिजिटल पाठशाला में आप सभी का स्वागत है। बच्चों, अब जब हम नागरिक शास्त्र की अपनी इस यात्रा के बिल्कुल आखिरी पड़ाव पर हैं, तब समय आ गया है कुछ बड़े सवाल पूछने का—जैसे लोकतंत्र क्या करता है? हम इससे किन परिणामों की उम्मीद करते हैं और क्या वास्तविक जीवन में यह उन उम्मीदों पर खरा उतरता है? अपनी रफ कॉपी निकाल लो और पूरा पाठ एक ही बार में दिमाग में सेट करो बेटा!</p>
+        </div>
+
+        <div class="section-master-card">
+            <div class="section-badge">भाग 1: मूल्यांकन के पैमाने</div>
+            <h2 class="section-title">1. लोकतंत्र के परिणामों का मूल्यांकन कैसे करें?</h2>
+            
+            <p class="easy-narration">बच्चों, हमने पिछली कक्षाओं में मैडम लिंगदोह की क्लास की चर्चा पढ़ी थी, जिससे यह साफ़ नतीजा निकला था कि लोकतंत्र शासन की किसी भी अन्य व्यवस्था (जैसे तानाशाही या राजशाही) से कहीं बेहतर है। लोकतंत्र को सबसे बेस्ट क्यों माना जाता है बेटा, इसके पीछे ये 5 बड़े कारण हैं:</p>
+            
+            <ul class="bullet-list">
+                <li><b>नागरिकों में समानता को बढ़ावा देना:</b> यह हर व्यक्ति को कानून के सामने बराबर का दर्जा देता है।</li>
+                <li><b>व्यक्ति की गरिमा को बढ़ाना:</b> समाज के हर छोटे-बड़े व्यक्ति के आत्मसम्मान की रक्षा करता है।</li>
+                <li><b>फ़ैसलों में बेहतरी आना:</b> बातचीत और व्यापक मोलतोल के कारण नीतियां ज़्यादा टिकाऊ और अच्छी बनती हैं।</li>
+                <li><b>टकरावों को टालने-सँभालने का तरीका देना:</b> समाज की विविधताओं के बीच शांतिपूर्ण हेल-मेल विकसित करता है।</li>
+                <li><b>गलतियों को सुधारने की गुंजाइश होना:</b> यदि कोई गलत निर्णय हो भी जाए, तो उसे नियमों के तहत बदला जा सकता है।</li>
+            </ul>
+
+            <div class="guruji-spotlight">
+                <b>⚖️ सैद्धांतिक बनाम व्यावहारिक दुविधा (ध्यान से सुनो बेटा):</b><br>
+                बच्चों, हमारे सामने एक बड़ी दुविधा आती है। सैद्धांतिक रूप से तो लोकतंत्र को बहुत अच्छा माना जाता है, पर जब हम इसके व्यवहार और कामकाज को देखते हैं, तो लोग इससे पूरी तरह संतुष्ट नहीं दिखते। इसका कारण यह है बेटा कि हम लोकतंत्र को <span class="highlight-core">हर मर्ज की दवा</span> मान लेते हैं और उससे हर सामाजिक-आर्थिक समस्या के जादू से ठीक होने की दीवानगी पाल लेते हैं। हमें यह मानना होगा कि लोकतंत्र सिर्फ **शासन का एक स्वरूप भर है**, यह लक्ष्य हासिल करने की स्थितियाँ बना सकता है, पर मेहनत नागरिकों को खुद करनी होगी!
+            </div>
+
+            <div class="game-panel">
+                <div class="game-title">🎮 गेम 1: बुनियादी समझ की परीक्षा (दिमाग दौड़ाओ!)</div>
+                <p style="font-size:13.5px; font-weight:600; color:#1e293b;">बेटा, यदि किसी लोकतांत्रिक देश में बहुत सी आर्थिक और सामाजिक समस्याएं हल नहीं हो पा रही हैं, तो इसके लिए हमें क्या करना चाहिए?</p>
+                <div class="game-options">
+                    <button class="game-btn" onclick="showFeedback('g1-wrong')">A) लोकतंत्र की अवधारणा को ही दोष देकर तानाशाही अपना लेनी चाहिए।</button>
+                    <button class="game-btn" onclick="showFeedback('g1-right')">B) यह समझना चाहिए कि लोकतंत्र सिर्फ स्थितियों का निर्माण करता है, उन स्थितियों का लाभ लेकर लक्ष्य पाना नागरिकों का काम है।</button>
+                </div>
+                <div id="g1-feedback" class="game-feedback"></div>
+            </div>
+        </div>
+
+        <div class="section-master-card" style="border-color: #ca8a04;">
+            <div class="section-badge" style="background: #ca8a04;">भाग 2: शासन का स्वरूप</div>
+            <h2 class="section-title" style="color: #a16207;">2. उत्तरदायी, ज़िम्मेवार और वैध शासन व्यवस्था</h2>
+            
+            <p class="easy-narration">बच्चों, कुछ ऐसी बुनियादी चीजें हैं जिन्हें हर लोकतांत्रिक व्यवस्था को पूरा करना ही चाहिए। लोकतंत्र में सबसे बड़ी चिंता यह होती है कि नागरिकों को अपना शासक खुद चुनने का अधिकार हो और शासकों पर जनता का नियंत्रण बरकरार रहे।</p>
+
+            <div class="visual-canvas-container">
+                <span class="canvas-label">✏️ रेखा चित्र 5.1: लोकतांत्रिक सरकार की तीन मुख्य खूबियाँ</span>
+                <div class="stack-container">
+                    <div class="stack-block" style="border-color: #1e3a8a; background: #eff6ff;">🗣️ 1. उत्तरदायी शासन (Accountable): जो जनता के सवालों का जवाब देने के लिए बाध्य हो।</div>
+                    <div class="stack-block" style="border-color: #ea580c; background: #fff7ed;">🤝 2. ज़िम्मेवार शासन (Responsive): जो नागरिकों की ज़रूरतों और उम्मीदों पर पूरा ध्यान दे।</div>
+                    <div class="stack-block" style="border-color: #166534; background: #f0fdf4;">📜 3. वैध शासन (Legitimate): भले ही सुस्त हो, पर यह जनता की अपनी चुनी हुई कानूनी सरकार है।</div>
+                </div>
+            </div>
+
+            <p class="easy-narration"><b>🔍 पारदर्शिता (Transparency) क्या है?</b> अलोकतांत्रिक सरकारों को किसी भी विधायिका या बहुमत-अल्पमत के नज़रिए का ख्याल नहीं रखना होता, इसलिए वे बहुत तेज़ फ़ैसले ले लेती हैं, जो बाद में जनता के लिए परेशानी का कारण बन जाते हैं। इसके विपरीत लोकतंत्र में फ़ैसले हमेशा कायदे-कानून के अनुसार होते हैं। यदि कोई नागरिक यह जानना चाहे कि फ़ैसला नियमों के तहत हुआ है या नहीं, तो उसे यह जानने का पूरा अधिकार और साधन प्राप्त है, इसी को हम **पारदर्शिता** कहते हैं।</p>
+
+            <div class="guruji-spotlight" style="border-color: #d97706; background: #fffbeb;">
+                <b>📊 लोकतंत्र का मिला-जुला रिकॉर्ड (तथ्य समझो बेटा):</b><br>
+                अगर हम नियमित और निष्पक्ष चुनाव कराने, खुली सार्वजनिक चर्चा के लिए मंच देने और सूचना का अधिकार (RTI) देने के पैमाने पर लोकतंत्र को तौलें, तो इसका रिकॉर्ड मिला-जुला रहा है। यह चुनाव कराने में तो सफल रहा है, पर नागरिकों के साथ सभी सूचनाओं को साझा करने और भ्रष्टाचार को पूरी तरह मिटा देने के मामले में इसका रिकॉर्ड प्रभावशाली नहीं रहा है। फिर भी यह वैध शासन होने के कारण पूरी दुनिया में जबरदस्त समर्थन पाता है।
+            </div>
+        </div>
+
+        <div class="section-master-card" style="border-color: #166534;">
+            <div class="section-badge" style="background: #166534;">भाग 3: आर्थिक उपलब्धियाँ</div>
+            <h2 class="section-title" style="color: #14532d;">3. आर्थिक संवृद्धि, विकास और असमानता का कड़ा गणित</h2>
+            
+            <p class="easy-narration">बच्चों, अगर हम सन् 1950 से 2000 के बीच के 50 सालों के आंकड़ों को देखें, तो आर्थिक संवृद्धि (Economic Growth) के मामले में तानाशाहियों का रिकॉर्ड लोकतांत्रिक व्यवस्थाओं से थोड़ा बेहतर रहा है। उच्चतर आर्थिक विकास हासिल करने में लोकतंत्र की यह अक्षमता हमारे लिए चिंता का विषय ज़रूर है बेटा।</p>
+            
+            <p class="easy-narration">लेकिन सिर्फ अकेले इस कारण से हम लोकतंत्र को खारिज नहीं कर सकते, क्योंकि आर्थिक विकास सिर्फ शासन प्रणाली पर नहीं, बल्कि देश की आबादी के आकार, वैश्विक स्थिति और तय की गई आर्थिक प्राथमिकताओं पर भी निर्भर करता है। अगर हम केवल <span class="highlight-core">कम विकसित गरीब देशों</span> की तुलना करें, तो तानाशाही Nic और लोकतंत्र के बीच का अंतर बिल्कुल नगण्य (ना के बराबर) रह जाता है!</p>
+
+            <div class="visual-canvas-container" style="border-color: #166534;">
+                <span class="canvas-label" style="background: #166534;">✏️ रेखा चित्र 5.2: आर्थिक विकास दर और आय की असमानता (1950-2000)</span>
+                <div class="system-scale-grid">
+                    <div class="scale-box-card" style="border-top: 4px solid #ef4444;">
+                        <span class="scale-badge-title" style="background:#ef4444;">तानाशाहियाँ</span>
+                        <p style="font-size:12px; font-weight:700; color:#1e293b;">औसत विकास दर: **4.42%**<br>गरीब देशों में: **4.34%**</p>
+                    </div>
+                    <div class="scale-box-card" style="border-top: 4px solid #22c55e;">
+                        <span class="scale-badge-title" style="background:#22c55e;">लोकतांत्रिक शासन</span>
+                        <p style="font-size:12px; font-weight:700; color:#1e293b;">औसत विकास दर: **3.95%**<br>गरीब देशों में: **4.28%**</p>
+                    </div>
+                </div>
+                <p style="font-size:11px; font-weight:700; color:#475569; margin-top:12px;">[आंकड़ा विश्लेषण: दक्षिण अफ्रीका और ब्राजील जैसे देशों में ऊपरी 20% अमीर लोगों का ही कुल राष्ट्रीय आय के 60% से ज़्यादा हिस्से पर कब्ज़ा है, जबकि नीचे के 20% गरीब लोग मात्र 2-3% हिस्से पर जीवन बसर करते हैं]</p>
+            </div>
+
+            <p class="easy-narration"><b>💸 राजनीतिक समानता बनाम आर्थिक असमानता:</b> लोकतंत्र हर व्यक्ति को एक वोट का बराबर अधिकार देकर राजनीतिक समानता तो स्थापित कर देता है, पर वास्तविक जीवन में यह आर्थिक असमानताओं और गरीबी को कम करने में ज़्यादा सफल नहीं हो पाया है। हमारे भारत में मतदाताओं में गरीबों की संख्या बहुत बड़ी है, इसलिए कोई भी पार्टी उनके वोटों से हाथ धोना नहीं चाहती, फिर भी सरकारें गरीबी मिटाने के सवाल पर उतना तत्पर ध्यान नहीं देतीं जितनी हम उम्मीद करते हैं। बांग्लादेश में तो आज भी आधी से ज़्यादा आबादी अत्यधिक गरीबी में जीवन गुज़ारती है।</p>
+
+            <div class="game-panel" style="border-color:#166534; background:#f0fdf4;">
+                <div class="game-title" style="color:#166534;">🎮 गेम 2: विकास दर का रहस्य (जल्दी बताओ!)</div>
+                <p style="font-size:13.5px; font-weight:600; color:#1e293b;">बच्चों, तानाशाहियों की आर्थिक संवृद्धि दर थोड़ी बेहतर होने के बावजूद भी दुनिया भर के लोग लोकतांत्रिक व्यवस्था को ही क्यों चुनते हैं?</p>
+                <div class="game-options">
+                    <button class="game-btn" onclick="showFeedback('g2-wrong')">A) क्योंकि लोकतंत्र में अमीरों को सारा पैसा लूटने की खुली छूट मिल जाती है।</button>
+                    <button class="game-btn" onclick="showFeedback('g2-right')">B) क्योंकि लोकतंत्र के अन्य अनेक सकारात्मक और नैतिक फायदे हैं, जैसे नागरिकों की गरिमा, अधिकार और आज़ादी की सुरक्षा।</button>
+                </div>
+                <div id="g2-feedback" class="game-feedback"></div>
+            </div>
+        </div>
+
+        <div class="section-master-card" style="border-color: #6b21a8;">
+            <div class="section-badge" style="background: #6b21a8;">भाग 4: गरिमा और सामाजिक मेल</div>
+            <h2 class="section-title" style="color: #6b21a8;">4. सामाजिक विविधताओं में सामंजस्य और नागरिकों की गरिमा</h2>
+            
+            <p class="easy-narration">बच्चों, लोकतांत्रिक व्यवस्थाओं से यह उम्मीद करना बिल्कुल उचित है कि वह एक सद्भावपूर्ण सामाजिक जीवन उपलब्ध कराएगी। लोकतंत्र अपने अंदर की प्रतिद्वंद्विताओं और अंतरों को सँभालने की एक बेहतरीन शांतिपूर्ण प्रक्रिया विकसित कर लेता है, जिससे टकराव हिंसक रूप नहीं ले पाते (जैसा हमने बेल्जियम के मॉडल में देखा था)।</p>
+            
+            <p class="easy-narration">लेकिन इसके लिए लोकतंत्र को **2 सबसे महत्वपूर्ण शर्तों** को पूरा करना होता है बेटा, जो परीक्षा में बार-बार पूछी जाती हैं:</p>
+            <ol style="font-size:14.5px; font-weight:600; color:#334155; padding-left:15px; line-height:1.8;">
+                <li style="margin-bottom:10px;"><b>बहुमत का शासन स्थायी न हो:</b> लोकतंत्र का सीधे-सीधे अर्थ किसी धर्म, नस्ल या भाषायी आधार के बहुसंख्यक समूह का स्थायी शासन नहीं है। हर फैसले या चुनाव में अलग-अलग लोग और समूह बहुमत का निर्माण कर सकते हैं।</li>
+                <li style="margin-bottom:10px;"><b>अल्पमत का ध्यान रखना:</b> बहुमत को हमेशा ही अल्पमत (अल्पसंख्यकों) के विचारों और हितों का ध्यान रखना होता, तभी सरकार जन-सामान्य की इच्छा का सही प्रतिनिधित्व कर पाती है।</li>
+            </ol>
+
+            <span class="sub-heading-tag" style="border-color: #a855f7; color: #6b21a8;">🏃‍♀️ व्यक्ति की गरिमा और आज़ादी (लोकतंत्र की सबसे बड़ी जीत)</span>
+            <p class="easy-narration">व्यक्ति की गरिमा (Dignity) और आज़ादी के मामले में लोकतांत्रिक व्यवस्था दुनिया की किसी भी अन्य शासन प्रणाली से कोसों आगे है। समाज में अक्सर टकराव तभी पैदा होते हैं बेटा, जब कुछ लोगों को लगता है कि उनके साथ सम्मान का व्यवहार नहीं किया गया। गरिमा और आज़ादी की चाह ही लोकतंत्र का असली आधार है।</p>
+            
+            <ul class="bullet-list">
+                <li><b>स्त्रियों की गरिमा का उदाहरण:</b> दुनिया के अधिकांश समाज पुरुष-प्रधान रहे हैं। महिलाओं के लंबे संघर्षों के बाद आज जाकर यह वैधानिक और नैतिक रूप से माना जाने लगा है कि औरतों के साथ समानता का व्यवहार लोकतंत्र की एक ज़रूरी शर्त है।</li>
+                <li><b>जातिगत असमानता पर प्रहार:</b> भारत में लोकतांत्रिक व्यवस्था ने कमज़ोर और भेदभाव का शिकार हुई पिछड़ी व वंचित जातियों के लोगों के समान दर्जे और समान अवसर के दावों को बहुत बड़ा कानूनी और नैतिक बल दिया है।</li>
+            </ul>
+        </div>
+
+        <div class="kahani-box">
+            <div class="kahani-title">📖 झुग्गी बस्ती के नन्नू और राशन इंस्पेक्टर की कहानी</div>
+            <p style="font-size:14px; font-weight:600; color:#9a3412; text-align:justify; line-height:1.7;">
+                बच्चों, इसे हमारी मूल किताब के एक बहुत ही सुंदर और सच्चे उदाहरण से समझो! नन्नू पूर्वी दिल्ली की एक झुग्गी बस्ती वेलकम मज़दूर कॉलोनी में रहने वाला एक गरीब दिहाड़ी मज़दूर है। उसका राशन कार्ड गुम हो गया था, और उसने डुप्लीकेट राशन कार्ड बनाने के लिए जनवरी 2006 में सरकारी दफ़्तर में अर्जी दी। अगले तीन महीनों तक नन्नू सरकारी दफ़्तर के चक्कर काटता रहा, पर वहाँ तैनात क्लर्क और अधिकारी उसका काम करना तो दूर, उसे देखने तक को तैयार नहीं थे। <br><br>
+                आखिरकार नन्नू ने लोकतंत्र के एक मजबूत हथियार का इस्तेमाल किया, जिसे हम **सूचना का अधिकार (RTI)** कहते हैं। उसने आवेदन देकर पूछा कि मेरी अर्जी पर दैनिक प्रगति का ब्यौरा दिया जाए, और जिन अधिकारियों ने इस पर काम नहीं किया, उनके खिलाफ क्या कार्रवाई होगी? <br><br>
+                RTI का आवेदन देते ही सरकारी मशीनरी में ऐसा हड़कंप मचा बेटा कि हफ्ते भर के अंदर राशन इंस्पेक्टर खुद नन्नू के घर आया और बोला—"नन्नू भाई, आपका राशन कार्ड तैयार है, दफ़्तर आकर ले जाइए।" अगले दिन जब नन्नू गया, तो विभाग के सबसे बड़े अधिकारी ने गर्मजोशी से उसका स्वागत किया, उसे कुर्सी पर बिठाकर चाय पिलाई और प्यार से कहा—"भाई, अपना RTI वाला आवेदन अब वापस ले लो!" <br><br>
+                यही लोकतंत्र की असली ताकत है बेटा! लोकतंत्र में जनता राजा होती है और अधिकारी उसके सेवक। शिकायतों का बने रहना और नागरिकों का अपने अधिकारों के लिए सजग होना ही लोकतंत्र की सबसे बड़ी सफलता की गवाही देता है।
+            </p>
+        </div>
+
+        <div class="fact-capsule-section">
+            <div class="capsule-title">📊 त्वरित रिवीज़न कैप्सूल: पूरे पाठ का महा-निचोड़</div>
+            <table class="master-table" style="margin: 0;">
+                <thead>
+                    <tr>
+                        <th style="background:#1d4ed8; color:white;">मूल्यांकन का क्षेत्र</th>
+                        <th style="background:#1d4ed8; color:white;">वास्तविक धरातल पर रिकॉर्ड (Data)</th>
+                        <th style="background:#1d4ed8; color:white;">लोकतांत्रिक निष्कर्ष</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>जवाबदेह शासन</b></td>
+                        <td>नियमित, निष्पक्ष चुनाव और खुली सार्वजनिक चर्चा देने में काफी हद तक सफल।</td>
+                        <td>**पारदर्शिता:** नागरिकों को फ़ैसलों की प्रक्रिया जानने का पूरा अधिकार और साधन प्राप्त है।</td>
+                    </tr>
+                    <tr>
+                        <td><b>आर्थिक विकास दर</b></td>
+                        <td>तानाशाही: 4.42%<br>लोकतंत्र: 3.95% <br>(1950-2000 का आंकड़ा)</td>
+                        <td>गरीब देशों के मामले में यह अंतर ना के बराबर है। लोकतंत्र केवल शासन का स्वरूप है, जादू की छड़ी नहीं।</td>
+                    </tr>
+                    <tr>
+                        <td><b>सामाजिक सामंजस्य</b></td>
+                        <td>विविधताओं और अंतरों के बीच शांतिपूर्ण बातचीत से सामंजस्य बैठाना।</td>
+                        <td>बहुमत को हमेशा अल्पमत की इच्छाओं और हितों का सम्मान करना अनिवार्य है।</td>
+                    </tr>
+                    <tr>
+                        <td><b>नागरिक गरिमा</b></td>
+                        <td>स्त्रियों और शोषित जातियों के समान दर्जे और गरिमा को नैतिक व कानूनी बल मिलना।</td>
+                        <td>**प्रजा से नागरिक बनना:** लोग अब सत्ता में बैठे लोगों के कामकाज का आलोचनात्मक मूल्यांकन करने लगे हैं।</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="exam-booster-note" style="background:#f0fdf4; border-color:#22c55e; color:#166534; font-weight:700; padding:12px; border-radius:4px; margin-top:15px;">
+                🎓 <b>गुरुजी का अंतिम संदेश:</b> तो प्यारे बच्चों, हमारी लोकतांत्रिक राजनीति की इस सुंदर यात्रा का सबसे बड़ा निष्कर्ष यही है कि लोकतांत्रिक व्यवस्था की सबसे बड़ी उपलब्धि खुद लोकतांत्रिक व्यवस्था ही है! जब जनता बाहर बैठकर कोसने की जगह खुद सजग नागरिक बनती है, तो लोकतंत्र की जड़ें और मजबूत हो जाती हैं। इस अध्याय को अच्छे से तैयार कर लेना बेटा, परीक्षा में पूरे नंबर आएंगे!
+            </div>
+        </div>
+
+        <a href="sst-civics.html" class="action-footer-btn">🔙 मुख्य अध्याय लिस्ट पर वापस जाएं</a>
+    </div>
+</div>
+
+<script>
+    // Interaction logic for mini-games without altering text content
+    function showFeedback(type) {
+        var g1Fb = document.getElementById('g1-feedback');
+        var g2Fb = document.getElementById('g2-feedback');
+        
+        if(type === 'g1-wrong') {
+            g1Fb.style.display = 'block';
+            g1Fb.style.background = '#fef2f2';
+            g1Fb.style.color = '#991b1b';
+            g1Fb.innerHTML = '❌ गलत प्रयास बेटा! सक्रिय सदस्य तो वे होते हैं जो पार्टी के सांगठनिक पदों पर बैठकर कार्य करते हैं और ब्यौरा रखते हैं। फिर से सोचो!';
+        } else if(type === 'g1-right') {
+            g1Fb.style.display = 'block';
+            g1Fb.style.background = '#dcfce7';
+            g1Fb.style.color = '#15803d';
+            g1Fb.innerHTML = '🎉 शाबाश मेरे शेर! एकदम सही जवाब। जो लोग केवल विचारधारा का समर्थन करते हैं, रैलियों में आते हैं और वोट देते हैं, वे अनुयायी या समर्थक (Supporters) कहलाते हैं। 1 नंबर पक्का!';
+        } else if(type === 'g2-wrong') {
+            g2Fb.style.display = 'block';
+            g2Fb.style.background = '#fef2f2';
+            g2Fb.style.color = '#991b1b';
+            g2Fb.innerHTML = '❌ अरे नहीं बेटा! लोकतंत्र में अमीर सारा पैसा नहीं लूटते, बल्कि आर्थिक असमानताएँ तो तानाशाही में भी होती हैं। दोबारा कोशिश करो।';
+        } else if(type === 'g2-right') {
+            g2Fb.style.display = 'block';
+            g2Fb.style.background = '#dcfce7';
+            g2Fb.style.color = '#15803d';
+            g2Fb.innerHTML = '🎉 अरे गजब! बिल्कुल सही उत्तर। केवल आर्थिक संवृद्धि ही पैमाना नहीं है बेटा, लोकतंत्र नागरिकों को गरिमा, आज़ादी, समानता और अपनी गलतियाँ सुधारने का जो नैतिक अवसर देता है, वह किसी भी तानाशाही में मुमकिन नहीं है। आपकी तैयारी बहुत बेहतरीन है बेटा!';
+        }
+    }
+
+    // Security layer for application interface usage
+    document.addEventListener('contextmenu', event => event.preventDefault());
+</script>
+
+</body>
+                        </html>
