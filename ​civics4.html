@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>अध्याय 4: राजनीतिक दल - डिजिटल पाठशाला | SOCIAL STUDIES CLASSES</title>
+    <style>
+        /* --- CORE BOOK ARCHITECTURE & ACCESSIBILITY GUARD --- */
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f4f8; color: #1e293b; padding-bottom: 60px; line-height: 1.6; }
+        .container { max-width: 680px; margin: 0 auto; background: #ffffff; min-height: 100vh; box-shadow: 0 0 30px rgba(30,58,138,0.1); border-left: 3px solid #1e3a8a; border-right: 3px solid #1e3a8a; }
+        
+        /* Premium Textbook Header Layout */
+        .premium-header { background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 100%); color: #ffffff; padding: 45px 25px; text-align: center; border-bottom: 6px solid #facc15; }
+        .premium-header h1 { font-size: 26px; font-weight: 900; letter-spacing: 0.5px; text-transform: uppercase; }
+        .premium-header p { font-size: 13.5px; margin-top: 12px; font-weight: 700; background: #facc15; color: #1e3a8a; display: inline-block; padding: 6px 20px; border: 2px solid #1e3a8a; border-radius: 4px; }
+        
+        .main-content { padding: 25px 20px; }
+        
+        /* Progress Train Tracker Layout */
+        .progress-tracker { display: flex; justify-content: space-between; background: #f8fafc; border: 2px solid #cbd5e1; padding: 10px; margin-bottom: 25px; border-radius: 6px; font-size: 11px; font-weight: 700; color: #64748b; }
+        .progress-step { display: flex; align-items: center; gap: 4px; }
+        .progress-step.active { color: #1e3a8a; }
+
+        /* Pathshala Greeting Card */
+        .guruji-welcome { background: #fffdf5; border: 2px solid #eab308; border-left: 10px solid #eab308; padding: 20px; margin-bottom: 35px; border-radius: 4px; }
+        .guruji-welcome p { font-size: 15px; font-weight: 600; color: #451a03; text-align: justify; }
+
+        /* Master Section Box Formatting */
+        .section-master-card { background: #ffffff; border: 2px solid #1e3a8a; padding: 25px; margin-bottom: 40px; border-radius: 8px; box-shadow: 5px 5px 0px #1e3a8a; position: relative; }
+        .section-badge { position: absolute; top: -14px; left: 20px; background: #1e3a8a; color: white; font-size: 11px; font-weight: 800; padding: 4px 14px; border: 2px solid #1e3a8a; border-radius: 4px; text-transform: uppercase; }
+        .section-title { font-size: 21px; color: #1e3a8a; font-weight: 800; margin: 10px 0 20px 0; border-bottom: 3px double #cbd5e1; padding-bottom: 10px; }
+        
+        /* Desi Concept Highlighter Tags */
+        .highlight-core { background: #fef08a; color: #0f172a; padding: 2px 6px; font-weight: 700; border-radius: 3px; border-bottom: 2px solid #ca8a04; }
+        .easy-narration { font-size: 15.5px; color: #334155; font-weight: 600; text-align: justify; margin-bottom: 20px; }
+        
+        /* Kahani Corner Style Box */
+        .kahani-box { background: #fff7ed; border: 2px dashed #f97316; border-left: 8px solid #ea580c; padding: 20px; margin: 25px 0; border-radius: 6px; }
+        .kahani-title { font-size: 16px; font-weight: 800; color: #9a3412; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+
+        /* Interactive Micro Games Style */
+        .game-panel { background: #f0fdf4; border: 2px solid #22c55e; padding: 20px; margin: 25px 0; border-radius: 8px; box-shadow: 4px 4px 0px #22c55e; }
+        .game-title { font-size: 15px; font-weight: 800; color: #166534; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+        .game-options { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .game-btn { background: #ffffff; border: 2px solid #1e3a8a; padding: 10px 15px; font-size: 13.5px; font-weight: 700; text-align: left; cursor: pointer; border-radius: 4px; transition: 0.1s; color: #1e293b; }
+        .game-btn:hover { background: #f8fafc; }
+        .game-feedback { margin-top: 12px; font-size: 13.5px; font-weight: 700; display: none; padding: 8px; border-radius: 4px; }
+
+        /* High-Grade Geometrics Canvas */
+        .visual-canvas-container { background: #f8fafc; border: 2px solid #1e3a8a; border-radius: 6px; padding: 20px; margin: 25px 0; text-align: center; }
+        .canvas-label { display: inline-block; font-size: 12px; font-weight: 800; color: #ffffff; background: #1e3a8a; padding: 4px 12px; border-radius: 3px; margin-bottom: 20px; text-transform: uppercase; }
+        
+        .stack-container { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 15px; }
+        .stack-block { width: 85%; padding: 12px; border: 2px solid #1e3a8a; font-weight: 800; font-size: 14px; text-align: center; position: relative; box-shadow: 4px 4px 0px #1e3a8a; background: #ffffff; }
+        .stack-arrow { font-size: 16px; font-weight: 900; color: #1e3a8a; }
+
+        .system-scale-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 15px; }
+        .scale-box-card { background: #ffffff; border: 2px solid #1e3a8a; padding: 12px; border-radius: 6px; box-shadow: 3px 3px 0px #1e3a8a; text-align: left; }
+        .scale-badge-title { font-size: 12px; font-weight: 800; color: #ffffff; background: #1e3a8a; padding: 2px 6px; display: inline-block; margin-bottom: 8px; }
+
+        .danger-alert-zone { background: #fff5f5; border: 2px solid #ef4444; border-left: 8px solid #ef4444; padding: 18px; margin: 25px 0; border-radius: 4px; box-shadow: 4px 4px 0px #ef4444; }
+        .danger-title { font-size: 14px; font-weight: 800; color: #991b1b; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+
+        .guruji-spotlight { background: #f0f9ff; border: 2px solid #0ea5e9; padding: 16px; margin: 25px 0; border-radius: 6px; font-size: 14px; font-weight: 600; color: #0369a1; }
+
+        .bullet-list { list-style: none; margin: 15px 0; }
+        .bullet-list li { position: relative; padding-left: 24px; margin-bottom: 12px; font-size: 14.5px; font-weight: 600; color: #334155; line-height: 1.7; }
+        .bullet-list li::before { content: "📢"; position: absolute; left: 0; top: 1px; font-size: 14px; }
+
+        .master-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 13px; font-weight: 600; }
+        .master-table th, .master-table td { border: 2px solid #1e3a8a; padding: 12px; text-align: left; }
+        .master-table th { background: #f1f5f9; color: #1e3a8a; font-weight: 800; }
+
+        .fact-capsule-section { background: #f8fafc; border: 3px solid #1e3a8a; border-radius: 8px; padding: 20px; margin-top: 35px; box-shadow: 6px 6px 0px #1e3a8a; }
+        .capsule-title { font-size: 18px; font-weight: 900; color: #1e3a8a; margin-bottom: 15px; text-align: center; border-bottom: 2px solid #1e3a8a; padding-bottom: 8px; }
+
+        .action-footer-btn { display: block; text-align: center; text-decoration: none; background: #ffffff; color: #1e3a8a; padding: 16px; font-weight: 800; margin-top: 40px; border: 3px solid #1e3a8a; box-shadow: 5px 5px 0px #1e3a8a; border-radius: 6px; font-size: 15px; transition: 0.1s; }
+        .action-footer-btn:active { transform: translate(3px, 3px); box-shadow: 2px 2px 0px #1e3a8a; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="premium-header">
+        <h1>SOCIAL STUDIES CLASSES</h1>
+        <p>📚 कक्षा 10 नागरिक शास्त्र • अध्याय 4: राजनीतिक दल (फुल डिजिटल नोट्स)</p>
+    </div>
+    
+    <div class="main-content">
+        <div class="progress-tracker">
+            <div class="progress-step active">🚂 दल का अर्थ 🟩</div>
+            <div class="progress-step active">➡ मुख्य कार्य 🟧</div>
+            <div class="progress-step active">➡ राष्ट्रीय एवं क्षेत्रीय दल 🟦</div>
+            <div class="progress-step active">➡ सुधार और चुनौतियाँ 🏁</div>
+        </div>
+
+        <div class="guruji-welcome">
+            <p>👋 <b>नमस्ते प्यारे बच्चो!</b> हमारी सोशल स्टडीज की स्पेशल डिजिटल पाठशाला में आप सभी का स्वागत है। बेटा, लोकतांत्रिक शासन व्यवस्था को बनाने, संविधान रचने, और सरकार को चलाने में **राजनीतिक दलों** की सबसे बड़ी भूमिका होती है। आम नागरिकों के लिए तो लोकतंत्र का सीधा मतलब ही राजनीतिक दल होता है! अपनी रफ कॉपी निकाल लो और पूरा पाठ एक ही बार में दिमाग में सेट करो बेटा!</p>
+        </div>
+
+        <div class="section-master-card">
+            <div class="section-badge">भाग 1: परिभाषा एवं हिस्से</div>
+            <h2 class="section-title">1. राजनीतिक दल का अर्थ and उसके तीन प्रमुख हिस्से</h2>
+            
+            <p class="easy-narration">बच्चों, जब आप देश के किसी दूर-दराज के गाँव में कम पढ़े-लिखे लोगों से बात करोगे, तो हो सकता है उन्हें देश के संविधान या सरकार के बारे में कुछ न पता हो, लेकिन किसी न किसी पार्टी का नाम वे ज़रूर जानते हैं! आइए इसकी सबसे सटीक और आसान परिभाषा देखते हैं:</p>
+            
+            <div class="guruji-spotlight" style="border-color: #1e3a8a; background: #eff6ff;">
+                <b>📝 राजनीतिक दल की परिभाषा (एग्जाम स्पेशल):</b><br>
+                "राजनीतिक दल को लोगों के एक ऐसे संगठित समूह के रूप में समझा जा सकता है जो चुनाव लड़ने और सरकार में राजनीतिक सत्ता हासिल करने के उद्देश्य से काम करता है।" यह समूह समाज के सामूहिक हितों को ध्यान में रखकर अपनी नीतियां और कार्यक्रम तय करता है।
+            </div>
+
+            <div class="visual-canvas-container">
+                <span class="canvas-label">✏️ रेखा चित्र 4.1: राजनीतिक दल के तीन प्रमुख हिस्से</span>
+                <div class="stack-container">
+                    <div class="stack-block" style="border-color: #b91c1c; background: #fef2f2; width: 60%;">👑 1. नेता (Leaders)</div>
+                    <div class="stack-arrow">▼</div>
+                    <div class="stack-block" style="border-color: #ca8a04; background: #fefce8; width: 75%;">🏃 2. सक्रिय सदस्य (Active Members)</div>
+                    <div class="stack-arrow">▼</div>
+                    <div class="stack-block" style="border-color: #166534; background: #f0fdf4; width: 90%;">👥 3. अनुयायी या समर्थक (Followers / Supporters)</div>
+                </div>
+                <p style="font-size:11.5px; font-weight:700; color:#475569; margin-top:15px;">[व्याख्या: बोर्ड परीक्षा में एक नंबर का सीधा सवाल पूछा जाता है कि दल के तीन हिस्से कौन से हैं]</p>
+            </div>
+
+            <p class="easy-narration">पार्टी समाज के किसी एक हिस्से से संबंधित होती है, इसलिए उसका नज़रिया समाज के उस वर्ग या समुदाय विशेष की तरफ झुका होता है। इसी को हम राजनीति में <span class="highlight-core">पक्षपात (Partisanship)</span> या दलगत झुकाव कहते हैं।</p>
+
+            <div class="game-panel">
+                <div class="game-title">🎮 गेम 1: दल के अंगों की परीक्षा (दिमाग दौड़ाओ!)</div>
+                <p style="font-size:13.5px; font-weight:600; color:#1e293b;">बेटा, जो लोग किसी party की नीतियों से प्रभावित होकर केवल उसे वोट देते हैं और उसका झंडा लेकर चलते हैं, पर पार्टी के आंतरिक पद पर नहीं होते, वे दल के किस हिस्से में आएंगे?</p>
+                <div class="game-options">
+                    <button class="game-btn" onclick="showFeedback('g1-wrong')">A) सक्रिय सदस्य (Active Members)</button>
+                    <button class="game-btn" onclick="showFeedback('g1-right')">B) अनुयायी या समर्थक (Supporters)</button>
+                </div>
+                <div id="g1-feedback" class="game-feedback"></div>
+            </div>
+        </div>
+
+        <div class="section-master-card" style="border-color: #ca8a04;">
+            <div class="section-badge" style="background: #ca8a04;">भाग 2: दल के कार्य</div>
+            <h2 class="section-title" style="color: #a16207;">2. राजनीतिक दल क्या काम करते हैं? (5 अंक का पक्का सवाल)</h2>
+            
+            <p class="easy-narration">बच्चों, लोकतंत्र को चलाने के लिए राजनीतिक दल विभिन्न पदों को भरते हैं और राजनीतिक सत्ता का इस्तेमाल करते हैं। परीक्षा में इनके **7 मुख्य कार्य** पूछे जाते हैं, जिन्हें याद रखना बहुत आसान है:</p>
+            
+            <ul class="bullet-list">
+                <li><b>1. चुनाव लड़ना:</b> लोकतांत्रिक देशों में चुनाव राजनीतिक दलों द्वारा खड़े किए गए उम्मीदवारों के बीच लड़ा जाता है। भारत में दलों के बड़े नेता ही टिकट और उम्मीदवार चुनते हैं।</li>
+                <li><b>2. नीतियां और कार्यक्रम सामने रखना:</b> पार्टियां तरह-तरह के अलग-अलग विचारों को कुछ बुनियादी राय तक समेट लाती हैं, जिन्हें मतदाता अपनी पसंद के अनुसार चुनते हैं।</li>
+                <li><b>3. कानून निर्माण में निर्णायक भूमिका:</b> देश के कानूनों पर संसद (विधायिका) में औपचारिक बहस होती है। चूँकि अधिकांश सदस्य किसी न किसी दल के होते हैं, इसलिए वे अपने दल के नेता के निर्देश पर कानून पास करते हैं।</li>
+                <li><b>4. सरकार बनाना और चलाना:</b> पार्टियां ही योग्य नेताओं को चुनती हैं, उन्हें प्रशिक्षित करती हैं और फिर सिद्धांतों के अनुसार सरकार चलाने के लिए उन्हें मंत्री बनाती हैं।</li>
+                <li><b>5. विपक्ष की भूमिका निभाना:</b> चुनाव हारने वाले दल <span class="highlight-core">शासक दल</span> के विरोधी पक्ष की भूमिका निभाते हैं और सरकार की गलत नीतियों की जमकर आलोचना करते हैं।</li>
+                <li><b>6. जनमत का निर्माण करना:</b> दल समाज के विभिन्न मुद्दों को उठाते हैं, उन पर बहस करते हैं और देश भर में फैले अपने लाखों कार्यकर्ताओं के माध्यम से जनता की राय (जनमत) तय करते हैं।</li>
+                <li><b>7. कल्याणकारी कार्यक्रमों तक पहुँच बनाना:</b> एक साधारण नागरिक के लिए किसी बड़े सरकारी अधिकारी के पास जाने की तुलना में अपने स्थानीय राजनेता या कार्यकर्ता से संपर्क साधना कहीं ज़्यादा आसान होता है।</li>
+            </ul>
+
+            <div class="danger-alert-zone">
+                <div class="danger-title">⚠️ सोचो बेटा! अगर देश में राजनीतिक दल न हों तो क्या होगा?</div>
+                <p style="font-size: 14px; font-weight: 600; color: #7f1d1d; line-height: 1.7;">
+                    अगर दल नहीं होंगे, तो सारे उम्मीदवार **स्वतंत्र या निर्दलीय** चुनाव लड़ेंगे। तब कोई भी उम्मीदवार पूरे देश के लिए बड़े नीतिगत बदलाव के वायदे नहीं कर पाएगा। सरकार तो बन जाएगी, पर उसकी उपयोगिता संदिग्ध होगी। निर्वाचित प्रतिनिधि सिर्फ अपने छोटे से इलाके के कामों के लिए जवाबदेह होगा, लेकिन <span class="highlight-core">पूरा देश कैसे चले, इसके लिए कोई भी जिम्मेदार नहीं होगा</span>!
+                </p>
+            </div>
+        </div>
+
+        <div class="section-master-card" style="border-color: #166534;">
+            <div class="section-badge" style="background: #166534;">भाग 3: दलीय व्यवस्थाएं</div>
+            <h2 class="section-title" style="color: #14532d;">3. दलीय प्रणालियां: एकदलीय, द्विदलीय और बहुदलीय व्यवस्था</h2>
+            
+            <p class="easy-narration">बच्चों, दुनिया के अलग-अलग देशों में परिस्थितियों के अनुसार अलग-अलग दलीय व्यवस्थाएं विकसित हुई हैं। आइए इसे इस साफ़-सुथरे डिजिटल स्केल ग्रिड में समझते हैं ताकि कोई उलझन न रहे बेटा:</p>
+
+            <div class="visual-canvas-container">
+                <span class="canvas-label">✏️ रेखा चित्र 4.2: दुनिया की तीन मुख्य दलीय प्रणालियां</span>
+                <div class="system-scale-grid">
+                    <div class="scale-box-card" style="border-top: 5px solid #ef4444;">
+                        <span class="scale-badge-title" style="background:#ef4444;">1. एकदलीय (One-Party)</span>
+                        <p style="font-size:11.5px; font-weight:600; color:#475569;">जहाँ सिर्फ एक ही दल को सरकार बनाने की अनुमति हो। जैसे **चीन में कम्युनिस्ट पार्टी**। यह लोकतांत्रिक विकल्प नहीं है।</p>
+                    </div>
+                    <div class="scale-box-card" style="border-top: 5px solid #3b82f6;">
+                        <span class="scale-badge-title" style="background:#3b82f6;">2. द्विदलीय (Two-Party)</span>
+                        <p style="font-size:11.5px; font-weight:600; color:#475569;">जहाँ सत्ता मुख्य रूप से दो बड़े दलों के बीच ही बदलती रहती है। जैसे **अमेरिका और ब्रिटेन** की व्यवस्था।</p>
+                    </div>
+                    <div class="scale-box-card" style="border-top: 5px solid #22c55e;">
+                        <span class="scale-badge-title" style="background:#22c55e;">3. बहुदलीय (Multi-Party)</span>
+                        <p style="font-size:11.5px; font-weight:600; color:#475569;">जहाँ अनेक दल सत्ता की होड़ में हों और मिलकर सरकार बना सकें। जैसे हमारा प्यारा **भारत देश**।</p>
+                    </div>
+                </div>
+            </div>
+
+            <p class="easy-narration"><b>🤝 गठबंधन या मोर्चा (Coalition / Front) क्या है?</b> जब बहुदलीय व्यवस्था में कई पार्टियां चुनाव लड़ने और सत्ता में आने के लिए आपस में हाथ मिला लेती हैं, तो उसे गठबंधन कहते हैं। जैसे 2004 के चुनाव में भारत में तीन बड़े गठबंधन थे—राष्ट्रीय जनतांत्रिक गठबंधन (NDA), संयुक्त प्रगतिशील गठबंधन (UPA) और वाम मोर्चा।</p>
+
+            <div class="guruji-spotlight" style="border-color: #166534; background: #f0fdf4;">
+                <b>💡 भारत में बहुदलीय व्यवस्था क्यों है? (भौगोलिक कारण):</b><br>
+                बच्चों, दलीय व्यवस्था को बहुत जल्दी बदला नहीं जा सकता। हमारे भारत में बहुदलीय व्यवस्था इसलिए है क्योंकि दो-three पार्टियां मिलकर इतने बड़े मुल्क की सारी **सामाजिक और भौगोलिक विविधताओं** को अकेले अपने दम पर नहीं समेट सकतीं!
+            </div>
+
+            <div class="game-panel" style="border-color:#166534; background:#f0fdf4;">
+                <div class="game-title" style="color:#166534;">🎮 गेम 2: चीन का चक्रव्यूह (जल्दी बताओ!)</div>
+                <p style="font-size:13.5px; font-weight:600; color:#1e293b;">बेटा, चीन में केवल एक ही पार्टी को शासन करने की अनुमति प्राप्त है। इस व्यवस्था को हम लोकतंत्र के लिए अच्छा विकल्प क्यों नहीं मान सकते?</p>
+                <div class="game-options">
+                    <button class="game-btn" onclick="showFeedback('g2-wrong')">A) क्योंकि वहाँ बहुत ज़्यादा पार्टियां आपस में रोज़ लड़ती हैं।</button>
+                    <button class="game-btn" onclick="showFeedback('g2-right')">B) क्योंकि यह स्वतंत्र राजनीतिक प्रतिद्वंद्विता और लोकतांत्रिक विकल्प की अनुमति नहीं देता।</button>
+                </div>
+                <div id="g2-feedback" class="game-feedback"></div>
+            </div>
+        </div>
+
+        <div class="section-master-card" style="border-color: #6b21a8;">
+            <div class="section-badge" style="background: #6b21a8;">भाग 4: दलों की मान्यता</div>
+            <h2 class="section-title" style="color: #6b21a8;">4. राष्ट्रीय और क्षेत्रीय दलों की मान्यता के कड़े नियम</h2>
+            
+            <p class="easy-narration">बच्चों, भारत निर्वाचन आयोग (Election Commission) देश के सभी दलों को पंजीकृत करता है और बड़े व स्थापित दलों को विशेष चुनाव चिह्न देकर 'मान्यता प्राप्त' दल का दर्जा देता है। इसके कड़े नियम परीक्षा में सीधे पूछे जाते हैं बेटा:</p>
+            
+            <table class="master-table">
+                <thead>
+                    <tr>
+                        <th style="background:#f3e8ff; color:#6b21a8; width: 35%;">दल का स्तर</th>
+                        <th style="background:#f3e8ff; color:#6b21a8;">चुनाव आयोग के अनुसार मान्यता पाने की शर्त</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>📍 राज्य का दल <br>(क्षेत्रीय दल)</b></td>
+                        <td>जब कोई पार्टी राज्य विधानसभा के चुनाव में पड़े कुल वोटों का **6 फ़ीसदी या उससे अधिक** हासिल करे और कम से कम **2 सीटों** पर जीत दर्ज करे।</td>
+                    </tr>
+                    <tr>
+                        <td><b>👑 राष्ट्रीय दल <br>(National Party)</b></td>
+                        <td>जब कोई दल लोकसभा चुनाव में या चार राज्यों के विधानसभा चुनाव में पड़े कुल वोटों का **6 प्रतिशत** हासिल करे और लोकसभा में कम से कम **4 सीटें** जीते।</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p class="easy-narration"><b>🔥 देश के प्रमुख राष्ट्रीय दल (2023 की स्थिति के अनुसार देश में 6 राष्ट्रीय दल हैं):</b></p>
+            <ul class="bullet-list" style="padding-left:0;">
+                <li><b>भारतीय जनता BJP:</b> श्यामा प्रसाद मुखर्जी द्वारा 1951 में बने जनसंघ को पुनर्जीवित करके 1980 में बनी। यह भारत की प्राचीन संस्कृति, समग्र मानवतावाद और <span class="highlight-core">सांस्कृतिक राष्ट्रवाद (हिंदुत्व)</span> से प्रेरणा लेती है। समान नागरिक संहिता बनाने के पक्ष में है।</li>
+                <li><b>इंडियन नेशनल कांग्रेस:</b> 1885 में गठित दुनिया के सबसे पुराने दलों में से एक। जवाहरलाल नेहरू की अगुवाई में आधुनिक धर्मनिरपेक्ष लोकतांत्रिक गणराज्य बनाने पर ज़ोर दिया। मध्यमार्गी रुझान के साथ कमजोर वर्गों और अल्पसंख्यकों का संरक्षण इसका मुख्य एजेंडा है।</li>
+                <li><b>आम आदमी पार्टी (AAP):</b> वर्ष 2011 के भ्रष्टाचार विरोधी आंदोलन के बाद 26 नवंबर 2012 को गठन। पारदर्शिता, जवाबदेही और सुशासन इसका मूल आधार है। वर्तमान में दिल्ली और पंजाब में इसकी सरकार है।</li>
+                <li><b>बहुजन समाज पार्टी (BSP):</b> स्व. कांशीराम के नेतृत्व में 1984 में गठन। दलित, आदिवासी और पिछड़ी जातियों (बहुजन समाज) के कल्याण और राजनीतिक सत्ता के लिए सक्रिय।</li>
+                <li><b>सीपीआई-एम (CPI-M):</b> 1964 में स्थापित; मार्क्सवाद-लेनिनवाद, समाजवाद और धर्मनिरपेक्षता की समर्थक। पश्चिम बंगाल, केरल और त्रिपुरा में मजबूत पकड़।</li>
+                <li><b>नेशनल पीपुल्स पार्टी (NPP):</b> पी.ए. संगमा के नेतृत्व में 2013 में गठित। पूर्वोत्तर भारत की पहली राजनीतिक पार्टी जिसे राष्ट्रीय पार्टी का दर्जा मिला।</li>
+            </ul>
+        </div>
+
+        <div class="section-master-card" style="border-color: #b91c1c;">
+            <div class="section-badge" style="background: #b91c1c;">भाग 5: चुनौतियाँ एवं सुधार</div>
+            <h2 class="section-title" style="color: #b91c1c;">5. राजनीतिक दलों की 4 बड़ी चुनौतियाँ और कानूनी सुधार</h2>
+            
+            <p class="easy-narration">बच्चों, चूँकि दल ही लोकतंत्र का सबसे प्रकट रूप हैं, इसलिए जनता अपनी हर राजनीतिक बुराई के लिए दलों को ही दोषी मानती है। मुख्य रूप से दलों को **4 बड़ी चुनौतियों** का सामना करना पड़ता है:</p>
+            
+            <ol style="font-size:14.5px; font-weight:600; color:#334155; padding-left:15px; line-height:1.8;">
+                <li style="margin-bottom:10px;"><b>आन्तरिक लोकतंत्र की कमी:</b> सारी ताकत सिर्फ कुछेक बड़े नेताओं के हाथ में सिमट जाती है। पार्टियों के पास न सदस्यों की खुली सूची होती है, न नियमित बैठकें और न ही आंतरिक चुनाव होते हैं।</li>
+                <li style="margin-bottom:10px;"><b>वंशवाद (Dynastism):</b> दल पारदर्शी तरीके से काम नहीं करते, इसलिए शीर्ष पदों पर हमेशा एक ही परिवार के लोग कब्ज़ा कर लेते हैं, जिससे अनुभवहीन लोग आगे आ जाते हैं।</li>
+                <li style="margin-bottom:10px;"><b>पैसा और अपराधी तत्वों की घुसपैठ:</b> चुनाव जीतने के लिए पार्टियां अमीर उम्मीदवारों को टिकट देती हैं या धनकुबेर कंपनियों के प्रभाव में आ जाती हैं। कई बार अपराधी तत्वों की मदद भी ली जाती है।</li>
+                <li style="margin-bottom:10px;"><b>विकल्पहीनता:</b> हाल के वर्षों में सभी बड़ी पार्टियों के बीच बुनियादी आर्थिक मसलों पर वैचारिक अंतर बहुत कम रह गया है, जिससे जनता के पास कोई सार्थक विकल्प नहीं बचता।</li>
+            </ol>
+
+            <span class="book-sub-heading" style="background:#fef2f2; border-color:#ef4444; color:#b91c1c;">🛠️ सुधरने के लिए उठाए गए 3 कड़े कानूनी कदम (संविधान के नियम):</span>
+            <ul class="bullet-list">
+                <li><b>दल-बदल विरोधी कानून:</b> निर्वाचित सांसदों और विधायकों को पैसे या मंत्री पद के लालच में पार्टी बदलने से रोकने के लिए संविधान में संशोधन किया गया। अब यदि कोई सांसद या विधायक <span class="highlight-core">दल-बदल (Defection)</span> करता है, तो उसे अपनी सीट गँवानी होगी।</li>
+                <li><b>सुप्रीम कोर्ट का आदेश (शपथपत्र):</b> अदालत ने अपराधियों और पैसे का प्रभाव कम करने के लिए हर उम्मीदवार के लिए अपनी संपत्ति और आपराधिक मामलों का ब्यौरा एक **शपथपत्र (Affidavit)** के माध्यम से देना अनिवार्य कर दिया है।</li>
+                <li><b>सांगठनिक चुनाव और आयकर रिटर्न:</b> चुनाव आयोग ने आदेश जारी करके सभी दलों के लिए नियमित सांगठनिक चुनाव कराना और **इनकम टैक्स का रिटर्न** भरना अनिवार्य कर दिया है।</li>
+            </ul>
+        </div>
+
+        <div class="kahani-box">
+            <div class="kahani-title">📖 गुरुजी की मजेदार कहानी: संजू सर की चुनावी रैली</div>
+            <p style="font-size:14px; font-weight:600; color:#9a3412; text-align:justify; line-height:1.7;">
+                बच्चो, इसे एक व्यावहारिक बात से समझो! मान लो हमारे संजू सर निर्दलीय (बिना किसी पार्टी के) चुनाव में खड़े हो गए। संजू सर ने अपने क्षेत्र के लोगों से वादा किया—"मैं तुम्हारे गाँव की सड़क पक्की करवा दूँगा!" लोगों ने संजू सर को भारी मतों से जीता दिया। <br><br>
+                जीतने के बाद संजू सर विधानसभा पहुँचे, पर वहाँ तो 200 विधायक थे और सभी अलग-अलग वायदे करके आए थे। जब पूरे देश के लिए नया कानून बनाने या बजट पास करने की बात आई, तो संजू सर अकेले कुछ नहीं कर पाए क्योंकि उनके पास कोई संगठित समूह या पार्टी नहीं थी। सरकार तो बन गई पर वह कब गिर जाए, कोई नहीं जानता था। <br><br>
+                इसीलिए बेटा, बड़े समाजों में अपनी बात को सरकार की नज़र में लाने और एक ज़िम्मेदार सरकार का गठन करने के लिए **प्रतिनिधित्व पर आधारित लोकतांत्रिक व्यवस्था में राजनीतिक दलों का होना एक अनिवार्य शर्त है**! कहानी समझ में आई ना बेटा!
+            </p>
+        </div>
+
+        <div class="fact-capsule-section">
+            <div class="capsule-title">📊 त्वरित रिवीज़न कैप्सूल: पूरे पाठ का महा-निचोड़</div>
+            <table class="master-table" style="margin: 0;">
+                <thead>
+                    <tr>
+                        <th style="background:#1e3a8a; color:white;">महत्वपूर्ण विषय</th>
+                        <th style="background:#1e3a8a; color:white;">मुख्य डेटा / नियम</th>
+                        <th style="background:#1e3a8a; color:white;">लोकतांत्रिक व्यवस्था में प्रभाव</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>राजनीतिक दल</b></td>
+                        <td>3 हिस्से: नेता, सक्रिय सदस्य, समर्थक</td>
+                        <td>चुनाव लड़ना, सरकार बनाना, जनमत निर्माण करना और कानून पास कराना।</td>
+                    </tr>
+                    <tr>
+                        <td><b>दलीय प्रणालियां</b></td>
+                        <td>एकदलीय (चीन)<br>द्विदलीय (अमेरिका/ब्रिटेन)<br>बहुदलीय (भारत)</td>
+                        <td>भारत की विशाल सामाजिक और भौगोलिक विविधताओं के कारण यहाँ बहुदलीय प्रणाली अनिवार्य है।</td>
+                    </tr>
+                    <tr>
+                        <td><b>राष्ट्रीय दल का नियम</b></td>
+                        <td>लोकसभा चुनाव में न्यूनतम **6% वोट** और **4 सीटें** जीतना अनिवार्य।</td>
+                        <td>वर्ष 2023 की अधिसूचना के अनुसार देश में कुल **6 मान्यता प्राप्त राष्ट्रीय दल** हैं।</td>
+                    </tr>
+                    <tr>
+                        <td><b>राजनीतिक सुधार</b></td>
+                        <td>दल-बदल विरोधी कानून, अनिवार्य शपथपत्र, सांगठनिक चुनाव</td>
+                        <td>खराब राजनीति का एकमात्र समाधान है—ज़्यादा से ज़्यादा और बेहतर जन-भागीदारी।</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="guruji-welcome" style="margin-top:20px; background:#f0fdf4; border-color:#22c55e; color:#166534;">
+                🎓 <b>गुरुजी का अंतिम संदेश:</b> तो बच्चो, कानून बना देने मात्र से राजनीति नहीं सुधरती। अगर आम नागरिक खुद राजनीति से दूर भागेंगे और बाहर बैठकर सिर्फ आलोचना करेंगे, तो सुधार नामुमकिन है। लोकतंत्र की गुणवत्ता नागरिकों की सक्रिय भागीदारी से ही तय होती है बेटा! इसे अच्छे से याद कर लेना!
+            </div>
+        </div>
+
+        <a href="sst-civics.html" class="action-footer-btn">🔙 मुख्य अध्याय लिस्ट पर वापस जाएं</a>
+    </div>
+</div>
+
+<script>
+    // Pure dynamic game logic without touching textbook text content
+    function showFeedback(type) {
+        var g1Fb = document.getElementById('g1-feedback');
+        var g2Fb = document.getElementById('g2-feedback');
+        
+        if(type === 'g1-wrong') {
+            g1Fb.style.display = 'block';
+            g1Fb.style.background = '#fef2f2';
+            g1Fb.style.color = '#991b1b';
+            g1Fb.innerHTML = '❌ गलत प्रयास बेटा! सक्रिय सदस्य तो पार्टी के सांगठनिक पदों पर बैठकर काम करते हैं। फिर से सोचो!';
+        } else if(type === 'g1-right') {
+            g1Fb.style.display = 'block';
+            g1Fb.style.background = '#dcfce7';
+            g1Fb.style.color = '#15803d';
+            g1Fb.innerHTML = '🎉 शाबाश बेटा! एकदम सही पहचाना। जो लोग केवल विचारधारा का समर्थन करते हैं और वोट देते हैं, वे अनुयायी या समर्थक कहलाते हैं। 1 नंबर पक्का!';
+        } else if(type === 'g2-wrong') {
+            g2Fb.style.display = 'block';
+            g2Fb.style.background = '#fef2f2';
+            g2Fb.style.color = '#991b1b';
+            g2Fb.innerHTML = '❌ गलत उत्तर बेटा! चीन में बहुत सारी पार्टियां नहीं हैं, वहाँ प्रतियोगिता की अनुमति ही नहीं है। दोबारा कोशिश करो।';
+        } else if(type === 'g2-right') {
+            g2Fb.style.display = 'block';
+            g2Fb.style.background = '#dcfce7';
+            g2Fb.style.color = '#15803d';
+            g2Fb.innerHTML = '🎉 शानदार मेरे शेर! बिल्कुल सही उत्तर। लोकतांत्रिक व्यवस्था में कम से कम दो दलों को राजनीतिक सत्ता के लिए स्वतंत्र प्रतिद्वंद्विता करने का अवसर मिलना ही चाहिए। आपकी तैयारी बहुत बेहतरीन है बेटा!';
+        }
+    }
+
+    // Protection layout guard
+    document.addEventListener('contextmenu', event => event.preventDefault());
+</script>
+
+</body>
+</html>
