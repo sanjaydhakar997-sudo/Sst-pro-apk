@@ -3,27 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>अध्याय 1: सत्ता की साझेदारी - सोशल अध्ययन पाठशाला</title>
+    <title>अध्याय 1: सत्ता की साझेदारी - डिजिटल पाठशाला</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         body { font-family: 'Poppins', 'Segoe UI', sans-serif; background-color: #f8fafc; margin: 0; padding: 0; padding-bottom: 50px; color: #1e293b; }
         .container { max-width: 650px; margin: 0 auto; background: #ffffff; min-height: 100vh; box-shadow: 0 0 25px rgba(0,0,0,0.06); border: 2px solid #cbd5e1; }
         
-        /* Premium Pathshala Textbook Header */
+        /* Premium Pathshala Brand Header */
         .book-header { background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 100%); color: white; padding: 50px 25px 60px 25px; text-align: center; border-bottom: 5px solid #1e293b; }
         .book-header h1 { font-size: 26px; margin: 0; font-weight: 900; letter-spacing: 0.5px; }
         .book-header p { font-size: 13.5px; margin: 12px 0 0 0; font-weight: 700; background: #facc15; color: #1e3a8a; display: inline-block; padding: 5px 20px; border: 2px solid #1e293b; font-weight: 800; }
         
         .content-area { padding: 0 24px; margin-top: -25px; }
         
-        /* Introduction Welcome Board */
+        /* Welcoming Box */
         .pathshala-card { background: #fffdf5; padding: 22px; border: 2px solid #1e293b; border-left: 8px solid #facc15; margin-bottom: 30px; }
         .pathshala-card p { font-size: 15px; line-height: 1.8; margin: 0; font-weight: 600; color: #334155; }
         
         .chapter-label { font-size: 14px; color: #64748b; font-weight: 800; margin: 35px 0 15px 5px; text-transform: uppercase; letter-spacing: 1px; }
         
-        /* Master Book Layout Boxes */
+        /* Master Book Container Styling */
         .book-notes-box { background: #ffffff; padding: 25px; border: 2px solid #1e293b; margin-bottom: 35px; position: relative; }
         .part-badge { background: #ef4444; color: white; font-size: 12px; padding: 5px 15px; display: inline-block; margin-bottom: 20px; border: 2px solid #1e293b; font-weight: 800; }
         .main-book-title { font-size: 22px; color: #1e3a8a; margin: 0 0 22px 0; font-weight: 900; line-height: 1.4; border-bottom: 2px solid #cbd5e1; padding-bottom: 12px; }
@@ -31,7 +31,7 @@
         .book-sub-heading { font-size: 15.5px; color: #1e293b; font-weight: 800; margin: 28px 0 15px 0; background: #f1f5f9; padding: 10px 16px; border: 2px solid #475569; display: inline-block; }
         .easy-text { font-size: 15px; color: #334155; line-height: 1.85; font-weight: 600; text-align: justify; margin-bottom: 18px; }
         
-        /* 🖼️ HIGH-GRADE ADVANCED GEOMETRIC CSS VISUAL MAPS & DIAGRAMS */
+        /* 🖼️ HIGH-GRADE GEOMETRIC CSS MAPS & DIAGRAMS */
         .visual-art-container { background: #f8fafc; border: 2px solid #1e293b; padding: 22px; margin: 30px 0; text-align: center; }
         .diagram-badge { font-size: 12px; font-weight: 800; color: #1e293b; background: #e2e8f0; padding: 4px 14px; display: inline-block; margin-bottom: 20px; border: 1px solid #1e293b; text-transform: uppercase; }
         
@@ -47,11 +47,15 @@
         .sri-tamil-zone-north { position: absolute; top: 0; left: 15%; width: 70%; height: 50px; background: #fee2e2; border: 2px solid #1e293b; border-top: none; border-radius: 0 0 20px 20px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 11px; color: #991b1b; }
         .sri-tamil-zone-east { position: absolute; top: 70px; right: 0; width: 45px; height: 110px; background: #fee2e2; border-left: 2px dashed #1e293b; border-bottom: 2px dashed #1e293b; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 11px; color: #991b1b; writing-mode: vertical-rl; text-orientation: mixed; }
 
-        /* Classroom Guruji Discussion Module */
+        /* 3. 3D Rules Layout Boxes */
+        .rules-layout-box { display: grid; grid-template-columns: 1fr; gap: 14px; text-align: left; margin-top: 15px; }
+        .rule-item-card { background: white; border: 2px solid #1e293b; padding: 14px; box-shadow: 4px 4px 0px #1e293b; border-radius: 8px; }
+
+        /* Classroom Discussion Box */
         .guruji-box { background: #fffbeb; border: 2px solid #d97706; padding: 20px; margin: 25px 0; position: relative; }
         .guruji-title { font-size: 14.5px; color: #b45309; font-weight: 900; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
 
-        /* Statistics Notebook Grid */
+        /* Statistics Grid */
         .data-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 25px 0; }
         .data-card { background: #ffffff; border: 2px solid #1e293b; padding: 16px; text-align: center; }
         .data-num { font-size: 30px; font-weight: 900; margin: 5px 0; color: #1e3a8a; }
@@ -69,20 +73,18 @@
         .visual-list li { position: relative; padding-left: 22px; margin-bottom: 12px; font-size: 14.5px; color: #334155; font-weight: 600; line-height: 1.7; }
         .visual-list li::before { content: "•"; position: absolute; left: 0; color: #ef4444; font-size: 20px; top: -2px; }
 
-        .book-tip { background: #fff5f5; border: 2px solid #ef4444; padding: 16px; font-size: 14px; margin-top: 25px; color: #991b1b; font-weight: 700; }
+        .book-tip { background: #fff5f5; border: 2px solid #ef4444; padding: 16px; font-size: 14px; margin-top: 25px; color: #991b1b; font-weight: 700; box-shadow: 4px 4px 0px #ef4444; }
         .back-menu-btn { display: block; text-align: center; text-decoration: none; background: #ffffff; color: #1e3a8a; padding: 15px; font-weight: 800; margin-top: 30px; border: 2px solid #1e3a8a; box-shadow: 4px 4px 0px #1e3a8a; }
     </style>
 </head>
 <body>
 <div class="container">
-    <!-- Header Area -->
     <div class="book-header">
         <h1>SOCIAL STUDIES CLASSES</h1>
         <p>📖 कक्षा 10 नागरिक शास्त्र • अध्याय 1 (कम्पलीट नोट्स)</p>
     </div>
     
     <div class="content-area">
-        <!-- Welcoming Introduction -->
         <div class="pathshala-card" style="margin-top: 25px;">
             <p>👋 <b>नमस्ते प्यारे बच्चो!</b> हमारी सोशल Studies की ऑनलाइन कक्षा में आप सभी का स्वागत है। इस पूरे अध्याय को हम किसी भारी-भरकम गाइड की तरह नहीं, बल्कि अपनी स्कूल की मूल किताब की तरह सरल कहानियों, वास्तविक रेखाचित्रों और घर-परिवार के उदाहरणों से एक ही बार में पूरा समझेंगे ताकि आपको कोई भी चीज़ रटनी न पड़े। मन लगाकर समझना बेटा!</p>
         </div>
@@ -113,12 +115,12 @@
                 <div class="data-card" style="border-color: #ef4444;">
                     <h4 style="margin:0; font-size:14px; color:#1e293b; font-weight:800;">डच बोलने वाले लोग</h4>
                     <p class="data-num" style="color:#ef4444;">59%</p>
-                    <p style="margin:0; font-size:12px; font-weight:700; color:#64748b;">ये लोग उत्तरी हिस्से (फ्लेमिश) में रहते थे और पूरे देश में बहुसंख्यक (गिनती में सबसे ज़्यादा) थें।</p>
+                    <p style="margin:0; font-size:12px; font-weight:700; color:#64748b;">ये लोग उत्तरी हिस्से (फ्लेमिश) in रहते थे और पूरे देश में बहुसंख्यक (गिनती में सबसे ज़्यादा) थे।</p>
                 </div>
                 <div class="data-card" style="border-color: #3b82f6;">
                     <h4 style="margin:0; font-size:14px; color:#1e293b; font-weight:800;">फ्रेंच बोलने वाले लोग</h4>
                     <p class="data-num" style="color:#3b82f6;">40%</p>
-                    <p style="margin:0; font-size:12px; font-weight:700; color:#64748b;">ये लोग दक्षिणी हिस्से (वेलोनिया) में रहते थे। ये संख्या में कम थे पर पैसे से बहुत अमीर थें।</p>
+                    <p style="margin:0; font-size:12px; font-weight:700; color:#64748b;">ये लोग दक्षिणी हिस्से (वेलोनिया) में रहते थे। ये संख्या में कम थे पर पैसे से बहुत अमीर थे।</p>
                 </div>
             </div>
 
@@ -146,7 +148,7 @@
 
             <div class="guruji-box">
                 <div class="guruji-title">👨‍🏫 गुरुजी की सरल बात:</div>
-                <p class="easy-text" style="margin: 0; font-size: 14px; color: #7c2d12;">देखो बेटा, असली टकराव का कारण यह था कि फ्रेंच बोलने वाले लोग संख्या में कम होने के बाद भी बहुत अमीर, ताकतवर और पढ़े-लिखे थे। दूसरी तरफ, बहुसंख्यक डच बोलने वाले लोगों को आर्थिक विकास और शिक्षा का मौका बहुत बाद में मिला। इसी कारण 1950 और 1960 के आस-पास दोनों समूहों के बीच तनाव और खटास बढ़ने लगी।</p>
+                <p class="easy-text" style="margin: 0; font-size: 14px; color: #7c2d12;">देखो बेटा, असली टकराव का कारण यह था कि फ्रेंच बोलने वाले लोग संख्या में कम होने के बाद भी बहुत अमीर, ताकतवर or पढ़े-लिखे थे। दूसरी तरफ, बहुसंख्यक डच बोलने वाले लोगों को आर्थिक विकास और शिक्षा का मौका बहुत बाद में मिला। इसी कारण 1950 और 1960 के आस-पास दोनों समूहों के बीच तनाव और खटास बढ़ने लगी।</p>
             </div>
 
             <div class="book-tip">
@@ -162,9 +164,9 @@
             <p class="easy-text">बच्चो, बेल्जियम की उलझन को समझने के बाद अब हमारी सामाजिक विज्ञान की <b>पढ़ाई वाली रेलगाड़ी</b> आगे बढ़ती है और पहुँचती है हमारे पड़ोसी देश <b>श्रीलंका</b> की सैर पर। श्रीलंका हमारे भारत देश के तमिलनाडु राज्य के दक्षिणी तट से केवल कुछ किलोमीटर की दूरी पर स्थित एक छोटा सा सुंदर द्वीपीय देश है। इसकी आबादी करीब दो करोड़ है, यानी हमारे हरियाणा राज्य के लगभग बराबर ही है!</p>
 
             <!-- 🖼️ ADVANCED CSS SHAPE MAP: SRI LANKA TEARDROP OUTLINE -->
-            <div class="visual-art-container">
-                <span class="diagram-badge">✏️ रेखा चित्र 1.3: श्रीलंका का आंतरिक जातीय क्षेत्र</span>
-                <div class="srilanka-geo-map">
+            <div class="visual-art-container" style="border-color: #ea580c;">
+                <span class="diagram-badge" style="border-color: #ea580c; color: #ea580c;">✏️ रेखा चित्र 1.3: श्रीलंका का आंतरिक जातीय क्षेत्र</span>
+                <div class="srilanka-geo-map" style="border-color: #ea580c;">
                     <div class="sri-sinhala-zone">🦁 सिंहली इलाका (74%)</div>
                     <div class="sri-tamil-zone-north">🎯 तमिल (उत्तर)</div>
                     <div class="sri-tamil-zone-east">🎯 तमिल (पूर्व)</div>
@@ -185,7 +187,7 @@
             <span class="book-sub-heading" style="border-color: #ea580c;">📜 1956 का कानून (सिंहली सरकार की मनमानी)</span>
             <p class="easy-text">श्रीलंका को सन् 1948 में आजादी मिली। आज़ादी मिलते ही सिंहली समुदाय के नेताओं ने सोचा कि हम तो गिनती में 74% हैं, तो सरकार पर सिर्फ हमारा ही कब्ज़ा होना चाहिए। उन्होंने तमिलों को दबाने के लिए <b>1956 में एक कानून</b> पास किया, जिसके तहत 3 बड़े पक्षपात किए गए:</p>
             
-            <div style="border: 2px solid #ef4444; padding: 18px; margin: 20px 0; background: #fff5f5;">
+            <div style="border: 2px solid #ef4444; padding: 18px; margin: 20px 0; background: #fff5f5; box-shadow: 4px 4px 0px #ef4444;">
                 <b style="color: #b91c1c; display: block; margin-bottom: 10px; font-size: 14px;">⚠️ कानून द्वारा किए गए 3 बड़े भेदभाव:</b>
                 <ul class="visual-list" style="margin: 0; padding-left: 0;">
                     <li><b>तमिल भाषा की बेइज्जती:</b> तमिल भाषा को पूरी तरह अनदेखा करके <b>सिंहली को देश की एकमात्र राजभाषा</b> घोषित कर दिया गया।</li>
@@ -194,7 +196,7 @@
                 </ul>
             </div>
 
-            <p class="easy-text"><b>भयंकर नतीजा (देश में गृहयुद्ध):</b> इन भेदभाव वाले नियमों के कारण श्रीलंकाई तमिलों का दिल टूट गया। उन्हें लगा कि यह सरकार हमारे साथ परायों जैसा बर्ताव कर रही है। इसके बाद तमिलों ने भी आंदोलन शुरू किया और एक अलग देश <b>'तमिल इलम'</b> बनाने की जिद पकड़ लीं। इसके चलते देश में <b>गृहयुद्ध (Civil War)</b> छिड़ गया। गृहयुद्ध का मतलब होता है बेटा, जब एक ही देश के लोग आपस में सेना की तरह लड़ने लगें। इस लड़ाई में दोनों तरफ के हजारों लोग मारे गए और पूरा देश बर्बाद हो गया।</p>
+            <p class="easy-text"><b>भयंकर नतीजा (देश में गृहयुद्ध):</b> इन भेदभाव वाले नियमों के कारण श्रीलंकाई तमिलों का दिल टूट गया। उन्हें लगा कि यह सरकार हमारे साथ परायों जैसा बर्ताव कर रही है। इसके बाद तमिलों ने भी आंदोलन शुरू किया और एक अलग देश <b>'तमिल इलम'</b> बनाने की जिद पकड़ लीं। इसके चलते देश में <b>गृहयुद्ध (Civil War)</b> छिड़ गया। गृहयुद्ध का मतलब होता है बेटा, जब एक ही देश के लोग आपस में सेना की तरह लड़ने लगें। इस लड़ाई में दोनों तरफ के हजारों लोग मारे गए और पूरा देश बर्बाद हो गयां।</p>
         </div>
 
         <!-- ==================== PART 3: SAMJHADARI & FORMS ==================== -->
@@ -202,21 +204,20 @@
             <div class="part-badge" style="background: #22c55e;">भाग 3: बेल्जियम का मॉडल और साझेदारी के रूप</div>
             <h2 class="main-book-title" style="color: #15803d; border-bottom-color: #bbf7d0;">3. बेल्जियम की समझदारी और सत्ता की साझेदारी के रूप</h2>
             
-            <p class="easy-text">बच्चो, जहाँ श्रीलंका ने अपने घमंड में पूरे देश को गृहयुद्ध की आग में झोंक दिया, वहीं बेल्जियम के नेताओं ने बिल्कुल इसके उलट रास्ता चुना। उन्होंने बहुत बड़ी समझदारी दिखाई बेटा! उन्होंने अपने संविधान में <b>4 बार बदलाव</b> किए ताकि कोई भी नागरिक अपने ही देश में पराया महसूस न करे। इन संशोधनों से जो ढांचा तैयार हुआ, उसे हम <b>'बेल्जियम मॉडल'</b> कहते हैं। इसके मुख्य बिंदु नीचे दिए गए हैं:</p>
+            <p class="easy-text">बैठो बच्चो, जहाँ श्रीलंका ने अपने घमंड में पूरे देश को गृहयुद्ध की आग में झोंक दिया, वहीं बेल्जियम के नेताओं ने बिल्कुल इसके उलट रास्ता चुना। उन्होंने बहुत बड़ी समझदारी दिखाई बेटा! उन्होंने अपने संविधान में <b>4 बार बदलाव</b> किए ताकि कोई भी नागरिक अपने ही देश में पराया महसूस न करे। इन संशोधनों से जो ढांचा तैयार हुआ, उसे हम <b>'बेल्जियम मॉडल'</b> कहते हैं। इसके मुख्य बिंदु नीचे दिए गए हैं:</p>
 
-            <table class="notes-table">
-                <thead>
-                    <tr><th>बेल्जियम मॉडल के मुख्य जादुई नियम (5 अंक स्पेशल)</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td><b>1. 50-50 का नियम:</b> केंद्र सरकार में डच और फ्रेंच मंत्रियों की संख्या बिल्कुल बराबर होगी।</td></tr>
-                    <tr><td><b>2. राज्य सरकारें स्वतंत्र:</b> क्षेत्रीय सरकारों को अपनी शक्तियाँ मिलीं, वे केंद्र की गुलाम नहीं रहीं।</td></tr>
-                    <tr><td><b>3. राजधानी में विशेष सरकार:</b> ब्रुसेल्स में दोनों समुदायों को बराबर का प्रतिनिधित्व मिला।</td></tr>
-                    <tr><td><b>4. सामुदायिक सरकार:</b> संस्कृति, शिक्षा और भाषा के मामलों के लिए एक अलग सरकार बनी।</td></tr>
-                </tbody>
-            </table>
+            <!-- 🖼️ PREMIUM 3D CARD BOXES FOR BELGIUM RULES -->
+            <div class="visual-art-container" style="border-color: #22c55e; background: #f0fdf4;">
+                <span class="diagram-badge" style="border-color: #22c55e; color: #15803d;">✏️ रेखा चित्र 1.4: बेल्जियम मॉडल के 4 आधार स्तंभ</span>
+                <div class="rules-layout-box">
+                    <div class="rule-item-card"><b>1. 50-50 का नियम:</b> केंद्र सरकार में डच और फ्रेंच मंत्रियों की संख्या बिल्कुल बराबर होगी।</div>
+                    <div class="rule-item-card"><b>2. राज्य सरकारें स्वतंत्र:</b> क्षेत्रीय सरकारों को अपनी शक्तियाँ मिलीं, वे केंद्र की गुलाम नहीं रहीं।</div>
+                    <div class="rule-item-card"><b>3. राजधानी में विशेष व्यवस्था:</b> ब्रुसेल्स में दोनों समुदायों को बराबर का प्रतिनिधित्व मिला।</div>
+                    <div class="rule-item-card"><b>4. सामुदायिक सरकार:</b> संस्कृति, शिक्षा और भाषा के मामलों के लिए एक अलग सरकार बनी।</div>
+                </div>
+            </div>
 
-            <span class="book-sub-heading">🤝 सत्ता की साझेदारी क्यों आवश्यक है?</span>
+            <span class="book-sub-heading" style="border-color: #22c55e;">🤝 सत्ता की साझेदारी क्यों आवश्यक है?</span>
             <p class="easy-text">बोर्ड परीक्षा में सीधे प्रश्न आता है बेटा कि इसके पीछे के दो मुख्य कारणों को समझाइए:</p>
             
             <ol style="font-size:14.5px; font-weight:600; color:#334155; line-height:1.8;">
@@ -224,40 +225,47 @@
                 <li style="margin-bottom:10px;"><b>नैतिक तर्क (Moral Reason):</b> यह दिल की बात पर आधारित है। यह कहता है कि सत्ता की साझेदारी करना <b>लोकतंत्र की आत्मा (Spirit of Democracy) है</b>। लोकतंत्र का नियम ही यही है बेटा कि जिन लोगों पर शासन हो रहा है, उनकी राय ली जाए।</li>
             </ol>
 
-            <span class="book-sub-heading">🏢 आधुनिक लोकतंत्र में साझेदारी के 4 बड़े तरीके</span>
+            <span class="book-sub-heading" style="border-color: #22c55e;">🏢 आधुनिक लोकतंत्र में साझेदारी के 4 बड़े तरीके</span>
             <p class="easy-text">आज के समय में लोकतंत्र में सत्ता का बँटवारा मुख्य रूप से चार अलग-अलग रूपों में किया जाता है:</p>
 
-            <!-- ✏️ LINE ART DIAGRAM 4: HORIZONTAL SHAPE MATRIX -->
-            <div class="line-art-frame" style="border-color: #06b6d4;">
-                <span class="art-caption" style="background: #06b6d4; color: white;">✏️ रेखा चित्र 1.4: सत्ता का क्षैतिज वितरण (Horizontal Structure)</span>
+            <!-- 🖼️ HORIZONTAL DISTRIBUTION GRAPHIC SHAPE -->
+            <div class="visual-art-container" style="border-color: #06b6d4;">
+                <span class="diagram-badge" style="background: #06b6d4; color: white; border-color: #06b6d4;">✏️ रेखा चित्र 1.5: सत्ता का क्षैतिज वितरण (Horizontal Structure)</span>
                 <div style="display: flex; justify-content: space-around; align-items: center; position: relative; margin-top: 15px;">
-                    <div style="position: absolute; left: 10%; right: 10%; top: 50%; height: 2px; background: #1e293b; z-index: 1;"></div>
-                    <div style="background: white; border: 2px solid #1e293b; padding: 10px; font-size: 11.5px; font-weight: 800; z-index: 2;">🏛️ विधायिका<br><span style="font-size:8px;color:#64748b;">(कानून निर्माण)</span></div>
-                    <div style="background: white; border: 2px solid #1e293b; padding: 10px; font-size: 11.5px; font-weight: 800; z-index: 2;">🤝 कार्यपालिका<br><span style="font-size:8px;color:#64748b;">(कानून लागू करना)</span></div>
-                    <div style="background: white; border: 2px solid #1e293b; padding: 10px; font-size: 11.5px; font-weight: 800; z-index: 2;">⚖️ न्यायपालिका<br><span style="font-size:8px;color:#64748b;">(न्याय व्यवस्था)</span></div>
+                    <div style="position: absolute; left: 10%; right: 10%; top: 50%; height: 3px; background: #1e293b; z-index: 1;"></div>
+                    <div style="background: white; border: 2px solid #1e293b; padding: 12px; font-size: 12px; font-weight: 800; z-index: 2; box-shadow: 3px 3px 0px #1e293b;">🏛️ विधायिका<br><span style="font-size:8px;color:#64748b;">(कानून निर्माण)</span></div>
+                    <div style="background: white; border: 2px solid #1e293b; padding: 12px; font-size: 12px; font-weight: 800; z-index: 2; box-shadow: 3px 3px 0px #1e293b;">🤝 कार्यपालिका<br><span style="font-size:8px;color:#64748b;">(कानून लागू करना)</span></div>
+                    <div style="background: white; border: 2px solid #1e293b; padding: 12px; font-size: 12px; font-weight: 800; z-index: 2; box-shadow: 3px 3px 0px #1e293b;">⚖️ न्यायपालिका<br><span style="font-size:8px;color:#64748b;">(न्याय व्यवस्था)</span></div>
                 </div>
                 <p style="font-size:12px; font-weight:700; margin:15px 0 0 0; color:#475569;">[व्याख्या: इसे नियंत्रण और संतुलन की व्यवस्था भी कहते हैं क्योंकि तीनों समान स्तर पर हैं]</p>
             </div>
 
+            <!-- 🖼️ VERTICAL DISTRIBUTION GRAPHIC STACK -->
+            <div class="visual-art-container" style="border-color: #475569;">
+                <span class="diagram-badge" style="background: #1e293b; color: white; border-color: #1e293b;">✏️ रेखा चित्र 1.6: ऊर्ध्वाधर वितरण (Vertical Stack Layout)</span>
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 15px;">
+                    <div style="background: #ffffff; border: 2px solid #1e293b; padding: 10px; font-size: 13px; font-weight: 800; width: 80%; box-shadow: 3px 3px 0px #1e293b;">👑 केंद्र सरकार <span style="font-size:10px; color:#475569; display:block;">(पूरे देश के बड़े मुद्दों के लिए)</span></div>
+                    <div style="font-size: 14px; color: #1e293b; font-weight:900; line-height:1;">▼</div>
+                    <div style="background: #ffffff; border: 2px solid #1e293b; padding: 10px; font-size: 13px; font-weight: 800; width: 80%; box-shadow: 3px 3px 0px #1e293b;">📍 राज्य सरकार <span style="font-size:10px; color:#475569; display:block;">(अपने-अपने राज्य को संभालने के लिए)</span></div>
+                    <div style="font-size: 14px; color: #1e293b; font-weight:900; line-height:1;">▼</div>
+                    <div style="background: #ffffff; border: 2px solid #1e293b; padding: 10px; font-size: 13px; font-weight: 800; width: 80%; box-shadow: 3px 3px 0px #1e293b;">🏡 स्थानीय सरकार <span style="font-size:10px; color:#475569; display:block;">(गाँव की पंचायत / शहरों की नगरपालिका)</span></div>
+                </div>
+            </div>
+
             <ul class="visual-list" style="margin-top:20px;">
-                <li><b>2. सरकार के विभिन्न स्तरों के बीच (ऊर्ध्वाधर वितरण):</b> इसमें शक्तियों का बँटवारा ऊपर से नीचे की तरफ केंद्रीय सरकार, राज्य सरकार और स्थानीय पंचायत/नगरपालिका के बीच होता है। इसे संघीय विभाजन कहते हैं।</li>
                 <li><b>3. विभिन्न सामाजिक समूहों के बीच:</b> जैसे भाषाई या धार्मिक समूहों के बीच शक्ति बांटना (उदा. बेल्जियम की सामुदायिक सरकार या भारत में SC/ST के लिए आरक्षित चुनाव क्षेत्र)।</li>
-                <li><b>4. राजनीतिक दलों और दबाव समूहों के बीच:</b> जब कोई एक पार्टी बहुमत नहीं ला पाती बेटा, तो दो या दो से अधिक पार्टियां मिलकर <b>गठबंधन सरकार</b> बना लेती हैं। यह भी साझेदारी का ही रूप है।</li>
+                <li><b>4. राजनीतिक दलों और दबाव समूहों के बीच:</b> जब कोई एक पार्टी बहुमत नहीं ला पाती बेटा, तो दो या दो से अधिक पार्टियां मिलकर <b>गठबंधन सरकार</b> बना लेती हैं। यह भी साझेदारी का ही रूप हैं।</li>
             </ul>
 
-            <div class="guruji-box" style="border-color: #0ea5e9; background: #f0f9ff; margin-top: 25px;">
-                <div class="guruji-title" style="color: #0369a1;">🎓 पूरे पाठ का निचोड़:</div>
-                <p class="easy-text" style="margin: 0; font-size: 14px; color: #0c4a6e;">तो बच्चो, हमने इस पूरे पाठ में सीखा कि 'सत्ता की साझेदारी' का मतलब सिर्फ ताकत को बांटना नहीं है, बल्कि देश को सुरक्षित, सुखी और अखंड बनाए रखने का यह सबसे बेहतरीन लोकतांत्रिक रास्ता हैं। इसे अच्छे से याद कर लेना बेटा!</p>
+            <div class="book-tip">
+                🎓 <b>पूरे पाठ का निचोड़:</b> तो बच्चो, हमने इस पूरे पाठ में सीखा कि 'सत्ता की साझेदारी' का मतलब सिर्फ ताकत को बांटना नहीं है, बल्कि देश को सुरक्षित, सुखी और अखंड बनाए रखने का यह सबसे बेहतरीन लोकतांत्रिक रास्ता हैंं। इसे अच्छे से याद कर लेना बेटा!
             </div>
         </div>
 
-        <!-- Back Button Menu -->
         <a href="sst-civics.html" class="back-menu-btn">🔙 अध्याय लिस्ट पर वापस जाएं</a>
     </div>
 </div>
 
-<!-- Right Click Disable protection for App Notes -->
 <script>document.addEventListener('contextmenu', e => e.preventDefault());</script>
-
 </body>
 </html>
