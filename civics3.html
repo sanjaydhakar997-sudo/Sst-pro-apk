@@ -3,328 +3,312 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>अध्याय 3: जाति, धर्म और लैंगिक मसले - मास्टर प्रो एडिशन | SOCIAL STUDIES CLASSES</title>
+    <title>अध्याय 3: जाति, धर्म और लैंगिक मसले - डिजिटल पाठशाला</title>
     <style>
-        /* --- CORE BOOK ARCHITECTURE & ACCESSIBILITY GUARD --- */
+        /* --- CORE SYSTEM LAYOUT --- */
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #fcf6ff; color: #1e293b; padding-bottom: 60px; line-height: 1.6; }
-        .container { max-width: 680px; margin: 0 auto; background: #ffffff; min-height: 100vh; box-shadow: 0 0 30px rgba(107,33,168,0.1); border-left: 3px solid #6b21a8; border-right: 3px solid #6b21a8; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f3f4f6; color: #1e293b; padding-bottom: 60px; line-height: 1.6; }
+        .container { max-width: 650px; margin: 0 auto; background: #ffffff; min-height: 100vh; box-shadow: 0 0 25px rgba(0,0,0,0.05); border: 2px solid #e2e8f0; }
         
-        /* Premium Textbook Header Layout */
-        .premium-header { background: linear-gradient(135deg, #3b0764 0%, #6b21a8 100%); color: #ffffff; padding: 45px 25px; text-align: center; border-bottom: 6px solid #facc15; position: relative; }
-        .premium-header h1 { font-size: 26px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; color: #ffffff; }
-        .premium-header p { font-size: 13.5px; margin-top: 12px; font-weight: 700; background: #facc15; color: #3b0764; display: inline-block; padding: 6px 20px; border: 2px solid #3b0764; border-radius: 4px; }
+        /* Premium Textbook Header */
+        .book-header { background: linear-gradient(135deg, #4c1d95 0%, #6d28d9 100%); color: #ffffff; padding: 45px 22px; text-align: center; border-bottom: 5px solid #1e293b; }
+        .book-header h1 { font-size: 26px; font-weight: 900; letter-spacing: 0.5px; }
+        .book-header p { font-size: 13px; margin-top: 12px; font-weight: 800; background: #facc15; color: #4c1d95; display: inline-block; padding: 5px 18px; border: 2px solid #1e293b; }
         
-        .main-content { padding: 25px 20px; }
+        .content-area { padding: 0 22px; margin-top: -20px; }
         
-        /* Progress Train Tracker Layout */
-        .progress-tracker { display: flex; justify-content: space-between; background: #f8fafc; border: 2px solid #cbd5e1; padding: 10px; margin-bottom: 25px; border-radius: 6px; font-size: 11px; font-weight: 700; color: #64748b; }
-        .progress-step { display: flex; align-items: center; gap: 4px; }
-        .progress-step.active { color: #6b21a8; }
-
-        /* Pathshala Greeting Card */
-        .guruji-welcome { background: #fdf4ff; border: 2px solid #c084fc; border-left: 10px solid #a855f7; padding: 20px; margin-bottom: 35px; border-radius: 4px; }
-        .guruji-welcome p { font-size: 15px; font-weight: 600; color: #3b0764; text-align: justify; }
-
-        /* Master Section Box Formatting */
-        .section-master-card { background: #ffffff; border: 2px solid #3b0764; padding: 25px; margin-bottom: 40px; border-radius: 8px; box-shadow: 5px 5px 0px #3b0764; position: relative; }
-        .section-badge { position: absolute; top: -14px; left: 20px; background: #6b21a8; color: white; font-size: 11px; font-weight: 800; padding: 4px 14px; border: 2px solid #3b0764; border-radius: 4px; text-transform: uppercase; }
-        .section-title { font-size: 21px; color: #3b0764; font-weight: 800; margin: 10px 0 20px 0; border-bottom: 3px double #cbd5e1; padding-bottom: 10px; }
+        /* Guruji Welcome Card */
+        .welcome-card { background: #fffdf5; padding: 20px; border: 2px solid #1e293b; border-left: 8px solid #facc15; margin-bottom: 30px; box-shadow: 4px 4px 0px rgba(0,0,0,0.05); }
+        .welcome-card p { font-size: 15px; line-height: 1.8; font-weight: 600; color: #334155; }
         
-        /* Desi Concept Highlighter Tags */
-        .highlight-core { background: #fef08a; color: #0f172a; padding: 2px 6px; font-weight: 700; border-radius: 3px; border-bottom: 2px solid #ca8a04; }
-        .easy-narration { font-size: 15.5px; color: #334155; font-weight: 600; text-align: justify; margin-bottom: 20px; }
+        /* Master Section Box */
+        .notes-block-box { background: #ffffff; padding: 25px; border: 2px solid #1e293b; margin-bottom: 35px; border-radius: 4px; box-shadow: 5px 5px 0px #1e293b; position: relative; }
+        .block-badge { background: #6d28d9; color: white; font-size: 11px; font-weight: 800; padding: 4px 12px; display: inline-block; margin-bottom: 18px; border: 2px solid #1e293b; }
+        .block-title { font-size: 20px; color: #4c1d95; font-weight: 800; margin: 0 0 20px 0; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; }
         
-        /* Kahani Corner Style Box */
-        .kahani-box { background: #fff7ed; border: 2px dashed #f97316; border-left: 8px solid #ea580c; padding: 20px; margin: 25px 0; border-radius: 6px; }
-        .kahani-title { font-size: 16px; font-weight: 800; color: #9a3412; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+        .sub-heading-tag { font-size: 15px; color: #1e293b; font-weight: 800; margin: 25px 0 15px 0; background: #f8fafc; padding: 8px 14px; border: 1px solid #cbd5e1; display: inline-block; }
+        .easy-text { font-size: 15px; color: #334155; line-height: 1.85; font-weight: 600; text-align: justify; margin-bottom: 18px; }
+        .highlight-point { background: #fef08a; padding: 1px 4px; font-weight: 700; border-radius: 2px; }
 
-        /* Interactive Micro Games Style */
-        .game-panel { background: #f0fdf4; border: 2px solid #22c55e; padding: 20px; margin: 25px 0; border-radius: 8px; box-shadow: 4px 4px 0px #22c55e; }
-        .game-title { font-size: 15px; font-weight: 800; color: #166534; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
-        .game-options { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
-        .game-btn { background: #ffffff; border: 2px solid #3b0764; padding: 10px 15px; font-size: 13.5px; font-weight: 700; text-align: left; cursor: pointer; border-radius: 4px; transition: 0.1s; color: #1e293b; }
-        .game-btn:hover { background: #fdf4ff; }
-        .game-feedback { margin-top: 12px; font-size: 13.5px; font-weight: 700; display: none; padding: 8px; border-radius: 4px; }
-
-        /* High-Grade Geometrics Canvas */
-        .visual-canvas-container { background: #f8fafc; border: 2px solid #3b0764; border-radius: 6px; padding: 20px; margin: 25px 0; text-align: center; }
-        .canvas-label { display: inline-block; font-size: 12px; font-weight: 800; color: #ffffff; background: #6b21a8; padding: 4px 12px; border-radius: 3px; margin-bottom: 20px; text-transform: uppercase; }
+        /* PURE REAL-GRADE GRAPHIC VISUALS (LINING REKHA CHITRA) */
+        .lining-canvas-frame { background: #ffffff; border: 2px solid #1e293b; padding: 20px; margin: 25px 0; text-align: center; }
+        .canvas-caption { font-size: 12.5px; font-weight: 800; color: #1e293b; background: #e2e8f0; padding: 3px 12px; display: inline-block; margin-bottom: 18px; border: 1px solid #1e293b; }
         
-        .split-container { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px; }
-        .split-block { background: #ffffff; border: 2px solid #3b0764; padding: 15px; border-radius: 6px; box-shadow: 3px 3px 0px #3b0764; text-align: left; }
-        .split-title { font-size: 14px; font-weight: 800; color: #ffffff; background: #3b0764; padding: 2px 8px; display: inline-block; margin-bottom: 10px; }
+        /* Labor Split Grid Layout */
+        .labor-split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 10px 0; }
+        .labor-box { border: 2px solid #1e293b; padding: 12px; text-align: left; background: #ffffff; }
+        .labor-box-pink { border-color: #db2777; background: #fff5f5; }
+        .labor-box-blue { border-color: #2563eb; background: #eff6ff; }
+        .labor-title { font-size: 13.5px; font-weight: 800; display: block; margin-bottom: 6px; }
 
-        /* CSS Bar Chart for Representation */
-        .bar-chart-container { display: flex; flex-direction: column; gap: 12px; margin-top: 15px; text-align: left; }
-        .bar-row { display: flex; align-items: center; gap: 10px; }
-        .bar-label { width: 120px; font-size: 12px; font-weight: 700; color: #334155; }
-        .bar-wrapper { flex-grow: 1; background: #e2e8f0; height: 24px; border: 2px solid #0f172a; position: relative; }
-        .bar-fill { height: 100%; background: #a855f7; border-right: 2px solid #0f172a; }
-        .bar-value { position: absolute; right: 8px; top: 0; font-size: 11px; font-weight: 800; color: #0f172a; line-height: 20px; }
+        /* Representation Linear Scale */
+        .linear-scale-framework { border: 2px dashed #475569; padding: 15px; max-width: 360px; margin: 0 auto; background: #fafafa; }
+        .scale-track { background: #e2e8f0; height: 20px; border: 2px solid #1e293b; margin: 10px 0; position: relative; }
+        .scale-pointer { height: 100%; background: #6d28d9; border-right: 2px solid #1e293b; }
+        .scale-text { position: absolute; right: 10px; top: -1px; font-size: 11px; font-weight: 800; }
 
-        .danger-alert-zone { background: #fff5f5; border: 2px solid #ef4444; border-left: 8px solid #ef4444; padding: 18px; margin: 25px 0; border-radius: 4px; box-shadow: 4px 4px 0px #ef4444; }
-        .danger-title { font-size: 14px; font-weight: 800; color: #991b1b; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+        /* Social Structure Chart */
+        .social-chart-box { display: flex; flex-direction: column; gap: 10px; text-align: left; max-width: 400px; margin: 0 auto; }
+        .chart-row { display: flex; align-items: center; gap: 10px; }
+        .chart-label { width: 110px; font-size: 12px; font-weight: 700; }
+        .chart-line-bg { flex-grow: 1; background: #ffffff; border: 2px solid #1e293b; height: 22px; position: relative; }
+        .chart-line-fill { height: 100%; background: #ca8a04; border-right: 1px solid #1e293b; }
+        .chart-line-value { position: absolute; right: 8px; top: 0; font-size: 11px; font-weight: 800; line-height: 18px; }
 
-        .guruji-spotlight { background: #f0f9ff; border: 2px solid #0ea5e9; padding: 16px; margin: 25px 0; border-radius: 6px; font-size: 14px; font-weight: 600; color: #0369a1; }
+        /* Interactive Guruji Box */
+        .guruji-box { background: #fffbeb; border: 2px solid #d97706; padding: 18px; margin: 25px 0; position: relative; }
+        .guruji-title { font-size: 14.5px; color: #b45309; font-weight: 900; margin-bottom: 6px; }
 
-        .bullet-list { list-style: none; margin: 15px 0; }
-        .bullet-list li { position: relative; padding-left: 24px; margin-bottom: 12px; font-size: 14.5px; font-weight: 600; color: #334155; line-height: 1.7; }
-        .bullet-list li::before { content: "🎯"; position: absolute; left: 0; top: 1px; font-size: 14px; }
+        /* Gamified Layout Elements */
+        .game-card-panel { background: #f0fdf4; border: 2px solid #22c55e; padding: 20px; margin: 25px 0; border-radius: 6px; }
+        .game-card-title { font-size: 15px; font-weight: 800; color: #166534; margin-bottom: 12px; }
+        .game-options-list { display: flex; flex-direction: column; gap: 8px; }
+        .game-option-btn { background: #ffffff; border: 2px solid #1e293b; padding: 10px; font-size: 13.5px; font-weight: 700; text-align: left; cursor: pointer; border-radius: 4px; color: #1e293b; }
+        .game-option-btn:hover { background: #f0fdf4; }
+        .game-reply-msg { margin-top: 12px; font-size: 13.5px; font-weight: 700; display: none; padding: 8px; border-radius: 4px; }
 
-        .master-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 13.5px; font-weight: 600; }
-        .master-table th, .master-table td { border: 2px solid #3b0764; padding: 12px; text-align: left; }
-        .master-table th { background: #f1f5f9; color: #3b0764; font-weight: 800; }
+        /* Structural Bullet Lists */
+        .notes-list { list-style: none; margin: 15px 0; }
+        .notes-list li { position: relative; padding-left: 22px; margin-bottom: 12px; font-size: 14.5px; color: #334155; font-weight: 600; line-height: 1.7; }
+        .notes-list li::before { content: "▪"; position: absolute; left: 0; color: #6d28d9; font-size: 18px; top: -2px; }
 
-        .fact-capsule-section { background: #f8fafc; border: 3px solid #3b0764; border-radius: 8px; padding: 20px; margin-top: 35px; box-shadow: 6px 6px 0px #3b0764; }
-        .capsule-title { font-size: 18px; font-weight: 900; color: #3b0764; margin-bottom: 15px; text-align: center; border-bottom: 2px solid #3b0764; padding-bottom: 8px; }
+        .master-data-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 13px; font-weight: 600; }
+        .master-data-table th, .master-data-table td { border: 2px solid #1e293b; padding: 10px; text-align: left; }
+        .master-data-table th { background-color: #f1f5f9; color: #4c1d95; font-weight: 800; }
 
-        .action-footer-btn { display: block; text-align: center; text-decoration: none; background: #ffffff; color: #3b0764; padding: 16px; font-weight: 800; margin-top: 40px; border: 3px solid #3b0764; box-shadow: 5px 5px 0px #3b0764; border-radius: 6px; font-size: 15px; transition: 0.1s; }
-        .action-footer-btn:active { transform: translate(3px, 3px); box-shadow: 2px 2px 0px #3b0764; }
+        .booster-footer-note { background: #fff5f5; border: 2px dashed #ef4444; padding: 15px; font-size: 13.5px; color: #991b1b; font-weight: 700; margin-top: 25px; }
+        .menu-back-btn { display: block; text-align: center; text-decoration: none; background: #ffffff; color: #4c1d95; padding: 15px; font-weight: 800; margin-top: 30px; border: 2px solid #4c1d95; box-shadow: 4px 4px 0px #4c1d95; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <!-- Header Area -->
-    <div class="premium-header">
+    <!-- Header Block -->
+    <div class="book-header">
         <h1>SOCIAL STUDIES CLASSES</h1>
-        <p>📚 कक्षा 10 नागरिक शास्त्र • अध्याय 3: जाति, धर्म और लैंगिक मसले</p>
+        <p>📖 कक्षा 10 नागरिक शास्त्र • अध्याय 3 (त्रुटिहीन विजुअल नोट्स)</p>
     </div>
     
-    <div class="main-content">
-        <!-- Progress Tracker Layout -->
-        <div class="progress-tracker">
-            <div class="progress-step active">🚂 लैंगिक विभाजन 🟩</div>
-            <div class="progress-step active">➡ सांप्रदायिकता 🟧</div>
-            <div class="progress-step active">➡ जाति और राजनीति 🟦</div>
-            <div class="progress-step active">➡ क्विक रिवीज़न 🏁</div>
+    <div class="content-area">
+        <!-- Pathshala Greeting Card -->
+        <div class="welcome-card" style="margin-top: 25px;">
+            <p>👋 <b>नमस्ते प्यारे बच्चो!</b> हमारी सोशल स्टडीज की ऑनलाइन कक्षा में आप सभी का स्वागत है। पिछले अध्यायों में हमने देखा था कि सामाजिक विविधता लोकतंत्र के लिए कोई खतरा नहीं होती। इस पूरे अध्याय में हम भारत के संदर्भ में तीन बड़े सामाजिक विभाजनों—<b>लिंग, धर्म और जाति</b> पर आधारित व्यवस्थाओं को सरल घरेलू उदाहरणों और स्पष्ट रेखाचित्रों से एक ही बार में समझेंगे ताकि आपको कुछ भी रटना न पड़े। ध्यान से समझना बेटा!</p>
         </div>
 
-        <!-- Master Classroom Greeting -->
-        <div class="guruji-welcome">
-            <p>👋 <b>नमस्ते प्यारे बच्चो!</b> हमारी सोशल स्टडीज की ऑनलाइन डिजिटल पाठशाला में आप सभी का स्वागत है। पिछले अध्यायों में हमने देखा कि सामाजिक विविधता लोकतंत्र के लिए कोई खतरा नहीं होती[span_0](start_span)[span_0](end_span)। इस अध्याय में हम भारत के संदर्भ में तीन बड़े सामाजिक विभाजनों—**लिंग, धर्म और जाति** पर आधारित विषमताओं को बहुत ही सरल रूप में समझेंगे[span_1](start_span)[span_1](end_span)। अपनी रफ कॉपी निकाल लो और पूरा पाठ एक ही बार में दिमाग में सेट करो बेटा!</p>
-        </div>
-
-        <!-- ==================== PART 1: लैंगिक मसले और राजनीति ==================== -->
-        <div class="section-master-card">
-            <div class="section-badge" style="background: #a855f7;">भाग 1: लिंग और राजनीति</div>
-            <h2 class="section-title">1. लैंगिक विभाजन और समाज की रूढ़ छवियाँ</h2>
+        <!-- ==================== BOX 1: GENDER ==================== -->
+        <div class="notes-block-box">
+            <div class="block-badge">भाग 1: लैंगिक मसले</div>
+            <h2 class="block-title">1. लैंगिक विभाजन और समाज की रूढ़ छवियाँ</h2>
             
-            <p class="easy-narration">बच्चों, लैंगिक असमानता (Gender Inequality) को अक्सर लोग प्राकृतिक या अपरिवर्तनीय मान लेते हैं[span_2](start_span)[span_2](end_span)। लेकिन सच यह है बेटा कि इसका आधार स्त्री-पुरुष की जैविक बनावट नहीं, बल्कि हमारे समाज में फैली रूढ़ छवियाँ और तयशुदा सामाजिक भूमिकाएँ हैं[span_3](start_span)[span_3](end_span)ं।</p>
-            
-            <div class="guruji-spotlight">
-                <b>🧺 श्रम का लैंगिक विभाजन (Sexual Division of Labour):</b><br>
-                "काम के बँटवारे का वह तरीका जिसमें घर के अंदर के सारे काम (खाना बनाना, सफाई, कपड़े धोना, बच्चों की देखरेख) परिवार की औरतें करती हैं और पुरुष केवल बाहर का काम संभालते हैं[span_4](start_span)[span_4](end_span)ं।" <br>
-                ऐसा नहीं है बेटा कि पुरुष ये काम कर नहीं सकते[span_5](start_span)[span_5](end_span)। जब दर्जी या होटल के रसोइए (Chef) के रूप में इन्हीं कामों के लिए पैसे मिलते हैं, तो पुरुष खुशी-खुशी घर के बाहर यही काम करते हैं[span_6](start_span)[span_6](end_span)!
-            </div>
+            <p class="easy-text">बच्चों, समाज में फैली लैंगिक असमानता को अक्सर लोग प्राकृतिक या अपरिवर्तनीय मान लेते हैं। लेकिन सच यह है बेटा कि इसका आधार स्त्री-पुरुष की जैविक बनावट नहीं है, बल्कि हमारे समाज में फैली पुरानी रूढ़ छवियाँ और तयशुदा सामाजिक भूमिकाएँ हैं।</p>
 
-            <!-- VISUAL CARD: PRIVATE VS PUBLIC SPLIT -->
-            <div class="visual-canvas-container">
-                <span class="canvas-label">✏️ रेखा चित्र 3.1: निजी और सार्वजनिक जीवन का बँटवारा</span>
-                <div class="split-container">
-                    <div class="split-block" style="border-top: 5px solid #ec4899;">
-                        <span class="split-title" style="background:#ec4899;">🏡 औरतों का दायरा</span>
-                        <p style="font-size:12.5px; font-weight:600; color:#475569;">घर की चारदीवारी[span_7](start_span)[span_7](end_span)। बिना वेतन का घरेलू काम जिसका कोई श्रेय या आर्थिक मूल्य नहीं आँका जाता[span_8](start_span)[span_8](end_span)ं।</p>
+            <!-- LINE GRAPHIC 1: LABOR SPLIT GRID -->
+            <div class="lining-canvas-frame">
+                <span class="canvas-caption">✏️ रेखा चित्र 3.1: श्रम का लैंगिक विभाजन विजुअल ग्रिड</span>
+                <div class="labor-split-grid">
+                    <div class="labor-box labor-box-pink">
+                        <span class="labor-title" style="color: #be185d;">🏡 महिला का कार्यक्षेत्र</span>
+                        <p style="font-size: 12px; font-weight: 600; color: #475569;">घर का अंदरूनी कामकाज: भोजन बनाना, सफाई, कपड़े धोना, बच्चों का पालन-पोषण। इस श्रम का कोई आर्थिक मूल्य या श्रेय नहीं मिलता।</p>
                     </div>
-                    <div class="split-block" style="border-top: 5px solid #2563eb;">
-                        <span class="split-title" style="background:#2563eb;">💼 पुरुषों का दायरा</span>
-                        <p style="font-size:12.5px; font-weight:600; color:#475569;">सार्वजनिक जीवन और राजनीति पर पूरा कब्ज़ा[span_9](start_span)[span_9](end_span)। आमदनी वाले काम और निर्णय लेने की सर्वोच्च शक्ति[span_10](start_span)[span_10](end_span)ं।</p>
+                    <div class="labor-box labor-box-blue">
+                        <span class="labor-title" style="color: #1d4ed8;">💼 पुरुष का कार्यक्षेत्र</span>
+                        <p style="font-size: 12px; font-weight: 600; color: #475569;">सार्वजनिक और बाहरी जीवन: आमदनी वाले काम, दफ्तर, व्यवसाय और राजनीति पर पूरा नियंत्रण।</p>
                     </div>
                 </div>
+                <p style="font-size: 11px; font-weight: 700; color: #475569; margin-top: 10px;">[व्याख्या: जब दर्जी या रसोइए के रूप में इसी काम के पैसे मिलते हैं, तो पुरुष खुशी-खुशी घर के बाहर यही काम करते हैं]</p>
             </div>
 
-            <p class="easy-narration"><b>🔊 नारीवादी आंदोलन (Feminist Movement):</b> जब औरतों को सार्वजनिक जीवन में वोट देने या चुनाव लड़ने का अधिकार नहीं था, तब महिलाओं ने बराबरी के अधिकार पाने के लिए आंदोलन शुरू किए[span_11](start_span)[span_11](end_span)। औरतों के व्यक्तिगत, पारिवारिक और सामाजिक जीवन में बराबरी की माँग करने वाले इन आंदोलनों को **नारीवादी आंदोलन** कहा जाता है[span_12](start_span)[span_12](end_span)। स्वीडन, नॉर्वे और फिनलैंड जैसे स्कैंडिनेवियाई देशों में महिलाओं की भागीदारी बहुत ऊँची है[span_13](start_span)[span_13](end_span)ं।</p>
+            <p class="easy-text">इस श्रम के विभाजन का नतीजा यह हुआ बेटा कि औरतें घर की चारदीवारी में सिमट कर रह गईं और राजनीति पर पुरुषों का कब्जा हो गया। इसके खिलाफ औरतों ने अपने संगठन बनाए और व्यक्तिगत व पारिवारिक जीवन में बराबरी की माँग के लिए आंदोलन किए, जिन्हें हम <span class="highlight-point">नारीवादी आंदोलन (Feminist Movement)</span> कहते हैं।</p>
 
             <div class="danger-alert-zone">
-                <div class="danger-title">⚠️ भारत में औरतों के साथ होने वाले 4 बड़े भेदभाव (3 या 5 अंक स्पेशल):</div>
-                <ul class="visual-list" style="margin: 0; padding-left: 0; color:#7f1d1d;">
-                    <li><b>1. साक्षरता दर में कमी:</b> आज भी महिलाओं में साक्षरता की दर मात्र 54% है, जबकि पुरुषों में यह 76% है[span_14](start_span)[span_14](end_span)। माँ-बाप लड़कियों की उच्च शिक्षा पर संसाधन खर्च करने से कतराते हैं[span_15](start_span)[span_15](end_span)ं।</li>
-                    <li><b>2. कम मज़दूरी (समान मज़दूरी अधिनियम का उल्लंघन):</b> खेल-कूद, सिनेमा या कल-कारखानों में पुरुषों के बराबर समान काम करने पर भी महिलाओं को कम मज़दूरी दी जाती है[span_16](start_span)[span_16](end_span)ं।</li>
-                    <li><b>3. बाल लिंगानुपात में भारी गिरावट:</b> भारत में केवल लड़के की चाहत के कारण लड़कियों को जन्म से पहले खत्म करने की मानसिकता है, जिससे बाल लिंगानुपात प्रति हजार लड़कों पर मात्र 919 रह गया है[span_17](start_span)[span_17](end_span)ं।</li>
-                    <li><b>4. घरेलू हिंसा और उत्पीड़न:</b> महिलाओं के शोषण, मारपीट और घरेलू हिंसा की खबरें हमें रोज़ देखने को मिलती हैं[span_18](start_span)[span_18](end_span)ं।</li>
+                <div class="danger-title">⚠️ भारत में महिलाओं के साथ होने वाले 4 बड़े भेदभाव:</div>
+                <ul class="notes-list" style="margin: 0; padding-left: 0;">
+                    <li><b>साक्षरता दर में अंतर:</b> महिलाओं में साक्षरता की दर अब भी मात्र 54% है जबकि पुरुषों में यह 76% है।</li>
+                    <li><b>समान मज़दूरी का उल्लंघन:</b> सिनेमा से लेकर खेत-खलिहानों तक महिलाओं को पुरुषों की तुलना में कम मज़दूरी मिलती है।</li>
+                    <li><b>गिरता लिंगानुपात:</b> केवल लड़के की चाहत में लड़कियों को जन्म से पहले खत्म करने के कारण बाल लिंगानुपात मात्र 919 रह गया है।</li>
+                    <li><b>घरेलू हिंसा:</b> शहरी और ग्रामीण दोनों इलाकों में महिलाओं को मारपीट और मानसिक उत्पीड़न झेलना पड़ता है।</li>
                 </ul>
             </div>
 
-            <!-- INTERACTIVE GAME 1 -->
+            <!-- INTERACTIVE MICRO GAME 1 -->
             <div class="game-panel">
-                <div class="game-title">🎮 गेम 1: शब्दावली की परीक्षा (दिमाग दौड़ाओ!)</div>
-                <p style="font-size:13.5px; font-weight:600; color:#1e293b;">बेटा, एक ऐसी व्यवस्था जो पुरुषों को महिलाओं की तुलना में ज़्यादा महत्व, ज़्यादा शक्ति और अधिकार देती है, उसे राजनीति विज्ञान में किस नाम से पुकारते हैं[span_19](start_span)[span_19](end_span)?</p>
-                <div class="game-options">
-                    <button class="game-btn" onclick="showFeedback('g1-right')">A) पितृ-प्रधान व्यवस्था (Patriarchical System)[span_20](start_span)[span_20](end_span)</button>
-                    <button class="game-btn" onclick="showFeedback('g1-wrong')">B) धर्मनिरपेक्ष व्यवस्था (Secular System)[span_21](start_span)[span_21](end_span)</button>
+                <div class="game-card-title">🎮 गेम 1: सही परिभाषा की पहचान करो (दिमाग चलाओ!)</div>
+                <p style="font-size: 13.5px; font-weight: 600; color: #1e293b;">बेटा, ऐसी व्यवस्था जो महिलाओं की तुलना में पुरुषों को ज़्यादा महत्व, ज़्यादा शक्ति और सामाजिक प्रधानता देती है, उसे क्या कहते हैं?</p>
+                <div class="game-options-list">
+                    <button class="game-option-btn" onclick="triggerFeedback('g1-ok')">A) पितृ-प्रधान व्यवस्था (Patriarchal System)</button>
+                    <button class="game-option-btn" onclick="triggerFeedback('g1-no')">B) धर्मनिरपेक्ष व्यवस्था (Secular System)</button>
                 </div>
-                <div id="g1-feedback" class="game-feedback"></div>
+                <div id="game1-fb" class="game-reply-msg"></div>
             </div>
         </div>
 
-        <!-- ==================== PART 2: धर्म, सांप्रदायिकता और राजनीति ==================== -->
-        <div class="section-master-card" style="border-color: #ea580c;">
-            <div class="section-badge" style="background: #ea580c;">भाग 2: धर्म और राजनीति</div>
-            <h2 class="section-title" style="color: #c2410c;">2. सांप्रदायिकता का खतरा और धर्मनिरपेक्ष शासन</h2>
+        <!-- ==================== BOX 2: RELIGION ==================== -->
+        <div class="notes-block-box" style="border-color: #ea580c;">
+            <div class="block-badge" style="background: #ea580c;">भाग 2: धार्मिक मसले</div>
+            <h2 class="block-title" style="color: #c2410c;">2. सांप्रदायिकता का खतरा और भारत का धर्मनिरपेक्ष मॉडल</h2>
             
-            <p class="easy-narration">बच्चो, लैंगिक विभाजन की तरह धार्मिक विभाजन सार्वभौम तो नहीं है, पर राजनीति में इसकी अभिव्यक्ति अक्सर बहुत गहरी होती है[span_22](start_span)[span_22](end_span)। महात्मा गांधी कहा करते थे कि **धर्म को कभी भी राजनीति से अलग नहीं किया जा सकता**[span_23](start_span)[span_23](end_span)। उनके धर्म का मतलब किसी विशेष पूजा-पद्धति से नहीं, बल्कि <span class="highlight-core">नैतिक मूल्यों (Moral Values)</span> से था, जो सभी धर्मों में समान हैं[span_24](start_span)[span_24](end_span)ं।</p>
-            
-            <div class="danger-alert-zone" style="border-color:#ea580c; background:#fff7ed;">
-                <div class="danger-title" style="color:#c2410c;">💥 सांप्रदायिकता (Communalism) क्या है? (बड़ा सवाल):</div>
+            <p class="easy-text">बच्चों, धार्मिक विभाजन लैंगिक विभाजन की तरह सार्वभौम तो नहीं है, पर राजनीति के मैदान में इसकी अभिव्यक्ति बहुत गहरी होती है। महात्मा गांधी कहा करते थे कि **धर्म को कभी भी राजनीति से अलग नहीं किया जा सकता**। उनके धर्म का मतलब हिंदू या इस्लाम से न होकर उन <span class="highlight-point">नैतिक मूल्यों</span> से था जो सभी धर्मों से जुड़े हैं।</p>
+
+            <div class="danger-alert-zone" style="border-color: #ea580c; background: #fff7ed;">
+                <div class="danger-title" style="color: #c2410c;">💥 सांप्रदायिकता (Communalism) का असली मतलब:</div>
                 <p style="font-size: 14px; font-weight: 600; color: #7c2d12; line-height: 1.7;">
-                    "समस्या तब शुरू होती है बेटा, जब धर्म को राष्ट्र का आधार मान लिया जाता है[span_25](start_span)[span_25](end_span)। जब एक धर्म के विचारों को दूसरे से श्रेष्ठ माना जाने लगता है और कोई धार्मिक समूह अपनी माँगों को दूसरे के विरोध में खड़ा करता है, तो इस राजनीति को सांप्रदायिकता कहते हैं[span_26](start_span)[span_26](end_span)।" इसका सबसे गंदा रूप सांप्रदायिक दंगे, हिंसा और नरसंहार हैं, जैसा भारत-पाकिस्तान के विभाजन के समय हुआ था[span_27](start_span)[span_27](end_span)ं।
+                    "समस्या तब शुरू होती है बेटा, जब धर्म को राष्ट्र का आधार मान लिया जाता है। जब एक धर्म के विचारों को दूसरे से श्रेष्ठ माना जाने लगता है और कोई एक धार्मिक समूह अपनी माँगों को दूसरे समूह के विरोध में खड़ा करने लगता है, तो इस पूरी सोच को सांप्रदायिकता कहते हैं।"
                 </p>
             </div>
 
-            <span class="book-sub-heading" style="border-color: #ea580c;">🛡️ भारत का धर्मनिरपेक्ष मॉडल (संविधान के 4 जादुई नियम)</span>
-            <p class="easy-narration">हमारे संविधान निर्माता सांप्रदायिकता के खतरे के प्रति पूरी तरह सचेत थे[span_28](start_span)[span_28](end_span)। इसीलिए उन्होंने भारत के लिए **धर्मनिरपेक्ष शासन** का मॉडल चुना, जिसकी मुख्य बातें ये हैं[span_29](start_span)[span_29](end_span):</p>
+            <span class="sub-heading-tag" style="border-color: #f97316; color: #c2410c;">🛡️ भारत को धर्मनिरपेक्ष देश बनाने वाले 4 बड़े प्रावधान:</span>
+            <p class="easy-text">हमारे संविधान निर्माता सांप्रदायिकता की चुनौती के प्रति पूरी तरह सचेत थे, इसीलिए उन्होंने भारत के लिए <b>धर्मनिरपेक्ष शासन</b> का मॉडल चुना:</p>
             
-            <table class="master-table">
-                <thead>
-                    <tr>
-                        <th style="width: 35%; background:#ffedd5; color:#c2410c;">संवैधानिक प्रावधान</th>
-                        <th style="background:#ffedd5; color:#c2410c;">इसका सरल अर्थ (एग्जाम कैप्सूल)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><b>1. कोई राजकीय धर्म नहीं</b></td>
-                        <td>पाकिस्तान में इस्लाम या श्रीलंका में बौद्ध धर्म की तरह भारत का कोई अपना राजकीय धर्म नहीं है[span_30](start_span)[span_30](end_span)ं।</td>
-                    </tr>
-                    <tr>
-                        <td><b>2. धार्मिक स्वतंत्रता</b></td>
-                        <td>संविधान सभी नागरिकों को किसी भी धर्म का पालन करने और उसका प्रचार करने की पूरी आज़ादी देता है[span_31](start_span)[span_31](end_span)ं।</td>
-                    </tr>
-                    <tr>
-                        <td><b>3. भेदभाव की मनाही</b></td>
-                        <td>धर्म के आधार पर किसी भी नागरिक के साथ किसी भी प्रकार का भेदभाव करना पूरी तरह अवैधानिक है[span_32](start_span)[span_32](end_span)ं।</td>
-                    </tr>
-                    <tr>
-                        <td><b>4. समानता के लिए दखल</b></td>
-                        <td>धार्मिक समानता सुनिश्चित करने के लिए शासन को धार्मिक मामलों में दखल देने का हक है (जैसे **छुआछूत का अंत करना**)[span_33](start_span)[span_33](end_span)ं।</td>
-                    </tr>
-                </tbody>
-            </table>
+            <ul class="notes-list">
+                <li><b>कोई राजकीय धर्म नहीं:</b> श्रीलंका में बौद्ध या पाकिस्तान में इस्लाम की तरह भारत का कोई राजकीय धर्म नहीं है।</li>
+                <li><b>पूर्ण धार्मिक स्वतंत्रता:</b> संविधान सभी नागरिकों को अपनी पसंद का कोई भी धर्म मानने और उसका प्रचार करने की आज़ादी देता है।</li>
+                <li><b>भेदभाव पर रोक:</b> धर्म के आधार पर किए जाने वाले किसी भी तरह के भेदभाव को संविधान अवैधानिक घोषित करता है।</li>
+                <li><b>समानता के लिए हस्तक्षेप:</b> धार्मिक कुरीतियों (जैसे छुआछूत) को दूर करने के लिए सरकार को धार्मिक मामलों में दखल देने का अधिकार है।</li>
+            </ul>
 
-            <!-- INTERACTIVE GAME 2 -->
-            <div class="game-panel" style="border-color:#ea580c; background:#fff7ed;">
-                <div class="game-title" style="color:#c2410c;">🎮 गेम 2: नारी शक्ति वंदन अधिनियम (करंट अफेयर्स ट्रैक)</div>
-                <p style="font-size:13.5px; font-weight:600; color:#1e293b;">बच्चों, भारत की संसद द्वारा वर्ष 2023 में पारित किस ऐतिहासिक कानून के तहत लोकसभा और विधानसभाओं में महिलाओं के लिए 33% सीटें आरक्षित की गई हैं[span_34](start_span)[span_34](end_span)?</p>
-                <div class="game-options">
-                    <button class="game-btn" onclick="showFeedback('g2-right')">A) नारी शक्ति वंदन अधिनियम 2023[span_35](start_span)[span_35](end_span)</button>
-                    <button class="game-btn" onclick="showFeedback('g2-wrong')">B) समान मज़दूरी अधिनियम</button>
+            <!-- LINE GRAPHIC 2: SCALE TRACK -->
+            <div class="lining-canvas-frame" style="border-color: #ea580c;">
+                <span class="canvas-caption">✏️ रेखा चित्र 3.2: लोकसभा में महिला सांसदों की भागीदारी का ग्राफ</span>
+                <div class="linear-scale-framework">
+                    <span style="font-size: 11px; font-weight: 700; color: #475569; display:block; text-align:left;">2019 लोकसभा में महिला प्रतिनिधित्व की रेखा सीमा:</span>
+                    <div class="scale-track">
+                        <div class="scale-pointer" style="width: 14.36%; background: #ea580c;"></div>
+                        <div class="scale-text">14.36%</div>
+                    </div>
                 </div>
-                <div id="g2-feedback" class="game-feedback"></div>
+                <p style="font-size: 11.5px; font-weight: 700; color: #c2410c; margin-top: 10px;">[नोट: 2023 में पारित 'नारी शक्ति वंदन अधिनियम' के तहत अब लोकसभा और विधानसभाओं में महिलाओं के लिए 33% सीटें आरक्षित की जाएंगी]</p>
             </div>
         </div>
 
-        <!-- ==================== PART 3: जाति और राजनीति ==================== -->
-        <div class="section-master-card" style="border-color: #6b21a8;">
-            <div class="section-badge" style="background: #6b21a8;">भाग 3: जाति और चुनाव</div>
-            <h2 class="section-title" style="color: #3b0764;">3. जातिगत असमानताएँ और राजनीति के अखाड़े में जाति</h2>
+        <!-- ==================== BOX 3: CASTE ==================== -->
+        <div class="notes-block-box" style="border-color: #166534;">
+            <div class="block-badge" style="background: #166534;">भाग 3: जाति और राजनीति</div>
+            <h2 class="block-title" style="color: #14532d;">3. जातिगत असमानता और चुनावी राजनीति की सीमाएं</h2>
             
-            <p class="easy-narration">बच्चो, लिंग और धर्म पर आधारित विभाजन तो दुनिया भर में मिल जाएंगे, पर **जाति पर आधारित विभाजन सिर्फ भारतीय समाज में ही देखने को मिलता है**[span_36](start_span)[span_36](end_span)। पुराने समय में वर्ण-व्यवस्था के नाम पर पेशों का वंशानुगत विभाजन तय था और निचली जातियों के साथ छुआछूत का व्यवहार होता था[span_37](start_span)[span_37](end_span)ं।</p>
-            
-            <p class="easy-narration">ज्योतिबा फुले, महात्मा गांधी, डॉ. बी.आर. आंबेडकर और पेरियार रामास्वामी नायकर जैसे समाज सुधारकों के प्रयासों, शहरीकरण, साक्षरता और जमींदारी व्यवस्था कमजोर पड़ने से आज जाति प्रथा की मानसिकता में बहुत बदलाव आया है[span_38](start_span)[span_38](end_span)ं।</p>
+            <p class="easy-text">बच्चों, लिंग और धर्म पर आधारित विभाजन तो दुनिया भर में मिल जाएंगे, पर <span class="highlight-point">जाति पर आधारित विभाजन सिर्फ भारतीय समाज में ही</span> देखने को मिलता है। वर्ण-व्यवस्था के पुराने स्वरूप के कारण निचली जातियों को सदियों तक शिक्षा से वंचित रखा गया। ज्योतिबा फुले, महात्मा गांधी, डॉ. आंबेडकर और पेरियार रामास्वामी नायकर जैसे समाज सुधारकों के प्रयासों से आज जमींदारी कमजोर पड़ी है और जाति व्यवस्था की रूढ़िवादी सोच बदल रही है।</p>
 
-            <!-- CSS BAR CHART: REPRESENTATION OF GROUPS -->
-            <div class="visual-canvas-container">
-                <span class="canvas-label">✏️ रेखा चित्र 3.2: भारत का अनुमानित सामाजिक ढांचा (2011 जनगणना)</span>
-                <div class="bar-chart-container">
-                    <div class="bar-row">
-                        <div class="bar-label"> अनुसूचित जाति (SC) </div>
-                        <div class="bar-wrapper"><div class="bar-fill" style="width: 16.6%;"></div><div class="bar-value">16.6%</div></div>
+            <!-- LINE GRAPHIC 3: SOCIAL STRUCTURE CHART -->
+            <div class="lining-canvas-frame" style="border-color: #166534;">
+                <span class="canvas-caption">✏️ रेखा चित्र 3.3: भारत के प्रमुख जाति समूहों का सांख्यिकी पैमाना</span>
+                <div class="social-chart-box">
+                    <div class="chart-row">
+                        <div class="chart-label">अनुसूचित जाति (SC)</div>
+                        <div class="chart-line-bg">
+                            <div class="chart-line-fill" style="width: 16.6%; background: #166534;"></div>
+                            <div class="chart-line-value">16.6%</div>
+                        </div>
                     </div>
-                    <div class="bar-row">
-                        <div class="bar-label"> अनुसूचित जनजाति (ST) </div>
-                        <div class="bar-wrapper"><div class="bar-fill" style="width: 8.6%; background:#8b5cf6;"></div><div class="bar-value">8.6%</div></div>
+                    <div class="chart-row">
+                        <div class="chart-label">अनुसूचित जनजाति (ST)</div>
+                        <div class="chart-line-bg">
+                            <div class="chart-line-fill" style="width: 8.6%; background: #166534;"></div>
+                            <div class="chart-line-value">8.6%</div>
+                        </div>
                     </div>
-                    <div class="bar-row">
-                        <div class="bar-label"> अन्य पिछड़ा वर्ग (OBC) </div>
-                        <div class="bar-wrapper"><div class="bar-fill" style="width: 41%; background:#ec4899;"></div><div class="bar-value">~41% (NSSO)</div></div>
+                    <div class="chart-row">
+                        <div class="chart-label">अन्य पिछड़ा वर्ग (OBC)</div>
+                        <div class="chart-line-bg">
+                            <div class="chart-line-fill" style="width: 41%; background: #166534;"></div>
+                            <div class="chart-line-value">~41%</div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <span class="book-sub-heading">🏙️ राजनीति में जाति का खेल और उसकी सीमाएं (क्यों सिर्फ जाति से चुनाव नहीं जीत सकते?)</span>
-            <p class="easy-narration">बच्चों, कई बार लोगों को लगता है कि चुनाव सिर्फ जातियों का खेल है[span_39](start_span)[span_39](end_span)। लेकिन यह एक बहुत बड़ी भ्रांति (गलत धारणा) है बेटा! इसके पीछे **2 मुख्य कारण** हैं जो परीक्षा में सीधे पूछे जाते हैं[span_40](start_span)[span_40](end_span):</p>
+            <span class="sub-heading-tag" style="border-color: #22c55e; color: #14532d;">🗳️ क्यों सिर्फ जाति के भरोसे कोई भी चुनाव नहीं जीता जा सकता?</span>
+            <p class="easy-text">कई बार राजनीतिक पार्टियां जातिगत भावनाओं को उकसाती हैं, जिससे लगता है कि चुनाव सिर्फ जातियों का खेल है। लेकिन इसके पीछे **2 बड़े नियम** काम करते हैं जो परीक्षा के लिए बहुत जरूरी हैं बेटा:</p>
             
-            <ol style="font-size:14.5px; font-weight:600; color:#334155; padding-left:15px; line-height:1.8;">
-                <li style="margin-bottom:10px;"><b>किसी भी चुनाव क्षेत्र में एक जाति का बहुमत नहीं:</b> देश के किसी भी एक संसदीय क्षेत्र में किसी एक जाति के मतदाताओं का बहुमत नहीं है[span_41](start_span)[span_41](end_span)। इसलिए उम्मीदवार को जीतने के लिए एक से ज़्यादा जातियों का भरोसा जीतना ही पड़ता है[span_42](start_span)[span_42](end_span)ं।</li>
-                <li style="margin-bottom:10px;"><b>कोई भी पार्टी किसी जाति का 100% वोट नहीं पा सकती:</b> जब लोग किसी जाति को किसी दल का 'वोट बैंक' कहते हैं, तो उसका मतलब सिर्फ यह होता है कि उस जाति के *ज़्यादातर लोग* उसे वोट दे रहे हैं, सभी नहीं[span_43](start_span)[span_43](end_span)। एक ही जाति के भीतर अमीर और गरीब लोगों के हित अलग-अलग होते हैं[span_44](start_span)[span_44](end_span)ं।</li>
+            <ol style="font-size:14.5px; font-weight:600; color:#334155; padding-left:15px; line-height:1.75;">
+                <li style="margin-bottom:10px;"><b>किसी भी क्षेत्र में एक जाति का पूर्ण बहुमत नहीं:</b> देश के किसी भी एक संसदीय क्षेत्र में किसी एक जाति के लोगों का बहुमत नहीं है। इसलिए उम्मीदवार को जीतने के लिए एक जाति से ज़्यादा लोगों का भरोसा जीतना ही पड़ता है।</li>
+                <li style="margin-bottom:10px;"><b>कोई भी party एक जाति का 100% वोट नहीं पा सकती:</b> जब किसी जाति को किसी दल का 'वोट बैंक' कहा जाता है बेटा, तो इसका मतलब सिर्फ यह होता है कि उस जाति के *ज़्यादातर लोग* उस पार्टी को वोट दे रहे हैं। एक ही जाति के भीतर अमीर और गरीब लोगों के हित बिल्कुल अलग-अलग होते हैं।</li>
             </ol>
+
+            <!-- INTERACTIVE MICRO GAME 2 -->
+            <div class="game-panel" style="border-color: #166534; background: #f0fdf4;">
+                <div class="game-card-title" style="color: #14532d;">🎮 गेम 2: चुनावी गणित की परीक्षा (जल्दी बताओ!)</div>
+                <p style="font-size: 13.5px; font-weight: 600; color: #1e293b;">मान लो संजू सर के चुनाव क्षेत्र में यादव जाति के मतदाता सबसे ज़्यादा हैं। क्या संजू सर केवल यादव जाति का समर्थन पाकर चुनाव एकतरफा जीत सकते हैं?</p>
+                <div class="game-options-list">
+                    <button class="game-option-btn" onclick="triggerFeedback('g2-no')">A) हाँ, क्योंकि वह सबसे बड़ा वोट बैंक है।</button>
+                    <button class="game-option-btn" onclick="triggerFeedback('g2-ok')">B) नहीं, क्योंकि किसी भी क्षेत्र में एक जाति का पूर्ण बहुमत नहीं होता और उम्मीदवार को अन्य समाजों का वोट भी चाहिए।</button>
+                </div>
+                <div id="game2-fb" class="game-reply-msg"></div>
+            </div>
         </div>
 
         <!-- ==================== KAHANI CORNER ==================== -->
         <div class="kahani-box">
-            <div class="kahani-title">📖 संजू और पिंकी के घर की मजेदार कहानी</div>
+            <div class="kahani-title">📖 गुरुजी की मजेदार कहानी: संजू और पिंकी के घर का बजट</div>
             <p style="font-size:14px; font-weight:600; color:#9a3412; text-align:justify; line-height:1.7;">
-                बच्चो, इसे एक घरेलू कहानी से समझो! संजू और पिंकी दो भाई-बहन हैं। संजू जब भी बाहर से खेल कर आता है, अपनी रफ कॉपी सोफे पर फेंक देता है और कहता है—"मम्मी, भूख लगी है, खाना लाओ!" पिंकी बेचारी स्कूल से आते ही मम्मी के साथ रसोई में हाथ बंटाने लगती है[span_45](start_span)[span_45](end_span)। <br><br>
-                एक दिन पिंकी ने संजू से कहा—"भाई, झाड़ू लगाना और खाना बनाना सिर्फ मेरा काम थोड़ी है! तुम भी तो हाथ बंटाओ।" संजू हंस कर बोला—"अरे, ये काम तो लड़कियों के होते हैं[span_46](start_span)[span_46](end_span)।" मम्मी ने तुरंत संजू को डांटा और कहा—"बेटा, जब बड़े होकर तुम होटल मैनेजमेंट का कोर्स करोगे और शेफ बनोगे, तब तो तुम इसी काम के पैसे लोगе[span_47](start_span)[span_47](end_span)! फिर घर के काम को छोटा क्यों समझना?" <br><br>
-                बस यही **श्रम का लैंगिक विभाजन** है बेटा[span_48](start_span)[span_48](end_span)। जब तक हम घर के भीतर और बाहर दोनों जगह महिलाओं को बराबरी का सम्मान और अवसर नहीं देंगे, तब तक हमारा लोकतंत्र सच्चा लोकतंत्र नहीं बन सकता[span_49](start_span)[span_49](end_span)ं।
+                बच्चो, इसे एक घरेलू कहानी से समझो! संजू और पिंकी दो भाई-बहन हैं। संजू जब भी बाहर से खेल कर आता है, अपनी रफ कॉपी सोफे पर फेंक देता है और कहता है—"मम्मी, भूख लगी है, खाना लाओ!" पिंकी बेचारी school से आते ही मम्मी के साथ रसोई में हाथ बंटाने लगती है। <br><br>
+                एक दिन पिंकी ने संजू से कहा—"भाई, झाड़ू लगाना और खाना बनाना सिर्फ मेरा काम थोड़ी है! तुम भी तो हाथ बंटाओ।" संजू हंस कर बोला—"अरे, ये काम तो लड़कियों के होते हैं।" मम्मी ने तुरंत संजू को डांटा और कहा—"बेटा, जब बड़े होकर तुम होटल मैनेजमेंट का कोर्स करोगे और शेफ बनोगे, तब तो तुम इसी काम के पैसे लोगे! फिर घर के काम को छोटा क्यों समझना?" <br><br>
+                बस यही **श्रम का लैंगिक विभाजन** है बेटा। जब तक हम घर के भीतर और बाहर दोनों जगह महिलाओं को बराबरी का सम्मान और अवसर नहीं देंगे, तब तक हमारा लोकतंत्र सच्चा लोकतंत्र नहीं बन सकता।
             </p>
         </div>
 
-        <!-- ==================== QUICK FACT CAPSULE TABLE ==================== -->
+        <!-- ==================== COMPLETE MASTER FACT CAPSULE TABLE ==================== -->
         <div class="fact-capsule-section">
             <div class="capsule-title">📊 त्वरित रिवीज़न कैप्सूल: पूरे पाठ का महा-निचोड़</div>
-            <table class="master-table" style="margin: 0;">
+            <table class="master-data-table" style="margin: 0;">
                 <thead>
                     <tr>
-                        <th style="background:#3b0764; color:white;">मुख्य मसला</th>
-                        <th style="background:#3b0764; color:white;">महत्वपूर्ण आँकड़े / कानून</th>
-                        <th style="background:#3b0764; color:white;">लोकतांत्रिक समाधान / स्थिति</th>
+                        <th style="background:#4c1d95; color:white;">मुख्य सामाजिक मसला</th>
+                        <th style="background:#4c1d95; color:white;">महत्वपूर्ण आँकड़े / कानून</th>
+                        <th style="background:#4c1d95; color:white;">लोकतांत्रिक समाधान / संवैधानिक स्थिति</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td><b>लैंगिक मसला (Gender)</b></td>
-                        <td>महिला साक्षरता: 54% (पुरुष: 76%)[span_50](start_span)[span_50](end_span)<br>बाल लिंगानुपात: 919[span_51](start_span)[span_51](end_span)</td>
-                        <td>स्थानीय निकायों में 1/3 आरक्षण[span_52](start_span)[span_52](end_span) और **नारी शक्ति वंदन अधिनियम 2023** द्वारा संसद में 33% आरक्षण[span_53](start_span)[span_53](end_span)ं।</td>
+                        <td>महिला साक्षरता: 54% (पुरुष: 76%)<br>बाल लिंगानुपात: 919</td>
+                        <td>स्थानीय निकायों में 1/3 पद आरक्षित। **नारी शक्ति वंदन अधिनियम 2023** द्वारा संसद में 33% सीटों का आरक्षण।</td>
                     </tr>
                     <tr>
                         <td><b>धार्मिक मसला (Religion)</b></td>
-                        <td>हिंदू: 79.8%, मुस्लिम: 14.2%[span_54](start_span)[span_54](end_span)<br>ईसाई: 2.3%, सिख: 1.7%[span_55](start_span)[span_55](end_span)</td>
-                        <td>**धर्मनिरपेक्ष शासन का मॉडल:** संविधान किसी भी धर्म को विशेष दर्जा नहीं देता, सभी धर्म समान हैं[span_56](start_span)[span_56](end_span)ं।</td>
+                        <td>हिंदू: 79.8%, मुस्लिम: 14.2%<br>ईसाई: 2.3%, सिख: 1.7%</td>
+                        <td><b>धर्मनिरपेक्ष शासन Model:</b> भारतीय राज्य का कोई राजकीय धर्म नहीं है, सभी नागरिकों को पूर्ण धार्मिक आजादी है।</td>
                     </tr>
                     <tr>
                         <td><b>जातिगत मसला (Caste)</b></td>
-                        <td>अनुसूचित जाति (SC): 16.6%[span_57](start_span)[span_57](end_span)<br>अनुसूचित जनजाति (ST): 8.6%[span_58](start_span)[span_58](end_span)</td>
-                        <td>भेदभाव और छुआछूत का पूर्ण निषेध[span_59](start_span)[span_59](end_span), दलित और पिछड़ी जातियों की निर्णय प्रक्रिया में हिस्सेदारी बढ़ाना[span_60](start_span)[span_60](end_span)ं।</td>
+                        <td>अनुसूचित जाति (SC): 16.6%<br>अनुसूचित जनजाति (ST): 8.6%</td>
+                        <td>संविधान द्वारा जातिगत भेदभाव और छुआछूत का पूर्ण निषेध, कमज़ोर वर्गों के लिए निर्णय प्रक्रिया में हिस्सेदारी।</td>
                     </tr>
                 </tbody>
             </table>
-            <div class="exam-booster-note" style="background:#fdf4ff; border-color:#a855f7; color:#6b21a8; font-weight:700; padding:12px; border-radius:4px; margin-top:15px;">
-                🎓 <b>गुरुजी का अंतिम संदेश:</b> तो बच्चो, राजनीति में सामाजिक असमानताओं का दिखना कोई बुरी बात नहीं है[span_61](start_span)[span_61](end_span)। जब वंचित समूहों (महिलाओं और पिछड़ी जातियों) की माँगें राजनीति में उठती हैं, तो लोकतंत्र मजबूत होता है[span_62](start_span)[span_62](end_span)। लेकिन केवल जाति या धर्म के आधार पर नफरत फैलाना लोकतंत्र को तबाह कर देता है[span_63](start_span)[span_63](end_span)। इसे अच्छे से याद रखना बेटा!
+            <div class="booster-footer-note">
+                🎓 <b>गुरुजी का अंतिम महा-निचोड़:</b> बच्चो, राजनीति में सामाजिक असमानताओं की अभिव्यक्ति होना लोकतंत्र के लिए कोई खतरा नहीं है। जब पिछड़ी जातियों या महिलाओं के हक की बात राजनीतिक तौर पर उठती है, तो वंचित समूहों को लाभ होता है। लेकिन केवल जातिवाद या सांप्रदायिकता के आधार पर समाज को बांटना लोकतंत्र के लिए घातक होता है। इसे अच्छे से याद रखना बेटा!
             </div>
         </div>
 
-        <!-- Back Button -->
-        <a href="sst-civics.html" class="action-footer-btn">🔙 मुख्य अध्याय लिस्ट पर वापस जाएं</a>
+        <!-- Back Menu System Button -->
+        <a href="sst-civics.html" class="menu-back-btn">🔙 मुख्य अध्याय लिस्ट पर वापस जाएं</a>
     </div>
 </div>
 
 <script>
-    function showFeedback(type) {
-        var g1Fb = document.getElementById('g1-feedback');
-        var g2Fb = document.getElementById('g2-feedback');
+    function triggerFeedback(type) {
+        var g1 = document.getElementById('game1-fb');
+        var g2 = document.getElementById('game2-fb');
         
-        if(type === 'g1-wrong') {
-            g1Fb.style.display = 'block';
-            g1Fb.style.background = '#fef2f2';
-            g1Fb.style.color = '#991b1b';
-            g1Fb.innerHTML = '❌ गलत प्रयास बेटा! धर्मनिरपेक्ष व्यवस्था तो सभी धर्मों को बराबर सम्मान देती है। फिर से सोचो!';
-        } else if(type === 'g1-right') {
-            g1Fb.style.display = 'block';
-            g1Fb.style.background = '#f0fdf4';
-            g1Fb.style.color = '#166534';
-            g1Fb.innerHTML = '🎉 एकदम सही जवाब मेरे शेर! पुरुषों को महिलाओं से ज़्यादा शक्ति देने वाली इस सामाजिक व्यवस्था को "पितृ-प्रधान समाज" कहते हैं। 1 नंबर पक्का!';
-        } else if(type === 'g2-wrong') {
-            g2Fb.style.display = 'block';
-            g2Fb.style.background = '#fef2f2';
-            g2Fb.style.color = '#991b1b';
-            g2Fb.innerHTML = '❌ गलत उत्तर बेटा! समान मज़दूरी अधिनियम तो कल-कारखानों और खेतों में समान वेतन दिलाने के लिए है। दोबारा कोशिश करो।';
-        } else if(type === 'g2-right') {
-            g2Fb.style.display = 'block';
-            g2Fb.style.background = '#f0fdf4';
-            g2Fb.style.color = '#166534';
-            g2Fb.innerHTML = '🎉 शानदार! बिल्कुल सही उत्तर। नारी शक्ति वंदन अधिनियम 2023 के तहत ही अब देश की लोकसभा और विधानसभाओं में महिलाओं को 33% आरक्षण दिया गया है। आपकी तैयारी बहुत बेहतरीन है बेटा!';
+        if(type === 'g1-no') {
+            g1.style.display = 'block';
+            g1.style.background = '#fef2f2';
+            g1.style.color = '#991b1b';
+            g1.innerHTML = '❌ गलत प्रयास बेटा! धर्मनिरपेक्ष व्यवस्था तो धार्मिक स्वतंत्रता देती है। फिर से सोचो!';
+        } else if(type === 'g1-ok') {
+            g1.style.display = 'block';
+            g1.style.background = '#dcfce7';
+            g1.style.color = '#15803d';
+            g1.innerHTML = '🎉 शाबाश बेटा! एकदम सही जवाब। पुरुषों को महिलाओं से ज़्यादा शक्ति देने वाली इस सामाजिक व्यवस्था को "पितृ-प्रधान समाज" कहते हैं। 1 नंबर पक्का!';
+        } else if(type === 'g2-no') {
+            g2.style.display = 'block';
+            g2.style.background = '#fef2f2';
+            g2.style.color = '#991b1b';
+            g2.innerHTML = '❌ गलत उत्तर बेटा! अगर अगड़ी या अन्य पिछड़ी जातियों ने मिलकर विरोध में वोट दे दिया तो संजू सर बुरी तरह हार जाएंगे। दोबारा कोशिश करो।';
+        } else if(type === 'g2-ok') {
+            g2.style.display = 'block';
+            g2.style.background = '#dcfce7';
+            g2.style.color = '#15803d';
+            g2.innerHTML = '🎉 अरे गजब! बिल्कुल सही उत्तर। किसी भी चुनाव क्षेत्र में एक जाति का पूर्ण बहुमत नहीं होता, इसलिए उम्मीदवार को सभी समाजों को साथ लेकर चलना पड़ता है। बोर्ड एग्जाम का एक और पक्का सवाल तैयार!';
         }
     }
     document.addEventListener('contextmenu', event => event.preventDefault());
