@@ -59,6 +59,25 @@
         .bar-fill-dutch { background: #ef4444; height: 100%; width: 59%; }
         .bar-fill-french { background: #3b82f6; height: 100%; width: 40%; }
         .bar-fill-german { background: #10b981; height: 100%; width: 1%; }
+
+        /* 📊 Naye CSS Diagrams Layouts */
+        .diagram-container { display: flex; flex-direction: column; gap: 20px; background: #f0fdfa; border: 2px solid #bcc4cc; border-radius: 18px; padding: 16px; margin: 20px 0; text-align: center; }
+        .diagram-title { font-size: 14px; font-weight: 800; color: #0f766e; margin-bottom: 5px; }
+        
+        /* Horizontal Row */
+        .row-layout { display: flex; justify-content: space-around; align-items: center; position: relative; margin-top: 10px; }
+        .row-layout::before { content: ''; position: absolute; left: 10%; right: 10%; top: 50%; height: 2px; background: #cbd5e1; z-index: 1; }
+        .node-box { background: white; border: 2px solid #06b6d4; padding: 8px 12px; border-radius: 12px; font-size: 12px; font-weight: 800; color: #0891b2; z-index: 2; min-width: 85px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        
+        /* Vertical Stack */
+        .stack-layout { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 10px; }
+        .stack-box { background: white; border: 2px solid #3b82f6; padding: 10px 20px; border-radius: 12px; font-size: 13px; font-weight: 800; color: #1d4ed8; width: 80%; box-shadow: 0 4px 6px rgba(0,0,0,0.05); position: relative; }
+        .stack-arrow { font-size: 14px; color: #94a3b8; line-height: 1; margin: -4px 0; }
+        
+        .notes-table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 13px; font-weight: 600; }
+        .notes-table th, .notes-table td { border: 1px solid #cbd5e1; padding: 10px; text-align: left; }
+        .notes-table th { background-color: #f3e8ff; color: #6b21a8; font-weight: 800; }
+        .back-btn { display: block; text-align: center; text-decoration: none; background: #1e3a8a; color: white; padding: 12px; border-radius: 12px; font-weight: 800; margin-top: 20px; }
     </style>
 </head>
 <body>
@@ -173,7 +192,7 @@
             </ol>
 
             <span class="kids-sub-heading" style="background: #fff7ed; border-left-color: #f97316;">💥 भयंकर नतीजा: श्रीलंका का गृहयुद्ध (Civil War)</span>
-            <p class="easy-text">इन भेदभाव वाले नियमों के कारण श्रीलंकाई तमिलों का दिल टूट गया। उन्हें लगा कि इस देश की सरकार और पार्टियां हमारे साथ परायों जैसा बर्ताव कर रही हैं। इसके बाद तमिलों ने भी अपनी आवाज उठाई:</p>
+            <p class="easy-text">इन भेदभाव वाले नियमों के कारण श्रीलंकाई तमिलों का दिल टूट गया। उन्होंने लगा कि इस देश की सरकार and पार्टियां हमारे साथ परायों जैसा बर्ताव कर रही हैं। इसके बाद तमिलों ने भी अपनी आवाज उठाई:</p>
             
             <ul class="visual-list">
                 <li>तमिलों ने अपने हक के लिए अपनी खुद की राजनीतिक पार्टियाँ बनाईं और संघर्ष शुरू किया।</li>
@@ -263,7 +282,7 @@
                         <td class="easy-text" style="font-size: 13.5px; padding: 12px; vertical-align: top;">
                             • यह तर्क कहता है कि सत्ता की साझेदारी करना <b>लोकतंत्र की आत्मा (Spirit of Democracy) है</b>। इसके बिना लोकतंत्र का कोई वजूद ही नहीं है।<br><br>
                             • लोकतंत्र का सीधा मतलब ही यही होता है कि जिन लोगों के ऊपर शासन किया जा रहा है, उनके साथ सत्ता को साझा किया जाए और उनकी राय ली जाए।<br><br>
-                            • <b>सरल शब्दों में:</b> यह किसी फायदे के लिए नहीं, बल्कि इसके <b>अंतर्भूत महत्व (Moral Value)</b> पर ज़ora देता है कि ऐसा करना सही और न्यायसंगत है।
+                            • <b>सरल शब्दों में:</b> यह किसी फायदे के लिए नहीं, बल्कि इसके <b>intent महत्व (Moral Value)</b> पर ज़ोरा देता है कि ऐसा करना सही और न्यायसंगत है।
                         </td>
                     </tr>
                 </tbody>
@@ -294,34 +313,45 @@
             <p class="easy-text">प्यारे बच्चों, पुराने जमाने में लोग सोचते थे कि सरकार की सारी ताकत किसी एक राजा या एक जगह बैठे कुछ लोगों के हाथ में होनी चाहिए, नहीं तो फैसले लेने में बहुत समय लगेगा और देश चलाना मुश्किल हो जाएगा। लेकिन लोकतंत्र (Democracy) आने के बाद यह सोच पूरी तरह बदल गई। आज के समय में सत्ता का बँटवारा मुख्य रूप से <b>चार अलग-अलग रूपों (Ways)</b> में किया जाता है, जो बोर्ड परीक्षा में 5 नंबर का सीधा बड़ा सवाल बनता है:</p>
 
             <span class="kids-sub-heading" style="background: #ecfeff; border-left-color: #06b6d4;">🏢 1. शासन के विभिन्न अंगों के बीच (क्षैतिज वितरण - Horizontal Sharing)</span>
-            <p class="easy-text">इसमें सरकार के तीन सबसे बड़े भाइयों के बीच शक्तियों को बराबर स्तर पर बाँट दिया जाता है, ताकि कोई भी एक भाई अपनी मनमर्जी न चला सके:</p>
-            <ul class="visual-list">
-                <li><b>विधायिका (Legislature):</b> जिसका काम देश के लिए कानून बनाना है (जैसे संसद)।</li>
-                <li><b>कार्यपालिका (Executive):</b> जिसका काम उन कानूनों को देश में लागू करना है (जैसे प्रधानमंत्री, मंत्री और पुलिस)।</li>
-                <li><b>न्यायपालिका (Judiciary):</b> जिसका काम यह देखना है कि सब कानून के हिसाब से चल रहा है या नहीं, और झगड़ों का निपटारा करना (जैसे कोर्ट)।</li>
-            </ul>
-            <p class="easy-text"><b>नियंत्रण और संतुलन की व्यवस्था (Checks and Balances):</b> चूँकि ये तीनों एक ही लेवल पर रहकर काम करते हैं, इसलिए ये एक-दूसरे पर नजर रखते हैं और शक्तियों का संतुलन बनाए रखते हैं। इसे ही शासन का <b>क्षैतिज वितरण</b> कहते हैं।</p>
+            <p class="easy-text">इसमें सरकार के तीन सबसे बड़े भाइयों के बीच शक्तियों को बराबर स्तर पर बाँट दिया जाता है, ताकि कोई भी एक भाई अपनी मनमर्जी न चला सके। चूँकि ये तीनों एक ही लेवल पर रहकर काम करते हैं, इसलिए ये एक-दूसरे पर नजर रखते हैं और शक्तियों का संतुलन बनाए रखते हैं। इसे ही शासन का <b>क्षैतिज वितरण</b> या <b>'नियंत्रण और संतुलन की व्यवस्था' (Checks and Balances)</b> कहते हैं।</p>
+
+            <!-- 📊 3D CSS DIAGRAM: HORIZONTAL DISTRIBUTION -->
+            <div class="diagram-container">
+                <div class="diagram-title">↔️ क्षैतिज वितरण (Horizontal - समान स्तर पर बँटवारा)</div>
+                <div class="row-layout">
+                    <div class="node-box">🏛️ विधायिका<br><span style="font-size:9px;color:#64748b;">(कानून बनाना)</span></div>
+                    <div class="node-box">🤝 कार्यपालिका<br><span style="font-size:9px;color:#64748b;">(कानून लागू करना)</span></div>
+                    <div class="node-box">⚖️ न्यायपालिका<br><span style="font-size:9px;color:#64748b;">(न्याय करना)</span></div>
+                </div>
+            </div>
+
+            <div class="example-container" style="background: #ecfeff; border-color: #cffafe;">
+                <div class="example-title" style="color: #0891b2;">💡 चलो इसे 'तीन सगे भाइयों' के उदाहरण से समझें:</div>
+                <p class="easy-text" style="margin: 0; font-size: 13.5px; color: #475569;">मान लो एक दुकान पर तीन सगे भाई बैठते हैं। पहले भाई का काम है सामान का रेट तय करना (विधायिका), दूसरे का काम है ग्राहक को सामान बेचना (कार्यपालिका) और तीसरे का काम है गल्ले के पैसों का हिसाब देखना कि किसी ने चोरी तो नहीं की (न्यायपालिका)। तीनों का पावर बराबर है और तीनों एक-दूसरे पर नजर रखते हैं ताकि दुकान में कोई गड़बड़ न हो!</p>
+            </div>
 
             <span class="kids-sub-heading" style="background: #ecfeff; border-left-color: #06b6d4;">🗺️ 2. सरकार के विभिन्न स्तरों के बीच (ऊर्ध्वाधर वितरण - Vertical Sharing)</span>
-            <p class="easy-text">इसमें शक्तियों का बँटवारा ऊपर से नीचे की तरफ अलग-अलग लेवल की सरकारों के बीच होता है:</p>
-            <ul class="visual-list">
-                <li><b>केंद्रीय सरकार (Central Government):</b> जो पूरे देश के बड़े फैसले लेती है (जैसे दिल्ली की सरकार)।</li>
-                <li><b>राज्य सरकार (State Government):</b> जो अपने-अपने राज्य के फैसले लेती है (जैसे राजस्थान या उत्तर प्रदेश की सरकार)।</li>
-                <li><b>स्थानीय सरकार (Local Government):</b> जो गाँव और शहरों के लेवल पर काम करती है (जैसे पंचायत और नगरपालिका)।</li>
-            </ul>
-            <p class="easy-text"><b>संघीय विभाजन (Federal Division):</b> जब बड़ी सरकार अपनी कुछ शक्तियां नीचे की सरकारों को सौंप देती है, तो इसे सत्ता का <b>ऊर्ध्वाधर (Vertical) या संघीय वितरण</b> कहा जाता है।</p>
+            <p class="easy-text">इसमें शक्तियों का बँटवारा ऊपर से नीचे की तरफ अलग-अलग लेवल की सरकारों के बीच होता है। जब बड़ी सरकार अपनी कुछ शक्तियां नीचे की सरकारों को सौंप देती है, तो इसे सत्ता का <b>ऊर्ध्वाधर (Vertical) या संघीय वितरण (Federal Division)</b> कहा जाता है।</p>
+
+            <!-- 📊 3D CSS DIAGRAM: VERTICAL DISTRIBUTION -->
+            <div class="diagram-container" style="background: #f0fdfa; border-color: #cbd5e1;">
+                <div class="diagram-title" style="color: #1d4ed8;">↕️ ऊर्ध्वाधर वितरण (Vertical - ऊपर से नीचे बँटवारा)</div>
+                <div class="stack-layout">
+                    <div class="stack-box" style="background: #1e3a8a; color: white; border-color: #1e293b;">👑 केंद्र सरकार <span style="font-size:10px; opacity:0.8;">(पूरे देश के लिए)</span></div>
+                    <div class="stack-arrow">▼</div>
+                    <div class="stack-box" style="background: #3b82f6; color: white; border-color: #2563eb;">📍 राज्य सरकार <span style="font-size:10px; opacity:0.8;">(अपने राज्य के लिए)</span></div>
+                    <div class="stack-arrow">▼</div>
+                    <div class="stack-box" style="background: #60a5fa; color: #1e293b; border-color: #3b82f6;">🏡 स्थानीय सरकार <span style="font-size:10px; font-weight:700;">(पंचायत / नगरपालिका)</span></div>
+                </div>
+            </div>
 
             <span class="kids-sub-heading" style="background: #ecfeff; border-left-color: #06b6d4;">👥 3. विभिन्न सामाजिक समूहों के बीच (Social Groups)</span>
-            <p class="easy-text">समाज में रहने वाले अलग-अलग धार्मिक और भाषाई समूहों को भी सरकार में हिस्सा दिया जाता है ताकि कोई खुद को पराया न समझे:</p>
-            <ul class="visual-list">
-                <li>इसका सबसे अच्छा उदाहरण हमने बेल्जियम की <b>'सामुदायिक सरकार'</b> के रूप में देखा।</li>
-                <li>हमारे भारत देश में समाज के पिछड़े वर्गों, अनुसूचित जातियों (SC), जनजातियों (ST) और महिलाओं को संसद और विधानसभाओं में <b>आरक्षित चुनाव क्षेत्र (Reserved Constituencies)</b> की सहूलियत दी जाती है ताकि उनकी आवाज़ भी सरकार तक पहुँच सके।</li>
-            </ul>
+            <p class="easy-text">समाज में रहने वाले अलग-अलग धार्मिक और भाषाई समूहों को भी सरकार में हिस्सा दिया जाता है ताकि कोई खुद को पराया न समझे। इसका सबसे अच्छा उदाहरण हमने बेल्जियम की <b>'सामुदायिक सरकार'</b> के रूप में देखा। हमारे भारत देश में समाज के पिछड़े वर्गों और महिलाओं को संसद और विधानसभाओं में <b>आरक्षित चुनाव क्षेत्र (Reserved Constituencies)</b> की सहूलियत दी जाती है ताकि उनकी आवाज़ भी सरकार तक पहुँच सके।</p>
 
             <span class="kids-sub-heading" style="background: #ecfeff; border-left-color: #06b6d4;">📢 4. राजनीतिक दलों, दबाव समूहों और आंदोलनों के बीच</span>
-            <p class="easy-text">लोकतंत्र में जनता के पास यह पूरी आज़ादी होती है कि वे अपनी पसंद की सरकार चुन सकें। इसके कारण सत्ता का बँटवारा इस प्रकार होता है:</p>
+            <p class="easy-text">लोकतंत्र में जनता के पास यह पूरी आज़ादी होती है कि वे अपनी पसंद की सरकार चुन सकें। इसके कारण सत्ता का वितरण इस प्रकार होता है:</p>
             <ul class="visual-list">
-                <li><b>गठबंधन सरकार (Coalition Government):</b> जब चुनाव में किसी एक पार्टी को बहुमत नहीं मिलता, तो दो या दो से अधिक पार्टियां मिलकर सरकार बना लेती हैं। यह सत्ता की साझेदारी का सबसे बड़ा और प्रत्यक्ष उदाहरण है।</li>
+                <li><b>गठबंधन सरकार (Coalition Government):</b> जब चुनाव में किसी एक पार्टी को बहुमत नहीं मिलता, तो दो या दो से अधिक पार्टियां मिलकर सरकार बना लेती हैं। यह सत्ता की साझेदारी का सबसे बड़ा प्रत्यक्ष उदाहरण है।</li>
                 <li><b>दबाव समूह (Pressure Groups):</b> बड़े-बड़े व्यापारी, किसान, और मजदूर संगठन भी अपनी मांगों को लेकर सरकार की नीतियों पर दबाव डालते हैं और अप्रत्यक्ष रूप से सत्ता में अपनी हिस्सेदारी तय करते हैं।</li>
             </ul>
             
