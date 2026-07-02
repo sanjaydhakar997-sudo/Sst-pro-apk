@@ -66,7 +66,7 @@
 
     @keyframes pulseGlow {
       0%, 100% { transform: scale(1); box-shadow: 0 12px 24px var(--primary-glow); }
-      50% { transform: scale(1.02); box-shadow: 0 18px 35px rgba(190, 24, 93, 0.45); }
+      50% { transform: scale(1.01); box-shadow: 0 15px 30px rgba(190, 24, 93, 0.45); }
     }
 
     .brand-header::before {
@@ -147,20 +147,9 @@
       background: linear-gradient(90deg, #22c55e, #4ade80, #22c55e);
       background-size: 200% 100%;
       height: 100%;
-      width: 100%;
+      width: 20%; /* भाग 1 के लिए 20% लोड */
       border-radius: 12px;
       box-shadow: 0 0 10px rgba(34, 197, 94, 0.4);
-      animation: slideProgress 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards, progressShimmer 2s linear infinite;
-    }
-
-    @keyframes slideProgress {
-      from { width: 0%; }
-      to { width: 100%; }
-    }
-
-    @keyframes progressShimmer {
-      0% { background-position: 0% 0%; }
-      100% { background-position: 200% 0%; }
     }
 
     /* 📝 मुख्य नोट्स कार्ड + फ्लोटिंग एंट्रेंस एनीमेशन */
@@ -177,10 +166,7 @@
       animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
     
-    .note-card:hover {
-      border-color: var(--primary-glow);
-    }
-    
+    .note-card:hover { border-color: var(--primary-glow); }
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
@@ -210,46 +196,8 @@
       position: relative;
       transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
-    
-    .story-box:hover {
-      transform: scale(1.01);
-    }
-    
-    .story-title { 
-      font-weight: 800; 
-      color: #9d174d; 
-      margin-bottom: 8px; 
-      display: flex; 
-      align-items: center; 
-      gap: 6px; 
-      font-size: 15.5px;
-    }
-
-    /* 💡 देशी जुगाड़ बॉक्स (नियॉन बॉर्डर) */
-    .desi-box {
-      background: linear-gradient(135deg, #fef9c3 0%, #fef08a 100%);
-      border-left: 6px solid #ca8a04;
-      padding: 16px;
-      border-radius: 14px;
-      margin: 18px 0;
-      font-size: 14.5px;
-      box-shadow: 0 4px 12px rgba(202, 138, 4, 0.05);
-      transition: transform 0.3s ease;
-    }
-    
-    .desi-box:hover {
-      transform: translateX(4px);
-    }
-    
-    .desi-title { 
-      font-weight: 800; 
-      color: #854d0e; 
-      margin-bottom: 6px; 
-      font-size: 15.5px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
+    .story-box:hover { transform: scale(1.01); }
+    .story-title { font-weight: 800; color: #9d174d; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; font-size: 15.5px; }
 
     /* 📊 वेन आरेख विजुअल (इंटरैक्टिव पॉप-अप लुक) */
     .venn-container {
@@ -278,212 +226,13 @@
       box-shadow: 0 10px 20px rgba(15, 23, 42, 0.05);
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       cursor: pointer;
-      position: relative;
     }
     
     .venn-circle:hover { 
       transform: translateY(-6px) scale(1.04); 
       box-shadow: 0 15px 30px rgba(15, 23, 42, 0.12);
     }
-    
-    .venn-circle span { 
-      font-size: 11px; 
-      font-weight: 600; 
-      margin-top: 6px; 
-      line-height: 1.4;
-      opacity: 0.9; 
-    }
-
-    /* 🌳 गुणनखंडन ट्री विजुअल */
-    .visual-tree {
-      background: #fff7ed;
-      border: 2px solid #ffedd5;
-      padding: 20px;
-      border-radius: 16px;
-      margin: 20px 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-    }
-    .tree-level { display: flex; align-items: center; justify-content: center; gap: 30px; width: 100%; }
-    .node { padding: 8px 16px; font-weight: 800; font-size: 14px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-    .node.composite { background: #ffedd5; border: 2px solid #ea580c; color: #7c2d12; border-radius: 8px; }
-    .node.prime { background: #dcfce7; border: 2px solid #16a34a; color: #14532d; border-radius: 50%; width: 42px; height: 42px; padding: 0; display: flex; align-items: center; justify-content: center; }
-    .tree-branch { font-size: 16px; font-weight: 900; color: #ea580c; line-height: 1; }
-    .tree-box { background: #fff7ed; border: 1px solid #ffedd5; padding: 12px; border-radius: 12px; font-family: monospace; font-size: 14px; color: #7c2d12; margin: 12px 0; }
-
-    /* 💀 डेंजर ज़ोन */
-    .danger-box {
-      background-color: #fee2e2;
-      border-left: 6px solid var(--danger);
-      padding: 14px;
-      border-radius: 12px;
-      margin: 15px 0;
-      font-size: 14.5px;
-    }
-    .danger-title { font-weight: 800; color: #991b1b; margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
-
-    /* 🎯 फॉर्मूला और हाइलाइटर्स */
-    .formula-card {
-      background: linear-gradient(135deg, #f0fdf4, #dcfce7);
-      border: 2px solid #bbf7d0;
-      padding: 15px;
-      border-radius: 14px;
-      text-align: center;
-      font-size: 16px;
-      font-weight: 800;
-      color: #14532d;
-      margin: 15px 0;
-      box-shadow: 0 4px 10px rgba(34, 197, 94, 0.1);
-    }
-    .game-box {
-      background: linear-gradient(135deg, #eff6ff, #dbeafe);
-      border: 2px dashed #3b82f6;
-      padding: 14px;
-      border-radius: 14px;
-      margin: 15px 0;
-      transition: all 0.3s ease;
-    }
-    .game-box:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(59, 130, 246, 0.15); }
-    .game-title { font-weight: 800; color: #1e40af; font-size: 15px; margin-bottom: 6px; }
-    .reveal-btn { background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: white; border: none; padding: 10px; border-radius: 8px; font-weight: 700; font-size: 13px; cursor: pointer; width: 100%; transition: background 0.2s; }
-    .reveal-btn:active { transform: scale(0.98); }
-    .hidden-answer { display: none; background: white; padding: 12px; border-radius: 8px; margin-top: 10px; border-left: 5px solid #22c55e; font-size: 14px; animation: slideDown 0.4s ease-out forwards; }
-
-    /* 📝 इंटरैक्टिव अभ्यास / एक्सरसाइज सेक्शन स्टाइल */
-    .exercise-title {
-      font-size: 19px;
-      font-weight: 900;
-      color: var(--secondary);
-      border-bottom: 3px double #e9d5ff;
-      padding-bottom: 8px;
-      margin-bottom: 18px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .quiz-card {
-      background: linear-gradient(135deg, #faf8ff 0%, #f5f0ff 100%);
-      border: 1.5px solid #e9d5ff;
-      border-radius: 18px;
-      padding: 18px;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.03);
-      transition: all 0.3s ease;
-    }
-
-    .quiz-card:hover {
-      box-shadow: 0 8px 20px rgba(124, 58, 237, 0.06);
-      border-color: #d8b4fe;
-    }
-
-    .quiz-question { 
-      font-size: 15px; 
-      font-weight: 800; 
-      color: var(--dark); 
-      margin-bottom: 14px; 
-      line-height: 1.5;
-    }
-
-    .quiz-options { 
-      display: flex; 
-      flex-direction: column; 
-      gap: 10px; 
-    }
-
-    .quiz-btn {
-      background: #ffffff;
-      border: 1.5px solid #cbd5e1;
-      padding: 12px 16px;
-      border-radius: 12px;
-      text-align: left;
-      font-size: 14px;
-      font-weight: 700;
-      cursor: pointer;
-      color: var(--dark);
-      transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.01);
-    }
-
-    .quiz-btn:hover { 
-      background: #f8fafc; 
-      border-color: var(--secondary);
-      color: var(--secondary);
-      transform: translateX(4px);
-    }
-
-    .quiz-btn:active {
-      transform: scale(0.98) translateX(4px);
-    }
-    
-    .quiz-feedback {
-      display: none;
-      margin-top: 14px;
-      padding: 14px;
-      border-radius: 12px;
-      font-size: 14px;
-      font-weight: 700;
-      line-height: 1.5;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-      animation: slideDown 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-    }
-
-    @keyframes slideDown {
-      from { opacity: 0; transform: translateY(-12px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* 🔥 संकल्प बॉक्स 3D पल्स और ग्लो एनीमेशन */
-    .target-box {
-      background: linear-gradient(135deg, var(--primary), #dc2626, #be185d);
-      background-size: 200% auto;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      border-radius: 20px;
-      font-weight: 800;
-      margin-top: 30px;
-      font-size: 16.5px;
-      cursor: pointer;
-      box-shadow: 0 8px 20px rgba(220, 38, 38, 0.3);
-      transition: all 0.3s ease;
-      animation: targetPulse 2s infinite, gradientShift 4s linear infinite;
-    }
-
-    .target-box:hover {
-      transform: scale(1.02);
-      box-shadow: 0 12px 25px rgba(220, 38, 38, 0.45);
-    }
-
-    .target-box:active { transform: scale(0.99); }
-
-    @keyframes targetPulse {
-      0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.6); }
-      70% { box-shadow: 0 0 0 16px rgba(220, 38, 38, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
-    }
-    
-    .back-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #ffffff;
-      color: var(--dark);
-      text-decoration: none;
-      padding: 14px;
-      border-radius: 14px;
-      font-weight: 700;
-      font-size: 14.5px;
-      margin-top: 22px;
-      border: 1px solid #e2e8f0;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-      transition: all 0.3s ease;
-      gap: 6px;
-    }
-
-    .back-btn:hover { background: #f8fafc; border-color: #cbd5e1; box-shadow: 0 6px 12px rgba(0,0,0,0.04); }
+    .venn-circle span { font-size: 11px; font-weight: 600; margin-top: 6px; line-height: 1.4; opacity: 0.9; }
   </style>
 </head>
 <body>
@@ -495,7 +244,7 @@
       <p>👨‍🏫 मार्गदर्शक: संजय धाकड़ सर</p>
     </div>
 
-    <div class="chapter-banner">🎯 अध्याय 1: वास्तविक संख्याएँ (पूर्ण कनेक्टेड एडिशन)</div>
+    <div class="chapter-banner">🎯 अध्याय 1: वास्तविक संख्याएँ (Part 1)</div>
     <div class="progress-container"><div class="progress-bar"></div></div>
 
     <div class="note-card" style="animation-delay: 0.1s;">
@@ -514,156 +263,412 @@
           <span>बटे ($\frac{p}{q}$) रूप में<br>जैसे: $5, \frac{2}{3}, 0$</span>
         </div>
         <div class="venn-circle" style="background: #f3e8ff; border: 3px solid var(--secondary); color: var(--secondary);">
-          <b>अपरीमेय संख्याएँ</b>
+          <b>अपरिमेय संख्याएँ</b>
           <span>$\sqrt{}$ की जेल में बंद<br>जैसे: $\sqrt{2}, \sqrt{3}, \pi$</span>
         </div>
       </div>
     </div>
+  <style>
+    /* 🌳 गुणनखंडन ट्री विजुअल सीएसएस (Part 2) */
+    .visual-tree {
+      background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+      border: 1.5px solid #fed7aa;
+      padding: 20px;
+      border-radius: 20px;
+      margin: 20px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 4px 12px rgba(234, 88, 12, 0.05);
+    }
+    .tree-level { 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      gap: 25px; 
+      width: 100%; 
+    }
+    .node { 
+      padding: 10px 18px; 
+      font-weight: 800; 
+      font-size: 14.5px; 
+      text-align: center; 
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      transition: transform 0.2s;
+    }
+    .node:hover { transform: scale(1.05); }
+    .node.composite { 
+      background: #ffedd5; 
+      border: 2px solid #ea580c; 
+      color: #7c2d12; 
+      border-radius: 12px; 
+    }
+    .node.prime { 
+      background: #dcfce7; 
+      border: 2px solid #16a34a; 
+      color: #14532d; 
+      border-radius: 50%; 
+      width: 44px; 
+      height: 44px; 
+      padding: 0; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+    }
+    .tree-branch { 
+      font-size: 15px; 
+      font-weight: 900; 
+      color: #ea580c; 
+      line-height: 1; 
+      text-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+  </style>
 
-    <div class="note-card" style="animation-delay: 0.2s;">
-      <div class="section-title">🌳 2. अंकगणित की आधारभूत प्रमेय (गुणनखंड का जादू)</div>
-      <p style="font-size: 14px;">किताब की भारी परिभाषा छोड़ो, सीधा समझो: दुनिया की किसी भी <b>भाज्य संख्या</b> को हम छोटे-छोटे <b>अभाज्य टुकड़ों</b> के गुणा के रूप में लिख सकते हैं।</p>
-      
-      <p style="font-size: 14px; font-weight: 700; margin-bottom: 2px; color: #ea580c;">📚 किताब का सबसे बड़ा उदाहरण (संख्या 32760) का साफ गुणनखंड वृक्ष (Factor Tree):</p>
-      
-      <div class="visual-tree">
-        <div class="tree-level">
-          <div class="node composite">32760</div>
-        </div>
-        <div class="tree-branch">↙ 2 से भाग दिया ↘</div>
-        <div class="tree-level">
-          <div class="node prime">2</div>
-          <div class="node composite">16380</div>
-        </div>
-        <div class="tree-branch">↙ 2 से भाग दिया ↘</div>
-        <div class="tree-level">
-          <div class="node prime">2</div>
-          <div class="node composite">8190</div>
-        </div>
-        <div class="tree-branch">↙ 2 से भाग दिया ↘</div>
-        <div class="tree-level">
-          <div class="node prime">2</div>
-          <div class="node composite">4095</div>
-        </div>
-        <p style="font-size: 12.5px; font-weight: 700; color: #7c2d12; margin-top: 5px;">➔ इसी तरह आगे भाग देने पर अंत में 3, 5, 7 और 13 के टुकड़े बचेंगे!</p>
+  <div class="note-card" style="animation-delay: 0.2s;">
+    <div class="section-title">🌳 2. अंकगणित की आधारभूत प्रमेय (गुणनखंड का जादू)</div>
+    <p style="font-size: 14.5px;">किताब की भारी परिभाषा को छोड़ो बेटा, सीधा खोपड़ी में बिठाओ: दुनिया की किसी भी <b>भाज्य संख्या</b> (जो दूसरों के पहाड़े में आए) को हम छोटे-छोटे <b>अभाज्य टुकड़ों</b> के गुणा के रूप में लिख सकते हैं।</p>
+    
+    <p style="font-size: 14.5px; font-weight: 700; margin-top: 15px; color: #ea580c;">📐 बोर्ड स्पेशल लाइव विजुअल: संख्या 32760 का साफ गुणनखंड वृक्ष (Factor Tree):</p>
+    
+    <div class="visual-tree">
+      <div class="tree-level">
+        <div class="node composite">32760</div>
       </div>
-
-      <p style="font-weight: 800; font-size: 15.5px;">🔥 महा-निचोड़ रूप: <span style="color: var(--primary);">32760 = 2³ × 3² × 5 × 7 × 13</span></p>
-
-      <div class="danger-box">
-        <div class="danger-title">💀 DANGER ZONE: यहाँ नंबर कटेंगे!</div>
-        ध्यान रखना, <b>'1' (एक) न तो भाज्य संख्या है और न ही अभाज्य संख्या है!</b> इसे कभी भी गुणनखंड में शामिल मत करना।
+      <div class="tree-branch">↙ 2 से भाग दिया ↘</div>
+      <div class="tree-level">
+        <div class="node prime">2</div>
+        <div class="node composite">16380</div>
       </div>
+      <div class="tree-branch">↙ 2 से भाग दिया ↘</div>
+      <div class="tree-level">
+        <div class="node prime">2</div>
+        <div class="node composite">8190</div>
+      </div>
+      <div class="tree-branch">↙ 2 से भाग दिया ↘</div>
+      <div class="tree-level">
+        <div class="node prime">2</div>
+        <div class="node composite">4095</div>
+      </div>
+      <p style="font-size: 13px; font-weight: 700; color: #7c2d12; margin-top: 5px; text-align: center;">➔ इसी तरह आगे भाग देने पर अंत में 3, 5, 7 और 13 के अभाज्य टुकड़े बचेंगे! 🎯</p>
     </div>
 
-    <div class="note-card" style="animation-delay: 0.3s;">
-      <div class="section-title">🎯 3. HCF और LCM का असली खेल</div>
-      <p style="font-size: 14px;">अभाज्य गुणनखंड विधि से HCF और LCM निकालना बच्चों का खेल है, बस संजय सर का यह नियम याद रखो:</p>
-      
-      <ul style="padding-left: 20px; margin: 10px 0; font-size: 14.5px;">
-        <li><b>HCF:</b> जो दोनों के पास हो और जिसकी <b>सबसे छोटी घात</b> हो। (कंजूस नियम!)</li>
-        <li><b>LCM:</b> जितने भी अभाज्य नंबर दिख रहे हैं, उन सबकी <b>सबसे बड़ी घात</b> ले लो। (धानी नियम!)</li>
+    <p style="font-weight: 800; font-size: 16px; text-align: center; margin: 15px 0;">
+      🔥 फाइनल टुकड़े: <span style="color: var(--primary);">32760 = 2³ × 3² × 5 × 7 × 13</span>
+    </p>
+
+    <div class="desi-box">
+      <div class="desi-title">💡 संजय सर का देशी जुगाड़:</div>
+      <b>अभाज्य संख्या (Prime Number):</b> जो सिर्फ खुद के पहाड़े से कटे (जैसे: 2, 3, 5, 7, 11...). हमेशा याद रखना बेटा, <b>'2' सबसे छोटी और इकलौती सम (Even) अभाज्य संख्या है!</b> बाकी सब विषम होती हैं।
+    </div>
+
+    <div class="danger-box">
+      <div class="danger-title">💀 DANGER ZONE: यहाँ नंबर कटेंगे!</div>
+      ध्यान रखना बेटा, <b>'1' (एक) न तो भाज्य संख्या है और न ही अभाज्य संख्या है!</b> इसे कभी भी गुणनखंड की लाइन में शामिल मत करना, वरना पूरे नंबर जीरो हो जाएंगे।
+    </div>
+  </div>
+  <style>
+    /* 🎯 HCF & LCM और गेम ज़ोन के शानदार CSS एनिमेशन्स (Part 3) */
+    .formula-card {
+      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+      border: 2px solid #bbf7d0;
+      padding: 15px;
+      border-radius: 14px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 800;
+      color: #14532d;
+      margin: 15px 0;
+      box-shadow: 0 4px 10px rgba(34, 197, 94, 0.1);
+    }
+    .game-box {
+      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+      border: 2px dashed #3b82f6;
+      padding: 16px;
+      border-radius: 16px;
+      margin: 18px 0;
+      transition: all 0.3s ease;
+    }
+    .game-box:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(59, 130, 246, 0.15);
+    }
+    .game-title {
+      font-weight: 800;
+      color: #1e40af;
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+    .reveal-btn {
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      color: white;
+      border: none;
+      padding: 11px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 13.5px;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.2s;
+    }
+    .reveal-btn:active {
+      transform: scale(0.98);
+    }
+    .hidden-answer {
+      display: none;
+      background: white;
+      padding: 14px;
+      border-radius: 10px;
+      margin-top: 12px;
+      border-left: 5px solid #22c55e;
+      font-size: 14px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+      animation: slideDown 0.4s ease-out forwards;
+    }
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+
+  <div class="note-card" style="animation-delay: 0.3s;">
+    <div class="section-title">🎯 3. HCF और LCM का असली खेल (संजय सर का स्पेशल नियम)</div>
+    <p style="font-size: 14.5px;">अभाज्य गुणनखंड निकालने के बाद परीक्षा में HCF और LCM का उत्तर चुटकियों में निकालने के लिए बस ये 2 बातें याद रखो बेटा:</p>
+    
+    <ul style="padding-left: 20px; margin: 12px 0; font-size: 14.5px; line-height: 1.8;">
+      <li><b>HCF (महत्तम समापवर्तक):</b> जो संख्या दोनों के पास कॉमन हो और जिसकी <b>सबसे छोटी घात (पावर)</b> हो, उसे उठा लो। (यानी हमारा <b>कंजूस नियम!</b> 🤫)</li>
+      <li><b>LCM (लघुत्तम समापवर्तक):</b> जितने भी अलग-अलग अभाज्य नंबर दिख रहे हैं, उन सबकी <b>सबसे बड़ी घात (पावर)</b> को गुणा कर दो। (यानी हमारा <b>धानी नियम!</b> 👑)</li>
+    </ul>
+
+    <div class="formula-card">
+      💥 सुपर बोर्ड फॉर्मूला: पहली संख्या × दूसरी संख्या = HCF × LCM
+    </div>
+
+    <div class="game-box">
+      <div class="game-title">🎮 गेम ज़ोन 1: दिमाग की बत्ती जलाओ!</div>
+      <p style="font-size: 14px; margin-bottom: 12px; font-weight: 600;"><b>चैलेंज सवाल:</b> मान लो परीक्षा में आया कि दो संख्याओं का <b>HCF = 4</b> है और उनका आपस में गुणा <b>96 × 404</b> है, तो उनका LCM क्या होगा? ज़रा रफ़ कॉपी पर दिमाग लगाओ, फिर नीचे बटन दबाकर ताला खोलो!</p>
+      <button class="reveal-btn" onclick="toggleAns('ans_game1')">उत्तर का ताला खोलो 🔓</button>
+      <div id="ans_game1" class="hidden-answer">
+        <b>🙋‍♂️ एकदम आसान हल समझो बेटा:</b><br>
+        हम जानते हैं कि हमारा सुपर फॉर्मूला है: $LCM = \frac{\text{संख्याओं का गुणा}}{HCF}$<br><br>
+        मान रखने पर: $LCM = \frac{96 \times 404}{4}$<br>
+        4 से 404 को काटा 101 बार ➔ $96 \times 101 =$ <b>9696</b><br><br>
+        🎉 **बधाई हो!** आपका जवाब तैयार है और आपका दिमाग अब कंप्यूटर से भी तेज चल रहा है!
+      </div>
+    </div>
+  </div>
+  <style>
+    /* 👻 अपरिमेय खंड के लिए विशेष स्टाइलिंग (Part 4) */
+    .proof-logic-box {
+      background: #f8fafc;
+      padding: 14px;
+      border-radius: 12px;
+      border-left: 5px solid #7c3aed;
+      font-size: 14px;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.01);
+    }
+  </style>
+
+  <div class="note-card" style="animation-delay: 0.4s;">
+    <div class="section-title">👻 4. अपरिमेय संख्याओं का भूत भगाओ (रूट का जादू)</div>
+    
+    <div class="story-box" style="background: #fffbeb; border-color: #fde68a;">
+      <div class="story-title" style="color: #b45309;">🎬 कहानी: 'विरोधाभास' (Contradiction) की जासूसी ट्रिक!</div>
+      बेटा, जब हमें किसी को गलत साबित करना हो, तो हम पहले उसकी बात को सच मान लेते हैं। परीक्षा में जब भी आए कि <b>"सिद्ध करो $\sqrt{2}$ एक अपरिमेय संख्या है"</b>, तो हम उल्टा मान लेंगे कि वह एक शरीफ परिमेय संख्या है ($\sqrt{2} = \frac{a}{b}$)। फिर आगे जाकर हम गणित के नियमों से अपनी ही बात को गलत साबित कर देंगे (विरोधाभास)! इसे कहते हैं जासूस वाली ट्रिक।
+    </div>
+
+    <p style="font-size: 14.5px; font-weight: 700; margin-bottom: 8px;">👇 परीक्षा में पूरे नंबर दिलाने वाले स्टेप्स का मूल आधार:</p>
+    <div class="proof-logic-box">
+      💡 <b>प्रमेय 1.2 का लॉजिक:</b> अगर कोई अभाज्य संख्या $p$, किसी संख्या के स्क्वायर ($a^2$) को पूरा-पूरा भाग देती है, तो वह संख्या $a$ को भी पक्का भाग देगी!<br>
+      <i>जैसे:</i> अगर $2$, $a^2$ को काटता है, तो $2$ सीधा $a$ को भी काटेगा। यही हमारी जासूसी में चोर को पकड़ने का काम करता है।
+    </div>
+
+    <div class="desi-box" style="background-color: #ecfdf5; border-left-color: #059669;">
+      <div class="desi-title" style="color: #047857;">🧠 संजय सर का 'सीधा वार' नियम (ऑब्जेक्टिव 1 नंबर पक्का):</div>
+      एग्जाम में एक नंबर का ऑब्जेक्टिव सवाल पक्का आता है बेटा, इसे सीधे दिमाग में लॉक कर लो:
+      <ul style="padding-left: 18px; margin-top: 5px;">
+        <li><b>नियम 1:</b> एक परिमेय और एक अपरिमेय संख्या को आपस में जोड़ो या घटाओ, परिणाम हमेशा <b>अपरिमेय</b> ही आएगा! (जैसे: $5 - \sqrt{3}$ या $2 + \sqrt{5}$)</li>
+        <li><b>नियम 2:</b> एक गैर-शून्य परिमेय और अपरिमेय संख्या का गुणा या भाग भी हमेशा <b>अपरिमेय</b> ही होता है बेटा! (जैसे: $3\sqrt{2}$ या $\frac{7}{\sqrt{5}}$)</li>
       </ul>
-
-      <div class="formula-card">
-        💥 सुपर फॉर्मूला: पहली संख्या × दूसरी संख्या = HCF × LCM
-      </div>
     </div>
 
-    <div class="note-card" style="animation-delay: 0.4s;">
-      <div class="section-title">👻 4. अपरिमेय संख्याओं का भूत भगाओ (रूट का जादू)</div>
-      
-      <div class="story-box" style="background: #fffbeb; border-color: #fde68a;">
-        <div class="story-title" style="color: #b45309;">🎬 कहानी: 'विरोधाभास' (Contradiction) का खेल!</div>
-        जब हमें किसी को गलत साबित करना हो, तो हम पहले उसकी बात को सच मान लेते हैं। परीक्षा में जब आए कि <b>"सिद्ध करो $\sqrt{2}$ एक अपरिमेय संख्या है"</b>, तो हम उल्टा मान लेंगे कि वह एक शरीफ परिमेय संख्या है ($\sqrt{2} = \frac{a}{b}$)। फिर आगे जाकर हम अपनी ही बात को गलत साबित कर देंगे (विरोधाभास)! इसे कहते हैं जासूस वाली ट्रिक।
-      </div>
-
-      <p style="font-size: 14px;"><b>👇 परीक्षा में पूरे नंबर लाने वाले स्टेप्स (प्रमेय 1.2 का लॉजिक):</b></p>
-      <div style="background: #f8fafc; padding: 12px; border-radius: 10px; border-left: 5px solid #7c3aed; font-size: 14px; margin-bottom: 10px;">
-        💡 <b>याद रखने वाला नियम:</b> अगर कोई अभाज्य संख्या $p$, किसी संख्या के स्क्वायर ($a^2$) को भाग देती है, तो वह $a$ को भी पक्का भाग देगी! <br><i>जैसे:</i> अगर $2$, $a^2$ को काटता है, तो $2$ सीधा $a$ को भी काटेगा।
-      </div>
-
-      <div class="desi-box" style="background-color: #ecfdf5; border-left-color: #059669;">
-        <div class="desi-title" style="color: #047857;">🧠 संजय सर का 'सीधा वार' नियम (शॉर्टकट ऑब्जेक्टिव):</div>
-        एग्जाम में एक नंबर का सवाल पक्का आता है, इसे सीधे खोपड़ी में बिठा लो:
-        <ul>
-          <li><b>नियम 1:</b> एक परिमेय और एक अपरिमेय संख्या को जोड़ो या घटाओ, जवाब हमेशा <b>अपरिमेय</b> ही आएगा! (जैसे: $5 - \sqrt{3}$)</li>
-          <li><b>नियम 2:</b> इनका गुणा या भाग भी हमेशा <b>अपरिमेय</b> ही होगा! (जैसे: $3\sqrt{2}$)</li>
-        </ul>
-      </div>
-
-      <div class="danger-box">
-        <div class="danger-title">💀 DANGER ZONE: यहाँ बच्चे जाल में फंसते हैं!</div>
-        परीक्षा में पूछता है कि $\sqrt{3} = \frac{a}{b}$ में $a$ और $b$ कैसी संख्याएँ हैं? बच्चे भूल जाते हैं। हमेशा याद रखना ये <b>सहअभाज्य (Co-prime)</b> संख्याएँ हैं, यानी इनके बीच 1 के अलावा कुछ भी कॉमन नहीं होता!
-      </div>
+    <div class="danger-box">
+      <div class="danger-title">💀 DANGER ZONE: यहाँ बच्चे जाल में फंसते हैं!</div>
+      परीक्षा में पूछता है कि $\sqrt{3} = \frac{a}{b}$ में $a$ और $b$ कैसी संख्याएँ हैं? बच्चे भूल जाते हैं। हमेशा याद रखना बेटा ये <b>सहअभाज्य (Co-prime)</b> संख्याएँ हैं, यानी इनके बीच 1 के अलावा कुछ भी कॉमन (उभयनिष्ठ) नहीं होता!
     </div>
+  </div>
+  <style>
+    /* 📝 इंटरैक्टिव अभ्यास / एक्सरसाइज सेक्शन स्टाइल (Part 5) */
+    .exercise-title {
+      font-size: 19px;
+      font-weight: 900;
+      color: var(--secondary);
+      border-bottom: 3px double #e9d5ff;
+      padding-bottom: 8px;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .quiz-card {
+      background: linear-gradient(135deg, #faf8ff 0%, #f5f0ff 100%);
+      border: 1.5px solid #e9d5ff;
+      border-radius: 18px;
+      padding: 18px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.03);
+      transition: all 0.3s ease;
+    }
+    .quiz-card:hover {
+      box-shadow: 0 8px 20px rgba(124, 58, 237, 0.06);
+      border-color: #d8b4fe;
+    }
+    .quiz-question { 
+      font-size: 15px; 
+      font-weight: 800; 
+      color: var(--dark); 
+      margin-bottom: 14px; 
+      line-height: 1.5;
+    }
+    .quiz-options { 
+      display: flex; 
+      flex-direction: column; 
+      gap: 10px; 
+    }
+    .quiz-btn {
+      background: #ffffff;
+      border: 1.5px solid #cbd5e1;
+      padding: 12px 16px;
+      border-radius: 12px;
+      text-align: left;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      color: var(--dark);
+      transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.01);
+    }
+    .quiz-btn:hover { 
+      background: #f8fafc; 
+      border-color: var(--secondary);
+      color: var(--secondary);
+      transform: translateX(4px);
+    }
+    .quiz-btn:active {
+      transform: scale(0.98) translateX(4px);
+    }
+    .quiz-feedback {
+      display: none;
+      margin-top: 14px;
+      padding: 14px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.5;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+      animation: slideDown 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
 
-    <div class="note-card" style="animation-delay: 0.5s;">
-      <div class="section-title">🚀 5. टॉपर स्पेशल: 3 संख्याओं का जादुई सूत्र</div>
-      <p style="font-size: 14.5px;">किताब के सबसे आखिरी पन्ने पर एक ऐसा सीक्रेट फॉर्मूला छुपा है जो आम बच्चों को पता ही नहीं होता! अगर एग्जाम में 3 संख्याएँ ($p, q, r$) आ जाएँ, तो उनका LCM इस बड़े फॉर्मूले से निकलता है:</p>
+    /* 🔥 संकल्प बॉक्स 3D पल्स और ग्लो एनीमेशन */
+    .target-box {
+      background: linear-gradient(135deg, var(--primary), #dc2626, #be185d);
+      background-size: 200% auto;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      border-radius: 20px;
+      font-weight: 800;
+      margin-top: 30px;
+      font-size: 16.5px;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(220, 38, 38, 0.3);
+      transition: all 0.3s ease;
+      animation: targetPulse 2s infinite;
+    }
+    .target-box:hover {
+      transform: scale(1.02);
+      box-shadow: 0 12px 25px rgba(220, 38, 38, 0.45);
+    }
+    @keyframes targetPulse {
+      0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.6); }
+      70% { box-shadow: 0 0 0 16px rgba(220, 38, 38, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+    }
+    .back-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      color: var(--dark);
+      text-decoration: none;
+      padding: 14px;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 14.5px;
+      margin-top: 22px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+      transition: all 0.3s ease;
+    }
+    .back-btn:hover { background: #f8fafc; border-color: #cbd5e1; box-shadow: 0 6px 12px rgba(0,0,0,0.04); }
+  </style>
 
-      <div class="formula-card" style="background: #faf5ff; border-color: #e9d5ff; color: #581c87; padding: 18px 10px;">
-        $$LCM(p,q,r) = \frac{p \cdot q \cdot r \cdot HCF(p,q,r)}{HCF(p,q) \cdot HCF(q,r) \cdot HCF(p,r)}$$
-      </div>
-      <p style="text-align: center; font-weight: 700; font-size: 12px; color: #64748b;">(नोट: इसे याद कर लिया तो 100 में से 100 नंबर पक्के! 🎯)</p>
+  <div class="note-card" style="animation-delay: 0.5s;">
+    <div class="section-title">🚀 5. टॉपर स्पेशल: 3 संख्याओं का जादुई सूत्र</div>
+    <p style="font-size: 14.5px;">किताब के सबसे आखिरी कोने में छुपा यह सीक्रेट फॉर्मूला सिर्फ टॉपर्स के लिए है बेटा। अगर एग्जाम में 2 के बजाय 3 संख्याएँ ($p, q, r$) आ जाएँ, तो उनका LCM इस बड़े सूत्र से निकलता है:</p>
+
+    <div class="formula-card" style="background: #faf5ff; border-color: #e9d5ff; color: #581c87; padding: 18px 10px;">
+      $$LCM(p,q,r) = \frac{p \cdot q \cdot r \cdot HCF(p,q,r)}{HCF(p,q) \cdot HCF(q,r) \cdot HCF(p,r)}$$
     </div>
-
-    <div class="note-card" style="animation-delay: 0.6s;">
-      <div class="game-box">
-        <div class="game-title">🎮 गेम ज़ोन 2: मैदान का चक्कर!</div>
-        <p style="font-size: 13.5px;"><b>चैलेंज (प्रश्नावली 1.1 का सवाल 7):</b> एक वृत्ताकार पथ है। सोनिया को एक चक्कर लगाने में <b>18 मिनट</b> लगते हैं और रवि को <b>12 मिनट</b> लगते हैं। दोनों एक ही समय पर एक ही दिशा में दौड़ना शुरू करते हैं। बताओ, वे दोबारा कब मिलेंगे?</p>
-        <button class="reveal-btn" onclick="toggleAns('ans_game2')">जादुई उत्तर देखें 🔓</button>
-        <div id="ans_game2" class="hidden-answer">
-          <b>शॉर्टकट ट्रिक:</b> जब भी कोई ऐसी चीज़ हो जो बार-बार चक्कर लगाकर दोबारा मिलने की बात करे, तो आँख बंद करके <b>LCM (लघुत्तम)</b> निकाल लो!<br><br>
-          $18 = 2 \times 3^2$<br>
-          $12 = 2^2 \times 3$<br>
-          LCM (सबसे बड़ी घात) = $2^2 \times 3^2 = 4 \times 9 =$ <b>36 मिनट</b>!<br>
-          🎉 यानी 36 मिनट बाद दोनों भाई-बहन फिर से शुरुआती जगह पर मिलेंगे!
-        </div>
-      </div>
-    </div>
-
-    <div class="note-card" style="animation-delay: 0.7s; border: 2px solid var(--secondary);">
-      <div class="exercise-title">📝 अभ्यास कार्यशाला (प्रश्नावली का महा-निचोड़)</div>
-      <p style="font-size: 14px; margin-bottom: 15px; font-weight: 600;">बेटा, जो कुछ भी पढ़ा है, उसका लाइव टेस्ट दो और अपना कॉन्सेप्ट पक्का करो:</p>
-
-      <div class="quiz-card">
-        <div class="quiz-question"><b>प्रश्न 1:</b> यदि $\sqrt{5} = \frac{a}{b}$ माना जाए, तो यहाँ $a$ और $b$ कैसी संख्याएँ हैं? (बोर्ड का हॉट सवाल)</div>
-        <div class="quiz-options">
-          <button class="quiz-btn" onclick="checkAnswer('q1', 'wrong', '❌ गलत जवाब बेटा! भाज्य संख्याएँ तो दूसरों से कट जाती हैं। फिर से सोचो!')">A) भाज्य संख्याएँ</button>
-          <button class="quiz-btn" onclick="checkAnswer('q1', 'right', '🎉 शाबाश मेरे शेर! एकदम सही जवाब। $a$ और $b$ सह-अभाज्य (Co-prime) संख्याएँ हैं, जिनका HCF हमेशा 1 होता है!')">B) सह-अभाज्य संख्याएँ (Co-prime)</button>
-        </div>
-        <div id="q1-fb" class="quiz-feedback"></div>
-      </div>
-
-      <div class="quiz-card">
-        <div class="quiz-question"><b>प्रश्न 2:</b> सोनिया को एक वृत्ताकार पथ का चक्कर लगाने में 18 मिनट और रवि को 12 मिनट लगते हैं। वे दोबारा शुरुआती बिंदु पर कब मिलेंगे? (प्रश्नावली 1.1)</div>
-        <div class="quiz-options">
-          <button class="quiz-btn" onclick="checkAnswer('q2', 'right', '🎉 गजब! बिल्कुल सही उत्तर। जब भी कोई काम बार-बार चक्कर लगाकर दोबारा मिलने का हो, तो हम आँख बंद करके LCM निकालते हैं। 18 और 12 का LCM = 36 मिनट होगा!')">A) 36 मिनट बाद</button>
-          <button class="quiz-btn" onclick="checkAnswer('q2', 'wrong', '❌ गलत प्रयास बेटा! दोबारा कोशिश करो, तुम्हें 18 और 12 का लघुत्तम (LCM) निकालना है, महत्तम नहीं।')">B) 6 मिनट बाद</button>
-        </div>
-        <div id="q2-fb" class="quiz-feedback"></div>
-      </div>
-
-      <div class="quiz-card">
-        <div class="quiz-question"><b>प्रश्न 3:</b> यदि दो संख्याओं का गुणनफल 1200 है और उनका HCF = 5 है, तो उनका LCM क्या होगा? (सूत्र आधारित)</div>
-        <div class="quiz-options">
-          <button class="quiz-btn" onclick="checkAnswer('q3', 'wrong', '❌ गलत जवाब बेटा! गुणा नहीं करना है। सूत्र लगाओ: LCM = गुणनफल / HCF।')">A) 6000</button>
-          <button class="quiz-btn" onclick="checkAnswer('q3', 'right', '🎉 अरे वाह! बिल्कुल सही पकड़े हो। सूत्र के अनुसार, $LCM = \\frac{1200}{5} = 240$ होगा। आपकी तैयारी बहुत बेहतरीन है!')">B) 240</button>
-        </div>
-        <div id="q3-fb" class="quiz-feedback"></div>
-      </div>
-    </div>
-
-    <div class="target-box" onclick="celebrate()">
-      🔥 मेरा संकल्प: संजय सर के साथ इस बार गणित में 100/100 पार! (यहाँ क्लिक करें)
-    </div>
-
-    <a href="javascript:history.back()" class="back-btn">⬅ अध्याय सूची पर वापस जाएं</a>
-
+    <p style="text-align: center; font-weight: 700; font-size: 12.5px; color: #64748b;">(नोट: इसे याद कर लिया तो 100 में से 100 नंबर पक्के! 🎯)</p>
   </div>
 
-  <script>
+  <div class="note-card" style="animation-delay: 0.6s;">
+    <div class="game-box">
+      <div class="game-title">🎮 गेम ज़ोन 2: मैदान का चक्कर!</div>
+      <p style="font-size: 14px;"><b>चैलेंज (प्रश्नावली 1.1 का सवाल 7):</b> एक वृत्ताकार पथ है। सोनिया को एक चक्कर लगाने में <b>18 मिनट</b> लगते हैं और रवि को <b>12 मिनट</b> लगते हैं। दोनों एक ही समय पर एक ही दिशा में दौड़ना शुरू करते हैं। बताओ, वे दोबारा शुरुआती स्थान पर कब मिलेंगे?</p>
+      <button class="reveal-btn" style="margin-top:10px;" onclick="toggleAns('ans_game2')">जादुई उत्तर देखें 🔓</button>
+      <div id="ans_game2" class="hidden-answer">
+        <b>🏃‍♂️ शॉर्टकट ट्रिक समझो बेटा:</b> जब भी कोई ऐसी चीज़ हो जो बार-बार चक्कर लगाकर दोबारा शुरुआती बिंदु पर मिलने की बात करे, तो आँख बंद करके <b>LCM (लघुत्तम समापवर्तक)</b> निकाल लो!<br><br>
+        $18 = 2 \times 3^2$<br>
+        $12 = 2^2 \times 3$<br><br>
+        LCM ( Dani Rule - सबसे बड़ी घात) = $2^2 \times 3^2 = 4 \times 9 =$ <b>36 मिनट</b>!<br><br>
+        🎉 यानी 36 मिनट बाद दोनों भाई-बहन फिर से शुरुआती जगह पर मुस्कुराते हुए मिलेंगे!
+      </div>
+    </div>
+  </div>
+
+  <div class="note-card" style="animation-delay: 0.7s; border: 2px solid var(--secondary);">
+    <div class="exercise-title">📝 अभ्यास कार्यशाला (प्रश्नावली का महा-निचोड़)</div>
+    <p style="font-size: 14.5px; margin-bottom: 15px; font-weight: 600; color: var(--dark);">बेटा, जो कुछ भी पढ़ा है, उसका लाइव टेस्ट दो और अपना कॉन्सेप्ट पक्का करो:</p>
+
+    <div class="quiz-card">
+      <div class="quiz-question"><b>प्रश्न 1:</b> यदि $\sqrt{5} = \frac{a}{b}$ माना जाए, तो यहाँ $a$ और $b$ कैसी संख्याएँ हैं? (बोर्ड का हॉट सवाल)</div>
+      <div class="quiz-options">
+        <button class="quiz-btn" onclick="checkAnswer('q1', 'wrong', '❌ गलत जवाब बेटा! भाज्य संख्याएँ तो दूसरों से कट जाती हैं। फिर से सोचो!')">A) भाज्य संख्याएँ</button>
+        <button class="quiz-btn" onclick="checkAnswer('q1', 'right', '🎉 शाबाश मेरे शेर! एकदम सही जवाब। $a$ और $b$ सह-अभाज्य (Co-prime) संख्याएँ हैं, जिनका HCF हमेशा 1 होता है!')">B) सह-अभाज्य संख्याएँ (Co-prime)</button>
+      </div>
+      <div id="q1-fb" class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-question"><b>प्रश्न 2:</b> यदि दो संख्याओं का गुणनफल 1200 है और उनका HCF = 5 है, तो उनका LCM क्या होगा? (सूत्र आधारित)</div>
+      <div class="quiz-options">
+        <button class="quiz-btn" onclick="checkAnswer('q3', 'wrong', '❌ गलत जवाब बेटा! गुणा नहीं करना है। सूत्र लगाओ: LCM = गुणनफल / HCF।')">A) 6000</button>
+        <button class="quiz-btn" onclick="checkAnswer('q3', 'right', '🎉 अरे वाह! बिल्कुल सही पकड़े हो। सूत्र के अनुसार, $LCM = \\frac{1200}{5} = 240$ होगा। आपकी तैयारी बहुत बेहतरीन है बेटा!')">B) 240</button>
+      </div>
+      <div id="q3-fb" class="quiz-feedback"></div>
+    </div>
+  </div>
+
+  <div class="target-box" onclick="celebrate()">
+    🔥 मेरा संकल्प: संजय सर के साथ इस बार गणित में 100/100 पार! (यहाँ क्लिक करें)
+  </div>
+
+  <a href="javascript:history.back()" class="back-btn">⬅ अध्याय सूची पर वापस जाएं</a>
+
+  </div> <script>
     // इंटरैक्टिव क्विज का लाइव फीडबैक फंक्शन
     function checkAnswer(qId, type, message) {
       var fb = document.getElementById(qId + '-fb');
