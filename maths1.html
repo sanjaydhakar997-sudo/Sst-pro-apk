@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>अध्याय 1: वास्तविक संख्याएँ - Social Studies Classes</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8fafc;
+      color: #1e293b;
+      margin: 0;
+      padding: 15px;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    /* 1. प्रीमियम ब्रांड हेडर */
+    .brand-header {
+      background: linear-gradient(135deg, #be185d, #8b5cf6);
+      color: white;
+      padding: 20px;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(190, 24, 93, 0.2);
+      margin-bottom: 15px;
+    }
+    .brand-header h2 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 800;
+    }
+    .brand-header p {
+      margin: 5px 0 0 0;
+      font-size: 14px;
+      font-weight: 600;
+      opacity: 0.95;
+    }
+    .chapter-banner {
+      background: #ffffff;
+      padding: 12px;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 17px;
+      font-weight: 700;
+      color: #0f172a;
+      border: 1px solid #e2e8f0;
+      margin-bottom: 10px;
+    }
+    /* प्रोग्रेस बार */
+    .progress-container {
+      background: #e2e8f0;
+      border-radius: 10px;
+      height: 6px;
+      margin-bottom: 20px;
+    }
+    .progress-bar {
+      background: #22c55e;
+      height: 100%;
+      width: 100%; /* फुल चैप्टर नोट्स */
+      border-radius: 10px;
+    }
+
+    /* मुख्य नोट्स कार्ड्स */
+    .note-card {
+      background: #ffffff;
+      padding: 18px;
+      border-radius: 16px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      margin-bottom: 20px;
+      border: 1px solid #e2e8f0;
+    }
+    .section-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #be185d;
+      margin-top: 0;
+      margin-bottom: 12px;
+      border-bottom: 2px solid #fce7f3;
+      padding-bottom: 5px;
+    }
+
+    /* देशी जुगाड़ बॉक्स */
+    .desi-box {
+      background-color: #fef9c3;
+      border-left: 5px solid #ca8a04;
+      padding: 12px;
+      border-radius: 8px;
+      margin: 12px 0;
+      font-size: 14px;
+    }
+    .desi-title {
+      font-weight: 700;
+      color: #854d0e;
+      margin-bottom: 4px;
+    }
+
+    /* डेंजर ज़ोन (Danger Zone) */
+    .danger-box {
+      background-color: #fee2e2;
+      border-left: 5px solid #dc2626;
+      padding: 12px;
+      border-radius: 8px;
+      margin: 12px 0;
+      font-size: 14px;
+    }
+    .danger-title {
+      font-weight: 700;
+      color: #991b1b;
+      margin-bottom: 4px;
+    }
+
+    /* गेम ज़ोन (Game Zone) */
+    .game-box {
+      background: linear-gradient(135deg, #eff6ff, #dbeafe);
+      border: 2px dashed #3b82f6;
+      padding: 15px;
+      border-radius: 12px;
+      margin: 15px 0;
+    }
+    .game-title {
+      font-weight: 700;
+      color: #1e40af;
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+    .reveal-btn {
+      background: #3b82f6;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      margin-top: 8px;
+      width: 100%;
+    }
+    .hidden-answer {
+      display: none;
+      background: white;
+      padding: 10px;
+      border-radius: 6px;
+      margin-top: 10px;
+      border: 1px solid #bfdbfe;
+      font-size: 14px;
+    }
+
+    /* फॉर्मूला बॉक्स */
+    .formula-box {
+      background: #f0fdf4;
+      border: 1px dashed #22c55e;
+      padding: 12px;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 15px;
+      font-weight: 700;
+      color: #166534;
+      margin: 12px 0;
+    }
+    
+    /* बोर्ड वीआईपी सिंबल */
+    .vip-tag {
+      background: #dc2626;
+      color: white;
+      font-size: 11px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 700;
+      margin-left: 5px;
+    }
+
+    /* बैक बटन */
+    .back-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      color: #0f172a;
+      text-decoration: none;
+      padding: 14px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 14px;
+      margin-top: 25px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      border: 1px solid #e2e8f0;
+    }
+    
+    /* संकल्प बॉक्स */
+    .target-box {
+      background: linear-gradient(135deg, #15803d, #166534);
+      color: white;
+      text-align: center;
+      padding: 15px;
+      border-radius: 12px;
+      font-weight: 700;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- हेडर ब्रैंडिंग -->
+    <div class="brand-header">
+      <h2>Social Studies Classes</h2>
+      <p>मार्गदर्शक: संजय धाकड़</p>
+    </div>
+
+    <div class="chapter-banner">🎯 अध्याय 1: वास्तविक संख्याएँ (सटीक नोट्स)</div>
+    <div class="progress-container"><div class="progress-bar"></div></div>
+
+    <!-- टॉपिक 1 -->
+    <div class="note-card">
+      <div class="section-title">⭐ 1. अंकगणित की आधारभूत प्रमेय (Fundamental Theorem of Arithmetic)</div>
+      <p><b>सरल शब्दों में:</b> दुनिया की किसी भी <b>भाज्य संख्या</b> (जैसे 4, 6, 15, 32760) को हम छोटे-छोटे <b>अभाज्य टुकड़ों</b> (Prime Numbers) के गुणा के रूप में लिख सकते हैं। यह तरीका बिल्कुल 'यूनिक' (अद्वितीय) होता है, चाहे आप टुकड़ों को आगे लिखो या पीछे।</p>
+      
+      <p><b>किताब का बड़ा उदाहरण सरल रूप में:</b></p>
+      <div style="background: #f8fafc; padding: 10px; border-radius: 8px; font-weight: 600; text-align: center;">
+        32760 का गुणनखंड वृक्ष (Factor Tree):<br>
+        32760 = 2 × 2 × 2 × 3 × 3 × 5 × 7 × 13<br>
+        🔥 घात के रूप में: <span style="color:#be185d;">2³ × 3² × 5 × 7 × 13</span>
+      </div>
+
+      <div class="desi-box">
+        <div class="desi-title">💡 संजय सर का देशी जुगाड़ (भाज्य vs अभाज्य):</div>
+        <b>अभाज्य संख्या:</b> जो सिर्फ खुद के पहाड़े से कटे (जैसे: 2, 3, 5, 7, 11...)। इसमें <b>'2' सबसे छोटी और इकलौती सम अभाज्य संख्या है</b>, इसे याद रखना!<br>
+        <b>भाज्य संख्या:</b> जो दूसरों के पहाड़े में भी आ जाए (जैसे: 4, 6, 8, 9...)।
+      </div>
+    </div>
+
+    <!-- टॉपिक 2 -->
+    <div class="note-card">
+      <div class="section-title">🌀 2. अभाज्य गुणनखंडन विधि (HCF और LCM निकालना) <span class="vip-tag">बोर्ड परीक्षा VIP</span></div>
+      <p>जब आप संख्याओं का गुणनखंड कर लेते हैं, तो HCF और LCM निकालना एकदम आसान है:</p>
+      <ul>
+        <li><b>HCF (महत्तम समापवर्तक):</b> जो दोनों में कॉमन हो, उसकी <b>सबसे छोटी घात</b> का गुणनफल।</li>
+        <li><b>LCM (लघुत्तम समापवर्त्य):</b> जितने भी अभाज्य नंबर आए हैं, उन सबकी <b>सबसे बड़ी घात</b> का गुणनफल।</li>
+      </ul>
+
+      <div class="formula-box">
+        नियम: दो संख्याओं का गुणनफल (a × b) = HCF(a, b) × LCM(a, b)
+      </div>
+
+      <div class="danger-box">
+        <div class="danger-title">💀 Danger Zone (यहाँ 90% बच्चे फेल होते हैं!)</div>
+        <b>सावधान!</b> किताब की टिप्पणी साफ कहती है कि 3 संख्याओं का गुणा उनके HCF × LCM के बराबर <b>नहीं होता</b> ($a \times b \times c \neq HCF \times LCM$)। यह नियम सिर्फ <b>2 संख्याओं</b> के लिए काम करता है!
+      </div>
+      
+      <!-- 3 संख्याओं का एडवांस फॉर्मूला (पाठकों के लिए विशेष खंड से) -->
+      <div style="background: #f1f5f9; padding: 10px; border-radius: 8px; font-size: 13px;">
+        <b>🔥 टॉपर स्पेशल (3 संख्याओं का LCM फॉर्मूला):</b><br>
+        $$LCM(p,q,r) = \frac{p \cdot q \cdot r \cdot HCF(p,q,r)}{HCF(p,q) \cdot HCF(q,r) \cdot HCF(p,r)}$$
+      </div>
+    </div>
+
+    <!-- टॉपिक 3 -->
+    <div class="note-card">
+      <div class="section-title">🚫 3. अपरिमेय संख्याओं को सिद्ध करना (विरोधोक्ति विधि)</div>
+      <p>बोर्ड परीक्षा में हर साल यहाँ से एक बड़ा सवाल आता है— <b>"सिद्ध कीजिए कि √2 या √3 या √5 एक अपरिमेय संख्या है।"</b></p>
+      <p>इसे हम <b>उल्टा मानकर (मान लेते हैं कि यह परिमेय है)</b> सिद्ध करते हैं।</p>
+      
+      <div class="desi-box" style="background-color: #f0fdfa; border-left-color: #0d9488;">
+        <div class="desi-title" style="color: #0f766e;">🧠 थ्योरम का सीधा लॉजिक (प्रमेय 1.2):</div>
+        अगर कोई अभाज्य संख्या $p$, किसी संख्या के स्क्वायर ($a^2$) को काटती है, तो वह $a$ को भी पक्का काटेगी! (जैसे: अगर 2, 6² यानी 36 को काटता है, तो 2 सीधे 6 को भी काटेगा)।
+      </div>
+
+      <div style="background: #fffbeb; border: 1px solid #fef3c7; padding: 10px; border-radius: 8px; font-size: 14px;">
+        <b>💡 सीधे याद रखने वाले परीक्षा रूल्स:</b><br>
+        1. परिमेय + अपरिमेय = <b>अपरिमेय</b> (जैसे: $5 - \sqrt{3}$ एक अपरिमेय संख्या है)<br>
+        2. परिमेय × अपरिमेय = <b>अपरिमेय</b> (जैसे: $3\sqrt{2}$ एक अपरिमेय संख्या है)
+      </div>
+    </div>
+
+    <!-- गेम ज़ोन -->
+    <div class="note-card">
+      <div class="game-box">
+        <div class="game-title">🎮 Game Zone: संजय सर का दिमागी चैलेंज!</div>
+        <p><b>सवाल (NCERT उदाहरण 1):</b> यदि हम किसी प्राकृत संख्या $n$ के लिए संख्या $4^n$ लें, तो क्या $n$ का कोई ऐसा मान है जिसके लिए $4^n$ का आखिरी अंक <b>शून्य (0)</b> पर खत्म हो जाए? सोचो-सोचो!</p>
+        <button class="reveal-btn" onclick="toggleAnswer('ans1')">उत्तर देखने के लिए टच करें ➔</button>
+        <div id="ans1" class="hidden-answer">
+          <b>सही उत्तर:</b> ऐसा कोई मान <b>संभव नहीं है</b>!<br>
+          <b>देशी कारण:</b> किसी भी संख्या के आखिर में 0 आने के लिए उसके टुकड़ों में <b>2 और 5 का होना अनिवार्य है</b>। लेकिन $4^n$ का गुणनखंड करने पर केवल $(2 \times 2)^n$ आता है, यानी इसमें 5 का नामोनिशान नहीं है! इसलिए यह कभी 0 पर खत्म नहीं हो सकती।
+        </div>
+      </div>
+    </div>
+
+    <!-- 100/100 संकल्प बॉक्स -->
+    <div class="target-box" onclick="celebrate()">
+      🎯 मेरा संकल्प: गणित में 100 में से 100 नंबर! (यहाँ टच करें)
+    </div>
+
+    <!-- बैक बटन -->
+    <a href="javascript:history.back()" class="back-btn">⬅ अध्याय सूची पर वापस जाएं</a>
+
+  </div>
+
+  <script>
+    function toggleAnswer(id) {
+      var ans = document.getElementById(id);
+      ans.style.display = (ans.style.display === "block") ? "none" : "block";
+    }
+    
+    function celebrate() {
+      alert("🔥 शाबाश! संजय धाकड़ सर का वादा, इस बार बोर्ड परीक्षा में 100/100 पार! बस मेहनत जारी रखो। 👍");
+    }
+
+    // ऐप प्रोटेक्शन (कंटेंट कॉपी/राइट क्लिक लॉक)
+    document.addEventListener('contextmenu', e => e.preventDefault());
+  </script>
+</body>
+</html>
