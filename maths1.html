@@ -73,13 +73,13 @@
     .progress-bar {
       background: linear-gradient(90deg, #22c55e, #4ade80);
       height: 100%;
-      width: 50%; /* पार्ट 1 तक 50% */
+      width: 100%; /* अब चैप्टर पूरा बड़ा हो गया है */
       border-radius: 10px;
       animation: slideProgress 2s ease-out forwards;
     }
     @keyframes slideProgress {
       from { width: 0%; }
-      to { width: 50%; }
+      to { width: 100%; }
     }
 
     /* 📝 मुख्य नोट्स कार्ड + फ्लोटिंग एंट्रेंस एनीमेशन */
@@ -173,7 +173,7 @@
       transform: translateY(-3px);
     }
 
-    /* 🌳 गुणनखंडन ट्री बॉक्स (ग्लो इफ़ेक्ट) */
+    /* 🌳 गुणनखंडन ट्री बॉक्स */
     .tree-box {
       background: #fff7ed;
       border: 1px solid #ffedd5;
@@ -201,7 +201,7 @@
       margin-bottom: 4px;
     }
 
-    /* 🎯 HCF & LCM और गेम ज़ोन के शानदार CSS एनिमेशन्स (Part 2) */
+    /* 🎯 HCF & LCM और गेम ज़ोन के शानदार CSS एनिमेशन्स */
     .formula-card {
       background: linear-gradient(135deg, #f0fdf4, #dcfce7);
       border: 2px solid #bbf7d0;
@@ -335,8 +335,8 @@
       </table>
     </div>
 
-    <div class="note-card" style="animation-delay: 0.3s;">
-      <div class="section-title">🌳 2. अंकगणित की आधारभूत प्रमेय (गुणनخوان का जादू)</div>
+    <div class="note-card" style="animation-delay: 0.2s;">
+      <div class="section-title">🌳 2. अंकगणित की आधारभूत प्रमेय (गुणनखंड का जादू)</div>
       <p style="font-size: 14px;">किताब की भारी परिभाषा छोड़ो, सीधा समझो: दुनिया की किसी भी <b>भाज्य संख्या</b> को हम छोटे-छोटे <b>अभाज्य टुकड़ों</b> के गुणा के रूप में लिख सकते हैं।</p>
       
       <p style="font-size: 14px; font-weight: 700; margin-bottom: 2px;">📚 किताब का सबसे बड़ा उदाहरण (संख्या 32760) का साफ गुणनखंड:</p>
@@ -360,7 +360,7 @@
       </div>
     </div>
 
-    <div class="note-card" style="animation-delay: 0.4s;">
+    <div class="note-card" style="animation-delay: 0.3s;">
       <div class="section-title">🎯 3. HCF और LCM का असली खेल</div>
       <p style="font-size: 14px;">अभाज्य गुणनखंड विधि से HCF और LCM निकालना बच्चों का खेल है, बस संजय सर का यह नियम याद रखो:</p>
       
@@ -374,14 +374,68 @@
       </div>
 
       <div class="game-box">
-        <div class="game-title">🎮 गेम ज़ोन: खेलो और सीखो!</div>
+        <div class="game-title">🎮 गेम ज़ोन 1: दिमाग की बत्ती जलाओ!</div>
         <p style="font-size: 13.5px; margin-bottom: 10px;"><b>चैलेंज:</b> मान लो परीक्षा में सवाल आया कि दो संख्याओं का <b>HCF = 4</b> है और उनका गुणा <b>96 × 404</b> है, तो उनका LCM क्या होगा? जरा दिमाग लगाओ, फिर नीचे बटन दबाओ!</p>
-        <button class="reveal-btn" onclick="toggleAns('ans_game1')">उत्तर का ताला kholo 🔓</button>
+        <button class="reveal-btn" onclick="toggleAns('ans_game1')">उत्तर का ताला खोलो 🔓</button>
         <div id="ans_game1" class="hidden-answer">
           <b>एकदम आसान हल:</b><br>
           हम जानते हैं कि: $LCM = \frac{\text{संख्याओं का गुणा}}{HCF}$<br>
           $LCM = \frac{96 \times 404}{4} = 9696$<br>
           🎉 **बधाई हो!** आपका दिमाग अब कंप्यूटर से भी तेज चल रहा है!
+        </div>
+      </div>
+    </div>
+
+    <div class="note-card" style="animation-delay: 0.4s;">
+      <div class="section-title">👻 4. अपरिमेय संख्याओं का भूत भगाओ (रूट का जादू)</div>
+      
+      <div class="story-box" style="background: #fffbeb; border-color: #fde68a;">
+        <div class="story-title" style="color: #b45309;">🎬 कहानी: 'विरोधाभास' (Contradiction) का खेल!</div>
+        जब हमें किसी को गलत साबित करना हो, तो हम पहले उसकी बात को सच मान लेते हैं। परीक्षा में जब आए कि <b>"सिद्ध करो $\sqrt{2}$ एक अपरिमेय संख्या है"</b>, तो हम उल्टा मान लेंगे कि वह एक शरीफ परिमेय संख्या है ($\sqrt{2} = \frac{a}{b}$)। फिर आगे जाकर हम अपनी ही बात को गलत साबित कर देंगे (विरोधाभास)! इसे कहते हैं जासूस वाली ट्रिक।
+      </div>
+
+      <p style="font-size: 14px;"><b>👇 परीक्षा में पूरे नंबर लाने वाले स्टेप्स (प्रमेय 1.2 का लॉजिक):</b></p>
+      <div style="background: #f8fafc; padding: 12px; border-radius: 10px; border-left: 5px solid #7c3aed; font-size: 14px; margin-bottom: 10px;">
+        💡 <b>याद रखने वाला नियम:</b> अगर कोई अभाज्य संख्या $p$, किसी संख्या के स्क्वायर ($a^2$) को भाग देती है, तो वह $a$ को भी पक्का भाग देगी! <br><i>जैसे:</i> अगर $2$, $a^2$ को काटता है, तो $2$ सीधा $a$ को भी काटेगा।
+      </div>
+
+      <div class="desi-box" style="background-color: #ecfdf5; border-left-color: #059669;">
+        <div class="desi-title" style="color: #047857;">🧠 संजय सर का 'सीधा वार' नियम (शॉर्टकट ऑब्जेक्टिव):</div>
+        एग्जाम में एक नंबर का सवाल पक्का आता है, इसे सीधे खोपड़ी में बिठा लो:
+        <ul>
+          <li><b>नियम 1:</b> एक परिमेय और एक अपरिमेय संख्या को जोड़ो या घटाओ, जवाब हमेशा <b>अपरिमेय</b> ही आएगा! (जैसे: $5 - \sqrt{3}$)</li>
+          <li><b>नियम 2:</b> इनका गुणा या भाग भी हमेशा <b>अपरिमेय</b> ही होगा! (जैसे: $3\sqrt{2}$)</li>
+        </ul>
+      </div>
+
+      <div class="danger-box">
+        <div class="danger-title">💀 DANGER ZONE: यहाँ बच्चे जाल में फंसते हैं!</div>
+        परीक्षा में पूछता है कि $\sqrt{3} = \frac{a}{b}$ में $a$ and $b$ कैसी संख्याएँ हैं? बच्चे भूल जाते हैं। हमेशा याद रखना ये <b>सहअभाज्य (Co-prime)</b> संख्याएँ हैं, यानी इनके बीच 1 के अलावा कुछ भी कॉमन नहीं होता!
+      </div>
+    </div>
+
+    <div class="note-card" style="animation-delay: 0.5s;">
+      <div class="section-title">🚀 5. टॉपर स्पेशल: 3 संख्याओं का जादुई सूत्र</div>
+      <p style="font-size: 14px;">किताब के सबसे आखिरी पन्ने पर एक ऐसा सीक्रेट फॉर्मूला छुपा है जो आम बच्चों को पता ही नहीं होता! अगर एग्जाम में 3 संख्याएँ ($p, q, r$) आ जाएँ, तो उनका LCM इस बड़े फॉर्मूले से निकलता है:</p>
+
+      <div class="formula-card" style="font-size: 14px; background: #faf5ff; border-color: #e9d5ff; color: #581c87; padding: 18px 10px;">
+        $$LCM(p,q,r) = \frac{p \cdot q \cdot r \cdot HCF(p,q,r)}{HCF(p,q) \cdot HCF(q,r) \cdot HCF(p,r)}$$
+      </div>
+      
+      <p style="text-align: center; font-weight: 700; font-size: 12px; color: #64748b;">(नोट: इसे याद कर लिया तो 100 में से 100 नंबर पक्के! 🎯)</p>
+    </div>
+
+    <div class="note-card" style="animation-delay: 0.6s;">
+      <div class="game-box">
+        <div class="game-title">🎮 गेम ज़ोन 2: मैदान का चक्कर!</div>
+        <p style="font-size: 13.5px;"><b>चैलेंज (प्रश्नावली 1.1 का सवाल 7):</b> एक वृत्ताकार पथ है। सोनिया को एक चक्कर लगाने में <b>18 मिनट</b> लगते हैं और रवि को <b>12 मिनट</b> लगते हैं। दोनों एक ही समय पर एक ही दिशा में दौड़ना शुरू करते हैं। बताओ, वे दोबारा कब मिलेंगे?</p>
+        <button class="reveal-btn" onclick="toggleAns('ans_game2')">जादुई उत्तर देखें 🔓</button>
+        <div id="ans_game2" class="hidden-answer">
+          <b>शॉर्टकट ट्रिक:</b> जब भी कोई ऐसी चीज़ हो जो बार-बार चक्कर लगाकर दोबारा मिलने की बात करे, तो आँख बंद करके <b>LCM (लघुत्तम)</b> निकाल लो!<br><br>
+          $18 = 2 \times 3^2$<br>
+          $12 = 2^2 \times 3$<br>
+          LCM (सबसे बड़ी घात) = $2^2 \times 3^2 = 4 \times 9 =$ <b>36 मिनट</b>!<br>
+          🎉 यानी 36 मिनट बाद दोनों भाई-बहन फिर से शुरुआती जगह पर मिलेंगे!
         </div>
       </div>
     </div>
