@@ -200,6 +200,103 @@
       color: #991b1b;
       margin-bottom: 4px;
     }
+
+    /* 🎯 HCF & LCM और गेम ज़ोन के शानदार CSS एनिमेशन्स (Part 2) */
+    .formula-card {
+      background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+      border: 2px solid #bbf7d0;
+      padding: 14px;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 15px;
+      font-weight: 800;
+      color: #14532d;
+      margin: 12px 0;
+      box-shadow: 0 4px 10px rgba(34, 197, 94, 0.1);
+    }
+    .game-box {
+      background: linear-gradient(135deg, #eff6ff, #dbeafe);
+      border: 2px dashed #3b82f6;
+      padding: 14px;
+      border-radius: 14px;
+      margin: 15px 0;
+      transition: all 0.3s ease;
+    }
+    .game-box:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(59, 130, 246, 0.15);
+    }
+    .game-title {
+      font-weight: 800;
+      color: #1e40af;
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+    .reveal-btn {
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.2s;
+    }
+    .reveal-btn:active {
+      transform: scale(0.98);
+    }
+    
+    /* 🎬 उत्तर खुलने का स्मूथ एनीमेशन */
+    .hidden-answer {
+      display: none;
+      background: white;
+      padding: 12px;
+      border-radius: 8px;
+      margin-top: 10px;
+      border-left: 5px solid #22c55e;
+      font-size: 14px;
+      animation: slideDown 0.4s ease-out forwards;
+    }
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* 🔥 संकल्प बॉक्स पल्स एनीमेशन */
+    .target-box {
+      background: linear-gradient(135deg, #be185d, #dc2626);
+      color: white;
+      text-align: center;
+      padding: 15px;
+      border-radius: 12px;
+      font-weight: 700;
+      margin-top: 20px;
+      font-size: 15px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(220, 38, 38, 0.2);
+      animation: targetPulse 2s infinite;
+    }
+    @keyframes targetPulse {
+      0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4); }
+      70% { box-shadow: 0 0 0 12px rgba(220, 38, 38, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+    }
+    .back-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      color: #0f172a;
+      text-decoration: none;
+      padding: 12px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 14px;
+      margin-top: 15px;
+      border: 1px solid #e2e8f0;
+    }
   </style>
 </head>
 <body>
@@ -239,7 +336,7 @@
     </div>
 
     <div class="note-card" style="animation-delay: 0.3s;">
-      <div class="section-title">🌳 2. अंकगणित की आधारभूत प्रमेय (गुणनखंड का जादू)</div>
+      <div class="section-title">🌳 2. अंकगणित की आधारभूत प्रमेय (गुणनخوان का जादू)</div>
       <p style="font-size: 14px;">किताब की भारी परिभाषा छोड़ो, सीधा समझो: दुनिया की किसी भी <b>भाज्य संख्या</b> को हम छोटे-छोटे <b>अभाज्य टुकड़ों</b> के गुणा के रूप में लिख सकते हैं।</p>
       
       <p style="font-size: 14px; font-weight: 700; margin-bottom: 2px;">📚 किताब का सबसे बड़ा उदाहरण (संख्या 32760) का साफ गुणनखंड:</p>
@@ -262,260 +359,40 @@
         ध्यान रखना, <b>'1' (एक) न तो भाज्य संख्या है और न ही अभाज्य संख्या है!</b> इसे कभी भी गुणनखंड में शामिल मत करना।
       </div>
     </div>
-    <style>
-    /* 🎯 HCF & LCM और गेम ज़ोन के शानदार CSS एनिमेशन्स (Part 2) */
-    .formula-card {
-      background: linear-gradient(135deg, #f0fdf4, #dcfce7);
-      border: 2px solid #bbf7d0;
-      padding: 14px;
-      border-radius: 12px;
-      text-align: center;
-      font-size: 15px;
-      font-weight: 800;
-      color: #14532d;
-      margin: 12px 0;
-      box-shadow: 0 4px 10px rgba(34, 197, 94, 0.1);
-    }
-    .game-box {
-      background: linear-gradient(135deg, #eff6ff, #dbeafe);
-      border: 2px dashed #3b82f6;
-      padding: 14px;
-      border-radius: 14px;
-      margin: 15px 0;
-      transition: all 0.3s ease;
-    }
-    .game-box:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 12px rgba(59, 130, 246, 0.15);
-    }
-    .game-title {
-      font-weight: 800;
-      color: #1e40af;
-      font-size: 15px;
-      margin-bottom: 6px;
-    }
-    .reveal-btn {
-      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-      color: white;
-      border: none;
-      padding: 10px;
-      border-radius: 8px;
-      font-weight: 700;
-      font-size: 13px;
-      cursor: pointer;
-      width: 100%;
-      transition: background 0.2s;
-    }
-    .reveal-btn:active {
-      transform: scale(0.98);
-    }
-    
-    /* 🎬 उत्तर खुलने का स्मूथ एनीमेशन */
-    .hidden-answer {
-      display: none;
-      background: white;
-      padding: 12px;
-      border-radius: 8px;
-      margin-top: 10px;
-      border-left: 5px solid #22c55e;
-      font-size: 14px;
-      animation: slideDown 0.4s ease-out forwards;
-    }
-    @keyframes slideDown {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    /* 🔥 संकल्प बॉक्स पल्स एनीमेशन */
-    .target-box {
-      background: linear-gradient(135deg, #be185d, #dc2626);
-      color: white;
-      text-align: center;
-      padding: 15px;
-      border-radius: 12px;
-      font-weight: 700;
-      margin-top: 20px;
-      font-size: 15px;
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(220, 38, 38, 0.2);
-      animation: targetPulse 2s infinite;
-    }
-    @keyframes targetPulse {
-      0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4); }
-      70% { box-shadow: 0 0 0 12px rgba(220, 38, 38, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
-    }
-    .back-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #ffffff;
-      color: #0f172a;
-      text-decoration: none;
-      padding: 12px;
-      border-radius: 12px;
-      font-weight: 700;
-      font-size: 14px;
-      margin-top: 15px;
-      border: 1px solid #e2e8f0;
-    }
-  </style>
 
-  <div class="note-card" style="animation-delay: 0.4s;">
-    <div class="section-title">🎯 3. HCF और LCM का असली खेल</div>
-    <p style="font-size: 14px;">अभाज्य गुणनखंड विधि से HCF और LCM निकालना बच्चों का खेल है, बस संजय सर का यह नियम याद रखो:</p>
-    
-    <ul>
-      <li><b>HCF:</b> जो दोनों के पास हो और जिसकी <b>सबसे छोटी घात</b> हो। (कंजूस नियम!)</li>
-      <li><b>LCM:</b> जितने भी अभाज्य नंबर दिख रहे हैं, उन सबकी <b>सबसे बड़ी घात</b> ले लो। (धानी नियम!)</li>
-    </ul>
+    <div class="note-card" style="animation-delay: 0.4s;">
+      <div class="section-title">🎯 3. HCF और LCM का असली खेल</div>
+      <p style="font-size: 14px;">अभाज्य गुणनखंड विधि से HCF और LCM निकालना बच्चों का खेल है, बस संजय सर का यह नियम याद रखो:</p>
+      
+      <ul>
+        <li><b>HCF:</b> जो दोनों के पास हो और जिसकी <b>सबसे छोटी घात</b> हो। (कंजूस नियम!)</li>
+        <li><b>LCM:</b> जितने भी अभाज्य नंबर दिख रहे हैं, उन सबकी <b>सबसे बड़ी घात</b> ले लो। (धानी नियम!)</li>
+      </ul>
 
-    <div class="formula-card">
-      💥 सुपर फॉर्मूला: पहली संख्या × दूसरी संख्या = HCF × LCM
-    </div>
+      <div class="formula-card">
+        💥 सुपर फॉर्मूला: पहली संख्या × दूसरी संख्या = HCF × LCM
+      </div>
 
-    <div class="game-box">
-      <div class="game-title">🎮 गेम ज़ोन: खेलो और सीखो!</div>
-      <p style="font-size: 13.5px; margin-bottom: 10px;"><b>चैलेंज:</b> मान लो परीक्षा में सवाल आया कि दो संख्याओं का <b>HCF = 4</b> है और उनका गुणा <b>96 × 404</b> है, तो उनका LCM क्या होगा? जरा दिमाग लगाओ, फिर नीचे बटन दबाओ!</p>
-      <button class="reveal-btn" onclick="toggleAns('ans_game1')">उत्तर का ताला खोलो 🔓</button>
-      <div id="ans_game1" class="hidden-answer">
-        <b>एकदम आसान हल:</b><br>
-        हम जानते हैं कि: $LCM = \frac{\text{संख्याओं का गुणा}}{HCF}$<br>
-        $LCM = \frac{96 \times 404}{4} = 9696$<br>
-        🎉 **बधाई हो!** आपका दिमाग अब कंप्यूटर से भी तेज चल रहा है!
+      <div class="game-box">
+        <div class="game-title">🎮 गेम ज़ोन: खेलो और सीखो!</div>
+        <p style="font-size: 13.5px; margin-bottom: 10px;"><b>चैलेंज:</b> मान लो परीक्षा में सवाल आया कि दो संख्याओं का <b>HCF = 4</b> है और उनका गुणा <b>96 × 404</b> है, तो उनका LCM क्या होगा? जरा दिमाग लगाओ, फिर नीचे बटन दबाओ!</p>
+        <button class="reveal-btn" onclick="toggleAns('ans_game1')">उत्तर का ताला kholo 🔓</button>
+        <div id="ans_game1" class="hidden-answer">
+          <b>एकदम आसान हल:</b><br>
+          हम जानते हैं कि: $LCM = \frac{\text{संख्याओं का गुणा}}{HCF}$<br>
+          $LCM = \frac{96 \times 404}{4} = 9696$<br>
+          🎉 **बधाई हो!** आपका दिमाग अब कंप्यूटर से भी तेज चल रहा है!
+        </div>
       </div>
     </div>
-  </div>
-  <style>
-    /* 🎯 HCF & LCM और गेम ज़ोन के शानदार CSS एनिमेशन्स (Part 2) */
-    .formula-card {
-      background: linear-gradient(135deg, #f0fdf4, #dcfce7);
-      border: 2px solid #bbf7d0;
-      padding: 14px;
-      border-radius: 12px;
-      text-align: center;
-      font-size: 15px;
-      font-weight: 800;
-      color: #14532d;
-      margin: 12px 0;
-      box-shadow: 0 4px 10px rgba(34, 197, 94, 0.1);
-    }
-    .game-box {
-      background: linear-gradient(135deg, #eff6ff, #dbeafe);
-      border: 2px dashed #3b82f6;
-      padding: 14px;
-      border-radius: 14px;
-      margin: 15px 0;
-      transition: all 0.3s ease;
-    }
-    .game-box:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 12px rgba(59, 130, 246, 0.15);
-    }
-    .game-title {
-      font-weight: 800;
-      color: #1e40af;
-      font-size: 15px;
-      margin-bottom: 6px;
-    }
-    .reveal-btn {
-      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-      color: white;
-      border: none;
-      padding: 10px;
-      border-radius: 8px;
-      font-weight: 700;
-      font-size: 13px;
-      cursor: pointer;
-      width: 100%;
-      transition: background 0.2s;
-    }
-    .reveal-btn:active {
-      transform: scale(0.98);
-    }
-    
-    /* 🎬 उत्तर खुलने का स्मूथ एनीमेशन */
-    .hidden-answer {
-      display: none;
-      background: white;
-      padding: 12px;
-      border-radius: 8px;
-      margin-top: 10px;
-      border-left: 5px solid #22c55e;
-      font-size: 14px;
-      animation: slideDown 0.4s ease-out forwards;
-    }
-    @keyframes slideDown {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    /* 🔥 संकल्प बॉक्स पल्स एनीमेशन */
-    .target-box {
-      background: linear-gradient(135deg, #be185d, #dc2626);
-      color: white;
-      text-align: center;
-      padding: 15px;
-      border-radius: 12px;
-      font-weight: 700;
-      margin-top: 20px;
-      font-size: 15px;
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(220, 38, 38, 0.2);
-      animation: targetPulse 2s infinite;
-    }
-    @keyframes targetPulse {
-      0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4); }
-      70% { box-shadow: 0 0 0 12px rgba(220, 38, 38, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
-    }
-    .back-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #ffffff;
-      color: #0f172a;
-      text-decoration: none;
-      padding: 12px;
-      border-radius: 12px;
-      font-weight: 700;
-      font-size: 14px;
-      margin-top: 15px;
-      border: 1px solid #e2e8f0;
-    }
-  </style>
 
-  <div class="note-card" style="animation-delay: 0.4s;">
-    <div class="section-title">🎯 3. HCF और LCM का असली खेल</div>
-    <p style="font-size: 14px;">अभाज्य गुणनखंड विधि से HCF और LCM निकालना बच्चों का खेल है, बस संजय सर का यह नियम याद रखो:</p>
-    
-    <ul>
-      <li><b>HCF:</b> जो दोनों के पास हो और जिसकी <b>सबसे छोटी घात</b> हो। (कंजूस नियम!)</li>
-      <li><b>LCM:</b> जितने भी अभाज्य नंबर दिख रहे हैं, उन सबकी <b>सबसे बड़ी घात</b> ले लो। (धानी नियम!)</li>
-    </ul>
-
-    <div class="formula-card">
-      💥 सुपर फॉर्मूला: पहली संख्या × दूसरी संख्या = HCF × LCM
+    <div class="target-box" onclick="celebrate()">
+      🔥 मेरा संकल्प: संजय सर के साथ इस बार गणित में 100/100 पार! (यहाँ क्लिक करें)
     </div>
 
-    <div class="game-box">
-      <div class="game-title">🎮 गेम ज़ोन: खेलो और सीखो!</div>
-      <p style="font-size: 13.5px; margin-bottom: 10px;"><b>चैलेंज:</b> मान लो परीक्षा में सवाल आया कि दो संख्याओं का <b>HCF = 4</b> है और उनका गुणा <b>96 × 404</b> है, तो उनका LCM क्या होगा? जरा दिमाग लगाओ, फिर नीचे बटन दबाओ!</p>
-      <button class="reveal-btn" onclick="toggleAns('ans_game1')">उत्तर का ताला खोलो 🔓</button>
-      <div id="ans_game1" class="hidden-answer">
-        <b>एकदम आसान हल:</b><br>
-        हम जानते हैं कि: $LCM = \frac{\text{संख्याओं का गुणा}}{HCF}$<br>
-        $LCM = \frac{96 \times 404}{4} = 9696$<br>
-        🎉 **बधाई हो!** आपका दिमाग अब कंप्यूटर से भी तेज चल रहा है!
-      </div>
-    </div>
-  </div>
+    <a href="javascript:history.back()" class="back-btn">⬅ अध्याय सूची पर वापस जाएं</a>
 
-  <div class="target-box" onclick="celebrate()">
-    🔥 मेरा संकल्प: संजय सर के साथ इस बार गणित में 100/100 पार! (यहाँ क्लिक करें)
   </div>
-
-  <a href="javascript:history.back()" class="back-btn">⬅ अध्याय सूची पर वापस जाएं</a>
 
   <script>
     // गेम ज़ोन उत्तर दिखाने/छुपाने का फंक्शन
@@ -530,9 +407,8 @@
     
     // संकल्प बॉक्स का मोटिवेशनल पॉप-अप
     function celebrate() {
-      alert("🎯 संकल्प पक्का हुआ! 'Social Studies Classes' का हर एक छात्र इस बार बोर्ड का टॉपर बनेगा। बस इन नोट्स को दो बार कॉपी में अपने हाथ से लिख लेना। संजय सर हमेशा तुम्हारे साथ हैं! 👍");
+      alert("🎯 संकल्प पक्का हुआ! 'Social Studies Classes' का हर एक छात्र इस बार बोर्ड का टॉपर बनेगा। बस इस नोट्स को दो बार कॉपी में अपने हाथ से लिख लेना। संजय सर हमेशा तुम्हारे साथ हैं! 👍");
     }
   </script>
-</div>
 </body>
 </html>
