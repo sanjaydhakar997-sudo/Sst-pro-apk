@@ -8,12 +8,14 @@
     /* --- रूट वेरिएबल्स और रिस्पॉन्सिव कोर --- */
     :root {
       --primary: #be185d;
-      --primary-glow: rgba(190, 24, 93, 0.2);
+      --primary-glow: rgba(190, 24, 93, 0.25);
       --secondary: #7c3aed;
+      --secondary-glow: rgba(124, 58, 237, 0.2);
       --success: #16a34a;
       --danger: #dc2626;
       --dark: #0f172a;
       --light: #f8fafc;
+      --gradient-brand: linear-gradient(135deg, #be185d, #e11d48, #9d174d);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
@@ -30,130 +32,241 @@
       max-width: 650px;
       margin: 0 auto;
       background: #ffffff;
-      padding: 20px;
-      border-radius: 24px;
-      box-shadow: 0 15px 30px rgba(15, 23, 42, 0.08);
-      border: 2px solid #e2e8f0;
-    }
-    
-    /* 👑 प्रीमियम हेडर और पल्स इफेक्ट */
-    .brand-header {
-      background: linear-gradient(135deg, var(--primary), #e11d48);
-      color: white;
       padding: 25px;
-      border-radius: 20px;
-      text-align: center;
-      box-shadow: 0 10px 20px rgba(190, 24, 93, 0.25);
-      margin-bottom: 20px;
-      animation: pulseGlow 3s infinite ease-in-out;
+      border-radius: 28px;
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(0,0,0,0.02);
+      border: 1px solid #e2e8f0;
+      animation: containerIntro 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
-    @keyframes pulseGlow {
-      0%, 100% { transform: scale(1); box-shadow: 0 10px 20px rgba(190, 24, 93, 0.25); }
-      50% { transform: scale(1.01); box-shadow: 0 15px 30px rgba(190, 24, 93, 0.4); }
-    }
-    .brand-header h2 { font-size: 24px; font-weight: 900; letter-spacing: 0.5px; }
-    .brand-header p {
-      margin-top: 8px;
-      font-size: 14px;
-      font-weight: 700;
-      background: rgba(255, 255, 255, 0.2);
-      padding: 4px 14px;
-      border-radius: 20px;
-      display: inline-block;
+
+    @keyframes containerIntro {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     
+    /* 👑 प्रीमियम हेडर और 3D पल्स इफेक्ट */
+    .brand-header {
+      background: var(--gradient-brand);
+      background-size: 200% 200%;
+      color: white;
+      padding: 30px 20px;
+      border-radius: 24px;
+      text-align: center;
+      box-shadow: 0 12px 24px var(--primary-glow);
+      margin-bottom: 25px;
+      position: relative;
+      overflow: hidden;
+      animation: pulseGlow 4s infinite ease-in-out, gradientShift 6s infinite alternate;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { transform: scale(1); box-shadow: 0 12px 24px var(--primary-glow); }
+      50% { transform: scale(1.02); box-shadow: 0 18px 35px rgba(190, 24, 93, 0.45); }
+    }
+
+    .brand-header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 60%);
+      animation: rotateBg 12s linear infinite;
+    }
+
+    @keyframes rotateBg {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .brand-header h2 { 
+      font-size: 26px; 
+      font-weight: 900; 
+      letter-spacing: 0.8px; 
+      position: relative; 
+      z-index: 1;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    }
+
+    .brand-header p {
+      margin-top: 10px;
+      font-size: 14px;
+      font-weight: 800;
+      background: rgba(255, 255, 255, 0.22);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      padding: 6px 16px;
+      border-radius: 30px;
+      display: inline-block;
+      position: relative;
+      z-index: 1;
+      border: 1px solid rgba(255,255,255,0.2);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+    
+    /* 📋 एनिमेटेड चैप्टर बैनर */
     .chapter-banner {
       background: #ffffff;
-      padding: 14px;
-      border-radius: 14px;
+      padding: 16px;
+      border-radius: 18px;
       text-align: center;
-      font-size: 18px;
+      font-size: 19px;
       font-weight: 800;
       color: var(--dark);
       border: 2.5px solid var(--primary);
-      margin-bottom: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      position: relative;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    .chapter-banner:hover {
+      transform: translateY(-2px);
+      border-color: var(--secondary);
+      box-shadow: 0 8px 20px rgba(124, 58, 237, 0.15);
     }
     
-    /* 📊 लाइव प्रोग्रेस बार */
+    /* 📊 लाइव प्रोग्रेस बार न्यूमॉर्फिक लुक */
     .progress-container {
       background: #e2e8f0;
-      border-radius: 10px;
-      height: 10px;
-      margin-bottom: 25px;
+      border-radius: 12px;
+      height: 12px;
+      margin-bottom: 30px;
       overflow: hidden;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+      border: 1px solid rgba(0,0,0,0.02);
     }
+
     .progress-bar {
-      background: linear-gradient(90deg, #22c55e, #4ade80);
+      background: linear-gradient(90deg, #22c55e, #4ade80, #22c55e);
+      background-size: 200% 100%;
       height: 100%;
       width: 100%;
-      border-radius: 10px;
-      animation: slideProgress 2.5s ease-out forwards;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.4);
+      animation: slideProgress 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards, progressShimmer 2s linear infinite;
     }
+
     @keyframes slideProgress {
       from { width: 0%; }
       to { width: 100%; }
+    }
+
+    @keyframes progressShimmer {
+      0% { background-position: 0% 0%; }
+      100% { background-position: 200% 0%; }
     }
 
     /* 📝 मुख्य नोट्स कार्ड + फ्लोटिंग एंट्रेंस एनीमेशन */
     .note-card {
       background: #ffffff;
       padding: 22px;
-      border-radius: 20px;
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.03);
+      border-radius: 24px;
+      box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.04), 0 8px 16px -6px rgba(15, 23, 42, 0.02);
       margin-bottom: 25px;
       border: 1px solid #e2e8f0;
-      animation: fadeInUp 0.6s ease-out both;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s ease;
+      animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
+    
+    .note-card:hover {
+      border-color: var(--primary-glow);
+    }
+    
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(25px); }
+      from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
+    
     .section-title {
-      font-size: 18px;
+      font-size: 19px;
       font-weight: 800;
       color: var(--primary);
-      margin-bottom: 15px;
+      margin-bottom: 18px;
       border-bottom: 3px double #fce7f3;
-      padding-bottom: 6px;
+      padding-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    /* 🎬 किस्सा बॉक्स */
+    /* 🎬 किस्सा बॉक्स (3D ग्लास इफ़ेक्ट) */
     .story-box {
-      background: #fdf2f8;
+      background: linear-gradient(135deg, #fdf2f8 0%, #fff1f2 100%);
       border: 1.5px dashed #f472b6;
-      padding: 15px;
-      border-radius: 14px;
-      margin: 15px 0;
+      padding: 18px;
+      border-radius: 18px;
+      margin: 18px 0;
       font-size: 14.5px;
+      box-shadow: 0 4px 12px rgba(244, 114, 182, 0.05);
+      position: relative;
+      transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
-    .story-title { font-weight: 800; color: #9d174d; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+    
+    .story-box:hover {
+      transform: scale(1.01);
+    }
+    
+    .story-title { 
+      font-weight: 800; 
+      color: #9d174d; 
+      margin-bottom: 8px; 
+      display: flex; 
+      align-items: center; 
+      gap: 6px; 
+      font-size: 15.5px;
+    }
 
-    /* 💡 देशी जुगाड़ बॉक्स */
+    /* 💡 देशी जुगाड़ बॉक्स (नियॉन बॉर्डर) */
     .desi-box {
-      background-color: #fef9c3;
+      background: linear-gradient(135deg, #fef9c3 0%, #fef08a 100%);
       border-left: 6px solid #ca8a04;
-      padding: 14px;
-      border-radius: 10px;
-      margin: 15px 0;
+      padding: 16px;
+      border-radius: 14px;
+      margin: 18px 0;
       font-size: 14.5px;
+      box-shadow: 0 4px 12px rgba(202, 138, 4, 0.05);
+      transition: transform 0.3s ease;
     }
-    .desi-title { font-weight: 800; color: #854d0e; margin-bottom: 4px; }
+    
+    .desi-box:hover {
+      transform: translateX(4px);
+    }
+    
+    .desi-title { 
+      font-weight: 800; 
+      color: #854d0e; 
+      margin-bottom: 6px; 
+      font-size: 15.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
 
-    /* 📊 वेन आरेख विजुअल (CSS आधारित) */
+    /* 📊 वेन आरेख विजुअल (इंटरैक्टिव पॉप-अप लुक) */
     .venn-container {
       background: #f8fafc;
-      border: 2px solid #e2e8f0;
-      border-radius: 16px;
-      padding: 20px;
-      margin: 20px 0;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 22px;
+      margin: 22px 0;
       display: flex;
       justify-content: center;
-      gap: 20px;
+      gap: 24px;
       flex-wrap: wrap;
     }
+    
     .venn-circle {
-      width: 140px;
-      height: 140px;
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
       display: flex;
       flex-direction: column;
@@ -161,14 +274,27 @@
       justify-content: center;
       text-align: center;
       font-weight: 800;
-      font-size: 14px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.06);
-      transition: transform 0.3s;
+      font-size: 14.5px;
+      box-shadow: 0 10px 20px rgba(15, 23, 42, 0.05);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      cursor: pointer;
+      position: relative;
     }
-    .venn-circle:hover { transform: scale(1.05); }
-    .venn-circle span { font-size: 11px; font-weight: 600; margin-top: 4px; opacity: 0.8; }
+    
+    .venn-circle:hover { 
+      transform: translateY(-6px) scale(1.04); 
+      box-shadow: 0 15px 30px rgba(15, 23, 42, 0.12);
+    }
+    
+    .venn-circle span { 
+      font-size: 11px; 
+      font-weight: 600; 
+      margin-top: 6px; 
+      line-height: 1.4;
+      opacity: 0.9; 
+    }
 
-    /* 🌳 वास्तविक गुणनखंड वृक्ष (Visual Factor Tree) */
+    /* 🌳 गुणनखंडन ट्री विजुअल */
     .visual-tree {
       background: #fff7ed;
       border: 2px solid #ffedd5;
@@ -181,18 +307,13 @@
       gap: 12px;
     }
     .tree-level { display: flex; align-items: center; justify-content: center; gap: 30px; width: 100%; }
-    .node {
-      padding: 8px 16px;
-      font-weight: 800;
-      font-size: 14px;
-      text-align: center;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    }
+    .node { padding: 8px 16px; font-weight: 800; font-size: 14px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
     .node.composite { background: #ffedd5; border: 2px solid #ea580c; color: #7c2d12; border-radius: 8px; }
     .node.prime { background: #dcfce7; border: 2px solid #16a34a; color: #14532d; border-radius: 50%; width: 42px; height: 42px; padding: 0; display: flex; align-items: center; justify-content: center; }
     .tree-branch { font-size: 16px; font-weight: 900; color: #ea580c; line-height: 1; }
+    .tree-box { background: #fff7ed; border: 1px solid #ffedd5; padding: 12px; border-radius: 12px; font-family: monospace; font-size: 14px; color: #7c2d12; margin: 12px 0; }
 
-    /* 💀 डेंजर ज़ोन */
+    /* 💀 डेंजर ज़ोन */
     .danger-box {
       background-color: #fee2e2;
       border-left: 6px solid var(--danger);
@@ -216,70 +337,131 @@
       margin: 15px 0;
       box-shadow: 0 4px 10px rgba(34, 197, 94, 0.1);
     }
+    .game-box {
+      background: linear-gradient(135deg, #eff6ff, #dbeafe);
+      border: 2px dashed #3b82f6;
+      padding: 14px;
+      border-radius: 14px;
+      margin: 15px 0;
+      transition: all 0.3s ease;
+    }
+    .game-box:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(59, 130, 246, 0.15); }
+    .game-title { font-weight: 800; color: #1e40af; font-size: 15px; margin-bottom: 6px; }
+    .reveal-btn { background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: white; border: none; padding: 10px; border-radius: 8px; font-weight: 700; font-size: 13px; cursor: pointer; width: 100%; transition: background 0.2s; }
+    .reveal-btn:active { transform: scale(0.98); }
+    .hidden-answer { display: none; background: white; padding: 12px; border-radius: 8px; margin-top: 10px; border-left: 5px solid #22c55e; font-size: 14px; animation: slideDown 0.4s ease-out forwards; }
 
     /* 📝 इंटरैक्टिव अभ्यास / एक्सरसाइज सेक्शन स्टाइल */
     .exercise-title {
-      font-size: 18px;
+      font-size: 19px;
       font-weight: 900;
       color: var(--secondary);
       border-bottom: 3px double #e9d5ff;
-      padding-bottom: 6px;
-      margin-bottom: 15px;
-    }
-    .quiz-card {
-      background: #faf8ff;
-      border: 1.5px solid #e9d5ff;
-      border-radius: 14px;
-      padding: 16px;
+      padding-bottom: 8px;
       margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
-    .quiz-question { font-size: 14.5px; font-weight: 800; color: var(--dark); margin-bottom: 12px; }
-    .quiz-options { display: flex; flex-direction: column; gap: 8px; }
+
+    .quiz-card {
+      background: linear-gradient(135deg, #faf8ff 0%, #f5f0ff 100%);
+      border: 1.5px solid #e9d5ff;
+      border-radius: 18px;
+      padding: 18px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.03);
+      transition: all 0.3s ease;
+    }
+
+    .quiz-card:hover {
+      box-shadow: 0 8px 20px rgba(124, 58, 237, 0.06);
+      border-color: #d8b4fe;
+    }
+
+    .quiz-question { 
+      font-size: 15px; 
+      font-weight: 800; 
+      color: var(--dark); 
+      margin-bottom: 14px; 
+      line-height: 1.5;
+    }
+
+    .quiz-options { 
+      display: flex; 
+      flex-direction: column; 
+      gap: 10px; 
+    }
+
     .quiz-btn {
       background: #ffffff;
       border: 1.5px solid #cbd5e1;
-      padding: 10px 14px;
-      border-radius: 10px;
+      padding: 12px 16px;
+      border-radius: 12px;
       text-align: left;
       font-size: 14px;
       font-weight: 700;
       cursor: pointer;
       color: var(--dark);
-      transition: all 0.2s;
+      transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.01);
     }
-    .quiz-btn:hover { background: #f1f5f9; border-color: #94a3b8; }
+
+    .quiz-btn:hover { 
+      background: #f8fafc; 
+      border-color: var(--secondary);
+      color: var(--secondary);
+      transform: translateX(4px);
+    }
+
+    .quiz-btn:active {
+      transform: scale(0.98) translateX(4px);
+    }
     
     .quiz-feedback {
       display: none;
-      margin-top: 12px;
-      padding: 12px;
-      border-radius: 8px;
-      font-size: 13.5px;
+      margin-top: 14px;
+      padding: 14px;
+      border-radius: 12px;
+      font-size: 14px;
       font-weight: 700;
-      animation: slideDown 0.3s ease-out forwards;
+      line-height: 1.5;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+      animation: slideDown 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
     }
+
     @keyframes slideDown {
-      from { opacity: 0; transform: translateY(-8px); }
+      from { opacity: 0; transform: translateY(-12px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* 🔥 संकल्प बॉक्स पल्स एनीमेशन */
+    /* 🔥 संकल्प बॉक्स 3D पल्स और ग्लो एनीमेशन */
     .target-box {
-      background: linear-gradient(135deg, var(--primary), #dc2626);
+      background: linear-gradient(135deg, var(--primary), #dc2626, #be185d);
+      background-size: 200% auto;
       color: white;
       text-align: center;
-      padding: 18px;
-      border-radius: 16px;
+      padding: 20px;
+      border-radius: 20px;
       font-weight: 800;
-      margin-top: 25px;
-      font-size: 16px;
+      margin-top: 30px;
+      font-size: 16.5px;
       cursor: pointer;
-      box-shadow: 0 6px 15px rgba(220, 38, 38, 0.25);
-      animation: targetPulse 2s infinite;
+      box-shadow: 0 8px 20px rgba(220, 38, 38, 0.3);
+      transition: all 0.3s ease;
+      animation: targetPulse 2s infinite, gradientShift 4s linear infinite;
     }
+
+    .target-box:hover {
+      transform: scale(1.02);
+      box-shadow: 0 12px 25px rgba(220, 38, 38, 0.45);
+    }
+
+    .target-box:active { transform: scale(0.99); }
+
     @keyframes targetPulse {
-      0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.5); }
-      70% { box-shadow: 0 0 0 14px rgba(220, 38, 38, 0); }
+      0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.6); }
+      70% { box-shadow: 0 0 0 16px rgba(220, 38, 38, 0); }
       100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
     }
     
@@ -291,13 +473,17 @@
       color: var(--dark);
       text-decoration: none;
       padding: 14px;
-      border-radius: 12px;
+      border-radius: 14px;
       font-weight: 700;
-      font-size: 14px;
-      margin-top: 20px;
+      font-size: 14.5px;
+      margin-top: 22px;
       border: 1px solid #e2e8f0;
       box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+      transition: all 0.3s ease;
+      gap: 6px;
     }
+
+    .back-btn:hover { background: #f8fafc; border-color: #cbd5e1; box-shadow: 0 6px 12px rgba(0,0,0,0.04); }
   </style>
 </head>
 <body>
@@ -309,18 +495,18 @@
       <p>👨‍🏫 मार्गदर्शक: संजय धाकड़ सर</p>
     </div>
 
-    <div class="chapter-banner">📖 अध्याय 1: वास्तविक संख्याएँ (विजुअल व इंटरैक्टिव एडिशन)</div>
+    <div class="chapter-banner">🎯 अध्याय 1: वास्तविक संख्याएँ (पूर्ण कनेक्टेड एडिशन)</div>
     <div class="progress-container"><div class="progress-bar"></div></div>
 
     <div class="note-card" style="animation-delay: 0.1s;">
-      <div class="section-title">🤠 1. संख्याओं के परिवार की 'देशी' कहानी व विजुअल आरेख</div>
+      <div class="section-title">✨ 1. संख्याओं के परिवार की मजेदार कहानी</div>
       
       <div class="story-box">
         <div class="story-title">🎬 किस्सा सुनो: संख्याओं का गांव!</div>
         मान लो एक गांव है। वहाँ सबसे पहले <b>प्राकृत संख्याएँ (N)</b> आईं, जो 1 से शुरू होकर गिनती करती थीं (1, 2, 3...)। फिर गांव के मुखिया ने कहा, "अरे, इसमें कुछ अधूरा है!" तभी <b>'0' (जीरो)</b> की एंट्री हुई और पूरा परिवार खुश होकर <b>पूर्ण संख्याएँ (W)</b> बन गया (0, 1, 2, 3...)। फिर जब ठंड बढ़ी, तो माइनस वाले लोग भी आ गए, जिससे पूरा गांव मिलकर <b>पूर्णांक (Z)</b> कहलाया!
       </div>
 
-      <p style="font-size: 14.5px; font-weight: 700; margin-bottom: 8px;">📊 वास्तविक संख्याओं का वर्गीकरण वेन आरेख (Venn Diagram):</p>
+      <p style="font-size: 14px; font-weight: 600; margin-bottom: 5px;">🔥 अब इस गांव के दो सबसे बड़े लीडर आमने-सामने हैं (टच करके देखो):</p>
       
       <div class="venn-container">
         <div class="venn-circle" style="background: #fce7f3; border: 3px solid var(--primary); color: var(--primary);">
@@ -328,17 +514,17 @@
           <span>बटे ($\frac{p}{q}$) रूप में<br>जैसे: $5, \frac{2}{3}, 0$</span>
         </div>
         <div class="venn-circle" style="background: #f3e8ff; border: 3px solid var(--secondary); color: var(--secondary);">
-          <b>अपरिमेय संख्याएँ</b>
+          <b>अपरीमेय संख्याएँ</b>
           <span>$\sqrt{}$ की जेल में बंद<br>जैसे: $\sqrt{2}, \sqrt{3}, \pi$</span>
         </div>
       </div>
     </div>
 
     <div class="note-card" style="animation-delay: 0.2s;">
-      <div class="section-title">🌳 2. अंकगणित की आधारभूत प्रमेय (गुणनखंड वृक्ष का जादू)</div>
-      <p style="font-size: 14.5px;">किताब की परिभाषा को मारो गोली! सीधा समझो: दुनिया की किसी भी <b>भाज्य संख्या</b> को हम छोटे-छोटे <b>अभाज्य टुकड़ों</b> के गुणा के रूप में लिख सकते हैं।</p>
+      <div class="section-title">🌳 2. अंकगणित की आधारभूत प्रमेय (गुणनखंड का जादू)</div>
+      <p style="font-size: 14px;">किताब की भारी परिभाषा छोड़ो, सीधा समझो: दुनिया की किसी भी <b>भाज्य संख्या</b> को हम छोटे-छोटे <b>अभाज्य टुकड़ों</b> के गुणा के रूप में लिख सकते हैं।</p>
       
-      <p style="font-size: 14.5px; font-weight: 700; margin-top: 10px; color: #ea580c;">📐 बोर्ड स्पेशल विजुअल: संख्या 32760 का 'गुणनखंड वृक्ष' (Factor Tree):</p>
+      <p style="font-size: 14px; font-weight: 700; margin-bottom: 2px; color: #ea580c;">📚 किताब का सबसे बड़ा उदाहरण (संख्या 32760) का साफ गुणनखंड वृक्ष (Factor Tree):</p>
       
       <div class="visual-tree">
         <div class="tree-level">
@@ -366,16 +552,16 @@
 
       <div class="danger-box">
         <div class="danger-title">💀 DANGER ZONE: यहाँ नंबर कटेंगे!</div>
-        याद रखना, <b>'1' (एक) न तो भाज्य संख्या है और न ही अभाज्य संख्या है!</b> इसे कभी भी अभाज्य गुणनखंडों की लाइन में मत लिखना।
+        ध्यान रखना, <b>'1' (एक) न तो भाज्य संख्या है और न ही अभाज्य संख्या है!</b> इसे कभी भी गुणनखंड में शामिल मत करना।
       </div>
     </div>
 
     <div class="note-card" style="animation-delay: 0.3s;">
       <div class="section-title">🎯 3. HCF और LCM का असली खेल</div>
-      <p style="font-size: 14.5px;">अभाज्य गुणनखंड विधि से HCF और LCM निकालना बच्चों का खेल है, बस संजय सर का यह नियम याद रखो:</p>
+      <p style="font-size: 14px;">अभाज्य गुणनखंड विधि से HCF और LCM निकालना बच्चों का खेल है, बस संजय सर का यह नियम याद रखो:</p>
       
       <ul style="padding-left: 20px; margin: 10px 0; font-size: 14.5px;">
-        <li><b>HCF:</b> जो दोनों के पास कॉमन हो और जिसकी <b>सबसे छोटी घात</b> हो। (कंजूस नियम!)</li>
+        <li><b>HCF:</b> जो दोनों के पास हो और जिसकी <b>सबसे छोटी घात</b> हो। (कंजूस नियम!)</li>
         <li><b>LCM:</b> जितने भी अभाज्य नंबर दिख रहे हैं, उन सबकी <b>सबसे बड़ी घात</b> ले लो। (धानी नियम!)</li>
       </ul>
 
@@ -385,36 +571,59 @@
     </div>
 
     <div class="note-card" style="animation-delay: 0.4s;">
-      <div class="section-title">👻 4. अपरिमेय संख्याओं का भूत भगाओ (विरोधाभास का नियम)</div>
+      <div class="section-title">👻 4. अपरिमेय संख्याओं का भूत भगाओ (रूट का जादू)</div>
       
       <div class="story-box" style="background: #fffbeb; border-color: #fde68a;">
-        <div class="story-title" style="color: #b45309;">🎬 कहानी: 'विरोधाभास' (Contradiction) की जासूसी ट्रिक!</div>
-        जब हमें किसी को गलत साबित करना हो, तो हम पहले उसकी बात को सच मान लेते हैं। परीक्षा में जब आए कि <b>"सिद्ध करो $\sqrt{2}$ एक अपरिमेय संख्या है"</b>, तो हम उल्टा मान लेंगे कि वह एक शरीफ परिमेय संख्या है ($\sqrt{2} = \frac{a}{b}$)। फिर आगे जाकर हम अपनी ही बात को गलत साबित कर देंगे!
+        <div class="story-title" style="color: #b45309;">🎬 कहानी: 'विरोधाभास' (Contradiction) का खेल!</div>
+        जब हमें किसी को गलत साबित करना हो, तो हम पहले उसकी बात को सच मान लेते हैं। परीक्षा में जब आए कि <b>"सिद्ध करो $\sqrt{2}$ एक अपरिमेय संख्या है"</b>, तो हम उल्टा मान लेंगे कि वह एक शरीफ परिमेय संख्या है ($\sqrt{2} = \frac{a}{b}$)। फिर आगे जाकर हम अपनी ही बात को गलत साबित कर देंगे (विरोधाभास)! इसे कहते हैं जासूस वाली ट्रिक।
       </div>
 
-      <div style="background: #f8fafc; padding: 12px; border-radius: 10px; border-left: 5px solid #7c3aed; font-size: 14px; margin-bottom: 15px;">
-        💡 <b>प्रमेय 1.2 का लॉजिक:</b> अगर कोई अभाज्य संख्या $p$, किसी संख्या के स्क्वायर ($a^2$) को भाग देती है, तो वह $a$ को भी पक्का भाग देगी!
+      <p style="font-size: 14px;"><b>👇 परीक्षा में पूरे नंबर लाने वाले स्टेप्स (प्रमेय 1.2 का लॉजिक):</b></p>
+      <div style="background: #f8fafc; padding: 12px; border-radius: 10px; border-left: 5px solid #7c3aed; font-size: 14px; margin-bottom: 10px;">
+        💡 <b>याद रखने वाला नियम:</b> अगर कोई अभाज्य संख्या $p$, किसी संख्या के स्क्वायर ($a^2$) को भाग देती है, तो वह $a$ को भी पक्का भाग देगी! <br><i>जैसे:</i> अगर $2$, $a^2$ को काटता है, तो $2$ सीधा $a$ को भी काटेगा।
       </div>
 
       <div class="desi-box" style="background-color: #ecfdf5; border-left-color: #059669;">
-        <div class="desi-title" style="color: #047857;">🧠 संजय सर का 'सीधा वार' नियम (ऑब्जेक्टिव स्पेशल):</div>
+        <div class="desi-title" style="color: #047857;">🧠 संजय सर का 'सीधा वार' नियम (शॉर्टकट ऑब्जेक्टिव):</div>
+        एग्जाम में एक नंबर का सवाल पक्का आता है, इसे सीधे खोपड़ी में बिठा लो:
         <ul>
-          <li>एक परिमेय और एक अपरिमेय संख्या का जोड़ या घटाव हमेशा <b>अपरिमेय</b> ही आएगा! (जैसे: $5 - \sqrt{3}$)</li>
-          <li>इनका गुणा या भाग भी हमेशा <b>अपरिमेय</b> ही होगा! (जैसे: $3\sqrt{2}$)</li>
+          <li><b>नियम 1:</b> एक परिमेय और एक अपरिमेय संख्या को जोड़ो या घटाओ, जवाब हमेशा <b>अपरिमेय</b> ही आएगा! (जैसे: $5 - \sqrt{3}$)</li>
+          <li><b>नियम 2:</b> इनका गुणा या भाग भी हमेशा <b>अपरिमेय</b> ही होगा! (जैसे: $3\sqrt{2}$)</li>
         </ul>
+      </div>
+
+      <div class="danger-box">
+        <div class="danger-title">💀 DANGER ZONE: यहाँ बच्चे जाल में फंसते हैं!</div>
+        परीक्षा में पूछता है कि $\sqrt{3} = \frac{a}{b}$ में $a$ और $b$ कैसी संख्याएँ हैं? बच्चे भूल जाते हैं। हमेशा याद रखना ये <b>सहअभाज्य (Co-prime)</b> संख्याएँ हैं, यानी इनके बीच 1 के अलावा कुछ भी कॉमन नहीं होता!
       </div>
     </div>
 
     <div class="note-card" style="animation-delay: 0.5s;">
       <div class="section-title">🚀 5. टॉपर स्पेशल: 3 संख्याओं का जादुई सूत्र</div>
-      <p style="font-size: 14.5px;">किताब के सबसे आखिरी कोने में छुपा यह सीक्रेट फॉर्मूला सिर्फ टॉपर्स के लिए है। अगर एग्जाम में 3 संख्याएँ ($p, q, r$) आ जाएँ, तो उनका LCM इस बड़े सूत्र से निकलता है:</p>
+      <p style="font-size: 14.5px;">किताब के सबसे आखिरी पन्ने पर एक ऐसा सीक्रेट फॉर्मूला छुपा है जो आम बच्चों को पता ही नहीं होता! अगर एग्जाम में 3 संख्याएँ ($p, q, r$) आ जाएँ, तो उनका LCM इस बड़े फॉर्मूले से निकलता है:</p>
 
       <div class="formula-card" style="background: #faf5ff; border-color: #e9d5ff; color: #581c87; padding: 18px 10px;">
         $$LCM(p,q,r) = \frac{p \cdot q \cdot r \cdot HCF(p,q,r)}{HCF(p,q) \cdot HCF(q,r) \cdot HCF(p,r)}$$
       </div>
+      <p style="text-align: center; font-weight: 700; font-size: 12px; color: #64748b;">(नोट: इसे याद कर लिया तो 100 में से 100 नंबर पक्के! 🎯)</p>
     </div>
 
-    <div class="note-card" style="animation-delay: 0.6s; border: 2px solid var(--secondary);">
+    <div class="note-card" style="animation-delay: 0.6s;">
+      <div class="game-box">
+        <div class="game-title">🎮 गेम ज़ोन 2: मैदान का चक्कर!</div>
+        <p style="font-size: 13.5px;"><b>चैलेंज (प्रश्नावली 1.1 का सवाल 7):</b> एक वृत्ताकार पथ है। सोनिया को एक चक्कर लगाने में <b>18 मिनट</b> लगते हैं और रवि को <b>12 मिनट</b> लगते हैं। दोनों एक ही समय पर एक ही दिशा में दौड़ना शुरू करते हैं। बताओ, वे दोबारा कब मिलेंगे?</p>
+        <button class="reveal-btn" onclick="toggleAns('ans_game2')">जादुई उत्तर देखें 🔓</button>
+        <div id="ans_game2" class="hidden-answer">
+          <b>शॉर्टकट ट्रिक:</b> जब भी कोई ऐसी चीज़ हो जो बार-बार चक्कर लगाकर दोबारा मिलने की बात करे, तो आँख बंद करके <b>LCM (लघुत्तम)</b> निकाल लो!<br><br>
+          $18 = 2 \times 3^2$<br>
+          $12 = 2^2 \times 3$<br>
+          LCM (सबसे बड़ी घात) = $2^2 \times 3^2 = 4 \times 9 =$ <b>36 मिनट</b>!<br>
+          🎉 यानी 36 मिनट बाद दोनों भाई-बहन फिर से शुरुआती जगह पर मिलेंगे!
+        </div>
+      </div>
+    </div>
+
+    <div class="note-card" style="animation-delay: 0.7s; border: 2px solid var(--secondary);">
       <div class="exercise-title">📝 अभ्यास कार्यशाला (प्रश्नावली का महा-निचोड़)</div>
       <p style="font-size: 14px; margin-bottom: 15px; font-weight: 600;">बेटा, जो कुछ भी पढ़ा है, उसका लाइव टेस्ट दो और अपना कॉन्सेप्ट पक्का करो:</p>
 
@@ -440,7 +649,7 @@
         <div class="quiz-question"><b>प्रश्न 3:</b> यदि दो संख्याओं का गुणनफल 1200 है और उनका HCF = 5 है, तो उनका LCM क्या होगा? (सूत्र आधारित)</div>
         <div class="quiz-options">
           <button class="quiz-btn" onclick="checkAnswer('q3', 'wrong', '❌ गलत जवाब बेटा! गुणा नहीं करना है। सूत्र लगाओ: LCM = गुणनफल / HCF।')">A) 6000</button>
-          <button class="quiz-btn" onclick="checkAnswer('q3', 'right', '🎉 अरे वाह! बिल्कुल सही पकड़े हो। सूत्र के अनुसार, $LCM = \\frac{1200}{5} = 2400$ होगा। आपकी तैयारी बहुत बेहतरीन है!')">B) 240</button>
+          <button class="quiz-btn" onclick="checkAnswer('q3', 'right', '🎉 अरे वाह! बिल्कुल सही पकड़े हो। सूत्र के अनुसार, $LCM = \\frac{1200}{5} = 240$ होगा। आपकी तैयारी बहुत बेहतरीन है!')">B) 240</button>
         </div>
         <div id="q3-fb" class="quiz-feedback"></div>
       </div>
@@ -471,7 +680,7 @@
       fb.innerHTML = message;
     }
 
-    // उत्तर दिखाने/छुपाने का पुराना फंक्शन (अगर कहीं बैकअप के लिए चाहिए हो)
+    // उत्तर दिखाने/छुपाने का फंक्शन
     function toggleAns(id) {
       var ans = document.getElementById(id);
       ans.style.display = (ans.style.display === "block") ? "none" : "block";
